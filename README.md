@@ -194,6 +194,7 @@ Platforms and services that provide scalable, cloud-native data storage, process
 - [DuckDB](https://duckdb.org/) – An in-process SQL OLAP database management system designed for fast analytical queries.
 - [Dynatrace](https://www.dynatrace.com/) – Offers a unified observability and security platform powered by AI, providing analytics and automation for multicloud environments.
 - [Elastic](https://www.elastic.co/) – Provides search-powered solutions for observability, security, and enterprise search.
+- [ElectricSQL](https://electric-sql.com/) - Electric is a Postgres sync engine. that solves things like partial replication, fan-out, and data delivery.
 - [Firebolt](https://www.firebolt.io/) – Delivers a cloud data warehouse designed for high-performance analytics.
 - [FullStory](https://www.fullstory.com/) – Offers digital experience analytics to understand and improve user interactions.
 - [Grafana](https://grafana.com/) – An open-source platform for monitoring and observability, enabling visualization of metrics, logs, and traces.
