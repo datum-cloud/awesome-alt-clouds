@@ -1,5 +1,5 @@
 # 🌥️ Awesome Alt Clouds [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Lint Awesome List](https://github.com/jacobsmith928/awesome-alt-clouds/actions/workflows/lint.yml/badge.svg)](https://github.com/jacobsmith928/awesome-alt-clouds/actions/workflows/lint.yml)
+[![Lint Awesome List](https://github.com/datum-cloud/awesome-alt-clouds/actions/workflows/lint.yml/badge.svg)](https://github.com/datum-cloud/awesome-alt-clouds/actions/workflows/lint.yml)
 
 > A curated list of **Alt Clouds** — non-hyperscale, service-first cloud providers delivering specialized infrastructure and services.
 
