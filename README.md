@@ -5,6 +5,8 @@
 
 Alt Clouds provide value "as a service" directly on top of infrastructure. They cater to specific workloads, compliance requirements, and developer needs, offering transparency, automation, and critical services with public SLAs.
 
+Inspired by [David Linthicum's writings](https://www.linkedin.com/pulse/alt-clouds-future-david-linthicum/) and curated by cloud-native builders everywhere. 🌍
+
 ## Criteria
 
 To qualify, platforms must:
@@ -12,6 +14,10 @@ To qualify, platforms must:
 - Have transparent, public pricing that includes a usage model.
 - Offer the ability to sign up and self-service with automation.
 - Provide a service that is critical to other platforms (public SLA or status page).
+
+## Contributing
+
+Pull requests welcome! Please ensure that submissions meet the [Alt Cloud Criteria](#criteria) and are categorized accurately.
 
 ---
 
