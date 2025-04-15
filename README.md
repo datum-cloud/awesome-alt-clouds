@@ -1,4 +1,5 @@
-# 🌥️ Awesome Alt Clouds
+# 🌥️ Awesome Alt Clouds [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![Lint Awesome List](https://github.com/jacobsmith928/awesome-alt-clouds/actions/workflows/lint.yml/badge.svg)](https://github.com/jacobsmith928/awesome-alt-clouds/actions/workflows/lint.yml)
 
 A curated list of non-hyperscale cloud providers delivering specialized infrastructure, developer tools, and critical services for modern workloads.
 
