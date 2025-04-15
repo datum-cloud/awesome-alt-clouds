@@ -236,7 +236,7 @@ Cloud-based platforms and tools that enhance developer productivity by providing
 - [Roboflow](https://roboflow.com/) – Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.
 - [Robovision](https://robovision.ai/) – Provides a computer vision AI platform for smart automation, capturing industrial data and optimizing intelligence to reveal untapped value.
 
-## 🔐 Network, Connectivity & Security
+## 🔐 Network, Connectivity & Security Clouds
 
 Platforms and services enhancing network performance, secure connectivity, and protection for modern cloud-native applications.&#8203;:contentReference[oaicite:0]{index=0}
 
@@ -245,6 +245,7 @@ Platforms and services enhancing network performance, secure connectivity, and p
 - [Cloudbrink](https://cloudbrink.com/) – Delivers hybrid access-as-a-service with high-performance connectivity, zero trust security, and edge-native networking for remote users.
 - [Cloudflare](https://www.cloudflare.com/) – Protects and accelerates websites and apps through global CDN, DDoS mitigation, Zero Trust access, and DNS services.
 - [CrowdStrike](https://www.crowdstrike.com/) – A cloud-native cybersecurity platform that provides endpoint protection, threat intelligence, and incident response powered by AI.
+- [c/Side](https://cside.dev/) - A next generation web security service that monitors, optimizes and secures 3rd party scripts.
 - [Datum](https://www.datum.net/) – Builds open-source network infrastructure to help developers deploy observability-rich, programmable connectivity layers for modern workloads.
 - [Fastly](https://www.fastly.com/) – An edge cloud platform designed for performance and security, enabling developers to build faster, more secure digital experiences.
 - [Fortinet](https://www.fortinet.com/) – Provides integrated cybersecurity solutions including next-gen firewalls, secure SD-WAN, and endpoint protection.
