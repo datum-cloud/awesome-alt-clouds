@@ -26,10 +26,12 @@ Pull requests welcome! Please ensure that submissions meet the [Alt Cloud Criter
 High-performance platforms for machine learning, AI inference, training, and compute-intensive workloads.
 
 - [Aethir](https://aethir.com) – Provides secure, cost-effective access to enterprise-grade GPUs worldwide through a distributed cloud compute infrastructure.
+- [Airon AI](https://airon.ai) – AI infrastructure platform offering high-performance compute for model training and deployment.
 - [Alt.ai](https://alt.ai) – Offers embedded AI conversational engine platforms to integrate advanced conversational AI into systems.
 - **Aperia Cloud** – Provides cloud-based GPU solutions optimized for AI workloads.
 - **Arc Compute** – Delivers high-performance computing solutions tailored for AI and machine learning applications.
 - **Atlas Cloud** – Offers scalable cloud infrastructure services for various computing needs.
+- [Atos](https://atos.net) – European digital services provider with HPC and AI cloud solutions.
 - **Ax3 AI** – Specializes in AI-driven cloud computing solutions.
 - **Backprop** – Provides tools and infrastructure for machine learning model training and deployment.
 - [Baseten](https://www.baseten.co/) – Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.
@@ -39,6 +41,7 @@ High-performance platforms for machine learning, AI inference, training, and com
 - [Cerebras](https://www.cerebras.ai/) – Delivers AI compute systems with wafer-scale engines for deep learning.
 - **CirraScale** – Offers cloud-based GPU solutions for AI and deep learning workloads.
 - [Civo](https://www.civo.com) – Provides cloud services with a focus on simplicity and developer experience.
+- [Cloudexe](https://cloudexe.io) – Cloud computing infrastructure company focused on AI workloads.
 - [CoreWeave](https://www.coreweave.com/) – A cloud platform optimized for AI, offering high-performance GPU compute and managed services.
 - **CR8DL** – Specializes in cloud-based solutions for deep learning applications.
 - [Cudo Compute](https://www.cudocompute.com/) – Offers decentralized cloud computing with GPU support for AI applications.
@@ -70,9 +73,11 @@ High-performance platforms for machine learning, AI inference, training, and com
 - **Hot Aisle Cloud** – Offers high-performance cloud infrastructure for AI workloads.
 - [HPC-ai.com](https://hpc-ai.com/) – Specializes in high-performance computing solutions for AI.
 - [Hut8](https://hut8.com/) – Provides digital asset mining and high-performance computing infrastructure.
+- [HydraHost](https://hydrahost.com/) – Affordable GPU compute focused on researchers and indie developers.
 - [Hyperbolic](https://hyperbolic.xyz/) – Offers scalable GPU compute for AI applications with a focus on performance and cost-efficiency.
 - [Hypertec Cloud](https://hypertec.com/cloud/) – Delivers cloud services with high-performance computing capabilities.
 - [Io.net](https://io.net/) – A decentralized GPU network delivering cost-efficient compute power for AI startups.
+- [Iris Energy](https://irisenergy.co/) – Sustainable data center operator pivoting to offer compute for AI and HPC workloads.
 - [Jarvis Labs AI](https://jarvislabs.ai/) – Provides AI-focused cloud computing solutions.
 - [Juice Labs](https://www.juicelabs.co/) – Enables GPU-over-IP, allowing GPUs to become remote virtual resources accessible by AI workloads.
 - [Koyeb](https://www.koyeb.com/) – Offers a serverless platform to deploy applications globally.
@@ -109,7 +114,22 @@ High-performance platforms for machine learning, AI inference, training, and com
 - [Rackspace](https://www.rackspace.com/) – Provides hybrid cloud and managed hosting services.
 - [Railway](https://railway.com/) – Deploy code instantly and manage environments in the cloud.
 - [Render](https://render.com/) – Unified cloud platform to build and host apps and websites.
-
+- [Replicate](https://replicate.com/) – Run machine learning models in the cloud with an API.
+- [Runpod](https://www.runpod.io/) – Provides customizable GPU containers and secure cloud compute environments.
+- [Salad](https://salad.com/) - A platform for leveraging latent consumer compute resources to power workloads.
+- [SambaNova](https://sambanova.ai/) – Delivers purpose-built AI hardware and software systems.
+- [Sesterce](https://sesterce.com/) – Provider of GPU server rentals and AI hosting solutions.
+- [Shadeform](https://shadeform.com/) – GPU compute provider with a focus on low-cost AI infrastructure.
+- [Seeweb](https://www.seeweb.it/) – Italian cloud infrastructure provider offering compute, storage, and CDN.
+- [Servers.com](https://www.servers.com/) – Global bare metal and private cloud platform supporting AI/ML compute.
+- [Sify Technology](https://www.sifytechnologies.com/) – Indian-based cloud and digital transformation provider, expanding GPU compute.
+- [Sustainable Metal Cloud](https://smc.co/) – Green-focused GPU cloud with a sustainability-first infrastructure model.
+- [TensorDock](https://tensordock.com/) – Affordable, usage-based GPU cloud platform for model training.
+- [Together.ai](https://www.together.ai/) – Open-source foundation model infrastructure with collaborative fine-tuning.
+- [Turboscale](https://www.turboscale.ai/) – AI-native cloud infrastructure for fine-tuning and inference.
+- [Valdi.ai](https://valdi.ai/) – Customizable GPU clusters for AI teams and enterprises.
+- [Vast.ai](https://vast.ai/) – Marketplace for buying and selling GPU compute capacity at competitive rates.
+- [Vayu Cloud](https://www.tatacommunications.com/services/cloud/vayu-cloud/) – Tata’s scalable GPU cloud optimized for enterprise AI workloads.
 
 ## 🏛️ Sovereign Clouds
 
