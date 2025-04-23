@@ -218,6 +218,7 @@ Services for managing network workloads, including acceleration, security, and c
 - [Kong](https://konghq.com/) – An open-source API gateway and microservices management layer that provides traffic control, security, and observability for APIs.
 - [Macrometa](https://www.macrometa.com/) - An edge delivery network and developer platform built for real-time use cases.
 - [Megaport](https://www.megaport.com/) – Offers elastic interconnection services that allow businesses to rapidly connect to cloud providers, data centers, and networks.
+- [NetBox Cloud](https://netboxlabs.com/netbox-cloud/) – A managed solution for network infrastructure modeling and documentation, providing a scalable and secure platform for network automation.
 - [Netmaker](https://netmaker.io/) – A WireGuard-based virtual networking platform that enables fast, secure, and scalable networking for devices and distributed systems.
 - [Netskope](https://www.netskope.com/) – A cloud-native security platform that protects users, apps, and data with visibility and control across SaaS, IaaS, and the web.
 - [ngrok](https://ngrok.com/) – Securely tunnels local services to the public internet, ideal for testing webhooks, building with APIs, or sharing local development environments.
@@ -269,7 +270,6 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [GitLab](https://about.gitlab.com/) – An AI-powered DevSecOps platform providing a single application for the entire software development lifecycle, including cloud-based development workspaces.
 - [Gitpod](https://www.gitpod.io/) – A platform for automated and standardized development environments, enabling developers to code from anywhere with pre-configured, on-demand workspaces.
 - [HashiCorp Cloud Platform](https://www.hashicorp.com/cloud) – A fully-managed platform offering HashiCorp products-as-a-service, simplifying infrastructure and security management for developers.
-- [NetBox Cloud](https://netboxlabs.com/netbox-cloud/) – A managed solution for network infrastructure modeling and documentation, providing a scalable and secure platform for network automation.
 - [Porter](https://porter.run/) – A Kubernetes-powered PaaS that runs in your own cloud provider, simplifying the deployment and management of applications on AWS, GCP, or Azure.
 - [Release](https://release.com/) – Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.
 - [Roboflow](https://roboflow.com/) – Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.
@@ -324,10 +324,12 @@ Services that provide connectivity, device management, and communication solutio
 - [Soracom](https://soracom.io/) – Delivers cellular connectivity and edge services for IoT deployments, with APIs and billing tailored to developers and startups.
 - [Twilio](https://www.twilio.com/docs/iot) – Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
 
-## 🛠️ IT & Workflow Clouds
+## 🛠️ Workflows and Queues - Oh My!
 
 Services that provide tools for IT service management, asset tracking, and workflow automation to enhance operational efficiency.
 
+- [Inngest](https://www.inngest.com/) - A platform for AI and backend workflows that helps developers build AI-ready step functions without touching infrastructure.
+- [Mergent](https://mergent.co/) - A fully-managed task queue for applications in any language that allows you to scale to billions of tasks with zero infrastructure.
 - [n8n](https://n8n.io/) – An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor.
 - [ServiceNow](https://www.servicenow.com/) – A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
 - [Zapier](https://zapier.com/) – A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
