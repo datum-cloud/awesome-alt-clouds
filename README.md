@@ -301,6 +301,7 @@ Services that provide billing, subscription management, and customer relationshi
 
 - [Amberflo](https://www.amberflo.io/) – Provides a cloud-native platform for metering and billing, enabling businesses to implement usage-based pricing models with real-time insights.
 - [Clarify](https://www.getclarify.ai/) – An AI-native CRM that unifies customer data, automates tasks, and provides actionable insights to enhance customer relationships.
+- [Day.ai](https://day.ai/) - An AI-native CRM that promises to bring customers into every decision by focusing on People, Pipelines, and Pages.
 - [Lago](https://www.getlago.com/) – An open-source metering and usage-based billing platform designed for transparency and developer experience.
 - [Maxio](https://www.maxio.com/) – Provides billing and financial operations solutions for B2B SaaS companies, helping to streamline revenue management.
 - [Metronome](https://metronome.com/) – Offers a usage-based billing platform that simplifies billing operations and supports various pricing models.
