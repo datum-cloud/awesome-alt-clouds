@@ -32,7 +32,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Atlas Cloud](https://www.atlascloud.ai/) – Offers scalable cloud infrastructure services for various computing needs.
 - [x3 AI](https://www.ax3.ai/)** – Powerful & cost-effective GPUs that are billed by the minute with no fees for ingress/egress.
 - [Baseten](https://www.baseten.co/) – Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.
-- [Beam](https://www.beam.cloud) - 
+- [Beam](https://www.beam.cloud) - Cloud infrastructure specifically built for high-performance applications and developer happiness.
 - [Bitdeer Cloud](https://www.bitdeer.com/) – Bitcoin miner that offers  GPU servers and a platform to streamline AI and ML workflows
 - [Cato Digital](https://cato.digital/) – Low carbon bare metal, including GPU enabled servers.
 - [CirraScale](https://www.cirrascale.com/) – Offers cloud-based GPU solutions for AI and deep learning workloads.
