@@ -9,11 +9,11 @@ Inspired by [David Linthicum's writings](https://www.linkedin.com/pulse/alt-clou
 
 ## Criteria
 
-To qualify, platforms must:
+This list is currenlty expansive and inclusive. Over time, we'd like to see it get more nuanced, inline with the following qualifications:
 
-- Have transparent, public pricing that includes a usage model.
-- Offer the ability to sign up and self-service with automation.
-- Provide a service that is critical to other platforms (public SLA or status page).
+- Have some level of transparent, public pricing.
+- Offer some sort of usage based model that supports self-service.
+- Provide a service that is critical to how other platforms operate (indicators might include a public SLA or status page).
 
 ## Contributing
 
@@ -32,12 +32,13 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Atlas Cloud](https://www.atlascloud.ai/) – Offers scalable cloud infrastructure services for various computing needs.
 - [x3 AI](https://www.ax3.ai/)** – Powerful & cost-effective GPUs that are billed by the minute with no fees for ingress/egress.
 - [Baseten](https://www.baseten.co/) – Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.
+- [Beam](https://www.beam.cloud) - 
 - [Bitdeer Cloud](https://www.bitdeer.com/) – Bitcoin miner that offers  GPU servers and a platform to streamline AI and ML workflows
 - [Cato Digital](https://cato.digital/) – Low carbon bare metal, including GPU enabled servers.
 - [CirraScale](https://www.cirrascale.com/) – Offers cloud-based GPU solutions for AI and deep learning workloads.
 - [Civo](https://www.civo.com) – Provides cloud services with a focus on simplicity and developer experience.
 - [Cloudexe](https://cloudexe.io) – Cloud computing infrastructure company focused on AI workloads.
-- [Coherently.ai](https://www.coherently.ai/) - 
+- [Coherently.ai](https://www.coherently.ai/) - Cloud infrastructure designed specifically for high-performance applications.
 - [CoreWeave](https://www.coreweave.com/) – A cloud platform optimized for AI, offering high-performance GPU compute and managed services.
 - [Cudo Compute](https://www.cudocompute.com/) – Offers decentralized cloud computing with GPU support for AI applications.
 - [Cycle.io](https://cycle.io/) – Provides a container orchestration platform for deploying applications.
