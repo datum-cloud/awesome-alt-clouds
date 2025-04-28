@@ -2,21 +2,15 @@ name: Lint Awesome List
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  awesome-lint:
-    name: Run awesome-lint
+  Awesome_Lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
         with:
-          node-version: 16
-      - name: Install awesome-lint
-        run: npm install -g awesome-lint
-      - name: Lint README
-        run: awesome-lint
+          fetch-depth: 0
+      - run: npx awesome-lint
