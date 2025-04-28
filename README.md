@@ -5,7 +5,7 @@
 
 Alt Clouds provide value "as a service" directly on top of infrastructure. They cater to specific workloads, compliance requirements, and developer needs, offering transparency, automation, and critical services with public SLAs.
 
-Inspired by [David Linthicum's writings](https://www.linkedin.com/pulse/alt-clouds-future-david-linthicum/) and curated by cloud builders everywhere, but especially at [Datum](https://www.datum.net). 🌍
+Inspired by [David Linthicum's writings](https://www.linkedin.com/pulse/alt-clouds-future-david-linthicum/) and curated by cloud builders everywhere, but especially at Datum. 🌍
 
 ## Criteria
 
@@ -80,6 +80,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Lightning.ai](https://lightning.ai/) – Build, train, and deploy AI models with powerful tools and scalable infrastructure.
 - [Limestone Networks](https://www.limestonenetworks.com/) - Bare metal and colocation provider. 
 - [Linode](https://www.linode.com/) – Provides cloud computing services designed for developers with straightforward pricing.
+- [MemVerge](https://memverge.com) - A platform for GPU orchestration across environments that automates AI model and agent deployment.
 - [ML Foundry](https://mlfoundry.com) – Gives AI practitioners access to state-of-the-art GPU compute for training and serving models.
 - [Modal](https://modal.com/) – A serverless platform for AI and data teams to run compute-intensive applications without managing infrastructure.
 - [Nebius](https://nebius.com/) – Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services.
@@ -326,7 +327,7 @@ Services that provide connectivity, device management, and communication solutio
 - [Soracom](https://soracom.io/) – Delivers cellular connectivity and edge services for IoT deployments, with APIs and billing tailored to developers and startups.
 - [Twilio](https://www.twilio.com/docs/iot) – Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
 
-## 🛠️ Workflows and Queues - Oh My!
+## 🛠️ Workflows and Queues - Oh My
 
 Services that provide tools for IT service management, asset tracking, and workflow automation to enhance operational efficiency.
 
