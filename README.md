@@ -8,6 +8,22 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 
 Inspired by [David Linthicum's writings](https://www.linkedin.com/pulse/alt-clouds-future-david-linthicum/) and curated by cloud builders everywhere, but especially at [Datum](https://www.datum.net). 🌍
 
+## Table of Contents
+
+- [Criteria](#Criteria)
+- [Contributing](#Contributing)
+- [🧠 Infrastructure Clouds](#-infrastructure-clouds)
+- [🏛️ Sovereign Clouds](#%EF%B8%8F-sovereign-clouds)
+- [🧬 Unikernels & WASM](#-unikernels--wasm)
+- [☁️ Data Clouds](#%EF%B8%8F-data-clouds)
+- [🔐 Network, Connectivity & Security Clouds](#-network-connectivity--security-clouds)
+- [✨ Vibe Clouds](#-vibe-clouds)
+- [👩‍💻 Developer Happiness Clouds](#-developer-happiness-clouds)
+- [🔐 Authorization, Identity, Fraud & Abuse Clouds](#-authorization-identity-fraud--abuse-clouds)
+- [💰 Monetization & Customer Clouds](#-monetization--customer-clouds)
+- [📡 IoT / Communications Clouds](#-iot--communications-clouds)
+- [🛠️ Workflows and Queues](#%EF%B8%8F-workflows-and-queues)
+
 ## Criteria
 
 This list is currenlty expansive and inclusive. Over time, we'd like to see it get more nuanced, inline with the following qualifications:
