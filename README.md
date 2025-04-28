@@ -272,6 +272,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [GitLab](https://about.gitlab.com/) – An AI-powered DevSecOps platform providing a single application for the entire software development lifecycle, including cloud-based development workspaces.
 - [Gitpod](https://www.gitpod.io/) – A platform for automated and standardized development environments, enabling developers to code from anywhere with pre-configured, on-demand workspaces.
 - [HashiCorp Cloud Platform](https://www.hashicorp.com/cloud) – A fully-managed platform offering HashiCorp products-as-a-service, simplifying infrastructure and security management for developers.
+- [Lightrun](https://lightrun.com/) - An AI platform to autonomously detect, debug, and remediate runtime issues.
 - [Porter](https://porter.run/) – A Kubernetes-powered PaaS that runs in your own cloud provider, simplifying the deployment and management of applications on AWS, GCP, or Azure.
 - [Release](https://release.com/) – Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.
 - [Roboflow](https://roboflow.com/) – Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.
