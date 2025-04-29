@@ -12,16 +12,16 @@ Inspired by [David Linthicum's writings](https://www.linkedin.com/pulse/alt-clou
 
 - [Criteria](#criteria)
 - [🧠 Infrastructure Clouds](#-infrastructure-clouds)
-- [🏛️ Sovereign Clouds](#-sovereign-clouds)
+- [🏛️ Sovereign Clouds](#%EF%B8%8F-sovereign-clouds)
 - [🧬 Unikernels & WASM](#-unikernels--wasm)
-- [☁️ Data Clouds](#data-clouds)
-- [🔐 Network, Connectivity & Security Clouds](#network-connectivity--security-clouds)
-- [✨ Vibe Clouds](#vibe-clouds)
-- [👩‍💻 Developer Happiness Clouds](#developer-happiness-clouds)
-- [🔐 Authorization, Identity, Fraud & Abuse Clouds](#authorization-identity-fraud--abuse-clouds)
-- [💰 Monetization & Customer Clouds](#monetization--customer-clouds)
-- [📡 IoT / Communications Clouds](#iot--communications-clouds)
-- [🛠️ Workflows and Queues - Oh My](#workflows-and-queues---oh-my)
+- [☁️ Data Clouds](#%EF%B8%8F-data-clouds)
+- [🔐 Network, Connectivity & Security Clouds](#-network-connectivity--security-clouds)
+- [✨ Vibe Clouds](#-vibe-clouds)
+- [👩‍💻 Developer Happiness Clouds](#-developer-happiness-clouds)
+- [🔐 Authorization, Identity, Fraud & Abuse Clouds](#-authorization-identity-fraud--abuse-clouds)
+- [💰 Monetization & Customer Clouds](#-monetization--customer-clouds)
+- [📡 IoT / Communications Clouds](#-iot--communications-clouds)
+- [🛠️ Workflows and Queues - Oh My](#%EF%B8%8F-workflows-and-queues---oh-my)
 
 ## Criteria
 
