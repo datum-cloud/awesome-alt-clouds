@@ -6,14 +6,11 @@
 
 Alt Clouds provide value "as a service" directly on top of infrastructure. They cater to specific workloads, compliance requirements, and developer needs, offering transparency, automation, and critical services with public SLAs.
 
-Inspired by [David Linthicum's writings](https://www.linkedin.com/pulse/alt-clouds-future-david-linthicum/) and curated by cloud builders everywhere, but especially at Datum. 🌍
-
-<!-- toc -->
+Inspired by [David Linthicum's writings](https://www.linkedin.com/pulse/alt-clouds-future-david-linthicum/) and curated by cloud builders everywhere, but especially at Datum.
 
 ## Contents
 
 - [Criteria](#criteria)
-- [Contributing](#contributing)
 - [Infrastructure Clouds](#infrastructure-clouds)
 - [Sovereign Clouds](#sovereign-clouds)
 - [Unikernels & WASM](#unikernels--wasm)
@@ -24,7 +21,7 @@ Inspired by [David Linthicum's writings](https://www.linkedin.com/pulse/alt-clou
 - [Authorization, Identity, Fraud & Abuse Clouds](#authorization-identity-fraud--abuse-clouds)
 - [Monetization & Customer Clouds](#monetization--customer-clouds)
 - [IoT / Communications Clouds](#iot--communications-clouds)
-- [Workflows and Queues](#workflows-and-queues)
+- [Workflows and Queues - Oh My](#workflows-and-queues---oh-my)
 
 ## Criteria
 
@@ -33,10 +30,6 @@ This list is currenlty expansive and inclusive. Over time, we'd like to see it g
 - Have some level of transparent, public pricing.
 - Offer some sort of usage based model that supports self-service.
 - Provide a service that is critical to how other platforms operate (indicators might include a public SLA or status page).
-
-## Contributing
-
-Pull requests welcome! Please ensure that submissions meet the Alt Cloud Criteria and are categorized accurately.
 
 ## Infrastructure Clouds
 
@@ -102,7 +95,6 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Modal](https://modal.com/) - A serverless platform for AI and data teams to run compute-intensive applications without managing infrastructure.
 - [Nebius](https://nebius.com/) - Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services.
 - [NeevCloud](https://www.neevcloud.com/) - India-based GPU cloud offering secure, scalable AI compute.
-- [Neon](https://neon.tech/) - Serverless Postgres built for the cloud with autoscaling and branching.
 - [NetActuate](https://netactuate.com/) - Provides hybrid cloud and edge computing solutions with a global network.
 - [Netlify](https://www.netlify.com/) - Platform for building, deploying, and scaling modern web applications.
 - [NextGen Cloud](https://www.nextgencloud.com/) - Delivers sustainable, high-performance cloud infrastructure for AI workloads.
@@ -354,3 +346,7 @@ Services that provide tools for IT service management, asset tracking, and workf
 - [n8n](https://n8n.io/) - An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor.
 - [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
 - [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
+
+## Contributing
+
+Pull requests welcome! Please ensure that submissions meet the Alt Cloud Criteria and are categorized accurately.
