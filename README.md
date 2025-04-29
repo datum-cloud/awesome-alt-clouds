@@ -1,4 +1,4 @@
-# Awesome Alt Clouds [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# 🌥️ Awesome Alt Clouds [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 [![Lint Awesome List](https://github.com/datum-cloud/awesome-alt-clouds/actions/workflows/lint.yml/badge.svg)](https://github.com/datum-cloud/awesome-alt-clouds/actions/workflows/lint.yml)
 
@@ -11,27 +11,27 @@ Inspired by [David Linthicum's writings](https://www.linkedin.com/pulse/alt-clou
 ## Contents
 
 - [Criteria](#criteria)
-- [Infrastructure Clouds](#infrastructure-clouds)
-- [Sovereign Clouds](#sovereign-clouds)
-- [Unikernels & WASM](#unikernels--wasm)
-- [Data Clouds](#data-clouds)
-- [Network, Connectivity & Security Clouds](#network-connectivity--security-clouds)
-- [Vibe Clouds](#vibe-clouds)
-- [Developer Happiness Clouds](#developer-happiness-clouds)
-- [Authorization, Identity, Fraud & Abuse Clouds](#authorization-identity-fraud--abuse-clouds)
-- [Monetization & Customer Clouds](#monetization--customer-clouds)
-- [IoT / Communications Clouds](#iot--communications-clouds)
-- [Workflows and Queues - Oh My](#workflows-and-queues---oh-my)
+- [🧠 Infrastructure Clouds](#-infrastructure-clouds)
+- [🏛️ Sovereign Clouds](#-sovereign-clouds)
+- [🧬 Unikernels & WASM](#-unikernels--wasm)
+- [☁️ Data Clouds](#data-clouds)
+- [🔐 Network, Connectivity & Security Clouds](#network-connectivity--security-clouds)
+- [✨ Vibe Clouds](#vibe-clouds)
+- [👩‍💻 Developer Happiness Clouds](#developer-happiness-clouds)
+- [🔐 Authorization, Identity, Fraud & Abuse Clouds](#authorization-identity-fraud--abuse-clouds)
+- [💰 Monetization & Customer Clouds](#monetization--customer-clouds)
+- [📡 IoT / Communications Clouds](#iot--communications-clouds)
+- [🛠️ Workflows and Queues - Oh My](#workflows-and-queues---oh-my)
 
 ## Criteria
 
-This list is currenlty expansive and inclusive. Over time, we'd like to see it get more nuanced, inline with the following qualifications:
+This list is currently expansive and inclusive. Over time, we'd like to see it get more nuanced, inline with the following qualifications:
 
 - Have some level of transparent, public pricing.
 - Offer some sort of usage based model that supports self-service.
 - Provide a service that is critical to how other platforms operate (indicators might include a public SLA or status page).
 
-## Infrastructure Clouds
+## 🧠 Infrastructure Clouds
 
 The original "alt clouds" providing everything from virtualized and bare metal compute to GPU's, storage, and inference services.
 
@@ -59,7 +59,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [E2E Cloud](https://www.e2enetworks.com/) - Offers cloud infrastructure with GPU instances for AI and machine learning.
 - [Fal.ai](https://fal.ai/) - Provides serverless GPU inference for AI models with instant deployment.
 - [Fireworks.ai](https://fireworks.ai/) - Delivers high-speed, cost-effective inference APIs with support for open-source models.
-- [FlexAI](https://www.flex.ai/) - Provides AI workload managemnet using a infrastructure marketplace model.
+- [FlexAI](https://www.flex.ai/) - Provides AI workload management using a infrastructure marketplace model.
 - [FluidStack](https://www.fluidstack.io/) - Offers decentralized GPU cloud computing for AI and rendering workloads.
 - [Fly](https://fly.io) - Provides a platform to deploy applications globally with low latency.
 - [Gcore](https://gcore.com/) - Delivers edge and cloud services with global infrastructure.
@@ -134,7 +134,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Vayu Cloud](https://www.tatacommunications.com/services/cloud/vayu-cloud/) - Tata's scalable GPU cloud optimized for enterprise AI workloads.
 - [Vultr](https://www.vultr.com/) - Full services cloud and hosting provider with an expanding range of solutions globally.
 
-## Sovereign Clouds
+## 🏛️ Sovereign Clouds
 
 Cloud platforms designed to ensure data residency, regulatory compliance, and national control over infrastructure—often tailored for governments, public sector, or regulated industries.
 
@@ -155,7 +155,7 @@ Cloud platforms designed to ensure data residency, regulatory compliance, and na
 - [YTL](https://www.ytlaicloud.com/press-releases/ytl-creates-one-of-the-worlds-most-advanced-supercomputers-powered-by-nvidia-grace-blackwell-based-dgx-cloud/) - Malaysian company deploying one of the world's most advanced supercomputers powered by NVIDIA Grace Blackwell-based DGX Cloud, focusing on sovereign AI cloud services.
 - [Yotta](https://yotta.com/blog-need-of-sovereign-cloud-in-india/) - Indian data center and cloud services provider focusing on security, compliance, and innovation.
 
-## Unikernels & WASM
+## 🧬 Unikernels & WASM
 
 Platforms leveraging unikernel and WebAssembly technologies for lightweight, secure, and efficient cloud-native applications.
 
@@ -166,7 +166,7 @@ Platforms leveraging unikernel and WebAssembly technologies for lightweight, sec
 - [Wasmer](https://wasmer.io/) - Offers a universal WebAssembly runtime that enables running applications safely and efficiently across various platforms, from desktop to cloud and edge.
 - [wasmCloud](https://wasmcloud.com/) - An open-source CNCF project facilitating the development, deployment, and orchestration of WebAssembly components across cloud, datacenter, and edge environments.
 
-## Data Clouds
+## ☁️ Data Clouds
 
 Services for data storage, processing, analytics, and observability.
 
@@ -213,7 +213,7 @@ Services for data storage, processing, analytics, and observability.
 - [Supabase](https://supabase.com/) - An open-source Firebase alternative that provides a backend-as-a-service.
 - [Teradata](https://www.teradata.com/) - Specializing in providing solutions for data warehousing, analytics, and big data analytics.
 
-## Network, Connectivity & Security Clouds
+## 🔐 Network, Connectivity & Security Clouds
 
 Services for managing network workloads, including acceleration, security, and connectivity.
 
@@ -240,7 +240,7 @@ Services for managing network workloads, including acceleration, security, and c
 - [Versa Networks](https://www.versa-networks.com/) - Delivers integrated SASE and SD-WAN solutions for secure, scalable, and simplified enterprise networking.
 - [Wiz](https://www.wiz.io/) - A cloud security platform that gives full-stack visibility into cloud infrastructure and prioritizes risk across workloads, containers, and identities.
 
-## Vibe Clouds
+## ✨ Vibe Clouds
 
 AI-powered tools that enhance creativity, productivity, and interaction through prompt engineering and conversational interfaces.
 
@@ -267,7 +267,7 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [Softgen](https://softgen.ai/) - Provides tools to automatically generate code, documentation, and tests to speed up software delivery.
 - [Surfer AI](https://surferseo.com/ai/) - Uses AI to generate SEO-optimized content and blog articles with built-in search analysis tools.
 
-## Developer Happiness Clouds
+## 👩‍💻 Developer Happiness Clouds
 
 Cloud-based platforms for creating, testing, and shipping software, including for infrastructure automation.
 
@@ -288,7 +288,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Robovision](https://robovision.ai/) - Provides a computer vision AI platform for smart automation, capturing industrial data and optimizing intelligence to reveal untapped value.
 - [Ubicloud](https://www.ubicloud.com/) - An open-source cloud platform that can run anywhere, offering IaaS features on bare metal providers with options for self-hosting or managed services.
 
-## Authorization, Identity, Fraud & Abuse Clouds
+## 🔐 Authorization, Identity, Fraud & Abuse Clouds
 
 Services that provide authentication, authorization, identity management, and fraud prevention.
 
@@ -307,7 +307,7 @@ Services that provide authentication, authorization, identity management, and fr
 - [Stytch](https://stytch.com/) - Provides APIs and SDKs for passwordless authentication, including email magic links, SMS passcodes, and biometrics.
 - [WorkOS](https://workos.com/) - Offers enterprise-ready authentication solutions, including single sign-on and directory synchronization.
 
-## Monetization & Customer Clouds
+## 💰 Monetization & Customer Clouds
 
 Services that provide billing, subscription management, and customer relationship solutions to help businesses monetize their products and manage customer interactions.
 
@@ -323,7 +323,7 @@ Services that provide billing, subscription management, and customer relationshi
 - [Stripe](https://stripe.com/) - A financial infrastructure platform that enables businesses to accept payments, manage subscriptions, and handle billing operations.
 - [Togai](https://www.togai.com/) - Provides billing infrastructure for usage-based pricing, supporting complex billing scenarios with real-time analytics.
 
-## IoT / Communications Clouds
+## 📡 IoT / Communications Clouds
 
 Services that provide connectivity, device management, and communication solutions for Internet of Things (IoT) applications.
 
@@ -337,7 +337,7 @@ Services that provide connectivity, device management, and communication solutio
 - [Soracom](https://soracom.io/) - Delivers cellular connectivity and edge services for IoT deployments, with APIs and billing tailored to developers and startups.
 - [Twilio](https://www.twilio.com/docs/iot) - Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
 
-## Workflows and Queues - Oh My
+## 🛠️ Workflows and Queues - Oh My
 
 Services that provide tools for IT service management, asset tracking, and workflow automation to enhance operational efficiency.
 
