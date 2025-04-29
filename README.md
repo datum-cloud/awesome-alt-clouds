@@ -266,6 +266,7 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [Retool](https://retool.com/) - A low-code platform to build custom internal tools quickly with pre-built components and database integrations.
 - [Softgen](https://softgen.ai/) - Provides tools to automatically generate code, documentation, and tests to speed up software delivery.
 - [Surfer AI](https://surferseo.com/ai/) - Uses AI to generate SEO-optimized content and blog articles with built-in search analysis tools.
+- [Windsurf](https://windsurf.com/) - An AI powered coding engine and IDE that is an alternative to GitHub Copilot. Formerly Codeium.
 
 ## 👩‍💻 Developer Happiness Clouds
 
