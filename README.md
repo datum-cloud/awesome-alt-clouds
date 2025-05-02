@@ -1,8 +1,8 @@
-# 🌥️ Awesome Alt Clouds [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# 🌥️ Awesome Alt Clouds [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Lint Awesome List](https://github.com/datum-cloud/awesome-alt-clouds/actions/workflows/lint.yml/badge.svg)](https://github.com/datum-cloud/awesome-alt-clouds/actions/workflows/lint.yml)
 
-[![Lint Awesome List](https://github.com/datum-cloud/awesome-alt-clouds/actions/workflows/lint.yml/badge.svg)](https://github.com/datum-cloud/awesome-alt-clouds/actions/workflows/lint.yml)
+[<img src="altclouds-logo.svg" align="right" width="100">](https://github.com/datum-cloud/awesome-alt-clouds/)
 
-> A curated list of **Alt Clouds** — non-hyperscale cloud providers delivering specialized infrastructure and services.
+A curated list of **Alt Clouds** — non-hyperscale cloud providers delivering specialized infrastructure and services.
 
 Alt Clouds provide value "as a service" directly on top of infrastructure. They cater to specific workloads, compliance requirements, and developer needs, offering transparency, automation, and critical services with public SLAs.
 
