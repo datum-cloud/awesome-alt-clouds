@@ -44,6 +44,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Baseten](https://www.baseten.co/) - Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.
 - [Beam](https://www.beam.cloud) - Cloud infrastructure specifically built for high-performance applications and developer happiness.
 - [Bitdeer Cloud](https://www.bitdeer.com/) - Bitcoin miner that offers GPU servers and a platform to streamline AI and ML workflows.
+- [Browserbase](https://www.browserbase.com/) - A platform for running headless browsers for interact with websites via automation.
 - [Cato Digital](https://cato.digital/) - Low carbon bare metal, including GPU enabled servers.
 - [CirraScale](https://www.cirrascale.com/) - Offers cloud-based GPU solutions for AI and deep learning workloads.
 - [Civo](https://www.civo.com) - Provides cloud services with a focus on simplicity and developer experience.
@@ -283,6 +284,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Gitpod](https://www.gitpod.io/) - A platform for automated and standardized development environments, enabling developers to code from anywhere with pre-configured, on-demand workspaces.
 - [HashiCorp Cloud Platform](https://www.hashicorp.com/cloud) - A fully-managed platform offering HashiCorp products-as-a-service, simplifying infrastructure and security management for developers.
 - [Lightrun](https://lightrun.com/) - An AI platform to autonomously detect, debug, and remediate runtime issues.
+- [Outerbase](https://www.outerbase.com/) - A platform for safely interacting with data and databases, now part of Cloudflare.
 - [Porter](https://porter.run/) - A Kubernetes-powered PaaS that runs in your own cloud provider, simplifying the deployment and management of applications on AWS, GCP, or Azure.
 - [Release](https://release.com/) - Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.
 - [Roboflow](https://roboflow.com/) - Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.
@@ -308,28 +310,45 @@ Services that provide authentication, authorization, identity management, and fr
 - [Stytch](https://stytch.com/) - Provides APIs and SDKs for passwordless authentication, including email magic links, SMS passcodes, and biometrics.
 - [WorkOS](https://workos.com/) - Offers enterprise-ready authentication solutions, including single sign-on and directory synchronization.
 
-## 💰 Monetization & Customer Clouds
+## 💰 Monetization and Commerce Clouds
 
-Services that provide billing, subscription management, and customer relationship solutions to help businesses monetize their products and manage customer interactions.
+Services that provide billing, subscription management, eCommerce and customer relationship solutions to help businesses monetize their products and manage customer interactions.
 
 - [Amberflo](https://www.amberflo.io/) - Provides a cloud-native platform for metering and billing, enabling businesses to implement usage-based pricing models with real-time insights.
-- [Clarify](https://www.getclarify.ai/) - An AI-native CRM that unifies customer data, automates tasks, and provides actionable insights to enhance customer relationships.
-- [Day.ai](https://day.ai/) - An AI-native CRM that promises to bring customers into every decision by focusing on People, Pipelines, and Pages.
 - [Lago](https://www.getlago.com/) - An open-source metering and usage-based billing platform designed for transparency and developer experience.
+- [Lemon Squeezy](https://www.lemonsqueezy.com/) - Lemon Squeezy is the all-in-one platform for SaaS that provides payments, tax & subscriptions.
 - [Maxio](https://www.maxio.com/) - Provides billing and financial operations solutions for B2B SaaS companies, helping to streamline revenue management.
 - [Metronome](https://metronome.com/) - Offers a usage-based billing platform that simplifies billing operations and supports various pricing models.
+- [Mirakl](https://www.mirakl.com/) - Mirakl powers platforms by connecting businesses, sellers, systems, partners, data and consumers.
 - [Orb](https://www.withorb.com/) - Delivers a usage-based subscription management platform that enables flexible pricing and seamless billing.
 - [Recurly](https://recurly.com/) - Provides subscription management software and recurring billing solutions for businesses of all sizes.
-- [Salesforce Revenue Cloud](https://www.salesforce.com/products/revenue-cloud/overview/) - A suite of tools for managing the entire revenue lifecycle, including quoting, billing, and revenue recognition.
+- [Shopify](https://www.shopify.com/) - An all-in-one commerce platform to start, run, and grow a business.
 - [Stripe](https://stripe.com/) - A financial infrastructure platform that enables businesses to accept payments, manage subscriptions, and handle billing operations.
-- [Togai](https://www.togai.com/) - Provides billing infrastructure for usage-based pricing, supporting complex billing scenarios with real-time analytics.
+- [Togai](https://www.togai.com/) - Provides billing infrastructure for usage-based pricing, supporting complex billing scenarios with real-time analytics. 
 
-## 📡 IoT / Communications Clouds
+## Customer and Marketing Clouds
+
+Services that help businesses build and track relationships with users and customers across channels.
+
+- [Attio](https://attio.com/) - An AI-native CRM where you can design workflows, integrate your data and build detailed reports.
+- [Clarify](https://www.getclarify.ai/) - An AI-native CRM that unifies customer data, automates tasks, and provides actionable insights to enhance customer relationships.
+- [Customer.io](https://www.customer.io/) - A unified view of your audience and a single place where unlimited, real-time data can power more effective engagement.
+- [Front](https://front.com/) - An AI-powered customer service platform for teams who know great CX drives revenue.
+- [Day.ai](https://day.ai/) - An AI-native CRM that promises to bring customers into every decision by focusing on People, Pipelines, and Pages.
+- [Helpscout](https://www.helpscout.com/) - A customer communication platform for businesses that want to treat customers like people.
+- [Hubspot](https://www.hubspot.com/) - An AI-powered customer platform to connect your marketing, sales, and customer service.
+- [Klaviyo](https://www.klaviyo.com) - A CRM built for B2C that combines marketing, service, and analytics—for real-time personalization, smarter decisions, and seamless growth. 
+- [Salesforce Revenue Cloud](https://www.salesforce.com/products/revenue-cloud/overview/) - A suite of tools for managing the entire revenue lifecycle, including quoting, billing, and revenue recognition.
+- [Zendesk](https://www.zendesk.com/) - A platform that makes it easy for companies and customers to create connections.
+
+
+## 📡 IoT, Communications, and Media Clouds
 
 Services that provide connectivity, device management, and communication solutions for Internet of Things (IoT) applications.
 
 - [1NCE](https://www.1nce.com/en-us/) - Offers flat-rate global cellular connectivity for IoT devices, including SIM management and low-bandwidth data plans designed for scale.
 - [Hologram](https://www.hologram.io/) - Provides global IoT SIM cards and eUICC technology with a cloud-native dashboard for managing devices and data usage across carriers.
+- [Mux](https://www.mux.com) - Mux solves the hard problems software teams face when building video, from live-streaming platforms to on-demand video catalogs and anything in between.
 - [Onomondo](https://onomondo.com/) - A full-stack connectivity platform for IoT with a single global SIM, advanced network control, and transparent pricing.
 - [Particle](https://www.particle.io/) - An integrated IoT platform offering hardware, firmware, and cloud connectivity tools for building and scaling connected products.
 - [Qubitro](https://www.qubitro.com/) - A device-to-cloud data platform for IoT that helps developers collect, analyze, and act on sensor data with minimal setup.
@@ -337,8 +356,9 @@ Services that provide connectivity, device management, and communication solutio
 - [Samsara](https://www.samsara.com/) - Provides IoT solutions for connected operations, including GPS tracking, fleet management, and industrial monitoring.
 - [Soracom](https://soracom.io/) - Delivers cellular connectivity and edge services for IoT deployments, with APIs and billing tailored to developers and startups.
 - [Twilio](https://www.twilio.com/docs/iot) - Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
+- [Wistia](https://wistia.com/) - A one-stop video marketing shop to create, host, market and analyze your videos.
 
-## 🛠️ Workflows and Queues - Oh My
+## 🛠️ Workflow Clouds
 
 Services that provide tools for IT service management, asset tracking, and workflow automation to enhance operational efficiency.
 
