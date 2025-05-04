@@ -204,6 +204,7 @@ Services for data storage, processing, analytics, and observability.
 - [Neon](https://neon.tech/) - Provides a serverless Postgres with autoscaling, branching, and bottomless storage.
 - [Neo4j](https://neo4j.com/) - A graph database platform for connected data applications.
 - [New Relic](https://newrelic.com/) - An observability platform that unifies metrics, events, logs, and traces for full-stack monitoring.
+- [nMachine](https://www.nmachine.io/) - Observability that brings together every signal, from OpenTelemetry to Git to spend, in one data lake.
 - [Planetscale](https://planetscale.com/) - A serverless database platform built on Vitess, offering scalability and reliability for MySQL databases.
 - [PostHog](https://posthog.com/) - An open-source product analytics platform that can be deployed on-premises.
 - [Prisma](https://www.prisma.io/) - Provides a next-generation ORM for Node.js and TypeScript.
@@ -213,6 +214,7 @@ Services for data storage, processing, analytics, and observability.
 - [Sumo Logic](https://www.sumologic.com/) - Offers cloud-native machine data analytics for real-time insights into operations and security.
 - [Supabase](https://supabase.com/) - An open-source Firebase alternative that provides a backend-as-a-service.
 - [Teradata](https://www.teradata.com/) - Specializing in providing solutions for data warehousing, analytics, and big data analytics.
+- [Zymtrace](https://www.zymtrace.com/) - A continuous profiling solution that provides deep, actionable insights into CPU & GPU-bound applications and inference.
 
 ## 🔐 Network, Connectivity & Security Clouds
 
