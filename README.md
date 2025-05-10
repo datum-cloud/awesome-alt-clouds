@@ -113,6 +113,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * [Platform.sh](https://platform.sh/) - Enterprise PaaS to build, run, and scale web applications and microservices.
 * [Prime Intellect](https://www.primeintellect.ai/) - A platform for distributed training across clusters.
 * [Q Blocks](https://www.qblocks.cloud/) - GPU cloud platform for training AI/ML models at scale.
+* [QBO](https://qbo.io/) - GPU Cloud at the Edge & Beyond - Delivering high performance, streamlined infrastructure, and flexible AI/ML deployment.
 * [Qubrid Cloud](https://www.qubrid.com/) - High-performance GPU infrastructure for deep learning and AI research.
 * [Rackspace](https://www.rackspace.com/) - Provides hybrid cloud and managed hosting services.
 * [Railway](https://railway.com/) - Deploy code instantly and manage environments in the cloud.
