@@ -1,12 +1,10 @@
-# 🌥️ Awesome Alt Clouds [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Lint Awesome List](https://github.com/datum-cloud/awesome-alt-clouds/actions/workflows/lint.yml/badge.svg)](https://github.com/datum-cloud/awesome-alt-clouds/actions/workflows/lint.yml)
+# 🌥️ Awesome Alt Clouds [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="altclouds-logo.svg" align="right" width="100">](https://github.com/datum-cloud/awesome-alt-clouds/)
+[<img src="altclouds-logo.png" align="right" width="100">](https://github.com/datum-cloud/awesome-alt-clouds/)
 
 A curated list of **Alt Clouds** — non-hyperscale cloud providers delivering specialized infrastructure and services.
 
 Alt Clouds provide value "as a service" directly on top of infrastructure. They cater to specific workloads, compliance requirements, and developer needs, offering transparency, automation, and critical services with public SLAs.
-
-Inspired by [David Linthicum's writings](https://www.linkedin.com/pulse/alt-clouds-future-david-linthicum/) and curated by cloud builders everywhere, but especially at Datum.
 
 ## Contents
 
@@ -373,4 +371,4 @@ Services that provide tools for IT service management, asset tracking, and workf
 
 ## Contributing
 
-Pull requests welcome! Please ensure that submissions meet the Alt Cloud Criteria and are categorized accurately.
+Pull requests welcome! Please ensure that submissions meet the Alt Cloud [contributing guide](CONTRIBUTING.md) and are categorized accurately.
