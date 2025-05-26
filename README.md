@@ -240,6 +240,7 @@ Services for managing network workloads, including acceleration, security, and c
 * [Netskope](https://www.netskope.com/) - A cloud-native security platform that protects users, apps, and data with visibility and control across SaaS, IaaS, and the web.
 * [ngrok](https://ngrok.com/) - Securely tunnels local services to the public internet, ideal for testing webhooks, building with APIs, or sharing local development environments.
 * [Operant](https://operant.ai/) - Provides runtime protection for cloud-native applications using graph-based detection and real-time observability.
+* [Qpoint](https://qpoint.io/) - A cloud runtime and egress security platform that provides visibility into encrypted traffic.
 * [Stelia](https://stelia.io/) - A data mobility platform for high-performance AI and cloud workloads, enabling fast, secure, and location-aware file transport.
 * [Tailscale](https://tailscale.com/) - A zero-config VPN built on WireGuard that makes secure networking between devices as easy as logging in.
 * [Twingate](https://www.twingate.com/) - Provides a modern zero-trust networking solution to securely connect people to private apps and services without VPNs.
@@ -323,7 +324,7 @@ Services that provide billing, subscription management, eCommerce and customer r
 * [Lago](https://www.getlago.com/) - An open-source metering and usage-based billing platform designed for transparency and developer experience.
 * [Lemon Squeezy](https://www.lemonsqueezy.com/) - Lemon Squeezy is the all-in-one platform for SaaS that provides payments, tax & subscriptions.
 * [Maxio](https://www.maxio.com/) - Provides billing and financial operations solutions for B2B SaaS companies, helping to streamline revenue management.
-* [Mercury](https://mercury.com/) - A financial technology platform that pairs traditional banking with bill payment, invoicing, SAFE’s, and other startup tools.
+* [Mercury](https://mercury.com/) - A financial technology platform that pairs traditional banking with bill payment, invoicing, SAFE's, and other startup tools.
 * [Metronome](https://metronome.com/) - Offers a usage-based billing platform that simplifies billing operations and supports various pricing models.
 * [Mirakl](https://www.mirakl.com/) - Mirakl powers platforms by connecting businesses, sellers, systems, partners, data and consumers.
 * [Orb](https://www.withorb.com/) - Delivers a usage-based subscription management platform that enables flexible pricing and seamless billing.
