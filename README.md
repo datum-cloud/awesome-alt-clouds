@@ -8,19 +8,22 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 
 ## Contents
 
-* [Criteria](#criteria)
-* [🧠 Infrastructure Clouds](#-infrastructure-clouds)
-* [🏛️ Sovereign Clouds](#️-sovereign-clouds)
-* [🧬 Unikernels & WASM](#-unikernels--wasm)
-* [☁️ Data Clouds](#️-data-clouds)
-* [🔐 Network, Connectivity & Security Clouds](#-network-connectivity--security-clouds)
-* [✨ Vibe Clouds](#-vibe-clouds)
-* [👩‍💻 Developer Happiness Clouds](#-developer-happiness-clouds)
-* [🔐 Authorization, Identity, Fraud & Abuse Clouds](#-authorization-identity-fraud--abuse-clouds)
-* [💰 Monetization & Customer Clouds](#-monetization--customer-clouds)
-* [Customer and Marketing Clouds](#customer-and-marketing-clouds)
-* [📡 IoT, Communications, and Media Clouds](#-iot-communications-and-media-clouds)
-* [🛠️ Workflows and Queues - Oh My](#️-workflows-and-queues---oh-my)
+- [🌥️ Awesome Alt Clouds ](#️-awesome-alt-clouds-)
+  - [Contents](#contents)
+  - [Criteria](#criteria)
+  - [🧠 Infrastructure Clouds](#-infrastructure-clouds)
+  - [🏛️ Sovereign Clouds](#️-sovereign-clouds)
+  - [🧬 Unikernels \& WASM](#-unikernels--wasm)
+  - [☁️ Data Clouds](#️-data-clouds)
+  - [🔐 Network, Connectivity \& Security Clouds](#-network-connectivity--security-clouds)
+  - [✨ Vibe Clouds](#-vibe-clouds)
+  - [👩‍💻 Developer Happiness Clouds](#-developer-happiness-clouds)
+  - [🔐 Authorization, Identity, Fraud \& Abuse Clouds](#-authorization-identity-fraud--abuse-clouds)
+  - [💰 Monetization \& Customer Clouds](#-monetization--customer-clouds)
+  - [Customer and Marketing Clouds](#customer-and-marketing-clouds)
+  - [📡 IoT, Communications, and Media Clouds](#-iot-communications-and-media-clouds)
+  - [🛠️ Workflows and Queues - Oh My](#️-workflows-and-queues---oh-my)
+  - [Contributing](#contributing)
 
 ## Criteria
 
@@ -320,6 +323,7 @@ Services that provide billing, subscription management, eCommerce and customer r
 * [Lago](https://www.getlago.com/) - An open-source metering and usage-based billing platform designed for transparency and developer experience.
 * [Lemon Squeezy](https://www.lemonsqueezy.com/) - Lemon Squeezy is the all-in-one platform for SaaS that provides payments, tax & subscriptions.
 * [Maxio](https://www.maxio.com/) - Provides billing and financial operations solutions for B2B SaaS companies, helping to streamline revenue management.
+* [Mercury](https://mercury.com/) - A financial technology platform that pairs traditional banking with bill payment, invoicing, SAFE’s, and other startup tools.
 * [Metronome](https://metronome.com/) - Offers a usage-based billing platform that simplifies billing operations and supports various pricing models.
 * [Mirakl](https://www.mirakl.com/) - Mirakl powers platforms by connecting businesses, sellers, systems, partners, data and consumers.
 * [Orb](https://www.withorb.com/) - Delivers a usage-based subscription management platform that enables flexible pricing and seamless billing.
