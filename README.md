@@ -20,7 +20,7 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
   - [👩‍💻 Developer Happiness Clouds](#-developer-happiness-clouds)
   - [🔐 Authorization, Identity, Fraud \& Abuse Clouds](#-authorization-identity-fraud--abuse-clouds)
   - [💰 Monetization \& Customer Clouds](#-monetization--customer-clouds)
-  - [Customer and Marketing Clouds](#customer-and-marketing-clouds)
+  - [Customer and Marketing Clouds - this is a mistake](#customer-and-marketing-clouds---this-is-a-mistake)
   - [📡 IoT, Communications, and Media Clouds](#-iot-communications-and-media-clouds)
   - [🛠️ Workflows and Queues - Oh My](#️-workflows-and-queues---oh-my)
   - [Contributing](#contributing)
@@ -332,7 +332,7 @@ Services that provide billing, subscription management, eCommerce and customer r
 * [Stripe](https://stripe.com/) - A financial infrastructure platform that enables businesses to accept payments, manage subscriptions, and handle billing operations.
 * [Togai](https://www.togai.com/) - Provides billing infrastructure for usage-based pricing, supporting complex billing scenarios with real-time analytics.
 
-## Customer and Marketing Clouds
+## Customer and Marketing Clouds - this is a mistake
 
 Services that help businesses build and track relationships with users and customers across channels.
 
