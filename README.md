@@ -361,6 +361,15 @@ Services that provide connectivity, device management, and communication solutio
 - [Twilio](https://www.twilio.com/docs/iot) - Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
 - [Wistia](https://wistia.com/) - A one-stop video marketing shop to create, host, market and analyze your videos.
 
+## ⛓️ Bittensor Subnets (Decentralized, Permissionless, Incentivized clouds for AI compute)
+
+Bittensor is a fair-launch L1 blockchain (using the same architecture as Bitcoin) to incentivize off-chain production of continuously improving digital commodities (mostly AI compute). These are the subnets on the Bittensor network that focus on inference, compute, and model training.
+
+- [Templar](https://www.tplr.ai/) - Templar is Bittensor subnet 3. τemplar is a decentralized training network that enables large-scale model training across heterogeneous compute resources over the internet. By connecting diverse computational nodes through a carefully designed incentive mechanism, τemplar makes it possible to train large models collaboratively while ensuring honest participation and quality contributions.
+- [Targon](https://targon.com/) - Targon is Bittensor subnet 4. Targon supports TEE-based inference of models and model training. It has been ranked as a top 5 subnet on Bittensor since late 2023.
+- [Celium](https://celiumcompute.ai/) - Celium is Bittensor subnet 51. Celium offers a GPU rental marketplace connecting miners who contribute GPU resources with users who need computational power.
+- [Gradients](https://gradients.io/) - Gradients is Bittensor subnet 56. Gradients allows anyone in the world to train Image and Text models.
+
 ## 🛠️ Workflows and Queues - Oh My
 
 Services that provide tools for IT service management, asset tracking, and workflow automation to enhance operational efficiency.
