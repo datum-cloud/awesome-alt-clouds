@@ -200,6 +200,7 @@ Services for data storage, processing, analytics, and observability.
 - [Logz.io](https://logz.io/) - Offers an open-source observability platform for monitoring, troubleshooting, and securing applications.
 - [Mezmo](https://www.mezmo.com/) - Provides a central observability platform to control, enrich, and correlate machine data for faster business decisions.
 - [Mixpanel](https://mixpanel.com/) - Delivers product analytics to help teams build better products through data-driven decisions.
+- [Mixpeek](http://mixpeek.com/) - A multimodal data platform that indexes and semantically retrieves videos, images, audio, and documents using AI-native infrastructure.
 - [MongoDB](https://www.mongodb.com/) - Offers a general-purpose, document-based database designed for modern application development.
 - [Neon](https://neon.tech/) - Provides a serverless Postgres with autoscaling, branching, and bottomless storage.
 - [Neo4j](https://neo4j.com/) - A graph database platform for connected data applications.
