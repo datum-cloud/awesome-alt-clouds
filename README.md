@@ -351,7 +351,7 @@ Services that provide billing, subscription management, legal and other services
 - [Maxio](https://www.maxio.com/) - Provides billing and financial operations solutions for B2B SaaS companies, helping to streamline revenue management.
 - [Mercury](https://mercury.com/) - A financial technology platform that pairs traditional banking with bill payment, invoicing, SAFE's, and other startup tools.
 - [Metronome](https://metronome.com/) - Offers a usage-based billing platform that simplifies billing operations and supports various pricing models.
-- [N26](https://n26.com/en-us) - A 100% mobile bank that’s trusted by millions of customers across Europe.
+- [N26](https://n26.com/en-us) - A 100% mobile bank that's trusted by millions of customers across Europe.
 - [Orb](https://www.withorb.com/) - Delivers a usage-based subscription management platform that enables flexible pricing and seamless billing.
 - [Recurly](https://recurly.com/) - Provides subscription management software and recurring billing solutions for businesses of all sizes.
 - [Rillet](https://www.rillet.com/) - An AI-native ERP automating accounting that offers a source of truth for both GAAP financials and investor metrics.
