@@ -14,7 +14,7 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 - [🧬 Unikernels \& WASM](#-unikernels--wasm)
 - [☁️ Data Clouds](#️-data-clouds)
 - [🛠️ Workflow and Operations Clouds](#️-workflow-and-operations-clouds)
-- [🔐 Network, Connectivity and Security Clouds](#-network-connectivity--security-clouds)
+- [🔐 Network, Connectivity and Security Clouds](#-network-connectivity-and-security-clouds)
 - [✨ Vibe Clouds](#-vibe-clouds)
 - [👩‍💻 Developer Happiness Clouds](#-developer-happiness-clouds)
 - [🔐 Authorization, Identity, Fraud and Abuse Clouds](#-authorization-identity-fraud-and-abuse-clouds)
