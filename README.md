@@ -21,7 +21,7 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 - [💰 Monetization, Finance and Legal Clouds](#-monetization-finance-and-legal-clouds)
 - [Customer, Marketing and eCommerce Clouds](#customer-marketing-and-ecommerce-clouds)
 - [📡 IoT, Communications, and Media Clouds](#-iot-communications-and-media-clouds)
-- [⛓️ Blockchain Clouds](#-blockchain-clouds) 
+- [⛓️ Blockchain Clouds](#️-blockchain-clouds)
 
 ## Criteria
 
