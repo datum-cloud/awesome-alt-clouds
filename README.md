@@ -393,7 +393,7 @@ Services that provide connectivity, device management, and communication solutio
 - [Twilio](https://www.twilio.com/docs/iot) - Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
 - [Wistia](https://wistia.com/) - A one-stop video marketing shop to create, host, market and analyze your videos.
 
-## ⛓️ Blockchain Clouds 
+## ⛓️ Blockchain Clouds
 
 Decentralized clouds built on Layer 1 blockchains that focus on inference, compute, and model training.
 
