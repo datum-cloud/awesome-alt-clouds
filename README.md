@@ -13,14 +13,15 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 - [🏛️ Sovereign Clouds](#️-sovereign-clouds)
 - [🧬 Unikernels \& WASM](#-unikernels--wasm)
 - [☁️ Data Clouds](#️-data-clouds)
-- [🔐 Network, Connectivity \& Security Clouds](#-network-connectivity--security-clouds)
+- [🛠️ Workflow and Operations Clouds](#️-workflow-and-operations-clouds)
+- [🔐 Network, Connectivity and Security Clouds](#-network-connectivity-and-security-clouds)
 - [✨ Vibe Clouds](#-vibe-clouds)
 - [👩‍💻 Developer Happiness Clouds](#-developer-happiness-clouds)
-- [🔐 Authorization, Identity, Fraud \& Abuse Clouds](#-authorization-identity-fraud--abuse-clouds)
-- [💰 Monetization \& Customer Clouds](#-monetization--customer-clouds)
-- [Customer and Marketing Clouds](#customer-and-marketing-clouds)
+- [🔐 Authorization, Identity, Fraud and Abuse Clouds](#-authorization-identity-fraud-and-abuse-clouds)
+- [💰 Monetization, Finance and Legal Clouds](#-monetization-finance-and-legal-clouds)
+- [Customer, Marketing and eCommerce Clouds](#customer-marketing-and-ecommerce-clouds)
 - [📡 IoT, Communications, and Media Clouds](#-iot-communications-and-media-clouds)
-- [🛠️ Workflows and Queues - Oh My](#️-workflows-and-queues---oh-my)
+- [⛓️ Blockchain Clouds](#️-blockchain-clouds)
 
 ## Criteria
 
@@ -38,6 +39,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Aethir](https://aethir.com) - Provides secure, cost-effective access to enterprise-grade GPUs worldwide through a distributed cloud compute infrastructure.
 - [Airon AI](https://airon.ai) - AI infrastructure platform offering high-performance compute for model training and deployment.
 - [Alt.ai](https://alt.ai) - Offers embedded AI conversational engine platforms to integrate advanced conversational AI into systems.
+- [Applied Digital](https://www.applieddigital.com/) - A GPU compute provider that also builds AI datacenters, including for CoreWeave. Former crypto mining firm.
 - [Atlas Cloud](https://www.atlascloud.ai/) - Offers scalable cloud infrastructure services for various computing needs.
 - [Ax3 AI](https://www.ax3.ai/) - Powerful & cost-effective GPUs that are billed by the minute with no fees for ingress/egress.
 - [Baseten](https://www.baseten.co/) - Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.
@@ -92,6 +94,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Linode](https://www.linode.com/) - Provides cloud computing services designed for developers with straightforward pricing.
 - [MemVerge](https://memverge.com) - A platform for GPU orchestration across environments that automates AI model and agent deployment.
 - [ML Foundry](https://mlfoundry.com) - Gives AI practitioners access to state-of-the-art GPU compute for training and serving models.
+- [Mistral](https://mistral.ai/) - Provides a platform for building AI applications including with its own open-weight large language models.
 - [Modal](https://modal.com/) - A serverless platform for AI and data teams to run compute-intensive applications without managing infrastructure.
 - [Nebius](https://nebius.com/) - Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services.
 - [NeevCloud](https://www.neevcloud.com/) - India-based GPU cloud offering secure, scalable AI compute.
@@ -127,6 +130,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Sify Technology](https://www.sifytechnologies.com/) - Indian-based cloud and digital transformation provider, expanding GPU compute.
 - [Sustainable Metal Cloud](https://smc.co/) - Green-focused GPU cloud with a sustainability-first infrastructure model.
 - [TensorDock](https://tensordock.com/) - Affordable, usage-based GPU cloud platform for model training.
+- [TensorWave](https://tensorwave.com/) - An AI cloud focused on AMD technology including MI325X and MI300X accelerators.
 - [Together.ai](https://www.together.ai/) - Open-source foundation model infrastructure with collaborative fine-tuning.
 - [Turboscale](https://www.turboscale.ai/) - AI-native cloud infrastructure for fine-tuning and inference.
 - [Upsun](https://upsun.com/) - An application hosting platform from the team at Platform.sh.
@@ -178,9 +182,11 @@ Services for data storage, processing, analytics, and observability.
 - [ClickHouse](https://clickhouse.com/) - An open-source, column-oriented OLAP database management system for real-time analytics using SQL queries.
 - [Cloudera](https://www.cloudera.com/) - Provides a hybrid data platform for managing and analyzing data across on-premises and cloud environments.
 - [Cockroach Labs](https://www.cockroachlabs.com/) - Develops CockroachDB, a distributed SQL database for building global, scalable cloud services.
+- [Coralogix](https://coralogix.com/) - Ingest all your data, store it indefinitely on your cloud, and query across all types with a unified syntax.
 - [Couchbase](https://www.couchbase.com/) - Offers a distributed NoSQL cloud database for mission-critical applications.
 - [Databricks](https://www.databricks.com/) - Provides a unified analytics platform for big data and AI, built on Apache Spark.
 - [Datadog](https://www.datadoghq.com/) - A monitoring and security platform for cloud applications.
+- [Ditto](https://www.ditto.com/) - An edge-native, mobile database that thrives on mobile and edge devices.
 - [dbt Labs](https://www.getdbt.com/) - Empowers data practitioners to transform data in their warehouses by developing, testing, and documenting analytics code.
 - [Diffbot](https://www.diffbot.com/) - Uses AI to build a knowledge graph of the web, enabling businesses to extract and understand web data.
 - [Domo](https://www.domo.com/) - Provides a cloud-based platform for business intelligence and data visualization.
@@ -215,9 +221,25 @@ Services for data storage, processing, analytics, and observability.
 - [Sumo Logic](https://www.sumologic.com/) - Offers cloud-native machine data analytics for real-time insights into operations and security.
 - [Supabase](https://supabase.com/) - An open-source Firebase alternative that provides a backend-as-a-service.
 - [Teradata](https://www.teradata.com/) - Specializing in providing solutions for data warehousing, analytics, and big data analytics.
+- [Tigris](https://www.tigrisdata.com/) - A globally distributed S3-compatible object storage service that enables developers to store and access any amount of data.
 - [Zymtrace](https://www.zymtrace.com/) - A continuous profiling solution that provides deep, actionable insights into CPU & GPU-bound applications and inference.
 
-## 🔐 Network, Connectivity & Security Clouds
+## 🛠️ Workflow and Operations Clouds
+
+Services that provide tools for asset tracking, workflow automation, and automated resolution to enhance operational efficiency.
+
+- [Causely](https://www.causely.ai/) - Autonomous reliability, built for the cloud native era.
+- [Inngest](https://www.inngest.com/) - A platform for AI and backend workflows that helps developers build AI-ready step functions without touching infrastructure.
+- [Mergent](https://mergent.co/) - A fully-managed task queue for applications in any language that allows you to scale to billions of tasks with zero infrastructure.
+- [n8n](https://n8n.io/) - An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor.
+- [NeuBird](https://neubird.ai/) - An autonomous AI SRE platform.
+- [PagerDuty](https://www.pagerduty.com/) - A platform for automating critical operations work.
+- [Resolve.ai](https://resolve.ai/) - An agentic AI SRE from the co-creators of OpenTelemetry.
+- [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
+- [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
+
+
+## 🔐 Network, Connectivity and Security Clouds
 
 Services for managing network workloads, including acceleration, security, and connectivity.
 
@@ -250,6 +272,7 @@ Services for managing network workloads, including acceleration, security, and c
 AI-powered tools that enhance creativity, productivity, and interaction through prompt engineering and conversational interfaces.
 
 - [AssemblyAI](https://www.assemblyai.com/) - Offers powerful speech-to-text and AI APIs for transcription, summarization, content moderation, and more.
+- [Base44](https://base44.com/) - An all-in-one AI platform to easily build fully functioning apps without coding.
 - [Bolt](https://bolt.new/) - A browser-based AI development environment that lets you generate, edit, and deploy full-stack applications instantly using natural language prompts.
 - [Buildglare](https://buildglare.com/) - An AI-powered tool for building modern web apps by turning ideas into frontends and APIs with minimal code.
 - [Character.ai](https://character.ai/) - Lets users interact with and create AI-driven characters for entertainment, education, and companionship.
@@ -295,12 +318,14 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Robovision](https://robovision.ai/) - Provides a computer vision AI platform for smart automation, capturing industrial data and optimizing intelligence to reveal untapped value.
 - [Ubicloud](https://www.ubicloud.com/) - An open-source cloud platform that can run anywhere, offering IaaS features on bare metal providers with options for self-hosting or managed services.
 
-## 🔐 Authorization, Identity, Fraud & Abuse Clouds
+## 🔐 Authorization, Identity, Fraud and Abuse Clouds
 
 Services that provide authentication, authorization, identity management, and fraud prevention.
 
+- [Abnormal](https://abnormal.ai/) - Uses superhuman understanding of human behavior to protect against phishing, social engineering, and account takeovers.
 - [Auth0](https://auth0.com/) - A flexible, drop-in solution to add authentication and authorization services to applications, now part of Okta.
 - [Authzed](https://authzed.com/) - Provides fine-grained, scalable authorization as a service, built on the open-source SpiceDB.
+- [Bolster](https://bolster.ai/) - A platform for preventing and mitigrating phishing and impersonation scams.
 - [Clerk](https://clerk.com/) - Offers a complete suite of embeddable UIs and APIs for user authentication and management.
 - [Duo](https://duo.com/) - Provides multi-factor authentication and secure access solutions to protect users, data, and applications.
 - [Descope](https://www.descope.com/) - An authentication and user manage platform that offers low-code and no-code options.
@@ -314,24 +339,29 @@ Services that provide authentication, authorization, identity management, and fr
 - [Stytch](https://stytch.com/) - Provides APIs and SDKs for passwordless authentication, including email magic links, SMS passcodes, and biometrics.
 - [WorkOS](https://workos.com/) - Offers enterprise-ready authentication solutions, including single sign-on and directory synchronization.
 
-## 💰 Monetization & Customer Clouds
+## 💰 Monetization, Finance and Legal Clouds
 
-Services that provide billing, subscription management, eCommerce and customer relationship solutions to help businesses monetize their products and manage customer interactions.
+Services that provide billing, subscription management, legal and other services to help businesses monetize their products.
 
-- [Amberflo](https://www.amberflo.io/) - Provides a cloud-native platform for metering and billing, enabling businesses to implement usage-based pricing models with real-time insights.
+- [Amberflo](https://www.amberflo.io/) - A cloud-native platform for metering and billing, enabling businesses to implement usage-based pricing models.
+- [Bill](https://www.bill.com/) - A comprehensive financial operations platform for bills, invoices, expenses, budgets, and more.
+- [Crosby](https://crosby.ai/) - Lawyer-assisted AI for reviewing contracts including MSAs, DPAs and NDAs.
 - [Lago](https://www.getlago.com/) - An open-source metering and usage-based billing platform designed for transparency and developer experience.
 - [Lemon Squeezy](https://www.lemonsqueezy.com/) - Lemon Squeezy is the all-in-one platform for SaaS that provides payments, tax & subscriptions.
+- [Harvey](https://www.harvey.ai/) - Domain-specific AI for law firms, professional service providers, and the Fortune 500.
 - [Maxio](https://www.maxio.com/) - Provides billing and financial operations solutions for B2B SaaS companies, helping to streamline revenue management.
 - [Mercury](https://mercury.com/) - A financial technology platform that pairs traditional banking with bill payment, invoicing, SAFE's, and other startup tools.
 - [Metronome](https://metronome.com/) - Offers a usage-based billing platform that simplifies billing operations and supports various pricing models.
-- [Mirakl](https://www.mirakl.com/) - Mirakl powers platforms by connecting businesses, sellers, systems, partners, data and consumers.
+- [N26](https://n26.com/en-us) - A 100% mobile bank that's trusted by millions of customers across Europe.
 - [Orb](https://www.withorb.com/) - Delivers a usage-based subscription management platform that enables flexible pricing and seamless billing.
 - [Recurly](https://recurly.com/) - Provides subscription management software and recurring billing solutions for businesses of all sizes.
-- [Shopify](https://www.shopify.com/) - An all-in-one commerce platform to start, run, and grow a business.
+- [Rillet](https://www.rillet.com/) - An AI-native ERP automating accounting that offers a source of truth for both GAAP financials and investor metrics.
 - [Stripe](https://stripe.com/) - A financial infrastructure platform that enables businesses to accept payments, manage subscriptions, and handle billing operations.
 - [Togai](https://www.togai.com/) - Provides billing infrastructure for usage-based pricing, supporting complex billing scenarios with real-time analytics.
+- [Visa](https://usa.visa.com/) - A payments network that connects consumers, businesses, financial institutions, and governments.
+- [Wise](https://wise.com/) - A platform for paying and getting paid globally. 
 
-## Customer and Marketing Clouds
+## Customer, Marketing and eCommerce Clouds
 
 Services that help businesses build and track relationships with users and customers across channels.
 
@@ -342,8 +372,10 @@ Services that help businesses build and track relationships with users and custo
 - [Day.ai](https://day.ai/) - An AI-native CRM that promises to bring customers into every decision by focusing on People, Pipelines, and Pages.
 - [Helpscout](https://www.helpscout.com/) - A customer communication platform for businesses that want to treat customers like people.
 - [Hubspot](https://www.hubspot.com/) - An AI-powered customer platform to connect your marketing, sales, and customer service.
-- [Klaviyo](https://www.klaviyo.com) - A CRM built for B2C that combines marketing, service, and analytics—for real-time personalization, smarter decisions, and seamless growth.
+- [Klaviyo](https://www.klaviyo.com) - A CRM built for B2C that combines marketing, service, and analytics.
+- [Mirakl](https://www.mirakl.com/) - Mirakl powers platforms by connecting businesses, sellers, systems, partners, data and consumers.
 - [Salesforce Revenue Cloud](https://www.salesforce.com/products/revenue-cloud/overview/) - A suite of tools for managing the entire revenue lifecycle, including quoting, billing, and revenue recognition.
+- [Shopify](https://www.shopify.com/) - An all-in-one commerce platform to start, run, and grow a business.
 - [Zendesk](https://www.zendesk.com/) - A platform that makes it easy for companies and customers to create connections.
 
 ## 📡 IoT, Communications, and Media Clouds
@@ -362,15 +394,15 @@ Services that provide connectivity, device management, and communication solutio
 - [Twilio](https://www.twilio.com/docs/iot) - Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
 - [Wistia](https://wistia.com/) - A one-stop video marketing shop to create, host, market and analyze your videos.
 
-## 🛠️ Workflows and Queues - Oh My
+## ⛓️ Blockchain Clouds
 
-Services that provide tools for IT service management, asset tracking, and workflow automation to enhance operational efficiency.
+Decentralized clouds built on Layer 1 blockchains that focus on inference, compute, and model training.
 
-- [Inngest](https://www.inngest.com/) - A platform for AI and backend workflows that helps developers build AI-ready step functions without touching infrastructure.
-- [Mergent](https://mergent.co/) - A fully-managed task queue for applications in any language that allows you to scale to billions of tasks with zero infrastructure.
-- [n8n](https://n8n.io/) - An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor.
-- [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
-- [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
+- [Akash Network](https://akash.network/) - Providing access to compute at prices up to 85% lower than hyperscale cloud providers.
+- [Templar](https://www.tplr.ai/) - A Bittensor subnet that  nables large-scale model training across heterogeneous compute resources over the internet.
+- [Targon](https://targon.com/) - A Bittensor subnet that supports TEE-based inference of models and model training. 
+- [Celium](https://celiumcompute.ai/) - A Bittensor subnet that offers a GPU rental marketplace.
+- [Gradients](https://gradients.io/) - A Bittensor subnet that allows anyone in the world to train image and Text models.
 
 ## Contributing
 
