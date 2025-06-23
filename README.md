@@ -19,7 +19,7 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 - [👩‍💻 Developer Happiness Clouds](#-developer-happiness-clouds)
 - [🔐 Authorization, Identity, Fraud and Abuse Clouds](#-authorization-identity-fraud-and-abuse-clouds)
 - [💰 Monetization, Finance and Legal Clouds](#-monetization-finance-and-legal-clouds)
-- [Customer, Marketing and eCommerce Clouds](#customer-and-marketing-and-eCommerce-clouds)
+- [Customer, Marketing and eCommerce Clouds](#customer-marketing-and-ecommerce-clouds)
 - [📡 IoT, Communications, and Media Clouds](#-iot-communications-and-media-clouds)
 - [⛓️ Blockchain Clouds](#-blockchain-clouds) 
 
