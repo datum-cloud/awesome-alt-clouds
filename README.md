@@ -117,6 +117,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [QBO](https://qbo.io/) - GPU Cloud at the Edge & Beyond - Delivering high performance, streamlined infrastructure, and flexible AI/ML deployment.
 - [Qubrid Cloud](https://www.qubrid.com/) - High-performance GPU infrastructure for deep learning and AI research.
 - [Rackspace](https://www.rackspace.com/) - Provides hybrid cloud and managed hosting services.
+- [Radium Cloud](https://www.radium.cloud/) - Unified, secure AI cloud for building and deploying private AI.
 - [Railway](https://railway.com/) - Deploy code instantly and manage environments in the cloud.
 - [Render](https://render.com/) - Unified cloud platform to build and host apps and websites.
 - [Replicate](https://replicate.com/) - Run machine learning models in the cloud with an API.
