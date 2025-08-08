@@ -263,6 +263,7 @@ Services for managing network workloads, including acceleration, security, and c
 - [Operant](https://operant.ai/) - Provides runtime protection for cloud-native applications using graph-based detection and real-time observability.
 - [Qpoint](https://qpoint.io/) - A cloud runtime and egress security platform that provides visibility into encrypted traffic.
 - [Stelia](https://stelia.io/) - A data mobility platform for high-performance AI and cloud workloads, enabling fast, secure, and location-aware file transport.
+- [Shasta](https://shasta.cloud/) - An open WiFi and local Connectivity cloud supporting open hardware and software standards for full stack on site connecitivty and security solutions.
 - [Tailscale](https://tailscale.com/) - A zero-config VPN built on WireGuard that makes secure networking between devices as easy as logging in.
 - [Twingate](https://www.twingate.com/) - Provides a modern zero-trust networking solution to securely connect people to private apps and services without VPNs.
 - [Versa Networks](https://www.versa-networks.com/) - Delivers integrated SASE and SD-WAN solutions for secure, scalable, and simplified enterprise networking.
