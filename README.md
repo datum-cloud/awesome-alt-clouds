@@ -202,6 +202,7 @@ Services for data storage, processing, analytics, and observability.
 - [Hasura](https://hasura.io/) - Instantly generates GraphQL APIs over new or existing Postgres databases.
 - [Heap](https://heap.io/) - Automatically captures user interactions to provide insights into user behavior without manual tracking.
 - [Honeycomb](https://www.honeycomb.io/) - An observability platform that helps engineering teams understand, debug, and improve complex systems.
+- [Hydrolix](https://hydrolix.io/) - A streaming data lake that ingests and processes high-volume, high-cardinality log data in real time, providing scalable storage and query capabilities with cost-efficient resource utilization.
 - [Kentik](https://www.kentik.com/) - Provides network observability solutions for performance monitoring and security.
 - [LogRocket](https://logrocket.com/) - Replays user sessions to help developers understand and fix issues faster.
 - [Logz.io](https://logz.io/) - Offers an open-source observability platform for monitoring, troubleshooting, and securing applications.
