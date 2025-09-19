@@ -19,7 +19,7 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 - [👩‍💻 Developer Happiness Clouds](#-developer-happiness-clouds)
 - [🔐 Authorization, Identity, Fraud and Abuse Clouds](#-authorization-identity-fraud-and-abuse-clouds)
 - [💰 Monetization, Finance and Legal Clouds](#-monetization-finance-and-legal-clouds)
-- [Customer, Marketing and eCommerce Clouds](#customer-marketing-and-ecommerce-clouds)
+- [👀 Customer, Marketing and eCommerce Clouds](#customer-marketing-and-ecommerce-clouds)
 - [📡 IoT, Communications, and Media Clouds](#-iot-communications-and-media-clouds)
 - [⛓️ Blockchain Clouds](#️-blockchain-clouds)
 
@@ -77,8 +77,10 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Hut8](https://hut8.com/) - Provides digital asset mining and high-performance computing infrastructure.
 - [HydraHost](https://hydrahost.com/) - Affordable GPU compute focused on researchers and indie developers.
 - [Hyperbolic](https://hyperbolic.xyz/) - Offers scalable GPU compute for AI applications with a focus on performance and cost-efficiency.
+- [Hyperstack](https://www.hyperstack.cloud/) - Cloud GPU and AI platform for building, training, and deploying custom AI models.
 - [Hypertec Cloud](https://hypertec.com/cloud/) - Delivers cloud services with high-performance computing capabilities.
 - [Io.net](https://io.net/) - A decentralized GPU network delivering cost-efficient compute power for AI startups.
+- [IONOS Cloud](https://cloud.ionos.com/) - Cloud infrastructure with a focus on public, bare metal, and managed Kubernetes solutions.
 - [Iris Energy](https://irisenergy.co/) - Sustainable data center operator pivoting to offer compute for AI and HPC workloads.
 - [Jarvis Labs AI](https://jarvislabs.ai/) - Provides AI-focused cloud computing solutions.
 - [Juice Labs](https://www.juicelabs.co/) - Enables GPU-over-IP, allowing GPUs to become remote virtual resources accessible by AI workloads.
@@ -124,6 +126,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Runpod](https://www.runpod.io/) - Provides customizable GPU containers and secure cloud compute environments.
 - [Salad](https://salad.com/) - A platform for leveraging latent consumer compute resources to power workloads.
 - [SambaNova](https://sambanova.ai/) - Delivers purpose-built AI hardware and software systems.
+- [Scaleway](https://www.scaleway.com/) - European cloud provider with a wide range of services including servers, storage, and AI tools.
 - [Sesterce](https://sesterce.com/) - Provider of GPU server rentals and AI hosting solutions.
 - [Shadeform](https://shadeform.com/) - GPU compute provider with a focus on low-cost AI infrastructure.
 - [Seeweb](https://www.seeweb.it/) - Italian cloud infrastructure provider offering compute, storage, and CDN.
@@ -364,7 +367,7 @@ Services that provide billing, subscription management, legal and other services
 - [Visa](https://usa.visa.com/) - A payments network that connects consumers, businesses, financial institutions, and governments.
 - [Wise](https://wise.com/) - A platform for paying and getting paid globally. 
 
-## Customer, Marketing and eCommerce Clouds
+## 👀 Customer, Marketing and eCommerce Clouds
 
 Services that help businesses build and track relationships with users and customers across channels.
 
