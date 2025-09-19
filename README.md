@@ -11,7 +11,7 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 - [Criteria](#criteria)
 - [🧠 Infrastructure Clouds](#-infrastructure-clouds)
 - [🏛️ Sovereign Clouds](#️-sovereign-clouds)
-- [🧬 Unikernels \& WASM](#-unikernels--wasm)
+- [🧬 Unikernels & WebAssembly](#-unikernels--webassembly)
 - [☁️ Data Clouds](#️-data-clouds)
 - [🛠️ Workflow and Operations Clouds](#️-workflow-and-operations-clouds)
 - [🔐 Network, Connectivity and Security Clouds](#-network-connectivity-and-security-clouds)
@@ -19,7 +19,7 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 - [👩‍💻 Developer Happiness Clouds](#-developer-happiness-clouds)
 - [🔐 Authorization, Identity, Fraud and Abuse Clouds](#-authorization-identity-fraud-and-abuse-clouds)
 - [💰 Monetization, Finance and Legal Clouds](#-monetization-finance-and-legal-clouds)
-- [Customer, Marketing and eCommerce Clouds](#customer-marketing-and-ecommerce-clouds)
+- [👀 Customer, Marketing and eCommerce Clouds](#-customer-marketing-and-ecommerce-clouds)
 - [📡 IoT, Communications, and Media Clouds](#-iot-communications-and-media-clouds)
 - [⛓️ Blockchain Clouds](#️-blockchain-clouds)
 
@@ -77,8 +77,10 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Hut8](https://hut8.com/) - Provides digital asset mining and high-performance computing infrastructure.
 - [HydraHost](https://hydrahost.com/) - Affordable GPU compute focused on researchers and indie developers.
 - [Hyperbolic](https://hyperbolic.xyz/) - Offers scalable GPU compute for AI applications with a focus on performance and cost-efficiency.
+- [Hyperstack](https://www.hyperstack.cloud/) - Cloud GPU and AI platform for building, training, and deploying custom AI models.
 - [Hypertec Cloud](https://hypertec.com/cloud/) - Delivers cloud services with high-performance computing capabilities.
 - [Io.net](https://io.net/) - A decentralized GPU network delivering cost-efficient compute power for AI startups.
+- [IONOS Cloud](https://cloud.ionos.com/) - Cloud infrastructure with a focus on public, bare metal, and managed Kubernetes solutions.
 - [Iris Energy](https://irisenergy.co/) - Sustainable data center operator pivoting to offer compute for AI and HPC workloads.
 - [Jarvis Labs AI](https://jarvislabs.ai/) - Provides AI-focused cloud computing solutions.
 - [Juice Labs](https://www.juicelabs.co/) - Enables GPU-over-IP, allowing GPUs to become remote virtual resources accessible by AI workloads.
@@ -124,6 +126,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Runpod](https://www.runpod.io/) - Provides customizable GPU containers and secure cloud compute environments.
 - [Salad](https://salad.com/) - A platform for leveraging latent consumer compute resources to power workloads.
 - [SambaNova](https://sambanova.ai/) - Delivers purpose-built AI hardware and software systems.
+- [Scaleway](https://www.scaleway.com/) - European cloud provider with a wide range of services including servers, storage, and AI tools.
 - [Sesterce](https://sesterce.com/) - Provider of GPU server rentals and AI hosting solutions.
 - [Shadeform](https://shadeform.com/) - GPU compute provider with a focus on low-cost AI infrastructure.
 - [Seeweb](https://www.seeweb.it/) - Italian cloud infrastructure provider offering compute, storage, and CDN.
@@ -161,7 +164,7 @@ Cloud platforms designed to ensure data residency, regulatory compliance, and na
 - [YTL](https://www.ytlaicloud.com/press-releases/ytl-creates-one-of-the-worlds-most-advanced-supercomputers-powered-by-nvidia-grace-blackwell-based-dgx-cloud/) - Malaysian company deploying one of the world's most advanced supercomputers powered by NVIDIA Grace Blackwell-based DGX Cloud, focusing on sovereign AI cloud services.
 - [Yotta](https://yotta.com/blog-need-of-sovereign-cloud-in-india/) - Indian data center and cloud services provider focusing on security, compliance, and innovation.
 
-## 🧬 Unikernels & WASM
+## 🧬 Unikernels & WebAssembly
 
 Platforms leveraging unikernel and WebAssembly technologies for lightweight, secure, and efficient cloud-native applications.
 
@@ -194,12 +197,12 @@ Services for data storage, processing, analytics, and observability.
 - [DuckDB](https://duckdb.org/) - An in-process SQL OLAP database management system designed for fast analytical queries.
 - [Dynatrace](https://www.dynatrace.com/) - Offers a unified observability and security platform powered by AI, providing analytics and automation for multicloud environments.
 - [Elastic](https://www.elastic.co/) - Provides search-powered solutions for observability, security, and enterprise search.
-- [ElectricSQL](https://electric-sql.com/) - Electric is a Postgres sync engine. that solves things like partial replication, fan-out, and data delivery.
+- [ElectricSQL](https://electric-sql.com/) - Electric is a PostgresSQL sync engine. that solves things like partial replication, fan-out, and data delivery.
 - [Firebolt](https://www.firebolt.io/) - Delivers a cloud data warehouse designed for high-performance analytics.
 - [FullStory](https://www.fullstory.com/) - Offers digital experience analytics to understand and improve user interactions.
 - [Grafana](https://grafana.com/) - An open-source platform for monitoring and observability, enabling visualization of metrics, logs, and traces.
 - [HarperDB](https://www.harperdb.io/) - Provides a distributed database with built-in REST API for edge computing and real-time applications.
-- [Hasura](https://hasura.io/) - Instantly generates GraphQL APIs over new or existing Postgres databases.
+- [Hasura](https://hasura.io/) - Instantly generates GraphQL APIs over new or existing PostgresSQL databases.
 - [Heap](https://heap.io/) - Automatically captures user interactions to provide insights into user behavior without manual tracking.
 - [Honeycomb](https://www.honeycomb.io/) - An observability platform that helps engineering teams understand, debug, and improve complex systems.
 - [Hydrolix](https://hydrolix.io/) - A streaming data lake that ingests and processes high-volume, high-cardinality log data in real time, providing scalable storage and query capabilities with cost-efficient resource utilization.
@@ -210,7 +213,7 @@ Services for data storage, processing, analytics, and observability.
 - [Mixpanel](https://mixpanel.com/) - Delivers product analytics to help teams build better products through data-driven decisions.
 - [Mixpeek](http://mixpeek.com/) - A multimodal data platform that indexes and semantically retrieves videos, images, audio, and documents using AI-native infrastructure.
 - [MongoDB](https://www.mongodb.com/) - Offers a general-purpose, document-based database designed for modern application development.
-- [Neon](https://neon.tech/) - Provides a serverless Postgres with autoscaling, branching, and bottomless storage.
+- [Neon](https://neon.tech/) - Provides a serverless PostgresSQL with autoscaling, branching, and bottomless storage.
 - [Neo4j](https://neo4j.com/) - A graph database platform for connected data applications.
 - [New Relic](https://newrelic.com/) - An observability platform that unifies metrics, events, logs, and traces for full-stack monitoring.
 - [nMachine](https://www.nmachine.io/) - Observability that brings together every signal, from OpenTelemetry to Git to spend, in one data lake.
@@ -364,7 +367,7 @@ Services that provide billing, subscription management, legal and other services
 - [Visa](https://usa.visa.com/) - A payments network that connects consumers, businesses, financial institutions, and governments.
 - [Wise](https://wise.com/) - A platform for paying and getting paid globally. 
 
-## Customer, Marketing and eCommerce Clouds
+## 👀 Customer, Marketing and eCommerce Clouds
 
 Services that help businesses build and track relationships with users and customers across channels.
 
