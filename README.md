@@ -133,6 +133,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Servers.com](https://www.servers.com/) - Global bare metal and private cloud platform supporting AI/ML compute.
 - [Sify Technology](https://www.sifytechnologies.com/) - Indian-based cloud and digital transformation provider, expanding GPU compute.
 - [Sustainable Metal Cloud](https://smc.co/) - Green-focused GPU cloud with a sustainability-first infrastructure model.
+- [STN](https://www.stninc.com/) - Secure GPU cloud infrastructure for AI teams with SOC 2 & HIPAA compliance.
 - [TensorDock](https://tensordock.com/) - Affordable, usage-based GPU cloud platform for model training.
 - [TensorWave](https://tensorwave.com/) - An AI cloud focused on AMD technology including MI325X and MI300X accelerators.
 - [Together.ai](https://www.together.ai/) - Open-source foundation model infrastructure with collaborative fine-tuning.
@@ -240,6 +241,7 @@ Services that provide tools for asset tracking, workflow automation, and automat
 - [NeuBird](https://neubird.ai/) - An autonomous AI SRE platform.
 - [PagerDuty](https://www.pagerduty.com/) - A platform for automating critical operations work.
 - [Resolve.ai](https://resolve.ai/) - An agentic AI SRE from the co-creators of OpenTelemetry.
+- [Ryvn](https://ryvn.ai/) - BYOC deployment platform for SaaS startups in customer clouds and on-premises.
 - [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
 - [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
 
@@ -286,6 +288,7 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [Chatsonic](https://chatsonic.com/) - An AI chatbot built on top of GPT that includes real-time search data and voice interaction capabilities.
 - [Claude](https://claude.ai/) - An AI assistant from Anthropic focused on safe, helpful, and honest interactions, suitable for creative and technical workflows.
 - [Codev](https://codev.ai/) - A development assistant that uses AI to generate, analyze, and debug software code efficiently.
+- [Covenant](https://covenant.co/) - AI-integrated legal technology company embedded in a law firm.
 - [Cursor](https://www.cursor.so/) - An AI-enhanced code editor that integrates directly with your codebase to provide suggestions and automate changes.
 - [DeepAI](https://deepai.org/) - Offers a suite of open AI APIs for developers, including text, image, and moderation tools.
 - [Deepseek](https://deepseek.com/) - Provides developer tools and research models for AI-powered coding, content generation, and reasoning tasks.
@@ -310,6 +313,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Coolify](https://coolify.io/) - An open-source and self-hostable alternative to platforms like Heroku and Netlify, enabling management of servers, applications, and databases on your own hardware.
 - [Daytona](https://www.daytona.io/) - Provides lightning-fast, secure infrastructure for running AI-generated code, with 200ms environment creation and isolated runtime protection.
 - [DevZero](https://www.devzero.io/) - Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.
+- [Empromptu](https://empromptu.ai/) - No-code AI application builder with embedded models and production infrastructure.
 - [Firefly](https://www.firefly.ai/) - A cloud asset management solution powered by Infrastructure-as-Code, assisting DevOps and SRE teams in managing their entire cloud infrastructure efficiently.
 - [Flightcontrol](https://www.flightcontrol.dev/) - Automates infrastructure provisioning, CI/CD, and deployments within your own AWS account, offering full visibility and control.
 - [GitHub](https://github.com/) - The world's leading platform for version control and collaboration, offering GitHub Codespaces for instant, cloud-based development environments.
@@ -344,6 +348,7 @@ Services that provide authentication, authorization, identity management, and fr
 - [Sift Science](https://sift.com/) - Utilizes machine learning to provide real-time fraud detection and prevention solutions.
 - [Stytch](https://stytch.com/) - Provides APIs and SDKs for passwordless authentication, including email magic links, SMS passcodes, and biometrics.
 - [WorkOS](https://workos.com/) - Offers enterprise-ready authentication solutions, including single sign-on and directory synchronization.
+- [Xpander.ai](http://xpander.ai/) - Backend-as-a-Service for AI agents with managed hosting and function libraries.
 
 ## 💰 Monetization, Finance and Legal Clouds
 
