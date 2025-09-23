@@ -9,19 +9,19 @@ Alt Clouds provide value ”as a service“ directly on top of infrastructure. T
 ## Contents
 
 - [Criteria](#criteria)
-- [🧠 Infrastructure Clouds](#-infrastructure-clouds)
-- [⚜️ Sovereign Clouds](#-sovereign-clouds)
-- [🧬 Unikernels & WebAssembly](#-unikernels--webassembly)
-- [☁️ Data Clouds](#-data-clouds)
-- [🛠️ Workflow and Operations Clouds](#-workflow-and-operations-clouds)
-- [🔐 Network, Connectivity and Security Clouds](#-network-connectivity-and-security-clouds)
-- [✨ Vibe Clouds](#-vibe-clouds)
-- [👩‍💻 Developer Happiness Clouds](#-developer-happiness-clouds)
-- [🔐 Authorization, Identity, Fraud and Abuse Clouds](#-authorization-identity-fraud-and-abuse-clouds)
-- [💰 Monetization, Finance and Legal Clouds](#-monetization-finance-and-legal-clouds)
-- [👀 Customer, Marketing and eCommerce Clouds](#-customer-marketing-and-ecommerce-clouds)
-- [📡 IoT, Communications, and Media Clouds](#-iot-communications-and-media-clouds)
-- [⛓️ Blockchain Clouds](#-blockchain-clouds)
+- [Infrastructure Clouds](#infrastructure-clouds)
+- [Sovereign Clouds](#sovereign-clouds)
+- [Unikernels & WebAssembly](#unikernels--webassembly)
+- [Data Clouds](#data-clouds)
+- [Workflow and Operations Clouds](#workflow-and-operations-clouds)
+- [Network, Connectivity and Security Clouds](#network-connectivity-and-security-clouds)
+- [Vibe Clouds](#vibe-clouds)
+- [Developer Happiness Clouds](#developer-happiness-clouds)
+- [Authorization, Identity, Fraud and Abuse Clouds](#authorization-identity-fraud-and-abuse-clouds)
+- [Monetization, Finance and Legal Clouds](#monetization-finance-and-legal-clouds)
+- [Customer, Marketing and eCommerce Clouds](#customer-marketing-and-ecommerce-clouds)
+- [IoT, Communications, and Media Clouds](#iot-communications-and-media-clouds)
+- [Blockchain Clouds](#blockchain-clouds)
 
 ## Criteria
 
@@ -31,7 +31,7 @@ This list is currently expansive and inclusive. Over time, we'd like to see it g
 - Offer some sort of usage based model that supports self-service.
 - Provide a service that is critical to how other platforms operate (indicators might include a public SLA or status page).
 
-## 🧠 Infrastructure Clouds
+## Infrastructure Clouds
 
 The original ”alt clouds“ providing everything from virtualized and bare metal compute to GPU's, storage, and inference services.
 
@@ -144,7 +144,7 @@ The original ”alt clouds“ providing everything from virtualized and bare met
 - [Vayu Cloud](https://www.tatacommunications.com/services/cloud/vayu-cloud/) - Tata's scalable GPU cloud optimized for enterprise AI workloads.
 - [Vultr](https://www.vultr.com/) - Full services cloud and hosting provider with an expanding range of solutions globally.
 
-## ⚜️ Sovereign Clouds
+## Sovereign Clouds
 
 Cloud platforms designed to ensure data residency, regulatory compliance, and national control over infrastructure—often tailored for governments, public sector, or regulated industries.
 
@@ -165,7 +165,7 @@ Cloud platforms designed to ensure data residency, regulatory compliance, and na
 - [YTL](https://www.ytlaicloud.com/press-releases/ytl-creates-one-of-the-worlds-most-advanced-supercomputers-powered-by-nvidia-grace-blackwell-based-dgx-cloud/) - Malaysian company deploying one of the world's most advanced supercomputers powered by NVIDIA Grace Blackwell-based DGX Cloud, focusing on sovereign AI cloud services.
 - [Yotta](https://yotta.com/blog-need-of-sovereign-cloud-in-india/) - Indian data center and cloud services provider focusing on security, compliance, and innovation.
 
-## 🧬 Unikernels & WebAssembly
+## Unikernels & WebAssembly
 
 Platforms leveraging unikernel and WebAssembly technologies for lightweight, secure, and efficient cloud-native applications.
 
@@ -176,7 +176,7 @@ Platforms leveraging unikernel and WebAssembly technologies for lightweight, sec
 - [Wasmer](https://wasmer.io/) - Offers a universal WebAssembly runtime that enables running applications safely and efficiently across various platforms, from desktop to cloud and edge.
 - [wasmCloud](https://wasmcloud.com/) - An open-source CNCF project facilitating the development, deployment, and orchestration of WebAssembly components across cloud, datacenter, and edge environments.
 
-## ☁️ Data Clouds
+## Data Clouds
 
 Services for data storage, processing, analytics, and observability.
 
@@ -230,7 +230,7 @@ Services for data storage, processing, analytics, and observability.
 - [Tigris](https://www.tigrisdata.com/) - A globally distributed S3-compatible object storage service that enables developers to store and access any amount of data.
 - [Zymtrace](https://www.zymtrace.com/) - A continuous profiling solution that provides deep, actionable insights into CPU & GPU-bound applications and inference.
 
-## 🛠️ Workflow and Operations Clouds
+## Workflow and Operations Clouds
 
 Services that provide tools for asset tracking, workflow automation, and automated resolution to enhance operational efficiency.
 
@@ -247,7 +247,7 @@ Services that provide tools for asset tracking, workflow automation, and automat
 - [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
 
 
-## 🔐 Network, Connectivity and Security Clouds
+## Network, Connectivity and Security Clouds
 
 Services for managing network workloads, including acceleration, security, and connectivity.
 
@@ -276,7 +276,7 @@ Services for managing network workloads, including acceleration, security, and c
 - [Versa Networks](https://www.versa-networks.com/) - Delivers integrated SASE and SD-WAN solutions for secure, scalable, and simplified enterprise networking.
 - [Wiz](https://www.wiz.io/) - A cloud security platform that gives full-stack visibility into cloud infrastructure and prioritizes risk across workloads, containers, and identities.
 
-## ✨ Vibe Clouds
+## Vibe Clouds
 
 AI-powered tools that enhance creativity, productivity, and interaction through prompt engineering and conversational interfaces.
 
@@ -306,7 +306,7 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [Surfer AI](https://surferseo.com/ai/) - Uses AI to generate SEO-optimized content and blog articles with built-in search analysis tools.
 - [Windsurf](https://windsurf.com/) - An AI powered coding engine and IDE that is an alternative to GitHub Copilot. Formerly Codeium.
 
-## 👩‍💻 Developer Happiness Clouds
+## Developer Happiness Clouds
 
 Cloud-based platforms for creating, testing, and shipping software, including for infrastructure automation.
 
@@ -329,7 +329,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Robovision](https://robovision.ai/) - Provides a computer vision AI platform for smart automation, capturing industrial data and optimizing intelligence to reveal untapped value.
 - [Ubicloud](https://www.ubicloud.com/) - An open-source cloud platform that can run anywhere, offering IaaS features on bare metal providers with options for self-hosting or managed services.
 
-## 🔐 Authorization, Identity, Fraud and Abuse Clouds
+## Authorization, Identity, Fraud and Abuse Clouds
 
 Services that provide authentication, authorization, identity management, and fraud prevention.
 
@@ -351,7 +351,7 @@ Services that provide authentication, authorization, identity management, and fr
 - [WorkOS](https://workos.com/) - Offers enterprise-ready authentication solutions, including single sign-on and directory synchronization.
 - [Xpander.ai](http://xpander.ai/) - Backend-as-a-Service for AI agents with managed hosting and function libraries.
 
-## 💰 Monetization, Finance and Legal Clouds
+## Monetization, Finance and Legal Clouds
 
 Services that provide billing, subscription management, legal and other services to help businesses monetize their products.
 
@@ -374,7 +374,7 @@ Services that provide billing, subscription management, legal and other services
 - [Visa](https://usa.visa.com/) - A payments network that connects consumers, businesses, financial institutions, and governments.
 - [Wise](https://wise.com/) - A platform for paying and getting paid globally. 
 
-## 👀 Customer, Marketing and eCommerce Clouds
+## Customer, Marketing and eCommerce Clouds
 
 Services that help businesses build and track relationships with users and customers across channels.
 
@@ -391,7 +391,7 @@ Services that help businesses build and track relationships with users and custo
 - [Shopify](https://www.shopify.com/) - An all-in-one commerce platform to start, run, and grow a business.
 - [Zendesk](https://www.zendesk.com/) - A platform that makes it easy for companies and customers to create connections.
 
-## 📡 IoT, Communications, and Media Clouds
+## IoT, Communications, and Media Clouds
 
 Services that provide connectivity, device management, and communication solutions for Internet of Things (IoT) applications.
 
@@ -407,7 +407,7 @@ Services that provide connectivity, device management, and communication solutio
 - [Twilio](https://www.twilio.com/docs/iot) - Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
 - [Wistia](https://wistia.com/) - A one-stop video marketing shop to create, host, market and analyze your videos.
 
-## ⛓️ Blockchain Clouds
+## Blockchain Clouds
 
 Decentralized clouds built on Layer 1 blockchains that focus on inference, compute, and model training.
 
