@@ -1,27 +1,27 @@
 # 🌥️ Awesome Alt Clouds [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="altclouds-logo.png" align="right" width="100">](https://github.com/datum-cloud/awesome-alt-clouds/)
+[<img src='altclouds-logo.png' align='right' width='100'>](https://github.com/datum-cloud/awesome-alt-clouds/)
 
 A curated list of **Alt Clouds** — non-hyperscale cloud providers delivering specialized infrastructure and services.
 
-Alt Clouds provide value "as a service" directly on top of infrastructure. They cater to specific workloads, compliance requirements, and developer needs, offering transparency, automation, and critical services with public SLAs.
+Alt Clouds provide value ”as a service“ directly on top of infrastructure. They cater to specific workloads, compliance requirements, and developer needs, offering transparency, automation, and critical services with public SLAs.
 
 ## Contents
 
 - [Criteria](#criteria)
 - [🧠 Infrastructure Clouds](#-infrastructure-clouds)
-- [🏛️ Sovereign Clouds](#️-sovereign-clouds)
-- [🧬 Unikernels \& WASM](#-unikernels--wasm)
-- [☁️ Data Clouds](#️-data-clouds)
-- [🛠️ Workflow and Operations Clouds](#️-workflow-and-operations-clouds)
+- [⚜️ Sovereign Clouds](#-sovereign-clouds)
+- [🧬 Unikernels & WebAssembly](#-unikernels--webassembly)
+- [☁️ Data Clouds](#-data-clouds)
+- [🛠️ Workflow and Operations Clouds](#-workflow-and-operations-clouds)
 - [🔐 Network, Connectivity and Security Clouds](#-network-connectivity-and-security-clouds)
 - [✨ Vibe Clouds](#-vibe-clouds)
 - [👩‍💻 Developer Happiness Clouds](#-developer-happiness-clouds)
 - [🔐 Authorization, Identity, Fraud and Abuse Clouds](#-authorization-identity-fraud-and-abuse-clouds)
 - [💰 Monetization, Finance and Legal Clouds](#-monetization-finance-and-legal-clouds)
-- [Customer, Marketing and eCommerce Clouds](#customer-marketing-and-ecommerce-clouds)
+- [👀 Customer, Marketing and eCommerce Clouds](#-customer-marketing-and-ecommerce-clouds)
 - [📡 IoT, Communications, and Media Clouds](#-iot-communications-and-media-clouds)
-- [⛓️ Blockchain Clouds](#️-blockchain-clouds)
+- [⛓️ Blockchain Clouds](#-blockchain-clouds)
 
 ## Criteria
 
@@ -33,7 +33,7 @@ This list is currently expansive and inclusive. Over time, we'd like to see it g
 
 ## 🧠 Infrastructure Clouds
 
-The original "alt clouds" providing everything from virtualized and bare metal compute to GPU's, storage, and inference services.
+The original ”alt clouds“ providing everything from virtualized and bare metal compute to GPU's, storage, and inference services.
 
 - [Atlantic.net](https://www.atlantic.net/) - Experienced hosting company offering a variety of compute and GPU infrastructure services.
 - [Aethir](https://aethir.com) - Provides secure, cost-effective access to enterprise-grade GPUs worldwide through a distributed cloud compute infrastructure.
@@ -77,8 +77,10 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Hut8](https://hut8.com/) - Provides digital asset mining and high-performance computing infrastructure.
 - [HydraHost](https://hydrahost.com/) - Affordable GPU compute focused on researchers and indie developers.
 - [Hyperbolic](https://hyperbolic.xyz/) - Offers scalable GPU compute for AI applications with a focus on performance and cost-efficiency.
+- [Hyperstack](https://www.hyperstack.cloud/) - Cloud GPU and AI platform for building, training, and deploying custom AI models.
 - [Hypertec Cloud](https://hypertec.com/cloud/) - Delivers cloud services with high-performance computing capabilities.
 - [Io.net](https://io.net/) - A decentralized GPU network delivering cost-efficient compute power for AI startups.
+- [IONOS Cloud](https://cloud.ionos.com/) - Cloud infrastructure with a focus on public, bare metal, and managed Kubernetes solutions.
 - [Iris Energy](https://irisenergy.co/) - Sustainable data center operator pivoting to offer compute for AI and HPC workloads.
 - [Jarvis Labs AI](https://jarvislabs.ai/) - Provides AI-focused cloud computing solutions.
 - [Juice Labs](https://www.juicelabs.co/) - Enables GPU-over-IP, allowing GPUs to become remote virtual resources accessible by AI workloads.
@@ -124,12 +126,14 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Runpod](https://www.runpod.io/) - Provides customizable GPU containers and secure cloud compute environments.
 - [Salad](https://salad.com/) - A platform for leveraging latent consumer compute resources to power workloads.
 - [SambaNova](https://sambanova.ai/) - Delivers purpose-built AI hardware and software systems.
+- [Scaleway](https://www.scaleway.com/) - European cloud provider with a wide range of services including servers, storage, and AI tools.
 - [Sesterce](https://sesterce.com/) - Provider of GPU server rentals and AI hosting solutions.
 - [Shadeform](https://shadeform.com/) - GPU compute provider with a focus on low-cost AI infrastructure.
 - [Seeweb](https://www.seeweb.it/) - Italian cloud infrastructure provider offering compute, storage, and CDN.
 - [Servers.com](https://www.servers.com/) - Global bare metal and private cloud platform supporting AI/ML compute.
 - [Sify Technology](https://www.sifytechnologies.com/) - Indian-based cloud and digital transformation provider, expanding GPU compute.
 - [Sustainable Metal Cloud](https://smc.co/) - Green-focused GPU cloud with a sustainability-first infrastructure model.
+- [STN](https://www.stninc.com/) - Secure GPU cloud infrastructure for AI teams with SOC 2 & HIPAA compliance.
 - [TensorDock](https://tensordock.com/) - Affordable, usage-based GPU cloud platform for model training.
 - [TensorWave](https://tensorwave.com/) - An AI cloud focused on AMD technology including MI325X and MI300X accelerators.
 - [Together.ai](https://www.together.ai/) - Open-source foundation model infrastructure with collaborative fine-tuning.
@@ -140,7 +144,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Vayu Cloud](https://www.tatacommunications.com/services/cloud/vayu-cloud/) - Tata's scalable GPU cloud optimized for enterprise AI workloads.
 - [Vultr](https://www.vultr.com/) - Full services cloud and hosting provider with an expanding range of solutions globally.
 
-## 🏛️ Sovereign Clouds
+## ⚜️ Sovereign Clouds
 
 Cloud platforms designed to ensure data residency, regulatory compliance, and national control over infrastructure—often tailored for governments, public sector, or regulated industries.
 
@@ -161,7 +165,7 @@ Cloud platforms designed to ensure data residency, regulatory compliance, and na
 - [YTL](https://www.ytlaicloud.com/press-releases/ytl-creates-one-of-the-worlds-most-advanced-supercomputers-powered-by-nvidia-grace-blackwell-based-dgx-cloud/) - Malaysian company deploying one of the world's most advanced supercomputers powered by NVIDIA Grace Blackwell-based DGX Cloud, focusing on sovereign AI cloud services.
 - [Yotta](https://yotta.com/blog-need-of-sovereign-cloud-in-india/) - Indian data center and cloud services provider focusing on security, compliance, and innovation.
 
-## 🧬 Unikernels & WASM
+## 🧬 Unikernels & WebAssembly
 
 Platforms leveraging unikernel and WebAssembly technologies for lightweight, secure, and efficient cloud-native applications.
 
@@ -194,12 +198,12 @@ Services for data storage, processing, analytics, and observability.
 - [DuckDB](https://duckdb.org/) - An in-process SQL OLAP database management system designed for fast analytical queries.
 - [Dynatrace](https://www.dynatrace.com/) - Offers a unified observability and security platform powered by AI, providing analytics and automation for multicloud environments.
 - [Elastic](https://www.elastic.co/) - Provides search-powered solutions for observability, security, and enterprise search.
-- [ElectricSQL](https://electric-sql.com/) - Electric is a Postgres sync engine. that solves things like partial replication, fan-out, and data delivery.
+- [ElectricSQL](https://electric-sql.com/) - Electric is a PostgresSQL sync engine. that solves things like partial replication, fan-out, and data delivery.
 - [Firebolt](https://www.firebolt.io/) - Delivers a cloud data warehouse designed for high-performance analytics.
 - [FullStory](https://www.fullstory.com/) - Offers digital experience analytics to understand and improve user interactions.
 - [Grafana](https://grafana.com/) - An open-source platform for monitoring and observability, enabling visualization of metrics, logs, and traces.
 - [HarperDB](https://www.harperdb.io/) - Provides a distributed database with built-in REST API for edge computing and real-time applications.
-- [Hasura](https://hasura.io/) - Instantly generates GraphQL APIs over new or existing Postgres databases.
+- [Hasura](https://hasura.io/) - Instantly generates GraphQL APIs over new or existing PostgresSQL databases.
 - [Heap](https://heap.io/) - Automatically captures user interactions to provide insights into user behavior without manual tracking.
 - [Honeycomb](https://www.honeycomb.io/) - An observability platform that helps engineering teams understand, debug, and improve complex systems.
 - [Hydrolix](https://hydrolix.io/) - A streaming data lake that ingests and processes high-volume, high-cardinality log data in real time, providing scalable storage and query capabilities with cost-efficient resource utilization.
@@ -210,7 +214,7 @@ Services for data storage, processing, analytics, and observability.
 - [Mixpanel](https://mixpanel.com/) - Delivers product analytics to help teams build better products through data-driven decisions.
 - [Mixpeek](http://mixpeek.com/) - A multimodal data platform that indexes and semantically retrieves videos, images, audio, and documents using AI-native infrastructure.
 - [MongoDB](https://www.mongodb.com/) - Offers a general-purpose, document-based database designed for modern application development.
-- [Neon](https://neon.tech/) - Provides a serverless Postgres with autoscaling, branching, and bottomless storage.
+- [Neon](https://neon.tech/) - Provides a serverless PostgresSQL with autoscaling, branching, and bottomless storage.
 - [Neo4j](https://neo4j.com/) - A graph database platform for connected data applications.
 - [New Relic](https://newrelic.com/) - An observability platform that unifies metrics, events, logs, and traces for full-stack monitoring.
 - [nMachine](https://www.nmachine.io/) - Observability that brings together every signal, from OpenTelemetry to Git to spend, in one data lake.
@@ -236,7 +240,9 @@ Services that provide tools for asset tracking, workflow automation, and automat
 - [n8n](https://n8n.io/) - An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor.
 - [NeuBird](https://neubird.ai/) - An autonomous AI SRE platform.
 - [PagerDuty](https://www.pagerduty.com/) - A platform for automating critical operations work.
+- [Parahelp](https://parahelp.com/) - AI support agent that automates complex customer support tickets end-to-end for software companies.
 - [Resolve.ai](https://resolve.ai/) - An agentic AI SRE from the co-creators of OpenTelemetry.
+- [Ryvn](https://ryvn.ai/) - BYOC deployment platform for SaaS startups in customer clouds and on-premises.
 - [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
 - [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
 
@@ -283,6 +289,7 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [Chatsonic](https://chatsonic.com/) - An AI chatbot built on top of GPT that includes real-time search data and voice interaction capabilities.
 - [Claude](https://claude.ai/) - An AI assistant from Anthropic focused on safe, helpful, and honest interactions, suitable for creative and technical workflows.
 - [Codev](https://codev.ai/) - A development assistant that uses AI to generate, analyze, and debug software code efficiently.
+- [Covenant](https://covenant.co/) - AI-integrated legal technology company embedded in a law firm.
 - [Cursor](https://www.cursor.so/) - An AI-enhanced code editor that integrates directly with your codebase to provide suggestions and automate changes.
 - [DeepAI](https://deepai.org/) - Offers a suite of open AI APIs for developers, including text, image, and moderation tools.
 - [Deepseek](https://deepseek.com/) - Provides developer tools and research models for AI-powered coding, content generation, and reasoning tasks.
@@ -307,6 +314,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Coolify](https://coolify.io/) - An open-source and self-hostable alternative to platforms like Heroku and Netlify, enabling management of servers, applications, and databases on your own hardware.
 - [Daytona](https://www.daytona.io/) - Provides lightning-fast, secure infrastructure for running AI-generated code, with 200ms environment creation and isolated runtime protection.
 - [DevZero](https://www.devzero.io/) - Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.
+- [Empromptu](https://empromptu.ai/) - No-code AI application builder with embedded models and production infrastructure.
 - [Firefly](https://www.firefly.ai/) - A cloud asset management solution powered by Infrastructure-as-Code, assisting DevOps and SRE teams in managing their entire cloud infrastructure efficiently.
 - [Flightcontrol](https://www.flightcontrol.dev/) - Automates infrastructure provisioning, CI/CD, and deployments within your own AWS account, offering full visibility and control.
 - [GitHub](https://github.com/) - The world's leading platform for version control and collaboration, offering GitHub Codespaces for instant, cloud-based development environments.
@@ -341,6 +349,7 @@ Services that provide authentication, authorization, identity management, and fr
 - [Sift Science](https://sift.com/) - Utilizes machine learning to provide real-time fraud detection and prevention solutions.
 - [Stytch](https://stytch.com/) - Provides APIs and SDKs for passwordless authentication, including email magic links, SMS passcodes, and biometrics.
 - [WorkOS](https://workos.com/) - Offers enterprise-ready authentication solutions, including single sign-on and directory synchronization.
+- [Xpander.ai](http://xpander.ai/) - Backend-as-a-Service for AI agents with managed hosting and function libraries.
 
 ## 💰 Monetization, Finance and Legal Clouds
 
@@ -356,6 +365,7 @@ Services that provide billing, subscription management, legal and other services
 - [Mercury](https://mercury.com/) - A financial technology platform that pairs traditional banking with bill payment, invoicing, SAFE's, and other startup tools.
 - [Metronome](https://metronome.com/) - Offers a usage-based billing platform that simplifies billing operations and supports various pricing models.
 - [N26](https://n26.com/en-us) - A 100% mobile bank that's trusted by millions of customers across Europe.
+- [Omnea](https://www.omnea.co/) - AI-native procurement orchestration platform for spend control and supplier management.
 - [Orb](https://www.withorb.com/) - Delivers a usage-based subscription management platform that enables flexible pricing and seamless billing.
 - [Recurly](https://recurly.com/) - Provides subscription management software and recurring billing solutions for businesses of all sizes.
 - [Rillet](https://www.rillet.com/) - An AI-native ERP automating accounting that offers a source of truth for both GAAP financials and investor metrics.
@@ -364,7 +374,7 @@ Services that provide billing, subscription management, legal and other services
 - [Visa](https://usa.visa.com/) - A payments network that connects consumers, businesses, financial institutions, and governments.
 - [Wise](https://wise.com/) - A platform for paying and getting paid globally. 
 
-## Customer, Marketing and eCommerce Clouds
+## 👀 Customer, Marketing and eCommerce Clouds
 
 Services that help businesses build and track relationships with users and customers across channels.
 
