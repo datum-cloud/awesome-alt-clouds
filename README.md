@@ -1,19 +1,19 @@
 # 🌥️ Awesome Alt Clouds [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="altclouds-logo.png" align="right" width="100">](https://github.com/datum-cloud/awesome-alt-clouds/)
+[<img src='altclouds-logo.png' align='right' width='100'>](https://github.com/datum-cloud/awesome-alt-clouds/)
 
 A curated list of **Alt Clouds** — non-hyperscale cloud providers delivering specialized infrastructure and services.
 
-Alt Clouds provide value "as a service" directly on top of infrastructure. They cater to specific workloads, compliance requirements, and developer needs, offering transparency, automation, and critical services with public SLAs.
+Alt Clouds provide value ”as a service“ directly on top of infrastructure. They cater to specific workloads, compliance requirements, and developer needs, offering transparency, automation, and critical services with public SLAs.
 
 ## Contents
 
 - [Criteria](#criteria)
 - [🧠 Infrastructure Clouds](#-infrastructure-clouds)
-- [🏛️ Sovereign Clouds](#️-sovereign-clouds)
+- [⚜️ Sovereign Clouds](#-sovereign-clouds)
 - [🧬 Unikernels & WebAssembly](#-unikernels--webassembly)
-- [☁️ Data Clouds](#️-data-clouds)
-- [🛠️ Workflow and Operations Clouds](#️-workflow-and-operations-clouds)
+- [☁️ Data Clouds](#-data-clouds)
+- [🛠️ Workflow and Operations Clouds](#-workflow-and-operations-clouds)
 - [🔐 Network, Connectivity and Security Clouds](#-network-connectivity-and-security-clouds)
 - [✨ Vibe Clouds](#-vibe-clouds)
 - [👩‍💻 Developer Happiness Clouds](#-developer-happiness-clouds)
@@ -21,7 +21,7 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 - [💰 Monetization, Finance and Legal Clouds](#-monetization-finance-and-legal-clouds)
 - [👀 Customer, Marketing and eCommerce Clouds](#-customer-marketing-and-ecommerce-clouds)
 - [📡 IoT, Communications, and Media Clouds](#-iot-communications-and-media-clouds)
-- [⛓️ Blockchain Clouds](#️-blockchain-clouds)
+- [⛓️ Blockchain Clouds](#-blockchain-clouds)
 
 ## Criteria
 
@@ -33,7 +33,7 @@ This list is currently expansive and inclusive. Over time, we'd like to see it g
 
 ## 🧠 Infrastructure Clouds
 
-The original "alt clouds" providing everything from virtualized and bare metal compute to GPU's, storage, and inference services.
+The original ”alt clouds“ providing everything from virtualized and bare metal compute to GPU's, storage, and inference services.
 
 - [Atlantic.net](https://www.atlantic.net/) - Experienced hosting company offering a variety of compute and GPU infrastructure services.
 - [Aethir](https://aethir.com) - Provides secure, cost-effective access to enterprise-grade GPUs worldwide through a distributed cloud compute infrastructure.
@@ -144,7 +144,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Vayu Cloud](https://www.tatacommunications.com/services/cloud/vayu-cloud/) - Tata's scalable GPU cloud optimized for enterprise AI workloads.
 - [Vultr](https://www.vultr.com/) - Full services cloud and hosting provider with an expanding range of solutions globally.
 
-## 🏛️ Sovereign Clouds
+## ⚜️ Sovereign Clouds
 
 Cloud platforms designed to ensure data residency, regulatory compliance, and national control over infrastructure—often tailored for governments, public sector, or regulated industries.
 
