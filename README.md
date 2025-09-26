@@ -95,8 +95,8 @@ The original ”alt clouds“ providing everything from virtualized and bare met
 - [Limestone Networks](https://www.limestonenetworks.com/) - Bare metal and colocation provider.
 - [Linode](https://www.linode.com/) - Provides cloud computing services designed for developers with straightforward pricing.
 - [MemVerge](https://memverge.com) - A platform for GPU orchestration across environments that automates AI model and agent deployment.
-- [ML Foundry](https://mlfoundry.com) - Gives AI practitioners access to state-of-the-art GPU compute for training and serving models.
 - [Mistral](https://mistral.ai/) - Provides a platform for building AI applications including with its own open-weight large language models.
+- [ML Foundry](https://mlfoundry.com) - Gives AI practitioners access to state-of-the-art GPU compute for training and serving models.
 - [Modal](https://modal.com/) - A serverless platform for AI and data teams to run compute-intensive applications without managing infrastructure.
 - [Nebius](https://nebius.com/) - Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services.
 - [NeevCloud](https://www.neevcloud.com/) - India-based GPU cloud offering secure, scalable AI compute.
@@ -272,6 +272,7 @@ Services for managing network workloads, including acceleration, security, and c
 - [Stelia](https://stelia.io/) - A data mobility platform for high-performance AI and cloud workloads, enabling fast, secure, and location-aware file transport.
 - [Shasta](https://shasta.cloud/) - An open WiFi and local Connectivity cloud supporting open hardware and software standards for full stack on site connecitivty and security solutions.
 - [Tailscale](https://tailscale.com/) - A zero-config VPN built on WireGuard that makes secure networking between devices as easy as logging in.
+- [Teleport](https://goteleport.com/) - Zero trust infrastructure access platform with cryptographic identity and least privileged access.
 - [Twingate](https://www.twingate.com/) - Provides a modern zero-trust networking solution to securely connect people to private apps and services without VPNs.
 - [Versa Networks](https://www.versa-networks.com/) - Delivers integrated SASE and SD-WAN solutions for secure, scalable, and simplified enterprise networking.
 - [Wiz](https://www.wiz.io/) - A cloud security platform that gives full-stack visibility into cloud infrastructure and prioritizes risk across workloads, containers, and identities.
@@ -312,6 +313,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 
 - [Coder](https://coder.com/) - Offers self-hosted cloud development environments that provision and manage workspaces, enabling developers to code from anywhere with enhanced security and scalability.
 - [Coolify](https://coolify.io/) - An open-source and self-hostable alternative to platforms like Heroku and Netlify, enabling management of servers, applications, and databases on your own hardware.
+- [CopilotKit](https://www.copilotkit.ai/) - Open-source framework and infrastructure for building in-app AI copilots and agents.
 - [Daytona](https://www.daytona.io/) - Provides lightning-fast, secure infrastructure for running AI-generated code, with 200ms environment creation and isolated runtime protection.
 - [DevZero](https://www.devzero.io/) - Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.
 - [Empromptu](https://empromptu.ai/) - No-code AI application builder with embedded models and production infrastructure.
@@ -345,6 +347,7 @@ Services that provide authentication, authorization, identity management, and fr
 - [JumpCloud](https://jumpcloud.com/) - Offers a cloud directory platform for secure identity, access, and device management across various operating systems.
 - [Keet](https://www.trykeet.com/) - Provides authentication solutions for AI agents, enabling them to perform actions on behalf of users across various platforms.
 - [Keycloak](https://www.keycloak.org/) - An open-source identity and access management solution for modern applications and services.
+- [Permit](https://www.permit.io/) - Authorization-as-a-Service platform for baking-in access control in minutes.
 - [Ory](https://www.ory.sh/) - Offers open-source identity infrastructure for authentication, authorization, and user management.
 - [Sift Science](https://sift.com/) - Utilizes machine learning to provide real-time fraud detection and prevention solutions.
 - [Stytch](https://stytch.com/) - Provides APIs and SDKs for passwordless authentication, including email magic links, SMS passcodes, and biometrics.
