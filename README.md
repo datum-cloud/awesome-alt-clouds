@@ -241,6 +241,7 @@ Services that provide tools for asset tracking, workflow automation, and automat
 - [NeuBird](https://neubird.ai/) - An autonomous AI SRE platform.
 - [PagerDuty](https://www.pagerduty.com/) - A platform for automating critical operations work.
 - [Parahelp](https://parahelp.com/) - AI support agent that automates complex customer support tickets end-to-end for software companies.
+- [Prefect](https://www.prefect.io/) - Workflow orchestration framework for building resilient data pipelines in Python.
 - [Resolve.ai](https://resolve.ai/) - An agentic AI SRE from the co-creators of OpenTelemetry.
 - [Ryvn](https://ryvn.ai/) - BYOC deployment platform for SaaS startups in customer clouds and on-premises.
 - [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
@@ -317,6 +318,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Daytona](https://www.daytona.io/) - Provides lightning-fast, secure infrastructure for running AI-generated code, with 200ms environment creation and isolated runtime protection.
 - [DevZero](https://www.devzero.io/) - Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.
 - [Empromptu](https://empromptu.ai/) - No-code AI application builder with embedded models and production infrastructure.
+- [FastMCP Cloud](https://fastmcp.cloud/) -  Zero-config MCP server deployment platform for modern AI development workflows.
 - [Firefly](https://www.firefly.ai/) - A cloud asset management solution powered by Infrastructure-as-Code, assisting DevOps and SRE teams in managing their entire cloud infrastructure efficiently.
 - [Flightcontrol](https://www.flightcontrol.dev/) - Automates infrastructure provisioning, CI/CD, and deployments within your own AWS account, offering full visibility and control.
 - [GitHub](https://github.com/) - The world's leading platform for version control and collaboration, offering GitHub Codespaces for instant, cloud-based development environments.
