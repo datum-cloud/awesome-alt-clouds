@@ -385,6 +385,7 @@ Services that provide billing, subscription management, legal and other services
 - [N26](https://n26.com/en-us) - A 100% mobile bank that's trusted by millions of customers across Europe.
 - [Omnea](https://www.omnea.co/) - AI-native procurement orchestration platform for spend control and supplier management.
 - [Orb](https://www.withorb.com/) - Delivers a usage-based subscription management platform that enables flexible pricing and seamless billing.
+- [Paid](https://paid.ai/) - Cost tracking and billing platform for AI agents with margin optimization and ROI tracking.
 - [Recurly](https://recurly.com/) - Provides subscription management software and recurring billing solutions for businesses of all sizes.
 - [Rillet](https://www.rillet.com/) - An AI-native ERP automating accounting that offers a source of truth for both GAAP financials and investor metrics.
 - [Stripe](https://stripe.com/) - A financial infrastructure platform that enables businesses to accept payments, manage subscriptions, and handle billing operations.
