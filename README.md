@@ -22,6 +22,7 @@ Alt Clouds provide value ”as a service“ directly on top of infrastructure. T
 - [Customer, Marketing and eCommerce Clouds](#customer-marketing-and-ecommerce-clouds)
 - [IoT, Communications, and Media Clouds](#iot-communications-and-media-clouds)
 - [Blockchain Clouds](#blockchain-clouds)
+- [Source Code Control](#source-code-control)
 
 ## Criteria
 
@@ -434,6 +435,16 @@ Decentralized clouds built on Layer 1 blockchains that focus on inference, compu
 - [Targon](https://targon.com/) - A Bittensor subnet that supports TEE-based inference of models and model training. 
 - [Celium](https://celiumcompute.ai/) - A Bittensor subnet that offers a GPU rental marketplace.
 - [Gradients](https://gradients.io/) - A Bittensor subnet that allows anyone in the world to train image and Text models.
+
+## Source Code Control
+
+Track and manage source code changes over time using a version control system (VCS).
+
+- [Codeberg](https://codeberg.org/) - Non-profit Git hosting for free and open source projects with no tracking or profiteering.
+- [Forgejo](https://forgejo.org/) - Self-hosted lightweight software forge with simple project management and CI/CD.
+- [Gitea](https://about.gitea.com/) - Self-hosted Git service with CI/CD, code review, and issue tracking features.
+- [Gitea Cloud](https://about.gitea.com/products/cloud/) - Single-tenant managed Git hosting with built-in CI/CD and private isolated environments.
+- [Mercurial](https://www.mercurial-scm.org/) - Free distributed source control management tool for projects of any size.
 
 ## Contributing
 
