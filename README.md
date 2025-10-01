@@ -333,7 +333,6 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [GitHub](https://github.com/) - The world's leading platform for version control and collaboration, offering GitHub Codespaces for instant, cloud-based development environments.
 - [GitLab](https://about.gitlab.com/) - An AI-powered DevSecOps platform providing a single application for the entire software development lifecycle, including cloud-based development workspaces.
 - [Gitpod](https://www.gitpod.io/) - A platform for automated and standardized development environments, enabling developers to code from anywhere with pre-configured, on-demand workspaces.
-- [Gitea](https://about.gitea.com/) - Self-hosted Git service with CI/CD, code review, and issue tracking features.
 - [HashiCorp Cloud Platform](https://www.hashicorp.com/cloud) - A fully-managed platform offering HashiCorp products-as-a-service, simplifying infrastructure and security management for developers.
 - [JetBrains](https://www.jetbrains.com/) - Intelligent development tools and IDEs including IntelliJ IDEA and Kotlin language.
 - [Lightrun](https://lightrun.com/) - An AI platform to autonomously detect, debug, and remediate runtime issues.
