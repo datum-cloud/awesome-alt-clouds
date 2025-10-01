@@ -50,6 +50,7 @@ The original ”alt clouds“ providing everything from virtualized and bare met
 - [CirraScale](https://www.cirrascale.com/) - Offers cloud-based GPU solutions for AI and deep learning workloads.
 - [Civo](https://www.civo.com) - Provides cloud services with a focus on simplicity and developer experience.
 - [Cloudexe](https://cloudexe.io) - Cloud computing infrastructure company focused on AI workloads.
+- [Cohere](https://cohere.com/) - Enterprise AI platform with language models for automation, data insights, and custom solutions.
 - [Coherently.ai](https://www.coherently.ai/) - Cloud infrastructure designed specifically for high-performance applications.
 - [CoreWeave](https://www.coreweave.com/) - A cloud platform optimized for AI, offering high-performance GPU compute and managed services.
 - [Cudo Compute](https://www.cudocompute.com/) - Offers decentralized cloud computing with GPU support for AI applications.
@@ -132,6 +133,7 @@ The original ”alt clouds“ providing everything from virtualized and bare met
 - [Seeweb](https://www.seeweb.it/) - Italian cloud infrastructure provider offering compute, storage, and CDN.
 - [Servers.com](https://www.servers.com/) - Global bare metal and private cloud platform supporting AI/ML compute.
 - [Sify Technology](https://www.sifytechnologies.com/) - Indian-based cloud and digital transformation provider, expanding GPU compute.
+- [Spheron Network](https://www.spheron.network/) - Decentralized GPU/CPU network for AI and Web3 with 44,000+ nodes across 170+ locations.
 - [Sustainable Metal Cloud](https://smc.co/) - Green-focused GPU cloud with a sustainability-first infrastructure model.
 - [STN](https://www.stninc.com/) - Secure GPU cloud infrastructure for AI teams with SOC 2 & HIPAA compliance.
 - [TensorDock](https://tensordock.com/) - Affordable, usage-based GPU cloud platform for model training.
@@ -142,6 +144,7 @@ The original ”alt clouds“ providing everything from virtualized and bare met
 - [Valdi.ai](https://valdi.ai/) - Customizable GPU clusters for AI teams and enterprises.
 - [Vast.ai](https://vast.ai/) - Marketplace for buying and selling GPU compute capacity at competitive rates.
 - [Vayu Cloud](https://www.tatacommunications.com/services/cloud/vayu-cloud/) - Tata's scalable GPU cloud optimized for enterprise AI workloads.
+- [Voltage Park](https://www.voltagepark.com/) - AI cloud with 24,000 NVIDIA H100 GPUs and InfiniBand clusters for large-scale training.
 - [Vultr](https://www.vultr.com/) - Full services cloud and hosting provider with an expanding range of solutions globally.
 
 ## Sovereign Clouds
@@ -173,6 +176,7 @@ Platforms leveraging unikernel and WebAssembly technologies for lightweight, sec
 - [KraftCloud](https://kraft.cloud/) - A next-generation cloud platform powered by unikernels, offering millisecond-scale operations and high-density deployments for efficient computing.
 - [NanoVMs](https://nanovms.com/) - Provides a unikernel platform that allows deploying applications as secure, isolated virtual machines, enhancing performance and security.
 - [Puter](https://puter.com/) - A privacy-first personal cloud that houses all your files, apps, and games in one secure place, accessible from anywhere at any time.
+- [SingleStore](https://www.singlestore.com/) - Real-time database combining transactions and analytics with vector search capabilities.
 - [Wasmer](https://wasmer.io/) - Offers a universal WebAssembly runtime that enables running applications safely and efficiently across various platforms, from desktop to cloud and edge.
 - [wasmCloud](https://wasmcloud.com/) - An open-source CNCF project facilitating the development, deployment, and orchestration of WebAssembly components across cloud, datacenter, and edge environments.
 
@@ -207,6 +211,7 @@ Services for data storage, processing, analytics, and observability.
 - [Heap](https://heap.io/) - Automatically captures user interactions to provide insights into user behavior without manual tracking.
 - [Honeycomb](https://www.honeycomb.io/) - An observability platform that helps engineering teams understand, debug, and improve complex systems.
 - [Hydrolix](https://hydrolix.io/) - A streaming data lake that ingests and processes high-volume, high-cardinality log data in real time, providing scalable storage and query capabilities with cost-efficient resource utilization.
+- [InfluxData](https://www.influxdata.com/) - Purpose-built time-series database for cloud, on-premises, and edge deployments.
 - [Kentik](https://www.kentik.com/) - Provides network observability solutions for performance monitoring and security.
 - [LogRocket](https://logrocket.com/) - Replays user sessions to help developers understand and fix issues faster.
 - [Logz.io](https://logz.io/) - Offers an open-source observability platform for monitoring, troubleshooting, and securing applications.
@@ -221,12 +226,14 @@ Services for data storage, processing, analytics, and observability.
 - [Planetscale](https://planetscale.com/) - A serverless database platform built on Vitess, offering scalability and reliability for MySQL databases.
 - [PostHog](https://posthog.com/) - An open-source product analytics platform that can be deployed on-premises.
 - [Prisma](https://www.prisma.io/) - Provides a next-generation ORM for Node.js and TypeScript.
+- [QuestDB](https://questdb.com/) - Open-source time-series database with ultra-low latency and SQL support.
 - [Redis](https://redis.io/) - An in-memory data structure store used as a database, cache, and message broker.
 - [Snowflake](https://www.snowflake.com/en/) - A cloud data platform offering data warehousing, data lakes, and data sharing capabilities.
 - [Splunk](https://www.splunk.com/) - Provides a platform for searching, monitoring, and analyzing machine-generated big data.
 - [Sumo Logic](https://www.sumologic.com/) - Offers cloud-native machine data analytics for real-time insights into operations and security.
 - [Supabase](https://supabase.com/) - An open-source Firebase alternative that provides a backend-as-a-service.
 - [Teradata](https://www.teradata.com/) - Specializing in providing solutions for data warehousing, analytics, and big data analytics.
+- [TigerData](https://www.tigerdata.com/) - PostgreSQL-based time-series database with compression and continuous aggregates.
 - [Tigris](https://www.tigrisdata.com/) - A globally distributed S3-compatible object storage service that enables developers to store and access any amount of data.
 - [Zymtrace](https://www.zymtrace.com/) - A continuous profiling solution that provides deep, actionable insights into CPU & GPU-bound applications and inference.
 
@@ -245,6 +252,7 @@ Services that provide tools for asset tracking, workflow automation, and automat
 - [Resolve.ai](https://resolve.ai/) - An agentic AI SRE from the co-creators of OpenTelemetry.
 - [Ryvn](https://ryvn.ai/) - BYOC deployment platform for SaaS startups in customer clouds and on-premises.
 - [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
+- [Temporal](https://temporal.io/) - Durable execution platform for reliable workflows with automatic failure recovery.
 - [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
 
 
@@ -277,6 +285,7 @@ Services for managing network workloads, including acceleration, security, and c
 - [Twingate](https://www.twingate.com/) - Provides a modern zero-trust networking solution to securely connect people to private apps and services without VPNs.
 - [Versa Networks](https://www.versa-networks.com/) - Delivers integrated SASE and SD-WAN solutions for secure, scalable, and simplified enterprise networking.
 - [Wiz](https://www.wiz.io/) - A cloud security platform that gives full-stack visibility into cloud infrastructure and prioritizes risk across workloads, containers, and identities.
+- [Zscaler](https://www.zscaler.com/) - Zero trust SASE platform with AI-driven cybersecurity and cloud protection.
 
 ## Vibe Clouds
 
@@ -325,7 +334,10 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [GitLab](https://about.gitlab.com/) - An AI-powered DevSecOps platform providing a single application for the entire software development lifecycle, including cloud-based development workspaces.
 - [Gitpod](https://www.gitpod.io/) - A platform for automated and standardized development environments, enabling developers to code from anywhere with pre-configured, on-demand workspaces.
 - [HashiCorp Cloud Platform](https://www.hashicorp.com/cloud) - A fully-managed platform offering HashiCorp products-as-a-service, simplifying infrastructure and security management for developers.
+- [JetBrains](https://www.jetbrains.com/) - Intelligent development tools and IDEs including IntelliJ IDEA and Kotlin language.
 - [Lightrun](https://lightrun.com/) - An AI platform to autonomously detect, debug, and remediate runtime issues.
+- [Linear](https://linear.app/) - Purpose-built tool for planning, tracking issues, and managing product roadmaps.
+- [Notion](https://www.notion.com/) - All-in-one workspace for notes, docs, wikis, and project management.
 - [Outerbase](https://www.outerbase.com/) - A platform for safely interacting with data and databases, now part of Cloudflare.
 - [Porter](https://porter.run/) - A Kubernetes-powered PaaS that runs in your own cloud provider, simplifying the deployment and management of applications on AWS, GCP, or Azure.
 - [Release](https://release.com/) - Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.
@@ -364,7 +376,7 @@ Services that provide billing, subscription management, legal and other services
 - [Bill](https://www.bill.com/) - A comprehensive financial operations platform for bills, invoices, expenses, budgets, and more.
 - [Crosby](https://crosby.ai/) - Lawyer-assisted AI for reviewing contracts including MSAs, DPAs and NDAs.
 - [Lago](https://www.getlago.com/) - An open-source metering and usage-based billing platform designed for transparency and developer experience.
-- [Lemon Squeezy](https://www.lemonsqueezy.com/) - Lemon Squeezy is the all-in-one platform for SaaS that provides payments, tax & subscriptions.
+- [Lemon Squeezy](https://www.lemonsqueezy.com/) - The all-in-one platform for SaaS that provides payments, tax & subscriptions.
 - [Harvey](https://www.harvey.ai/) - Domain-specific AI for law firms, professional service providers, and the Fortune 500.
 - [Maxio](https://www.maxio.com/) - Provides billing and financial operations solutions for B2B SaaS companies, helping to streamline revenue management.
 - [Mercury](https://mercury.com/) - A financial technology platform that pairs traditional banking with bill payment, invoicing, SAFE's, and other startup tools.
@@ -372,6 +384,7 @@ Services that provide billing, subscription management, legal and other services
 - [N26](https://n26.com/en-us) - A 100% mobile bank that's trusted by millions of customers across Europe.
 - [Omnea](https://www.omnea.co/) - AI-native procurement orchestration platform for spend control and supplier management.
 - [Orb](https://www.withorb.com/) - Delivers a usage-based subscription management platform that enables flexible pricing and seamless billing.
+- [Paid](https://paid.ai/) - Cost tracking and billing platform for AI agents with margin optimization and ROI tracking.
 - [Recurly](https://recurly.com/) - Provides subscription management software and recurring billing solutions for businesses of all sizes.
 - [Rillet](https://www.rillet.com/) - An AI-native ERP automating accounting that offers a source of truth for both GAAP financials and investor metrics.
 - [Stripe](https://stripe.com/) - A financial infrastructure platform that enables businesses to accept payments, manage subscriptions, and handle billing operations.
@@ -391,7 +404,7 @@ Services that help businesses build and track relationships with users and custo
 - [Helpscout](https://www.helpscout.com/) - A customer communication platform for businesses that want to treat customers like people.
 - [Hubspot](https://www.hubspot.com/) - An AI-powered customer platform to connect your marketing, sales, and customer service.
 - [Klaviyo](https://www.klaviyo.com) - A CRM built for B2C that combines marketing, service, and analytics.
-- [Mirakl](https://www.mirakl.com/) - Mirakl powers platforms by connecting businesses, sellers, systems, partners, data and consumers.
+- [Mirakl](https://www.mirakl.com/) - Powers platforms by connecting businesses, sellers, systems, partners, data and consumers.
 - [Salesforce Revenue Cloud](https://www.salesforce.com/products/revenue-cloud/overview/) - A suite of tools for managing the entire revenue lifecycle, including quoting, billing, and revenue recognition.
 - [Shopify](https://www.shopify.com/) - An all-in-one commerce platform to start, run, and grow a business.
 - [Zendesk](https://www.zendesk.com/) - A platform that makes it easy for companies and customers to create connections.
@@ -402,7 +415,7 @@ Services that provide connectivity, device management, and communication solutio
 
 - [1NCE](https://www.1nce.com/en-us/) - Offers flat-rate global cellular connectivity for IoT devices, including SIM management and low-bandwidth data plans designed for scale.
 - [Hologram](https://www.hologram.io/) - Provides global IoT SIM cards and eUICC technology with a cloud-native dashboard for managing devices and data usage across carriers.
-- [Mux](https://www.mux.com) - Mux solves the hard problems software teams face when building video, from live-streaming platforms to on-demand video catalogs and anything in between.
+- [Mux](https://www.mux.com) - Solves the hard problems software teams face when building video, from live-streaming platforms to on-demand video catalogs and anything in between.
 - [Onomondo](https://onomondo.com/) - A full-stack connectivity platform for IoT with a single global SIM, advanced network control, and transparent pricing.
 - [Particle](https://www.particle.io/) - An integrated IoT platform offering hardware, firmware, and cloud connectivity tools for building and scaling connected products.
 - [Qubitro](https://www.qubitro.com/) - A device-to-cloud data platform for IoT that helps developers collect, analyze, and act on sensor data with minimal setup.
