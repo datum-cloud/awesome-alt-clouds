@@ -444,6 +444,7 @@ Track and manage source code changes over time using a version control system (V
 - [Forgejo](https://forgejo.org/) - Self-hosted lightweight software forge with simple project management and CI/CD.
 - [Gitea](https://about.gitea.com/) - Self-hosted Git service with CI/CD, code review, and issue tracking features.
 - [Gitea Cloud](https://about.gitea.com/products/cloud/) - Single-tenant managed Git hosting with built-in CI/CD and private isolated environments.
+- [GitLab](https://gitlab.com/) - Managed Git hosting with CI/CD and integrated privacy-first AI workflows.
 - [Mercurial](https://www.mercurial-scm.org/) - Free distributed source control management tool for projects of any size.
 
 ## Contributing
