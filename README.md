@@ -4,7 +4,7 @@
 
 A curated list of **Alt Clouds** — non-hyperscale cloud providers delivering specialized infrastructure and services.
 
-Alt Clouds provide value ”as a service“ directly on top of infrastructure. They cater to specific workloads, compliance requirements, and developer needs, offering transparency, automation, and critical services with public SLAs.
+Alt Clouds provide value "as a service" directly on top of infrastructure. They cater to specific workloads, compliance requirements, and developer needs, offering transparency, automation, and critical services with public SLAs.
 
 ## Contents
 
@@ -34,7 +34,7 @@ This list is currently expansive and inclusive. Over time, we'd like to see it g
 
 ## Infrastructure Clouds
 
-The original ”alt clouds“ providing everything from virtualized and bare metal compute to GPU's, storage, and inference services.
+The original "alt clouds" providing everything from virtualized and bare metal compute to GPU's, storage, and inference services.
 
 - [Atlantic.net](https://www.atlantic.net/) - Experienced hosting company offering a variety of compute and GPU infrastructure services.
 - [Aethir](https://aethir.com) - Provides secure, cost-effective access to enterprise-grade GPUs worldwide through a distributed cloud compute infrastructure.
@@ -322,6 +322,7 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 
 Cloud-based platforms for creating, testing, and shipping software, including for infrastructure automation.
 
+- [Anything](https://www.createanything.com/) - AI app builder that creates iOS, Android, and web apps through natural language prompts.
 - [Coder](https://coder.com/) - Offers self-hosted cloud development environments that provision and manage workspaces, enabling developers to code from anywhere with enhanced security and scalability.
 - [Coolify](https://coolify.io/) - An open-source and self-hostable alternative to platforms like Heroku and Netlify, enabling management of servers, applications, and databases on your own hardware.
 - [CopilotKit](https://www.copilotkit.ai/) - Open-source framework and infrastructure for building in-app AI copilots and agents.
