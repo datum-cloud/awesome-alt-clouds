@@ -54,6 +54,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Cohere](https://cohere.com/) - Enterprise AI platform with language models for automation, data insights, and custom solutions.
 - [Coherently.ai](https://www.coherently.ai/) - Cloud infrastructure designed specifically for high-performance applications.
 - [CoreWeave](https://www.coreweave.com/) - A cloud platform optimized for AI, offering high-performance GPU compute and managed services.
+- [Crusoe Energy](https://crusoecloud.com/) - Energy-efficient GPU computing using stranded and renewable energy sources.
 - [Cudo Compute](https://www.cudocompute.com/) - Offers decentralized cloud computing with GPU support for AI applications.
 - [Cycle.io](https://cycle.io/) - Provides a container orchestration platform for deploying applications.
 - [Datacrunch.io](https://datacrunch.io/) - Provides affordable GPU cloud services for AI training and inference.
@@ -206,6 +207,7 @@ Services for data storage, processing, analytics, and observability.
 - [ElectricSQL](https://electric-sql.com/) - Electric is a PostgresSQL sync engine. that solves things like partial replication, fan-out, and data delivery.
 - [Firebolt](https://www.firebolt.io/) - Delivers a cloud data warehouse designed for high-performance analytics.
 - [FullStory](https://www.fullstory.com/) - Offers digital experience analytics to understand and improve user interactions.
+- [Gel](https://www.geldata.com/) - Next-generation graph-relational database with modern query language.
 - [Grafana](https://grafana.com/) - An open-source platform for monitoring and observability, enabling visualization of metrics, logs, and traces.
 - [HarperDB](https://www.harperdb.io/) - Provides a distributed database with built-in REST API for edge computing and real-time applications.
 - [Hasura](https://hasura.io/) - Instantly generates GraphQL APIs over new or existing PostgresSQL databases.
@@ -217,6 +219,7 @@ Services for data storage, processing, analytics, and observability.
 - [LogRocket](https://logrocket.com/) - Replays user sessions to help developers understand and fix issues faster.
 - [Logz.io](https://logz.io/) - Offers an open-source observability platform for monitoring, troubleshooting, and securing applications.
 - [Mezmo](https://www.mezmo.com/) - Provides a central observability platform to control, enrich, and correlate machine data for faster business decisions.
+- [Materialize](https://materialize.com/) - Streaming SQL database for real-time data transformation and analytics.
 - [Mixpanel](https://mixpanel.com/) - Delivers product analytics to help teams build better products through data-driven decisions.
 - [Mixpeek](http://mixpeek.com/) - A multimodal data platform that indexes and semantically retrieves videos, images, audio, and documents using AI-native infrastructure.
 - [MongoDB](https://www.mongodb.com/) - Offers a general-purpose, document-based database designed for modern application development.
@@ -231,11 +234,14 @@ Services for data storage, processing, analytics, and observability.
 - [Redis](https://redis.io/) - An in-memory data structure store used as a database, cache, and message broker.
 - [Snowflake](https://www.snowflake.com/en/) - A cloud data platform offering data warehousing, data lakes, and data sharing capabilities.
 - [Splunk](https://www.splunk.com/) - Provides a platform for searching, monitoring, and analyzing machine-generated big data.
+- [Steampipe](https://steampipe.io/) - Query APIs and cloud services using SQL with instant data access.
 - [Sumo Logic](https://www.sumologic.com/) - Offers cloud-native machine data analytics for real-time insights into operations and security.
 - [Supabase](https://supabase.com/) - An open-source Firebase alternative that provides a backend-as-a-service.
+- [SurrealDB](https://surrealdb.com/) - Multi-model database for web, mobile, serverless, and cloud applications.
 - [Teradata](https://www.teradata.com/) - Specializing in providing solutions for data warehousing, analytics, and big data analytics.
 - [TigerData](https://www.tigerdata.com/) - PostgreSQL-based time-series database with compression and continuous aggregates.
 - [Tigris](https://www.tigrisdata.com/) - A globally distributed S3-compatible object storage service that enables developers to store and access any amount of data.
+- [Turso](https://turso.tech/) - Distributed SQLite database with global edge replication.
 - [Zymtrace](https://www.zymtrace.com/) - A continuous profiling solution that provides deep, actionable insights into CPU & GPU-bound applications and inference.
 
 ## Workflow and Operations Clouds
@@ -244,6 +250,7 @@ Services that provide tools for asset tracking, workflow automation, and automat
 
 - [Causely](https://www.causely.ai/) - Autonomous reliability, built for the cloud native era.
 - [Inngest](https://www.inngest.com/) - A platform for AI and backend workflows that helps developers build AI-ready step functions without touching infrastructure.
+- [Kestra](https://kestra.io/) - Open-source orchestration platform for event-driven workflows.
 - [Mergent](https://mergent.co/) - A fully-managed task queue for applications in any language that allows you to scale to billions of tasks with zero infrastructure.
 - [n8n](https://n8n.io/) - An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor.
 - [NeuBird](https://neubird.ai/) - An autonomous AI SRE platform.
@@ -254,6 +261,7 @@ Services that provide tools for asset tracking, workflow automation, and automat
 - [Ryvn](https://ryvn.ai/) - BYOC deployment platform for SaaS startups in customer clouds and on-premises.
 - [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
 - [Temporal](https://temporal.io/) - Durable execution platform for reliable workflows with automatic failure recovery.
+- [Windmill](https://www.windmill.dev/) - Open-source workflow engine and developer platform for automation.
 - [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
 
 
@@ -263,6 +271,7 @@ Services for managing network workloads, including acceleration, security, and c
 
 - [Akamai](https://www.akamai.com/) - A global content delivery and cybersecurity platform that helps secure and accelerate digital experiences at the edge.
 - [Aviatrix](https://aviatrix.com/) - Provides a cloud-native networking platform with advanced multi-cloud transit, security, and observability features.
+- [Boundary](https://www.boundaryproject.io/) - HashiCorp's secure remote access to systems and services.
 - [Cloudbrink](https://cloudbrink.com/) - Delivers hybrid access-as-a-service with high-performance connectivity, zero trust security, and edge-native networking for remote users.
 - [Cloudflare](https://www.cloudflare.com/) - Protects and accelerates websites and apps through global CDN, DDoS mitigation, Zero Trust access, and DNS services.
 - [CrowdStrike](https://www.crowdstrike.com/) - A cloud-native cybersecurity platform that provides endpoint protection, threat intelligence, and incident response powered by AI.
@@ -306,6 +315,7 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [DeepAI](https://deepai.org/) - Offers a suite of open AI APIs for developers, including text, image, and moderation tools.
 - [Deepseek](https://deepseek.com/) - Provides developer tools and research models for AI-powered coding, content generation, and reasoning tasks.
 - [Elicit](https://elicit.org/) - An AI research assistant that helps automate tasks like literature reviews and hypothesis testing for academics and researchers.
+- [Gadget](https://gadget.dev/) - Full-stack framework with built-in database, auth, and deployment.
 - [GitHub Copilot](https://github.com/features/copilot) - An AI-powered coding assistant developed by GitHub and OpenAI that suggests code snippets as you type.
 - [HopeAI](https://hopeai.org/) - Builds AI products for societal benefit, including mental health tools and ethical AI initiatives.
 - [Lovable.dev](https://lovable.dev/) - Turns natural language prompts into real software applications with a focus on developer friendliness and speed.
@@ -313,9 +323,12 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [Playground](https://playground.com/) - A tool for exploring and experimenting with generative AI across text, code, and image generation.
 - [Poe](https://poe.com/) - A multi-AI chat interface by Quora that enables access to models like Claude, GPT-4, and more in one app.
 - [Prismic](https://prismic.io/) - A headless CMS for developers to build and manage dynamic websites using modern frameworks and custom content APIs.
+- [Replit](https://replit.com/) - Collaborative browser IDE with instant deployment and multiplayer coding.
 - [Retool](https://retool.com/) - A low-code platform to build custom internal tools quickly with pre-built components and database integrations.
 - [Softgen](https://softgen.ai/) - Provides tools to automatically generate code, documentation, and tests to speed up software delivery.
+- [StackBlitz](https://stackblitz.com/) - Instant full-stack dev environments running entirely in the browser.
 - [Surfer AI](https://surferseo.com/ai/) - Uses AI to generate SEO-optimized content and blog articles with built-in search analysis tools.
+- [Val Town](https://www.val.town/) - Write and run TypeScript/JavaScript in the cloud with social features.
 - [Windsurf](https://windsurf.com/) - An AI powered coding engine and IDE that is an alternative to GitHub Copilot. Formerly Codeium.
 
 ## Developer Happiness Clouds
@@ -355,6 +368,7 @@ Services that provide authentication, authorization, identity management, and fr
 - [Auth0](https://auth0.com/) - A flexible, drop-in solution to add authentication and authorization services to applications, now part of Okta.
 - [Authzed](https://authzed.com/) - Provides fine-grained, scalable authorization as a service, built on the open-source SpiceDB.
 - [Bolster](https://bolster.ai/) - A platform for preventing and mitigrating phishing and impersonation scams.
+- [Cerbos](https://cerbos.dev/) - Open-source authorization with policy-as-code for access control.
 - [Clerk](https://clerk.com/) - Offers a complete suite of embeddable UIs and APIs for user authentication and management.
 - [Duo](https://duo.com/) - Provides multi-factor authentication and secure access solutions to protect users, data, and applications.
 - [Descope](https://www.descope.com/) - An authentication and user manage platform that offers low-code and no-code options.
@@ -363,7 +377,9 @@ Services that provide authentication, authorization, identity management, and fr
 - [JumpCloud](https://jumpcloud.com/) - Offers a cloud directory platform for secure identity, access, and device management across various operating systems.
 - [Keet](https://www.trykeet.com/) - Provides authentication solutions for AI agents, enabling them to perform actions on behalf of users across various platforms.
 - [Keycloak](https://www.keycloak.org/) - An open-source identity and access management solution for modern applications and services.
+- [Magic](https://magic.link/) - Passwordless authentication using magic links and social logins.
 - [Permit](https://www.permit.io/) - Authorization-as-a-Service platform for baking-in access control in minutes.
+- [PropelAuth](https://www.propelauth.com/) - B2B authentication and user management for multi-tenant apps.
 - [Ory](https://www.ory.sh/) - Offers open-source identity infrastructure for authentication, authorization, and user management.
 - [Sift Science](https://sift.com/) - Utilizes machine learning to provide real-time fraud detection and prevention solutions.
 - [Stytch](https://stytch.com/) - Provides APIs and SDKs for passwordless authentication, including email magic links, SMS passcodes, and biometrics.
@@ -385,10 +401,12 @@ Services that provide billing, subscription management, legal and other services
 - [Metronome](https://metronome.com/) - Offers a usage-based billing platform that simplifies billing operations and supports various pricing models.
 - [N26](https://n26.com/en-us) - A 100% mobile bank that's trusted by millions of customers across Europe.
 - [Omnea](https://www.omnea.co/) - AI-native procurement orchestration platform for spend control and supplier management.
+- [OpenMeter](https://openmeter.io/) - Open-source usage metering for consumption-based billing.
 - [Orb](https://www.withorb.com/) - Delivers a usage-based subscription management platform that enables flexible pricing and seamless billing.
 - [Paid](https://paid.ai/) - Cost tracking and billing platform for AI agents with margin optimization and ROI tracking.
 - [Recurly](https://recurly.com/) - Provides subscription management software and recurring billing solutions for businesses of all sizes.
 - [Rillet](https://www.rillet.com/) - An AI-native ERP automating accounting that offers a source of truth for both GAAP financials and investor metrics.
+- [Schematic](https://schematichq.com/) - Feature flags and entitlements for product monetization.
 - [Stripe](https://stripe.com/) - A financial infrastructure platform that enables businesses to accept payments, manage subscriptions, and handle billing operations.
 - [Togai](https://www.togai.com/) - Provides billing infrastructure for usage-based pricing, supporting complex billing scenarios with real-time analytics.
 - [Visa](https://usa.visa.com/) - A payments network that connects consumers, businesses, financial institutions, and governments.
@@ -432,6 +450,7 @@ Services that provide connectivity, device management, and communication solutio
 Decentralized clouds built on Layer 1 blockchains that focus on inference, compute, and model training.
 
 - [Akash Network](https://akash.network/) - Providing access to compute at prices up to 85% lower than hyperscale cloud providers.
+- [DoubleZero](https://doublezero.xyz/) - Global fiber network infrastructure layer for high-performance distributed systems and blockchains.
 - [Templar](https://www.tplr.ai/) - A Bittensor subnet that  nables large-scale model training across heterogeneous compute resources over the internet.
 - [Targon](https://targon.com/) - A Bittensor subnet that supports TEE-based inference of models and model training. 
 - [Celium](https://celiumcompute.ai/) - A Bittensor subnet that offers a GPU rental marketplace.
