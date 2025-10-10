@@ -210,6 +210,7 @@ Services for data storage, processing, analytics, and observability.
 - [FullStory](https://www.fullstory.com/) - Offers digital experience analytics to understand and improve user interactions.
 - [Gel](https://www.geldata.com/) - Next-generation graph-relational database with modern query language.
 - [Grafana](https://grafana.com/) - An open-source platform for monitoring and observability, enabling visualization of metrics, logs, and traces.
+- [groundcover](https://www.groundcover.com/) - eBPF-based observability platform with BYOC architecture for logs, metrics, and traces.
 - [HarperDB](https://www.harperdb.io/) - Provides a distributed database with built-in REST API for edge computing and real-time applications.
 - [Hasura](https://hasura.io/) - Instantly generates GraphQL APIs over new or existing PostgresSQL databases.
 - [Heap](https://heap.io/) - Automatically captures user interactions to provide insights into user behavior without manual tracking.
@@ -290,6 +291,7 @@ Services for managing network workloads, including acceleration, security, and c
 - [Netskope](https://www.netskope.com/) - A cloud-native security platform that protects users, apps, and data with visibility and control across SaaS, IaaS, and the web.
 - [Operant](https://operant.ai/) - Provides runtime protection for cloud-native applications using graph-based detection and real-time observability.
 - [Qpoint](https://qpoint.io/) - A cloud runtime and egress security platform that provides visibility into encrypted traffic.
+- [Pangolin](https://digpangolin.com/) - Secure app exposure via WireGuard tunnels with identity-aware access control.
 - [Pinggy](https://pinggy.io/) - SSH-based tunneling service to expose localhost via secure URLs for HTTP, TCP, and UDP.
 - [Stelia](https://stelia.io/) - A data mobility platform for high-performance AI and cloud workloads, enabling fast, secure, and location-aware file transport.
 - [Shasta](https://shasta.cloud/) - An open WiFi and local Connectivity cloud supporting open hardware and software standards for full stack on site connecitivty and security solutions.
@@ -473,8 +475,18 @@ Track and manage source code changes over time using a version control system (V
 
 Services and tools that complement cloud infrastructure but aren't cloud services themselves—including development tools, protocols, standards, and software that enhance or integrate with cloud platforms.
 
+- [ArgoCD](https://argo-cd.readthedocs.io/) - Declarative GitOps continuous delivery tool for Kubernetes.
+- [Cilium](https://cilium.io/) - eBPF-based cloud-native networking, observability, and security.
+- [Crossplane](https://www.crossplane.io/) - Cloud-native control plane framework for managing infrastructure.
+- [Envoy](https://www.envoyproxy.io/) - Cloud-native high-performance edge and service proxy.
+- [Flux](https://fluxcd.io/) - GitOps toolkit for keeping Kubernetes clusters in sync with Git repos.
+- [Helm](https://helm.sh/) - Package manager for Kubernetes with templated application deployment.
+- [Inlets](https://inlets.dev/) - Private, self-hosted TCP or HTTPS tunnels with no bandwidth or rate-limits.
+- [Istio](https://istio.io/) - Open-source service mesh for microservices with traffic management.
 - [Mercurial](https://www.mercurial-scm.org/) - Free distributed source control management tool for projects of any size.
 - [ngrok](https://ngrok.com/) - Securely tunnels local services to the public internet, ideal for testing webhooks, building with APIs, or sharing local development environments.
+- [OpenTofu](https://opentofu.org/) - Open-source Terraform fork for declarative infrastructure management.
+- [Pulumi](https://www.pulumi.com/) - Infrastructure as code using TypeScript, Python, Go, and other languages.
 - [Solo.io](https://www.solo.io/) - Unified platform for API gateways, service mesh, and agentic AI on Kubernetes.
 - [Tetrate](https://tetrate.io/) - Service mesh and AI model routing platform for enterprise Kubernetes environments.
 
