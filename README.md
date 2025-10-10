@@ -23,6 +23,7 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 - [IoT, Communications, and Media Clouds](#iot-communications-and-media-clouds)
 - [Blockchain Clouds](#blockchain-clouds)
 - [Source Code Control](#source-code-control)
+- [Cloud Adjacent](#cloud-adjacent)
 
 ## Criteria
 
@@ -209,6 +210,7 @@ Services for data storage, processing, analytics, and observability.
 - [FullStory](https://www.fullstory.com/) - Offers digital experience analytics to understand and improve user interactions.
 - [Gel](https://www.geldata.com/) - Next-generation graph-relational database with modern query language.
 - [Grafana](https://grafana.com/) - An open-source platform for monitoring and observability, enabling visualization of metrics, logs, and traces.
+- [groundcover](https://www.groundcover.com/) - eBPF-based observability platform with BYOC architecture for logs, metrics, and traces.
 - [HarperDB](https://www.harperdb.io/) - Provides a distributed database with built-in REST API for edge computing and real-time applications.
 - [Hasura](https://hasura.io/) - Instantly generates GraphQL APIs over new or existing PostgresSQL databases.
 - [Heap](https://heap.io/) - Automatically captures user interactions to provide insights into user behavior without manual tracking.
@@ -280,14 +282,17 @@ Services for managing network workloads, including acceleration, security, and c
 - [Fastly](https://www.fastly.com/) - An edge cloud platform designed for performance and security, enabling developers to build faster, more secure digital experiences.
 - [Fortinet](https://www.fortinet.com/) - Provides integrated cybersecurity solutions including next-gen firewalls, secure SD-WAN, and endpoint protection.
 - [Kong](https://konghq.com/) - An open-source API gateway and microservices management layer that provides traffic control, security, and observability for APIs.
+- [LocalCan](https://www.localcan.com/) - Local .local domains and persistent public URLs for testing localhost apps and webhooks.
+- [LocalXpose](https://localxpose.io/) - Secure tunneling service supporting HTTP, TLS, TCP, UDP with custom domains and SSL.
 - [Macrometa](https://www.macrometa.com/) - An edge delivery network and developer platform built for real-time use cases.
 - [Megaport](https://www.megaport.com/) - Offers elastic interconnection services that allow businesses to rapidly connect to cloud providers, data centers, and networks.
 - [NetBox Cloud](https://netboxlabs.com/netbox-cloud/) - A managed solution for network infrastructure modeling and documentation, providing a scalable and secure platform for network automation.
 - [Netmaker](https://netmaker.io/) - A WireGuard-based virtual networking platform that enables fast, secure, and scalable networking for devices and distributed systems.
 - [Netskope](https://www.netskope.com/) - A cloud-native security platform that protects users, apps, and data with visibility and control across SaaS, IaaS, and the web.
-- [ngrok](https://ngrok.com/) - Securely tunnels local services to the public internet, ideal for testing webhooks, building with APIs, or sharing local development environments.
 - [Operant](https://operant.ai/) - Provides runtime protection for cloud-native applications using graph-based detection and real-time observability.
 - [Qpoint](https://qpoint.io/) - A cloud runtime and egress security platform that provides visibility into encrypted traffic.
+- [Pangolin](https://digpangolin.com/) - Secure app exposure via WireGuard tunnels with identity-aware access control.
+- [Pinggy](https://pinggy.io/) - SSH-based tunneling service to expose localhost via secure URLs for HTTP, TCP, and UDP.
 - [Stelia](https://stelia.io/) - A data mobility platform for high-performance AI and cloud workloads, enabling fast, secure, and location-aware file transport.
 - [Shasta](https://shasta.cloud/) - An open WiFi and local Connectivity cloud supporting open hardware and software standards for full stack on site connecitivty and security solutions.
 - [Tailscale](https://tailscale.com/) - A zero-config VPN built on WireGuard that makes secure networking between devices as easy as logging in.
@@ -465,7 +470,25 @@ Track and manage source code changes over time using a version control system (V
 - [Gitea](https://about.gitea.com/) - Self-hosted Git service with CI/CD, code review, and issue tracking features.
 - [Gitea Cloud](https://about.gitea.com/products/cloud/) - Single-tenant managed Git hosting with built-in CI/CD and private isolated environments.
 - [GitLab](https://gitlab.com/) - Managed Git hosting with CI/CD and integrated privacy-first AI workflows.
+
+## Cloud Adjacent
+
+Services and tools that complement cloud infrastructure but aren't cloud services themselves—including development tools, protocols, standards, and software that enhance or integrate with cloud platforms.
+
+- [ArgoCD](https://argo-cd.readthedocs.io/) - Declarative GitOps continuous delivery tool for Kubernetes.
+- [Cilium](https://cilium.io/) - eBPF-based cloud-native networking, observability, and security.
+- [Crossplane](https://www.crossplane.io/) - Cloud-native control plane framework for managing infrastructure.
+- [Envoy](https://www.envoyproxy.io/) - Cloud-native high-performance edge and service proxy.
+- [Flux](https://fluxcd.io/) - GitOps toolkit for keeping Kubernetes clusters in sync with Git repos.
+- [Helm](https://helm.sh/) - Package manager for Kubernetes with templated application deployment.
+- [Inlets](https://inlets.dev/) - Private, self-hosted TCP or HTTPS tunnels with no bandwidth or rate-limits.
+- [Istio](https://istio.io/) - Open-source service mesh for microservices with traffic management.
 - [Mercurial](https://www.mercurial-scm.org/) - Free distributed source control management tool for projects of any size.
+- [ngrok](https://ngrok.com/) - Securely tunnels local services to the public internet, ideal for testing webhooks, building with APIs, or sharing local development environments.
+- [OpenTofu](https://opentofu.org/) - Open-source Terraform fork for declarative infrastructure management.
+- [Pulumi](https://www.pulumi.com/) - Infrastructure as code using TypeScript, Python, Go, and other languages.
+- [Solo.io](https://www.solo.io/) - Unified platform for API gateways, service mesh, and agentic AI on Kubernetes.
+- [Tetrate](https://tetrate.io/) - Service mesh and AI model routing platform for enterprise Kubernetes environments.
 
 ## Contributing
 
