@@ -229,6 +229,7 @@ Services for data storage, processing, analytics, and observability.
 - [Neo4j](https://neo4j.com/) - A graph database platform for connected data applications.
 - [New Relic](https://newrelic.com/) - An observability platform that unifies metrics, events, logs, and traces for full-stack monitoring.
 - [nMachine](https://www.nmachine.io/) - Observability that brings together every signal, from OpenTelemetry to Git to spend, in one data lake.
+- [OpenStatus](https://www.openstatus.dev/) - Open-source status page and monitoring platform for tracking API and website uptime worldwide.
 - [Planetscale](https://planetscale.com/) - A serverless database platform built on Vitess, offering scalability and reliability for MySQL databases.
 - [PostHog](https://posthog.com/) - An open-source product analytics platform that can be deployed on-premises.
 - [Prisma](https://www.prisma.io/) - Provides a next-generation ORM for Node.js and TypeScript.
@@ -251,8 +252,10 @@ Services for data storage, processing, analytics, and observability.
 Services that provide tools for asset tracking, workflow automation, and automated resolution to enhance operational efficiency.
 
 - [Causely](https://www.causely.ai/) - Autonomous reliability, built for the cloud native era.
+- [Fastn](https://fastn.ai/) - AI-powered embedded integration platform for building unified APIs from multiple data sources.
 - [Inngest](https://www.inngest.com/) - A platform for AI and backend workflows that helps developers build AI-ready step functions without touching infrastructure.
 - [Kestra](https://kestra.io/) - Open-source orchestration platform for event-driven workflows.
+- [Layer 9](https://layer9.com/) - AI network engineer that configures, monitors, and repairs network devices with 24/7 automation.
 - [Mergent](https://mergent.co/) - A fully-managed task queue for applications in any language that allows you to scale to billions of tasks with zero infrastructure.
 - [n8n](https://n8n.io/) - An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor.
 - [NeuBird](https://neubird.ai/) - An autonomous AI SRE platform.
@@ -262,6 +265,7 @@ Services that provide tools for asset tracking, workflow automation, and automat
 - [Resolve.ai](https://resolve.ai/) - An agentic AI SRE from the co-creators of OpenTelemetry.
 - [Ryvn](https://ryvn.ai/) - BYOC deployment platform for SaaS startups in customer clouds and on-premises.
 - [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
+- [Supertrace AI](https://supertrace.ai/) - AI-powered network engineer platform for automating IT network management and infrastructure operations.
 - [Temporal](https://temporal.io/) - Durable execution platform for reliable workflows with automatic failure recovery.
 - [Windmill](https://www.windmill.dev/) - Open-source workflow engine and developer platform for automation.
 - [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
@@ -272,6 +276,7 @@ Services that provide tools for asset tracking, workflow automation, and automat
 Services for managing network workloads, including acceleration, security, and connectivity.
 
 - [Akamai](https://www.akamai.com/) - A global content delivery and cybersecurity platform that helps secure and accelerate digital experiences at the edge.
+- [Approximated](https://approximated.app/) - Custom domain proxy platform with global edge servers, SSL management, and DDoS protection.
 - [Aviatrix](https://aviatrix.com/) - Provides a cloud-native networking platform with advanced multi-cloud transit, security, and observability features.
 - [Boundary](https://www.boundaryproject.io/) - HashiCorp's secure remote access to systems and services.
 - [Cloudbrink](https://cloudbrink.com/) - Delivers hybrid access-as-a-service with high-performance connectivity, zero trust security, and edge-native networking for remote users.
@@ -374,6 +379,7 @@ Services that provide authentication, authorization, identity management, and fr
 - [Authzed](https://authzed.com/) - Provides fine-grained, scalable authorization as a service, built on the open-source SpiceDB.
 - [Bolster](https://bolster.ai/) - A platform for preventing and mitigrating phishing and impersonation scams.
 - [Cerbos](https://cerbos.dev/) - Open-source authorization with policy-as-code for access control.
+- [CipherStash](https://cipherstash.com/) - Zero-trust encryption platform with searchable encryption, identity-based access control, and real-time audit trails.
 - [Clerk](https://clerk.com/) - Offers a complete suite of embeddable UIs and APIs for user authentication and management.
 - [Duo](https://duo.com/) - Provides multi-factor authentication and secure access solutions to protect users, data, and applications.
 - [Descope](https://www.descope.com/) - An authentication and user manage platform that offers low-code and no-code options.
@@ -438,6 +444,7 @@ Services that help businesses build and track relationships with users and custo
 
 Services that provide connectivity, device management, and communication solutions for Internet of Things (IoT) applications.
 
+- [Cap](https://cap.so/) - Open-source screen recording platform with cloud sharing and custom S3 storage support.
 - [1NCE](https://www.1nce.com/en-us/) - Offers flat-rate global cellular connectivity for IoT devices, including SIM management and low-bandwidth data plans designed for scale.
 - [Hologram](https://www.hologram.io/) - Provides global IoT SIM cards and eUICC technology with a cloud-native dashboard for managing devices and data usage across carriers.
 - [Mux](https://www.mux.com) - Solves the hard problems software teams face when building video, from live-streaming platforms to on-demand video catalogs and anything in between.
