@@ -199,6 +199,7 @@ Services for data storage, processing, analytics, and observability.
 - [Cloudera](https://www.cloudera.com/) - Provides a hybrid data platform for managing and analyzing data across on-premises and cloud environments.
 - [Cockroach Labs](https://www.cockroachlabs.com/) - Develops CockroachDB, a distributed SQL database for building global, scalable cloud services.
 - [Coralogix](https://coralogix.com/) - Ingest all your data, store it indefinitely on your cloud, and query across all types with a unified syntax.
+- [Convex](https://www.convex.dev/) - Reactive backend platform with real-time database and serverless functions.
 - [Couchbase](https://www.couchbase.com/) - Offers a distributed NoSQL cloud database for mission-critical applications.
 - [Databricks](https://www.databricks.com/) - Provides a unified analytics platform for big data and AI, built on Apache Spark.
 - [Datadog](https://www.datadoghq.com/) - A monitoring and security platform for cloud applications.
@@ -272,10 +273,12 @@ Services that provide tools for asset tracking, workflow automation, and automat
 - [Parahelp](https://parahelp.com/) - AI support agent that automates complex customer support tickets end-to-end for software companies.
 - [Prefect](https://www.prefect.io/) - Workflow orchestration framework for building resilient data pipelines in Python.
 - [Resolve.ai](https://resolve.ai/) - An agentic AI SRE from the co-creators of OpenTelemetry.
+- [Rewst](https://rewst.io/) - No-code automation platform for security operations and IT workflows.
 - [Ryvn](https://ryvn.ai/) - BYOC deployment platform for SaaS startups in customer clouds and on-premises.
 - [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
 - [Supertrace AI](https://supertrace.ai/) - AI-powered network engineer platform for automating IT network management and infrastructure operations.
 - [Temporal](https://temporal.io/) - Durable execution platform for reliable workflows with automatic failure recovery.
+- [Tines](https://www.tines.com/) - No-code automation platform for security operations and IT workflows.
 - [Windmill](https://www.windmill.dev/) - Open-source workflow engine and developer platform for automation.
 - [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
 
@@ -345,10 +348,12 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [HopeAI](https://hopeai.org/) - Builds AI products for societal benefit, including mental health tools and ethical AI initiatives.
 - [Laminar](https://laminar.sh/) - Observability and analytics platform for LLM applications.
 - [Lovable.dev](https://lovable.dev/) - Turns natural language prompts into real software applications with a focus on developer friendliness and speed.
+- [Marblism](https://www.marblism.com/) - Generate full-stack web apps from a single prompt.
 - [Perplexity](https://www.perplexity.ai/) - An AI-native search engine that answers questions with citations and real-time data.
 - [Playground](https://playground.com/) - A tool for exploring and experimenting with generative AI across text, code, and image generation.
 - [Poe](https://poe.com/) - A multi-AI chat interface by Quora that enables access to models like Claude, GPT-4, and more in one app.
 - [Prismic](https://prismic.io/) - A headless CMS for developers to build and manage dynamic websites using modern frameworks and custom content APIs.
+- [Pythagora](https://pythagora.ai/) - AI dev tool that builds production-ready apps through conversation.
 - [Replit](https://replit.com/) - Collaborative browser IDE with instant deployment and multiplayer coding.
 - [Retool](https://retool.com/) - A low-code platform to build custom internal tools quickly with pre-built components and database integrations.
 - [Softgen](https://softgen.ai/) - Provides tools to automatically generate code, documentation, and tests to speed up software delivery.
@@ -367,6 +372,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Coolify](https://coolify.io/) - An open-source and self-hostable alternative to platforms like Heroku and Netlify, enabling management of servers, applications, and databases on your own hardware.
 - [CopilotKit](https://www.copilotkit.ai/) - Open-source framework and infrastructure for building in-app AI copilots and agents.
 - [Daytona](https://www.daytona.io/) - Provides lightning-fast, secure infrastructure for running AI-generated code, with 200ms environment creation and isolated runtime protection.
+- [Deno Deploy](https://deno.com/deploy) - Globally distributed edge platform for JavaScript and TypeScript serverless apps.
 - [DevZero](https://www.devzero.io/) - Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.
 - [Empromptu](https://empromptu.ai/) - No-code AI application builder with embedded models and production infrastructure.
 - [FastMCP Cloud](https://fastmcp.cloud/) -  Zero-config MCP server deployment platform for modern AI development workflows.
@@ -386,6 +392,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Release](https://release.com/) - Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.
 - [Roboflow](https://roboflow.com/) - Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.
 - [Robovision](https://robovision.ai/) - Provides a computer vision AI platform for smart automation, capturing industrial data and optimizing intelligence to reveal untapped value.
+- [Shuttle](https://www.shuttle.dev/) - Rust-native cloud platform for building and deploying backend services.
 - [Tabnine](https://www.tabnine.com/) - AI code assistant with private model options.
 - [Ubicloud](https://www.ubicloud.com/) - An open-source cloud platform that can run anywhere, offering IaaS features on bare metal providers with options for self-hosting or managed services.
 - [Zed](https://zed.dev/) - High-performance collaborative code editor (cloud features).
@@ -411,12 +418,14 @@ Services that provide authentication, authorization, identity management, and fr
 - [Keycard](https://www.keycard.sh/) - Identity infrastructure for AI agents with dynamic access controls, MCP/A2A support, and audit trails.
 - [Keycloak](https://www.keycloak.org/) - An open-source identity and access management solution for modern applications and services.
 - [Magic](https://magic.link/) - Passwordless authentication using magic links and social logins.
+- [Oso](https://www.osohq.com/) - Authorization framework with policy-as-code (now part of Netflix).
 - [Pangea](https://pangea.cloud/) - Security services API platform for auth, vault, audit, and more.
 - [Permit](https://www.permit.io/) - Authorization-as-a-Service platform for baking-in access control in minutes.
 - [PropelAuth](https://www.propelauth.com/) - B2B authentication and user management for multi-tenant apps.
 - [Ory](https://www.ory.sh/) - Offers open-source identity infrastructure for authentication, authorization, and user management.
 - [Sift Science](https://sift.com/) - Utilizes machine learning to provide real-time fraud detection and prevention solutions.
 - [Stytch](https://stytch.com/) - Provides APIs and SDKs for passwordless authentication, including email magic links, SMS passcodes, and biometrics.
+- [Topaz](https://www.topaz.sh/) - Open-source authorization service from Aserto team.
 - [Warrant](https://warrant.dev/) - Authorization and access control as a service.
 - [WorkOS](https://workos.com/) - Offers enterprise-ready authentication solutions, including single sign-on and directory synchronization.
 - [Xpander.ai](http://xpander.ai/) - Backend-as-a-Service for AI agents with managed hosting and function libraries.
@@ -473,10 +482,12 @@ Services that provide connectivity, device management, and communication solutio
 - [Cap](https://cap.so/) - Open-source screen recording platform with cloud sharing and custom S3 storage support.
 - [1NCE](https://www.1nce.com/en-us/) - Offers flat-rate global cellular connectivity for IoT devices, including SIM management and low-bandwidth data plans designed for scale.
 - [Hologram](https://www.hologram.io/) - Provides global IoT SIM cards and eUICC technology with a cloud-native dashboard for managing devices and data usage across carriers.
+- [Knock](https://knock.app/) - Notification infrastructure with workflows, preferences, and delivery channels.
 - [Mux](https://www.mux.com) - Solves the hard problems software teams face when building video, from live-streaming platforms to on-demand video catalogs and anything in between.
 - [Onomondo](https://onomondo.com/) - A full-stack connectivity platform for IoT with a single global SIM, advanced network control, and transparent pricing.
 - [Particle](https://www.particle.io/) - An integrated IoT platform offering hardware, firmware, and cloud connectivity tools for building and scaling connected products.
 - [Qubitro](https://www.qubitro.com/) - A device-to-cloud data platform for IoT that helps developers collect, analyze, and act on sensor data with minimal setup.
+- [Novu](https://novu.co/) - Open-source notification infrastructure for multi-channel messaging.
 - [Resend](https://resend.com/) - Email for developers who want to deliver transactional and marketing emails at scale.
 - [Samsara](https://www.samsara.com/) - Provides IoT solutions for connected operations, including GPS tracking, fleet management, and industrial monitoring.
 - [Soracom](https://soracom.io/) - Delivers cellular connectivity and edge services for IoT deployments, with APIs and billing tailored to developers and startups.
@@ -509,12 +520,15 @@ Track and manage source code changes over time using a version control system (V
 Services and tools that complement cloud infrastructure but aren't cloud services themselves—including development tools, protocols, standards, and software that enhance or integrate with cloud platforms.
 
 - [ArgoCD](https://argo-cd.readthedocs.io/) - Declarative GitOps continuous delivery tool for Kubernetes.
+- [Backstage](https://backstage.io/) - Open platform for building developer portals and service catalogs.
+- [Buildpacks](https://buildpacks.io/) - CNCF project that transforms source code into OCI container images without Dockerfiles.
 - [Cilium](https://cilium.io/) - eBPF-based cloud-native networking, observability, and security.
 - [Crossplane](https://www.crossplane.io/) - Cloud-native control plane framework for managing infrastructure.
 - [Devbox](https://www.jetify.com/devbox) - Portable, isolated dev environments with Nix.
 - [DevPod](https://devpod.sh/) - Open-source dev environment manager supporting any cloud.
 - [Envoy](https://www.envoyproxy.io/) - Cloud-native high-performance edge and service proxy.
 - [Flux](https://fluxcd.io/) - GitOps toolkit for keeping Kubernetes clusters in sync with Git repos.
+- [Garden](https://garden.io/) - DevOps automation for Kubernetes with live reloading and testing.
 - [Helm](https://helm.sh/) - Package manager for Kubernetes with templated application deployment.
 - [Inlets](https://inlets.dev/) - Private, self-hosted TCP or HTTPS tunnels with no bandwidth or rate-limits.
 - [Istio](https://istio.io/) - Open-source service mesh for microservices with traffic management.
@@ -526,6 +540,7 @@ Services and tools that complement cloud infrastructure but aren't cloud service
 - [Solo.io](https://www.solo.io/) - Unified platform for API gateways, service mesh, and agentic AI on Kubernetes.
 - [Spin](https://www.fermyon.com/spin) - Open-source framework for building WebAssembly microservices.
 - [Tetrate](https://tetrate.io/) - Service mesh and AI model routing platform for enterprise Kubernetes environments.
+- [Tilt](https://tilt.dev/) - Local Kubernetes development with live updates and smart rebuilds.
 
 ## Contributing
 
