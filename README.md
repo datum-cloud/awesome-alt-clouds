@@ -361,6 +361,7 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [Surfer AI](https://surferseo.com/ai/) - Uses AI to generate SEO-optimized content and blog articles with built-in search analysis tools.
 - [Val Town](https://www.val.town/) - Write and run TypeScript/JavaScript in the cloud with social features.
 - [v0](https://v0.app/) - AI-powered UI generation from text prompts to React code.
+- [Weavy](https://www.weavy.ai/) - Node-based AI platform for creative workflows with access to all major AI image/video models.
 - [Windsurf](https://windsurf.com/) - An AI powered coding engine and IDE that is an alternative to GitHub Copilot. Formerly Codeium.
 
 ## Developer Happiness Clouds
@@ -375,9 +376,11 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Deno Deploy](https://deno.com/deploy) - Globally distributed edge platform for JavaScript and TypeScript serverless apps.
 - [DevZero](https://www.devzero.io/) - Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.
 - [Empromptu](https://empromptu.ai/) - No-code AI application builder with embedded models and production infrastructure.
+- [Fabrica](https://www.usefabrica.app/) - AI platform that builds internal apps from prompts with database and tooling integrations.
 - [FastMCP Cloud](https://fastmcp.cloud/) -  Zero-config MCP server deployment platform for modern AI development workflows.
 - [Firefly](https://www.firefly.ai/) - A cloud asset management solution powered by Infrastructure-as-Code, assisting DevOps and SRE teams in managing their entire cloud infrastructure efficiently.
 - [Flightcontrol](https://www.flightcontrol.dev/) - Automates infrastructure provisioning, CI/CD, and deployments within your own AWS account, offering full visibility and control.
+- [Gammacode](https://gammacode.dev/) - AI code intelligence platform with CLI/web interface, security scanning, and issue automation.
 - [GitHub](https://github.com/) - The world's leading platform for version control and collaboration, offering GitHub Codespaces for instant, cloud-based development environments.
 - [GitLab](https://about.gitlab.com/) - An AI-powered DevSecOps platform providing a single application for the entire software development lifecycle, including cloud-based development workspaces.
 - [Gitpod](https://www.gitpod.io/) - A platform for automated and standardized development environments, enabling developers to code from anywhere with pre-configured, on-demand workspaces.
@@ -437,6 +440,7 @@ Services that provide billing, subscription management, legal and other services
 - [Amberflo](https://www.amberflo.io/) - A cloud-native platform for metering and billing, enabling businesses to implement usage-based pricing models.
 - [Bill](https://www.bill.com/) - A comprehensive financial operations platform for bills, invoices, expenses, budgets, and more.
 - [Crosby](https://crosby.ai/) - Lawyer-assisted AI for reviewing contracts including MSAs, DPAs and NDAs.
+- [Dodo Payments](https://dodopayments.com/) - Merchant of Record platform for global payments with automated tax compliance in 150+ countries.
 - [Lago](https://www.getlago.com/) - An open-source metering and usage-based billing platform designed for transparency and developer experience.
 - [Lemon Squeezy](https://www.lemonsqueezy.com/) - The all-in-one platform for SaaS that provides payments, tax & subscriptions.
 - [Harvey](https://www.harvey.ai/) - Domain-specific AI for law firms, professional service providers, and the Fortune 500.
@@ -526,6 +530,7 @@ Services and tools that complement cloud infrastructure but aren't cloud service
 - [Crossplane](https://www.crossplane.io/) - Cloud-native control plane framework for managing infrastructure.
 - [Devbox](https://www.jetify.com/devbox) - Portable, isolated dev environments with Nix.
 - [DevPod](https://devpod.sh/) - Open-source dev environment manager supporting any cloud.
+- [Edgeless Systems](https://www.edgeless.systems/) - Confidential computing platform using TEEs for runtime encryption of AI and cloud workloads.
 - [Envoy](https://www.envoyproxy.io/) - Cloud-native high-performance edge and service proxy.
 - [Flux](https://fluxcd.io/) - GitOps toolkit for keeping Kubernetes clusters in sync with Git repos.
 - [Garden](https://garden.io/) - DevOps automation for Kubernetes with live reloading and testing.
