@@ -139,6 +139,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Seeweb](https://www.seeweb.it/) - Italian cloud infrastructure provider offering compute, storage, and CDN.
 - [Servers.com](https://www.servers.com/) - Global bare metal and private cloud platform supporting AI/ML compute.
 - [Sify Technology](https://www.sifytechnologies.com/) - Indian-based cloud and digital transformation provider, expanding GPU compute.
+- [SLNG](https://www.slng.ai) - Global speech AI gateway with multi-region support, model routing, and compliance for voice applications.
 - [Spheron Network](https://www.spheron.network/) - Decentralized GPU/CPU network for AI and Web3 with 44,000+ nodes across 170+ locations.
 - [Sustainable Metal Cloud](https://smc.co/) - Green-focused GPU cloud with a sustainability-first infrastructure model.
 - [STN](https://www.stninc.com/) - Secure GPU cloud infrastructure for AI teams with SOC 2 & HIPAA compliance.
@@ -267,6 +268,7 @@ Services that provide tools for asset tracking, workflow automation, and automat
 - [Kestra](https://kestra.io/) - Open-source orchestration platform for event-driven workflows.
 - [Layer 9](https://layer9.com/) - AI network engineer that configures, monitors, and repairs network devices with 24/7 automation.
 - [Mergent](https://mergent.co/) - A fully-managed task queue for applications in any language that allows you to scale to billions of tasks with zero infrastructure.
+- [Miter](https://www.miter.com/) - All-in-one platform for payroll, HR, expenses, and field operations management.
 - [n8n](https://n8n.io/) - An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor.
 - [NeuBird](https://neubird.ai/) - An autonomous AI SRE platform.
 - [PagerDuty](https://www.pagerduty.com/) - A platform for automating critical operations work.
@@ -375,6 +377,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Daytona](https://www.daytona.io/) - Provides lightning-fast, secure infrastructure for running AI-generated code, with 200ms environment creation and isolated runtime protection.
 - [Deno Deploy](https://deno.com/deploy) - Globally distributed edge platform for JavaScript and TypeScript serverless apps.
 - [DevZero](https://www.devzero.io/) - Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.
+- [Dosu](https://dosu.dev/) - AI documentation platform that generates, maintains, and shares knowledge from code and conversations.
 - [Empromptu](https://empromptu.ai/) - No-code AI application builder with embedded models and production infrastructure.
 - [Fabrica](https://www.usefabrica.app/) - AI platform that builds internal apps from prompts with database and tooling integrations.
 - [FastMCP Cloud](https://fastmcp.cloud/) -  Zero-config MCP server deployment platform for modern AI development workflows.
@@ -388,6 +391,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [JetBrains](https://www.jetbrains.com/) - Intelligent development tools and IDEs including IntelliJ IDEA and Kotlin language.
 - [Lightrun](https://lightrun.com/) - An AI platform to autonomously detect, debug, and remediate runtime issues.
 - [Linear](https://linear.app/) - Purpose-built tool for planning, tracking issues, and managing product roadmaps.
+- [Mesa](https://www.mesa.dev) - AI-powered code review platform with custom agents that learn codebase standards and prevent tech debt.
 - [Notion](https://www.notion.com/) - All-in-one workspace for notes, docs, wikis, and project management.
 - [Outerbase](https://www.outerbase.com/) - A platform for safely interacting with data and databases, now part of Cloudflare.
 - [Pieces](https://pieces.app/) - AI-powered code snippet manager and workflow tool.
@@ -475,6 +479,8 @@ Services that help businesses build and track relationships with users and custo
 - [Hubspot](https://www.hubspot.com/) - An AI-powered customer platform to connect your marketing, sales, and customer service.
 - [Klaviyo](https://www.klaviyo.com) - A CRM built for B2C that combines marketing, service, and analytics.
 - [Mirakl](https://www.mirakl.com/) - Powers platforms by connecting businesses, sellers, systems, partners, data and consumers.
+- [New Gen](https://www.new-gen.ai/) - AI-native commerce platform for conversational shopping with agent-ready product experiences.
+- [Rilla](https://www.rilla.com/) - AI conversation intelligence for field sales with virtual ridealongs and coaching analytics.
 - [Salesforce Revenue Cloud](https://www.salesforce.com/products/revenue-cloud/overview/) - A suite of tools for managing the entire revenue lifecycle, including quoting, billing, and revenue recognition.
 - [Shopify](https://www.shopify.com/) - An all-in-one commerce platform to start, run, and grow a business.
 - [Zendesk](https://www.zendesk.com/) - A platform that makes it easy for companies and customers to create connections.
