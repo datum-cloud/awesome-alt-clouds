@@ -148,6 +148,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Together.ai](https://www.together.ai/) - Open-source foundation model infrastructure with collaborative fine-tuning.
 - [Turboscale](https://www.turboscale.ai/) - AI-native cloud infrastructure for fine-tuning and inference.
 - [Upsun](https://upsun.com/) - An application hosting platform from the team at Platform.sh.
+- [Wasabi](https://wasabi.com/) - Object Storage cloud with no egress or API fees, simple pricing and partner solutions across every vertical.
 - [Valdi.ai](https://valdi.ai/) - Customizable GPU clusters for AI teams and enterprises.
 - [Vast.ai](https://vast.ai/) - Marketplace for buying and selling GPU compute capacity at competitive rates.
 - [Vayu Cloud](https://www.tatacommunications.com/services/cloud/vayu-cloud/) - Tata's scalable GPU cloud optimized for enterprise AI workloads.
