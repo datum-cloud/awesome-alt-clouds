@@ -141,6 +141,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Sify Technology](https://www.sifytechnologies.com/) - Indian-based cloud and digital transformation provider, expanding GPU compute.
 - [SLNG](https://www.slng.ai) - Global speech AI gateway with multi-region support, model routing, and compliance for voice applications.
 - [Spheron Network](https://www.spheron.network/) - Decentralized GPU/CPU network for AI and Web3 with 44,000+ nodes across 170+ locations.
+- [Storadera] (https://storadera.com) - European S3 compatible cloud storage with predictable pricing, no egress fees, and multi-region infrastructure for backup, AI, and cloud workloads.
 - [Sustainable Metal Cloud](https://smc.co/) - Green-focused GPU cloud with a sustainability-first infrastructure model.
 - [STN](https://www.stninc.com/) - Secure GPU cloud infrastructure for AI teams with SOC 2 & HIPAA compliance.
 - [TensorDock](https://tensordock.com/) - Affordable, usage-based GPU cloud platform for model training.
@@ -246,6 +247,7 @@ Services for data storage, processing, analytics, and observability.
 - [Snowflake](https://www.snowflake.com/en/) - A cloud data platform offering data warehousing, data lakes, and data sharing capabilities.
 - [Splunk](https://www.splunk.com/) - Provides a platform for searching, monitoring, and analyzing machine-generated big data.
 - [Steampipe](https://steampipe.io/) - Query APIs and cloud services using SQL with instant data access.
+- [Storadera] (https://storadera.com) - European S3 compatible cloud storage with predictable pricing, no egress fees, and multi-region infrastructure for backup, AI, and cloud workloads.
 - [Sumo Logic](https://www.sumologic.com/) - Offers cloud-native machine data analytics for real-time insights into operations and security.
 - [Supabase](https://supabase.com/) - An open-source Firebase alternative that provides a backend-as-a-service.
 - [SurrealDB](https://surrealdb.com/) - Multi-model database for web, mobile, serverless, and cloud applications.
