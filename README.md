@@ -246,6 +246,7 @@ Services for data storage, processing, analytics, and observability.
 - [Snowflake](https://www.snowflake.com/en/) - A cloud data platform offering data warehousing, data lakes, and data sharing capabilities.
 - [Splunk](https://www.splunk.com/) - Provides a platform for searching, monitoring, and analyzing machine-generated big data.
 - [Steampipe](https://steampipe.io/) - Query APIs and cloud services using SQL with instant data access.
+- [Storadera] (https://storadera.com) - European S3 compatible cloud storage with predictable pricing, no egress fees, and multi-region infrastructure for backup, AI, and cloud workloads.
 - [Sumo Logic](https://www.sumologic.com/) - Offers cloud-native machine data analytics for real-time insights into operations and security.
 - [Supabase](https://supabase.com/) - An open-source Firebase alternative that provides a backend-as-a-service.
 - [SurrealDB](https://surrealdb.com/) - Multi-model database for web, mobile, serverless, and cloud applications.
