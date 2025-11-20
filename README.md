@@ -140,7 +140,6 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Servers.com](https://www.servers.com/) - Global bare metal and private cloud platform supporting AI/ML compute.
 - [Sify Technology](https://www.sifytechnologies.com/) - Indian-based cloud and digital transformation provider, expanding GPU compute.
 - [Spheron Network](https://www.spheron.network/) - Decentralized GPU/CPU network for AI and Web3 with 44,000+ nodes across 170+ locations.
-- [Storadera] (https://storadera.com) - European S3 compatible cloud storage with predictable pricing, no egress fees, and multi-region infrastructure for backup, AI, and cloud workloads.
 - [Sustainable Metal Cloud](https://smc.co/) - Green-focused GPU cloud with a sustainability-first infrastructure model.
 - [STN](https://www.stninc.com/) - Secure GPU cloud infrastructure for AI teams with SOC 2 & HIPAA compliance.
 - [TensorDock](https://tensordock.com/) - Affordable, usage-based GPU cloud platform for model training.
