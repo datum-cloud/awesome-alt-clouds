@@ -101,6 +101,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [Lightning.ai](https://lightning.ai/) - Build, train, and deploy AI models with powerful tools and scalable infrastructure.
 - [Limestone Networks](https://www.limestonenetworks.com/) - Bare metal and colocation provider.
 - [Linode](https://www.linode.com/) - Provides cloud computing services designed for developers with straightforward pricing.
+- [Lyceum](https://lyceum.technology/) - EU built and operated GPU cloud for developers and AI teams.
 - [MemVerge](https://memverge.com) - A platform for GPU orchestration across environments that automates AI model and agent deployment.
 - [Mistral](https://mistral.ai/) - Provides a platform for building AI applications including with its own open-weight large language models.
 - [ML Foundry](https://mlfoundry.com) - Gives AI practitioners access to state-of-the-art GPU compute for training and serving models.
