@@ -162,6 +162,7 @@ Services for data storage, processing, analytics, and observability.
 - [Materialize](https://materialize.com/) - Streaming SQL database for real-time data transformation and analytics.
 - [Mezmo](https://www.mezmo.com/) - Provides a central observability platform to control, enrich, and correlate machine data for faster business decisions.
 - [Mixpanel](https://mixpanel.com/) - Delivers product analytics to help teams build better products through data-driven decisions.
+- [Momento](https://www.gomomento.com/) - Serverless caching with instant scaling, no cluster management, compatible with Redis clients and Memcached protocols.
 - [MongoDB](https://www.mongodb.com/) - Offers a general-purpose, document-based database designed for modern application development.
 - [MotherDuck](https://motherduck.com/) - Serverless analytics platform powered by DuckDB with cloud collaboration.
 - [Neo4j](https://neo4j.com/) - A graph database platform for connected data applications.
@@ -186,6 +187,7 @@ Services for data storage, processing, analytics, and observability.
 - [Tigris](https://www.tigrisdata.com/) - A globally distributed S3-compatible object storage service that enables developers to store and access any amount of data.
 - [Tinybird](https://www.tinybird.co/) - Real-time data platform for building instant APIs over streaming and batch data.
 - [Turso](https://turso.tech/) - Distributed SQLite database with global edge replication.
+- [Upstash](https://upstash.com/) - Serverless Redis and Kafka with per-request pricing, global replication, and REST API for edge computing workloads.
 - [Wasabi](https://wasabi.com/) - A S3-compatible object storage service for use with AI, content delivery, backup, and archiving workloads with no egress or API fees.
 - [Xata](https://xata.io/) - Serverless database platform with built-in search and analytics.
 
@@ -254,6 +256,7 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [Cohere](https://cohere.com/) - Enterprise AI platform with language models for automation, data insights, and custom solutions.
 - [DeepAI](https://deepai.org/) - Offers a suite of open AI APIs for developers, including text, image, and moderation tools.
 - [Deepseek](https://deepseek.com/) - Provides developer tools and research models for AI-powered coding, content generation, and reasoning tasks.
+- [E2B](https://e2b.dev/) - Secure sandboxes for AI code execution with filesystem, networking, and long-running process support for AI agents.
 - [ElevenLabs](https://elevenlabs.io/) - AI text-to-speech with ultra-realistic voices in 32+ languages, voice cloning, and conversational agents.
 - [Elicit](https://elicit.org/) - An AI research assistant that helps automate tasks like literature reviews and hypothesis testing for academics and researchers.
 - [Fireworks.ai](https://fireworks.ai/) - Delivers high-speed, cost-effective inference APIs with support for open-source models.
@@ -289,10 +292,12 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 Cloud-based platforms for creating, testing, and shipping software, including for infrastructure automation.
 
 - [Bolt](https://bolt.new/) - A browser-based AI development environment that lets you generate, edit, and deploy full-stack applications instantly using natural language prompts.
+- [Cloudsmith](https://cloudsmith.com/) - Cloud-native artifact management supporting 30+ formats with security scanning, policy engine, and global CDN delivery.
 - [Coder](https://coder.com/) - Offers self-hosted cloud development environments that provision and manage workspaces, enabling developers to code from anywhere with enhanced security and scalability.
 - [CopilotKit](https://www.copilotkit.ai/) - Open-source framework and infrastructure for building in-app AI copilots and agents.
 - [Cursor](https://www.cursor.so/) - An AI-enhanced code editor that integrates directly with your codebase to provide suggestions and automate changes.
 - [Deno Deploy](https://deno.com/deploy) - Globally distributed edge platform for JavaScript and TypeScript serverless apps.
+- [Depot](https://depot.dev/) - Accelerates Docker builds and GitHub Actions with up to 20x faster performance through optimized compute and caching.
 - [DevZero](https://www.devzero.io/) - Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.
 - [Dosu](https://dosu.dev/) - AI documentation platform that generates, maintains, and shares knowledge from code and conversations.
 - [Fabrica](https://www.usefabrica.app/) - AI platform that builds internal apps from prompts with database and tooling integrations.
@@ -310,6 +315,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Lightrun](https://lightrun.com/) - An AI platform to autonomously detect, debug, and remediate runtime issues.
 - [Linear](https://linear.app/) - Purpose-built tool for planning, tracking issues, and managing product roadmaps.
 - [Mesa](https://www.mesa.dev) - AI-powered code review platform with custom agents that learn codebase standards and prevent tech debt.
+- [Mintlify](https://mintlify.com/) - Modern documentation platform with MDX support, API references, interactive components, and built-in search analytics.
 - [Netlify](https://www.netlify.com/) - Platform for building, deploying, and scaling modern web applications.
 - [Northflank](https://northflank.com/) - A platform to build, deploy, and manage full-stack applications.
 - [Notion](https://www.notion.com/) - All-in-one workspace for notes, docs, wikis, and project management.
