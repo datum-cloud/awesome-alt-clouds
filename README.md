@@ -24,6 +24,7 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 - [Blockchain Clouds](#blockchain-clouds)
 - [Source Code Control](#source-code-control)
 - [Cloud Adjacent](#cloud-adjacent)
+- [Future Clouds](#future-clouds)
 
 ## Criteria
 
@@ -105,6 +106,7 @@ Cloud platforms designed to ensure data residency, regulatory compliance, and na
 - [FPT Vietnam](https://fptsoftware.com/newsroom/news-and-press-releases/press-release/fpt-to-shape-the-future-of-ai-and-cloud-on-a-global-scale-in-collaboration-with-nvidia) - Investing $200 million to build an AI factory serving as a sovereign cloud, featuring NVIDIA's latest technologies to bolster Vietnam's digital sovereignty.
 - [GMO GPU Cloud](https://www.gmo.jp/en/news/article/797/) - Offers GPU cloud services in Japan, providing scalable AI computing with NVIDIA's latest GPUs, ensuring data residency and compliance.
 - [Jottacloud](https://jottacloud.com/en/) - Norwegian cloud storage service operating under Norway's strict privacy laws, providing an alternative to US-based cloud services with guaranteed data residency.
+- [metalstack.cloud](https://www.metalstack.cloud/) - Open-source managed Kubernetes on bare metal in Germany with physical tenant isolation and GDPR compliance.
 - [Ola Krutrim](https://www.olakrutrim.com/) - Developing India's first sovereign AI cloud, offering scalable GPU-accelerated services and domestically designed AI chips to empower AI workloads.
 - [Reliance](https://www.ril.com/) - Indian conglomerate with plans to develop sovereign cloud infrastructure to support the country's digital initiatives and data localization requirements.
 - [Sakura Internet](https://www.sakura.ad.jp/corporate/en/information/equinix-and-sakura-internet-launch-strategic-partnership/) - Japanese cloud provider partnering with Equinix to offer GPU-based cloud services, supporting the growing demand for AI and ensuring data sovereignty.
@@ -439,6 +441,27 @@ Services and tools that complement cloud infrastructure but aren't cloud service
 - [ngrok](https://ngrok.com/) - Securely tunnels local services to the public internet, ideal for testing webhooks, building with APIs, or sharing local development environments.
 - [Solo.io](https://www.solo.io/) - Unified platform for API gateways, service mesh, and agentic AI on Kubernetes.
 - [Tetrate](https://tetrate.io/) - Service mesh and AI model routing platform for enterprise Kubernetes environments.
+
+## Future Clouds
+
+Services that don't yet meet all Alt Cloud criteria but show promise. These providers may lack public pricing, self-service signup, or production SLAs—but could evolve into full Alt Clouds.
+
+Why track these? The cloud landscape changes fast. Today's "contact sales only" can become tomorrow's self-service leader. This section helps monitor emerging players and hold established vendors accountable to transparency.
+
+- [Oxide Computer](https://oxide.computer/) - Rack-scale cloud computer for on-premises with unified hardware/software, but sold as CapEx hardware (~$1M/rack) rather than usage-based cloud service.
+- [API7](https://api7.ai/) - Commercial distribution of Apache APISIX with cloud offerings, pending pricing transparency verification.
+- [Apigee](https://cloud.google.com/apigee) - Google's API management platform with advanced features but enterprise-only pricing model.
+- [KrakenD](https://www.krakend.io/) - High-performance API gateway, needs cloud pricing model verification.
+- [OpenObserve](https://openobserve.ai/) - Open-source observability platform, cloud service SLA needs verification.
+- [Uptrace](https://uptrace.dev/) - Distributed tracing and metrics platform built on OpenTelemetry, verification needed.
+- [Chroma](https://www.trychroma.com/) - Open-source vector database, managed cloud service details need verification.
+- [Turbopuffer](https://turbopuffer.com/) - Vector database optimized for speed, service verification needed.
+- [Eppo](https://www.geteppo.com/) - Feature flagging and experimentation platform (acquired by Datadog May 2025).
+- [FeatBit](https://featbit.co/) - Open-source feature flags, cloud service verification needed.
+- [LaunchDarkly](https://launchdarkly.com/) - Industry-leading feature management with $20k-$120k/year pricing but no public transparency.
+- [Split](https://www.split.io/) - Feature delivery platform with experimentation, enterprise-only pricing.
+- [Statsig](https://statsig.com/) - Experimentation and feature flags platform (acquired by OpenAI Sept 2025, service status TBD).
+- [Tggl](https://tggl.io/) - Feature flags platform, verification needed.
 
 ## Contributing
 
