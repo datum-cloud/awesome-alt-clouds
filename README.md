@@ -133,10 +133,12 @@ Services for data storage, processing, analytics, and observability.
 - [Amplitude](https://amplitude.com/) - Provides product analytics to help teams understand user behavior and build better products.
 - [BetterStack](https://betterstack.com/) - Combines monitoring, logging, and incident management into a single platform for developers.
 - [CedarDB](https://cedardb.com/) - Modern columnar database for real-time analytics.
+- [Checkly](https://www.checklyhq.com/) - Application reliability platform unifying testing, monitoring, observability, and incident management with Playwright-based synthetic monitoring.
 - [Chronosphere](https://chronosphere.io/) - Delivers a scalable observability platform designed for cloud-native environments, helping teams control costs and improve reliability.
 - [ClickHouse](https://clickhouse.com/) - An open-source, column-oriented OLAP database management system for real-time analytics using SQL queries.
 - [Cockroach Labs](https://www.cockroachlabs.com/) - Develops CockroachDB, a distributed SQL database for building global, scalable cloud services.
 - [Convex](https://www.convex.dev/) - Reactive backend platform with real-time database and serverless functions.
+- [Comet](https://www.comet.com/) - AI observability and evaluation platform with tracing, human annotation, and automated evaluation for LLM applications.
 - [Coralogix](https://coralogix.com/) - Ingest all your data, store it indefinitely on your cloud, and query across all types with a unified syntax.
 - [Couchbase](https://www.couchbase.com/) - Offers a distributed NoSQL cloud database for mission-critical applications.
 - [Databricks](https://www.databricks.com/) - Provides a unified analytics platform for big data and AI, built on Apache Spark.
@@ -148,6 +150,7 @@ Services for data storage, processing, analytics, and observability.
 - [DuckDB](https://duckdb.org/) - An in-process SQL OLAP database management system designed for fast analytical queries.
 - [Dynatrace](https://www.dynatrace.com/) - Offers a unified observability and security platform powered by AI, providing analytics and automation for multicloud environments.
 - [Elastic](https://www.elastic.co/) - Provides search-powered solutions for observability, security, and enterprise search.
+- [Fathom](https://usefathom.com/) - Privacy-focused web analytics platform offering real-time insights without cookies or invasive tracking.
 - [Firebolt](https://www.firebolt.io/) - Delivers a cloud data warehouse designed for high-performance analytics.
 - [FullStory](https://www.fullstory.com/) - Offers digital experience analytics to understand and improve user interactions.
 - [Gel](https://www.geldata.com/) - Next-generation graph-relational database with modern query language.
@@ -156,6 +159,7 @@ Services for data storage, processing, analytics, and observability.
 - [Hasura](https://hasura.io/) - Instantly generates GraphQL APIs over new or existing PostgresSQL databases.
 - [Heap](https://heap.io/) - Automatically captures user interactions to provide insights into user behavior without manual tracking.
 - [Honeycomb](https://www.honeycomb.io/) - An observability platform that helps engineering teams understand, debug, and improve complex systems.
+- [Highlight](https://highlight.io/) - Open-source fullstack monitoring platform with session replay, error monitoring, logging, and traces.
 - [Hydrolix](https://hydrolix.io/) - A streaming data lake that ingests and processes high-volume, high-cardinality log data in real time, providing scalable storage and query capabilities with cost-efficient resource utilization.
 - [InfluxData](https://www.influxdata.com/) - Purpose-built time-series database for cloud, on-premises, and edge deployments.
 - [Kentik](https://www.kentik.com/) - Provides network observability solutions for performance monitoring and security.
@@ -172,11 +176,14 @@ Services for data storage, processing, analytics, and observability.
 - [New Relic](https://newrelic.com/) - An observability platform that unifies metrics, events, logs, and traces for full-stack monitoring.
 - [OpenStatus](https://www.openstatus.dev/) - Open-source status page and monitoring platform for tracking API and website uptime worldwide.
 - [Planetscale](https://planetscale.com/) - A serverless database platform built on Vitess, offering scalability and reliability for MySQL databases.
+- [Plausible](https://plausible.io/) - Lightweight, privacy-focused web analytics platform without cookies, offering essential metrics in an intuitive dashboard.
 - [PostHog](https://posthog.com/) - An open-source product analytics platform that can be deployed on-premises.
 - [Prisma](https://www.prisma.io/) - Provides a next-generation ORM for Node.js and TypeScript.
 - [QuestDB](https://questdb.com/) - Open-source time-series database with ultra-low latency and SQL support.
 - [ReadySet](https://readyset.io/) - SQL caching engine that sits between app and database for performance.
+- [Redpanda](https://www.redpanda.com/) - Kafka-compatible streaming data platform with built-in identity controls and policy enforcement for AI workloads.
 - [Redis](https://redis.io/) - An in-memory data structure store used as a database, cache, and message broker.
+- [Sentry](https://sentry.io/) - Application monitoring platform for error tracking, performance monitoring, and session replay to identify and resolve code issues.
 - [Snowflake](https://www.snowflake.com/en/) - A cloud data platform offering data warehousing, data lakes, and data sharing capabilities.
 - [Splunk](https://www.splunk.com/) - Provides a platform for searching, monitoring, and analyzing machine-generated big data.
 - [Steampipe](https://steampipe.io/) - Query APIs and cloud services using SQL with instant data access.
@@ -191,6 +198,7 @@ Services for data storage, processing, analytics, and observability.
 - [Turso](https://turso.tech/) - Distributed SQLite database with global edge replication.
 - [Upstash](https://upstash.com/) - Serverless Redis and Kafka with per-request pricing, global replication, and REST API for edge computing workloads.
 - [Wasabi](https://wasabi.com/) - A S3-compatible object storage service for use with AI, content delivery, backup, and archiving workloads with no egress or API fees.
+- [Weights & Biases](https://wandb.ai/) - AI developer platform for experiment tracking, model management, evaluation, and observability for ML and LLM applications.
 - [Xata](https://xata.io/) - Serverless database platform with built-in search and analytics.
 
 ## Workflow and Operations Clouds
@@ -198,6 +206,7 @@ Services for data storage, processing, analytics, and observability.
 Services that provide tools for asset tracking, workflow automation, and automated resolution to enhance operational efficiency.
 
 - [Alloy Automation](https://runalloy.com/) - Embedded iPaaS with unified APIs for 400+ apps, enabling native integrations and AI agent connectivity.
+- [Dagster](https://dagster.io/) - Unified control plane for building, scaling, and observing AI and data pipelines with orchestration and quality monitoring.
 - [Fastn](https://fastn.ai/) - AI-powered embedded integration platform for building unified APIs from multiple data sources.
 - [Inngest](https://www.inngest.com/) - A platform for AI and backend workflows that helps developers build AI-ready step functions without touching infrastructure.
 - [Kestra](https://kestra.io/) - Open-source orchestration platform for event-driven workflows.
@@ -209,6 +218,7 @@ Services that provide tools for asset tracking, workflow automation, and automat
 - [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
 - [Temporal](https://temporal.io/) - Durable execution platform for reliable workflows with automatic failure recovery.
 - [Tines](https://www.tines.com/) - No-code automation platform for security operations and IT workflows.
+- [Windmill](https://www.windmill.dev/) - Open-source developer platform for building internal tools by writing scripts in multiple languages and composing them into workflows.
 - [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
 
 ## Network, Connectivity and Security Clouds
@@ -250,6 +260,7 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [AssemblyAI](https://www.assemblyai.com/) - Offers powerful speech-to-text and AI APIs for transcription, summarization, content moderation, and more.
 - [Base44](https://base44.com/) - An all-in-one AI platform to easily build fully functioning apps without coding.
 - [Bluedot](https://www.bluedothq.com/) - Bot-free AI meeting assistant that records, transcribes, and generates notes with automatic CRM updates.
+- [Bubble](https://bubble.io/) - No-code visual programming platform for building web and mobile apps with drag-and-drop interface and usage-based pricing.
 - [Character.ai](https://character.ai/) - Lets users interact with and create AI-driven characters for entertainment, education, and companionship.
 - [ChatGPT by OpenAI](https://openai.com/chatgpt) - OpenAI's conversational AI model that generates human-like text, answers questions, and assists with a wide range of tasks.
 - [Chatsonic](https://chatsonic.com/) - An AI chatbot built on top of GPT that includes real-time search data and voice interaction capabilities.
@@ -298,6 +309,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Coder](https://coder.com/) - Offers self-hosted cloud development environments that provision and manage workspaces, enabling developers to code from anywhere with enhanced security and scalability.
 - [CopilotKit](https://www.copilotkit.ai/) - Open-source framework and infrastructure for building in-app AI copilots and agents.
 - [Cursor](https://www.cursor.so/) - An AI-enhanced code editor that integrates directly with your codebase to provide suggestions and automate changes.
+- [Cypress](https://www.cypress.io/) - Browser testing framework for modern web applications with AI-powered test generation and self-healing capabilities.
 - [Deno Deploy](https://deno.com/deploy) - Globally distributed edge platform for JavaScript and TypeScript serverless apps.
 - [Depot](https://depot.dev/) - Accelerates Docker builds and GitHub Actions with up to 20x faster performance through optimized compute and caching.
 - [DevZero](https://www.devzero.io/) - Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.
@@ -346,9 +358,11 @@ Services that provide authentication, authorization, identity management, and fr
 - [CipherStash](https://cipherstash.com/) - Zero-trust encryption platform with searchable encryption, identity-based access control, and real-time audit trails.
 - [Clerk](https://clerk.com/) - Offers a complete suite of embeddable UIs and APIs for user authentication and management.
 - [Descope](https://www.descope.com/) - An authentication and user manage platform that offers low-code and no-code options.
+- [Doppler](https://www.doppler.com/) - Cloud-based secrets management platform for securely managing and orchestrating credentials across infrastructure.
 - [Duo](https://duo.com/) - Provides multi-factor authentication and secure access solutions to protect users, data, and applications.
 - [Frontegg](https://frontegg.com/) - Delivers a comprehensive user management platform, including authentication, authorization, and user self-service capabilities.
 - [FusionAuth](https://fusionauth.io/) - Customer Identity and Access Management (CIAM) with a hybrid, single-tenant deployment option.
+- [Infisical](https://infisical.com/) - All-in-one secrets management platform for application secrets, certificates, and SSH keys with dynamic secret generation.
 - [JumpCloud](https://jumpcloud.com/) - Offers a cloud directory platform for secure identity, access, and device management across various operating systems.
 - [Keet](https://www.trykeet.com/) - Provides authentication solutions for AI agents, enabling them to perform actions on behalf of users across various platforms.
 - [Keycloak](https://www.keycloak.org/) - An open-source identity and access management solution for modern applications and services.
@@ -385,6 +399,7 @@ Services that provide billing, subscription management, legal and other services
 - [Stigg](https://www.stigg.io/) - Pricing and packaging infrastructure for SaaS monetization.
 - [Stripe](https://stripe.com/) - A financial infrastructure platform that enables businesses to accept payments, manage subscriptions, and handle billing operations.
 - [Togai](https://www.togai.com/) - Provides billing infrastructure for usage-based pricing, supporting complex billing scenarios with real-time analytics.
+- [UniBee](https://unibee.dev/) - Open-source billing and subscription management with usage-based pricing, multi-gateway support, and self-host options.
 - [Wise](https://wise.com/) - A platform for paying and getting paid globally.
 
 ## Customer, Marketing and eCommerce Clouds
