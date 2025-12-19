@@ -260,6 +260,7 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [AssemblyAI](https://www.assemblyai.com/) - Offers powerful speech-to-text and AI APIs for transcription, summarization, content moderation, and more.
 - [Base44](https://base44.com/) - An all-in-one AI platform to easily build fully functioning apps without coding.
 - [Bluedot](https://www.bluedothq.com/) - Bot-free AI meeting assistant that records, transcribes, and generates notes with automatic CRM updates.
+- [Bubble](https://bubble.io/) - No-code visual programming platform for building web and mobile apps with drag-and-drop interface and usage-based pricing.
 - [Character.ai](https://character.ai/) - Lets users interact with and create AI-driven characters for entertainment, education, and companionship.
 - [ChatGPT by OpenAI](https://openai.com/chatgpt) - OpenAI's conversational AI model that generates human-like text, answers questions, and assists with a wide range of tasks.
 - [Chatsonic](https://chatsonic.com/) - An AI chatbot built on top of GPT that includes real-time search data and voice interaction capabilities.
