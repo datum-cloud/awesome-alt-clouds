@@ -251,6 +251,7 @@ Services for managing network workloads, including acceleration, security, and c
 - [Twingate](https://www.twingate.com/) - Provides a modern zero-trust networking solution to securely connect people to private apps and services without VPNs.
 - [Versa Networks](https://www.versa-networks.com/) - Delivers integrated SASE and SD-WAN solutions for secure, scalable, and simplified enterprise networking.
 - [Wiz](https://www.wiz.io/) - A cloud security platform that gives full-stack visibility into cloud infrastructure and prioritizes risk across workloads, containers, and identities.
+- [zrok](https://zrok.io/) - Zero-trust tunneling platform for instant private or public sharing of applications, files, and services with automatic TLS and built-in security features.
 - [Zscaler](https://www.zscaler.com/) - Zero trust SASE platform with AI-driven cybersecurity and cloud protection.
 
 ## Vibe Clouds
@@ -260,7 +261,6 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [AssemblyAI](https://www.assemblyai.com/) - Offers powerful speech-to-text and AI APIs for transcription, summarization, content moderation, and more.
 - [Base44](https://base44.com/) - An all-in-one AI platform to easily build fully functioning apps without coding.
 - [Bluedot](https://www.bluedothq.com/) - Bot-free AI meeting assistant that records, transcribes, and generates notes with automatic CRM updates.
-- [Bubble](https://bubble.io/) - No-code visual programming platform for building web and mobile apps with drag-and-drop interface and usage-based pricing.
 - [Character.ai](https://character.ai/) - Lets users interact with and create AI-driven characters for entertainment, education, and companionship.
 - [ChatGPT by OpenAI](https://openai.com/chatgpt) - OpenAI's conversational AI model that generates human-like text, answers questions, and assists with a wide range of tasks.
 - [Chatsonic](https://chatsonic.com/) - An AI chatbot built on top of GPT that includes real-time search data and voice interaction capabilities.
@@ -305,6 +305,8 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 Cloud-based platforms for creating, testing, and shipping software, including for infrastructure automation.
 
 - [Bolt](https://bolt.new/) - A browser-based AI development environment that lets you generate, edit, and deploy full-stack applications instantly using natural language prompts.
+- [browserless](https://www.browserless.io/) - Headless browser automation platform providing managed Chrome, Firefox, and WebKit browsers for scraping, testing, and automation with bot detection bypass and CAPTCHA solving.
+- [Bubble](https://bubble.io/) - No-code visual programming platform for building web and mobile apps with drag-and-drop interface and usage-based pricing.
 - [Cloudsmith](https://cloudsmith.com/) - Cloud-native artifact management supporting 30+ formats with security scanning, policy engine, and global CDN delivery.
 - [Coder](https://coder.com/) - Offers self-hosted cloud development environments that provision and manage workspaces, enabling developers to code from anywhere with enhanced security and scalability.
 - [CopilotKit](https://www.copilotkit.ai/) - Open-source framework and infrastructure for building in-app AI copilots and agents.
