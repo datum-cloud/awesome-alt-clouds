@@ -57,6 +57,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [E2E Cloud](https://www.e2enetworks.com/) - Offers cloud infrastructure with GPU instances for AI and machine learning.
 - [Fal.ai](https://fal.ai/) - Provides serverless GPU inference for AI models with instant deployment.
 - [FluidStack](https://www.fluidstack.io/) - Offers decentralized GPU cloud computing for AI and rendering workloads.
+- [FriendliAI](https://friendli.ai/) - Fast AI inference platform with 2-3x speed boost. Deploy 490K+ models instantly. Serverless & dedicated GPU options. 99.99% SLA.
 - [Gcore](https://gcore.com/) - Delivers edge and cloud services with global infrastructure.
 - [Genesis Cloud](https://www.genesiscloud.com/pricing) - Offers sustainable, high-performance GPU cloud computing for AI workloads.
 - [GMI Cloud](https://www.gmicloud.ai/) - Provides GPU cloud services optimized for AI and deep learning tasks.
@@ -210,6 +211,7 @@ Services that provide tools for asset tracking, workflow automation, and automat
 - [Fastn](https://fastn.ai/) - AI-powered embedded integration platform for building unified APIs from multiple data sources.
 - [Inngest](https://www.inngest.com/) - A platform for AI and backend workflows that helps developers build AI-ready step functions without touching infrastructure.
 - [Kestra](https://kestra.io/) - Open-source orchestration platform for event-driven workflows.
+- [Mabl](https://www.mabl.com/) - AI-native test automation with self-healing tests. Agentic tester handles creation, execution, and maintenance. Enterprise-grade.
 - [Miter](https://www.miter.com/) - All-in-one platform for payroll, HR, expenses, and field operations management.
 - [n8n](https://n8n.io/) - An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor.
 - [PagerDuty](https://www.pagerduty.com/) - A platform for automating critical operations work.
@@ -352,6 +354,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 
 Services that provide authentication, authorization, identity management, and fraud prevention.
 
+- [Akeyless](https://www.akeyless.io/) - SaaS secrets management with zero-knowledge encryption. Distributed Fragments Cryptography eliminates vault overhead. 70% cost savings.
 - [Aserto](https://www.aserto.com/) - Cloud-native authorization built on Open Policy Agent.
 - [Auth0](https://auth0.com/) - A flexible, drop-in solution to add authentication and authorization services to applications, now part of Okta.
 - [Authzed](https://authzed.com/) - Provides fine-grained, scalable authorization as a service, built on the open-source SpiceDB.
@@ -412,6 +415,7 @@ Services that help businesses build and track relationships with users and custo
 - [Beehiiv](https://www.beehiiv.com/) - Newsletter platform with integrated monetization, website builder, ad network, and referral programs.
 - [Clarify](https://www.getclarify.ai/) - An AI-native CRM that unifies customer data, automates tasks, and provides actionable insights to enhance customer relationships.
 - [Customer.io](https://www.customer.io/) - A unified view of your audience and a single place where unlimited, real-time data can power more effective engagement.
+- [Formbricks](https://formbricks.com/) - Open-source experience management platform. In-app surveys and user feedback collection.
 - [Front](https://front.com/) - An AI-powered customer service platform for teams who know great CX drives revenue.
 - [Helpscout](https://www.helpscout.com/) - A customer communication platform for businesses that want to treat customers like people.
 - [Hubspot](https://www.hubspot.com/) - An AI-powered customer platform to connect your marketing, sales, and customer service.
