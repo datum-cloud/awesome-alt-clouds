@@ -256,6 +256,7 @@ Services for managing network workloads, including acceleration, security, and c
 - [Pangolin](https://digpangolin.com/) - Secure app exposure via WireGuard tunnels with identity-aware access control.
 - [Pomerium](https://www.pomerium.com/) - Identity-aware access proxy for securing internal apps.
 - [StrongDM](https://www.strongdm.com/) - Zero-trust access platform for infrastructure and databases.
+- [Subspace](https://subspace.com/) - Dedicated network-as-a-service for real-time applications with global private fiber-optic network. Reduces latency up to 80% and packet loss by 99% for voice, video, gaming, and real-time apps with WebRTC acceleration and SIP proxy.
 - [Tailscale](https://tailscale.com/) - A zero-config VPN built on WireGuard that makes secure networking between devices as easy as logging in.
 - [Teleport](https://goteleport.com/) - Zero trust infrastructure access platform with cryptographic identity and least privileged access.
 - [Twingate](https://www.twingate.com/) - Provides a modern zero-trust networking solution to securely connect people to private apps and services without VPNs.
