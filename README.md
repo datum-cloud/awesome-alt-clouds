@@ -40,6 +40,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 
 - [Aethir](https://aethir.com) - Provides secure, cost-effective access to enterprise-grade GPUs worldwide through a distributed cloud compute infrastructure.
 - [Anyscale](https://www.anyscale.com/) - Distributed computing platform built on Ray for scaling AI and Python apps.
+- [api.video](https://api.video/) - Developer-first video API for encoding, hosting, streaming.
 - [Atlantic.net](https://www.atlantic.net/) - Experienced hosting company offering a variety of compute and GPU infrastructure services.
 - [Banana.dev](https://www.banana.dev/) - Serverless GPU platform for ML model inference with pay-per-millisecond pricing.
 - [Baseten](https://www.baseten.co/) - Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.
@@ -55,6 +56,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 - [DataPacket](https://www.datapacket.com/) - Offers high-performance infrastructure for bandwidth-intensive applications.
 - [Digital Ocean](https://www.digitalocean.com/) - Provides cloud computing services with simplicity and scalability.
 - [E2E Cloud](https://www.e2enetworks.com/) - Offers cloud infrastructure with GPU instances for AI and machine learning.
+- [exe.dev](https://exe.dev/) - Modern VM hosting with sub-second starts and persistent disks. Built for AI coding agents with built-in HTTPS/auth and sharing.
 - [Fal.ai](https://fal.ai/) - Provides serverless GPU inference for AI models with instant deployment.
 - [FluidStack](https://www.fluidstack.io/) - Offers decentralized GPU cloud computing for AI and rendering workloads.
 - [FriendliAI](https://friendli.ai/) - Fast AI inference platform with 2-3x speed boost. Deploy 490K+ models instantly. Serverless & dedicated GPU options. 99.99% SLA.
@@ -129,6 +131,8 @@ Platforms leveraging unikernel and WebAssembly technologies for lightweight, sec
 
 Services for data storage, processing, analytics, and observability.
 
+- [Airbyte](https://airbyte.com/) - Open-source data integration platform with 600+ connectors and CDK for custom integrations.
+- [Algolia](https://www.algolia.com/) - AI-powered search and discovery API with NeuralSearch and semantic understanding for <50ms search speed.
 - [Storadera](https://storaderacom.com/) - European S3 compatible cloud storage with predictable pricing, no egress fees, and multi-region infrastructure for backup, AI, and cloud workloads.
 - [Aiven](https://aiven.io/) - Offers managed open-source data infrastructure, including databases and messaging systems, on all major clouds.
 - [Amplitude](https://amplitude.com/) - Provides product analytics to help teams understand user behavior and build better products.
@@ -153,6 +157,7 @@ Services for data storage, processing, analytics, and observability.
 - [Elastic](https://www.elastic.co/) - Provides search-powered solutions for observability, security, and enterprise search.
 - [Fathom](https://usefathom.com/) - Privacy-focused web analytics platform offering real-time insights without cookies or invasive tracking.
 - [Firebolt](https://www.firebolt.io/) - Delivers a cloud data warehouse designed for high-performance analytics.
+- [Fivetran](https://www.fivetran.com/) - Automated data integration platform with 300+ connectors and zero-maintenance ETL pipelines.
 - [FullStory](https://www.fullstory.com/) - Offers digital experience analytics to understand and improve user interactions.
 - [Gel](https://www.geldata.com/) - Next-generation graph-relational database with modern query language.
 - [Grafana](https://grafana.com/) - An open-source platform for monitoring and observability, enabling visualization of metrics, logs, and traces.
@@ -167,6 +172,7 @@ Services for data storage, processing, analytics, and observability.
 - [LogRocket](https://logrocket.com/) - Replays user sessions to help developers understand and fix issues faster.
 - [Logz.io](https://logz.io/) - Offers an open-source observability platform for monitoring, troubleshooting, and securing applications.
 - [Materialize](https://materialize.com/) - Streaming SQL database for real-time data transformation and analytics.
+- [Meilisearch](https://www.meilisearch.com/) - Rust-based open-source search engine with hybrid search capabilities and typo-tolerant fast search.
 - [Mezmo](https://www.mezmo.com/) - Provides a central observability platform to control, enrich, and correlate machine data for faster business decisions.
 - [Mixpanel](https://mixpanel.com/) - Delivers product analytics to help teams build better products through data-driven decisions.
 - [Momento](https://www.gomomento.com/) - Serverless caching with instant scaling, no cluster management, compatible with Redis clients and Memcached protocols.
@@ -184,6 +190,7 @@ Services for data storage, processing, analytics, and observability.
 - [ReadySet](https://readyset.io/) - SQL caching engine that sits between app and database for performance.
 - [Redpanda](https://www.redpanda.com/) - Kafka-compatible streaming data platform with built-in identity controls and policy enforcement for AI workloads.
 - [Redis](https://redis.io/) - An in-memory data structure store used as a database, cache, and message broker.
+- [Rivery](https://rivery.io/) - No-code data integration platform with visual workflows and 150+ connectors with built-in transformations.
 - [Sentry](https://sentry.io/) - Application monitoring platform for error tracking, performance monitoring, and session replay to identify and resolve code issues.
 - [Snowflake](https://www.snowflake.com/en/) - A cloud data platform offering data warehousing, data lakes, and data sharing capabilities.
 - [Splunk](https://www.splunk.com/) - Provides a platform for searching, monitoring, and analyzing machine-generated big data.
@@ -197,6 +204,7 @@ Services for data storage, processing, analytics, and observability.
 - [Tigris](https://www.tigrisdata.com/) - A globally distributed S3-compatible object storage service that enables developers to store and access any amount of data.
 - [Tinybird](https://www.tinybird.co/) - Real-time data platform for building instant APIs over streaming and batch data.
 - [Turso](https://turso.tech/) - Distributed SQLite database with global edge replication.
+- [Typesense](https://typesense.org/) - Open-source typo-tolerant search engine with <50ms speed. Self-hosted or cloud options available.
 - [Upstash](https://upstash.com/) - Serverless Redis and Kafka with per-request pricing, global replication, and REST API for edge computing workloads.
 - [Wasabi](https://wasabi.com/) - A S3-compatible object storage service for use with AI, content delivery, backup, and archiving workloads with no egress or API fees.
 - [Weights & Biases](https://wandb.ai/) - AI developer platform for experiment tracking, model management, evaluation, and observability for ML and LLM applications.
@@ -248,6 +256,7 @@ Services for managing network workloads, including acceleration, security, and c
 - [Pangolin](https://digpangolin.com/) - Secure app exposure via WireGuard tunnels with identity-aware access control.
 - [Pomerium](https://www.pomerium.com/) - Identity-aware access proxy for securing internal apps.
 - [StrongDM](https://www.strongdm.com/) - Zero-trust access platform for infrastructure and databases.
+- [Subspace](https://subspace.com/) - Dedicated network-as-a-service for real-time applications with global private fiber-optic network. Reduces latency up to 80% and packet loss by 99% for voice, video, gaming, and real-time apps with WebRTC acceleration and SIP proxy.
 - [Tailscale](https://tailscale.com/) - A zero-config VPN built on WireGuard that makes secure networking between devices as easy as logging in.
 - [Teleport](https://goteleport.com/) - Zero trust infrastructure access platform with cryptographic identity and least privileged access.
 - [Twingate](https://www.twingate.com/) - Provides a modern zero-trust networking solution to securely connect people to private apps and services without VPNs.
@@ -298,6 +307,7 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [StackBlitz](https://stackblitz.com/) - Instant full-stack dev environments running entirely in the browser.
 - [Supertrace AI](https://supertrace.ai/) - AI-powered network engineer platform for automating IT network management and infrastructure operations.
 - [Surfer AI](https://surferseo.com/ai/) - Uses AI to generate SEO-optimized content and blog articles with built-in search analysis tools.
+- [Tavus](https://www.tavus.io/) - AI-powered conversational video platform with real-time face-to-face AI humans.
 - [Together.ai](https://www.together.ai/) - Open-source foundation model infrastructure with collaborative fine-tuning.
 - [v0](https://v0.app/) - AI-powered UI generation from text prompts to React code.
 - [Windsurf](https://windsurf.com/) - An AI powered coding engine and IDE that is an alternative to GitHub Copilot. Formerly Codeium.
@@ -320,6 +330,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Dosu](https://dosu.dev/) - AI documentation platform that generates, maintains, and shares knowledge from code and conversations.
 - [Fabrica](https://www.usefabrica.app/) - AI platform that builds internal apps from prompts with database and tooling integrations.
 - [Firefly](https://www.firefly.ai/) - A cloud asset management solution powered by Infrastructure-as-Code, assisting DevOps and SRE teams in managing their entire cloud infrastructure efficiently.
+- [Flagsmith](https://www.flagsmith.com/) - Open-source feature flag and remote config platform with SaaS, self-hosted, or private cloud deployment options.
 - [Flightcontrol](https://www.flightcontrol.dev/) - Automates infrastructure provisioning, CI/CD, and deployments within your own AWS account, offering full visibility and control.
 - [Fly](https://fly.io) - Provides a platform to deploy applications globally with low latency.
 - [Gammacode](https://gammacode.dev/) - AI code intelligence platform with CLI/web interface, security scanning, and issue automation.
@@ -341,6 +352,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Pantheon](https://pantheon.io/) - A platform for running Wordpress, Drupal and Next.js websites.
 - [Platform.sh](https://platform.sh/) - Enterprise PaaS to build, run, and scale web applications and microservices.
 - [Porter](https://porter.run/) - A Kubernetes-powered PaaS that runs in your own cloud provider, simplifying the deployment and management of applications on AWS, GCP, or Azure.
+- [Portkey](https://portkey.ai/) - AI Gateway control panel for production apps with unified gateway to 1600+ LLMs, observability, guardrails, and governance. OpenAI-compatible with semantic caching and SOC2/HIPAA/GDPR compliance.
 - [Railway](https://railway.com/) - Deploy code instantly and manage environments in the cloud.
 - [Release](https://release.com/) - Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.
 - [Render](https://render.com/) - Unified cloud platform to build and host apps and websites.
@@ -349,6 +361,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 - [Tabnine](https://www.tabnine.com/) - AI code assistant with private model options.
 - [Tiptap](https://tiptap.dev/) - Headless rich text editor with real-time collaboration, AI content generation, and 100+ extensions.
 - [Ubicloud](https://www.ubicloud.com/) - An open-source cloud platform that can run anywhere, offering IaaS features on bare metal providers with options for self-hosting or managed services.
+- [Unleash](https://www.getunleash.io/) - Enterprise open-source feature management platform with strong RBAC and flexible deployment options.
 
 ## Authorization, Identity, Fraud and Abuse Clouds
 
