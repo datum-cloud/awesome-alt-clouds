@@ -307,6 +307,7 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 - [StackBlitz](https://stackblitz.com/) - Instant full-stack dev environments running entirely in the browser.
 - [Supertrace AI](https://supertrace.ai/) - AI-powered network engineer platform for automating IT network management and infrastructure operations.
 - [Surfer AI](https://surferseo.com/ai/) - Uses AI to generate SEO-optimized content and blog articles with built-in search analysis tools.
+- [Tavus](https://www.tavus.io/) - AI-powered conversational video platform with real-time face-to-face AI humans.
 - [Together.ai](https://www.together.ai/) - Open-source foundation model infrastructure with collaborative fine-tuning.
 - [v0](https://v0.app/) - AI-powered UI generation from text prompts to React code.
 - [Windsurf](https://windsurf.com/) - An AI powered coding engine and IDE that is an alternative to GitHub Copilot. Formerly Codeium.
