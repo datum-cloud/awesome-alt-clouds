@@ -92,39 +92,21 @@ class AltCloudsMonitor:
         today = datetime.now()
         week_ago = today - timedelta(days=7)
         
-        # Construct the search prompt
-        prompt = f"""Search for new cloud services and platforms launched in the past week in the "{category}" category.
+        # Construct a shorter search prompt to reduce token usage
+        prompt = f"""Find new cloud services in "{category}" launched in past 7 days.
 
-Category description: {config['description']}
-Keywords to focus on: {', '.join(config['keywords'])}
+Keywords: {', '.join(config['keywords'][:3])}  
 
-For each service you find:
-1. Verify it's a real company/service (not just news about existing ones)
-2. Get the company name and primary URL
-3. Check if it appears to be a cloud/SaaS service
-4. Get a brief description of what they offer
+Return JSON array of NEW services only:
+[{{"company_name": "...", "url": "...", "description": "...", "category": "{category}"}}]
 
-Return results as a JSON array with this format:
-[
-  {{
-    "company_name": "Acme GPU Cloud",
-    "url": "https://acmegpu.com",
-    "description": "Brief description of the service",
-    "found_via": "TechCrunch article about...",
-    "category": "{category}"
-  }}
-]
-
-Focus on NEW services (launched or announced in past 7 days).
-If you don't find any new services, return an empty array [].
-ONLY return the JSON array, no other text.
-"""
+Return empty array [] if none found. JSON only, no other text."""
 
         try:
             # Call Claude with web search enabled
             response = self.client.messages.create(
                 model="claude-sonnet-4-20250514",
-                max_tokens=4096,
+                max_tokens=2048,  # Reduced from 4096 to save tokens
                 tools=[{
                     "type": "web_search_20250305",
                     "name": "web_search"
@@ -152,13 +134,13 @@ ONLY return the JSON array, no other text.
             return results
             
         except anthropic.RateLimitError as e:
-            print(f"⚠️  Rate limit hit for {category}, waiting 10 seconds...")
-            time.sleep(10)
+            print(f"⚠️  Rate limit hit for {category}, waiting 30 seconds...")
+            time.sleep(30)  # Increased from 10 to 30 seconds
             # Retry once
             try:
                 response = self.client.messages.create(
                     model="claude-sonnet-4-20250514",
-                    max_tokens=4096,
+                    max_tokens=2048,  # Reduced from 4096
                     tools=[{
                         "type": "web_search_20250305",
                         "name": "web_search"
@@ -211,10 +193,10 @@ ONLY return the JSON array, no other text.
             all_candidates.extend(candidates)
             
             # Rate limiting: wait between requests to avoid hitting API limits
-            # 30k tokens/min limit = need ~2 second delay between calls
+            # Web search uses LOTS of tokens, need longer delays
             if i < len(CATEGORIES) - 1:  # Don't sleep after last one
-                print(f"⏱️  Rate limiting: waiting 3 seconds...")
-                time.sleep(3)
+                print(f"⏱️  Rate limiting: waiting 20 seconds...")
+                time.sleep(20)  # 20 seconds = ~3 calls/min = safely under 30k tokens/min
         
         # Deduplicate
         unique_candidates = self.deduplicate_against_existing(all_candidates)
