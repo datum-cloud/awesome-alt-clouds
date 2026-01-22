@@ -5,6 +5,7 @@ Scores each candidate against the 3 alt-clouds criteria
 """
 
 import os
+import sys
 import json
 import anthropic
 from typing import Dict, Any, List
@@ -246,13 +247,25 @@ def main():
     """Main entry point"""
     import sys
     from datetime import datetime
+    from pathlib import Path
     
-    # Check for input file
-    if len(sys.argv) < 2:
-        print("Usage: python evaluate_candidates.py <candidates_file.json>")
-        return 1
-    
-    input_file = sys.argv[1]
+    # Auto-find latest scan file or use provided file
+    if len(sys.argv) >= 2:
+        input_file = sys.argv[1]
+    else:
+        # Auto-find latest scan file
+        candidates_dir = Path('data/candidates')
+        if not candidates_dir.exists():
+            print("❌ No candidates directory found. Run monitor_news.py first.")
+            return 1
+        
+        scan_files = sorted(candidates_dir.glob('scan-*.json'))
+        if not scan_files:
+            print("❌ No scan files found. Run monitor_news.py first.")
+            return 1
+        
+        input_file = str(scan_files[-1])
+        print(f"📂 Auto-selected latest scan: {input_file}")
     
     # Load candidates
     try:
