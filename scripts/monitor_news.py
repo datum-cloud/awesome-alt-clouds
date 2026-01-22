@@ -6,6 +6,7 @@ Runs daily to discover new cloud services across all categories
 
 import os
 import json
+import time
 import anthropic
 from datetime import datetime, timedelta
 from typing import List, Dict, Any
@@ -150,6 +151,37 @@ ONLY return the JSON array, no other text.
             print(f"✅ Found {len(results)} candidates in {category}")
             return results
             
+        except anthropic.RateLimitError as e:
+            print(f"⚠️  Rate limit hit for {category}, waiting 10 seconds...")
+            time.sleep(10)
+            # Retry once
+            try:
+                response = self.client.messages.create(
+                    model="claude-sonnet-4-20250514",
+                    max_tokens=4096,
+                    tools=[{
+                        "type": "web_search_20250305",
+                        "name": "web_search"
+                    }],
+                    messages=[{
+                        "role": "user",
+                        "content": prompt
+                    }]
+                )
+                results = []
+                for block in response.content:
+                    if block.type == "text":
+                        text = block.text.strip()
+                        if text.startswith('[') and text.endswith(']'):
+                            try:
+                                results = json.loads(text)
+                            except json.JSONDecodeError:
+                                pass
+                print(f"✅ Found {len(results)} candidates in {category} (retry)")
+                return results
+            except Exception as retry_error:
+                print(f"❌ Retry failed for {category}: {retry_error}")
+                return []
         except Exception as e:
             print(f"❌ Error searching {category}: {e}")
             return []
@@ -173,10 +205,16 @@ ONLY return the JSON array, no other text.
         
         all_candidates = []
         
-        # Search each category
-        for category, config in CATEGORIES.items():
+        # Search each category with rate limiting
+        for i, (category, config) in enumerate(CATEGORIES.items()):
             candidates = self.search_category(category, config)
             all_candidates.extend(candidates)
+            
+            # Rate limiting: wait between requests to avoid hitting API limits
+            # 30k tokens/min limit = need ~2 second delay between calls
+            if i < len(CATEGORIES) - 1:  # Don't sleep after last one
+                print(f"⏱️  Rate limiting: waiting 3 seconds...")
+                time.sleep(3)
         
         # Deduplicate
         unique_candidates = self.deduplicate_against_existing(all_candidates)
