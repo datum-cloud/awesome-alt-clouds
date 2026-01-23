@@ -217,8 +217,8 @@ Return empty array [] if none found. JSON only, no other text."""
             # Rate limiting: wait between requests to avoid hitting API limits
             # Web search uses LOTS of tokens, need longer delays
             if i < len(CATEGORIES) - 1:  # Don't sleep after last one
-                print(f"⏱️  Rate limiting: waiting 20 seconds...")
-                time.sleep(20)  # 20 seconds = ~3 calls/min = safely under 30k tokens/min
+                print(f"⏱️  Rate limiting: waiting 60 seconds...")
+                time.sleep(60)  # 60 seconds = 1 call/min = GUARANTEED under limit
         
         # Deduplicate
         unique_candidates = self.deduplicate_against_existing(all_candidates)
