@@ -13,68 +13,89 @@ from typing import List, Dict, Any
 
 # Configuration
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
-CATEGORIES = {
+CATEGORY_BATCH = os.environ.get("CATEGORY_BATCH", "1")  # 1, 2, or 3
+
+# All categories split into 3 batches
+ALL_CATEGORIES = {
     "Infrastructure Clouds": {
         "keywords": ["GPU cloud", "cloud compute", "inference API", "serverless GPU"],
-        "description": "GPU and compute infrastructure providers"
-    },
-    "Sovereign Clouds": {
-        "keywords": ["sovereign cloud", "data residency", "regional compliance cloud"],
-        "description": "Cloud platforms with data sovereignty"
-    },
-    "Data Clouds": {
-        "keywords": ["database cloud", "data warehouse", "analytics platform", "observability"],
-        "description": "Data storage, processing, and observability"
-    },
-    "Workflow and Operations Clouds": {
-        "keywords": ["workflow automation", "orchestration platform", "incident management"],
-        "description": "Workflow automation and operations"
-    },
-    "Network, Connectivity and Security Clouds": {
-        "keywords": ["CDN", "edge network", "zero trust", "API gateway", "VPN alternative"],
-        "description": "Networking, security, and connectivity"
-    },
-    "Vibe Clouds": {
-        "keywords": ["AI coding assistant", "LLM API", "AI development platform"],
-        "description": "AI-powered creativity and development tools"
+        "description": "GPU and compute infrastructure providers",
+        "batch": "1"
     },
     "Developer Happiness Clouds": {
         "keywords": ["PaaS", "deployment platform", "CI/CD", "developer tools cloud"],
-        "description": "Developer platforms and tools"
+        "description": "Developer platforms and tools",
+        "batch": "1"
+    },
+    "Data Clouds": {
+        "keywords": ["database cloud", "data warehouse", "analytics platform", "observability"],
+        "description": "Data storage, processing, and observability",
+        "batch": "1"
+    },
+    "Network, Connectivity and Security Clouds": {
+        "keywords": ["CDN", "edge network", "zero trust", "API gateway", "VPN alternative"],
+        "description": "Networking, security, and connectivity",
+        "batch": "1"
+    },
+    "Workflow and Operations Clouds": {
+        "keywords": ["workflow automation", "orchestration platform", "incident management"],
+        "description": "Workflow automation and operations",
+        "batch": "1"
     },
     "Authorization, Identity, Fraud and Abuse Clouds": {
         "keywords": ["authentication service", "identity platform", "fraud detection API"],
-        "description": "Auth, identity, and fraud prevention"
+        "description": "Auth, identity, and fraud prevention",
+        "batch": "2"
     },
     "Monetization, Finance and Legal Clouds": {
         "keywords": ["billing platform", "usage metering", "subscription management API"],
-        "description": "Billing, payments, and monetization"
+        "description": "Billing, payments, and monetization",
+        "batch": "2"
     },
-    "Customer, Marketing and eCommerce Clouds": {
-        "keywords": ["CRM platform", "marketing automation", "ecommerce platform"],
-        "description": "Customer engagement and commerce"
+    "Vibe Clouds": {
+        "keywords": ["AI coding assistant", "LLM API", "AI development platform"],
+        "description": "AI-powered creativity and development tools",
+        "batch": "2"
     },
     "IoT, Communications, and Media Clouds": {
         "keywords": ["IoT platform", "messaging API", "video platform", "SMS gateway"],
-        "description": "IoT, communications, and media"
+        "description": "IoT, communications, and media",
+        "batch": "2"
+    },
+    "Sovereign Clouds": {
+        "keywords": ["sovereign cloud", "data residency", "regional compliance cloud"],
+        "description": "Cloud platforms with data sovereignty",
+        "batch": "2"
+    },
+    "Customer, Marketing and eCommerce Clouds": {
+        "keywords": ["CRM platform", "marketing automation", "ecommerce platform"],
+        "description": "Customer engagement and commerce",
+        "batch": "3"
     },
     "Blockchain Clouds": {
         "keywords": ["blockchain infrastructure", "web3 cloud", "decentralized compute"],
-        "description": "Blockchain-based infrastructure"
+        "description": "Blockchain-based infrastructure",
+        "batch": "3"
     },
     "Unikernels & WebAssembly": {
         "keywords": ["unikernel platform", "WebAssembly cloud", "wasm runtime"],
-        "description": "Unikernel and WebAssembly platforms"
+        "description": "Unikernel and WebAssembly platforms",
+        "batch": "3"
     },
     "Source Code Control": {
         "keywords": ["git hosting", "version control platform", "code repository"],
-        "description": "Source code management"
+        "description": "Source code management",
+        "batch": "3"
     },
     "Cloud Adjacent": {
         "keywords": ["cloud tools", "cloud utilities", "infrastructure software"],
-        "description": "Cloud-complementary tools and services"
+        "description": "Cloud-complementary tools and services",
+        "batch": "3"
     }
 }
+
+# Filter categories based on batch
+CATEGORIES = {k: v for k, v in ALL_CATEGORIES.items() if v["batch"] == CATEGORY_BATCH}
 
 
 class AltCloudsMonitor:
@@ -182,6 +203,7 @@ Return empty array [] if none found. JSON only, no other text."""
         """
         print("🚀 Starting daily alt-clouds monitoring...")
         print(f"📅 {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"📦 Batch: {CATEGORY_BATCH}")
         print(f"🔍 Monitoring {len(CATEGORIES)} categories")
         print("-" * 60)
         
@@ -217,7 +239,7 @@ Return empty array [] if none found. JSON only, no other text."""
             output["by_category"][cat].append(candidate)
         
         # Save to file
-        output_file = f"data/candidates/scan-{datetime.now().strftime('%Y%m%d')}.json"
+        output_file = f"data/candidates/scan-{datetime.now().strftime('%Y%m%d')}-batch{CATEGORY_BATCH}.json"
         os.makedirs(os.path.dirname(output_file), exist_ok=True)
         
         with open(output_file, 'w') as f:
