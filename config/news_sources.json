@@ -1,0 +1,12 @@
+{
+  "urls": [
+    "https://news.ycombinator.com/show",
+    "https://news.crunchbase.com/",
+    "https://alleywatch.com/"
+  ],
+  "notes": [
+    "Add your favorite news sources here",
+    "ProductHunt, HackerNews, TechCrunch are good starting points",
+    "Can also add specific RSS feeds or blog URLs"
+  ]
+}

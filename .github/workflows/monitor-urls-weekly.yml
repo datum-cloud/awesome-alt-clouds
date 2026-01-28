@@ -1,4 +1,4 @@
-name: Monitor Alt Clouds - Monday (Batch 1)
+name: Monitor Alt Clouds - URL-based (Weekly)
 
 on:
   schedule:
@@ -26,12 +26,11 @@ jobs:
         run: |
           pip install anthropic requests beautifulsoup4 lxml
           
-      - name: Run news monitoring (Batch 1)
+      - name: Run URL-based monitoring
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          CATEGORY_BATCH: "1"
         run: |
-          python scripts/monitor_news.py
+          python scripts/monitor_news_urls.py
           
       - name: Evaluate candidates
         env:
@@ -50,10 +49,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/
-          git diff --staged --quiet || git commit -m "Monday scan (batch 1): $(date +%Y-%m-%d)"
+          git diff --staged --quiet || git commit -m "Weekly scan: $(date +%Y-%m-%d)"
           git push
           
       - name: Send Slack notification
+        if: always()
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
