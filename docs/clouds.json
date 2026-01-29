@@ -1,0 +1,2669 @@
+[
+  {
+    "name": "Aethir",
+    "url": "https://aethir.com",
+    "description": "Provides secure, cost-effective access to enterprise-grade GPUs worldwide through a distributed cloud compute infrastructure.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Anyscale",
+    "url": "https://www.anyscale.com/",
+    "description": "Distributed computing platform built on Ray for scaling AI and Python apps.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "api.video",
+    "url": "https://api.video/",
+    "description": "Developer-first video API for encoding, hosting, streaming.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Atlantic.net",
+    "url": "https://www.atlantic.net/",
+    "description": "Experienced hosting company offering a variety of compute and GPU infrastructure services.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Banana.dev",
+    "url": "https://www.banana.dev/",
+    "description": "Serverless GPU platform for ML model inference with pay-per-millisecond pricing.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Baseten",
+    "url": "https://www.baseten.co/",
+    "description": "Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Beam",
+    "url": "https://www.beam.cloud",
+    "description": "Cloud infrastructure specifically built for high-performance applications and developer happiness.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Browserbase",
+    "url": "https://www.browserbase.com/",
+    "description": "A platform for running headless browsers for interact with websites via automation.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Cerebrium",
+    "url": "https://www.cerebrium.ai/",
+    "description": "Serverless GPU infrastructure for deploying ML models with auto-scaling.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Civo",
+    "url": "https://www.civo.com",
+    "description": "Provides cloud services with a focus on simplicity and developer experience.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "CoreWeave",
+    "url": "https://www.coreweave.com/",
+    "description": "A cloud platform optimized for AI, offering high-performance GPU compute and managed services.",
+    "category": "Infrastructure Clouds",
+    "score": 2
+  },
+  {
+    "name": "Crusoe Energy",
+    "url": "https://crusoecloud.com/",
+    "description": "Energy-efficient GPU computing using stranded and renewable energy sources.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Cudo Compute",
+    "url": "https://www.cudocompute.com/",
+    "description": "Offers decentralized cloud computing with GPU support for AI applications.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Cycle.io",
+    "url": "https://cycle.io/",
+    "description": "Provides a container orchestration platform for deploying applications.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Datacrunch.io",
+    "url": "https://datacrunch.io/",
+    "description": "Provides affordable GPU cloud services for AI training and inference.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "DataPacket",
+    "url": "https://www.datapacket.com/",
+    "description": "Offers high-performance infrastructure for bandwidth-intensive applications.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Digital Ocean",
+    "url": "https://www.digitalocean.com/",
+    "description": "Provides cloud computing services with simplicity and scalability.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "E2E Cloud",
+    "url": "https://www.e2enetworks.com/",
+    "description": "Offers cloud infrastructure with GPU instances for AI and machine learning.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "exe.dev",
+    "url": "https://exe.dev/",
+    "description": "Modern VM hosting with sub-second starts and persistent disks. Built for AI coding agents with built-in HTTPS/auth and sharing.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Fal.ai",
+    "url": "https://fal.ai/",
+    "description": "Provides serverless GPU inference for AI models with instant deployment.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "FluidStack",
+    "url": "https://www.fluidstack.io/",
+    "description": "Offers decentralized GPU cloud computing for AI and rendering workloads.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "FriendliAI",
+    "url": "https://friendli.ai/",
+    "description": "Fast AI inference platform with 2-3x speed boost. Deploy 490K+ models instantly. Serverless & dedicated GPU options. 99.99% SLA.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Gcore",
+    "url": "https://gcore.com/",
+    "description": "Delivers edge and cloud services with global infrastructure.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Genesis Cloud",
+    "url": "https://www.genesiscloud.com/pricing",
+    "description": "Offers sustainable, high-performance GPU cloud computing for AI workloads.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "GMI Cloud",
+    "url": "https://www.gmicloud.ai/",
+    "description": "Provides GPU cloud services optimized for AI and deep learning tasks.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Hetzner",
+    "url": "https://www.hetzner.com/",
+    "description": "Provides dedicated servers and cloud services in Europe.",
+    "category": "Infrastructure Clouds",
+    "score": 2
+  },
+  {
+    "name": "Hivelocity",
+    "url": "https://www.hivelocity.net/",
+    "description": "Experienced provider of VPS and bare metal solutions.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "HydraHost",
+    "url": "https://hydrahost.com/",
+    "description": "Affordable GPU compute focused on researchers and indie developers.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Hyperbolic",
+    "url": "https://hyperbolic.xyz/",
+    "description": "Offers scalable GPU compute for AI applications with a focus on performance and cost-efficiency.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Hyperstack",
+    "url": "https://www.hyperstack.cloud/",
+    "description": "Cloud GPU and AI platform for building, training, and deploying custom AI models.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "IONOS Cloud",
+    "url": "https://cloud.ionos.com/",
+    "description": "Cloud infrastructure with a focus on public, bare metal, and managed Kubernetes solutions.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Lambda Labs",
+    "url": "https://lambda.ai/",
+    "description": "Delivers on-demand access to NVIDIA GPUs for AI training and inference.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Latitude.sh",
+    "url": "https://www.latitude.sh/",
+    "description": "Provides global bare metal servers for developers.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "LeaderGPU",
+    "url": "https://www.leadergpu.com/",
+    "description": "Provides high-performance GPU servers for rent, optimized for AI tasks.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "LeaseWeb",
+    "url": "https://www.leaseweb.com/",
+    "description": "Full service hosting provider with a background in dedicated and managed servers.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Linode",
+    "url": "https://www.linode.com/",
+    "description": "Provides cloud computing services designed for developers with straightforward pricing.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Lyceum",
+    "url": "https://lyceum.technology/",
+    "description": "EU built and operated GPU cloud for developers and AI teams.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Modal",
+    "url": "https://modal.com/",
+    "description": "A serverless platform for AI and data teams to run compute-intensive applications without managing infrastructure.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Nebius",
+    "url": "https://nebius.com/",
+    "description": "Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "NeevCloud",
+    "url": "https://www.neevcloud.com/",
+    "description": "India-based GPU cloud offering secure, scalable AI compute.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "NetActuate",
+    "url": "https://netactuate.com/",
+    "description": "Provides hybrid cloud and edge computing solutions with a global network.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "NextGen Cloud",
+    "url": "https://www.nextgencloud.com/",
+    "description": "Delivers sustainable, high-performance cloud infrastructure for AI workloads.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Openmetal.io",
+    "url": "https://openmetal.io/",
+    "description": "Delivers on-demand private cloud infrastructure based on OpenStack.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "OVH Cloud",
+    "url": "https://us.ovhcloud.com/",
+    "description": "Global cloud provider offering compute, storage, and network solutions.",
+    "category": "Infrastructure Clouds",
+    "score": 2
+  },
+  {
+    "name": "Paperspace",
+    "url": "https://www.paperspace.com/",
+    "description": "Cloud computing with GPU support for AI development and deployment. Now owned by DigitalOcean.",
+    "category": "Infrastructure Clouds",
+    "score": 2
+  },
+  {
+    "name": "Parasail",
+    "url": "https://parasail.ai/",
+    "description": "Serverless GPU platform to run custom AI models easily.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "QBO",
+    "url": "https://qbo.io/",
+    "description": "GPU Cloud at the Edge & Beyond - Delivering high performance, streamlined infrastructure, and flexible AI/ML deployment.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Rackspace",
+    "url": "https://www.rackspace.com/",
+    "description": "Provides hybrid cloud and managed hosting services.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Runpod",
+    "url": "https://www.runpod.io/",
+    "description": "Provides customizable GPU containers and secure cloud compute environments.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Salad",
+    "url": "https://salad.com/",
+    "description": "A platform for leveraging latent consumer compute resources to power workloads.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Scaleway",
+    "url": "https://www.scaleway.com/",
+    "description": "European cloud provider with a wide range of services including servers, storage, and AI tools.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Seeweb",
+    "url": "https://www.seeweb.it/",
+    "description": "Italian cloud infrastructure provider offering compute, storage, and CDN.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Servers.com",
+    "url": "https://www.servers.com/",
+    "description": "Global bare metal and private cloud platform supporting AI/ML compute.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Shadeform",
+    "url": "https://shadeform.com/",
+    "description": "GPU compute provider with a focus on low-cost AI infrastructure.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Spheron Network",
+    "url": "https://www.spheron.network/",
+    "description": "Decentralized GPU/CPU network for AI and Web3 with 44,000+ nodes across 170+ locations.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Sustainable Metal Cloud",
+    "url": "https://smc.co/",
+    "description": "Green-focused GPU cloud with a sustainability-first infrastructure model.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "TensorDock",
+    "url": "https://tensordock.com/",
+    "description": "Affordable, usage-based GPU cloud platform for model training.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "TensorWave",
+    "url": "https://tensorwave.com/",
+    "description": "An AI cloud focused on AMD technology including MI325X and MI300X accelerators.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Turboscale",
+    "url": "https://www.turboscale.ai/",
+    "description": "AI-native cloud infrastructure for fine-tuning and inference.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Upsun",
+    "url": "https://upsun.com/",
+    "description": "An application hosting platform from the team at Platform.sh.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Vast.ai",
+    "url": "https://vast.ai/",
+    "description": "Marketplace for buying and selling GPU compute capacity at competitive rates.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Voltage Park",
+    "url": "https://www.voltagepark.com/",
+    "description": "AI cloud with 24,000 NVIDIA H100 GPUs and InfiniBand clusters for large-scale training.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "Vultr",
+    "url": "https://www.vultr.com/",
+    "description": "Full services cloud and hosting provider with an expanding range of solutions globally.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
+    "name": "FPT Vietnam",
+    "url": "https://fptsoftware.com/newsroom/news-and-press-releases/press-release/fpt-to-shape-the-future-of-ai-and-cloud-on-a-global-scale-in-collaboration-with-nvidia",
+    "description": "Investing $200 million to build an AI factory serving as a sovereign cloud, featuring NVIDIA's latest technologies to bolster Vietnam's digital sovereignty.",
+    "category": "Sovereign Clouds",
+    "score": 3
+  },
+  {
+    "name": "GMO GPU Cloud",
+    "url": "https://www.gmo.jp/en/news/article/797/",
+    "description": "Offers GPU cloud services in Japan, providing scalable AI computing with NVIDIA's latest GPUs, ensuring data residency and compliance.",
+    "category": "Sovereign Clouds",
+    "score": 3
+  },
+  {
+    "name": "Jottacloud",
+    "url": "https://jottacloud.com/en/",
+    "description": "Norwegian cloud storage service operating under Norway's strict privacy laws, providing an alternative to US-based cloud services with guaranteed data residency.",
+    "category": "Sovereign Clouds",
+    "score": 3
+  },
+  {
+    "name": "metalstack.cloud",
+    "url": "https://www.metalstack.cloud/",
+    "description": "Open-source managed Kubernetes on bare metal in Germany with physical tenant isolation and GDPR compliance.",
+    "category": "Sovereign Clouds",
+    "score": 3
+  },
+  {
+    "name": "Ola Krutrim",
+    "url": "https://www.olakrutrim.com/",
+    "description": "Developing India's first sovereign AI cloud, offering scalable GPU-accelerated services and domestically designed AI chips to empower AI workloads.",
+    "category": "Sovereign Clouds",
+    "score": 3
+  },
+  {
+    "name": "Reliance",
+    "url": "https://www.ril.com/",
+    "description": "Indian conglomerate with plans to develop sovereign cloud infrastructure to support the country's digital initiatives and data localization requirements.",
+    "category": "Sovereign Clouds",
+    "score": 3
+  },
+  {
+    "name": "Sakura Internet",
+    "url": "https://www.sakura.ad.jp/corporate/en/information/equinix-and-sakura-internet-launch-strategic-partnership/",
+    "description": "Japanese cloud provider partnering with Equinix to offer GPU-based cloud services, supporting the growing demand for AI and ensuring data sovereignty.",
+    "category": "Sovereign Clouds",
+    "score": 3
+  },
+  {
+    "name": "T-Systems",
+    "url": "https://www.t-systems.com/",
+    "description": "German IT services and consulting company providing sovereign cloud solutions to ensure data protection and compliance with European regulations.",
+    "category": "Sovereign Clouds",
+    "score": 3
+  },
+  {
+    "name": "Yotta",
+    "url": "https://yotta.com/blog-need-of-sovereign-cloud-in-india/",
+    "description": "Indian data center and cloud services provider focusing on security, compliance, and innovation.",
+    "category": "Sovereign Clouds",
+    "score": 3
+  },
+  {
+    "name": "Cosmonic",
+    "url": "https://cosmonic.com/",
+    "description": "A distributed compute mesh built on CNCF's wasmCloud, enabling secure, declarative deployments of WebAssembly applications across diverse environments.",
+    "category": "Unikernels & WebAssembly",
+    "score": 3
+  },
+  {
+    "name": "KraftCloud",
+    "url": "https://kraft.cloud/",
+    "description": "A next-generation cloud platform powered by unikernels, offering millisecond-scale operations and high-density deployments for efficient computing.",
+    "category": "Unikernels & WebAssembly",
+    "score": 3
+  },
+  {
+    "name": "NanoVMs",
+    "url": "https://nanovms.com/",
+    "description": "Provides a unikernel platform that allows deploying applications as secure, isolated virtual machines, enhancing performance and security.",
+    "category": "Unikernels & WebAssembly",
+    "score": 3
+  },
+  {
+    "name": "Puter",
+    "url": "https://puter.com/",
+    "description": "A privacy-first personal cloud that houses all your files, apps, and games in one secure place, accessible from anywhere at any time.",
+    "category": "Unikernels & WebAssembly",
+    "score": 3
+  },
+  {
+    "name": "SingleStore",
+    "url": "https://www.singlestore.com/",
+    "description": "Real-time database combining transactions and analytics with vector search capabilities.",
+    "category": "Unikernels & WebAssembly",
+    "score": 3
+  },
+  {
+    "name": "Wasmer",
+    "url": "https://wasmer.io/",
+    "description": "Offers a universal WebAssembly runtime that enables running applications safely and efficiently across various platforms, from desktop to cloud and edge.",
+    "category": "Unikernels & WebAssembly",
+    "score": 3
+  },
+  {
+    "name": "Airbyte",
+    "url": "https://airbyte.com/",
+    "description": "Open-source data integration platform with 600+ connectors and CDK for custom integrations.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Algolia",
+    "url": "https://www.algolia.com/",
+    "description": "AI-powered search and discovery API with NeuralSearch and semantic understanding for <50ms search speed.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Storadera",
+    "url": "https://storaderacom.com/",
+    "description": "European S3 compatible cloud storage with predictable pricing, no egress fees, and multi-region infrastructure for backup, AI, and cloud workloads.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Aiven",
+    "url": "https://aiven.io/",
+    "description": "Offers managed open-source data infrastructure, including databases and messaging systems, on all major clouds.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Amplitude",
+    "url": "https://amplitude.com/",
+    "description": "Provides product analytics to help teams understand user behavior and build better products.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "BetterStack",
+    "url": "https://betterstack.com/",
+    "description": "Combines monitoring, logging, and incident management into a single platform for developers.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "CedarDB",
+    "url": "https://cedardb.com/",
+    "description": "Modern columnar database for real-time analytics.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Checkly",
+    "url": "https://www.checklyhq.com/",
+    "description": "Application reliability platform unifying testing, monitoring, observability, and incident management with Playwright-based synthetic monitoring.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Chronosphere",
+    "url": "https://chronosphere.io/",
+    "description": "Delivers a scalable observability platform designed for cloud-native environments, helping teams control costs and improve reliability.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "ClickHouse",
+    "url": "https://clickhouse.com/",
+    "description": "An open-source, column-oriented OLAP database management system for real-time analytics using SQL queries.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Cockroach Labs",
+    "url": "https://www.cockroachlabs.com/",
+    "description": "Develops CockroachDB, a distributed SQL database for building global, scalable cloud services.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Convex",
+    "url": "https://www.convex.dev/",
+    "description": "Reactive backend platform with real-time database and serverless functions.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Comet",
+    "url": "https://www.comet.com/",
+    "description": "AI observability and evaluation platform with tracing, human annotation, and automated evaluation for LLM applications.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Coralogix",
+    "url": "https://coralogix.com/",
+    "description": "Ingest all your data, store it indefinitely on your cloud, and query across all types with a unified syntax.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Couchbase",
+    "url": "https://www.couchbase.com/",
+    "description": "Offers a distributed NoSQL cloud database for mission-critical applications.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Databricks",
+    "url": "https://www.databricks.com/",
+    "description": "Provides a unified analytics platform for big data and AI, built on Apache Spark.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Datadog",
+    "url": "https://www.datadoghq.com/",
+    "description": "A monitoring and security platform for cloud applications.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "dbt Labs",
+    "url": "https://www.getdbt.com/",
+    "description": "Empowers data practitioners to transform data in their warehouses by developing, testing, and documenting analytics code.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Diffbot",
+    "url": "https://www.diffbot.com/",
+    "description": "Uses AI to build a knowledge graph of the web, enabling businesses to extract and understand web data.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Ditto",
+    "url": "https://www.ditto.com/",
+    "description": "An edge-native, mobile database that thrives on mobile and edge devices.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Domo",
+    "url": "https://www.domo.com/",
+    "description": "Provides a cloud-based platform for business intelligence and data visualization.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "DuckDB",
+    "url": "https://duckdb.org/",
+    "description": "An in-process SQL OLAP database management system designed for fast analytical queries.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Dynatrace",
+    "url": "https://www.dynatrace.com/",
+    "description": "Offers a unified observability and security platform powered by AI, providing analytics and automation for multicloud environments.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Elastic",
+    "url": "https://www.elastic.co/",
+    "description": "Provides search-powered solutions for observability, security, and enterprise search.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Fathom",
+    "url": "https://usefathom.com/",
+    "description": "Privacy-focused web analytics platform offering real-time insights without cookies or invasive tracking.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Firebolt",
+    "url": "https://www.firebolt.io/",
+    "description": "Delivers a cloud data warehouse designed for high-performance analytics.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Fivetran",
+    "url": "https://www.fivetran.com/",
+    "description": "Automated data integration platform with 300+ connectors and zero-maintenance ETL pipelines.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "FullStory",
+    "url": "https://www.fullstory.com/",
+    "description": "Offers digital experience analytics to understand and improve user interactions.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Gel",
+    "url": "https://www.geldata.com/",
+    "description": "Next-generation graph-relational database with modern query language.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Grafana",
+    "url": "https://grafana.com/",
+    "description": "An open-source platform for monitoring and observability, enabling visualization of metrics, logs, and traces.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "groundcover",
+    "url": "https://www.groundcover.com/",
+    "description": "eBPF-based observability platform with BYOC architecture for logs, metrics, and traces.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Hasura",
+    "url": "https://hasura.io/",
+    "description": "Instantly generates GraphQL APIs over new or existing PostgresSQL databases.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Heap",
+    "url": "https://heap.io/",
+    "description": "Automatically captures user interactions to provide insights into user behavior without manual tracking.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Honeycomb",
+    "url": "https://www.honeycomb.io/",
+    "description": "An observability platform that helps engineering teams understand, debug, and improve complex systems.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Highlight",
+    "url": "https://highlight.io/",
+    "description": "Open-source fullstack monitoring platform with session replay, error monitoring, logging, and traces.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Hydrolix",
+    "url": "https://hydrolix.io/",
+    "description": "A streaming data lake that ingests and processes high-volume, high-cardinality log data in real time, providing scalable storage and query capabilities with cost-efficient resource utilization.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "InfluxData",
+    "url": "https://www.influxdata.com/",
+    "description": "Purpose-built time-series database for cloud, on-premises, and edge deployments.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Kentik",
+    "url": "https://www.kentik.com/",
+    "description": "Provides network observability solutions for performance monitoring and security.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "LogRocket",
+    "url": "https://logrocket.com/",
+    "description": "Replays user sessions to help developers understand and fix issues faster.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Logz.io",
+    "url": "https://logz.io/",
+    "description": "Offers an open-source observability platform for monitoring, troubleshooting, and securing applications.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Materialize",
+    "url": "https://materialize.com/",
+    "description": "Streaming SQL database for real-time data transformation and analytics.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Meilisearch",
+    "url": "https://www.meilisearch.com/",
+    "description": "Rust-based open-source search engine with hybrid search capabilities and typo-tolerant fast search.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Mezmo",
+    "url": "https://www.mezmo.com/",
+    "description": "Provides a central observability platform to control, enrich, and correlate machine data for faster business decisions.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Mixpanel",
+    "url": "https://mixpanel.com/",
+    "description": "Delivers product analytics to help teams build better products through data-driven decisions.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Momento",
+    "url": "https://www.gomomento.com/",
+    "description": "Serverless caching with instant scaling, no cluster management, compatible with Redis clients and Memcached protocols.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "MongoDB",
+    "url": "https://www.mongodb.com/",
+    "description": "Offers a general-purpose, document-based database designed for modern application development.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "MotherDuck",
+    "url": "https://motherduck.com/",
+    "description": "Serverless analytics platform powered by DuckDB with cloud collaboration.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Neo4j",
+    "url": "https://neo4j.com/",
+    "description": "A graph database platform for connected data applications.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Neon",
+    "url": "https://neon.tech/",
+    "description": "Provides a serverless PostgresSQL with autoscaling, branching, and bottomless storage.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "New Relic",
+    "url": "https://newrelic.com/",
+    "description": "An observability platform that unifies metrics, events, logs, and traces for full-stack monitoring.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "OpenStatus",
+    "url": "https://www.openstatus.dev/",
+    "description": "Open-source status page and monitoring platform for tracking API and website uptime worldwide.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Planetscale",
+    "url": "https://planetscale.com/",
+    "description": "A serverless database platform built on Vitess, offering scalability and reliability for MySQL databases.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Plausible",
+    "url": "https://plausible.io/",
+    "description": "Lightweight, privacy-focused web analytics platform without cookies, offering essential metrics in an intuitive dashboard.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "PostHog",
+    "url": "https://posthog.com/",
+    "description": "An open-source product analytics platform that can be deployed on-premises.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Prisma",
+    "url": "https://www.prisma.io/",
+    "description": "Provides a next-generation ORM for Node.js and TypeScript.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "QuestDB",
+    "url": "https://questdb.com/",
+    "description": "Open-source time-series database with ultra-low latency and SQL support.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "ReadySet",
+    "url": "https://readyset.io/",
+    "description": "SQL caching engine that sits between app and database for performance.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Redpanda",
+    "url": "https://www.redpanda.com/",
+    "description": "Kafka-compatible streaming data platform with built-in identity controls and policy enforcement for AI workloads.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Redis",
+    "url": "https://redis.io/",
+    "description": "An in-memory data structure store used as a database, cache, and message broker.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Rivery",
+    "url": "https://rivery.io/",
+    "description": "No-code data integration platform with visual workflows and 150+ connectors with built-in transformations.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Sentry",
+    "url": "https://sentry.io/",
+    "description": "Application monitoring platform for error tracking, performance monitoring, and session replay to identify and resolve code issues.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Snowflake",
+    "url": "https://www.snowflake.com/en/",
+    "description": "A cloud data platform offering data warehousing, data lakes, and data sharing capabilities.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Splunk",
+    "url": "https://www.splunk.com/",
+    "description": "Provides a platform for searching, monitoring, and analyzing machine-generated big data.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Steampipe",
+    "url": "https://steampipe.io/",
+    "description": "Query APIs and cloud services using SQL with instant data access.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Storadera",
+    "url": "https://storadera.com",
+    "description": "European S3 compatible cloud storage with predictable pricing, no egress fees, and multi-region infrastructure for backup, AI, and cloud workloads.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Sumo Logic",
+    "url": "https://www.sumologic.com/",
+    "description": "Offers cloud-native machine data analytics for real-time insights into operations and security.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Supabase",
+    "url": "https://supabase.com/",
+    "description": "An open-source Firebase alternative that provides a backend-as-a-service.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "SurrealDB",
+    "url": "https://surrealdb.com/",
+    "description": "Multi-model database for web, mobile, serverless, and cloud applications.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Teradata",
+    "url": "https://www.teradata.com/",
+    "description": "Specializing in providing solutions for data warehousing, analytics, and big data analytics.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "TigerData",
+    "url": "https://www.tigerdata.com/",
+    "description": "PostgreSQL-based time-series database with compression and continuous aggregates.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Tigris",
+    "url": "https://www.tigrisdata.com/",
+    "description": "A globally distributed S3-compatible object storage service that enables developers to store and access any amount of data.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Tinybird",
+    "url": "https://www.tinybird.co/",
+    "description": "Real-time data platform for building instant APIs over streaming and batch data.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Turso",
+    "url": "https://turso.tech/",
+    "description": "Distributed SQLite database with global edge replication.",
+    "category": "Data Clouds",
+    "score": 2
+  },
+  {
+    "name": "Typesense",
+    "url": "https://typesense.org/",
+    "description": "Open-source typo-tolerant search engine with <50ms speed. Self-hosted or cloud options available.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Upstash",
+    "url": "https://upstash.com/",
+    "description": "Serverless Redis and Kafka with per-request pricing, global replication, and REST API for edge computing workloads.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Wasabi",
+    "url": "https://wasabi.com/",
+    "description": "A S3-compatible object storage service for use with AI, content delivery, backup, and archiving workloads with no egress or API fees.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Weights & Biases",
+    "url": "https://wandb.ai/",
+    "description": "AI developer platform for experiment tracking, model management, evaluation, and observability for ML and LLM applications.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Xata",
+    "url": "https://xata.io/",
+    "description": "Serverless database platform with built-in search and analytics.",
+    "category": "Data Clouds",
+    "score": 3
+  },
+  {
+    "name": "Alloy Automation",
+    "url": "https://runalloy.com/",
+    "description": "Embedded iPaaS with unified APIs for 400+ apps, enabling native integrations and AI agent connectivity.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "Dagster",
+    "url": "https://dagster.io/",
+    "description": "Unified control plane for building, scaling, and observing AI and data pipelines with orchestration and quality monitoring.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "Fastn",
+    "url": "https://fastn.ai/",
+    "description": "AI-powered embedded integration platform for building unified APIs from multiple data sources.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "Inngest",
+    "url": "https://www.inngest.com/",
+    "description": "A platform for AI and backend workflows that helps developers build AI-ready step functions without touching infrastructure.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "Kestra",
+    "url": "https://kestra.io/",
+    "description": "Open-source orchestration platform for event-driven workflows.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "Mabl",
+    "url": "https://www.mabl.com/",
+    "description": "AI-native test automation with self-healing tests. Agentic tester handles creation, execution, and maintenance. Enterprise-grade.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "Miter",
+    "url": "https://www.miter.com/",
+    "description": "All-in-one platform for payroll, HR, expenses, and field operations management.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "n8n",
+    "url": "https://n8n.io/",
+    "description": "An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "PagerDuty",
+    "url": "https://www.pagerduty.com/",
+    "description": "A platform for automating critical operations work.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "Prefect",
+    "url": "https://www.prefect.io/",
+    "description": "Workflow orchestration framework for building resilient data pipelines in Python.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "Ryvn",
+    "url": "https://ryvn.ai/",
+    "description": "BYOC deployment platform for SaaS startups in customer clouds and on-premises.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "ServiceNow",
+    "url": "https://www.servicenow.com/",
+    "description": "A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "Temporal",
+    "url": "https://temporal.io/",
+    "description": "Durable execution platform for reliable workflows with automatic failure recovery.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "Tines",
+    "url": "https://www.tines.com/",
+    "description": "No-code automation platform for security operations and IT workflows.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "Windmill",
+    "url": "https://www.windmill.dev/",
+    "description": "Open-source developer platform for building internal tools by writing scripts in multiple languages and composing them into workflows.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "Zapier",
+    "url": "https://zapier.com/",
+    "description": "A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.",
+    "category": "Workflow and Operations Clouds",
+    "score": 3
+  },
+  {
+    "name": "Akamai",
+    "url": "https://www.akamai.com/",
+    "description": "A global content delivery and cybersecurity platform that helps secure and accelerate digital experiences at the edge.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Approximated",
+    "url": "https://approximated.app/",
+    "description": "Custom domain proxy platform with global edge servers, SSL management, and DDoS protection.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Aviatrix",
+    "url": "https://aviatrix.com/",
+    "description": "Provides a cloud-native networking platform with advanced multi-cloud transit, security, and observability features.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Boundary",
+    "url": "https://www.boundaryproject.io/",
+    "description": "HashiCorp's secure remote access to systems and services.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "c/Side",
+    "url": "https://cside.dev/",
+    "description": "A next generation web security service that monitors, optimizes and secures 3rd party scripts.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Cloudbrink",
+    "url": "https://cloudbrink.com/",
+    "description": "Delivers hybrid access-as-a-service with high-performance connectivity, zero trust security, and edge-native networking for remote users.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Cloudflare",
+    "url": "https://www.cloudflare.com/",
+    "description": "Protects and accelerates websites and apps through global CDN, DDoS mitigation, Zero Trust access, and DNS services.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "CrowdStrike",
+    "url": "https://www.crowdstrike.com/",
+    "description": "A cloud-native cybersecurity platform that provides endpoint protection, threat intelligence, and incident response powered by AI.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Fastly",
+    "url": "https://www.fastly.com/",
+    "description": "An edge cloud platform designed for performance and security, enabling developers to build faster, more secure digital experiences.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Fortinet",
+    "url": "https://www.fortinet.com/",
+    "description": "Provides integrated cybersecurity solutions including next-gen firewalls, secure SD-WAN, and endpoint protection.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Kong",
+    "url": "https://konghq.com/",
+    "description": "An open-source API gateway and microservices management layer that provides traffic control, security, and observability for APIs.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "LocalXpose",
+    "url": "https://localxpose.io/",
+    "description": "Secure tunneling service supporting HTTP, TLS, TCP, UDP with custom domains and SSL.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Macrometa",
+    "url": "https://www.macrometa.com/",
+    "description": "An edge delivery network and developer platform built for real-time use cases.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Megaport",
+    "url": "https://www.megaport.com/",
+    "description": "Offers elastic interconnection services that allow businesses to rapidly connect to cloud providers, data centers, and networks.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "NetBox Cloud",
+    "url": "https://netboxlabs.com/netbox-cloud/",
+    "description": "A managed solution for network infrastructure modeling and documentation, providing a scalable and secure platform for network automation.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Netmaker",
+    "url": "https://netmaker.io/",
+    "description": "A WireGuard-based virtual networking platform that enables fast, secure, and scalable networking for devices and distributed systems.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Netskope",
+    "url": "https://www.netskope.com/",
+    "description": "A cloud-native security platform that protects users, apps, and data with visibility and control across SaaS, IaaS, and the web.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Operant",
+    "url": "https://operant.ai/",
+    "description": "Provides runtime protection for cloud-native applications using graph-based detection and real-time observability.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Pangolin",
+    "url": "https://digpangolin.com/",
+    "description": "Secure app exposure via WireGuard tunnels with identity-aware access control.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Pomerium",
+    "url": "https://www.pomerium.com/",
+    "description": "Identity-aware access proxy for securing internal apps.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "StrongDM",
+    "url": "https://www.strongdm.com/",
+    "description": "Zero-trust access platform for infrastructure and databases.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Subspace",
+    "url": "https://subspace.com/",
+    "description": "Dedicated network-as-a-service for real-time applications with global private fiber-optic network. Reduces latency up to 80% and packet loss by 99% for voice, video, gaming, and real-time apps with WebRTC acceleration and SIP proxy.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Tailscale",
+    "url": "https://tailscale.com/",
+    "description": "A zero-config VPN built on WireGuard that makes secure networking between devices as easy as logging in.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Teleport",
+    "url": "https://goteleport.com/",
+    "description": "Zero trust infrastructure access platform with cryptographic identity and least privileged access.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Twingate",
+    "url": "https://www.twingate.com/",
+    "description": "Provides a modern zero-trust networking solution to securely connect people to private apps and services without VPNs.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Versa Networks",
+    "url": "https://www.versa-networks.com/",
+    "description": "Delivers integrated SASE and SD-WAN solutions for secure, scalable, and simplified enterprise networking.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Wiz",
+    "url": "https://www.wiz.io/",
+    "description": "A cloud security platform that gives full-stack visibility into cloud infrastructure and prioritizes risk across workloads, containers, and identities.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "zrok",
+    "url": "https://zrok.io/",
+    "description": "Zero-trust tunneling platform for instant private or public sharing of applications, files, and services with automatic TLS and built-in security features.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "Zscaler",
+    "url": "https://www.zscaler.com/",
+    "description": "Zero trust SASE platform with AI-driven cybersecurity and cloud protection.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 3
+  },
+  {
+    "name": "AssemblyAI",
+    "url": "https://www.assemblyai.com/",
+    "description": "Offers powerful speech-to-text and AI APIs for transcription, summarization, content moderation, and more.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Base44",
+    "url": "https://base44.com/",
+    "description": "An all-in-one AI platform to easily build fully functioning apps without coding.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Bluedot",
+    "url": "https://www.bluedothq.com/",
+    "description": "Bot-free AI meeting assistant that records, transcribes, and generates notes with automatic CRM updates.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Character.ai",
+    "url": "https://character.ai/",
+    "description": "Lets users interact with and create AI-driven characters for entertainment, education, and companionship.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "ChatGPT by OpenAI",
+    "url": "https://openai.com/chatgpt",
+    "description": "OpenAI's conversational AI model that generates human-like text, answers questions, and assists with a wide range of tasks.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Chatsonic",
+    "url": "https://chatsonic.com/",
+    "description": "An AI chatbot built on top of GPT that includes real-time search data and voice interaction capabilities.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Claude",
+    "url": "https://claude.ai/",
+    "description": "An AI assistant from Anthropic focused on safe, helpful, and honest interactions, suitable for creative and technical workflows.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Codev",
+    "url": "https://codev.ai/",
+    "description": "A development assistant that uses AI to generate, analyze, and debug software code efficiently.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Cohere",
+    "url": "https://cohere.com/",
+    "description": "Enterprise AI platform with language models for automation, data insights, and custom solutions.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "DeepAI",
+    "url": "https://deepai.org/",
+    "description": "Offers a suite of open AI APIs for developers, including text, image, and moderation tools.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Deepseek",
+    "url": "https://deepseek.com/",
+    "description": "Provides developer tools and research models for AI-powered coding, content generation, and reasoning tasks.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "E2B",
+    "url": "https://e2b.dev/",
+    "description": "Secure sandboxes for AI code execution with filesystem, networking, and long-running process support for AI agents.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "ElevenLabs",
+    "url": "https://elevenlabs.io/",
+    "description": "AI text-to-speech with ultra-realistic voices in 32+ languages, voice cloning, and conversational agents.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Elicit",
+    "url": "https://elicit.org/",
+    "description": "An AI research assistant that helps automate tasks like literature reviews and hypothesis testing for academics and researchers.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Fireworks.ai",
+    "url": "https://fireworks.ai/",
+    "description": "Delivers high-speed, cost-effective inference APIs with support for open-source models.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Gadget",
+    "url": "https://gadget.dev/",
+    "description": "Full-stack framework with built-in database, auth, and deployment.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "GitHub Copilot",
+    "url": "https://github.com/features/copilot",
+    "description": "An AI-powered coding assistant developed by GitHub and OpenAI that suggests code snippets as you type.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Groq",
+    "url": "https://groq.com/",
+    "description": "Provides ultra-fast inference on custom hardware designed for AI workloads.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Helicone",
+    "url": "https://www.helicone.ai/",
+    "description": "Open-source LLM observability and monitoring platform.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Laminar",
+    "url": "https://laminar.sh/",
+    "description": "Observability and analytics platform for LLM applications.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Layer 9",
+    "url": "https://layer9.com/",
+    "description": "AI network engineer that configures, monitors, and repairs network devices with 24/7 automation.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "LeptonAI",
+    "url": "https://lepton.ai/",
+    "description": "Provides infrastructure and tools to build and deploy AI models at scale.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Lightning.ai",
+    "url": "https://lightning.ai/",
+    "description": "Build, train, and deploy AI models with powerful tools and scalable infrastructure.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Marblism",
+    "url": "https://www.marblism.com/",
+    "description": "Generate full-stack web apps from a single prompt.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "NeuBird",
+    "url": "https://neubird.ai/",
+    "description": "An autonomous AI SRE platform.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Parahelp",
+    "url": "https://parahelp.com/",
+    "description": "AI support agent that automates complex customer support tickets end-to-end for software companies.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Perplexity",
+    "url": "https://www.perplexity.ai/",
+    "description": "An AI-native search engine that answers questions with citations and real-time data.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Playground",
+    "url": "https://playground.com/",
+    "description": "A tool for exploring and experimenting with generative AI across text, code, and image generation.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Poe",
+    "url": "https://poe.com/",
+    "description": "A multi-AI chat interface by Quora that enables access to models like Claude, GPT-4, and more in one app.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Prismic",
+    "url": "https://prismic.io/",
+    "description": "A headless CMS for developers to build and manage dynamic websites using modern frameworks and custom content APIs.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Replicate",
+    "url": "https://replicate.com/",
+    "description": "Run machine learning models in the cloud with an API.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Replit",
+    "url": "https://replit.com/",
+    "description": "Collaborative browser IDE with instant deployment and multiplayer coding.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Resolve.ai",
+    "url": "https://resolve.ai/",
+    "description": "An agentic AI SRE from the co-creators of OpenTelemetry.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Retool",
+    "url": "https://retool.com/",
+    "description": "A low-code platform to build custom internal tools quickly with pre-built components and database integrations.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Softgen",
+    "url": "https://softgen.ai/",
+    "description": "Provides tools to automatically generate code, documentation, and tests to speed up software delivery.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "StackBlitz",
+    "url": "https://stackblitz.com/",
+    "description": "Instant full-stack dev environments running entirely in the browser.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Supertrace AI",
+    "url": "https://supertrace.ai/",
+    "description": "AI-powered network engineer platform for automating IT network management and infrastructure operations.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Surfer AI",
+    "url": "https://surferseo.com/ai/",
+    "description": "Uses AI to generate SEO-optimized content and blog articles with built-in search analysis tools.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Tavus",
+    "url": "https://www.tavus.io/",
+    "description": "AI-powered conversational video platform with real-time face-to-face AI humans.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Together.ai",
+    "url": "https://www.together.ai/",
+    "description": "Open-source foundation model infrastructure with collaborative fine-tuning.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "v0",
+    "url": "https://v0.app/",
+    "description": "AI-powered UI generation from text prompts to React code.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Windsurf",
+    "url": "https://windsurf.com/",
+    "description": "An AI powered coding engine and IDE that is an alternative to GitHub Copilot. Formerly Codeium.",
+    "category": "Vibe Clouds",
+    "score": 3
+  },
+  {
+    "name": "Bolt",
+    "url": "https://bolt.new/",
+    "description": "A browser-based AI development environment that lets you generate, edit, and deploy full-stack applications instantly using natural language prompts.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "browserless",
+    "url": "https://www.browserless.io/",
+    "description": "Headless browser automation platform providing managed Chrome, Firefox, and WebKit browsers for scraping, testing, and automation with bot detection bypass and CAPTCHA solving.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Bubble",
+    "url": "https://bubble.io/",
+    "description": "No-code visual programming platform for building web and mobile apps with drag-and-drop interface and usage-based pricing.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Cloudsmith",
+    "url": "https://cloudsmith.com/",
+    "description": "Cloud-native artifact management supporting 30+ formats with security scanning, policy engine, and global CDN delivery.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Coder",
+    "url": "https://coder.com/",
+    "description": "Offers self-hosted cloud development environments that provision and manage workspaces, enabling developers to code from anywhere with enhanced security and scalability.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "CopilotKit",
+    "url": "https://www.copilotkit.ai/",
+    "description": "Open-source framework and infrastructure for building in-app AI copilots and agents.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Cursor",
+    "url": "https://www.cursor.so/",
+    "description": "An AI-enhanced code editor that integrates directly with your codebase to provide suggestions and automate changes.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Cypress",
+    "url": "https://www.cypress.io/",
+    "description": "Browser testing framework for modern web applications with AI-powered test generation and self-healing capabilities.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Deno Deploy",
+    "url": "https://deno.com/deploy",
+    "description": "Globally distributed edge platform for JavaScript and TypeScript serverless apps.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Depot",
+    "url": "https://depot.dev/",
+    "description": "Accelerates Docker builds and GitHub Actions with up to 20x faster performance through optimized compute and caching.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "DevZero",
+    "url": "https://www.devzero.io/",
+    "description": "Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Dosu",
+    "url": "https://dosu.dev/",
+    "description": "AI documentation platform that generates, maintains, and shares knowledge from code and conversations.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Fabrica",
+    "url": "https://www.usefabrica.app/",
+    "description": "AI platform that builds internal apps from prompts with database and tooling integrations.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Firefly",
+    "url": "https://www.firefly.ai/",
+    "description": "A cloud asset management solution powered by Infrastructure-as-Code, assisting DevOps and SRE teams in managing their entire cloud infrastructure efficiently.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Flagsmith",
+    "url": "https://www.flagsmith.com/",
+    "description": "Open-source feature flag and remote config platform with SaaS, self-hosted, or private cloud deployment options.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Flightcontrol",
+    "url": "https://www.flightcontrol.dev/",
+    "description": "Automates infrastructure provisioning, CI/CD, and deployments within your own AWS account, offering full visibility and control.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Fly",
+    "url": "https://fly.io",
+    "description": "Provides a platform to deploy applications globally with low latency.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Gammacode",
+    "url": "https://gammacode.dev/",
+    "description": "AI code intelligence platform with CLI/web interface, security scanning, and issue automation.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "GitHub",
+    "url": "https://github.com/",
+    "description": "The world's leading platform for version control and collaboration, offering GitHub Codespaces for instant, cloud-based development environments.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "GitLab",
+    "url": "https://gitlab.com/",
+    "description": "Managed Git hosting with CI/CD and integrated privacy-first AI workflows.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Gitpod",
+    "url": "https://www.gitpod.io/",
+    "description": "A platform for automated and standardized development environments, enabling developers to code from anywhere with pre-configured, on-demand workspaces.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "HashiCorp Cloud Platform",
+    "url": "https://www.hashicorp.com/cloud",
+    "description": "A fully-managed platform offering HashiCorp products-as-a-service, simplifying infrastructure and security management for developers.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Heroku",
+    "url": "https://www.heroku.com/",
+    "description": "Offers a platform as a service (PaaS) for deploying and managing applications.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "JetBrains",
+    "url": "https://www.jetbrains.com/",
+    "description": "Intelligent development tools and IDEs including IntelliJ IDEA and Kotlin language.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Koyeb",
+    "url": "https://www.koyeb.com/",
+    "description": "Offers a serverless platform to deploy applications globally.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Lightrun",
+    "url": "https://lightrun.com/",
+    "description": "An AI platform to autonomously detect, debug, and remediate runtime issues.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Linear",
+    "url": "https://linear.app/",
+    "description": "Purpose-built tool for planning, tracking issues, and managing product roadmaps.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Mesa",
+    "url": "https://www.mesa.dev",
+    "description": "AI-powered code review platform with custom agents that learn codebase standards and prevent tech debt.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Mintlify",
+    "url": "https://mintlify.com/",
+    "description": "Modern documentation platform with MDX support, API references, interactive components, and built-in search analytics.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Netlify",
+    "url": "https://www.netlify.com/",
+    "description": "Platform for building, deploying, and scaling modern web applications.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Northflank",
+    "url": "https://northflank.com/",
+    "description": "A platform to build, deploy, and manage full-stack applications.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Notion",
+    "url": "https://www.notion.com/",
+    "description": "All-in-one workspace for notes, docs, wikis, and project management.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Outerbase",
+    "url": "https://www.outerbase.com/",
+    "description": "A platform for safely interacting with data and databases, now part of Cloudflare.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Pantheon",
+    "url": "https://pantheon.io/",
+    "description": "A platform for running Wordpress, Drupal and Next.js websites.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Platform.sh",
+    "url": "https://platform.sh/",
+    "description": "Enterprise PaaS to build, run, and scale web applications and microservices.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Porter",
+    "url": "https://porter.run/",
+    "description": "A Kubernetes-powered PaaS that runs in your own cloud provider, simplifying the deployment and management of applications on AWS, GCP, or Azure.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Portkey",
+    "url": "https://portkey.ai/",
+    "description": "AI Gateway control panel for production apps with unified gateway to 1600+ LLMs, observability, guardrails, and governance. OpenAI-compatible with semantic caching and SOC2/HIPAA/GDPR compliance.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Railway",
+    "url": "https://railway.com/",
+    "description": "Deploy code instantly and manage environments in the cloud.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Release",
+    "url": "https://release.com/",
+    "description": "Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Render",
+    "url": "https://render.com/",
+    "description": "Unified cloud platform to build and host apps and websites.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Roboflow",
+    "url": "https://roboflow.com/",
+    "description": "Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Shuttle",
+    "url": "https://www.shuttle.dev/",
+    "description": "Rust-native cloud platform for building and deploying backend services.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Tabnine",
+    "url": "https://www.tabnine.com/",
+    "description": "AI code assistant with private model options.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Tiptap",
+    "url": "https://tiptap.dev/",
+    "description": "Headless rich text editor with real-time collaboration, AI content generation, and 100+ extensions.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Ubicloud",
+    "url": "https://www.ubicloud.com/",
+    "description": "An open-source cloud platform that can run anywhere, offering IaaS features on bare metal providers with options for self-hosting or managed services.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Unleash",
+    "url": "https://www.getunleash.io/",
+    "description": "Enterprise open-source feature management platform with strong RBAC and flexible deployment options.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
+    "name": "Akeyless",
+    "url": "https://www.akeyless.io/",
+    "description": "SaaS secrets management with zero-knowledge encryption. Distributed Fragments Cryptography eliminates vault overhead. 70% cost savings.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Aserto",
+    "url": "https://www.aserto.com/",
+    "description": "Cloud-native authorization built on Open Policy Agent.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Auth0",
+    "url": "https://auth0.com/",
+    "description": "A flexible, drop-in solution to add authentication and authorization services to applications, now part of Okta.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Authzed",
+    "url": "https://authzed.com/",
+    "description": "Provides fine-grained, scalable authorization as a service, built on the open-source SpiceDB.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Bolster",
+    "url": "https://bolster.ai/",
+    "description": "A platform for preventing and mitigrating phishing and impersonation scams.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Cerbos",
+    "url": "https://cerbos.dev/",
+    "description": "Open-source authorization with policy-as-code for access control.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "CipherStash",
+    "url": "https://cipherstash.com/",
+    "description": "Zero-trust encryption platform with searchable encryption, identity-based access control, and real-time audit trails.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Clerk",
+    "url": "https://clerk.com/",
+    "description": "Offers a complete suite of embeddable UIs and APIs for user authentication and management.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Descope",
+    "url": "https://www.descope.com/",
+    "description": "An authentication and user manage platform that offers low-code and no-code options.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Doppler",
+    "url": "https://www.doppler.com/",
+    "description": "Cloud-based secrets management platform for securely managing and orchestrating credentials across infrastructure.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Duo",
+    "url": "https://duo.com/",
+    "description": "Provides multi-factor authentication and secure access solutions to protect users, data, and applications.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Frontegg",
+    "url": "https://frontegg.com/",
+    "description": "Delivers a comprehensive user management platform, including authentication, authorization, and user self-service capabilities.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "FusionAuth",
+    "url": "https://fusionauth.io/",
+    "description": "Customer Identity and Access Management (CIAM) with a hybrid, single-tenant deployment option.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Infisical",
+    "url": "https://infisical.com/",
+    "description": "All-in-one secrets management platform for application secrets, certificates, and SSH keys with dynamic secret generation.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 2
+  },
+  {
+    "name": "JumpCloud",
+    "url": "https://jumpcloud.com/",
+    "description": "Offers a cloud directory platform for secure identity, access, and device management across various operating systems.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Keet",
+    "url": "https://www.trykeet.com/",
+    "description": "Provides authentication solutions for AI agents, enabling them to perform actions on behalf of users across various platforms.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Keycloak",
+    "url": "https://www.keycloak.org/",
+    "description": "An open-source identity and access management solution for modern applications and services.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Ory",
+    "url": "https://www.ory.sh/",
+    "description": "Offers open-source identity infrastructure for authentication, authorization, and user management.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Oso",
+    "url": "https://www.osohq.com/",
+    "description": "Authorization framework with policy-as-code (now part of Netflix).",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Pangea",
+    "url": "https://pangea.cloud/",
+    "description": "Security services API platform for auth, vault, audit, and more.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Permit",
+    "url": "https://www.permit.io/",
+    "description": "Authorization-as-a-Service platform for baking-in access control in minutes.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "PropelAuth",
+    "url": "https://www.propelauth.com/",
+    "description": "B2B authentication and user management for multi-tenant apps.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Sift Science",
+    "url": "https://sift.com/",
+    "description": "Utilizes machine learning to provide real-time fraud detection and prevention solutions.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Stytch",
+    "url": "https://stytch.com/",
+    "description": "Provides APIs and SDKs for passwordless authentication, including email magic links, SMS passcodes, and biometrics.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 2
+  },
+  {
+    "name": "Warrant",
+    "url": "https://warrant.dev/",
+    "description": "Authorization and access control as a service.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "WorkOS",
+    "url": "https://workos.com/",
+    "description": "Offers enterprise-ready authentication solutions, including single sign-on and directory synchronization.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Xpander.ai",
+    "url": "http://xpander.ai/",
+    "description": "Backend-as-a-Service for AI agents with managed hosting and function libraries.",
+    "category": "Authorization, Identity, Fraud and Abuse Clouds",
+    "score": 3
+  },
+  {
+    "name": "Amberflo",
+    "url": "https://www.amberflo.io/",
+    "description": "A cloud-native platform for metering and billing, enabling businesses to implement usage-based pricing models.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Bill",
+    "url": "https://www.bill.com/",
+    "description": "A comprehensive financial operations platform for bills, invoices, expenses, budgets, and more.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Dodo Payments",
+    "url": "https://dodopayments.com/",
+    "description": "Merchant of Record platform for global payments with automated tax compliance in 150+ countries.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Lago",
+    "url": "https://www.getlago.com/",
+    "description": "An open-source metering and usage-based billing platform designed for transparency and developer experience.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 2
+  },
+  {
+    "name": "Lemon Squeezy",
+    "url": "https://www.lemonsqueezy.com/",
+    "description": "The all-in-one platform for SaaS that provides payments, tax & subscriptions.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "m3ter",
+    "url": "https://www.m3ter.com/",
+    "description": "Usage data infrastructure for pricing and billing.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Maxio",
+    "url": "https://www.maxio.com/",
+    "description": "Provides billing and financial operations solutions for B2B SaaS companies, helping to streamline revenue management.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Mercury",
+    "url": "https://mercury.com/",
+    "description": "A financial technology platform that pairs traditional banking with bill payment, invoicing, SAFE's, and other startup tools.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Metronome",
+    "url": "https://metronome.com/",
+    "description": "Offers a usage-based billing platform that simplifies billing operations and supports various pricing models.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "N26",
+    "url": "https://n26.com/en-us",
+    "description": "A 100% mobile bank that's trusted by millions of customers across Europe.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "OpenMeter",
+    "url": "https://openmeter.io/",
+    "description": "Open-source usage metering for consumption-based billing.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Orb",
+    "url": "https://www.withorb.com/",
+    "description": "Delivers a usage-based subscription management platform that enables flexible pricing and seamless billing.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Recurly",
+    "url": "https://recurly.com/",
+    "description": "Provides subscription management software and recurring billing solutions for businesses of all sizes.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Salesforce Revenue Cloud",
+    "url": "https://www.salesforce.com/products/revenue-cloud/overview/",
+    "description": "A suite of tools for managing the entire revenue lifecycle, including quoting, billing, and revenue recognition.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Schematic",
+    "url": "https://schematichq.com/",
+    "description": "Feature flags and entitlements for product monetization.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Stigg",
+    "url": "https://www.stigg.io/",
+    "description": "Pricing and packaging infrastructure for SaaS monetization.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Stripe",
+    "url": "https://stripe.com/",
+    "description": "A financial infrastructure platform that enables businesses to accept payments, manage subscriptions, and handle billing operations.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Togai",
+    "url": "https://www.togai.com/",
+    "description": "Provides billing infrastructure for usage-based pricing, supporting complex billing scenarios with real-time analytics.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "UniBee",
+    "url": "https://unibee.dev/",
+    "description": "Open-source billing and subscription management with usage-based pricing, multi-gateway support, and self-host options.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Wise",
+    "url": "https://wise.com/",
+    "description": "A platform for paying and getting paid globally.",
+    "category": "Monetization, Finance and Legal Clouds",
+    "score": 3
+  },
+  {
+    "name": "Attio",
+    "url": "https://attio.com/",
+    "description": "An AI-native CRM where you can design workflows, integrate your data and build detailed reports.",
+    "category": "Customer, Marketing and eCommerce Clouds",
+    "score": 3
+  },
+  {
+    "name": "Beehiiv",
+    "url": "https://www.beehiiv.com/",
+    "description": "Newsletter platform with integrated monetization, website builder, ad network, and referral programs.",
+    "category": "Customer, Marketing and eCommerce Clouds",
+    "score": 3
+  },
+  {
+    "name": "Clarify",
+    "url": "https://www.getclarify.ai/",
+    "description": "An AI-native CRM that unifies customer data, automates tasks, and provides actionable insights to enhance customer relationships.",
+    "category": "Customer, Marketing and eCommerce Clouds",
+    "score": 3
+  },
+  {
+    "name": "Customer.io",
+    "url": "https://www.customer.io/",
+    "description": "A unified view of your audience and a single place where unlimited, real-time data can power more effective engagement.",
+    "category": "Customer, Marketing and eCommerce Clouds",
+    "score": 3
+  },
+  {
+    "name": "Formbricks",
+    "url": "https://formbricks.com/",
+    "description": "Open-source experience management platform. In-app surveys and user feedback collection.",
+    "category": "Customer, Marketing and eCommerce Clouds",
+    "score": 3
+  },
+  {
+    "name": "Front",
+    "url": "https://front.com/",
+    "description": "An AI-powered customer service platform for teams who know great CX drives revenue.",
+    "category": "Customer, Marketing and eCommerce Clouds",
+    "score": 3
+  },
+  {
+    "name": "Helpscout",
+    "url": "https://www.helpscout.com/",
+    "description": "A customer communication platform for businesses that want to treat customers like people.",
+    "category": "Customer, Marketing and eCommerce Clouds",
+    "score": 3
+  },
+  {
+    "name": "Hubspot",
+    "url": "https://www.hubspot.com/",
+    "description": "An AI-powered customer platform to connect your marketing, sales, and customer service.",
+    "category": "Customer, Marketing and eCommerce Clouds",
+    "score": 3
+  },
+  {
+    "name": "Klaviyo",
+    "url": "https://www.klaviyo.com",
+    "description": "A CRM built for B2C that combines marketing, service, and analytics.",
+    "category": "Customer, Marketing and eCommerce Clouds",
+    "score": 3
+  },
+  {
+    "name": "Mirakl",
+    "url": "https://www.mirakl.com/",
+    "description": "Powers platforms by connecting businesses, sellers, systems, partners, data and consumers.",
+    "category": "Customer, Marketing and eCommerce Clouds",
+    "score": 3
+  },
+  {
+    "name": "Shopify",
+    "url": "https://www.shopify.com/",
+    "description": "An all-in-one commerce platform to start, run, and grow a business.",
+    "category": "Customer, Marketing and eCommerce Clouds",
+    "score": 3
+  },
+  {
+    "name": "Zendesk",
+    "url": "https://www.zendesk.com/",
+    "description": "A platform that makes it easy for companies and customers to create connections.",
+    "category": "Customer, Marketing and eCommerce Clouds",
+    "score": 3
+  },
+  {
+    "name": "1NCE",
+    "url": "https://www.1nce.com/en-us/",
+    "description": "Offers flat-rate global cellular connectivity for IoT devices, including SIM management and low-bandwidth data plans designed for scale.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 3
+  },
+  {
+    "name": "Hologram",
+    "url": "https://www.hologram.io/",
+    "description": "Provides global IoT SIM cards and eUICC technology with a cloud-native dashboard for managing devices and data usage across carriers.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 3
+  },
+  {
+    "name": "Knock",
+    "url": "https://knock.app/",
+    "description": "Notification infrastructure with workflows, preferences, and delivery channels.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 3
+  },
+  {
+    "name": "Mux",
+    "url": "https://www.mux.com",
+    "description": "Solves the hard problems software teams face when building video, from live-streaming platforms to on-demand video catalogs and anything in between.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 3
+  },
+  {
+    "name": "Onomondo",
+    "url": "https://onomondo.com/",
+    "description": "A full-stack connectivity platform for IoT with a single global SIM, advanced network control, and transparent pricing.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 3
+  },
+  {
+    "name": "Particle",
+    "url": "https://www.particle.io/",
+    "description": "An integrated IoT platform offering hardware, firmware, and cloud connectivity tools for building and scaling connected products.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 3
+  },
+  {
+    "name": "Resend",
+    "url": "https://resend.com/",
+    "description": "Email for developers who want to deliver transactional and marketing emails at scale.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 2
+  },
+  {
+    "name": "Samsara",
+    "url": "https://www.samsara.com/",
+    "description": "Provides IoT solutions for connected operations, including GPS tracking, fleet management, and industrial monitoring.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 3
+  },
+  {
+    "name": "Sendbird",
+    "url": "https://sendbird.com/",
+    "description": "Communications API providing chat, voice, video, and AI messaging infrastructure with mobile/web SDKs.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 3
+  },
+  {
+    "name": "SLNG",
+    "url": "https://www.slng.ai",
+    "description": "Global speech AI gateway with multi-region support, model routing, and compliance for voice applications.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 3
+  },
+  {
+    "name": "Soracom",
+    "url": "https://soracom.io/",
+    "description": "Delivers cellular connectivity and edge services for IoT deployments, with APIs and billing tailored to developers and startups.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 3
+  },
+  {
+    "name": "Twilio",
+    "url": "https://www.twilio.com/docs/iot",
+    "description": "Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 3
+  },
+  {
+    "name": "Wistia",
+    "url": "https://wistia.com/",
+    "description": "A one-stop video marketing shop to create, host, market and analyze your videos.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 3
+  },
+  {
+    "name": "Akash Network",
+    "url": "https://akash.network/",
+    "description": "Providing access to compute at prices up to 85% lower than hyperscale cloud providers.",
+    "category": "Blockchain Clouds",
+    "score": 3
+  },
+  {
+    "name": "Gitea Cloud",
+    "url": "https://about.gitea.com/products/cloud/",
+    "description": "Single-tenant managed Git hosting with built-in CI/CD and private isolated environments.",
+    "category": "Source Code Control",
+    "score": 3
+  },
+  {
+    "name": "Edgeless Systems",
+    "url": "https://www.edgeless.systems/",
+    "description": "Confidential computing platform using TEEs for runtime encryption of AI and cloud workloads.",
+    "category": "Cloud Adjacent",
+    "score": 3
+  },
+  {
+    "name": "ngrok",
+    "url": "https://ngrok.com/",
+    "description": "Securely tunnels local services to the public internet, ideal for testing webhooks, building with APIs, or sharing local development environments.",
+    "category": "Cloud Adjacent",
+    "score": 3
+  },
+  {
+    "name": "Solo.io",
+    "url": "https://www.solo.io/",
+    "description": "Unified platform for API gateways, service mesh, and agentic AI on Kubernetes.",
+    "category": "Cloud Adjacent",
+    "score": 3
+  },
+  {
+    "name": "Tetrate",
+    "url": "https://tetrate.io/",
+    "description": "Service mesh and AI model routing platform for enterprise Kubernetes environments.",
+    "category": "Cloud Adjacent",
+    "score": 3
+  },
+  {
+    "name": "Oxide Computer",
+    "url": "https://oxide.computer/",
+    "description": "Rack-scale cloud computer for on-premises with unified hardware/software, but sold as CapEx hardware (~$1M/rack) rather than usage-based cloud service.",
+    "category": "Future Clouds",
+    "score": 3
+  },
+  {
+    "name": "API7",
+    "url": "https://api7.ai/",
+    "description": "Commercial distribution of Apache APISIX with cloud offerings, pending pricing transparency verification.",
+    "category": "Future Clouds",
+    "score": 3
+  },
+  {
+    "name": "Apigee",
+    "url": "https://cloud.google.com/apigee",
+    "description": "Google's API management platform with advanced features but enterprise-only pricing model.",
+    "category": "Future Clouds",
+    "score": 3
+  },
+  {
+    "name": "KrakenD",
+    "url": "https://www.krakend.io/",
+    "description": "High-performance API gateway, needs cloud pricing model verification.",
+    "category": "Future Clouds",
+    "score": 3
+  },
+  {
+    "name": "OpenObserve",
+    "url": "https://openobserve.ai/",
+    "description": "Open-source observability platform, cloud service SLA needs verification.",
+    "category": "Future Clouds",
+    "score": 3
+  },
+  {
+    "name": "Uptrace",
+    "url": "https://uptrace.dev/",
+    "description": "Distributed tracing and metrics platform built on OpenTelemetry, verification needed.",
+    "category": "Future Clouds",
+    "score": 3
+  },
+  {
+    "name": "Chroma",
+    "url": "https://www.trychroma.com/",
+    "description": "Open-source vector database, managed cloud service details need verification.",
+    "category": "Future Clouds",
+    "score": 3
+  },
+  {
+    "name": "Turbopuffer",
+    "url": "https://turbopuffer.com/",
+    "description": "Vector database optimized for speed, service verification needed.",
+    "category": "Future Clouds",
+    "score": 3
+  },
+  {
+    "name": "Eppo",
+    "url": "https://www.geteppo.com/",
+    "description": "Feature flagging and experimentation platform (acquired by Datadog May 2025).",
+    "category": "Future Clouds",
+    "score": 3
+  },
+  {
+    "name": "FeatBit",
+    "url": "https://featbit.co/",
+    "description": "Open-source feature flags, cloud service verification needed.",
+    "category": "Future Clouds",
+    "score": 3
+  },
+  {
+    "name": "LaunchDarkly",
+    "url": "https://launchdarkly.com/",
+    "description": "Industry-leading feature management with $20k-$120k/year pricing but no public transparency.",
+    "category": "Future Clouds",
+    "score": 3
+  },
+  {
+    "name": "Split",
+    "url": "https://www.split.io/",
+    "description": "Feature delivery platform with experimentation, enterprise-only pricing.",
+    "category": "Future Clouds",
+    "score": 3
+  },
+  {
+    "name": "Statsig",
+    "url": "https://statsig.com/",
+    "description": "Experimentation and feature flags platform (acquired by OpenAI Sept 2025, service status TBD).",
+    "category": "Future Clouds",
+    "score": 3
+  },
+  {
+    "name": "Tggl",
+    "url": "https://tggl.io/",
+    "description": "Feature flags platform, verification needed.",
+    "category": "Future Clouds",
+    "score": 3
+  }
+]

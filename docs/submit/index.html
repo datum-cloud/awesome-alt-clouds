@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Cloud Service - Awesome Alt Clouds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 2.5rem;
+        }
+
+        h1 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            font-size: 1.875rem;
+        }
+
+        .subtitle {
+            color: #718096;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            color: #4a5568;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        input[type="text"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            font-family: inherit;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-top: 0.25rem;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .candidate-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .candidate-card h3 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .score {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .score-3 {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .score-2 {
+            background: #fef5e7;
+            color: #975a16;
+        }
+
+        .score-1 {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        .criteria {
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .criteria-item {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: start;
+        }
+
+        .criteria-item::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .criteria-pass::before {
+            content: '✓';
+            color: #38a169;
+            font-weight: bold;
+        }
+
+        .criteria-fail::before {
+            content: '✗';
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .btn-approve,
+        .btn-reject {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-approve {
+            background: #48bb78;
+            color: white;
+        }
+
+        .btn-approve:hover {
+            background: #38a169;
+        }
+
+        .btn-reject {
+            background: #f56565;
+            color: white;
+        }
+
+        .btn-reject:hover {
+            background: #e53e3e;
+        }
+
+        .approved {
+            border-color: #48bb78;
+            background: #f0fff4;
+        }
+
+        .rejected {
+            opacity: 0.5;
+            border-color: #fc8181;
+        }
+
+        .final-submit {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .success-message h2 {
+            color: #38a169;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Password Gate -->
+        <div id="password-gate">
+            <h1>🔒 Submission Access</h1>
+            <p class="subtitle">Enter the password to submit a cloud service</p>
+            
+            <form id="password-form">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" 
+                           placeholder="Enter password" required>
+                    <div class="help-text">Contact maintainers if you need access</div>
+                </div>
+                <button type="submit">Unlock Form</button>
+            </form>
+        </div>
+
+        <!-- Main Form (hidden until password correct) -->
+        <div id="form-section" style="display: none;">
+            <h1>🚀 Submit Cloud Service</h1>
+            <p class="subtitle">Submit a cloud service for evaluation against our 3 criteria</p>
+
+            <form id="submission-form">
+                <div class="form-group">
+                    <label for="url">Service URL *</label>
+                    <input type="url" id="url" name="url" required 
+                           placeholder="https://example.com">
+                    <div class="help-text">Enter the main website URL</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="submitter-name">Your Name</label>
+                    <input type="text" id="submitter-name" name="submitter-name" 
+                           placeholder="John Doe (optional)">
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Additional Notes (Optional)</label>
+                    <textarea id="notes" name="notes" 
+                              placeholder="Any context about this service..."></textarea>
+                </div>
+
+                <button type="submit" id="submit-btn">Evaluate Service</button>
+            </form>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Evaluating service against 3 criteria...</p>
+            <p class="help-text">This may take 10-20 seconds</p>
+        </div>
+
+        <div class="results" id="results">
+            <h2>Evaluation Results</h2>
+            <div id="results-container"></div>
+            
+            <div class="final-submit" id="final-submit">
+                <button onclick="submitApproved()">Create PR with Approved Services</button>
+            </div>
+        </div>
+
+        <div class="success-message" id="success">
+            <h2>✅ Pull Request Created!</h2>
+            <p>Your approved services have been submitted.</p>
+            <p class="help-text">A maintainer will review and merge the PR.</p>
+            <button onclick="location.reload()">Submit Another</button>
+        </div>
+    </div>
+
+    <script>
+        // Password Protection
+        const CORRECT_PASSWORD_HASH = '120eced412546f7c1801df85af98af675a8ed7f076e77c78549da99b48077f3cfdc3392d810023401f021a9f3f20747c84da6654bae0f264e1721a451a72bf1d';
+        
+        document.getElementById('password-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            
+            // Hash the password
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-512', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            
+            if (hashHex === CORRECT_PASSWORD_HASH) {
+                document.getElementById('password-gate').style.display = 'none';
+                document.getElementById('form-section').style.display = 'block';
+                sessionStorage.setItem('authenticated', 'true');
+            } else {
+                alert('Incorrect password. Please contact maintainers for access.');
+            }
+        });
+        
+        // Check if already authenticated in this session
+        if (sessionStorage.getItem('authenticated') === 'true') {
+            document.getElementById('password-gate').style.display = 'none';
+            document.getElementById('form-section').style.display = 'block';
+        }
+
+        let evaluationResults = [];
+        const GITHUB_OWNER = 'datum-cloud';
+        const GITHUB_REPO = 'awesome-alt-clouds';
+
+        document.getElementById('submission-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const url = document.getElementById('url').value;
+            const submitterName = document.getElementById('submitter-name').value;
+            const notes = document.getElementById('notes').value;
+
+            // Show loading
+            document.getElementById('form-section').style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
+
+            try {
+                // Trigger GitHub Action via repository_dispatch
+                const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/dispatches`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Authorization': 'token ' + getGitHubToken(), // We'll need to handle this
+                    },
+                    body: JSON.stringify({
+                        event_type: 'evaluate_candidate',
+                        client_payload: {
+                            url: url,
+                            submitter: submitterName || 'Anonymous',
+                            notes: notes,
+                            timestamp: new Date().toISOString()
+                        }
+                    })
+                });
+
+                if (response.ok) {
+                    // For now, simulate the response
+                    await simulateEvaluation(url);
+                } else {
+                    throw new Error('Failed to trigger evaluation');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+                document.getElementById('form-section').style.display = 'block';
+                document.getElementById('loading').style.display = 'none';
+            }
+        });
+
+        // Temporary simulation (will be replaced with actual API call)
+        async function simulateEvaluation(url) {
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Mock response
+            const mockResult = {
+                company_name: extractDomain(url),
+                url: url,
+                score: 3,
+                criteria: [
+                    { name: 'Transparent Public Pricing', passed: true, evidence: 'Pricing page found' },
+                    { name: 'Usage-based Self-Service', passed: true, evidence: 'Signup available' },
+                    { name: 'Production Indicators', passed: true, evidence: 'Status page found' }
+                ],
+                suggested_category: 'Infrastructure Clouds',
+                suggested_description: 'Cloud service platform'
+            };
+
+            evaluationResults = [mockResult];
+            displayResults();
+        }
+
+        function extractDomain(url) {
+            try {
+                const domain = new URL(url).hostname.replace('www.', '');
+                return domain.split('.')[0].charAt(0).toUpperCase() + domain.split('.')[0].slice(1);
+            } catch {
+                return 'Unknown';
+            }
+        }
+
+        function displayResults() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
+
+            const container = document.getElementById('results-container');
+            container.innerHTML = '';
+
+            evaluationResults.forEach((result, index) => {
+                const card = createCandidateCard(result, index);
+                container.appendChild(card);
+            });
+
+            document.getElementById('final-submit').style.display = 'block';
+        }
+
+        function createCandidateCard(result, index) {
+            const card = document.createElement('div');
+            card.className = 'candidate-card';
+            card.id = `candidate-${index}`;
+
+            const scoreClass = `score-${result.score}`;
+            const scoreText = result.score === 3 ? 'Ready to Merge' : 
+                            result.score === 2 ? 'Needs Review' : 'Rejected';
+
+            card.innerHTML = `
+                <h3>${result.company_name}</h3>
+                <div class="score ${scoreClass}">${result.score}/3 - ${scoreText}</div>
+                <p><strong>URL:</strong> <a href="${result.url}" target="_blank">${result.url}</a></p>
+                <p><strong>Suggested Category:</strong> ${result.suggested_category}</p>
+                <p><strong>Description:</strong> ${result.suggested_description}</p>
+                
+                <div class="criteria">
+                    <strong>Criteria Evaluation:</strong>
+                    ${result.criteria.map(c => `
+                        <div class="criteria-item ${c.passed ? 'criteria-pass' : 'criteria-fail'}">
+                            <span><strong>${c.name}:</strong> ${c.evidence}</span>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="actions">
+                    <button class="btn-approve" onclick="approveCandidate(${index})">
+                        ✓ Approve & Add to PR
+                    </button>
+                    <button class="btn-reject" onclick="rejectCandidate(${index})">
+                        ✗ Reject
+                    </button>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function approveCandidate(index) {
+            const card = document.getElementById(`candidate-${index}`);
+            card.classList.add('approved');
+            card.classList.remove('rejected');
+            evaluationResults[index].approved = true;
+            updateFinalSubmitButton();
+        }
+
+        function rejectCandidate(index) {
+            const card = document.getElementById(`candidate-${index}`);
+            card.classList.add('rejected');
+            card.classList.remove('approved');
+            evaluationResults[index].approved = false;
+            updateFinalSubmitButton();
+        }
+
+        function updateFinalSubmitButton() {
+            const approvedCount = evaluationResults.filter(r => r.approved).length;
+            const btn = document.querySelector('#final-submit button');
+            btn.textContent = approvedCount > 0 
+                ? `Create PR with ${approvedCount} Service${approvedCount > 1 ? 's' : ''}`
+                : 'No Services Selected';
+            btn.disabled = approvedCount === 0;
+        }
+
+        async function submitApproved() {
+            const approved = evaluationResults.filter(r => r.approved);
+            
+            if (approved.length === 0) {
+                alert('Please approve at least one service');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
+            document.querySelector('#loading p').textContent = 'Creating pull request...';
+
+            // Here we would trigger the PR creation via GitHub API
+            // For now, simulate
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Show success
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+        }
+
+        function getGitHubToken() {
+            // This will be handled server-side via GitHub Actions
+            // For now, return empty
+            return '';
+        }
+    </script>
+</body>
+</html>
