@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alt Clouds Explorer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8f9fa;
+      --bg-card: #ffffff;
+      --accent-primary: #0066ff;
+      --accent-secondary: #6366f1;
+      --text-primary: #0f172a;
+      --text-secondary: #64748b;
+      --border: #e2e8f0;
+      --shadow: rgba(0, 102, 255, 0.08);
+      --success: #10b981;
+      --warning: #f59e0b;
+      --sidebar-bg: #f8f9fa;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0a0e14;
+      --bg-secondary: #141923;
+      --bg-card: #1a1f2e;
+      --accent-primary: #3b82f6;
+      --accent-secondary: #8b5cf6;
+      --text-primary: #e8eaed;
+      --text-secondary: #9ca3af;
+      --border: #2d3748;
+      --shadow: rgba(59, 130, 246, 0.1);
+      --sidebar-bg: #0f1419;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg-primary: #0a0e14;
+        --bg-secondary: #141923;
+        --bg-card: #1a1f2e;
+        --accent-primary: #3b82f6;
+        --accent-secondary: #8b5cf6;
+        --text-primary: #e8eaed;
+        --text-secondary: #9ca3af;
+        --border: #2d3748;
+        --shadow: rgba(59, 130, 246, 0.1);
+        --sidebar-bg: #0f1419;
+      }
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.5;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 260px;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border);
+      padding: 1rem 0.75rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .logo-section {
+      margin-bottom: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .logo-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+    }
+
+    .logo-text h1 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .subtitle {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .search-box {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.5rem 0.625rem 0.5rem 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-size: 0.8125rem;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 2px var(--shadow);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.625rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+      pointer-events: none;
+    }
+
+    .categories-section {
+      flex: 1;
+      margin-bottom: 0.75rem;
+      overflow-y: auto;
+    }
+
+    .section-title {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .category-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.125rem;
+    }
+
+    .category-item {
+      padding: 0.4rem 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+    }
+
+    .category-item:hover {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+    }
+
+    .category-item.active {
+      background: var(--accent-primary);
+      color: white;
+      font-weight: 500;
+      border-color: var(--accent-primary);
+    }
+
+    .category-count {
+      font-size: 0.6875rem;
+      opacity: 0.7;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stats-section {
+      padding: 0.5rem;
+      background: var(--bg-secondary);
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.25rem 0;
+    }
+
+    .stat-row:not(:last-child) {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat-label {
+      font-size: 0.6875rem;
+      color: var(--text-secondary);
+    }
+
+    .stat-value {
+      font-family: 'Geist Mono', monospace;
+      font-weight: 600;
+      color: var(--accent-primary);
+      font-size: 0.75rem;
+    }
+
+    .contribute-btn {
+      width: 100%;
+      padding: 0.4rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.375rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contribute-btn:hover {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border-color: var(--accent-primary);
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      gap: 0.25rem;
+      padding: 0.25rem;
+      background: var(--bg-secondary);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      width: fit-content;
+    }
+
+    .theme-btn {
+      width: 28px;
+      height: 24px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-btn.active {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 1.5rem;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .modal-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .modal-close {
+      width: 28px;
+      height: 28px;
+      border: none;
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.125rem;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: var(--border);
+      color: var(--text-primary);
+    }
+
+    .modal-body {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    .modal-body p {
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-link {
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .modal-link:hover {
+      text-decoration: underline;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 1rem;
+      max-width: 1400px;
+    }
+
+    .clouds-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .cloud-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.875rem;
+      transition: all 0.2s ease;
+      animation: slideUpCard 0.4s ease-out both;
+    }
+
+    @keyframes slideUpCard {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cloud-card:hover {
+      box-shadow: 0 4px 12px var(--shadow);
+      transform: translateY(-2px);
+    }
+
+    .cloud-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+      margin-bottom: 0.625rem;
+    }
+
+    .cloud-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .cloud-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cloud-title-section {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cloud-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.125rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cloud-category {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .cloud-badges {
+      display: flex;
+      gap: 0.375rem;
+      margin-bottom: 0.625rem;
+    }
+
+    .badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6875rem;
+      cursor: help;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .badge.success {
+      background: var(--success);
+      color: white;
+    }
+
+    .badge.warning {
+      background: var(--warning);
+      color: white;
+    }
+
+    .badge:hover {
+      transform: scale(1.15);
+    }
+
+    .badge-tooltip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.5rem;
+      min-width: 180px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+      white-space: nowrap;
+    }
+
+    .badge:hover .badge-tooltip {
+      display: block;
+    }
+
+    .badge-tooltip-title {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      margin-bottom: 0.375rem;
+      color: var(--text-primary);
+    }
+
+    .badge-tooltip-item {
+      font-size: 0.625rem;
+      color: var(--text-secondary);
+      margin: 0.125rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .check {
+      color: var(--success);
+    }
+
+    .cross {
+      color: #ef4444;
+    }
+
+    .cloud-description {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      margin-bottom: 0.625rem;
+    }
+
+    .cloud-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 0.625rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .cloud-url {
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: gap 0.2s ease;
+    }
+
+    .cloud-url:hover {
+      gap: 0.5rem;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 0;
+      grid-column: 1 / -1;
+    }
+
+    .empty-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+      opacity: 0.3;
+    }
+
+    .empty-text {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+    }
+
+    @media (max-width: 1024px) {
+      .sidebar {
+        width: 220px;
+      }
+
+      .clouds-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 1rem;
+      }
+
+      .clouds-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .main-content {
+        padding: 1rem;
+      }
+    }
+
+    .cloud-card:nth-child(1) { animation-delay: 0.05s; }
+    .cloud-card:nth-child(2) { animation-delay: 0.1s; }
+    .cloud-card:nth-child(3) { animation-delay: 0.15s; }
+    .cloud-card:nth-child(4) { animation-delay: 0.2s; }
+    .cloud-card:nth-child(5) { animation-delay: 0.25s; }
+    .cloud-card:nth-child(6) { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo-section">
+        <div class="logo">
+          <img src="https://raw.githubusercontent.com/datum-cloud/awesome-alt-clouds/main/altclouds-logo.png" alt="Alt Clouds" class="logo-img">
+          <div class="logo-text">
+            <h1>Alt Clouds</h1>
+          </div>
+        </div>
+        <p class="subtitle">Discover specialized cloud providers beyond the hyperscalers</p>
+      </div>
+
+      <div class="search-box">
+        <svg class="search-icon" width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+        <input 
+          type="text" 
+          class="search-input" 
+          id="searchInput"
+          placeholder="Search clouds..."
+        >
+      </div>
+
+      <div class="categories-section">
+        <div class="section-title">Categories</div>
+        <div class="category-list" id="categoryList">
+          <!-- Categories will be dynamically inserted -->
+        </div>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="stats-section">
+          <div class="stat-row">
+            <span class="stat-label">Total</span>
+            <span class="stat-value" id="totalClouds">0</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Categories</span>
+            <span class="stat-value" id="totalCategories">0</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Showing</span>
+            <span class="stat-value" id="filteredCount">0</span>
+          </div>
+        </div>
+
+        <a href="submit/" class="contribute-btn" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+          <span>✨</span>
+          <span>Submit Service</span>
+        </a>
+
+        <div class="theme-toggle">
+          <button class="theme-btn" data-theme="system" title="System">⚙️</button>
+          <button class="theme-btn" data-theme="light" title="Light">☀️</button>
+          <button class="theme-btn" data-theme="dark" title="Dark">🌙</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="clouds-grid" id="cloudsGrid">
+        <!-- Clouds will be dynamically inserted -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Contribute Modal -->
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
+
+    function getCategories() {
+      const categories = [...new Set(altClouds.map(cloud => cloud.category))];
+      return ['All', ...categories.sort()];
+    }
+
+    function getLogoContent(cloud) {
+      try {
+        const logoUrl = `https://logo.clearbit.com/${new URL(cloud.url).hostname}`;
+        return `<img src="${logoUrl}" alt="${cloud.name}" onerror="this.parentElement.innerHTML='${cloud.name[0].toUpperCase()}'">`;
+      } catch {
+        return cloud.name[0].toUpperCase();
+      }
+    }
+
+    function getCloudScore(cloud) {
+      // Use actual score from README data (via clouds.json)
+      const score = cloud.score || 3; // Default to 3 if not specified
+      return {
+        score,
+        hasPricing: score >= 1,
+        hasSelfService: score >= 2,
+        hasProduction: score === 3
+      };
+    }
+
+    function renderCategories() {
+      const categories = getCategories();
+      const container = document.getElementById('categoryList');
+      
+      container.innerHTML = categories.map(category => {
+        const count = category === 'All' ? altClouds.length : altClouds.filter(c => c.category === category).length;
+        return `
+          <div 
+            class="category-item ${category === currentCategory ? 'active' : ''}" 
+            onclick="filterByCategory('${category.replace(/'/g, "\\'")}')"
+          >
+            <span>${category}</span>
+            <span class="category-count">${count}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function getFilteredClouds() {
+      return altClouds.filter(cloud => {
+        const matchesCategory = currentCategory === 'All' || cloud.category === currentCategory;
+        const matchesSearch = searchTerm === '' || 
+          cloud.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          cloud.description.toLowerCase().includes(searchTerm.toLowerCase());
+        
+        return matchesCategory && matchesSearch;
+      });
+    }
+
+    function renderClouds() {
+      const container = document.getElementById('cloudsGrid');
+      const filtered = getFilteredClouds();
+      
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">🔍</div>
+            <p class="empty-text">No clouds found matching your criteria</p>
+          </div>
+        `;
+        updateStats(0);
+        return;
+      }
+
+      container.innerHTML = filtered.map((cloud, index) => {
+        const score = getCloudScore(cloud);
+        const badgeClass = score.score === 3 ? 'success' : 'warning';
+        
+        return `
+          <div class="cloud-card" style="animation-delay: ${index * 0.05}s">
+            <div class="cloud-header">
+              <div class="cloud-logo">
+                ${getLogoContent(cloud)}
+              </div>
+              <div class="cloud-title-section">
+                <div class="cloud-name">${cloud.name}</div>
+                <div class="cloud-category">${cloud.category}</div>
+              </div>
+            </div>
+            
+            <div class="cloud-badges">
+              <div class="badge ${badgeClass}">
+                ${score.score === 3 ? '✓' : score.score}
+                <div class="badge-tooltip">
+                  <div class="badge-tooltip-title">Criteria: ${score.score}/3</div>
+                  <div class="badge-tooltip-item">
+                    <span class="${score.hasPricing ? 'check' : 'cross'}">${score.hasPricing ? '✓' : '✗'}</span>
+                    Public Pricing
+                  </div>
+                  <div class="badge-tooltip-item">
+                    <span class="${score.hasSelfService ? 'check' : 'cross'}">${score.hasSelfService ? '✓' : '✗'}</span>
+                    Self-Service
+                  </div>
+                  <div class="badge-tooltip-item">
+                    <span class="${score.hasProduction ? 'check' : 'cross'}">${score.hasProduction ? '✓' : '✗'}</span>
+                    SLA/Status Page
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="cloud-description">${cloud.description}</div>
+            
+            <div class="cloud-footer">
+              <a href="${cloud.url}" target="_blank" rel="noopener noreferrer" class="cloud-url">
+                Visit →
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateStats(filtered.length);
+    }
+
+    function updateStats(filteredCount) {
+      document.getElementById('totalClouds').textContent = altClouds.length;
+      document.getElementById('totalCategories').textContent = getCategories().length - 1;
+      document.getElementById('filteredCount').textContent = filteredCount;
+    }
+
+    function filterByCategory(category) {
+      currentCategory = category;
+      renderCategories();
+      renderClouds();
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      searchTerm = e.target.value;
+      renderClouds();
+    });
+
+    // Initialize
+    function init() {
+      initTheme();
+      renderCategories();
+      renderClouds();
+    }
+
+    init();
+  </script>
+</body>
+</html>
+
+    // Initialize on page load
+    initTheme();
+    loadClouds();
+  </script>
+</body>
+</html>
