@@ -717,6 +717,79 @@
   </div>
 
   <!-- Contribute Modal -->
+  <div class="modal" id="contributeModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Submit a Service</h2>
+        <button class="modal-close" onclick="document.getElementById('contributeModal').classList.remove('active')">×</button>
+      </div>
+      <div class="modal-body">
+        <p>Want to add a cloud service to this directory?</p>
+        <p>Visit our <a href="submit/" class="modal-link">submission form</a> to add your service.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Data and state
+    let altClouds = [];
+    let currentCategory = 'All';
+    let searchTerm = '';
+
+    // Load clouds data from JSON file
+    async function loadClouds() {
+      try {
+        const response = await fetch('clouds.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        altClouds = await response.json();
+        renderCategories();
+        renderClouds();
+      } catch (error) {
+        console.error('Error loading clouds data:', error);
+        document.getElementById('cloudsGrid').innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">⚠️</div>
+            <p class="empty-text">Error loading data. Please try refreshing the page.</p>
+          </div>
+        `;
+      }
+    }
+
+    // Theme management
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'system';
+      applyTheme(savedTheme);
+      updateThemeButtons(savedTheme);
+    }
+
+    function applyTheme(theme) {
+      if (theme === 'system') {
+        document.documentElement.removeAttribute('data-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+      localStorage.setItem('theme', theme);
+    }
+
+    function updateThemeButtons(activeTheme) {
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.theme === activeTheme);
+      });
+    }
+
+    // Theme toggle event listeners
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.dataset.theme;
+        applyTheme(theme);
+        updateThemeButtons(theme);
+      });
+    });
+
+    // Modal handling
+    const modal = document.getElementById('contributeModal');
     modal.addEventListener('click', (e) => {
       if (e.target === modal) modal.classList.remove('active');
     });
@@ -730,9 +803,9 @@
       const fallback = cloud.name.charAt(0).toUpperCase();
       try {
         const hostname = new URL(cloud.url).hostname;
-        const logoUrl = `https://logo.clearbit.com/${hostname}`;
-        // Use string concatenation to avoid nested template literal issues
-        return '<img src="' + logoUrl + '" alt="' + fallback + '" style="width:100%;height:100%;object-fit:contain;" onload="this.style.display=\'block\'" onerror="this.style.display=\'none\';this.parentElement.setAttribute(\'data-logo\',\'' + fallback + '\');">';
+        // Use Google Favicon API (more reliable than Clearbit)
+        const logoUrl = 'https://www.google.com/s2/favicons?domain=' + hostname + '&sz=64';
+        return '<img src="' + logoUrl + '" alt="' + fallback + '" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display=\'none\';this.parentElement.setAttribute(\'data-logo\',\'' + fallback + '\');">';
       } catch {
         return fallback;
       }
