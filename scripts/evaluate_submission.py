@@ -10,12 +10,33 @@ Reads URL from ISSUE_BODY environment variable, outputs:
 - evaluation_score.txt: Score (0-3) for labeling
 """
 
+import json
 import os
 import re
 import sys
 import requests
 from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
+
+# Categories available in the awesome list
+CATEGORIES = [
+    "Infrastructure Clouds",
+    "Sovereign Clouds",
+    "Unikernels & WebAssembly",
+    "Data Clouds",
+    "Workflow and Operations Clouds",
+    "Network, Connectivity and Security Clouds",
+    "Vibe Clouds",
+    "Developer Happiness Clouds",
+    "Authorization, Identity, Fraud and Abuse Clouds",
+    "Monetization, Finance and Legal Clouds",
+    "Customer, Marketing and eCommerce Clouds",
+    "IoT, Communications, and Media Clouds",
+    "Blockchain Clouds",
+    "Source Code Control",
+    "Cloud Adjacent",
+    "Future Clouds",
+]
 
 
 def extract_field_from_issue(issue_body, field_name):
@@ -212,6 +233,72 @@ def extract_company_name(url, soup):
     return domain.split('.')[0].title()
 
 
+def generate_metadata_with_claude(url, page_content):
+    """Use Claude API to generate name, description, and category"""
+    api_key = os.environ.get('ANTHROPIC_API_KEY')
+    if not api_key:
+        print("Warning: ANTHROPIC_API_KEY not set, skipping AI metadata generation")
+        return None
+
+    try:
+        import anthropic
+        client = anthropic.Anthropic(api_key=api_key)
+
+        # Truncate page content to avoid token limits
+        truncated_content = page_content[:15000] if page_content else ""
+
+        categories_list = "\n".join(f"- {cat}" for cat in CATEGORIES)
+
+        prompt = f"""Analyze this cloud service website and provide metadata for an awesome list entry.
+
+URL: {url}
+
+Page content:
+{truncated_content}
+
+Based on the website content, provide:
+1. **Name**: The official service/company name (short, no taglines)
+2. **Description**: A concise description (max 200 characters) of what the service does, written in third person, starting with a verb like "Provides", "Offers", "Delivers", etc.
+3. **Category**: The most appropriate category from this list:
+{categories_list}
+
+Respond in this exact JSON format only, no other text:
+{{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name"}}"""
+
+        message = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=256,
+            messages=[
+                {"role": "user", "content": prompt}
+            ]
+        )
+
+        response_text = message.content[0].text.strip()
+
+        # Parse JSON from response
+        # Handle case where response might have markdown code blocks
+        if "```" in response_text:
+            response_text = re.search(r'\{[^}]+\}', response_text).group(0)
+
+        metadata = json.loads(response_text)
+
+        # Validate category
+        if metadata.get('category') not in CATEGORIES:
+            print(f"Warning: Invalid category '{metadata.get('category')}', defaulting to Infrastructure Clouds")
+            metadata['category'] = "Infrastructure Clouds"
+
+        # Truncate description if too long
+        if len(metadata.get('description', '')) > 200:
+            metadata['description'] = metadata['description'][:197] + "..."
+
+        print(f"Claude generated metadata: {metadata}")
+        return metadata
+
+    except Exception as e:
+        print(f"Error calling Claude API: {e}")
+        return None
+
+
 def evaluate_service(url):
     """Evaluate a service against all 3 criteria"""
     print(f"Evaluating: {url}")
@@ -249,7 +336,7 @@ def evaluate_service(url):
     }
 
 
-def generate_markdown_results(result):
+def generate_markdown_results(result, ai_metadata=None):
     """Generate markdown formatted results"""
     score = result['score']
 
@@ -279,8 +366,16 @@ def generate_markdown_results(result):
         status_icon = ":white_check_mark:" if c['passed'] else ":x:"
         md += f"| {c['name']} | {status_icon} | {c['evidence']} |\n"
 
-    if score >= 2:
+    if score >= 2 and ai_metadata:
         md += f"""
+### AI-Generated Entry
+
+| Field | Value |
+|-------|-------|
+| Name | {ai_metadata['name']} |
+| Description | {ai_metadata['description']} |
+| Category | {ai_metadata['category']} |
+
 ### Next Steps
 
 This service meets {score}/3 criteria and qualifies for inclusion in the list.
@@ -292,6 +387,14 @@ This service meets {score}/3 criteria and qualifies for inclusion in the list.
             md += "The PR can be merged after a brief maintainer review."
         else:
             md += "A maintainer should review the missing criteria before merging the PR."
+    elif score >= 2:
+        md += f"""
+### Next Steps
+
+This service meets {score}/3 criteria and qualifies for inclusion in the list.
+
+:warning: **Could not generate AI metadata. Please add manually or check API key configuration.**
+"""
     else:
         md += """
 ### Next Steps
@@ -314,9 +417,8 @@ def main():
         print("Error: ISSUE_BODY environment variable not set")
         sys.exit(1)
 
-    # Extract submission data
-    submission = extract_submission_data(issue_body)
-    url = submission.get('url') or extract_url_from_issue(issue_body)
+    # Extract URL from issue
+    url = extract_url_from_issue(issue_body)
 
     if not url:
         # Write error results
@@ -326,27 +428,35 @@ def main():
             f.write('0')
         sys.exit(0)
 
-    # Evaluate
+    # Fetch page content for evaluation and Claude
+    soup, final_url = fetch_page(url)
+    page_content = soup.get_text()[:20000] if soup else ""
+
+    # Evaluate against criteria
     result = evaluate_service(url)
 
-    # Override company name if provided in submission
-    if submission.get('name'):
-        result['company_name'] = submission['name']
+    # If score >= 2, use Claude to generate metadata
+    ai_metadata = None
+    if result['score'] >= 2:
+        ai_metadata = generate_metadata_with_claude(url, page_content)
+        if ai_metadata:
+            result['company_name'] = ai_metadata['name']
+            result['ai_metadata'] = ai_metadata
 
     # Write results
     with open('evaluation_results.md', 'w') as f:
-        f.write(generate_markdown_results(result))
+        f.write(generate_markdown_results(result, ai_metadata))
 
     with open('evaluation_score.txt', 'w') as f:
         f.write(str(result['score']))
 
-    # Save submission data for PR creation (if score >= 2)
-    if result['score'] >= 2 and submission.get('name') and submission.get('description') and submission.get('category'):
+    # Save submission data for PR creation (if score >= 2 and we have metadata)
+    if result['score'] >= 2 and ai_metadata:
         submission_data = {
-            'name': submission['name'],
+            'name': ai_metadata['name'],
             'url': url,
-            'description': submission['description'],
-            'category': submission['category'],
+            'description': ai_metadata['description'],
+            'category': ai_metadata['category'],
             'score': result['score'],
             'issue_number': issue_number,
         }
