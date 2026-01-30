@@ -731,8 +731,8 @@
       try {
         const hostname = new URL(cloud.url).hostname;
         const logoUrl = `https://logo.clearbit.com/${hostname}`;
-        // Simple: img tag that falls back to letter on error via CSS
-        return `<img src="${logoUrl}" alt="${fallback}" style="width:100%;height:100%;object-fit:contain;" onload="this.style.display='block'" onerror="this.style.display='none';this.parentElement.setAttribute('data-logo','${fallback}');">`;
+        // Use string concatenation to avoid nested template literal issues
+        return '<img src="' + logoUrl + '" alt="' + fallback + '" style="width:100%;height:100%;object-fit:contain;" onload="this.style.display=\'block\'" onerror="this.style.display=\'none\';this.parentElement.setAttribute(\'data-logo\',\'' + fallback + '\');">';
       } catch {
         return fallback;
       }
@@ -861,21 +861,10 @@
       renderClouds();
     });
 
-    // Initialize
-    function init() {
-      initTheme();
-      renderCategories();
-      renderClouds();
-    }
-
-    init();
-  </script>
-</body>
-    })
 
     // Initialize on page load
     initTheme();
-    loadClouds();
+    loadClouds(); // Loads data, then calls renderCategories() and renderClouds()
   </script>
 </body>
 </html>
