@@ -18,6 +18,26 @@ from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 
 
+def extract_field_from_issue(issue_body, field_name):
+    """Extract a field value from the issue body"""
+    pattern = rf'\*\*{field_name}:\*\*\s*(.+?)(?:\n|$)'
+    match = re.search(pattern, issue_body)
+    if match:
+        return match.group(1).strip()
+    return None
+
+
+def extract_submission_data(issue_body):
+    """Extract all submission data from the issue body"""
+    return {
+        'name': extract_field_from_issue(issue_body, 'Name'),
+        'url': extract_field_from_issue(issue_body, 'URL'),
+        'description': extract_field_from_issue(issue_body, 'Description'),
+        'category': extract_field_from_issue(issue_body, 'Category'),
+        'submitter': extract_field_from_issue(issue_body, 'Submitter'),
+    }
+
+
 def extract_url_from_issue(issue_body):
     """Extract the submitted URL from the issue body"""
     # Look for **URL:** pattern
@@ -265,11 +285,13 @@ def generate_markdown_results(result):
 
 This service meets {score}/3 criteria and qualifies for inclusion in the list.
 
+:rocket: **A Pull Request will be automatically created to add this service to the README.**
+
 """
         if score == 3:
-            md += "A maintainer can approve this for automatic PR creation."
+            md += "The PR can be merged after a brief maintainer review."
         else:
-            md += "A maintainer should review the missing criteria before approval."
+            md += "A maintainer should review the missing criteria before merging the PR."
     else:
         md += """
 ### Next Steps
@@ -286,13 +308,15 @@ Please review the criteria and resubmit if the service has been updated.
 def main():
     # Get issue body from environment
     issue_body = os.environ.get('ISSUE_BODY', '')
+    issue_number = os.environ.get('ISSUE_NUMBER', '')
 
     if not issue_body:
         print("Error: ISSUE_BODY environment variable not set")
         sys.exit(1)
 
-    # Extract URL
-    url = extract_url_from_issue(issue_body)
+    # Extract submission data
+    submission = extract_submission_data(issue_body)
+    url = submission.get('url') or extract_url_from_issue(issue_body)
 
     if not url:
         # Write error results
@@ -305,12 +329,30 @@ def main():
     # Evaluate
     result = evaluate_service(url)
 
+    # Override company name if provided in submission
+    if submission.get('name'):
+        result['company_name'] = submission['name']
+
     # Write results
     with open('evaluation_results.md', 'w') as f:
         f.write(generate_markdown_results(result))
 
     with open('evaluation_score.txt', 'w') as f:
         f.write(str(result['score']))
+
+    # Save submission data for PR creation (if score >= 2)
+    if result['score'] >= 2 and submission.get('name') and submission.get('description') and submission.get('category'):
+        submission_data = {
+            'name': submission['name'],
+            'url': url,
+            'description': submission['description'],
+            'category': submission['category'],
+            'score': result['score'],
+            'issue_number': issue_number,
+        }
+        with open('submission_data.json', 'w') as f:
+            json.dump(submission_data, f, indent=2)
+        print(f"Submission data saved for PR creation")
 
     print(f"Evaluation complete. Score: {result['score']}/3")
 

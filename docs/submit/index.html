@@ -54,6 +54,7 @@
             font-size: 0.9rem;
         }
 
+        select,
         input[type="text"],
         input[type="url"],
         textarea {
@@ -66,6 +67,7 @@
             font-family: inherit;
         }
 
+        select:focus,
         input:focus,
         textarea:focus {
             outline: none;
@@ -288,21 +290,59 @@
 
             <form id="submission-form">
                 <div class="form-group">
+                    <label for="service-name">Service Name *</label>
+                    <input type="text" id="service-name" name="service-name" required
+                           placeholder="Acme Cloud">
+                    <div class="help-text">The name of the cloud service</div>
+                </div>
+
+                <div class="form-group">
                     <label for="url">Service URL *</label>
-                    <input type="url" id="url" name="url" required 
+                    <input type="url" id="url" name="url" required
                            placeholder="https://example.com">
                     <div class="help-text">Enter the main website URL</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="submitter-name">Your Name</label>
-                    <input type="text" id="submitter-name" name="submitter-name" 
-                           placeholder="John Doe (optional)">
+                    <label for="description">Description *</label>
+                    <input type="text" id="description" name="description" required
+                           placeholder="Provides GPU cloud computing for AI workloads.">
+                    <div class="help-text">Brief description of what the service does (one sentence)</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category *</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category...</option>
+                        <option value="Infrastructure Clouds">Infrastructure Clouds</option>
+                        <option value="Sovereign Clouds">Sovereign Clouds</option>
+                        <option value="Unikernels & WebAssembly">Unikernels & WebAssembly</option>
+                        <option value="Data Clouds">Data Clouds</option>
+                        <option value="Workflow and Operations Clouds">Workflow and Operations Clouds</option>
+                        <option value="Network, Connectivity and Security Clouds">Network, Connectivity and Security Clouds</option>
+                        <option value="Vibe Clouds">Vibe Clouds</option>
+                        <option value="Developer Happiness Clouds">Developer Happiness Clouds</option>
+                        <option value="Authorization, Identity, Fraud and Abuse Clouds">Authorization, Identity, Fraud and Abuse Clouds</option>
+                        <option value="Monetization, Finance and Legal Clouds">Monetization, Finance and Legal Clouds</option>
+                        <option value="Customer, Marketing and eCommerce Clouds">Customer, Marketing and eCommerce Clouds</option>
+                        <option value="IoT, Communications, and Media Clouds">IoT, Communications, and Media Clouds</option>
+                        <option value="Blockchain Clouds">Blockchain Clouds</option>
+                        <option value="Source Code Control">Source Code Control</option>
+                        <option value="Cloud Adjacent">Cloud Adjacent</option>
+                        <option value="Future Clouds">Future Clouds</option>
+                    </select>
+                    <div class="help-text">Choose the most appropriate category</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="submitter-name">Your Name (Optional)</label>
+                    <input type="text" id="submitter-name" name="submitter-name"
+                           placeholder="John Doe">
                 </div>
 
                 <div class="form-group">
                     <label for="notes">Additional Notes (Optional)</label>
-                    <textarea id="notes" name="notes" 
+                    <textarea id="notes" name="notes"
                               placeholder="Any context about this service..."></textarea>
                 </div>
 
@@ -369,8 +409,11 @@
 
         document.getElementById('submission-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
+            const serviceName = document.getElementById('service-name').value;
             const url = document.getElementById('url').value;
+            const description = document.getElementById('description').value;
+            const category = document.getElementById('category').value;
             const submitterName = document.getElementById('submitter-name').value;
             const notes = document.getElementById('notes').value;
 
@@ -379,10 +422,13 @@
             document.getElementById('loading').style.display = 'block';
 
             // Create GitHub Issue for submission (triggers GitHub Action for evaluation)
-            const issueTitle = `[Submission] ${extractDomain(url)}`;
+            const issueTitle = `[Submission] ${serviceName}`;
             const issueBody = `## Cloud Service Submission
 
+**Name:** ${serviceName}
 **URL:** ${url}
+**Description:** ${description}
+**Category:** ${category}
 **Submitter:** ${submitterName || 'Anonymous'}
 **Submitted:** ${new Date().toISOString()}
 
@@ -390,7 +436,7 @@
 ${notes || 'No additional notes provided.'}
 
 ---
-*This issue was automatically created via the submission form. A GitHub Action will evaluate this service against our 3 criteria and post the results below.*`;
+*This issue was automatically created via the submission form. A GitHub Action will evaluate this service against our 3 criteria and post the results below. If the service passes (2/3 or 3/3 criteria), a PR will be automatically created.*`;
 
             const issueUrl = `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/issues/new?` +
                 new URLSearchParams({
