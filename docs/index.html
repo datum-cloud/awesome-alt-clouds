@@ -454,6 +454,18 @@
       object-fit: cover;
     }
 
+    /* Show fallback letter when data-logo attribute is set */
+    .cloud-logo[data-logo]::before {
+      content: attr(data-logo);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      font-weight: 600;
+      color: var(--accent-primary);
+    }
+
     .cloud-title-section {
       flex: 1;
       min-width: 0;
@@ -715,12 +727,14 @@
     }
 
     function getLogoContent(cloud) {
+      const fallback = cloud.name.charAt(0).toUpperCase();
       try {
-        const logoUrl = `https://logo.clearbit.com/${new URL(cloud.url).hostname}`;
-        const fallback = cloud.name[0].toUpperCase();
-        return `<img src="${logoUrl}" alt="${cloud.name}" onerror="this.parentElement.textContent='${fallback}'">`;
+        const hostname = new URL(cloud.url).hostname;
+        const logoUrl = `https://logo.clearbit.com/${hostname}`;
+        // Simple: img tag that falls back to letter on error via CSS
+        return `<img src="${logoUrl}" alt="${fallback}" style="width:100%;height:100%;object-fit:contain;" onload="this.style.display='block'" onerror="this.style.display='none';this.parentElement.setAttribute('data-logo','${fallback}');">`;
       } catch {
-        return cloud.name[0].toUpperCase();
+        return fallback;
       }
     }
 
