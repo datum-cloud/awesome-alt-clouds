@@ -1,0 +1,69 @@
+name: Evaluate Submission
+
+on:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  evaluate:
+    # Only run on issues with 'submission' label
+    if: contains(github.event.issue.labels.*.name, 'submission')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+
+      - name: Extract URL and evaluate
+        id: evaluate
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          python scripts/evaluate_submission.py
+
+      - name: Post evaluation results
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const results = fs.readFileSync('evaluation_results.md', 'utf8');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: results
+            });
+
+      - name: Add result label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const score = parseInt(fs.readFileSync('evaluation_score.txt', 'utf8').trim());
+
+            let label = 'needs-review';
+            if (score === 3) {
+              label = 'ready-to-merge';
+            } else if (score === 0) {
+              label = 'rejected';
+            }
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: [label]
+            });

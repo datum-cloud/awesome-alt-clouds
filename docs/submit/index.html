@@ -284,7 +284,7 @@
         <!-- Main Form (hidden until password correct) -->
         <div id="form-section" style="display: none;">
             <h1>🚀 Submit Cloud Service</h1>
-            <p class="subtitle">Submit a cloud service for evaluation against our 3 criteria</p>
+            <p class="subtitle">Submit a cloud service for evaluation. You'll be redirected to GitHub to create an issue, then our bot will automatically evaluate it.</p>
 
             <form id="submission-form">
                 <div class="form-group">
@@ -306,7 +306,7 @@
                               placeholder="Any context about this service..."></textarea>
                 </div>
 
-                <button type="submit" id="submit-btn">Evaluate Service</button>
+                <button type="submit" id="submit-btn">Submit via GitHub Issue</button>
             </form>
         </div>
 
@@ -378,44 +378,29 @@
             document.getElementById('form-section').style.display = 'none';
             document.getElementById('loading').style.display = 'block';
 
-            try {
-                // For local development, skip GitHub API and use simulation
-                // In production, this would trigger GitHub Action via repository_dispatch
-                const isLocalDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            // Create GitHub Issue for submission (triggers GitHub Action for evaluation)
+            const issueTitle = `[Submission] ${extractDomain(url)}`;
+            const issueBody = `## Cloud Service Submission
 
-                if (isLocalDev) {
-                    // Use simulation for local development
-                    await simulateEvaluation(url);
-                } else {
-                    // Production: Trigger GitHub Action via repository_dispatch
-                    const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/dispatches`, {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/vnd.github.v3+json',
-                            'Authorization': 'token ' + getGitHubToken(),
-                        },
-                        body: JSON.stringify({
-                            event_type: 'evaluate_candidate',
-                            client_payload: {
-                                url: url,
-                                submitter: submitterName || 'Anonymous',
-                                notes: notes,
-                                timestamp: new Date().toISOString()
-                            }
-                        })
-                    });
+**URL:** ${url}
+**Submitter:** ${submitterName || 'Anonymous'}
+**Submitted:** ${new Date().toISOString()}
 
-                    if (response.ok) {
-                        await simulateEvaluation(url);
-                    } else {
-                        throw new Error('Failed to trigger evaluation');
-                    }
-                }
-            } catch (error) {
-                alert('Error: ' + error.message);
-                document.getElementById('form-section').style.display = 'block';
-                document.getElementById('loading').style.display = 'none';
-            }
+### Notes
+${notes || 'No additional notes provided.'}
+
+---
+*This issue was automatically created via the submission form. A GitHub Action will evaluate this service against our 3 criteria and post the results below.*`;
+
+            const issueUrl = `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/issues/new?` +
+                new URLSearchParams({
+                    title: issueTitle,
+                    body: issueBody,
+                    labels: 'submission'
+                }).toString();
+
+            // Redirect to GitHub to create the issue
+            window.location.href = issueUrl;
         });
 
         // Temporary simulation (will be replaced with actual API call)
