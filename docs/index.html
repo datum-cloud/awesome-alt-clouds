@@ -717,7 +717,8 @@
     function getLogoContent(cloud) {
       try {
         const logoUrl = `https://logo.clearbit.com/${new URL(cloud.url).hostname}`;
-        return `<img src="${logoUrl}" alt="${cloud.name}" onerror="this.parentElement.innerHTML='${cloud.name[0].toUpperCase()}'">`;
+        const fallback = cloud.name[0].toUpperCase();
+        return `<img src="${logoUrl}" alt="${cloud.name}" onerror="this.parentElement.textContent='${fallback}'">`;
       } catch {
         return cloud.name[0].toUpperCase();
       }
@@ -856,7 +857,7 @@
     init();
   </script>
 </body>
-</html>
+    })
 
     // Initialize on page load
     initTheme();
