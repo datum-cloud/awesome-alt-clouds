@@ -2,7 +2,7 @@ name: Evaluate Submission
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [opened]
 
 jobs:
   evaluate:
@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
-      contents: read
+      contents: write
+      pull-requests: write
 
     steps:
       - name: Checkout
@@ -30,8 +31,19 @@ jobs:
         id: evaluate
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           python scripts/evaluate_submission.py
+
+      - name: Read evaluation outputs
+        id: read_outputs
+        run: |
+          echo "score=$(cat evaluation_score.txt)" >> $GITHUB_OUTPUT
+          if [ -f submission_data.json ]; then
+            echo "has_data=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_data=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Post evaluation results
         uses: actions/github-script@v7
@@ -57,7 +69,7 @@ jobs:
             let label = 'needs-review';
             if (score === 3) {
               label = 'ready-to-merge';
-            } else if (score === 0) {
+            } else if (score <= 1) {
               label = 'rejected';
             }
 
@@ -67,3 +79,11 @@ jobs:
               issue_number: context.issue.number,
               labels: [label]
             });
+
+      - name: Create PR if score >= 2
+        if: steps.read_outputs.outputs.score >= 2 && steps.read_outputs.outputs.has_data == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          python scripts/create_submission_pr.py
