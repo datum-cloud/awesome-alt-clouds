@@ -26,7 +26,17 @@ def run_command(cmd, check=True):
 def load_submission_data():
     """Load submission data from JSON file"""
     with open('submission_data.json', 'r') as f:
-        return json.load(f)
+        data = json.load(f)
+
+    # Handle both old single-service format and new multi-service format
+    if 'services' in data:
+        return data
+    else:
+        # Convert old format to new format
+        return {
+            'services': [data],
+            'issue_number': data.get('issue_number', 'unknown')
+        }
 
 
 def find_category_section(readme_content, category):
@@ -113,10 +123,20 @@ def add_entry_to_readme(submission):
     return True
 
 
-def create_pr(submission):
-    """Create a branch and PR for the submission"""
-    issue_number = submission.get('issue_number', 'unknown')
-    branch_name = f"submission-{issue_number}-{submission['name'].lower().replace(' ', '-')[:30]}"
+def create_pr(data):
+    """Create a branch and PR for the submission(s)"""
+    services = data['services']
+    issue_number = data.get('issue_number', 'unknown')
+
+    if not services:
+        print("No services to add")
+        return False
+
+    # Create branch name
+    if len(services) == 1:
+        branch_name = f"submission-{issue_number}-{services[0]['name'].lower().replace(' ', '-')[:30]}"
+    else:
+        branch_name = f"submission-{issue_number}-{len(services)}-services"
 
     # Configure git
     run_command('git config user.name "github-actions[bot]"')
@@ -125,34 +145,67 @@ def create_pr(submission):
     # Create and checkout new branch
     run_command(f'git checkout -b {branch_name}')
 
-    # Add entry to README
-    if not add_entry_to_readme(submission):
-        print("Failed to add entry to README")
+    # Add each entry to README
+    added_services = []
+    for service in services:
+        if add_entry_to_readme(service):
+            added_services.append(service)
+        else:
+            print(f"Failed to add {service['name']} to README")
+
+    if not added_services:
+        print("No services were added to README")
         return False
 
     # Commit changes
     run_command('git add README.md')
 
-    badge = '🟢' if submission['score'] == 3 else '🟡'
-    commit_msg = f"Add {submission['name']} to {submission['category']}\n\nCloses #{issue_number}"
+    if len(added_services) == 1:
+        s = added_services[0]
+        commit_msg = f"Add {s['name']} to {s['category']}\\n\\nCloses #{issue_number}"
+    else:
+        names = ', '.join(s['name'] for s in added_services)
+        commit_msg = f"Add {len(added_services)} services: {names}\\n\\nCloses #{issue_number}"
+
     run_command(f'git commit -m "{commit_msg}"')
 
     # Push branch
     run_command(f'git push origin {branch_name}')
 
     # Create PR
-    pr_title = f"Add {badge} {submission['name']} to {submission['category']}"
+    if len(added_services) == 1:
+        s = added_services[0]
+        badge = '🟢' if s['score'] == 3 else '🟡'
+        pr_title = f"Add {badge} {s['name']} to {s['category']}"
+    else:
+        pr_title = f"Add {len(added_services)} new cloud services"
+
+    # Build PR body
     pr_body = f"""## New Cloud Service Submission
 
-This PR adds **{submission['name']}** to the **{submission['category']}** category.
+"""
+    if len(added_services) == 1:
+        s = added_services[0]
+        badge = '🟢' if s['score'] == 3 else '🟡'
+        pr_body += f"""This PR adds **{s['name']}** to the **{s['category']}** category.
 
 | Field | Value |
 |-------|-------|
-| Name | {submission['name']} |
-| URL | {submission['url']} |
-| Category | {submission['category']} |
-| Score | {submission['score']}/3 {badge} |
-| Description | {submission['description']} |
+| Name | {s['name']} |
+| URL | {s['url']} |
+| Category | {s['category']} |
+| Score | {s['score']}/3 {badge} |
+| Description | {s['description']} |
+"""
+    else:
+        pr_body += f"This PR adds **{len(added_services)} services**:\n\n"
+        pr_body += "| Name | Category | Score | URL |\n"
+        pr_body += "|------|----------|-------|-----|\n"
+        for s in added_services:
+            badge = '🟢' if s['score'] == 3 else '🟡'
+            pr_body += f"| {s['name']} | {s['category']} | {s['score']}/3 {badge} | {s['url']} |\n"
+
+    pr_body += f"""
 
 ---
 
@@ -175,16 +228,23 @@ Closes #{issue_number}
 def main():
     # Load submission data
     try:
-        submission = load_submission_data()
+        data = load_submission_data()
     except FileNotFoundError:
         print("No submission_data.json found, skipping PR creation")
         return 0
 
-    print(f"Creating PR for: {submission['name']}")
+    services = data.get('services', [])
+    if not services:
+        print("No services to add")
+        return 0
+
+    print(f"Creating PR for {len(services)} service(s)")
+    for s in services:
+        print(f"  - {s['name']} ({s['category']})")
 
     # Create PR
     try:
-        create_pr(submission)
+        create_pr(data)
         print("PR created successfully!")
         return 0
     except Exception as e:

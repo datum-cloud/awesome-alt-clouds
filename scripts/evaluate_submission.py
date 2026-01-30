@@ -59,19 +59,35 @@ def extract_submission_data(issue_body):
     }
 
 
-def extract_url_from_issue(issue_body):
-    """Extract the submitted URL from the issue body"""
-    # Look for **URL:** pattern
-    match = re.search(r'\*\*URL:\*\*\s*(https?://[^\s]+)', issue_body)
-    if match:
-        return match.group(1).strip()
+def extract_urls_from_issue(issue_body):
+    """Extract all submitted URLs from the issue body"""
+    urls = []
 
-    # Fallback: find any URL
-    match = re.search(r'https?://[^\s]+', issue_body)
-    if match:
-        return match.group(0).strip()
+    # Look for numbered list format: 1. https://...
+    numbered_matches = re.findall(r'^\d+\.\s*(https?://[^\s]+)', issue_body, re.MULTILINE)
+    if numbered_matches:
+        urls.extend(numbered_matches)
 
-    return None
+    # Fallback: Look for **URL:** pattern (single URL format)
+    if not urls:
+        match = re.search(r'\*\*URL:\*\*\s*(https?://[^\s]+)', issue_body)
+        if match:
+            urls.append(match.group(1).strip())
+
+    # Last fallback: find any URLs
+    if not urls:
+        urls = re.findall(r'https?://[^\s\)]+', issue_body)
+
+    # Clean and deduplicate
+    cleaned_urls = []
+    seen = set()
+    for url in urls:
+        url = url.strip().rstrip('.,;:')
+        if url not in seen and 'github.com' not in url:
+            seen.add(url)
+            cleaned_urls.append(url)
+
+    return cleaned_urls[:5]  # Max 5 URLs
 
 
 def fetch_page(url, timeout=10):
@@ -336,8 +352,8 @@ def evaluate_service(url):
     }
 
 
-def generate_markdown_results(result, ai_metadata=None):
-    """Generate markdown formatted results"""
+def generate_single_result_markdown(result, ai_metadata=None):
+    """Generate markdown for a single service result"""
     score = result['score']
 
     if score == 3:
@@ -350,13 +366,10 @@ def generate_markdown_results(result, ai_metadata=None):
         status = "Does Not Meet Criteria"
         emoji = "red_circle"
 
-    md = f"""## Evaluation Results
+    md = f"""### {result['company_name']}
 
-**Service:** {result['company_name']}
 **URL:** {result['url']}
 **Score:** {score}/3 :{emoji}: {status}
-
-### Criteria Evaluation
 
 | Criteria | Status | Evidence |
 |----------|--------|----------|
@@ -368,42 +381,55 @@ def generate_markdown_results(result, ai_metadata=None):
 
     if score >= 2 and ai_metadata:
         md += f"""
-### AI-Generated Entry
+**AI-Generated Entry:**
+- **Name:** {ai_metadata['name']}
+- **Description:** {ai_metadata['description']}
+- **Category:** {ai_metadata['category']}
 
-| Field | Value |
-|-------|-------|
-| Name | {ai_metadata['name']} |
-| Description | {ai_metadata['description']} |
-| Category | {ai_metadata['category']} |
+:white_check_mark: Will be included in PR
+"""
+    elif score >= 2:
+        md += "\n:warning: Could not generate AI metadata\n"
+    else:
+        md += "\n:x: Does not meet minimum criteria (2/3)\n"
 
-### Next Steps
+    return md
 
-This service meets {score}/3 criteria and qualifies for inclusion in the list.
 
-:rocket: **A Pull Request will be automatically created to add this service to the README.**
+def generate_markdown_results(results_list):
+    """Generate markdown formatted results for multiple services"""
+    passed = [r for r in results_list if r['score'] >= 2 and r.get('ai_metadata')]
+    failed = [r for r in results_list if r['score'] < 2 or not r.get('ai_metadata')]
+
+    md = f"""## Evaluation Results
+
+**Total Submitted:** {len(results_list)}
+**Passed (2/3+):** {len(passed)}
+**Failed:** {len(failed)}
+
+---
 
 """
-        if score == 3:
-            md += "The PR can be merged after a brief maintainer review."
-        else:
-            md += "A maintainer should review the missing criteria before merging the PR."
-    elif score >= 2:
-        md += f"""
-### Next Steps
 
-This service meets {score}/3 criteria and qualifies for inclusion in the list.
+    for result in results_list:
+        md += generate_single_result_markdown(result, result.get('ai_metadata'))
+        md += "\n---\n\n"
 
-:warning: **Could not generate AI metadata. Please add manually or check API key configuration.**
+    if passed:
+        md += """
+## Next Steps
+
+:rocket: **A Pull Request will be automatically created to add the passing services to the README.**
+
 """
     else:
         md += """
-### Next Steps
+## Next Steps
 
-This service does not meet the minimum criteria (2/3) for inclusion.
-Please review the criteria and resubmit if the service has been updated.
+No services passed the evaluation criteria. Please review and resubmit.
 """
 
-    md += "\n---\n*Evaluated automatically by the Awesome Alt Clouds bot*"
+    md += "\n*Evaluated automatically by the Awesome Alt Clouds bot*"
 
     return md
 
@@ -417,54 +443,71 @@ def main():
         print("Error: ISSUE_BODY environment variable not set")
         sys.exit(1)
 
-    # Extract URL from issue
-    url = extract_url_from_issue(issue_body)
+    # Extract URLs from issue
+    urls = extract_urls_from_issue(issue_body)
 
-    if not url:
+    if not urls:
         # Write error results
         with open('evaluation_results.md', 'w') as f:
-            f.write("## Evaluation Error\n\nCould not extract URL from submission. Please ensure the URL is properly formatted.")
+            f.write("## Evaluation Error\n\nCould not extract any URLs from submission. Please ensure URLs are properly formatted.")
         with open('evaluation_score.txt', 'w') as f:
             f.write('0')
         sys.exit(0)
 
-    # Fetch page content for evaluation and Claude
-    soup, final_url = fetch_page(url)
-    page_content = soup.get_text()[:20000] if soup else ""
+    print(f"Found {len(urls)} URL(s) to evaluate")
 
-    # Evaluate against criteria
-    result = evaluate_service(url)
+    # Evaluate each URL
+    results_list = []
+    passing_services = []
 
-    # If score >= 2, use Claude to generate metadata
-    ai_metadata = None
-    if result['score'] >= 2:
-        ai_metadata = generate_metadata_with_claude(url, page_content)
-        if ai_metadata:
-            result['company_name'] = ai_metadata['name']
-            result['ai_metadata'] = ai_metadata
+    for url in urls:
+        print(f"\n--- Evaluating: {url} ---")
+
+        # Fetch page content
+        soup, final_url = fetch_page(url)
+        page_content = soup.get_text()[:20000] if soup else ""
+
+        # Evaluate against criteria
+        result = evaluate_service(url)
+
+        # If score >= 2, use Claude to generate metadata
+        if result['score'] >= 2:
+            ai_metadata = generate_metadata_with_claude(url, page_content)
+            if ai_metadata:
+                result['company_name'] = ai_metadata['name']
+                result['ai_metadata'] = ai_metadata
+                passing_services.append({
+                    'name': ai_metadata['name'],
+                    'url': url,
+                    'description': ai_metadata['description'],
+                    'category': ai_metadata['category'],
+                    'score': result['score'],
+                })
+
+        results_list.append(result)
+        print(f"Score: {result['score']}/3")
+
+    # Calculate max score for labeling
+    max_score = max(r['score'] for r in results_list) if results_list else 0
 
     # Write results
     with open('evaluation_results.md', 'w') as f:
-        f.write(generate_markdown_results(result, ai_metadata))
+        f.write(generate_markdown_results(results_list))
 
     with open('evaluation_score.txt', 'w') as f:
-        f.write(str(result['score']))
+        f.write(str(max_score))
 
-    # Save submission data for PR creation (if score >= 2 and we have metadata)
-    if result['score'] >= 2 and ai_metadata:
+    # Save submission data for PR creation (if any services passed)
+    if passing_services:
         submission_data = {
-            'name': ai_metadata['name'],
-            'url': url,
-            'description': ai_metadata['description'],
-            'category': ai_metadata['category'],
-            'score': result['score'],
+            'services': passing_services,
             'issue_number': issue_number,
         }
         with open('submission_data.json', 'w') as f:
             json.dump(submission_data, f, indent=2)
-        print(f"Submission data saved for PR creation")
+        print(f"\n{len(passing_services)} service(s) saved for PR creation")
 
-    print(f"Evaluation complete. Score: {result['score']}/3")
+    print(f"\nEvaluation complete. {len(passing_services)}/{len(urls)} passed.")
 
 
 if __name__ == "__main__":
