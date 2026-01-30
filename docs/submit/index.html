@@ -291,10 +291,13 @@
 
             <form id="submission-form">
                 <div class="form-group">
-                    <label for="url">Service URL *</label>
-                    <input type="url" id="url" name="url" required
-                           placeholder="https://example.com">
-                    <div class="help-text">Enter the main website URL (name, description, and category will be auto-generated)</div>
+                    <label>Service URLs * (up to 5)</label>
+                    <div id="url-inputs">
+                        <input type="url" class="url-input" name="url-1" required
+                               placeholder="https://example.com" style="margin-bottom: 0.5rem;">
+                    </div>
+                    <button type="button" id="add-url-btn" onclick="addUrlInput()" style="width: auto; padding: 0.5rem 1rem; font-size: 0.85rem; margin-top: 0.5rem;">+ Add Another URL</button>
+                    <div class="help-text">Name, description, and category will be auto-generated for each URL</div>
                 </div>
 
                 <div class="form-group">
@@ -306,7 +309,7 @@
                 <div class="form-group">
                     <label for="notes">Additional Notes (Optional)</label>
                     <textarea id="notes" name="notes"
-                              placeholder="Any context about this service..."></textarea>
+                              placeholder="Any context about these services..."></textarea>
                 </div>
 
                 <button type="submit" id="submit-btn">Submit via GitHub Issue</button>
@@ -367,13 +370,45 @@
         }
 
         let evaluationResults = [];
+        let urlCount = 1;
+        const MAX_URLS = 5;
         const GITHUB_OWNER = 'datum-cloud';
         const GITHUB_REPO = 'awesome-alt-clouds';
+
+        function addUrlInput() {
+            if (urlCount >= MAX_URLS) {
+                alert('Maximum 5 URLs allowed');
+                return;
+            }
+            urlCount++;
+            const container = document.getElementById('url-inputs');
+            const input = document.createElement('input');
+            input.type = 'url';
+            input.className = 'url-input';
+            input.name = `url-${urlCount}`;
+            input.placeholder = 'https://example.com';
+            input.style.marginBottom = '0.5rem';
+            container.appendChild(input);
+
+            if (urlCount >= MAX_URLS) {
+                document.getElementById('add-url-btn').style.display = 'none';
+            }
+        }
 
         document.getElementById('submission-form').addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const url = document.getElementById('url').value;
+            // Collect all URLs
+            const urlInputs = document.querySelectorAll('.url-input');
+            const urls = Array.from(urlInputs)
+                .map(input => input.value.trim())
+                .filter(url => url.length > 0);
+
+            if (urls.length === 0) {
+                alert('Please enter at least one URL');
+                return;
+            }
+
             const submitterName = document.getElementById('submitter-name').value;
             const notes = document.getElementById('notes').value;
 
@@ -381,19 +416,28 @@
             document.getElementById('form-section').style.display = 'none';
             document.getElementById('loading').style.display = 'block';
 
-            // Create GitHub Issue for submission (triggers GitHub Action for evaluation)
-            const issueTitle = `[Submission] ${extractDomain(url)}`;
+            // Create issue title based on number of URLs
+            const issueTitle = urls.length === 1
+                ? `[Submission] ${extractDomain(urls[0])}`
+                : `[Submission] ${urls.length} services`;
+
+            // Format URLs list
+            const urlsList = urls.map((url, i) => `${i + 1}. ${url}`).join('\n');
+
             const issueBody = `## Cloud Service Submission
 
-**URL:** ${url}
+### URLs
+${urlsList}
+
 **Submitter:** ${submitterName || 'Anonymous'}
 **Submitted:** ${new Date().toISOString()}
+**Count:** ${urls.length}
 
 ### Notes
 ${notes || 'No additional notes provided.'}
 
 ---
-*This issue was automatically created via the submission form. A GitHub Action will evaluate this service and use AI to generate name, description, and category. If the service passes (2/3 or 3/3 criteria), a PR will be automatically created.*`;
+*This issue was automatically created via the submission form. A GitHub Action will evaluate each service and use AI to generate name, description, and category. Services that pass (2/3 or 3/3 criteria) will be added to a PR.*`;
 
             const issueUrl = `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/issues/new?` +
                 new URLSearchParams({
