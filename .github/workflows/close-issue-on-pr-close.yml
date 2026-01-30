@@ -1,0 +1,70 @@
+name: Close Issue on PR Close
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  close-issue:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: read
+
+    steps:
+      - name: Close linked issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prBody = context.payload.pull_request.body || '';
+            const prMerged = context.payload.pull_request.merged;
+
+            // Extract issue number from "Closes #123" pattern
+            const match = prBody.match(/Closes #(\d+)/i);
+            if (!match) {
+              console.log('No linked issue found in PR body');
+              return;
+            }
+
+            const issueNumber = parseInt(match[1]);
+            console.log(`Found linked issue #${issueNumber}`);
+
+            // Check if issue exists and is open
+            try {
+              const issue = await github.rest.issues.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber
+              });
+
+              if (issue.data.state === 'closed') {
+                console.log('Issue is already closed');
+                return;
+              }
+
+              // Close the issue with appropriate comment
+              let comment;
+              if (prMerged) {
+                comment = `Closed via PR #${context.payload.pull_request.number} (merged)`;
+              } else {
+                comment = `Closed via PR #${context.payload.pull_request.number} (PR was closed without merging)`;
+              }
+
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: comment
+              });
+
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                state: 'closed'
+              });
+
+              console.log(`Closed issue #${issueNumber}`);
+            } catch (error) {
+              console.log(`Error processing issue: ${error.message}`);
+            }
