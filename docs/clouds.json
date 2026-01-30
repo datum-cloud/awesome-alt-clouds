@@ -406,6 +406,13 @@
     "score": 3
   },
   {
+    "name": "Thunder Compute",
+    "url": "https://www.thundercompute.com/",
+    "description": "Provides on-demand GPU instances with RTX A6000, A100, and H100 options at competitive pricing, featuring VS Code integration and one-click deployment for ML development.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
     "name": "Turboscale",
     "url": "https://www.turboscale.ai/",
     "description": "AI-native cloud infrastructure for fine-tuning and inference.",
