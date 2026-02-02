@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Cloud Service - Awesome Alt Clouds</title>
+    <title>Add a Cloud - Awesome Alt Clouds</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --warm-stone: #78716C;
+            --soft-sage: #A3B18A;
+            --clay-beige: #E9DCC9;
+            --rich-earth: #3E362E;
+            --bright-tangerine: #FF6B35;
+            --cream: #FAF7F0;
+            --charcoal: #2D2D2A;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,34 +25,69 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
             min-height: 100vh;
             padding: 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--warm-stone);
         }
 
         .container {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 600px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(62, 54, 46, 0.08), 0 1px 3px rgba(62, 54, 46, 0.04);
+            max-width: 580px;
             width: 100%;
             padding: 2.5rem;
+            border: 1px solid var(--soft-sage);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--bright-tangerine);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .container:hover::before {
+            opacity: 1;
         }
 
         h1 {
-            color: #2d3748;
+            font-family: 'Crimson Pro', Georgia, serif;
+            color: var(--rich-earth);
             margin-bottom: 0.5rem;
             font-size: 1.875rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
         .subtitle {
-            color: #718096;
+            color: var(--warm-stone);
             margin-bottom: 2rem;
             font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .subtitle a {
+            color: var(--bright-tangerine);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .subtitle a:hover {
+            opacity: 0.8;
         }
 
         .form-group {
@@ -48,8 +96,8 @@
 
         label {
             display: block;
-            color: #4a5568;
-            font-weight: 600;
+            color: var(--rich-earth);
+            font-weight: 500;
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
         }
@@ -57,22 +105,31 @@
         select,
         input[type="text"],
         input[type="url"],
-        input[type="password"],
+        input[type="email"],
         textarea {
             width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--clay-beige);
+            border-radius: 10px;
             font-size: 1rem;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s;
             font-family: inherit;
+            background: var(--cream);
+            color: var(--charcoal);
         }
 
         select:focus,
         input:focus,
         textarea:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: var(--soft-sage);
+            box-shadow: 0 0 0 3px rgba(163, 177, 138, 0.15);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--warm-stone);
+            opacity: 0.6;
         }
 
         textarea {
@@ -82,176 +139,64 @@
 
         .help-text {
             font-size: 0.85rem;
-            color: #718096;
-            margin-top: 0.25rem;
+            color: var(--warm-stone);
+            margin-top: 0.4rem;
+            line-height: 1.5;
         }
 
-        button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .url-input {
+            margin-bottom: 0.5rem;
+        }
+
+        #add-url-btn {
+            background: transparent;
+            color: var(--bright-tangerine);
+            border: 2px solid var(--bright-tangerine);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: auto;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        #add-url-btn:hover {
+            background: var(--bright-tangerine);
             color: white;
+            transform: translateY(-1px);
+        }
+
+        button[type="submit"] {
+            background: var(--rich-earth);
+            color: var(--cream);
             border: none;
             padding: 1rem 2rem;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
         }
 
-        button:hover {
+        button[type="submit"]:hover {
+            background: var(--charcoal);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 12px rgba(62, 54, 46, 0.2);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0);
         }
 
         button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .spinner {
-            border: 3px solid #f3f4f6;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .results {
-            display: none;
-            margin-top: 2rem;
-        }
-
-        .candidate-card {
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .candidate-card h3 {
-            color: #2d3748;
-            margin-bottom: 0.5rem;
-        }
-
-        .score {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .score-3 {
-            background: #c6f6d5;
-            color: #22543d;
-        }
-
-        .score-2 {
-            background: #fef5e7;
-            color: #975a16;
-        }
-
-        .score-1 {
-            background: #fed7d7;
-            color: #742a2a;
-        }
-
-        .criteria {
-            margin: 1rem 0;
-            font-size: 0.9rem;
-        }
-
-        .criteria-item {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: start;
-        }
-
-        .criteria-item::before {
-            content: '';
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin-right: 0.5rem;
-            flex-shrink: 0;
-        }
-
-        .criteria-pass::before {
-            content: '✓';
-            color: #38a169;
-            font-weight: bold;
-        }
-
-        .criteria-fail::before {
-            content: '✗';
-            color: #e53e3e;
-            font-weight: bold;
-        }
-
-        .actions {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .btn-approve,
-        .btn-reject {
-            flex: 1;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-approve {
-            background: #48bb78;
-            color: white;
-        }
-
-        .btn-approve:hover {
-            background: #38a169;
-        }
-
-        .btn-reject {
-            background: #f56565;
-            color: white;
-        }
-
-        .btn-reject:hover {
-            background: #e53e3e;
-        }
-
-        .approved {
-            border-color: #48bb78;
-            background: #f0fff4;
-        }
-
-        .rejected {
-            opacity: 0.5;
-            border-color: #fc8181;
-        }
-
-        .final-submit {
-            margin-top: 2rem;
-            display: none;
         }
 
         .success-message {
@@ -261,119 +206,198 @@
         }
 
         .success-message h2 {
-            color: #38a169;
-            margin-bottom: 1rem;
+            font-family: 'Crimson Pro', Georgia, serif;
+            color: var(--rich-earth);
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+        }
+
+        .success-message p {
+            color: var(--warm-stone);
+        }
+
+        /* Honeypot field - hidden from humans */
+        .hp-field {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0;
+            width: 0;
+            z-index: -1;
+        }
+
+        /* Constellation decoration */
+        .constellation {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 60px;
+            height: 60px;
+            opacity: 0.15;
+        }
+
+        .constellation circle {
+            fill: var(--soft-sage);
+        }
+
+        .constellation line {
+            stroke: var(--soft-sage);
+            stroke-width: 1;
+        }
+
+        /* Tag style for criteria info */
+        .criteria-tag {
+            display: inline-block;
+            background: var(--clay-beige);
+            color: var(--warm-stone);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            margin-right: 0.4rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .criteria-info {
+            background: var(--cream);
+            border: 1px solid var(--soft-sage);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .criteria-info h3 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            color: var(--rich-earth);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .criteria-info p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Password Gate -->
-        <div id="password-gate">
-            <h1>🔒 Submission Access</h1>
-            <p class="subtitle">Enter the password to submit a cloud service</p>
-            
-            <form id="password-form">
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" 
-                           placeholder="Enter password" required>
-                    <div class="help-text">Contact maintainers if you need access</div>
-                </div>
-                <button type="submit">Unlock Form</button>
-            </form>
-        </div>
+        <!-- Constellation decoration -->
+        <svg class="constellation" viewBox="0 0 60 60">
+            <circle cx="10" cy="15" r="3"/>
+            <circle cx="30" cy="8" r="2"/>
+            <circle cx="50" cy="20" r="3"/>
+            <circle cx="25" cy="35" r="2"/>
+            <circle cx="45" cy="45" r="3"/>
+            <circle cx="15" cy="50" r="2"/>
+            <line x1="10" y1="15" x2="30" y2="8"/>
+            <line x1="30" y1="8" x2="50" y2="20"/>
+            <line x1="25" y1="35" x2="45" y2="45"/>
+            <line x1="10" y1="15" x2="25" y2="35"/>
+            <line x1="25" y1="35" x2="15" y2="50"/>
+        </svg>
 
-        <!-- Main Form (hidden until password correct) -->
-        <div id="form-section" style="display: none;">
-            <h1>🚀 Submit Cloud Service</h1>
-            <p class="subtitle">Submit a cloud service for evaluation. You'll be redirected to GitHub to create an issue, then our bot will automatically evaluate it.</p>
+        <!-- Main Form -->
+        <div id="form-section">
+            <h1>Add a Cloud</h1>
+            <p class="subtitle">Expand the cloud atlas! Submit a service and our bot will evaluate it against our <a href="/#criteria">3 criteria</a>. If it passes, a PR gets created automatically.</p>
+
+            <div class="criteria-info">
+                <h3>What we look for</h3>
+                <p>Services need at least 2 of 3 criteria:</p>
+                <span class="criteria-tag">Public Pricing</span>
+                <span class="criteria-tag">Self-Service Signup</span>
+                <span class="criteria-tag">Status Page / SLA</span>
+            </div>
 
             <form id="submission-form">
                 <div class="form-group">
-                    <label>Service URLs * (up to 5)</label>
+                    <label>Service URLs (up to 5)</label>
                     <div id="url-inputs">
                         <input type="url" class="url-input" name="url-1" required
-                               placeholder="https://example.com" style="margin-bottom: 0.5rem;">
+                               placeholder="https://coolcloud.io">
                     </div>
-                    <button type="button" id="add-url-btn" onclick="addUrlInput()" style="width: auto; padding: 0.5rem 1rem; font-size: 0.85rem; margin-top: 0.5rem;">+ Add Another URL</button>
-                    <div class="help-text">Name, description, and category will be auto-generated for each URL</div>
+                    <button type="button" id="add-url-btn" onclick="addUrlInput()">+ Add another</button>
+                    <div class="help-text">We'll auto-generate the name, description, and category using AI</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="submitter-name">Your Name (Optional)</label>
+                    <label for="submitter-name">Your name (optional)</label>
                     <input type="text" id="submitter-name" name="submitter-name"
-                           placeholder="John Doe">
+                           placeholder="Cloud Explorer">
                 </div>
 
                 <div class="form-group">
-                    <label for="notes">Additional Notes (Optional)</label>
+                    <label for="notes">Notes (optional)</label>
                     <textarea id="notes" name="notes"
-                              placeholder="Any context about these services..."></textarea>
+                              placeholder="Anything we should know about this service?"></textarea>
                 </div>
 
-                <button type="submit" id="submit-btn">Submit via GitHub Issue</button>
+                <!-- Honeypot fields - hidden from humans -->
+                <div class="hp-field" aria-hidden="true">
+                    <label for="website">Website</label>
+                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="hp-field" aria-hidden="true">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" tabindex="-1" autocomplete="off">
+                </div>
+
+                <button type="submit" id="submit-btn">Submit for Review</button>
             </form>
         </div>
 
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>Evaluating service against 3 criteria...</p>
-            <p class="help-text">This may take 10-20 seconds</p>
-        </div>
-
-        <div class="results" id="results">
-            <h2>Evaluation Results</h2>
-            <div id="results-container"></div>
-            
-            <div class="final-submit" id="final-submit">
-                <button onclick="submitApproved()">Create PR with Approved Services</button>
-            </div>
-        </div>
-
+        <!-- Fake success shown to spam bots -->
         <div class="success-message" id="success">
-            <h2>✅ Pull Request Created!</h2>
-            <p>Your approved services have been submitted.</p>
-            <p class="help-text">A maintainer will review and merge the PR.</p>
-            <button onclick="location.reload()">Submit Another</button>
+            <h2>Thanks for expanding the atlas!</h2>
+            <p>Your submission has been received.</p>
         </div>
     </div>
 
     <script>
-        // Password Protection
-        const CORRECT_PASSWORD_HASH = '120eced412546f7c1801df85af98af675a8ed7f076e77c78549da99b48077f3cfdc3392d810023401f021a9f3f20747c84da6654bae0f264e1721a451a72bf1d';
-        
-        document.getElementById('password-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const password = document.getElementById('password').value;
-            
-            // Hash the password
-            const encoder = new TextEncoder();
-            const data = encoder.encode(password);
-            const hashBuffer = await crypto.subtle.digest('SHA-512', data);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-            
-            if (hashHex === CORRECT_PASSWORD_HASH) {
-                document.getElementById('password-gate').style.display = 'none';
-                document.getElementById('form-section').style.display = 'block';
-                sessionStorage.setItem('authenticated', 'true');
-            } else {
-                alert('Incorrect password. Please contact maintainers for access.');
-            }
-        });
-        
-        // Check if already authenticated in this session
-        if (sessionStorage.getItem('authenticated') === 'true') {
-            document.getElementById('password-gate').style.display = 'none';
-            document.getElementById('form-section').style.display = 'block';
-        }
+        // Anti-spam: Track when the page loaded
+        const pageLoadTime = Date.now();
+        const MIN_SUBMIT_TIME = 3000; // Minimum 3 seconds before submit allowed
 
-        let evaluationResults = [];
         let urlCount = 1;
         const MAX_URLS = 5;
         const GITHUB_OWNER = 'datum-cloud';
         const GITHUB_REPO = 'awesome-alt-clouds';
+
+        // Anti-spam validation
+        function isSpamSubmission() {
+            // Check 1: Honeypot fields should be empty
+            const honeypotWebsite = document.getElementById('website').value;
+            const honeypotEmail = document.getElementById('email').value;
+            if (honeypotWebsite || honeypotEmail) {
+                console.log('Spam detected: honeypot filled');
+                return true;
+            }
+
+            // Check 2: Form submitted too quickly (< 3 seconds)
+            const timeSinceLoad = Date.now() - pageLoadTime;
+            if (timeSinceLoad < MIN_SUBMIT_TIME) {
+                console.log('Spam detected: submitted too quickly');
+                return true;
+            }
+
+            return false;
+        }
 
         function addUrlInput() {
             if (urlCount >= MAX_URLS) {
@@ -386,8 +410,7 @@
             input.type = 'url';
             input.className = 'url-input';
             input.name = `url-${urlCount}`;
-            input.placeholder = 'https://example.com';
-            input.style.marginBottom = '0.5rem';
+            input.placeholder = 'https://anothercloud.dev';
             container.appendChild(input);
 
             if (urlCount >= MAX_URLS) {
@@ -397,6 +420,14 @@
 
         document.getElementById('submission-form').addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            // Anti-spam check
+            if (isSpamSubmission()) {
+                // Silently fail for bots - show fake success
+                document.getElementById('form-section').style.display = 'none';
+                document.getElementById('success').style.display = 'block';
+                return;
+            }
 
             // Collect all URLs
             const urlInputs = document.querySelectorAll('.url-input');
@@ -411,10 +442,6 @@
 
             const submitterName = document.getElementById('submitter-name').value;
             const notes = document.getElementById('notes').value;
-
-            // Show loading
-            document.getElementById('form-section').style.display = 'none';
-            document.getElementById('loading').style.display = 'block';
 
             // Create issue title based on number of URLs
             const issueTitle = urls.length === 1
@@ -450,28 +477,6 @@ ${notes || 'No additional notes provided.'}
             window.location.href = issueUrl;
         });
 
-        // Temporary simulation (will be replaced with actual API call)
-        async function simulateEvaluation(url) {
-            await new Promise(resolve => setTimeout(resolve, 2000));
-
-            // Mock response
-            const mockResult = {
-                company_name: extractDomain(url),
-                url: url,
-                score: 3,
-                criteria: [
-                    { name: 'Transparent Public Pricing', passed: true, evidence: 'Pricing page found' },
-                    { name: 'Usage-based Self-Service', passed: true, evidence: 'Signup available' },
-                    { name: 'Production Indicators', passed: true, evidence: 'Status page found' }
-                ],
-                suggested_category: 'Infrastructure Clouds',
-                suggested_description: 'Cloud service platform'
-            };
-
-            evaluationResults = [mockResult];
-            displayResults();
-        }
-
         function extractDomain(url) {
             try {
                 const domain = new URL(url).hostname.replace('www.', '');
@@ -479,112 +484,6 @@ ${notes || 'No additional notes provided.'}
             } catch {
                 return 'Unknown';
             }
-        }
-
-        function displayResults() {
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('results').style.display = 'block';
-
-            const container = document.getElementById('results-container');
-            container.innerHTML = '';
-
-            evaluationResults.forEach((result, index) => {
-                const card = createCandidateCard(result, index);
-                container.appendChild(card);
-            });
-
-            document.getElementById('final-submit').style.display = 'block';
-        }
-
-        function createCandidateCard(result, index) {
-            const card = document.createElement('div');
-            card.className = 'candidate-card';
-            card.id = `candidate-${index}`;
-
-            const scoreClass = `score-${result.score}`;
-            const scoreText = result.score === 3 ? 'Ready to Merge' : 
-                            result.score === 2 ? 'Needs Review' : 'Rejected';
-
-            card.innerHTML = `
-                <h3>${result.company_name}</h3>
-                <div class="score ${scoreClass}">${result.score}/3 - ${scoreText}</div>
-                <p><strong>URL:</strong> <a href="${result.url}" target="_blank">${result.url}</a></p>
-                <p><strong>Suggested Category:</strong> ${result.suggested_category}</p>
-                <p><strong>Description:</strong> ${result.suggested_description}</p>
-                
-                <div class="criteria">
-                    <strong>Criteria Evaluation:</strong>
-                    ${result.criteria.map(c => `
-                        <div class="criteria-item ${c.passed ? 'criteria-pass' : 'criteria-fail'}">
-                            <span><strong>${c.name}:</strong> ${c.evidence}</span>
-                        </div>
-                    `).join('')}
-                </div>
-
-                <div class="actions">
-                    <button class="btn-approve" onclick="approveCandidate(${index})">
-                        ✓ Approve & Add to PR
-                    </button>
-                    <button class="btn-reject" onclick="rejectCandidate(${index})">
-                        ✗ Reject
-                    </button>
-                </div>
-            `;
-
-            return card;
-        }
-
-        function approveCandidate(index) {
-            const card = document.getElementById(`candidate-${index}`);
-            card.classList.add('approved');
-            card.classList.remove('rejected');
-            evaluationResults[index].approved = true;
-            updateFinalSubmitButton();
-        }
-
-        function rejectCandidate(index) {
-            const card = document.getElementById(`candidate-${index}`);
-            card.classList.add('rejected');
-            card.classList.remove('approved');
-            evaluationResults[index].approved = false;
-            updateFinalSubmitButton();
-        }
-
-        function updateFinalSubmitButton() {
-            const approvedCount = evaluationResults.filter(r => r.approved).length;
-            const btn = document.querySelector('#final-submit button');
-            btn.textContent = approvedCount > 0 
-                ? `Create PR with ${approvedCount} Service${approvedCount > 1 ? 's' : ''}`
-                : 'No Services Selected';
-            btn.disabled = approvedCount === 0;
-        }
-
-        async function submitApproved() {
-            const approved = evaluationResults.filter(r => r.approved);
-            
-            if (approved.length === 0) {
-                alert('Please approve at least one service');
-                return;
-            }
-
-            // Show loading
-            document.getElementById('results').style.display = 'none';
-            document.getElementById('loading').style.display = 'block';
-            document.querySelector('#loading p').textContent = 'Creating pull request...';
-
-            // Here we would trigger the PR creation via GitHub API
-            // For now, simulate
-            await new Promise(resolve => setTimeout(resolve, 2000));
-
-            // Show success
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('success').style.display = 'block';
-        }
-
-        function getGitHubToken() {
-            // This will be handled server-side via GitHub Actions
-            // For now, return empty
-            return '';
         }
     </script>
 </body>

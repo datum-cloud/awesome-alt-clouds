@@ -179,7 +179,8 @@
     "url": "https://www.hetzner.com/",
     "description": "Provides dedicated servers and cloud services in Europe.",
     "category": "Infrastructure Clouds",
-    "score": 2
+    "score": 2,
+    "favorite": true
   },
   {
     "name": "Hivelocity",
@@ -1257,7 +1258,8 @@
     "url": "https://www.cloudflare.com/",
     "description": "Protects and accelerates websites and apps through global CDN, DDoS mitigation, Zero Trust access, and DNS services.",
     "category": "Network, Connectivity and Security Clouds",
-    "score": 3
+    "score": 3,
+    "favorite": true
   },
   {
     "name": "CrowdStrike",
@@ -1824,7 +1826,8 @@
     "url": "https://fly.io",
     "description": "Provides a platform to deploy applications globally with low latency.",
     "category": "Developer Happiness Clouds",
-    "score": 3
+    "score": 3,
+    "favorite": true
   },
   {
     "name": "Gammacode",
@@ -1971,7 +1974,8 @@
     "url": "https://railway.com/",
     "description": "Deploy code instantly and manage environments in the cloud.",
     "category": "Developer Happiness Clouds",
-    "score": 3
+    "score": 3,
+    "favorite": true
   },
   {
     "name": "Release",
@@ -1985,7 +1989,8 @@
     "url": "https://render.com/",
     "description": "Unified cloud platform to build and host apps and websites.",
     "category": "Developer Happiness Clouds",
-    "score": 3
+    "score": 3,
+    "favorite": true
   },
   {
     "name": "Roboflow",
