@@ -90,18 +90,52 @@ def extract_urls_from_issue(issue_body):
     return cleaned_urls[:5]  # Max 5 URLs
 
 
-def fetch_page(url, timeout=10):
-    """Fetch a page and return soup, handling errors gracefully"""
-    try:
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (compatible; AwesomeAltClouds/1.0; +https://github.com/datum-cloud/awesome-alt-clouds)'
-        }
-        response = requests.get(url, headers=headers, timeout=timeout, allow_redirects=True)
-        response.raise_for_status()
-        return BeautifulSoup(response.text, 'html.parser'), response.url
-    except Exception as e:
-        print(f"Error fetching {url}: {e}")
-        return None, None
+def fetch_page(url, timeout=15, retries=2):
+    """Fetch a page and return soup, handling Cloudflare and other protections"""
+    # Headers that mimic a real browser to bypass basic bot detection
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'none',
+        'Sec-Fetch-User': '?1',
+        'Cache-Control': 'max-age=0',
+    }
+
+    for attempt in range(retries + 1):
+        try:
+            response = requests.get(url, headers=headers, timeout=timeout, allow_redirects=True)
+            response.raise_for_status()
+
+            # Check if we got a Cloudflare challenge page
+            if 'cloudflare' in response.text.lower() and 'challenge' in response.text.lower():
+                print(f"Cloudflare challenge detected for {url}")
+                if attempt < retries:
+                    print(f"Retrying... ({attempt + 1}/{retries})")
+                    continue
+                return None, None
+
+            return BeautifulSoup(response.text, 'html.parser'), response.url
+
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 403:
+                print(f"Access denied (403) for {url} - likely Cloudflare protected")
+            else:
+                print(f"HTTP error fetching {url}: {e}")
+        except requests.exceptions.Timeout:
+            print(f"Timeout fetching {url}")
+        except Exception as e:
+            print(f"Error fetching {url}: {e}")
+
+        if attempt < retries:
+            print(f"Retrying... ({attempt + 1}/{retries})")
+
+    return None, None
 
 
 def find_link_matching(soup, base_url, patterns):
@@ -249,7 +283,7 @@ def extract_company_name(url, soup):
     return domain.split('.')[0].title()
 
 
-def generate_metadata_with_claude(url, page_content):
+def generate_metadata_with_claude(url, page_content=None):
     """Use Claude API to generate name, description, and category"""
     api_key = os.environ.get('ANTHROPIC_API_KEY')
     if not api_key:
@@ -260,12 +294,12 @@ def generate_metadata_with_claude(url, page_content):
         import anthropic
         client = anthropic.Anthropic(api_key=api_key)
 
-        # Truncate page content to avoid token limits
-        truncated_content = page_content[:15000] if page_content else ""
-
         categories_list = "\n".join(f"- {cat}" for cat in CATEGORIES)
 
-        prompt = f"""Analyze this cloud service website and provide metadata for an awesome list entry.
+        # Build prompt based on whether we have page content
+        if page_content and len(page_content.strip()) > 100:
+            truncated_content = page_content[:15000]
+            prompt = f"""Analyze this cloud service website and provide metadata for an awesome list entry.
 
 URL: {url}
 
@@ -277,6 +311,22 @@ Based on the website content, provide:
 2. **Description**: A concise description (max 200 characters) of what the service does, written in third person, starting with a verb like "Provides", "Offers", "Delivers", etc.
 3. **Category**: The most appropriate category from this list:
 {categories_list}
+
+Respond in this exact JSON format only, no other text:
+{{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name"}}"""
+        else:
+            # Fallback: Ask Claude to use its knowledge (for Cloudflare-blocked sites)
+            prompt = f"""I need metadata for a cloud service submission, but I couldn't fetch the website content (likely Cloudflare protected).
+
+URL: {url}
+
+Based on your knowledge of this service (from the URL/domain), provide:
+1. **Name**: The official service/company name (short, no taglines)
+2. **Description**: A concise description (max 200 characters) of what the service does, written in third person, starting with a verb like "Provides", "Offers", "Delivers", etc.
+3. **Category**: The most appropriate category from this list:
+{categories_list}
+
+If you don't recognize this service, make a reasonable guess based on the domain name.
 
 Respond in this exact JSON format only, no other text:
 {{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name"}}"""
@@ -294,7 +344,9 @@ Respond in this exact JSON format only, no other text:
         # Parse JSON from response
         # Handle case where response might have markdown code blocks
         if "```" in response_text:
-            response_text = re.search(r'\{[^}]+\}', response_text).group(0)
+            json_match = re.search(r'\{[^}]+\}', response_text)
+            if json_match:
+                response_text = json_match.group(0)
 
         metadata = json.loads(response_text)
 
@@ -322,16 +374,19 @@ def evaluate_service(url):
     soup, final_url = fetch_page(url)
 
     if not soup:
+        # Could not fetch - likely Cloudflare protected
+        # Return special result that allows Claude fallback
         return {
             'url': url,
             'company_name': extract_company_name(url, None),
-            'score': 0,
+            'score': 2,  # Allow PR creation with manual review
             'criteria': [
-                {'name': 'Transparent Public Pricing', 'passed': False, 'evidence': 'Could not fetch website'},
-                {'name': 'Usage-based Self-Service', 'passed': False, 'evidence': 'Could not fetch website'},
-                {'name': 'Production Indicators', 'passed': False, 'evidence': 'Could not fetch website'},
+                {'name': 'Transparent Public Pricing', 'passed': None, 'evidence': 'Could not verify (site protected)'},
+                {'name': 'Usage-based Self-Service', 'passed': None, 'evidence': 'Could not verify (site protected)'},
+                {'name': 'Production Indicators', 'passed': None, 'evidence': 'Could not verify (site protected)'},
             ],
-            'error': 'Could not fetch website'
+            'fetch_failed': True,
+            'needs_manual_review': True,
         }
 
     base_url = final_url or url
@@ -349,14 +404,20 @@ def evaluate_service(url):
         'company_name': extract_company_name(url, soup),
         'score': score,
         'criteria': criteria,
+        'fetch_failed': False,
     }
 
 
 def generate_single_result_markdown(result, ai_metadata=None):
     """Generate markdown for a single service result"""
     score = result['score']
+    fetch_failed = result.get('fetch_failed', False)
+    needs_manual = result.get('needs_manual_review', False)
 
-    if score == 3:
+    if fetch_failed:
+        status = "Needs Manual Review"
+        emoji = "orange_circle"
+    elif score == 3:
         status = "Ready to Merge"
         emoji = "green_circle"
     elif score == 2:
@@ -370,24 +431,37 @@ def generate_single_result_markdown(result, ai_metadata=None):
 
 **URL:** {result['url']}
 **Score:** {score}/3 :{emoji}: {status}
+"""
 
+    if fetch_failed:
+        md += "\n:warning: **Could not fetch website** (likely Cloudflare protected). Criteria could not be verified automatically.\n\n"
+
+    md += """
 | Criteria | Status | Evidence |
 |----------|--------|----------|
 """
 
     for c in result['criteria']:
-        status_icon = ":white_check_mark:" if c['passed'] else ":x:"
+        if c['passed'] is None:
+            status_icon = ":grey_question:"
+        elif c['passed']:
+            status_icon = ":white_check_mark:"
+        else:
+            status_icon = ":x:"
         md += f"| {c['name']} | {status_icon} | {c['evidence']} |\n"
 
-    if score >= 2 and ai_metadata:
+    if ai_metadata:
         md += f"""
 **AI-Generated Entry:**
 - **Name:** {ai_metadata['name']}
 - **Description:** {ai_metadata['description']}
 - **Category:** {ai_metadata['category']}
 
-:white_check_mark: Will be included in PR
 """
+        if needs_manual:
+            md += ":warning: Will be included in PR but **requires manual verification** of criteria\n"
+        else:
+            md += ":white_check_mark: Will be included in PR\n"
     elif score >= 2:
         md += "\n:warning: Could not generate AI metadata\n"
     else:
@@ -482,6 +556,7 @@ def main():
                     'description': ai_metadata['description'],
                     'category': ai_metadata['category'],
                     'score': result['score'],
+                    'needs_manual_review': result.get('needs_manual_review', False),
                 })
 
         results_list.append(result)
