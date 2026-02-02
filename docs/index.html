@@ -3,9 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alt Clouds Explorer</title>
+  <title>Awesome Alt Clouds - When you Need Something .. Specialized!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/datum-cloud/awesome-alt-clouds/main/altclouds-logo.png">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+    :root {
+      --warm-stone: #78716C;
+      --soft-sage: #A3B18A;
+      --clay-beige: #E9DCC9;
+      --rich-earth: #3E362E;
+      --bright-tangerine: #FF6B35;
+      --cream: #FAF7F0;
+      --charcoal: #2D2D2A;
+
+      --bg-primary: var(--cream);
+      --bg-secondary: var(--clay-beige);
+      --bg-card: #ffffff;
+      --accent-primary: var(--bright-tangerine);
+      --text-primary: var(--rich-earth);
+      --text-secondary: var(--warm-stone);
+      --border: var(--clay-beige);
+      --shadow: rgba(62, 54, 46, 0.08);
+      --success: var(--soft-sage);
+      --warning: var(--bright-tangerine);
+      --sidebar-bg: var(--cream);
+    }
 
     * {
       margin: 0;
@@ -13,55 +37,11 @@
       box-sizing: border-box;
     }
 
-    :root {
-      --bg-primary: #ffffff;
-      --bg-secondary: #f8f9fa;
-      --bg-card: #ffffff;
-      --accent-primary: #0066ff;
-      --accent-secondary: #6366f1;
-      --text-primary: #0f172a;
-      --text-secondary: #64748b;
-      --border: #e2e8f0;
-      --shadow: rgba(0, 102, 255, 0.08);
-      --success: #10b981;
-      --warning: #f59e0b;
-      --sidebar-bg: #f8f9fa;
-    }
-
-    [data-theme="dark"] {
-      --bg-primary: #0a0e14;
-      --bg-secondary: #141923;
-      --bg-card: #1a1f2e;
-      --accent-primary: #3b82f6;
-      --accent-secondary: #8b5cf6;
-      --text-primary: #e8eaed;
-      --text-secondary: #9ca3af;
-      --border: #2d3748;
-      --shadow: rgba(59, 130, 246, 0.1);
-      --sidebar-bg: #0f1419;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --bg-primary: #0a0e14;
-        --bg-secondary: #141923;
-        --bg-card: #1a1f2e;
-        --accent-primary: #3b82f6;
-        --accent-secondary: #8b5cf6;
-        --text-primary: #e8eaed;
-        --text-secondary: #9ca3af;
-        --border: #2d3748;
-        --shadow: rgba(59, 130, 246, 0.1);
-        --sidebar-bg: #0f1419;
-      }
-    }
-
     body {
-      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      font-family: 'IBM Plex Sans', -apple-system, system-ui, sans-serif;
       background: var(--bg-primary);
       color: var(--text-primary);
-      line-height: 1.5;
-      transition: background 0.3s ease, color 0.3s ease;
+      line-height: 1.6;
     }
 
     .layout {
@@ -70,261 +50,310 @@
     }
 
     .sidebar {
-      width: 260px;
+      width: 280px;
       background: var(--sidebar-bg);
       border-right: 1px solid var(--border);
-      padding: 1rem 0.75rem;
+      padding: 1.5rem 1rem;
       position: sticky;
       top: 0;
       height: 100vh;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      transition: all 0.3s ease;
     }
 
     .logo-section {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.25rem;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     .logo-img {
-      width: 32px;
-      height: 32px;
-      border-radius: 6px;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
     }
 
     .logo-text h1 {
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: var(--text-primary);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--rich-earth);
+    }
+
+    .tagline {
+      font-size: 0.8125rem;
+      color: var(--bright-tangerine);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
     }
 
     .subtitle {
       font-size: 0.8125rem;
       color: var(--text-secondary);
-      line-height: 1.4;
+      line-height: 1.5;
+    }
+
+    /* Top bar styles */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--clay-beige);
+      border-radius: 12px;
+    }
+
+    .sorter-section {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .sorter-label {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .sorter-select {
+      padding: 0.5rem 2rem 0.5rem 0.75rem;
+      background: var(--cream);
+      border: 2px solid var(--clay-beige);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 0.875rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2378716C' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      transition: all 0.2s ease;
+    }
+
+    .sorter-select:focus {
+      outline: none;
+      border-color: var(--soft-sage);
+      box-shadow: 0 0 0 3px rgba(163, 177, 138, 0.15);
+    }
+
+    .sorter-select:hover {
+      border-color: var(--soft-sage);
     }
 
     .search-box {
       position: relative;
-      margin-bottom: 1rem;
+      flex: 0 1 300px;
     }
 
     .search-input {
       width: 100%;
-      padding: 0.5rem 0.625rem 0.5rem 2rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
+      padding: 0.5rem 0.875rem 0.5rem 2.25rem;
+      background: var(--cream);
+      border: 2px solid var(--clay-beige);
+      border-radius: 8px;
       color: var(--text-primary);
-      font-size: 0.8125rem;
-      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-family: 'IBM Plex Sans', sans-serif;
       transition: all 0.2s ease;
     }
 
     .search-input:focus {
       outline: none;
-      border-color: var(--accent-primary);
-      box-shadow: 0 0 0 2px var(--shadow);
+      border-color: var(--soft-sage);
+      box-shadow: 0 0 0 3px rgba(163, 177, 138, 0.15);
+    }
+
+    .search-input::placeholder {
+      color: var(--warm-stone);
+      opacity: 0.6;
     }
 
     .search-icon {
       position: absolute;
-      left: 0.625rem;
+      left: 0.875rem;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--text-secondary);
+      color: var(--warm-stone);
       pointer-events: none;
     }
 
     .categories-section {
       flex: 1;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
       overflow-y: auto;
     }
 
     .section-title {
-      font-size: 0.6875rem;
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--text-secondary);
-      margin-bottom: 0.5rem;
+      color: var(--warm-stone);
+      margin-bottom: 0.75rem;
     }
 
     .category-list {
       display: flex;
       flex-direction: column;
-      gap: 0.125rem;
+      gap: 0.25rem;
     }
 
     .category-item {
-      padding: 0.4rem 0.5rem;
-      border-radius: 4px;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
       cursor: pointer;
       transition: all 0.2s ease;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.8125rem;
+      font-size: 0.875rem;
       color: var(--text-secondary);
       border: 1px solid transparent;
     }
 
     .category-item:hover {
-      background: var(--bg-secondary);
+      background: var(--clay-beige);
       color: var(--text-primary);
     }
 
     .category-item.active {
-      background: var(--accent-primary);
-      color: white;
+      background: var(--rich-earth);
+      color: var(--cream);
       font-weight: 500;
-      border-color: var(--accent-primary);
     }
 
     .category-count {
-      font-size: 0.6875rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
       opacity: 0.7;
     }
 
     .sidebar-bottom {
       margin-top: auto;
-      padding-top: 0.75rem;
+      padding-top: 1rem;
       border-top: 1px solid var(--border);
-    }
-
-    .stats-section {
-      padding: 0.5rem;
-      background: var(--bg-secondary);
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.25rem 0;
-    }
-
-    .stat-row:not(:last-child) {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .stat-label {
-      font-size: 0.6875rem;
-      color: var(--text-secondary);
-    }
-
-    .stat-value {
-      font-family: 'Geist Mono', monospace;
-      font-weight: 600;
-      color: var(--accent-primary);
-      font-size: 0.75rem;
     }
 
     .contribute-btn {
       width: 100%;
-      padding: 0.4rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      color: var(--text-secondary);
-      font-size: 0.75rem;
-      font-weight: 500;
+      padding: 0.625rem;
+      background: var(--bright-tangerine);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 0.8125rem;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
-      font-family: 'Inter', sans-serif;
+      font-family: 'IBM Plex Sans', sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.375rem;
-      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      text-decoration: none;
     }
 
     .contribute-btn:hover {
-      background: var(--bg-secondary);
-      color: var(--text-primary);
-      border-color: var(--accent-primary);
+      background: var(--rich-earth);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(62, 54, 46, 0.15);
     }
 
-    .theme-toggle {
-      display: inline-flex;
-      gap: 0.25rem;
-      padding: 0.25rem;
-      background: var(--bg-secondary);
-      border-radius: 4px;
-      border: 1px solid var(--border);
-      width: fit-content;
-    }
-
-    .theme-btn {
-      width: 28px;
-      height: 24px;
-      border: none;
-      background: transparent;
-      color: var(--text-secondary);
-      border-radius: 3px;
-      cursor: pointer;
-      font-size: 0.75rem;
-      transition: all 0.2s ease;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
+    .github-link {
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s;
     }
 
-    .theme-btn.active {
-      background: var(--bg-card);
+    .github-link:hover {
       color: var(--text-primary);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      background: var(--clay-beige);
     }
 
-    .modal {
+    .page-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .page-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 0.75rem;
+      color: var(--text-secondary);
+      font-size: 0.8125rem;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .page-link:hover {
+      color: var(--text-primary);
+      background: var(--clay-beige);
+    }
+
+    .page-link svg {
+      flex-shrink: 0;
+    }
+
+    /* Modal styles */
+    .modal-overlay {
       display: none;
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(45, 45, 42, 0.6);
       backdrop-filter: blur(4px);
-      z-index: 1000;
+      z-index: 100;
       align-items: center;
       justify-content: center;
-      animation: fadeIn 0.2s ease;
+      padding: 2rem;
     }
 
-    .modal.active {
+    .modal-overlay.active {
       display: flex;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .modal-content {
+    .modal {
       background: var(--bg-card);
-      border-radius: 8px;
-      padding: 1.5rem;
-      max-width: 500px;
-      width: 90%;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      animation: slideUp 0.3s ease;
+      border-radius: 16px;
+      max-width: 720px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 48px rgba(62, 54, 46, 0.2);
+      border: 1px solid var(--soft-sage);
+      animation: modalSlideIn 0.3s ease;
     }
 
-    @keyframes slideUp {
+    @keyframes modalSlideIn {
       from {
         opacity: 0;
         transform: translateY(20px);
@@ -337,76 +366,234 @@
 
     .modal-header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 1rem;
+      justify-content: space-between;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--clay-beige);
+      position: sticky;
+      top: 0;
+      background: var(--bg-card);
+      z-index: 1;
     }
 
     .modal-title {
-      font-size: 1.125rem;
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.5rem;
       font-weight: 600;
-      color: var(--text-primary);
+      color: var(--rich-earth);
     }
 
     .modal-close {
-      width: 28px;
-      height: 28px;
+      background: none;
       border: none;
-      background: var(--bg-secondary);
-      color: var(--text-secondary);
-      border-radius: 4px;
+      padding: 0.5rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.125rem;
-      transition: all 0.2s ease;
+      color: var(--warm-stone);
+      border-radius: 8px;
+      transition: all 0.2s;
     }
 
     .modal-close:hover {
-      background: var(--border);
+      background: var(--clay-beige);
       color: var(--text-primary);
     }
 
-    .modal-body {
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-      line-height: 1.6;
+    .modal-content {
+      padding: 2rem;
     }
 
-    .modal-body p {
+    .modal-section {
+      margin-bottom: 2rem;
+    }
+
+    .modal-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .modal-section-title {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--rich-earth);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .modal-section p {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.7;
       margin-bottom: 0.75rem;
     }
 
-    .modal-link {
-      color: var(--accent-primary);
-      text-decoration: none;
-      font-weight: 500;
+    .modal-section ul {
+      list-style: none;
+      padding: 0;
     }
 
-    .modal-link:hover {
-      text-decoration: underline;
+    .modal-section li {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      padding: 0.375rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .modal-section li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.875rem;
+      width: 6px;
+      height: 6px;
+      background: var(--soft-sage);
+      border-radius: 50%;
+    }
+
+    .resource-card {
+      background: var(--cream);
+      border: 1px solid var(--clay-beige);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      transition: all 0.2s;
+    }
+
+    .resource-card:hover {
+      border-color: var(--soft-sage);
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .resource-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .resource-card-title {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .resource-card-title a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .resource-card-title a:hover {
+      color: var(--bright-tangerine);
+    }
+
+    .resource-card-excerpt {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .resource-card-meta {
+      font-size: 0.75rem;
+      color: var(--warm-stone);
+      margin-top: 0.5rem;
+    }
+
+    .criteria-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      background: var(--soft-sage);
+      color: var(--rich-earth);
+      padding: 0.375rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .github-modal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--rich-earth);
+      color: var(--cream);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .github-modal-link:hover {
+      background: var(--charcoal);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(62, 54, 46, 0.2);
     }
 
     .main-content {
       flex: 1;
-      padding: 1rem;
-      max-width: 1400px;
+      padding: 1.5rem;
+    }
+
+    .page-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .page-title {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--rich-earth);
+      margin-bottom: 0.25rem;
+    }
+
+    .page-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
     }
 
     .clouds-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 0.75rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1rem;
     }
 
     .cloud-card {
       background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.875rem;
+      border: 1px solid var(--clay-beige);
+      border-radius: 12px;
+      padding: 1.25rem;
       transition: all 0.2s ease;
       animation: slideUpCard 0.4s ease-out both;
+      position: relative;
+    }
+
+    .cloud-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--bright-tangerine);
+      border-radius: 12px 12px 0 0;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .cloud-card:hover {
+      box-shadow: 0 8px 24px var(--shadow);
+      transform: translateY(-3px);
+      border-color: var(--soft-sage);
+    }
+
+    .cloud-card:hover::before {
+      opacity: 1;
     }
 
     @keyframes slideUpCard {
@@ -420,32 +607,26 @@
       }
     }
 
-    .cloud-card:hover {
-      box-shadow: 0 4px 12px var(--shadow);
-      transform: translateY(-2px);
-    }
-
     .cloud-header {
       display: flex;
       align-items: flex-start;
-      gap: 0.625rem;
-      margin-bottom: 0.625rem;
+      gap: 0.875rem;
+      margin-bottom: 0.875rem;
     }
 
     .cloud-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 6px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
       flex-shrink: 0;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-family: 'Crimson Pro', Georgia, serif;
       font-weight: 600;
-      font-size: 1rem;
-      color: var(--text-secondary);
+      font-size: 1.125rem;
+      color: var(--warm-stone);
     }
 
     .cloud-logo img {
@@ -454,7 +635,6 @@
       object-fit: cover;
     }
 
-    /* Show fallback letter when data-logo attribute is set */
     .cloud-logo[data-logo]::before {
       content: attr(data-logo);
       display: flex;
@@ -463,7 +643,7 @@
       width: 100%;
       height: 100%;
       font-weight: 600;
-      color: var(--accent-primary);
+      color: var(--rich-earth);
     }
 
     .cloud-title-section {
@@ -472,7 +652,8 @@
     }
 
     .cloud-name {
-      font-size: 1rem;
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.125rem;
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 0.125rem;
@@ -487,49 +668,54 @@
 
     .cloud-badges {
       display: flex;
-      gap: 0.375rem;
-      margin-bottom: 0.625rem;
+      gap: 0.5rem;
+      margin-bottom: 0.875rem;
     }
 
     .badge {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
+      padding: 0.25rem 0.625rem;
+      border-radius: 20px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 0.25rem;
       font-size: 0.6875rem;
+      font-weight: 500;
       cursor: help;
       position: relative;
       transition: all 0.2s ease;
     }
 
     .badge.success {
-      background: var(--success);
-      color: white;
+      background: var(--soft-sage);
+      color: var(--rich-earth);
     }
 
     .badge.warning {
-      background: var(--warning);
+      background: var(--clay-beige);
+      color: var(--warm-stone);
+    }
+
+    .badge.favorite-badge {
+      background: var(--bright-tangerine);
       color: white;
     }
 
     .badge:hover {
-      transform: scale(1.15);
+      transform: scale(1.05);
     }
 
     .badge-tooltip {
       display: none;
       position: absolute;
-      bottom: calc(100% + 6px);
+      bottom: calc(100% + 8px);
       left: 50%;
       transform: translateX(-50%);
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 0.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--soft-sage);
+      border-radius: 8px;
+      padding: 0.75rem;
       min-width: 180px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 24px rgba(62, 54, 46, 0.15);
       z-index: 10;
       white-space: nowrap;
     }
@@ -539,79 +725,106 @@
     }
 
     .badge-tooltip-title {
-      font-size: 0.6875rem;
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 0.75rem;
       font-weight: 600;
-      margin-bottom: 0.375rem;
+      margin-bottom: 0.5rem;
       color: var(--text-primary);
     }
 
     .badge-tooltip-item {
-      font-size: 0.625rem;
+      font-size: 0.6875rem;
       color: var(--text-secondary);
-      margin: 0.125rem 0;
+      margin: 0.25rem 0;
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.375rem;
     }
 
     .check {
-      color: var(--success);
+      color: var(--soft-sage);
     }
 
     .cross {
-      color: #ef4444;
+      color: var(--bright-tangerine);
     }
 
     .cloud-description {
       color: var(--text-secondary);
       font-size: 0.875rem;
-      line-height: 1.5;
-      margin-bottom: 0.625rem;
+      line-height: 1.6;
+      margin-bottom: 0.875rem;
     }
 
     .cloud-footer {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      padding-top: 0.625rem;
-      border-top: 1px solid var(--border);
+      padding-top: 0.875rem;
+      border-top: 1px solid var(--clay-beige);
     }
 
     .cloud-url {
-      color: var(--accent-primary);
+      color: var(--bright-tangerine);
       text-decoration: none;
-      font-size: 0.8125rem;
+      font-size: 0.875rem;
       font-weight: 500;
       display: inline-flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.375rem;
       transition: gap 0.2s ease;
     }
 
     .cloud-url:hover {
-      gap: 0.5rem;
+      gap: 0.625rem;
     }
 
     .empty-state {
       text-align: center;
-      padding: 3rem 0;
+      padding: 4rem 2rem;
       grid-column: 1 / -1;
     }
 
     .empty-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.75rem;
-      opacity: 0.3;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.4;
     }
 
     .empty-text {
       color: var(--text-secondary);
-      font-size: 0.9375rem;
+      font-size: 1rem;
+    }
+
+    .empty-subtext {
+      color: var(--warm-stone);
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Constellation decoration */
+    .constellation {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      width: 80px;
+      height: 80px;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .constellation circle {
+      fill: var(--soft-sage);
+    }
+
+    .constellation line {
+      stroke: var(--soft-sage);
+      stroke-width: 1;
     }
 
     @media (max-width: 1024px) {
       .sidebar {
-        width: 220px;
+        width: 240px;
       }
 
       .clouds-grid {
@@ -631,12 +844,45 @@
         padding: 1rem;
       }
 
+      .categories-section {
+        max-height: 200px;
+      }
+
       .clouds-grid {
         grid-template-columns: 1fr;
       }
 
       .main-content {
         padding: 1rem;
+      }
+
+      .top-bar {
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1rem;
+      }
+
+      .sorter-section {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .search-box {
+        flex: none;
+        width: 100%;
+      }
+
+      .modal {
+        margin: 1rem;
+        max-height: calc(100vh - 2rem);
+      }
+
+      .modal-header {
+        padding: 1rem 1.25rem;
+      }
+
+      .modal-content {
+        padding: 1.25rem;
       }
     }
 
@@ -655,22 +901,11 @@
         <div class="logo">
           <img src="https://raw.githubusercontent.com/datum-cloud/awesome-alt-clouds/main/altclouds-logo.png" alt="Alt Clouds" class="logo-img">
           <div class="logo-text">
-            <h1>Alt Clouds</h1>
+            <h1>Awesome Alt Clouds</h1>
           </div>
         </div>
-        <p class="subtitle">Discover specialized cloud providers beyond the hyperscalers</p>
-      </div>
-
-      <div class="search-box">
-        <svg class="search-icon" width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-        </svg>
-        <input 
-          type="text" 
-          class="search-input" 
-          id="searchInput"
-          placeholder="Search clouds..."
-        >
+        <p class="tagline">When you Need Something .. Specialized!</p>
+        <p class="subtitle">Discover specialized infrastructure providers built for developers who think different</p>
       </div>
 
       <div class="categories-section">
@@ -681,51 +916,236 @@
       </div>
 
       <div class="sidebar-bottom">
-        <div class="stats-section">
-          <div class="stat-row">
-            <span class="stat-label">Total</span>
-            <span class="stat-value" id="totalClouds">0</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">Categories</span>
-            <span class="stat-value" id="totalCategories">0</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">Showing</span>
-            <span class="stat-value" id="filteredCount">0</span>
-          </div>
-        </div>
-
-        <a href="submit/" class="contribute-btn" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-          <span>✨</span>
-          <span>Submit Service</span>
+        <a href="submit/" class="contribute-btn">
+          <span>+</span>
+          <span>Add a Cloud</span>
         </a>
 
-        <div class="theme-toggle">
-          <button class="theme-btn" data-theme="system" title="System">⚙️</button>
-          <button class="theme-btn" data-theme="light" title="Light">☀️</button>
-          <button class="theme-btn" data-theme="dark" title="Dark">🌙</button>
+        <div class="page-links">
+          <a class="page-link" onclick="openModal('aboutModal')">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>About / Philosophy</span>
+          </a>
+          <a class="page-link" onclick="openModal('resourcesModal')">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+            <span>Resources</span>
+          </a>
         </div>
+
+        <!-- Constellation decoration -->
+        <svg class="constellation" viewBox="0 0 80 80" style="position: relative; margin-top: 1rem;">
+          <circle cx="15" cy="20" r="3"/>
+          <circle cx="40" cy="10" r="2"/>
+          <circle cx="65" cy="25" r="3"/>
+          <circle cx="30" cy="45" r="2"/>
+          <circle cx="55" cy="55" r="3"/>
+          <circle cx="20" cy="65" r="2"/>
+          <line x1="15" y1="20" x2="40" y2="10"/>
+          <line x1="40" y1="10" x2="65" y2="25"/>
+          <line x1="30" y1="45" x2="55" y2="55"/>
+          <line x1="15" y1="20" x2="30" y2="45"/>
+          <line x1="30" y1="45" x2="20" y2="65"/>
+        </svg>
       </div>
     </aside>
 
     <main class="main-content">
+      <div class="top-bar">
+        <div class="sorter-section">
+          <span class="sorter-label">Sort by:</span>
+          <select class="sorter-select" id="sortSelect" onchange="handleSort()">
+            <option value="alphabetical">Alphabetical</option>
+            <option value="recent">Recently Added</option>
+            <option value="favorites">Community Favorites</option>
+          </select>
+        </div>
+        <div class="search-box">
+          <svg class="search-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="Search clouds..."
+          >
+        </div>
+      </div>
+
       <div class="clouds-grid" id="cloudsGrid">
         <!-- Clouds will be dynamically inserted -->
       </div>
     </main>
   </div>
 
-  <!-- Contribute Modal -->
-  <div class="modal" id="contributeModal">
-    <div class="modal-content">
+  <!-- About/Philosophy Modal -->
+  <div class="modal-overlay" id="aboutModal" onclick="closeModalOnOverlay(event)">
+    <div class="modal" onclick="event.stopPropagation()">
       <div class="modal-header">
-        <h2 class="modal-title">Submit a Service</h2>
-        <button class="modal-close" onclick="document.getElementById('contributeModal').classList.remove('active')">×</button>
+        <h2 class="modal-title">About / Philosophy</h2>
+        <button class="modal-close" onclick="closeModal('aboutModal')">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
       </div>
-      <div class="modal-body">
-        <p>Want to add a cloud service to this directory?</p>
-        <p>Visit our <a href="submit/" class="modal-link">submission form</a> to add your service.</p>
+      <div class="modal-content">
+        <div class="modal-section">
+          <h3 class="modal-section-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            Why Alternative Clouds Matter
+          </h3>
+          <p>The cloud landscape has long been dominated by a few hyperscalers. While they offer incredible breadth, many developers find themselves paying for complexity they don't need, or missing specialized capabilities that could transform their applications.</p>
+          <p>Alternative cloud providers fill these gaps. They offer focused expertise, transparent pricing, and often better economics for specific workloads. A GPU cloud built by ML engineers understands your training needs. An edge provider knows latency like the hyperscalers never will.</p>
+          <p>We believe in a diverse cloud ecosystem where the best tool for the job isn't always the biggest. This directory exists to help you discover these alternatives and make informed choices.</p>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            Inclusion Criteria Explained
+          </h3>
+          <p>Every service in our directory must meet at least 2 of 3 criteria:</p>
+          <div style="margin: 1rem 0;">
+            <span class="criteria-badge">Public Pricing</span>
+            <span class="criteria-badge">Self-Service Signup</span>
+            <span class="criteria-badge">Status Page / SLA</span>
+          </div>
+          <ul>
+            <li><strong>Public Pricing:</strong> You can see what you'll pay before signing up. No "contact sales" required to understand costs.</li>
+            <li><strong>Self-Service Signup:</strong> You can start using the service today without waiting for approval or scheduling demos.</li>
+            <li><strong>Status Page / SLA:</strong> The provider publicly commits to uptime and transparency about incidents.</li>
+          </ul>
+          <p>Services meeting all 3 criteria get a green badge (3/3). Those meeting 2 get a yellow badge (2/3). This helps you quickly identify the most developer-friendly options.</p>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+            Community Guidelines
+          </h3>
+          <ul>
+            <li><strong>Be helpful:</strong> Share your experiences with services, both positive and negative, to help others make informed decisions.</li>
+            <li><strong>Stay objective:</strong> Avoid promotional content. We evaluate services on their merits, not marketing.</li>
+            <li><strong>Contribute thoughtfully:</strong> When suggesting new services, provide accurate information and real-world context.</li>
+            <li><strong>Respect the ecosystem:</strong> Alternative doesn't mean adversarial. Many providers serve different needs than hyperscalers.</li>
+          </ul>
+        </div>
+
+        <div class="modal-section" style="text-align: center; padding-top: 1rem; border-top: 1px solid var(--clay-beige);">
+          <a href="https://github.com/datum-cloud/awesome-alt-clouds" target="_blank" class="github-modal-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <span>View on GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resources Modal -->
+  <div class="modal-overlay" id="resourcesModal" onclick="closeModalOnOverlay(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h2 class="modal-title">Resources</h2>
+        <button class="modal-close" onclick="closeModal('resourcesModal')">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-content">
+        <div class="modal-section">
+          <h3 class="modal-section-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+            </svg>
+            Blog & Insights
+          </h3>
+          <p style="font-size: 0.8125rem; color: var(--warm-stone); margin-bottom: 1rem;">From <a href="https://www.datum.net/authors/zac-smith/" target="_blank" style="color: var(--bright-tangerine);">Zac Smith</a>, Co-Founder & CEO of Datum</p>
+          <div id="blogPostsContainer">
+            <!-- Blog posts auto-updated by GitHub Action -->
+            <div class="resource-card">
+              <h4 class="resource-card-title">
+                <a href="https://www.datum.net/blog/internet-superpowers-for-every-builder/" target="_blank">Internet superpowers for every builder</a>
+              </h4>
+              <p class="resource-card-excerpt">Exploring how developers can harness the full power of internet infrastructure without the traditional complexity.</p>
+              <div class="resource-card-meta">Nov 19, 2025</div>
+            </div>
+            <div class="resource-card">
+              <h4 class="resource-card-title">
+                <a href="https://www.datum.net/blog/open-source-strategy/" target="_blank">Our OSS strategy, explained</a>
+              </h4>
+              <p class="resource-card-excerpt">Why open source is central to Datum's approach and how we think about building in the open.</p>
+              <div class="resource-card-meta">Feb 19, 2025</div>
+            </div>
+          </div>
+          <p style="margin-top: 1rem; text-align: center;">
+            <a href="https://www.datum.net/authors/zac-smith/" target="_blank" style="color: var(--bright-tangerine); font-size: 0.875rem; font-weight: 500;">View all posts &rarr;</a>
+          </p>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+            Comparison Tools
+          </h3>
+          <div class="resource-card">
+            <h4 class="resource-card-title">
+              <a href="https://cloudprice.net" target="_blank">CloudPrice.net</a>
+            </h4>
+            <p class="resource-card-excerpt">Compare compute instance pricing across dozens of cloud providers. Filter by CPU, memory, and GPU requirements.</p>
+          </div>
+          <div class="resource-card">
+            <h4 class="resource-card-title">
+              <a href="https://gpulist.ai" target="_blank">GPUList.ai</a>
+            </h4>
+            <p class="resource-card-excerpt">Real-time GPU availability tracker across cloud providers. See spot prices, availability, and reserve capacity.</p>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+            Developer Stories
+          </h3>
+          <div class="resource-card">
+            <h4 class="resource-card-title">
+              <a href="https://www.datum.net/blog/open-sourcing-domain-validation/" target="_blank">Why we're open sourcing domain validation</a>
+            </h4>
+            <p class="resource-card-excerpt">Datum has acquired CloudValid. Alongside the acquisition, Datum will open source CloudValid's technology to simplify domain verification for SaaS platforms.</p>
+            <div class="resource-card-meta">Nov 25, 2025</div>
+          </div>
+          <div class="resource-card">
+            <h4 class="resource-card-title">
+              <a href="https://www.datum.net/blog/from-cage-nuts-to-kubernetes/" target="_blank">From cage nuts to Kubernetes</a>
+            </h4>
+            <p class="resource-card-excerpt">On June 12, 2008, I had cuts on my fingers from cage nuts, the local pubs had closed for the night, and I was exhausted from a long day racking, stacking, and cabling at the Equinix AM2 datacenter.</p>
+            <div class="resource-card-meta">Nov 19, 2025 &middot; Tom Daly</div>
+          </div>
+          <div class="resource-card">
+            <h4 class="resource-card-title">
+              <a href="https://www.datum.net/blog/claude-meet-cross-connects/" target="_blank">Datum MCP: Cursor, meet cross connects</a>
+            </h4>
+            <p class="resource-card-excerpt">For two decades, we've built applications on the internet the hard way, taking our apps to the network. Datum MCP reverses this approach by bringing network capabilities directly into Cursor and Claude.</p>
+            <div class="resource-card-meta">Nov 19, 2025</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -735,6 +1155,73 @@
     let altClouds = [];
     let currentCategory = 'All';
     let searchTerm = '';
+    let currentSort = 'alphabetical';
+
+    // Modal functions
+    function openModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeModalOnOverlay(event) {
+      if (event.target.classList.contains('modal-overlay')) {
+        event.target.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+          modal.classList.remove('active');
+        });
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Sort function
+    function handleSort() {
+      currentSort = document.getElementById('sortSelect').value;
+      renderClouds();
+    }
+
+    function sortClouds(clouds) {
+      const sorted = [...clouds];
+      switch (currentSort) {
+        case 'alphabetical':
+          return sorted.sort((a, b) => a.name.localeCompare(b.name));
+        case 'recent':
+          // If no dateAdded, put at end; otherwise sort by most recent first
+          return sorted.sort((a, b) => {
+            if (!a.dateAdded && !b.dateAdded) return 0;
+            if (!a.dateAdded) return 1;
+            if (!b.dateAdded) return -1;
+            return new Date(b.dateAdded) - new Date(a.dateAdded);
+          });
+        case 'favorites':
+          // Sort by favorite flag first, then by score, then alphabetically
+          return sorted.sort((a, b) => {
+            // Favorites first
+            const favA = a.favorite ? 1 : 0;
+            const favB = b.favorite ? 1 : 0;
+            if (favB !== favA) return favB - favA;
+            // Then by score
+            const scoreA = a.score || 3;
+            const scoreB = b.score || 3;
+            if (scoreB !== scoreA) return scoreB - scoreA;
+            // Then alphabetically
+            return a.name.localeCompare(b.name);
+          });
+        default:
+          return sorted;
+      }
+    }
 
     // Load clouds data from JSON file
     async function loadClouds() {
@@ -750,49 +1237,13 @@
         console.error('Error loading clouds data:', error);
         document.getElementById('cloudsGrid').innerHTML = `
           <div class="empty-state">
-            <div class="empty-icon">⚠️</div>
-            <p class="empty-text">Error loading data. Please try refreshing the page.</p>
+            <div class="empty-icon">&#9729;</div>
+            <p class="empty-text">Oops, our signal got crossed</p>
+            <p class="empty-subtext">Give it another try by refreshing the page</p>
           </div>
         `;
       }
     }
-
-    // Theme management
-    function initTheme() {
-      const savedTheme = localStorage.getItem('theme') || 'system';
-      applyTheme(savedTheme);
-      updateThemeButtons(savedTheme);
-    }
-
-    function applyTheme(theme) {
-      if (theme === 'system') {
-        document.documentElement.removeAttribute('data-theme');
-      } else {
-        document.documentElement.setAttribute('data-theme', theme);
-      }
-      localStorage.setItem('theme', theme);
-    }
-
-    function updateThemeButtons(activeTheme) {
-      document.querySelectorAll('.theme-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.theme === activeTheme);
-      });
-    }
-
-    // Theme toggle event listeners
-    document.querySelectorAll('.theme-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const theme = btn.dataset.theme;
-        applyTheme(theme);
-        updateThemeButtons(theme);
-      });
-    });
-
-    // Modal handling
-    const modal = document.getElementById('contributeModal');
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.remove('active');
-    });
 
     function getCategories() {
       const categories = [...new Set(altClouds.map(cloud => cloud.category))];
@@ -803,7 +1254,6 @@
       const fallback = cloud.name.charAt(0).toUpperCase();
       try {
         const hostname = new URL(cloud.url).hostname;
-        // Use Google Favicon API (more reliable than Clearbit)
         const logoUrl = 'https://www.google.com/s2/favicons?domain=' + hostname + '&sz=64';
         return '<img src="' + logoUrl + '" alt="' + fallback + '" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display=\'none\';this.parentElement.setAttribute(\'data-logo\',\'' + fallback + '\');">';
       } catch {
@@ -812,8 +1262,7 @@
     }
 
     function getCloudScore(cloud) {
-      // Use actual score from README data (via clouds.json)
-      const score = cloud.score || 3; // Default to 3 if not specified
+      const score = cloud.score || 3;
       return {
         score,
         hasPricing: score >= 1,
@@ -825,12 +1274,12 @@
     function renderCategories() {
       const categories = getCategories();
       const container = document.getElementById('categoryList');
-      
+
       container.innerHTML = categories.map(category => {
         const count = category === 'All' ? altClouds.length : altClouds.filter(c => c.category === category).length;
         return `
-          <div 
-            class="category-item ${category === currentCategory ? 'active' : ''}" 
+          <div
+            class="category-item ${category === currentCategory ? 'active' : ''}"
             onclick="filterByCategory('${category.replace(/'/g, "\\'")}')"
           >
             <span>${category}</span>
@@ -841,35 +1290,37 @@
     }
 
     function getFilteredClouds() {
-      return altClouds.filter(cloud => {
+      const filtered = altClouds.filter(cloud => {
         const matchesCategory = currentCategory === 'All' || cloud.category === currentCategory;
-        const matchesSearch = searchTerm === '' || 
+        const matchesSearch = searchTerm === '' ||
           cloud.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           cloud.description.toLowerCase().includes(searchTerm.toLowerCase());
-        
+
         return matchesCategory && matchesSearch;
       });
+      return sortClouds(filtered);
     }
 
     function renderClouds() {
       const container = document.getElementById('cloudsGrid');
       const filtered = getFilteredClouds();
-      
+
       if (filtered.length === 0) {
         container.innerHTML = `
           <div class="empty-state">
-            <div class="empty-icon">🔍</div>
-            <p class="empty-text">No clouds found matching your criteria</p>
+            <div class="empty-icon">&#128269;</div>
+            <p class="empty-text">Hmm, we couldn't find that cloud</p>
+            <p class="empty-subtext">But hey, maybe you've discovered something new? <a href="submit/" style="color: var(--bright-tangerine);">Add it to our atlas!</a></p>
           </div>
         `;
-        updateStats(0);
         return;
       }
 
       container.innerHTML = filtered.map((cloud, index) => {
         const score = getCloudScore(cloud);
         const badgeClass = score.score === 3 ? 'success' : 'warning';
-        
+        const badgeText = score.score === 3 ? '3/3' : score.score + '/3';
+
         return `
           <div class="cloud-card" style="animation-delay: ${index * 0.05}s">
             <div class="cloud-header">
@@ -881,47 +1332,41 @@
                 <div class="cloud-category">${cloud.category}</div>
               </div>
             </div>
-            
+
             <div class="cloud-badges">
+              ${cloud.favorite ? '<div class="badge favorite-badge" title="Marked as Community Favorites"><svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg> Favorite</div>' : ''}
               <div class="badge ${badgeClass}">
-                ${score.score === 3 ? '✓' : score.score}
+                ${badgeText}
                 <div class="badge-tooltip">
-                  <div class="badge-tooltip-title">Criteria: ${score.score}/3</div>
+                  <div class="badge-tooltip-title">Criteria Score: ${score.score}/3</div>
                   <div class="badge-tooltip-item">
-                    <span class="${score.hasPricing ? 'check' : 'cross'}">${score.hasPricing ? '✓' : '✗'}</span>
+                    <span class="${score.hasPricing ? 'check' : 'cross'}">${score.hasPricing ? '&#10003;' : '&#10007;'}</span>
                     Public Pricing
                   </div>
                   <div class="badge-tooltip-item">
-                    <span class="${score.hasSelfService ? 'check' : 'cross'}">${score.hasSelfService ? '✓' : '✗'}</span>
-                    Self-Service
+                    <span class="${score.hasSelfService ? 'check' : 'cross'}">${score.hasSelfService ? '&#10003;' : '&#10007;'}</span>
+                    Self-Service Signup
                   </div>
                   <div class="badge-tooltip-item">
-                    <span class="${score.hasProduction ? 'check' : 'cross'}">${score.hasProduction ? '✓' : '✗'}</span>
-                    SLA/Status Page
+                    <span class="${score.hasProduction ? 'check' : 'cross'}">${score.hasProduction ? '&#10003;' : '&#10007;'}</span>
+                    SLA / Status Page
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <div class="cloud-description">${cloud.description}</div>
-            
+
             <div class="cloud-footer">
               <a href="${cloud.url}" target="_blank" rel="noopener noreferrer" class="cloud-url">
-                Visit →
+                Learn more &rarr;
               </a>
             </div>
           </div>
         `;
       }).join('');
-
-      updateStats(filtered.length);
     }
 
-    function updateStats(filteredCount) {
-      document.getElementById('totalClouds').textContent = altClouds.length;
-      document.getElementById('totalCategories').textContent = getCategories().length - 1;
-      document.getElementById('filteredCount').textContent = filteredCount;
-    }
 
     function filterByCategory(category) {
       currentCategory = category;
@@ -934,10 +1379,8 @@
       renderClouds();
     });
 
-
     // Initialize on page load
-    initTheme();
-    loadClouds(); // Loads data, then calls renderCategories() and renderClouds()
+    loadClouds();
   </script>
 </body>
 </html>
