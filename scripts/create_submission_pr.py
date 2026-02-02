@@ -180,13 +180,29 @@ def create_pr(data):
     else:
         pr_title = f"Add {len(added_services)} new cloud services"
 
+    # Check if any services need manual review
+    needs_review = [s for s in added_services if s.get('needs_manual_review')]
+
     # Build PR body
     pr_body = f"""## New Cloud Service Submission
 
 """
+
+    if needs_review:
+        pr_body += """:warning: **Manual Review Required**
+
+Some services could not be automatically verified (website protected by Cloudflare or similar).
+Please manually verify the 3 criteria before merging:
+1. Transparent Public Pricing
+2. Usage-based Self-Service
+3. Production Indicators (SLA/Status page)
+
+"""
+
     if len(added_services) == 1:
         s = added_services[0]
         badge = '🟢' if s['score'] == 3 else '🟡'
+        review_note = " ⚠️ needs verification" if s.get('needs_manual_review') else ""
         pr_body += f"""This PR adds **{s['name']}** to the **{s['category']}** category.
 
 | Field | Value |
@@ -194,16 +210,17 @@ def create_pr(data):
 | Name | {s['name']} |
 | URL | {s['url']} |
 | Category | {s['category']} |
-| Score | {s['score']}/3 {badge} |
+| Score | {s['score']}/3 {badge}{review_note} |
 | Description | {s['description']} |
 """
     else:
         pr_body += f"This PR adds **{len(added_services)} services**:\n\n"
-        pr_body += "| Name | Category | Score | URL |\n"
-        pr_body += "|------|----------|-------|-----|\n"
+        pr_body += "| Name | Category | Score | URL | Status |\n"
+        pr_body += "|------|----------|-------|-----|--------|\n"
         for s in added_services:
             badge = '🟢' if s['score'] == 3 else '🟡'
-            pr_body += f"| {s['name']} | {s['category']} | {s['score']}/3 {badge} | {s['url']} |\n"
+            status = "⚠️ Needs verification" if s.get('needs_manual_review') else "✅ Verified"
+            pr_body += f"| {s['name']} | {s['category']} | {s['score']}/3 {badge} | {s['url']} | {status} |\n"
 
     pr_body += f"""
 
