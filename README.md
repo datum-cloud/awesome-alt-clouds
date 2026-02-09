@@ -347,6 +347,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 * 🟢 [HashiCorp Cloud Platform](https://www.hashicorp.com/cloud) - A fully-managed platform offering HashiCorp products-as-a-service, simplifying infrastructure and security management for developers.
 * 🟢 [Heroku](https://www.heroku.com/) - Offers a platform as a service (PaaS) for deploying and managing applications.
 * 🟢 [JetBrains](https://www.jetbrains.com/) - Intelligent development tools and IDEs including IntelliJ IDEA and Kotlin language.
+* 🟢 [Kimi AI](https://www.kimi.com) - Provides AI-powered conversational assistance with visual coding capabilities, agent swarm technology, and deep research tools for enhanced productivity.
 * 🟢 [Koyeb](https://www.koyeb.com/) - Offers a serverless platform to deploy applications globally.
 * 🟢 [Lightrun](https://lightrun.com/) - An AI platform to autonomously detect, debug, and remediate runtime issues.
 * 🟢 [Linear](https://linear.app/) - Purpose-built tool for planning, tracking issues, and managing product roadmaps.
