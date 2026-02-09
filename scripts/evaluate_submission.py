@@ -513,6 +513,15 @@ def main():
     issue_body = os.environ.get('ISSUE_BODY', '')
     issue_number = os.environ.get('ISSUE_NUMBER', '')
 
+    # Check for admin override
+    admin_approved = os.environ.get('ADMIN_APPROVED', '').lower() == 'true'
+    admin_score_override = os.environ.get('ADMIN_SCORE_OVERRIDE', '')
+
+    if admin_approved:
+        print("=== ADMIN APPROVAL MODE ===")
+        if admin_score_override:
+            print(f"Score override: {admin_score_override}")
+
     if not issue_body:
         print("Error: ISSUE_BODY environment variable not set")
         sys.exit(1)
@@ -544,8 +553,19 @@ def main():
         # Evaluate against criteria
         result = evaluate_service(url)
 
-        # If score >= 2, use Claude to generate metadata
-        if result['score'] >= 2:
+        # Apply admin score override if provided
+        if admin_approved and admin_score_override:
+            original_score = result['score']
+            result['score'] = int(admin_score_override)
+            result['admin_override'] = True
+            print(f"Admin override: {original_score}/3 -> {result['score']}/3")
+
+        # Determine if service should pass
+        # In admin mode: always pass (admin explicitly approved)
+        # In normal mode: pass if score >= 2
+        should_pass = admin_approved or result['score'] >= 2
+
+        if should_pass:
             ai_metadata = generate_metadata_with_claude(url, page_content)
             if ai_metadata:
                 result['company_name'] = ai_metadata['name']
@@ -556,7 +576,8 @@ def main():
                     'description': ai_metadata['description'],
                     'category': ai_metadata['category'],
                     'score': result['score'],
-                    'needs_manual_review': result.get('needs_manual_review', False),
+                    'needs_manual_review': False if admin_approved else result.get('needs_manual_review', False),
+                    'admin_approved': admin_approved,
                 })
 
         results_list.append(result)
@@ -565,9 +586,10 @@ def main():
     # Calculate max score for labeling
     max_score = max(r['score'] for r in results_list) if results_list else 0
 
-    # Write results
-    with open('evaluation_results.md', 'w') as f:
-        f.write(generate_markdown_results(results_list))
+    # Write results (only in non-admin mode to avoid duplicate comments)
+    if not admin_approved:
+        with open('evaluation_results.md', 'w') as f:
+            f.write(generate_markdown_results(results_list))
 
     with open('evaluation_score.txt', 'w') as f:
         f.write(str(max_score))
