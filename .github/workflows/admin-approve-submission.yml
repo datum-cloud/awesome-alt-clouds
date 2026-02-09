@@ -6,7 +6,7 @@ on:
 
 jobs:
   approve:
-    # Only run on issues (not PRs) with submission label when admin comments /approve
+    # Only run on issues (not PRs) with submission label when admin comments /approve or approve
     if: |
       !github.event.issue.pull_request &&
       contains(github.event.issue.labels.*.name, 'submission') &&
@@ -39,20 +39,20 @@ jobs:
                 issue_number: context.issue.number,
                 body: `❌ @${context.actor} You don't have permission to approve submissions.`
               });
+              core.setOutput('allowed', 'false');
+            } else {
+              core.setOutput('allowed', 'true');
             }
 
-            return allowed;
-          result-encoding: string
-
       - name: Parse approval command
-        if: steps.check-permission.outputs.result == 'true'
+        if: steps.check-permission.outputs.allowed == 'true'
         id: parse
         uses: actions/github-script@v7
         with:
           script: |
             const comment = context.payload.comment.body.trim();
-            // Match /approve or /approve 2 or /approve 3
-            const match = comment.match(/^\/approve(?:\s+(\d))?/);
+            // Match /approve, optionally with score (2 or 3)
+            const match = comment.match(/^\/approve(?:\s+(\d))?/i);
 
             if (match) {
               const scoreOverride = match[1] ? parseInt(match[1]) : null;
@@ -60,26 +60,27 @@ jobs:
               core.setOutput('score_override', scoreOverride || '');
               core.setOutput('valid', 'true');
             } else {
+              console.log('No match found for approve command');
               core.setOutput('valid', 'false');
             }
 
       - name: Checkout
-        if: steps.check-permission.outputs.result == 'true' && steps.parse.outputs.valid == 'true'
+        if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
         uses: actions/checkout@v4
 
       - name: Set up Python
-        if: steps.check-permission.outputs.result == 'true' && steps.parse.outputs.valid == 'true'
+        if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install dependencies
-        if: steps.check-permission.outputs.result == 'true' && steps.parse.outputs.valid == 'true'
+        if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
         run: |
           pip install requests beautifulsoup4 anthropic
 
       - name: Re-evaluate with admin override
-        if: steps.check-permission.outputs.result == 'true' && steps.parse.outputs.valid == 'true'
+        if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
         id: evaluate
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
@@ -88,23 +89,38 @@ jobs:
           ADMIN_SCORE_OVERRIDE: ${{ steps.parse.outputs.score_override }}
           ADMIN_APPROVED: 'true'
         run: |
+          echo "=== Admin Approval Mode ==="
+          echo "Issue Number: $ISSUE_NUMBER"
+          echo "Score Override: $ADMIN_SCORE_OVERRIDE"
+          echo ""
           python scripts/evaluate_submission.py
+          echo ""
+          echo "=== Evaluation Complete ==="
+          echo "Files created:"
+          ls -la *.json *.txt *.md 2>/dev/null || echo "No output files found"
 
       - name: Create PR
-        if: steps.check-permission.outputs.result == 'true' && steps.parse.outputs.valid == 'true'
+        if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
+          echo "=== Debug: Checking for submission_data.json ==="
           if [ -f submission_data.json ]; then
+            echo "Found submission_data.json:"
+            cat submission_data.json
+            echo ""
+            echo "=== Creating PR ==="
             python scripts/create_submission_pr.py
           else
-            echo "No submission data found"
+            echo "ERROR: No submission_data.json found"
+            echo "Files in current directory:"
+            ls -la
             exit 1
           fi
 
       - name: Update labels and comment
-        if: steps.check-permission.outputs.result == 'true' && steps.parse.outputs.valid == 'true'
+        if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
         uses: actions/github-script@v7
         with:
           script: |

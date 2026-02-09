@@ -287,8 +287,11 @@ def generate_metadata_with_claude(url, page_content=None):
     """Use Claude API to generate name, description, and category"""
     api_key = os.environ.get('ANTHROPIC_API_KEY')
     if not api_key:
-        print("Warning: ANTHROPIC_API_KEY not set, skipping AI metadata generation")
+        print("ERROR: ANTHROPIC_API_KEY not set, cannot generate AI metadata")
+        print("Available env vars:", [k for k in os.environ.keys() if 'KEY' in k or 'TOKEN' in k or 'SECRET' in k])
         return None
+
+    print(f"Calling Claude API for {url}...")
 
     try:
         import anthropic
@@ -579,6 +582,26 @@ def main():
                     'needs_manual_review': False if admin_approved else result.get('needs_manual_review', False),
                     'admin_approved': admin_approved,
                 })
+            elif admin_approved:
+                # Fallback for admin approval when Claude fails
+                # Use basic info extracted from URL
+                fallback_name = result['company_name']
+                print(f"Warning: Claude API failed, using fallback for {fallback_name}")
+                passing_services.append({
+                    'name': fallback_name,
+                    'url': url,
+                    'description': f"Cloud service provider.",
+                    'category': 'Infrastructure Clouds',
+                    'score': result['score'],
+                    'needs_manual_review': True,
+                    'admin_approved': admin_approved,
+                })
+                result['ai_metadata'] = {
+                    'name': fallback_name,
+                    'description': 'Cloud service provider.',
+                    'category': 'Infrastructure Clouds',
+                    'fallback': True,
+                }
 
         results_list.append(result)
         print(f"Score: {result['score']}/3")
