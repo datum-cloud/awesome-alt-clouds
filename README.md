@@ -69,6 +69,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Gcore](https://gcore.com/) - Delivers edge and cloud services with global infrastructure.
 * 🟢 [Genesis Cloud](https://www.genesiscloud.com/pricing) - Offers sustainable, high-performance GPU cloud computing for AI workloads.
 * 🟢 [GMI Cloud](https://www.gmicloud.ai/) - Provides GPU cloud services optimized for AI and deep learning tasks.
+* 🟡 [GPU CLI](https://gpu-cli.sh) - Provides command-line access to remote cloud GPUs with auto-stop functionality, instant connection, and automatic result syncing for ML training and inference workloads.
 * 🟡 [Hetzner](https://www.hetzner.com/) - Provides dedicated servers and cloud services in Europe.
 * 🟢 [Hivelocity](https://www.hivelocity.net/) - Experienced provider of VPS and bare metal solutions.
 * 🟢 [HydraHost](https://hydrahost.com/) - Affordable GPU compute focused on researchers and indie developers.
