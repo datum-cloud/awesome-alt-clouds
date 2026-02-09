@@ -28,6 +28,13 @@
     "score": 3
   },
   {
+    "name": "Axiom",
+    "url": "https://axiom.co/",
+    "description": "Cloud service provider.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
     "name": "Banana.dev",
     "url": "https://www.banana.dev/",
     "description": "Serverless GPU platform for ML model inference with pay-per-millisecond pricing.",
