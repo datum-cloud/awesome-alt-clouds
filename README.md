@@ -47,6 +47,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Anyscale](https://www.anyscale.com/) - Distributed computing platform built on Ray for scaling AI and Python apps.
 * 🟢 [api.video](https://api.video/) - Developer-first video API for encoding, hosting, streaming.
 * 🟢 [Atlantic.net](https://www.atlantic.net/) - Experienced hosting company offering a variety of compute and GPU infrastructure services.
+* 🟢 [Axiom](https://axiom.co/) - Cloud service provider.
 * 🟢 [Banana.dev](https://www.banana.dev/) - Serverless GPU platform for ML model inference with pay-per-millisecond pricing.
 * 🟢 [Baseten](https://www.baseten.co/) - Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.
 * 🟢 [Beam](https://www.beam.cloud) - Cloud infrastructure specifically built for high-performance applications and developer happiness.
