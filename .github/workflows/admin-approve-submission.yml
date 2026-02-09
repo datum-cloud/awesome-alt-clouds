@@ -1,0 +1,143 @@
+name: Admin Approve Submission
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  approve:
+    # Only run on issues (not PRs) with submission label when admin comments /approve
+    if: |
+      !github.event.issue.pull_request &&
+      contains(github.event.issue.labels.*.name, 'submission') &&
+      startsWith(github.event.comment.body, '/approve')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Check if user is admin/maintainer
+        id: check-permission
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: permission } = await github.rest.repos.getCollaboratorPermissionLevel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              username: context.actor
+            });
+
+            const allowed = ['admin', 'maintain', 'write'].includes(permission.permission);
+            console.log(`User ${context.actor} has ${permission.permission} permission. Allowed: ${allowed}`);
+
+            if (!allowed) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `❌ @${context.actor} You don't have permission to approve submissions.`
+              });
+            }
+
+            return allowed;
+          result-encoding: string
+
+      - name: Parse approval command
+        if: steps.check-permission.outputs.result == 'true'
+        id: parse
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const comment = context.payload.comment.body.trim();
+            // Match /approve or /approve 2 or /approve 3
+            const match = comment.match(/^\/approve(?:\s+(\d))?/);
+
+            if (match) {
+              const scoreOverride = match[1] ? parseInt(match[1]) : null;
+              console.log(`Score override: ${scoreOverride}`);
+              core.setOutput('score_override', scoreOverride || '');
+              core.setOutput('valid', 'true');
+            } else {
+              core.setOutput('valid', 'false');
+            }
+
+      - name: Checkout
+        if: steps.check-permission.outputs.result == 'true' && steps.parse.outputs.valid == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        if: steps.check-permission.outputs.result == 'true' && steps.parse.outputs.valid == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        if: steps.check-permission.outputs.result == 'true' && steps.parse.outputs.valid == 'true'
+        run: |
+          pip install requests beautifulsoup4 anthropic
+
+      - name: Re-evaluate with admin override
+        if: steps.check-permission.outputs.result == 'true' && steps.parse.outputs.valid == 'true'
+        id: evaluate
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ADMIN_SCORE_OVERRIDE: ${{ steps.parse.outputs.score_override }}
+          ADMIN_APPROVED: 'true'
+        run: |
+          python scripts/evaluate_submission.py
+
+      - name: Create PR
+        if: steps.check-permission.outputs.result == 'true' && steps.parse.outputs.valid == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          if [ -f submission_data.json ]; then
+            python scripts/create_submission_pr.py
+          else
+            echo "No submission data found"
+            exit 1
+          fi
+
+      - name: Update labels and comment
+        if: steps.check-permission.outputs.result == 'true' && steps.parse.outputs.valid == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Remove old labels
+            const labelsToRemove = ['needs-review', 'rejected'];
+            for (const label of labelsToRemove) {
+              try {
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  name: label
+                });
+              } catch (e) {
+                // Label might not exist
+              }
+            }
+
+            // Add approved label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['approved']
+            });
+
+            // Add success comment
+            const scoreOverride = '${{ steps.parse.outputs.score_override }}';
+            const scoreMsg = scoreOverride ? ` with score override to ${scoreOverride}/3` : '';
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `✅ **Approved by @${context.actor}**${scoreMsg}\n\nA PR has been created to add this service to the directory.`
+            });

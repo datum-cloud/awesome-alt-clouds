@@ -69,9 +69,11 @@ jobs:
 
             let label = 'needs-review';
             if (score === 3) {
-              label = 'ready-to-merge';
-            } else if (score <= 1) {
-              label = 'rejected';
+              label = 'auto-approved';
+            } else if (score === 2) {
+              label = 'needs-review';
+            } else {
+              label = 'needs-review';  // Even rejected ones go to needs-review for admin decision
             }
 
             await github.rest.issues.addLabels({
@@ -80,6 +82,24 @@ jobs:
               issue_number: context.issue.number,
               labels: [label]
             });
+
+            // Add info comment for low scores
+            if (score < 2) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `⚠️ **Admin Review Required**\n\nThis submission scored ${score}/3 and needs manual verification.\n\n**To approve:** Comment \`/approve\` or \`/approve 3\` (to override score)\n**To reject:** Add the \`rejected\` label and close the issue`
+              });
+            }
+
+      - name: Upload submission data as artifact
+        if: steps.read_outputs.outputs.has_data == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: submission-data-${{ github.event.issue.number }}
+          path: submission_data.json
+          retention-days: 90
 
       - name: Create PR if score >= 2
         if: steps.read_outputs.outputs.score >= 2 && steps.read_outputs.outputs.has_data == 'true'
