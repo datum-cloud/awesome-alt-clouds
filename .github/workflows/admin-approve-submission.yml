@@ -51,18 +51,59 @@ jobs:
         with:
           script: |
             const comment = context.payload.comment.body.trim();
-            // Match /approve, optionally with score (2 or 3)
-            const match = comment.match(/^\/approve(?:\s+(\d))?/i);
+            // Match formats:
+            // /approve 3 - approve all with score 3
+            // /approve all 3 - approve all with score 3
+            // /approve warp.dev 3 - approve specific domain with score 3
+            // /approve https://warp.dev 3 - approve specific URL with score 3
+
+            // Try specific URL/domain pattern first: /approve <url-or-domain> <score>
+            let match = comment.match(/^\/approve\s+(https?:\/\/[^\s]+|[a-z0-9][\w.-]+\.[a-z]{2,})\s+(\d)/i);
 
             if (match) {
-              const scoreOverride = match[1] ? parseInt(match[1]) : null;
-              console.log(`Score override: ${scoreOverride}`);
-              core.setOutput('score_override', scoreOverride || '');
+              const targetUrl = match[1];
+              const scoreOverride = parseInt(match[2]);
+              console.log(`Specific approval: ${targetUrl} with score ${scoreOverride}`);
+              core.setOutput('target_url', targetUrl);
+              core.setOutput('score_override', scoreOverride);
               core.setOutput('valid', 'true');
-            } else {
-              console.log('No match found for approve command');
-              core.setOutput('valid', 'false');
+              return;
             }
+
+            // Try "all" pattern: /approve all <score>
+            match = comment.match(/^\/approve\s+all\s+(\d)/i);
+            if (match) {
+              const scoreOverride = parseInt(match[1]);
+              console.log(`Approve all with score ${scoreOverride}`);
+              core.setOutput('target_url', 'all');
+              core.setOutput('score_override', scoreOverride);
+              core.setOutput('valid', 'true');
+              return;
+            }
+
+            // Try simple pattern: /approve <score>
+            match = comment.match(/^\/approve\s+(\d)$/i);
+            if (match) {
+              const scoreOverride = parseInt(match[1]);
+              console.log(`Approve all (implicit) with score ${scoreOverride}`);
+              core.setOutput('target_url', 'all');
+              core.setOutput('score_override', scoreOverride);
+              core.setOutput('valid', 'true');
+              return;
+            }
+
+            // Just /approve without score
+            match = comment.match(/^\/approve$/i);
+            if (match) {
+              console.log('Approve all without score override');
+              core.setOutput('target_url', 'all');
+              core.setOutput('score_override', '');
+              core.setOutput('valid', 'true');
+              return;
+            }
+
+            console.log('No valid approve command found');
+            core.setOutput('valid', 'false');
 
       - name: Checkout
         if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
@@ -87,10 +128,12 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ADMIN_SCORE_OVERRIDE: ${{ steps.parse.outputs.score_override }}
+          ADMIN_TARGET_URL: ${{ steps.parse.outputs.target_url }}
           ADMIN_APPROVED: 'true'
         run: |
           echo "=== Admin Approval Mode ==="
           echo "Issue Number: $ISSUE_NUMBER"
+          echo "Target URL: $ADMIN_TARGET_URL"
           echo "Score Override: $ADMIN_SCORE_OVERRIDE"
           echo ""
           python scripts/evaluate_submission.py
