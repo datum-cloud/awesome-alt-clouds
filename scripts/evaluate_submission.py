@@ -519,9 +519,12 @@ def main():
     # Check for admin override
     admin_approved = os.environ.get('ADMIN_APPROVED', '').lower() == 'true'
     admin_score_override = os.environ.get('ADMIN_SCORE_OVERRIDE', '')
+    admin_target_url = os.environ.get('ADMIN_TARGET_URL', 'all').strip()
 
     if admin_approved:
         print("=== ADMIN APPROVAL MODE ===")
+        if admin_target_url and admin_target_url != 'all':
+            print(f"Target URL: {admin_target_url}")
         if admin_score_override:
             print(f"Score override: {admin_score_override}")
 
@@ -541,6 +544,36 @@ def main():
         sys.exit(0)
 
     print(f"Found {len(urls)} URL(s) to evaluate")
+
+    # Filter URLs if admin specified a target
+    if admin_approved and admin_target_url and admin_target_url.lower() != 'all':
+        target = admin_target_url.lower()
+        # Remove protocol if present for matching
+        if target.startswith('http://') or target.startswith('https://'):
+            target = urlparse(target).netloc
+        # Remove www. prefix for matching
+        target = target.replace('www.', '')
+
+        filtered_urls = []
+        for url in urls:
+            url_domain = urlparse(url).netloc.replace('www.', '').lower()
+            if target in url_domain or url_domain in target:
+                filtered_urls.append(url)
+
+        if filtered_urls:
+            print(f"Admin targeting specific URL: {admin_target_url}")
+            print(f"Matched URLs: {filtered_urls}")
+            urls = filtered_urls
+        else:
+            print(f"ERROR: No URLs matched target '{admin_target_url}'")
+            print(f"Available URLs: {urls}")
+            with open('evaluation_results.md', 'w') as f:
+                f.write(f"## Approval Error\n\nNo URLs matched target `{admin_target_url}`.\n\nAvailable URLs in this submission:\n")
+                for u in urls:
+                    f.write(f"- {u}\n")
+            with open('evaluation_score.txt', 'w') as f:
+                f.write('0')
+            sys.exit(0)
 
     # Evaluate each URL
     results_list = []
