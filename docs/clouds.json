@@ -1281,6 +1281,13 @@
     "score": 3
   },
   {
+    "name": "CtrlDNS",
+    "url": "https://www.ctrldns.com/",
+    "description": "Provides DNS management and control services for domain name resolution and network infrastructure management.",
+    "category": "Network, Connectivity and Security Clouds",
+    "score": 2
+  },
+  {
     "name": "Fastly",
     "url": "https://www.fastly.com/",
     "description": "An edge cloud platform designed for performance and security, enabling developers to build faster, more secure digital experiences.",
