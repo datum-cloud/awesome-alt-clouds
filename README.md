@@ -109,6 +109,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Vast.ai](https://vast.ai/) - Marketplace for buying and selling GPU compute capacity at competitive rates.
 * 🟢 [Voltage Park](https://www.voltagepark.com/) - AI cloud with 24,000 NVIDIA H100 GPUs and InfiniBand clusters for large-scale training.
 * 🟢 [Vultr](https://www.vultr.com/) - Full services cloud and hosting provider with an expanding range of solutions globally.
+* 🟢 [Warp](https://www.warp.dev/) - Cloud service provider.
 
 ## Sovereign Clouds
 
