@@ -182,6 +182,13 @@
     "score": 3
   },
   {
+    "name": "GPU CLI",
+    "url": "https://gpu-cli.sh",
+    "description": "Provides command-line access to remote cloud GPUs with auto-stop functionality, instant connection, and automatic result syncing for ML training and inference workloads.",
+    "category": "Infrastructure Clouds",
+    "score": 2
+  },
+  {
     "name": "Hetzner",
     "url": "https://www.hetzner.com/",
     "description": "Provides dedicated servers and cloud services in Europe.",
