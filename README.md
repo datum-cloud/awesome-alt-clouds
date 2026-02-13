@@ -453,6 +453,7 @@ Services that help businesses build and track relationships with users and custo
 Services that provide connectivity, device management, and communication solutions for Internet of Things (IoT) applications.
 
 * 🟢 [1NCE](https://www.1nce.com/en-us/) - Offers flat-rate global cellular connectivity for IoT devices, including SIM management and low-bandwidth data plans designed for scale.
+* 🟢 [Gradium](https://gradium.ai/) - Provides audio language models for natural, expressive, ultra-low latency voice interactions with text-to-speech and speech-to-text capabilities in multiple languages.
 * 🟢 [Hologram](https://www.hologram.io/) - Provides global IoT SIM cards and eUICC technology with a cloud-native dashboard for managing devices and data usage across carriers.
 * 🟢 [Knock](https://knock.app/) - Notification infrastructure with workflows, preferences, and delivery channels.
 * 🟢 [Mux](https://www.mux.com) - Solves the hard problems software teams face when building video, from live-streaming platforms to on-demand video catalogs and anything in between.
