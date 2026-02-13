@@ -462,6 +462,13 @@
     "score": 3
   },
   {
+    "name": "Warp",
+    "url": "https://www.warp.dev/",
+    "description": "Cloud service provider.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
     "name": "FPT Vietnam",
     "url": "https://fptsoftware.com/newsroom/news-and-press-releases/press-release/fpt-to-shape-the-future-of-ai-and-cloud-on-a-global-scale-in-collaboration-with-nvidia",
     "description": "Investing $200 million to build an AI factory serving as a sovereign cloud, featuring NVIDIA's latest technologies to bolster Vietnam's digital sovereignty.",
