@@ -368,6 +368,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 * 🟢 [Release](https://release.com/) - Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.
 * 🟢 [Render](https://render.com/) - Unified cloud platform to build and host apps and websites.
 * 🟢 [Roboflow](https://roboflow.com/) - Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.
+* 🟡 [SharonAI](https://sharonai.com/en/) - Provides AI-powered solutions and services for business automation and intelligent decision-making processes.
 * 🟢 [Shuttle](https://www.shuttle.dev/) - Rust-native cloud platform for building and deploying backend services.
 * 🟢 [Tabnine](https://www.tabnine.com/) - AI code assistant with private model options.
 * 🟢 [Tiptap](https://tiptap.dev/) - Headless rich text editor with real-time collaboration, AI content generation, and 100+ extensions.
