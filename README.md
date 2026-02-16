@@ -99,6 +99,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Seeweb](https://www.seeweb.it/) - Italian cloud infrastructure provider offering compute, storage, and CDN.
 * 🟢 [Servers.com](https://www.servers.com/) - Global bare metal and private cloud platform supporting AI/ML compute.
 * 🟢 [Shadeform](https://shadeform.com/) - GPU compute provider with a focus on low-cost AI infrastructure.
+* 🟡 [SharonAI](https://sharonai.com/en/) - Provides AI-powered solutions and services for business automation and intelligent decision-making processes.
 * 🟢 [Spheron Network](https://www.spheron.network/) - Decentralized GPU/CPU network for AI and Web3 with 44,000+ nodes across 170+ locations.
 * 🟢 [Sustainable Metal Cloud](https://smc.co/) - Green-focused GPU cloud with a sustainability-first infrastructure model.
 * 🟢 [TensorDock](https://tensordock.com/) - Affordable, usage-based GPU cloud platform for model training.
@@ -368,7 +369,6 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 * 🟢 [Release](https://release.com/) - Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.
 * 🟢 [Render](https://render.com/) - Unified cloud platform to build and host apps and websites.
 * 🟢 [Roboflow](https://roboflow.com/) - Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.
-* 🟡 [SharonAI](https://sharonai.com/en/) - Provides AI-powered solutions and services for business automation and intelligent decision-making processes.
 * 🟢 [Shuttle](https://www.shuttle.dev/) - Rust-native cloud platform for building and deploying backend services.
 * 🟢 [Tabnine](https://www.tabnine.com/) - AI code assistant with private model options.
 * 🟢 [Tiptap](https://tiptap.dev/) - Headless rich text editor with real-time collaboration, AI content generation, and 100+ extensions.
