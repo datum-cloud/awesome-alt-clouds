@@ -392,6 +392,13 @@
     "score": 3
   },
   {
+    "name": "SharonAI",
+    "url": "https://sharonai.com/en/",
+    "description": "Provides AI-powered solutions and services for business automation and intelligent decision-making processes.",
+    "category": "Infrastructure Clouds",
+    "score": 2
+  },
+  {
     "name": "Spheron Network",
     "url": "https://www.spheron.network/",
     "description": "Decentralized GPU/CPU network for AI and Web3 with 44,000+ nodes across 170+ locations.",
@@ -2028,13 +2035,6 @@
     "description": "Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.",
     "category": "Developer Happiness Clouds",
     "score": 3
-  },
-  {
-    "name": "SharonAI",
-    "url": "https://sharonai.com/en/",
-    "description": "Provides AI-powered solutions and services for business automation and intelligent decision-making processes.",
-    "category": "Developer Happiness Clouds",
-    "score": 2
   },
   {
     "name": "Shuttle",
