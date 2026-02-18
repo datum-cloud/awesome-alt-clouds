@@ -2492,6 +2492,13 @@
     "score": 3
   },
   {
+    "name": "Gradium",
+    "url": "https://gradium.ai/",
+    "description": "Provides audio language models for natural, expressive, ultra-low latency voice interactions with text-to-speech and speech-to-text capabilities in multiple languages.",
+    "category": "IoT, Communications, and Media Clouds",
+    "score": 3
+  },
+  {
     "name": "Hologram",
     "url": "https://www.hologram.io/",
     "description": "Provides global IoT SIM cards and eUICC technology with a cloud-native dashboard for managing devices and data usage across carriers.",
