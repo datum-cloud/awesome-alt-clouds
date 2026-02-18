@@ -147,6 +147,13 @@
     "score": 3
   },
   {
+    "name": "Firmus",
+    "url": "https://firmus.co/",
+    "description": "Cloud service provider.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
     "name": "FluidStack",
     "url": "https://www.fluidstack.io/",
     "description": "Offers decentralized GPU cloud computing for AI and rendering workloads.",
