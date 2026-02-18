@@ -84,6 +84,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Linode](https://www.linode.com/) - Provides cloud computing services designed for developers with straightforward pricing.
 * 🟢 [Lyceum](https://lyceum.technology/) - EU built and operated GPU cloud for developers and AI teams.
 * 🟢 [Modal](https://modal.com/) - A serverless platform for AI and data teams to run compute-intensive applications without managing infrastructure.
+* 🟡 [Namespace](https://namespace.so/) - Cloud service provider.
 * 🟢 [Nebius](https://nebius.com/) - Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services.
 * 🟢 [NeevCloud](https://www.neevcloud.com/) - India-based GPU cloud offering secure, scalable AI compute.
 * 🟢 [NetActuate](https://netactuate.com/) - Provides hybrid cloud and edge computing solutions with a global network.
