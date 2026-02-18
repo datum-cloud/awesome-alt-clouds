@@ -93,6 +93,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟡 [Paperspace](https://www.paperspace.com/) - Cloud computing with GPU support for AI development and deployment. Now owned by DigitalOcean.
 * 🟢 [Parasail](https://parasail.ai/) - Serverless GPU platform to run custom AI models easily.
 * 🟢 [QBO](https://qbo.io/) - GPU Cloud at the Edge & Beyond - Delivering high performance, streamlined infrastructure, and flexible AI/ML deployment.
+* 🟢 [Rackdog](https://rackdog.com/) - Cloud service provider.
 * 🟢 [Rackspace](https://www.rackspace.com/) - Provides hybrid cloud and managed hosting services.
 * 🟢 [Runpod](https://www.runpod.io/) - Provides customizable GPU containers and secure cloud compute environments.
 * 🟢 [Salad](https://salad.com/) - A platform for leveraging latent consumer compute resources to power workloads.
