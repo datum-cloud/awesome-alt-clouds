@@ -287,6 +287,13 @@
     "score": 3
   },
   {
+    "name": "Namespace",
+    "url": "https://namespace.so/",
+    "description": "Cloud service provider.",
+    "category": "Infrastructure Clouds",
+    "score": 2
+  },
+  {
     "name": "Nebius",
     "url": "https://nebius.com/",
     "description": "Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services.",
