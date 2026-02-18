@@ -350,6 +350,13 @@
     "score": 3
   },
   {
+    "name": "Rackdog",
+    "url": "https://rackdog.com/",
+    "description": "Cloud service provider.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
     "name": "Rackspace",
     "url": "https://www.rackspace.com/",
     "description": "Provides hybrid cloud and managed hosting services.",
