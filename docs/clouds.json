@@ -140,6 +140,13 @@
     "score": 3
   },
   {
+    "name": "Empromptu",
+    "url": "https://empromptu.ai",
+    "description": "Cloud service provider.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
     "name": "exe.dev",
     "url": "https://exe.dev/",
     "description": "Modern VM hosting with sub-second starts and persistent disks. Built for AI coding agents with built-in HTTPS/auth and sharing.",
