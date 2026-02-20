@@ -21,6 +21,13 @@
     "score": 3
   },
   {
+    "name": "Arcade",
+    "url": "https://www.arcade.dev/",
+    "description": "Cloud service provider.",
+    "category": "Infrastructure Clouds",
+    "score": 3
+  },
+  {
     "name": "Atlantic.net",
     "url": "https://www.atlantic.net/",
     "description": "Experienced hosting company offering a variety of compute and GPU infrastructure services.",
