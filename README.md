@@ -46,6 +46,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Aethir](https://aethir.com) - Provides secure, cost-effective access to enterprise-grade GPUs worldwide through a distributed cloud compute infrastructure.
 * 🟢 [Anyscale](https://www.anyscale.com/) - Distributed computing platform built on Ray for scaling AI and Python apps.
 * 🟢 [api.video](https://api.video/) - Developer-first video API for encoding, hosting, streaming.
+* 🟢 [Arcade](https://www.arcade.dev/) - Cloud service provider.
 * 🟢 [Atlantic.net](https://www.atlantic.net/) - Experienced hosting company offering a variety of compute and GPU infrastructure services.
 * 🟢 [Axiom](https://axiom.co/) - Cloud service provider.
 * 🟢 [Banana.dev](https://www.banana.dev/) - Serverless GPU platform for ML model inference with pay-per-millisecond pricing.
