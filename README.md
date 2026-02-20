@@ -62,6 +62,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [DataPacket](https://www.datapacket.com/) - Offers high-performance infrastructure for bandwidth-intensive applications.
 * 🟢 [Digital Ocean](https://www.digitalocean.com/) - Provides cloud computing services with simplicity and scalability.
 * 🟢 [E2E Cloud](https://www.e2enetworks.com/) - Offers cloud infrastructure with GPU instances for AI and machine learning.
+* 🟢 [Empromptu](https://empromptu.ai) - Cloud service provider.
 * 🟢 [exe.dev](https://exe.dev/) - Modern VM hosting with sub-second starts and persistent disks. Built for AI coding agents with built-in HTTPS/auth and sharing.
 * 🟢 [Fal.ai](https://fal.ai/) - Provides serverless GPU inference for AI models with instant deployment.
 * 🟢 [Firmus](https://firmus.co/) - Cloud service provider.
