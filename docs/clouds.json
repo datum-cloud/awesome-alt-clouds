@@ -2072,6 +2072,13 @@
     "score": 3
   },
   {
+    "name": "Runloop",
+    "url": "https://runloop.ai/",
+    "description": "Provides secure cloud-based development environments (devboxes) for AI coding agents with enterprise-grade infrastructure, benchmarking tools, and scalable sandbox execution.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
     "name": "Shuttle",
     "url": "https://www.shuttle.dev/",
     "description": "Rust-native cloud platform for building and deploying backend services.",
