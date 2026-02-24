@@ -843,6 +843,127 @@
       stroke-width: 1;
     }
 
+    /* Mobile header */
+    .mobile-header {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .mobile-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .mobile-logo-name {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--rich-earth);
+    }
+
+    .burger-btn {
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .burger-btn:hover {
+      background: var(--clay-beige);
+    }
+
+    /* Drawer */
+    .drawer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(45, 45, 42, 0.5);
+      backdrop-filter: blur(2px);
+      z-index: 60;
+    }
+
+    .drawer-overlay.active {
+      display: block;
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 280px;
+      background: var(--cream);
+      z-index: 70;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-drawer.active {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .drawer-title {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--rich-earth);
+    }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: var(--warm-stone);
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .drawer-close:hover {
+      background: var(--clay-beige);
+      color: var(--text-primary);
+    }
+
+    .drawer-body {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    .drawer-footer {
+      padding: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      flex-shrink: 0;
+    }
+
     @media (max-width: 1024px) {
       .sidebar {
         width: 240px;
@@ -854,19 +975,12 @@
     }
 
     @media (max-width: 768px) {
-      .layout {
-        flex-direction: column;
-      }
-
       .sidebar {
-        width: 100%;
-        height: auto;
-        position: static;
-        padding: 1rem;
+        display: none;
       }
 
-      .categories-section {
-        max-height: 200px;
+      .mobile-header {
+        display: flex;
       }
 
       .clouds-grid {
@@ -878,19 +992,29 @@
       }
 
       .top-bar {
-        flex-direction: column;
-        gap: 0.75rem;
-        padding: 1rem;
+        flex-direction: row;
+        gap: 0.5rem;
+        padding: 0.625rem 0.875rem;
+        margin-bottom: 1rem;
+      }
+
+      .sorter-label {
+        display: none;
       }
 
       .sorter-section {
-        width: 100%;
-        justify-content: space-between;
+        flex-shrink: 0;
       }
 
       .search-box {
-        flex: none;
-        width: 100%;
+        flex: 1;
+        width: auto;
+      }
+
+      /* Prevent iOS auto-zoom on input focus (triggered when font-size < 16px) */
+      .search-input,
+      .sorter-select {
+        font-size: 1rem;
       }
 
       .modal {
@@ -916,6 +1040,58 @@
   </style>
 </head>
 <body>
+  <!-- Mobile Header (shown on mobile only) -->
+  <div class="mobile-header">
+    <div class="mobile-logo">
+      <img src="https://raw.githubusercontent.com/datum-cloud/awesome-alt-clouds/main/altclouds-logo.png" alt="Alt Clouds" class="logo-img" style="width:32px;height:32px;border-radius:6px;">
+      <span class="mobile-logo-name">Awesome Alt Clouds</span>
+    </div>
+    <button class="burger-btn" onclick="toggleDrawer()" aria-label="Open menu">
+      <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Drawer Overlay -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <span class="drawer-title">Browse</span>
+      <button class="drawer-close" onclick="closeDrawer()" aria-label="Close menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <div class="section-title">Categories</div>
+      <div class="category-list" id="drawerCategoryList">
+        <!-- Categories will be dynamically inserted -->
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <a href="submit/" class="contribute-btn">
+        <span>+</span>
+        <span>Submit a Cloud</span>
+      </a>
+      <a class="page-link" onclick="openModal('aboutModal'); closeDrawer()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>About / Philosophy</span>
+      </a>
+      <a class="page-link" onclick="openModal('resourcesModal'); closeDrawer()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+        </svg>
+        <span>Resources</span>
+      </a>
+    </div>
+  </div>
+
   <div class="layout">
     <aside class="sidebar">
       <div class="logo-section">
@@ -1189,12 +1365,33 @@
       }
     }
 
-    // Close modal on Escape key
+    // Drawer functions
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobileDrawer');
+      drawer.classList.contains('active') ? closeDrawer() : openDrawer();
+    }
+
+    function openDrawer() {
+      document.getElementById('mobileDrawer').classList.add('active');
+      document.getElementById('drawerOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      document.getElementById('mobileDrawer').classList.remove('active');
+      document.getElementById('drawerOverlay').classList.remove('active');
+      if (!document.querySelector('.modal-overlay.active')) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close modal/drawer on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         document.querySelectorAll('.modal-overlay.active').forEach(modal => {
           modal.classList.remove('active');
         });
+        closeDrawer();
         document.body.style.overflow = '';
       }
     });
@@ -1287,9 +1484,7 @@
 
     function renderCategories() {
       const categories = getCategories();
-      const container = document.getElementById('categoryList');
-
-      container.innerHTML = categories.map(category => {
+      const html = categories.map(category => {
         const count = category === 'All' ? altClouds.length : altClouds.filter(c => c.category === category).length;
         return `
           <div
@@ -1301,6 +1496,9 @@
           </div>
         `;
       }).join('');
+
+      document.getElementById('categoryList').innerHTML = html;
+      document.getElementById('drawerCategoryList').innerHTML = html;
     }
 
     function getFilteredClouds() {
@@ -1386,6 +1584,7 @@
       currentCategory = category;
       renderCategories();
       renderClouds();
+      closeDrawer();
     }
 
     document.getElementById('searchInput').addEventListener('input', (e) => {
