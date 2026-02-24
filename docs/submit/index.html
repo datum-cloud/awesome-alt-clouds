@@ -280,6 +280,50 @@
             margin-bottom: 0.75rem;
         }
 
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            color: var(--warm-stone);
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-bottom: 1.25rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--rich-earth);
+        }
+
+        .copy-toast {
+            display: none;
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            background: var(--rich-earth);
+            color: var(--cream);
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            z-index: 100;
+            box-shadow: 0 4px 16px rgba(62, 54, 46, 0.25);
+            white-space: nowrap;
+        }
+
+        .copy-toast.show {
+            display: block;
+            animation: toastFade 3.5s ease forwards;
+        }
+
+        @keyframes toastFade {
+            0%   { opacity: 0; transform: translateX(-50%) translateY(8px); }
+            12%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+            75%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(0); }
+        }
+
         @media (max-width: 480px) {
             body {
                 padding: 1rem;
@@ -314,6 +358,12 @@
 
         <!-- Main Form -->
         <div id="form-section">
+            <a href="../" class="back-link">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back to directory
+            </a>
             <h1>Add a Cloud</h1>
             <p class="subtitle">Expand the cloud atlas! Submit a service and our bot will evaluate it against our <a href="/#criteria">3 criteria</a>. If it passes, a PR gets created automatically.</p>
 
@@ -329,7 +379,7 @@
                 <div class="form-group">
                     <label>Service URLs (up to 5)</label>
                     <div id="url-inputs">
-                        <input type="url" class="url-input" name="url-1" required
+                        <input type="text" class="url-input" name="url-1" required
                                placeholder="https://coolcloud.io">
                     </div>
                     <button type="button" id="add-url-btn" onclick="addUrlInput()">+ Add another</button>
@@ -369,6 +419,8 @@
         </div>
     </div>
 
+    <div class="copy-toast" id="copyToast">📋 Copied! Just paste into the GitHub issue body</div>
+
     <script>
         // Anti-spam: Track when the page loaded
         const pageLoadTime = Date.now();
@@ -407,7 +459,7 @@
             urlCount++;
             const container = document.getElementById('url-inputs');
             const input = document.createElement('input');
-            input.type = 'url';
+            input.type = 'text';
             input.className = 'url-input';
             input.name = `url-${urlCount}`;
             input.placeholder = 'https://anothercloud.dev';
@@ -416,6 +468,30 @@
             if (urlCount >= MAX_URLS) {
                 document.getElementById('add-url-btn').style.display = 'none';
             }
+        }
+
+        // Auto-prepend https:// when user leaves a URL field
+        document.getElementById('url-inputs').addEventListener('blur', (e) => {
+            if (!e.target.classList.contains('url-input')) return;
+            const val = e.target.value.trim();
+            if (val && !val.startsWith('http://') && !val.startsWith('https://')) {
+                e.target.value = 'https://' + val;
+            }
+        }, true);
+
+        function ensureProtocol(url) {
+            if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
+                return 'https://' + url;
+            }
+            return url;
+        }
+
+        function showCopyToast() {
+            const toast = document.getElementById('copyToast');
+            toast.classList.remove('show');
+            void toast.offsetWidth; // force reflow to restart animation
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
         }
 
         document.getElementById('submission-form').addEventListener('submit', async (e) => {
@@ -429,10 +505,10 @@
                 return;
             }
 
-            // Collect all URLs
+            // Collect and sanitize all URLs
             const urlInputs = document.querySelectorAll('.url-input');
             const urls = Array.from(urlInputs)
-                .map(input => input.value.trim())
+                .map(input => ensureProtocol(input.value.trim()))
                 .filter(url => url.length > 0);
 
             if (urls.length === 0) {
@@ -469,15 +545,23 @@ ${notes || 'No additional notes provided.'}
             const issueUrl = `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/issues/new?` +
                 `title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}&labels=submission`;
 
-            // Disable button to prevent double-submission and show feedback
+            // Disable button to prevent double-submission
             const btn = document.getElementById('submit-btn');
             btn.disabled = true;
             btn.textContent = 'Opening GitHub…';
 
-            // Redirect to GitHub to create the issue
-            window.location.href = issueUrl;
+            // Copy body to clipboard so user can paste if GitHub doesn't prefill
+            try {
+                await navigator.clipboard.writeText(issueBody);
+                showCopyToast();
+            } catch (err) {
+                // Clipboard unavailable — proceed anyway
+            }
 
-            // Re-enable in case the user navigates back
+            // Open GitHub in a new tab (keeps this page alive for the toast)
+            window.open(issueUrl, '_blank', 'noopener');
+
+            // Re-enable in case the user returns
             setTimeout(() => {
                 btn.disabled = false;
                 btn.textContent = 'Submit for Review';
