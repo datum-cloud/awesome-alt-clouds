@@ -178,6 +178,10 @@
       flex: 0 1 300px;
     }
 
+    .mobile-search-wrapper {
+      display: none;
+    }
+
     .search-input {
       width: 100%;
       padding: 0.5rem 0.875rem 0.5rem 2.25rem;
@@ -888,9 +892,13 @@
         justify-content: space-between;
       }
 
-      .search-box {
-        flex: none;
-        width: 100%;
+      .top-bar .search-box {
+        display: none;
+      }
+
+      .mobile-search-wrapper {
+        display: block;
+        margin-bottom: 0.75rem;
       }
 
       .modal {
@@ -927,6 +935,20 @@
         </div>
         <p class="tagline">When you Need Something .. Specialized!</p>
         <p class="subtitle">Discover specialized infrastructure providers built for developers who think different</p>
+      </div>
+
+      <div class="mobile-search-wrapper">
+        <div class="search-box">
+          <svg class="search-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <input
+            type="text"
+            class="search-input"
+            id="searchInputMobile"
+            placeholder="Search clouds..."
+          >
+        </div>
       </div>
 
       <div class="categories-section">
@@ -1389,6 +1411,11 @@
     }
 
     document.getElementById('searchInput').addEventListener('input', (e) => {
+      searchTerm = e.target.value;
+      renderClouds();
+    });
+
+    document.getElementById('searchInputMobile').addEventListener('input', (e) => {
       searchTerm = e.target.value;
       renderClouds();
     });
