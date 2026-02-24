@@ -467,14 +467,21 @@ ${notes || 'No additional notes provided.'}
 *This issue was automatically created via the submission form. A GitHub Action will evaluate each service and use AI to generate name, description, and category. Services that pass (2/3 or 3/3 criteria) will be added to a PR.*`;
 
             const issueUrl = `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/issues/new?` +
-                new URLSearchParams({
-                    title: issueTitle,
-                    body: issueBody,
-                    labels: 'submission'
-                }).toString();
+                `title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}&labels=submission`;
+
+            // Disable button to prevent double-submission and show feedback
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = true;
+            btn.textContent = 'Opening GitHub…';
 
             // Redirect to GitHub to create the issue
             window.location.href = issueUrl;
+
+            // Re-enable in case the user navigates back
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.textContent = 'Submit for Review';
+            }, 4000);
         });
 
         function extractDomain(url) {
