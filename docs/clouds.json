@@ -630,6 +630,13 @@
     "score": 3
   },
   {
+    "name": "Arroyo",
+    "url": "https://arroyo.dev",
+    "description": "Provides cloud-native stream processing engine built in Rust that enables real-time data transformation, filtering, aggregation, and joins using SQL with sub-second results.",
+    "category": "Data Clouds",
+    "score": 2
+  },
+  {
     "name": "Storadera",
     "url": "https://storaderacom.com/",
     "description": "European S3 compatible cloud storage with predictable pricing, no egress fees, and multi-region infrastructure for backup, AI, and cloud workloads.",
