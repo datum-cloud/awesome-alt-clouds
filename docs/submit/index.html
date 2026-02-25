@@ -295,33 +295,112 @@
             color: var(--rich-earth);
         }
 
-        .copy-toast {
+        /* Step 2 panel */
+        #step2-section {
             display: none;
-            position: fixed;
-            bottom: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%) translateY(8px);
+        }
+
+        .step2-header {
+            margin-bottom: 1.25rem;
+        }
+
+        .step2-header h2 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--rich-earth);
+            margin-bottom: 0.375rem;
+        }
+
+        .step2-header p {
+            font-size: 0.9rem;
+            color: var(--warm-stone);
+            line-height: 1.5;
+        }
+
+        .step2-field {
+            margin-bottom: 1.25rem;
+        }
+
+        .step2-field label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--warm-stone);
+            margin-bottom: 0.375rem;
+        }
+
+        .step2-field textarea {
+            width: 100%;
+            min-height: 180px;
+            resize: none;
+            font-family: 'IBM Plex Mono', 'Courier New', monospace;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--clay-beige);
+            border-radius: 10px;
+            background: var(--cream);
+            color: var(--charcoal);
+        }
+
+        .copy-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--soft-sage);
+            border: none;
+            border-radius: 10px;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--rich-earth);
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 0.75rem;
+        }
+
+        .copy-btn:hover {
+            background: #8fa876;
+            color: white;
+        }
+
+        .copy-btn.copied {
+            background: var(--soft-sage);
+            color: var(--rich-earth);
+        }
+
+        .open-github-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 1rem;
             background: var(--rich-earth);
             color: var(--cream);
-            padding: 0.75rem 1.25rem;
-            border-radius: 8px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            z-index: 100;
-            box-shadow: 0 4px 16px rgba(62, 54, 46, 0.25);
-            white-space: nowrap;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'IBM Plex Sans', sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
         }
 
-        .copy-toast.show {
-            display: block;
-            animation: toastFade 3.5s ease forwards;
+        .open-github-btn:hover {
+            background: var(--charcoal);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(62, 54, 46, 0.2);
         }
 
-        @keyframes toastFade {
-            0%   { opacity: 0; transform: translateX(-50%) translateY(8px); }
-            12%  { opacity: 1; transform: translateX(-50%) translateY(0); }
-            75%  { opacity: 1; transform: translateX(-50%) translateY(0); }
-            100% { opacity: 0; transform: translateX(-50%) translateY(0); }
+        .step2-hint {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--warm-stone);
+            margin-top: 0.75rem;
+            line-height: 1.5;
         }
 
         @media (max-width: 480px) {
@@ -412,14 +491,40 @@
             </form>
         </div>
 
+        <!-- Step 2: Copy & open GitHub -->
+        <div id="step2-section">
+            <a href="../" class="back-link">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back to directory
+            </a>
+            <div class="step2-header">
+                <h2>Almost there!</h2>
+                <p>Copy the text below, then open GitHub. Paste it into the issue body when prompted.</p>
+            </div>
+            <div class="step2-field">
+                <label>Issue body</label>
+                <textarea id="issueBodyText" readonly onclick="this.select()"></textarea>
+            </div>
+            <button class="copy-btn" id="copyBtn" onclick="copyIssueBody()">
+                📋 Copy to clipboard
+            </button>
+            <a class="open-github-btn" id="githubLink" href="#" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Open GitHub to create issue
+            </a>
+            <p class="step2-hint">GitHub will open a blank issue — paste the copied text into the body field.</p>
+        </div>
+
         <!-- Fake success shown to spam bots -->
         <div class="success-message" id="success">
             <h2>Thanks for expanding the atlas!</h2>
             <p>Your submission has been received.</p>
         </div>
     </div>
-
-    <div class="copy-toast" id="copyToast">📋 Copied! Just paste into the GitHub issue body</div>
 
     <script>
         // Anti-spam: Track when the page loaded
@@ -486,12 +591,18 @@
             return url;
         }
 
-        function showCopyToast() {
-            const toast = document.getElementById('copyToast');
-            toast.classList.remove('show');
-            void toast.offsetWidth; // force reflow to restart animation
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3500);
+        async function copyIssueBody() {
+            const text = document.getElementById('issueBodyText').value;
+            const btn = document.getElementById('copyBtn');
+            try {
+                await navigator.clipboard.writeText(text);
+                btn.textContent = '✓ Copied!';
+                setTimeout(() => { btn.textContent = '📋 Copy to clipboard'; }, 2000);
+            } catch (err) {
+                // Fallback: select the text so user can copy manually
+                document.getElementById('issueBodyText').select();
+                btn.textContent = 'Select all → copy manually';
+            }
         }
 
         document.getElementById('submission-form').addEventListener('submit', async (e) => {
@@ -519,12 +630,11 @@
             const submitterName = document.getElementById('submitter-name').value;
             const notes = document.getElementById('notes').value;
 
-            // Create issue title based on number of URLs
+            // Create issue title
             const issueTitle = urls.length === 1
                 ? `[Submission] ${extractDomain(urls[0])}`
                 : `[Submission] ${urls.length} services`;
 
-            // Format URLs list
             const urlsList = urls.map((url, i) => `${i + 1}. ${url}`).join('\n');
 
             const issueBody = `## Cloud Service Submission
@@ -542,30 +652,44 @@ ${notes || 'No additional notes provided.'}
 ---
 *This issue was automatically created via the submission form. A GitHub Action will evaluate each service and use AI to generate name, description, and category. Services that pass (2/3 or 3/3 criteria) will be added to a PR.*`;
 
-            const issueUrl = `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/issues/new?` +
-                `title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}&labels=submission`;
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-            // Disable button to prevent double-submission
-            const btn = document.getElementById('submit-btn');
-            btn.disabled = true;
-            btn.textContent = 'Opening GitHub…';
+            if (isMobile) {
+                // Mobile: GitHub app drops URL params after template screen,
+                // so show a copy-paste step instead.
+                const issueUrl = `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/issues/new?` +
+                    `title=${encodeURIComponent(issueTitle)}&labels=submission`;
 
-            // Copy body to clipboard so user can paste if GitHub doesn't prefill
-            try {
-                await navigator.clipboard.writeText(issueBody);
-                showCopyToast();
-            } catch (err) {
-                // Clipboard unavailable — proceed anyway
+                document.getElementById('issueBodyText').value = issueBody;
+                document.getElementById('githubLink').href = issueUrl;
+
+                document.getElementById('form-section').style.display = 'none';
+                document.getElementById('step2-section').style.display = 'block';
+
+                // Auto-copy as a convenience
+                try {
+                    await navigator.clipboard.writeText(issueBody);
+                    document.getElementById('copyBtn').textContent = '✓ Copied!';
+                    setTimeout(() => { document.getElementById('copyBtn').textContent = '📋 Copy to clipboard'; }, 2000);
+                } catch (err) {
+                    // Clipboard unavailable — user can tap Copy manually
+                }
+            } else {
+                // Desktop: GitHub web handles prefilled URL params fine
+                const issueUrl = `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/issues/new?` +
+                    `title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}&labels=submission`;
+
+                const btn = document.getElementById('submit-btn');
+                btn.disabled = true;
+                btn.textContent = 'Opening GitHub…';
+
+                window.open(issueUrl, '_blank', 'noopener');
+
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.textContent = 'Submit for Review';
+                }, 4000);
             }
-
-            // Open GitHub in a new tab (keeps this page alive for the toast)
-            window.open(issueUrl, '_blank', 'noopener');
-
-            // Re-enable in case the user returns
-            setTimeout(() => {
-                btn.disabled = false;
-                btn.textContent = 'Submit for Review';
-            }, 4000);
         });
 
         function extractDomain(url) {
