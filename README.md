@@ -148,6 +148,7 @@ Services for data storage, processing, analytics, and observability.
 
 * 🟢 [Airbyte](https://airbyte.com/) - Open-source data integration platform with 600+ connectors and CDK for custom integrations.
 * 🟢 [Algolia](https://www.algolia.com/) - AI-powered search and discovery API with NeuralSearch and semantic understanding for <50ms search speed.
+* 🟡 [Arroyo](https://arroyo.dev) - Provides cloud-native stream processing engine built in Rust that enables real-time data transformation, filtering, aggregation, and joins using SQL with sub-second results.
 * 🟢 [Storadera](https://storaderacom.com/) - European S3 compatible cloud storage with predictable pricing, no egress fees, and multi-region infrastructure for backup, AI, and cloud workloads.
 * 🟢 [Aiven](https://aiven.io/) - Offers managed open-source data infrastructure, including databases and messaging systems, on all major clouds.
 * 🟢 [Amplitude](https://amplitude.com/) - Provides product analytics to help teams understand user behavior and build better products.
