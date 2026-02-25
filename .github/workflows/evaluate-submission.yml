@@ -2,7 +2,7 @@ name: Evaluate Submission
 
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]
 
 jobs:
   evaluate:
