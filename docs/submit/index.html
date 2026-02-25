@@ -575,13 +575,11 @@
             }
         }
 
-        // Auto-prepend https:// when user leaves a URL field
+        // Auto-normalize URL inputs on blur: add https:// and lowercase
         document.getElementById('url-inputs').addEventListener('blur', (e) => {
             if (!e.target.classList.contains('url-input')) return;
             const val = e.target.value.trim();
-            if (val && !val.startsWith('http://') && !val.startsWith('https://')) {
-                e.target.value = 'https://' + val;
-            }
+            if (val) e.target.value = normalizeUrl(val);
         }, true);
 
         function ensureProtocol(url) {
@@ -589,6 +587,18 @@
                 return 'https://' + url;
             }
             return url;
+        }
+
+        function normalizeUrl(url) {
+            url = ensureProtocol(url);
+            try {
+                const parsed = new URL(url);
+                parsed.hostname = parsed.hostname.toLowerCase();
+                parsed.pathname = parsed.pathname.toLowerCase();
+                return parsed.toString();
+            } catch {
+                return url.toLowerCase();
+            }
         }
 
         async function copyIssueBody() {
@@ -619,7 +629,7 @@
             // Collect and sanitize all URLs
             const urlInputs = document.querySelectorAll('.url-input');
             const urls = Array.from(urlInputs)
-                .map(input => ensureProtocol(input.value.trim()))
+                .map(input => normalizeUrl(input.value.trim()))
                 .filter(url => url.length > 0);
 
             if (urls.length === 0) {
