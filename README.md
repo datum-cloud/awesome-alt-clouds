@@ -355,6 +355,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 * 🟢 [GitLab](https://gitlab.com/) - Managed Git hosting with CI/CD and integrated privacy-first AI workflows.
 * 🟢 [Gitpod](https://www.gitpod.io/) - A platform for automated and standardized development environments, enabling developers to code from anywhere with pre-configured, on-demand workspaces.
 * 🟢 [HashiCorp Cloud Platform](https://www.hashicorp.com/cloud) - A fully-managed platform offering HashiCorp products-as-a-service, simplifying infrastructure and security management for developers.
+* 🟢 [Helix](https://helix.ml/) - Provides agent virtualization and fleet orchestration platform with isolated desktop environments for AI agents on Mac, Linux, and Kubernetes infrastructure.
 * 🟢 [Heroku](https://www.heroku.com/) - Offers a platform as a service (PaaS) for deploying and managing applications.
 * 🟢 [JetBrains](https://www.jetbrains.com/) - Intelligent development tools and IDEs including IntelliJ IDEA and Kotlin language.
 * 🟢 [Kimi AI](https://www.kimi.com) - Provides AI-powered conversational assistance with visual coding capabilities, agent swarm technology, and deep research tools for enhanced productivity.
