@@ -1946,6 +1946,13 @@
     "score": 3
   },
   {
+    "name": "Helix",
+    "url": "https://helix.ml/",
+    "description": "Provides agent virtualization and fleet orchestration platform with isolated desktop environments for AI agents on Mac, Linux, and Kubernetes infrastructure.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
     "name": "Heroku",
     "url": "https://www.heroku.com/",
     "description": "Offers a platform as a service (PaaS) for deploying and managing applications.",
