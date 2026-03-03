@@ -108,6 +108,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Shadeform](https://shadeform.com/) - GPU compute provider with a focus on low-cost AI infrastructure.
 * 🟡 [SharonAI](https://sharonai.com/en/) - Provides AI-powered solutions and services for business automation and intelligent decision-making processes.
 * 🟢 [Spheron Network](https://www.spheron.network/) - Decentralized GPU/CPU network for AI and Web3 with 44,000+ nodes across 170+ locations.
+* 🟡 [Sprites](https://sprites.dev/) - Provides hardware-isolated, stateful Linux sandbox environments with checkpoint and restore capabilities for running arbitrary code with persistent storage and HTTP access.
 * 🟢 [Sustainable Metal Cloud](https://smc.co/) - Green-focused GPU cloud with a sustainability-first infrastructure model.
 * 🟢 [TensorDock](https://tensordock.com/) - Affordable, usage-based GPU cloud platform for model training.
 * 🟢 [TensorWave](https://tensorwave.com/) - An AI cloud focused on AMD technology including MI325X and MI300X accelerators.
