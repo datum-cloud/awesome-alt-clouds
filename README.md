@@ -102,6 +102,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Salad](https://salad.com/) - A platform for leveraging latent consumer compute resources to power workloads.
 * 🟢 [Scaleway](https://www.scaleway.com/) - European cloud provider with a wide range of services including servers, storage, and AI tools.
 * 🟢 [Seeweb](https://www.seeweb.it/) - Italian cloud infrastructure provider offering compute, storage, and CDN.
+* 🟡 [Sent](https://www.sent.dm/) - Cloud service provider.
 * 🟢 [Servers.com](https://www.servers.com/) - Global bare metal and private cloud platform supporting AI/ML compute.
 * 🟢 [Shadeform](https://shadeform.com/) - GPU compute provider with a focus on low-cost AI infrastructure.
 * 🟡 [SharonAI](https://sharonai.com/en/) - Provides AI-powered solutions and services for business automation and intelligent decision-making processes.
