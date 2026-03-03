@@ -455,6 +455,13 @@
     "score": 3
   },
   {
+    "name": "Sprites",
+    "url": "https://sprites.dev/",
+    "description": "Provides hardware-isolated, stateful Linux sandbox environments with checkpoint and restore capabilities for running arbitrary code with persistent storage and HTTP access.",
+    "category": "Infrastructure Clouds",
+    "score": 2
+  },
+  {
     "name": "Sustainable Metal Cloud",
     "url": "https://smc.co/",
     "description": "Green-focused GPU cloud with a sustainability-first infrastructure model.",
