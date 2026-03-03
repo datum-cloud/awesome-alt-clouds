@@ -252,6 +252,13 @@
     "score": 3
   },
   {
+    "name": "Kernel",
+    "url": "https://www.kernel.sh/",
+    "description": "Cloud service provider.",
+    "category": "Infrastructure Clouds",
+    "score": 2
+  },
+  {
     "name": "Lambda Labs",
     "url": "https://lambda.ai/",
     "description": "Delivers on-demand access to NVIDIA GPUs for AI training and inference.",
