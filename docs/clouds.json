@@ -413,6 +413,13 @@
     "score": 3
   },
   {
+    "name": "Sent",
+    "url": "https://www.sent.dm/",
+    "description": "Cloud service provider.",
+    "category": "Infrastructure Clouds",
+    "score": 2
+  },
+  {
     "name": "Servers.com",
     "url": "https://www.servers.com/",
     "description": "Global bare metal and private cloud platform supporting AI/ML compute.",
