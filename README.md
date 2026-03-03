@@ -52,6 +52,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Banana.dev](https://www.banana.dev/) - Serverless GPU platform for ML model inference with pay-per-millisecond pricing.
 * 🟢 [Baseten](https://www.baseten.co/) - Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.
 * 🟢 [Beam](https://www.beam.cloud) - Cloud infrastructure specifically built for high-performance applications and developer happiness.
+* 🟡 [Browser-Use](https://browser-use.com/) - Cloud service provider.
 * 🟢 [Browserbase](https://www.browserbase.com/) - A platform for running headless browsers for interact with websites via automation.
 * 🟢 [Cerebrium](https://www.cerebrium.ai/) - Serverless GPU infrastructure for deploying ML models with auto-scaling.
 * 🟢 [Civo](https://www.civo.com) - Provides cloud services with a focus on simplicity and developer experience.
