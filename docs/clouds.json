@@ -63,6 +63,13 @@
     "score": 3
   },
   {
+    "name": "Browser-Use",
+    "url": "https://browser-use.com/",
+    "description": "Cloud service provider.",
+    "category": "Infrastructure Clouds",
+    "score": 2
+  },
+  {
     "name": "Browserbase",
     "url": "https://www.browserbase.com/",
     "description": "A platform for running headless browsers for interact with websites via automation.",
