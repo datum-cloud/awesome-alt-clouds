@@ -383,6 +383,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 * 🟢 [Runloop](https://runloop.ai/) - Provides secure cloud-based development environments (devboxes) for AI coding agents with enterprise-grade infrastructure, benchmarking tools, and scalable sandbox execution.
 * 🟢 [Shuttle](https://www.shuttle.dev/) - Rust-native cloud platform for building and deploying backend services.
 * 🟢 [Tabnine](https://www.tabnine.com/) - AI code assistant with private model options.
+* 🟡 [Tensorlake](https://www.tensorlake.ai/) - Provides a complete platform for deploying production AI agents with durable execution, document ingestion, code sandboxes, and multi-cloud compute infrastructure.
 * 🟢 [Tiptap](https://tiptap.dev/) - Headless rich text editor with real-time collaboration, AI content generation, and 100+ extensions.
 * 🟢 [Ubicloud](https://www.ubicloud.com/) - An open-source cloud platform that can run anywhere, offering IaaS features on bare metal providers with options for self-hosting or managed services.
 * 🟢 [Unleash](https://www.getunleash.io/) - Enterprise open-source feature management platform with strong RBAC and flexible deployment options.
