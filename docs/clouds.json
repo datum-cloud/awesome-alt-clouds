@@ -1939,6 +1939,13 @@
     "score": 3
   },
   {
+    "name": "Gigapipe",
+    "url": "https://gigapipe.com/",
+    "description": "Provides unified polyglot observability platform for logs, metrics, traces and profiles with drop-in compatibility for Loki, Prometheus, Tempo, and Pyroscope.",
+    "category": "Developer Happiness Clouds",
+    "score": 3
+  },
+  {
     "name": "GitHub",
     "url": "https://github.com/",
     "description": "The world's leading platform for version control and collaboration, offering GitHub Codespaces for instant, cloud-based development environments.",
@@ -2133,6 +2140,13 @@
     "description": "AI code assistant with private model options.",
     "category": "Developer Happiness Clouds",
     "score": 3
+  },
+  {
+    "name": "Tensorlake",
+    "url": "https://www.tensorlake.ai/",
+    "description": "Provides a complete platform for deploying production AI agents with durable execution, document ingestion, code sandboxes, and multi-cloud compute infrastructure.",
+    "category": "Developer Happiness Clouds",
+    "score": 2
   },
   {
     "name": "Tiptap",
