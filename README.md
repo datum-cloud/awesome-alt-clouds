@@ -355,6 +355,7 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 * 🟢 [Flightcontrol](https://www.flightcontrol.dev/) - Automates infrastructure provisioning, CI/CD, and deployments within your own AWS account, offering full visibility and control.
 * 🟢 [Fly](https://fly.io) - Provides a platform to deploy applications globally with low latency.
 * 🟢 [Gammacode](https://gammacode.dev/) - AI code intelligence platform with CLI/web interface, security scanning, and issue automation.
+* 🟢 [Gigapipe](https://gigapipe.com/) - Provides unified polyglot observability platform for logs, metrics, traces and profiles with drop-in compatibility for Loki, Prometheus, Tempo, and Pyroscope.
 * 🟢 [GitHub](https://github.com/) - The world's leading platform for version control and collaboration, offering GitHub Codespaces for instant, cloud-based development environments.
 * 🟢 [GitLab](https://gitlab.com/) - Managed Git hosting with CI/CD and integrated privacy-first AI workflows.
 * 🟢 [Gitpod](https://www.gitpod.io/) - A platform for automated and standardized development environments, enabling developers to code from anywhere with pre-configured, on-demand workspaces.
