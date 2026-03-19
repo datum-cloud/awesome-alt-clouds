@@ -1485,8 +1485,12 @@
       }
     }
 
+    function getCloudCategories(cloud) {
+      return cloud.categories || (cloud.category ? [cloud.category] : []);
+    }
+
     function getCategories() {
-      const categories = [...new Set(altClouds.map(cloud => cloud.category))];
+      const categories = [...new Set(altClouds.flatMap(cloud => getCloudCategories(cloud)))];
       return ['All', ...categories.sort()];
     }
 
@@ -1514,7 +1518,7 @@
     function renderCategories() {
       const categories = getCategories();
       const html = categories.map(category => {
-        const count = category === 'All' ? altClouds.length : altClouds.filter(c => c.category === category).length;
+        const count = category === 'All' ? altClouds.length : altClouds.filter(c => getCloudCategories(c).includes(category)).length;
         return `
           <div
             class="category-item ${category === currentCategory ? 'active' : ''}"
@@ -1532,7 +1536,7 @@
 
     function getFilteredClouds() {
       const filtered = altClouds.filter(cloud => {
-        const matchesCategory = currentCategory === 'All' || cloud.category === currentCategory;
+        const matchesCategory = currentCategory === 'All' || getCloudCategories(cloud).includes(currentCategory);
         const matchesSearch = searchTerm === '' ||
           cloud.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           cloud.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -1570,7 +1574,7 @@
               </div>
               <div class="cloud-title-section">
                 <div class="cloud-name">${cloud.name}</div>
-                <div class="cloud-category">${cloud.category}</div>
+                <div class="cloud-category">${getCloudCategories(cloud).join(' · ')}</div>
               </div>
             </div>
 

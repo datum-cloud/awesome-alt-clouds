@@ -10,21 +10,28 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 
 * [Criteria](#criteria)
 * [Infrastructure Clouds](#infrastructure-clouds)
-* [Sovereign Clouds](#sovereign-clouds)
+* [GPU & AI Compute Clouds](#gpu--ai-compute-clouds)
+* [Security, Compliance & Sovereignty Clouds](#security-compliance--sovereignty-clouds)
 * [Unikernels & WebAssembly](#unikernels--webassembly)
-* [Data Clouds](#data-clouds)
-* [Workflow and Operations Clouds](#workflow-and-operations-clouds)
-* [Network, Connectivity and Security Clouds](#network-connectivity-and-security-clouds)
-* [Vibe Clouds](#vibe-clouds)
-* [Developer Happiness Clouds](#developer-happiness-clouds)
-* [Authorization, Identity, Fraud and Abuse Clouds](#authorization-identity-fraud-and-abuse-clouds)
-* [Monetization, Finance and Legal Clouds](#monetization-finance-and-legal-clouds)
-* [Customer, Marketing and eCommerce Clouds](#customer-marketing-and-ecommerce-clouds)
-* [IoT, Communications, and Media Clouds](#iot-communications-and-media-clouds)
-* [Blockchain Clouds](#blockchain-clouds)
+* [Databases & Storage](#databases--storage)
+* [Analytics & Data Warehousing](#analytics--data-warehousing)
+* [Observability & Monitoring](#observability--monitoring)
+* [Data Integration & ETL](#data-integration--etl)
+* [Workflow & Operations Clouds](#workflow--operations-clouds)
+* [Network & Connectivity Clouds](#network--connectivity-clouds)
+* [AI Inference & Model APIs](#ai-inference--model-apis)
+* [AI Assistants & Copilots](#ai-assistants--copilots)
+* [AI Coding & App Generation](#ai-coding--app-generation)
+* [PaaS & Application Hosting](#paas--application-hosting)
+* [Developer Tooling & CI/CD](#developer-tooling--cicd)
+* [Authorization, Identity & Fraud](#authorization-identity--fraud)
+* [Monetization & Billing Clouds](#monetization--billing-clouds)
+* [Customer, Marketing & eCommerce](#customer-marketing--ecommerce)
+* [Communications, IoT & Media](#communications-iot--media)
+* [Decentralized & Web3 Compute](#decentralized--web3-compute)
 * [Source Code Control](#source-code-control)
-* [Cloud Adjacent](#cloud-adjacent)
-* [Future Clouds](#future-clouds)
+* [Cloud Adjacent & Infrastructure Tooling](#cloud-adjacent--infrastructure-tooling)
+* [Emerging & Unverified Providers](#emerging--unverified-providers)
 
 ## Criteria
 
@@ -121,7 +128,11 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Vultr](https://www.vultr.com/) - Full services cloud and hosting provider with an expanding range of solutions globally.
 * 🟢 [Warp](https://www.warp.dev/) - Cloud service provider.
 
-## Sovereign Clouds
+## GPU & AI Compute Clouds
+
+Specialized providers offering on-demand GPU clusters, serverless inference, and high-performance compute optimized for AI training and model serving.
+
+## Security, Compliance & Sovereignty Clouds
 
 Cloud platforms designed to ensure data residency, regulatory compliance, and national control over infrastructure—often tailored for governments, public sector, or regulated industries.
 
@@ -146,9 +157,9 @@ Platforms leveraging unikernel and WebAssembly technologies for lightweight, sec
 * 🟢 [SingleStore](https://www.singlestore.com/) - Real-time database combining transactions and analytics with vector search capabilities.
 * 🟢 [Wasmer](https://wasmer.io/) - Offers a universal WebAssembly runtime that enables running applications safely and efficiently across various platforms, from desktop to cloud and edge.
 
-## Data Clouds
+## Databases & Storage
 
-Services for data storage, processing, analytics, and observability.
+Managed databases, object storage, caching, and search engines — relational, NoSQL, vector, time-series, and beyond.
 
 * 🟢 [Airbyte](https://airbyte.com/) - Open-source data integration platform with 600+ connectors and CDK for custom integrations.
 * 🟢 [Algolia](https://www.algolia.com/) - AI-powered search and discovery API with NeuralSearch and semantic understanding for <50ms search speed.
@@ -230,9 +241,21 @@ Services for data storage, processing, analytics, and observability.
 * 🟢 [Weights & Biases](https://wandb.ai/) - AI developer platform for experiment tracking, model management, evaluation, and observability for ML and LLM applications.
 * 🟢 [Xata](https://xata.io/) - Serverless database platform with built-in search and analytics.
 
-## Workflow and Operations Clouds
+## Analytics & Data Warehousing
 
-Services that provide tools for asset tracking, workflow automation, and automated resolution to enhance operational efficiency.
+Cloud data warehouses, OLAP engines, product analytics, and BI platforms for querying and understanding data at scale.
+
+## Observability & Monitoring
+
+Logging, metrics, tracing, error tracking, uptime monitoring, and session replay tools for understanding system and application behavior.
+
+## Data Integration & ETL
+
+Connectors, pipelines, and transformation tools for moving and synchronizing data between systems.
+
+## Workflow & Operations Clouds
+
+Orchestration, automation, and operations platforms for running reliable workflows, pipelines, and business processes.
 
 * 🟢 [Alloy Automation](https://runalloy.com/) - Embedded iPaaS with unified APIs for 400+ apps, enabling native integrations and AI agent connectivity.
 * 🟢 [Dagster](https://dagster.io/) - Unified control plane for building, scaling, and observing AI and data pipelines with orchestration and quality monitoring.
@@ -251,9 +274,9 @@ Services that provide tools for asset tracking, workflow automation, and automat
 * 🟢 [Windmill](https://www.windmill.dev/) - Open-source developer platform for building internal tools by writing scripts in multiple languages and composing them into workflows.
 * 🟢 [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
 
-## Network, Connectivity and Security Clouds
+## Network & Connectivity Clouds
 
-Services for managing network workloads, including acceleration, security, and connectivity.
+CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneling services — focused on routing, performance, and connectivity.
 
 * 🟢 [Akamai](https://www.akamai.com/) - A global content delivery and cybersecurity platform that helps secure and accelerate digital experiences at the edge.
 * 🟢 [Approximated](https://approximated.app/) - Custom domain proxy platform with global edge servers, SSL management, and DDoS protection.
@@ -286,9 +309,13 @@ Services for managing network workloads, including acceleration, security, and c
 * 🟢 [zrok](https://zrok.io/) - Zero-trust tunneling platform for instant private or public sharing of applications, files, and services with automatic TLS and built-in security features.
 * 🟢 [Zscaler](https://www.zscaler.com/) - Zero trust SASE platform with AI-driven cybersecurity and cloud protection.
 
-## Vibe Clouds
+## AI Inference & Model APIs
 
-AI-powered tools that enhance creativity, productivity, and interaction through prompt engineering and conversational interfaces.
+APIs and platforms for running inference on foundation models and open-source LLMs, with a focus on speed, cost, and scale.
+
+## AI Assistants & Copilots
+
+Conversational AI products, chat interfaces, and AI-powered search engines built for end users and knowledge workers.
 
 * 🟢 [AssemblyAI](https://www.assemblyai.com/) - Offers powerful speech-to-text and AI APIs for transcription, summarization, content moderation, and more.
 * 🟢 [Base44](https://base44.com/) - An all-in-one AI platform to easily build fully functioning apps without coding.
@@ -333,9 +360,17 @@ AI-powered tools that enhance creativity, productivity, and interaction through 
 * 🟢 [v0](https://v0.app/) - AI-powered UI generation from text prompts to React code.
 * 🟢 [Windsurf](https://windsurf.com/) - An AI powered coding engine and IDE that is an alternative to GitHub Copilot. Formerly Codeium.
 
-## Developer Happiness Clouds
+## AI Coding & App Generation
 
-Cloud-based platforms for creating, testing, and shipping software, including for infrastructure automation.
+AI-powered code editors, IDEs, no-code/low-code builders, and full-stack app generation tools.
+
+## PaaS & Application Hosting
+
+Platform-as-a-service and managed hosting providers for deploying and scaling web applications, APIs, and services.
+
+## Developer Tooling & CI/CD
+
+Build systems, artifact registries, CI/CD pipelines, cloud dev environments, testing frameworks, feature flags, and developer productivity tools.
 
 * 🟢 [Bolt](https://bolt.new/) - A browser-based AI development environment that lets you generate, edit, and deploy full-stack applications instantly using natural language prompts.
 * 🟢 [browserless](https://www.browserless.io/) - Headless browser automation platform providing managed Chrome, Firefox, and WebKit browsers for scraping, testing, and automation with bot detection bypass and CAPTCHA solving.
@@ -389,9 +424,9 @@ Cloud-based platforms for creating, testing, and shipping software, including fo
 * 🟢 [Ubicloud](https://www.ubicloud.com/) - An open-source cloud platform that can run anywhere, offering IaaS features on bare metal providers with options for self-hosting or managed services.
 * 🟢 [Unleash](https://www.getunleash.io/) - Enterprise open-source feature management platform with strong RBAC and flexible deployment options.
 
-## Authorization, Identity, Fraud and Abuse Clouds
+## Authorization, Identity & Fraud
 
-Services that provide authentication, authorization, identity management, and fraud prevention.
+Authentication, authorization, secrets management, identity providers, and fraud and abuse prevention services.
 
 * 🟢 [Akeyless](https://www.akeyless.io/) - SaaS secrets management with zero-knowledge encryption. Distributed Fragments Cryptography eliminates vault overhead. 70% cost savings.
 * 🟢 [Aserto](https://www.aserto.com/) - Cloud-native authorization built on Open Policy Agent.
@@ -421,9 +456,9 @@ Services that provide authentication, authorization, identity management, and fr
 * 🟢 [WorkOS](https://workos.com/) - Offers enterprise-ready authentication solutions, including single sign-on and directory synchronization.
 * 🟢 [Xpander.ai](http://xpander.ai/) - Backend-as-a-Service for AI agents with managed hosting and function libraries.
 
-## Monetization, Finance and Legal Clouds
+## Monetization & Billing Clouds
 
-Services that provide billing, subscription management, legal and other services to help businesses monetize their products.
+Usage metering, subscription management, billing infrastructure, and financial operations platforms for SaaS and cloud businesses.
 
 * 🟢 [Amberflo](https://www.amberflo.io/) - A cloud-native platform for metering and billing, enabling businesses to implement usage-based pricing models.
 * 🟢 [Bill](https://www.bill.com/) - A comprehensive financial operations platform for bills, invoices, expenses, budgets, and more.
@@ -446,9 +481,9 @@ Services that provide billing, subscription management, legal and other services
 * 🟢 [UniBee](https://unibee.dev/) - Open-source billing and subscription management with usage-based pricing, multi-gateway support, and self-host options.
 * 🟢 [Wise](https://wise.com/) - A platform for paying and getting paid globally.
 
-## Customer, Marketing and eCommerce Clouds
+## Customer, Marketing & eCommerce
 
-Services that help businesses build and track relationships with users and customers across channels.
+CRM, customer engagement, marketing automation, newsletter, and eCommerce platforms for managing customer relationships.
 
 * 🟢 [Attio](https://attio.com/) - An AI-native CRM where you can design workflows, integrate your data and build detailed reports.
 * 🟢 [Beehiiv](https://www.beehiiv.com/) - Newsletter platform with integrated monetization, website builder, ad network, and referral programs.
@@ -463,9 +498,9 @@ Services that help businesses build and track relationships with users and custo
 * 🟢 [Shopify](https://www.shopify.com/) - An all-in-one commerce platform to start, run, and grow a business.
 * 🟢 [Zendesk](https://www.zendesk.com/) - A platform that makes it easy for companies and customers to create connections.
 
-## IoT, Communications, and Media Clouds
+## Communications, IoT & Media
 
-Services that provide connectivity, device management, and communication solutions for Internet of Things (IoT) applications.
+Messaging, notifications, email, voice, video, and IoT connectivity platforms for building connected products and real-time communication.
 
 * 🟢 [1NCE](https://www.1nce.com/en-us/) - Offers flat-rate global cellular connectivity for IoT devices, including SIM management and low-bandwidth data plans designed for scale.
 * 🟢 [Gradium](https://gradium.ai/) - Provides audio language models for natural, expressive, ultra-low latency voice interactions with text-to-speech and speech-to-text capabilities in multiple languages.
@@ -482,30 +517,30 @@ Services that provide connectivity, device management, and communication solutio
 * 🟢 [Twilio](https://www.twilio.com/docs/iot) - Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
 * 🟢 [Wistia](https://wistia.com/) - A one-stop video marketing shop to create, host, market and analyze your videos.
 
-## Blockchain Clouds
+## Decentralized & Web3 Compute
 
-Decentralized clouds built on Layer 1 blockchains that focus on inference, compute, and model training.
+Decentralized compute networks and blockchain-based infrastructure for running workloads outside traditional cloud providers.
 
 * 🟢 [Akash Network](https://akash.network/) - Providing access to compute at prices up to 85% lower than hyperscale cloud providers.
 
 ## Source Code Control
 
-Track and manage source code changes over time using a version control system (VCS).
+Version control hosting and collaboration platforms for managing source code changes over time.
 
 * 🟢 [Gitea Cloud](https://about.gitea.com/products/cloud/) - Single-tenant managed Git hosting with built-in CI/CD and private isolated environments.
 
-## Cloud Adjacent
+## Cloud Adjacent & Infrastructure Tooling
 
-Services and tools that complement cloud infrastructure but aren't cloud services themselves—including development tools, protocols, standards, and software that enhance or integrate with cloud platforms.
+Tools and platforms that complement cloud infrastructure — service meshes, API management, confidential computing, and developer utilities.
 
 * 🟢 [Edgeless Systems](https://www.edgeless.systems/) - Confidential computing platform using TEEs for runtime encryption of AI and cloud workloads.
 * 🟢 [ngrok](https://ngrok.com/) - Securely tunnels local services to the public internet, ideal for testing webhooks, building with APIs, or sharing local development environments.
 * 🟢 [Solo.io](https://www.solo.io/) - Unified platform for API gateways, service mesh, and agentic AI on Kubernetes.
 * 🟢 [Tetrate](https://tetrate.io/) - Service mesh and AI model routing platform for enterprise Kubernetes environments.
 
-## Future Clouds
+## Emerging & Unverified Providers
 
-Services that don't yet meet all Alt Cloud criteria but show promise. These providers may lack public pricing, self-service signup, or production SLAs—but could evolve into full Alt Clouds.
+Services that show promise but don't yet fully meet Alt Cloud criteria (public pricing, self-service signup, or production SLA). Worth watching.
 
 Why track these? The cloud landscape changes fast. Today's "contact sales only" can become tomorrow's self-service leader. This section helps monitor emerging players and hold established vendors accountable to transparency.
 
