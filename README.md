@@ -151,7 +151,7 @@ Cloud platforms designed to ensure data residency, regulatory compliance, and na
 Platforms leveraging unikernel and WebAssembly technologies for lightweight, secure, and efficient cloud-native applications.
 
 * 🟢 [Cosmonic](https://cosmonic.com/) - A distributed compute mesh built on CNCF's wasmCloud, enabling secure, declarative deployments of WebAssembly applications across diverse environments.
-* 🟢 [KraftCloud](https://kraft.cloud/) - A next-generation cloud platform powered by unikernels, offering millisecond-scale operations and high-density deployments for efficient computing.
+* 🟢 [Unikraft](https://unikraft.com/) - A next-generation cloud platform powered by unikernels, offering millisecond-scale operations and high-density deployments for efficient computing.
 * 🟢 [NanoVMs](https://nanovms.com/) - Provides a unikernel platform that allows deploying applications as secure, isolated virtual machines, enhancing performance and security.
 * 🟢 [Puter](https://puter.com/) - A privacy-first personal cloud that houses all your files, apps, and games in one secure place, accessible from anywhere at any time.
 * 🟢 [SingleStore](https://www.singlestore.com/) - Real-time database combining transactions and analytics with vector search capabilities.
