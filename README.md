@@ -289,6 +289,7 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 * 🟡 [CtrlDNS](https://www.ctrldns.com/) - Provides DNS management and control services for domain name resolution and network infrastructure management.
 * 🟢 [Fastly](https://www.fastly.com/) - An edge cloud platform designed for performance and security, enabling developers to build faster, more secure digital experiences.
 * 🟢 [Fortinet](https://www.fortinet.com/) - Provides integrated cybersecurity solutions including next-gen firewalls, secure SD-WAN, and endpoint protection.
+* 🟢 [IPinfo](https://ipinfo.io/) - Provides accurate IP address intelligence including geolocation, ASN data, privacy detection, and network information through APIs and data downloads for developers and enterprises.
 * 🟢 [Kong](https://konghq.com/) - An open-source API gateway and microservices management layer that provides traffic control, security, and observability for APIs.
 * 🟢 [LocalXpose](https://localxpose.io/) - Secure tunneling service supporting HTTP, TLS, TCP, UDP with custom domains and SSL.
 * 🟢 [Macrometa](https://www.macrometa.com/) - An edge delivery network and developer platform built for real-time use cases.
