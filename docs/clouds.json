@@ -1953,6 +1953,15 @@
     ]
   },
   {
+    "name": "Anchor",
+    "url": "https://anchorbrowser.io/",
+    "description": "Provides AI-powered browser automation infrastructure with humanized Chromium instances that can access any website, handle authentication, and perform web tasks reliably.",
+    "score": 2,
+    "categories": [
+      "AI Inference & Model APIs"
+    ]
+  },
+  {
     "name": "AssemblyAI",
     "url": "https://www.assemblyai.com/",
     "description": "Offers powerful speech-to-text and AI APIs for transcription, summarization, content moderation, and more.",
