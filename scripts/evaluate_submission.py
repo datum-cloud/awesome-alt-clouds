@@ -145,6 +145,31 @@ def fetch_page(url, timeout=15, retries=2):
     return None, None
 
 
+def fetch_page_with_fallback(url, timeout=15, retries=2):
+    """Try requests first, then Jina Reader. Returns (soup, final_url, fetch_method)."""
+    # Stage 1: existing requests-based scraper
+    soup, final_url = fetch_page(url, timeout=timeout, retries=retries)
+    if soup is not None:
+        return soup, final_url, "requests"
+
+    # Stage 2: Jina Reader (handles JS-rendered pages)
+    jina_url = f"https://r.jina.ai/{url}"
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (compatible; awesome-alt-clouds-bot/1.0)',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    }
+    try:
+        response = requests.get(jina_url, headers=headers, timeout=timeout, allow_redirects=True)
+        response.raise_for_status()
+        if response.text and len(response.text) > 100:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            return soup, url, "jina"
+    except Exception as e:
+        print(f"Jina Reader failed for {url}: {e}")
+
+    return None, None, None
+
+
 def find_link_matching(soup, base_url, patterns):
     """Find a link on the page matching any of the given patterns"""
     if not soup:
@@ -377,36 +402,160 @@ Respond in this exact JSON format only, no other text:
         return None
 
 
+def evaluate_with_claude_websearch(url):
+    """Last-resort evaluation using Claude with web_search when both scrapers fail.
+
+    Returns a dict with criteria, score, name, description, category,
+    recommendation, and fetch_method='claude_websearch', or None on failure.
+    """
+    api_key = os.environ.get('ANTHROPIC_API_KEY')
+    if not api_key:
+        print("ERROR: ANTHROPIC_API_KEY not set, cannot use Claude web search")
+        return None
+
+    print(f"Falling back to Claude web search for {url}...")
+
+    try:
+        import anthropic
+        client = anthropic.Anthropic(api_key=api_key)
+
+        domain = urlparse(url).netloc.replace('www.', '')
+        categories_list = "\n".join(f"- {cat}" for cat in CATEGORIES)
+
+        prompt = f"""Evaluate this cloud service for an awesome list. Use web search to find real evidence.
+
+URL: {url}
+Domain: {domain}
+
+Search for (in this order):
+1. "{domain} pricing" to find their pricing page URL
+2. "status.{domain}" OR "{domain} status page" to find their status/uptime page
+3. "{domain} sign up" OR "{domain} register" to find their self-service signup URL
+
+Then assess these 3 criteria and provide the actual URLs you found as evidence:
+1. Transparent Public Pricing - public pricing page with actual prices shown
+2. Usage-based Self-Service - can sign up and use without contacting sales
+3. Production Indicators - public SLA or status page exists
+
+Also provide:
+- name: official service name (short, no taglines)
+- description: what the service does (max 200 chars, start with "Provides", "Offers", "Delivers", etc.)
+- category: best fit from this list:
+{categories_list}
+- recommendation: one sentence (e.g. "Pricing and status page found — looks legit" or "No SLA evidence found — review carefully")
+
+If you cannot find evidence for a criterion, set passed to false and evidence to "Not found via web search".
+
+Respond in this exact JSON format only, no other text:
+{{
+  "criteria": [
+    {{"name": "Transparent Public Pricing", "passed": true, "evidence": "https://example.com/pricing"}},
+    {{"name": "Usage-based Self-Service", "passed": true, "evidence": "https://example.com/signup"}},
+    {{"name": "Production Indicators", "passed": false, "evidence": "Not found via web search"}}
+  ],
+  "name": "Service Name",
+  "description": "Description under 200 chars.",
+  "category": "Category Name",
+  "recommendation": "One sentence recommendation"
+}}"""
+
+        message = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            tools=[{"type": "web_search_20250305", "name": "web_search", "max_uses": 6}],
+            messages=[{"role": "user", "content": prompt}]
+        )
+
+        # Extract text from the last text block in the response
+        response_text = next(
+            (block.text for block in reversed(message.content) if hasattr(block, 'text')),
+            ""
+        ).strip()
+
+        if not response_text:
+            print(f"Claude web search returned no text for {url}")
+            return None
+
+        # Strip markdown code fences if present
+        if "```" in response_text:
+            json_match = re.search(r'\{[\s\S]+\}', response_text)
+            if json_match:
+                response_text = json_match.group(0)
+
+        data = json.loads(response_text)
+
+        # Validate and normalise
+        score = sum(1 for c in data.get('criteria', []) if c.get('passed'))
+        if data.get('category') not in CATEGORIES:
+            print(f"Warning: invalid category '{data.get('category')}', defaulting")
+            data['category'] = "Infrastructure Clouds"
+        if len(data.get('description', '')) > 200:
+            data['description'] = data['description'][:197] + "..."
+
+        print(f"Claude web search result: score={score}/3, name={data['name']}")
+        return {
+            'criteria': data['criteria'],
+            'score': score,
+            'name': data['name'],
+            'description': data['description'],
+            'category': data['category'],
+            'recommendation': data.get('recommendation', ''),
+            'fetch_method': 'claude_websearch',
+        }
+
+    except Exception as e:
+        print(f"Error in Claude web search for {url}: {e}")
+        return None
+
+
 def evaluate_service(url):
-    """Evaluate a service against all 3 criteria"""
+    """Evaluate a service against all 3 criteria using the fetch cascade."""
     print(f"Evaluating: {url}")
 
-    soup, final_url = fetch_page(url)
+    soup, final_url, fetch_method = fetch_page_with_fallback(url)
 
-    if not soup:
-        # Could not fetch - likely Cloudflare protected
-        # Return special result that allows Claude fallback
+    if fetch_method is None:
+        # Both scrapers failed — try Claude web search as last resort
+        ws_result = evaluate_with_claude_websearch(url)
+        if ws_result:
+            return {
+                'url': url,
+                'company_name': ws_result['name'],
+                'score': ws_result['score'],
+                'criteria': ws_result['criteria'],
+                'fetch_failed': False,
+                'fetch_method': 'claude_websearch',
+                'needs_manual_review': ws_result['score'] < 3,
+                'ai_metadata': {
+                    'name': ws_result['name'],
+                    'description': ws_result['description'],
+                    'category': ws_result['category'],
+                },
+                'recommendation': ws_result['recommendation'],
+                'page_content': '',
+            }
+        # All three stages failed — preserve existing behaviour
         return {
             'url': url,
             'company_name': extract_company_name(url, None),
-            'score': 2,  # Allow PR creation with manual review
+            'score': 2,
             'criteria': [
                 {'name': 'Transparent Public Pricing', 'passed': None, 'evidence': 'Could not verify (site protected)'},
-                {'name': 'Usage-based Self-Service', 'passed': None, 'evidence': 'Could not verify (site protected)'},
-                {'name': 'Production Indicators', 'passed': None, 'evidence': 'Could not verify (site protected)'},
+                {'name': 'Usage-based Self-Service',    'passed': None, 'evidence': 'Could not verify (site protected)'},
+                {'name': 'Production Indicators',       'passed': None, 'evidence': 'Could not verify (site protected)'},
             ],
             'fetch_failed': True,
+            'fetch_method': None,
             'needs_manual_review': True,
+            'page_content': '',
         }
 
     base_url = final_url or url
-
     criteria = [
         check_pricing_page(soup, base_url),
         check_self_service(soup, base_url),
         check_production_indicators(soup, base_url),
     ]
-
     score = sum(1 for c in criteria if c['passed'])
 
     return {
@@ -415,6 +564,8 @@ def evaluate_service(url):
         'score': score,
         'criteria': criteria,
         'fetch_failed': False,
+        'fetch_method': fetch_method,
+        'page_content': soup.get_text()[:20000],
     }
 
 
@@ -423,6 +574,8 @@ def generate_single_result_markdown(result, ai_metadata=None):
     score = result['score']
     fetch_failed = result.get('fetch_failed', False)
     needs_manual = result.get('needs_manual_review', False)
+    fetch_method = result.get('fetch_method')
+    recommendation = result.get('recommendation', '')
 
     if fetch_failed:
         status = "Needs Manual Review"
@@ -437,11 +590,16 @@ def generate_single_result_markdown(result, ai_metadata=None):
         status = "Does Not Meet Criteria"
         emoji = "red_circle"
 
+    web_search_badge = " *(verified via web search)*" if fetch_method == "claude_websearch" else ""
+
     md = f"""### {result['company_name']}
 
 **URL:** {result['url']}
-**Score:** {score}/3 :{emoji}: {status}
+**Score:** {score}/3 :{emoji}: {status}{web_search_badge}
 """
+
+    if fetch_method == "claude_websearch" and recommendation:
+        md += f"\n> :mag: {recommendation}\n"
 
     if fetch_failed:
         md += "\n:warning: **Could not fetch website** (likely Cloudflare protected). Criteria could not be verified automatically.\n\n"
@@ -458,7 +616,13 @@ def generate_single_result_markdown(result, ai_metadata=None):
             status_icon = ":white_check_mark:"
         else:
             status_icon = ":x:"
-        md += f"| {c['name']} | {status_icon} | {c['evidence']} |\n"
+
+        evidence = c['evidence']
+        # Render evidence as a clickable link if it's a URL
+        if fetch_method == "claude_websearch" and evidence.startswith("http"):
+            evidence = f"[{evidence}]({evidence})"
+
+        md += f"| {c['name']} | {status_icon} | {evidence} |\n"
 
     if ai_metadata:
         md += f"""
@@ -589,11 +753,7 @@ def main():
     for url in urls:
         print(f"\n--- Evaluating: {url} ---")
 
-        # Fetch page content
-        soup, final_url = fetch_page(url)
-        page_content = soup.get_text()[:20000] if soup else ""
-
-        # Evaluate against criteria
+        # Evaluate against criteria (fetch cascade is handled inside evaluate_service)
         result = evaluate_service(url)
 
         # Apply admin score override if provided
@@ -603,45 +763,56 @@ def main():
             result['admin_override'] = True
             print(f"Admin override: {original_score}/3 -> {result['score']}/3")
 
-        # Determine if service should pass
-        # In admin mode: always pass (admin explicitly approved)
-        # In normal mode: pass if score >= 2
         should_pass = admin_approved or result['score'] >= 2
 
         if should_pass:
-            ai_metadata = generate_metadata_with_claude(url, page_content)
-            if ai_metadata:
+            # Claude web search already generated metadata — use it directly
+            if result.get('fetch_method') == 'claude_websearch' and result.get('ai_metadata'):
+                ai_metadata = result['ai_metadata']
                 result['company_name'] = ai_metadata['name']
-                result['ai_metadata'] = ai_metadata
                 passing_services.append({
                     'name': ai_metadata['name'],
                     'url': url,
                     'description': ai_metadata['description'],
                     'category': ai_metadata['category'],
                     'score': result['score'],
-                    'needs_manual_review': False if admin_approved else result.get('needs_manual_review', False),
+                    'needs_manual_review': result.get('needs_manual_review', False),
                     'admin_approved': admin_approved,
                 })
-            elif admin_approved:
-                # Fallback for admin approval when Claude fails
-                # Use basic info extracted from URL
-                fallback_name = result['company_name']
-                print(f"Warning: Claude API failed, using fallback for {fallback_name}")
-                passing_services.append({
-                    'name': fallback_name,
-                    'url': url,
-                    'description': f"Cloud service provider.",
-                    'category': 'Infrastructure Clouds',
-                    'score': result['score'],
-                    'needs_manual_review': True,
-                    'admin_approved': admin_approved,
-                })
-                result['ai_metadata'] = {
-                    'name': fallback_name,
-                    'description': 'Cloud service provider.',
-                    'category': 'Infrastructure Clouds',
-                    'fallback': True,
-                }
+            else:
+                # Scraped successfully — call Claude for metadata as before
+                page_content = result.get('page_content', '')
+                ai_metadata = generate_metadata_with_claude(url, page_content)
+                if ai_metadata:
+                    result['company_name'] = ai_metadata['name']
+                    result['ai_metadata'] = ai_metadata
+                    passing_services.append({
+                        'name': ai_metadata['name'],
+                        'url': url,
+                        'description': ai_metadata['description'],
+                        'category': ai_metadata['category'],
+                        'score': result['score'],
+                        'needs_manual_review': False if admin_approved else result.get('needs_manual_review', False),
+                        'admin_approved': admin_approved,
+                    })
+                elif admin_approved:
+                    fallback_name = result['company_name']
+                    print(f"Warning: Claude API failed, using fallback for {fallback_name}")
+                    passing_services.append({
+                        'name': fallback_name,
+                        'url': url,
+                        'description': "Cloud service provider.",
+                        'category': 'Infrastructure Clouds',
+                        'score': result['score'],
+                        'needs_manual_review': True,
+                        'admin_approved': admin_approved,
+                    })
+                    result['ai_metadata'] = {
+                        'name': fallback_name,
+                        'description': 'Cloud service provider.',
+                        'category': 'Infrastructure Clouds',
+                        'fallback': True,
+                    }
 
         results_list.append(result)
         print(f"Score: {result['score']}/3")
