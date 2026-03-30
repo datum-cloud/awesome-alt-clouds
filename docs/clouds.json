@@ -1782,6 +1782,15 @@
     ]
   },
   {
+    "name": "IPinfo",
+    "url": "https://ipinfo.io/",
+    "description": "Provides accurate IP address intelligence including geolocation, ASN data, privacy detection, and network information through APIs and data downloads for developers and enterprises.",
+    "score": 3,
+    "categories": [
+      "Network & Connectivity Clouds"
+    ]
+  },
+  {
     "name": "Kong",
     "url": "https://konghq.com/",
     "description": "An open-source API gateway and microservices management layer that provides traffic control, security, and observability for APIs.",
