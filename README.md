@@ -313,6 +313,7 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 
 ## AI Inference & Model APIs
 * 🟡 [Anchor](https://anchorbrowser.io/) - Provides AI-powered browser automation infrastructure with humanized Chromium instances that can access any website, handle authentication, and perform web tasks reliably.
+* 🟡 [Parallel](https://parallel.ai/) - Provides AI-optimized web search and data extraction APIs with high accuracy for AI agents and applications to access structured web intelligence.
 
 APIs and platforms for running inference on foundation models and open-source LLMs, with a focus on speed, cost, and scale.
 
@@ -364,6 +365,8 @@ Conversational AI products, chat interfaces, and AI-powered search engines built
 * 🟢 [Windsurf](https://windsurf.com/) - An AI powered coding engine and IDE that is an alternative to GitHub Copilot. Formerly Codeium.
 
 ## AI Coding & App Generation
+* 🟡 [Git AI](https://usegitai.com/) - Provides open-source Git extension for tracking AI-generated code through the entire software development lifecycle with attribution, context storage, and team analytics.
+* 🟢 [OB-1](https://www.openblocklabs.com/) - Provides a self-improving coding agent that handles the full development lifecycle from project management to pull requests, with multi-model AI support and workflow automation.
 
 AI-powered code editors, IDEs, no-code/low-code builders, and full-stack app generation tools.
 
@@ -464,6 +467,7 @@ Authentication, authorization, secrets management, identity providers, and fraud
 Usage metering, subscription management, billing infrastructure, and financial operations platforms for SaaS and cloud businesses.
 
 * 🟢 [Amberflo](https://www.amberflo.io/) - A cloud-native platform for metering and billing, enabling businesses to implement usage-based pricing models.
+* 🟡 [Autumn](https://useautumn.com/) - Provides a billing infrastructure layer between applications and Stripe, handling subscriptions, usage tracking, limits, and complex pricing models for AI products.
 * 🟢 [Bill](https://www.bill.com/) - A comprehensive financial operations platform for bills, invoices, expenses, budgets, and more.
 * 🟢 [Dodo Payments](https://dodopayments.com/) - Merchant of Record platform for global payments with automated tax compliance in 150+ countries.
 * 🟡 [Lago](https://www.getlago.com/) - An open-source metering and usage-based billing platform designed for transparency and developer experience.
