@@ -75,6 +75,38 @@ class TestFetchPageWithFallback:
 
         assert any('r.jina.ai' in u and 'example.com' in u for u in captured)
 
+    def test_jina_sends_html_format_header(self):
+        """Jina must request HTML (not markdown) so <a> tag link detection works."""
+        captured_kwargs = []
+
+        def side_effect(url, **kwargs):
+            if 'r.jina.ai' in url:
+                captured_kwargs.append(kwargs)
+            raise requests.exceptions.ConnectionError('blocked')
+
+        with patch('requests.get', side_effect=side_effect):
+            ev.fetch_page_with_fallback('https://example.com')
+
+        assert captured_kwargs, "Jina was never called"
+        headers = captured_kwargs[0].get('headers', {})
+        assert headers.get('X-Return-Format') == 'html'
+
+    def test_jina_is_tried_before_requests(self):
+        """Jina must be the first attempt in the cascade."""
+        call_order = []
+
+        def side_effect(url, **kwargs):
+            if 'r.jina.ai' in url:
+                call_order.append('jina')
+            else:
+                call_order.append('requests')
+            raise requests.exceptions.ConnectionError('blocked')
+
+        with patch('requests.get', side_effect=side_effect):
+            ev.fetch_page_with_fallback('https://example.com')
+
+        assert call_order[0] == 'jina', f"Expected jina first, got: {call_order}"
+
 
 # ---------------------------------------------------------------------------
 # evaluate_with_claude_websearch

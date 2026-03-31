@@ -146,17 +146,16 @@ def fetch_page(url, timeout=15, retries=2):
 
 
 def fetch_page_with_fallback(url, timeout=15, retries=2):
-    """Try requests first, then Jina Reader. Returns (soup, final_url, fetch_method)."""
-    # Stage 1: existing requests-based scraper
-    soup, final_url = fetch_page(url, timeout=timeout, retries=retries)
-    if soup is not None:
-        return soup, final_url, "requests"
-
-    # Stage 2: Jina Reader (handles JS-rendered pages)
+    """Try Jina Reader first (renders JS, bypasses CDN blocks), then requests as fallback.
+    Returns (soup, final_url, fetch_method)."""
+    # Stage 1: Jina Reader with HTML mode — renders JS and handles Cloudflare-protected sites.
+    # X-Return-Format: html ensures we get proper HTML with <a> tags for link detection,
+    # not the default markdown format which breaks find_all('a', href=True).
     jina_url = f"https://r.jina.ai/{url}"
     headers = {
         'User-Agent': 'Mozilla/5.0 (compatible; awesome-alt-clouds-bot/1.0)',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'X-Return-Format': 'html',
     }
     try:
         response = requests.get(jina_url, headers=headers, timeout=timeout, allow_redirects=True)
@@ -166,6 +165,11 @@ def fetch_page_with_fallback(url, timeout=15, retries=2):
             return soup, url, "jina"
     except Exception as e:
         print(f"Jina Reader failed for {url}: {e}")
+
+    # Stage 2: direct requests scraper (cheaper but fails on JS-heavy / CDN-blocked sites)
+    soup, final_url = fetch_page(url, timeout=timeout, retries=retries)
+    if soup is not None:
+        return soup, final_url, "requests"
 
     return None, None, None
 
