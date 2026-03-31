@@ -27,8 +27,20 @@ jobs:
         run: |
           pip install requests beautifulsoup4 anthropic
 
+      - name: Check for duplicates
+        id: check_duplicate
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          python scripts/check_duplicates.py
+
       - name: Extract URL and evaluate
         id: evaluate
+        if: steps.check_duplicate.outputs.is_duplicate != 'true'
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
@@ -38,6 +50,7 @@ jobs:
 
       - name: Read evaluation outputs
         id: read_outputs
+        if: steps.check_duplicate.outputs.is_duplicate != 'true'
         run: |
           echo "score=$(cat evaluation_score.txt)" >> $GITHUB_OUTPUT
           if [ -f submission_data.json ]; then
@@ -47,6 +60,7 @@ jobs:
           fi
 
       - name: Post evaluation results
+        if: steps.check_duplicate.outputs.is_duplicate != 'true'
         uses: actions/github-script@v7
         with:
           script: |
@@ -61,6 +75,7 @@ jobs:
             });
 
       - name: Add result label
+        if: steps.check_duplicate.outputs.is_duplicate != 'true'
         uses: actions/github-script@v7
         with:
           script: |
@@ -94,7 +109,7 @@ jobs:
             }
 
       - name: Upload submission data as artifact
-        if: steps.read_outputs.outputs.has_data == 'true'
+        if: steps.check_duplicate.outputs.is_duplicate != 'true' && steps.read_outputs.outputs.has_data == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: submission-data-${{ github.event.issue.number }}
@@ -102,7 +117,7 @@ jobs:
           retention-days: 90
 
       - name: Create PR if score >= 2
-        if: steps.read_outputs.outputs.score >= 2 && steps.read_outputs.outputs.has_data == 'true'
+        if: steps.check_duplicate.outputs.is_duplicate != 'true' && fromJSON(steps.read_outputs.outputs.score) >= 2 && steps.read_outputs.outputs.has_data == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
