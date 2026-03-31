@@ -1944,6 +1944,15 @@
     ]
   },
   {
+    "name": "ZeroTier",
+    "url": "https://www.zerotier.com/",
+    "description": "Provides secure peer-to-peer networking platform that connects devices, clouds, and networks globally without VPNs or complex infrastructure configuration.",
+    "score": 3,
+    "categories": [
+      "Network & Connectivity Clouds"
+    ]
+  },
+  {
     "name": "zrok",
     "url": "https://zrok.io/",
     "description": "Zero-trust tunneling platform for instant private or public sharing of applications, files, and services with automatic TLS and built-in security features.",
