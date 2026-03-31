@@ -1980,6 +1980,15 @@
     ]
   },
   {
+    "name": "Parallel",
+    "url": "https://parallel.ai/",
+    "description": "Provides AI-optimized web search and data extraction APIs with high accuracy for AI agents and applications to access structured web intelligence.",
+    "score": 2,
+    "categories": [
+      "AI Inference & Model APIs"
+    ]
+  },
+  {
     "name": "AssemblyAI",
     "url": "https://www.assemblyai.com/",
     "description": "Offers powerful speech-to-text and AI APIs for transcription, summarization, content moderation, and more.",
@@ -2355,6 +2364,24 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
+    ]
+  },
+  {
+    "name": "Git AI",
+    "url": "https://usegitai.com/",
+    "description": "Provides open-source Git extension for tracking AI-generated code through the entire software development lifecycle with attribution, context storage, and team analytics.",
+    "score": 2,
+    "categories": [
+      "AI Coding & App Generation"
+    ]
+  },
+  {
+    "name": "OB-1",
+    "url": "https://www.openblocklabs.com/",
+    "description": "Provides a self-improving coding agent that handles the full development lifecycle from project management to pull requests, with multi-model AI support and workflow automation.",
+    "score": 3,
+    "categories": [
+      "AI Coding & App Generation"
     ]
   },
   {
@@ -3064,6 +3091,15 @@
     "url": "https://www.amberflo.io/",
     "description": "A cloud-native platform for metering and billing, enabling businesses to implement usage-based pricing models.",
     "score": 3,
+    "categories": [
+      "Monetization & Billing Clouds"
+    ]
+  },
+  {
+    "name": "Autumn",
+    "url": "https://useautumn.com/",
+    "description": "Provides a billing infrastructure layer between applications and Stripe, handling subscriptions, usage tracking, limits, and complex pricing models for AI products.",
+    "score": 2,
     "categories": [
       "Monetization & Billing Clouds"
     ]
