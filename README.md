@@ -307,6 +307,7 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 * 🟢 [Twingate](https://www.twingate.com/) - Provides a modern zero-trust networking solution to securely connect people to private apps and services without VPNs.
 * 🟢 [Versa Networks](https://www.versa-networks.com/) - Delivers integrated SASE and SD-WAN solutions for secure, scalable, and simplified enterprise networking.
 * 🟢 [Wiz](https://www.wiz.io/) - A cloud security platform that gives full-stack visibility into cloud infrastructure and prioritizes risk across workloads, containers, and identities.
+* 🟢 [ZeroTier](https://www.zerotier.com/) - Provides secure peer-to-peer networking platform that connects devices, clouds, and networks globally without VPNs or complex infrastructure configuration.
 * 🟢 [zrok](https://zrok.io/) - Zero-trust tunneling platform for instant private or public sharing of applications, files, and services with automatic TLS and built-in security features.
 * 🟢 [Zscaler](https://www.zscaler.com/) - Zero trust SASE platform with AI-driven cybersecurity and cloud protection.
 
