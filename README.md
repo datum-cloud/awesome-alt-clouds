@@ -420,7 +420,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [Portkey](https://portkey.ai/) - AI Gateway control panel for production apps with unified gateway to 1600+ LLMs, observability, guardrails, and governance. OpenAI-compatible with semantic caching and SOC2/HIPAA/GDPR compliance.
 * 🟢 [Railway](https://railway.com/) - Deploy code instantly and manage environments in the cloud.
 * 🟢 [Release](https://release.com/) - Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.
-* 🟢 [Render](https://render.com/) - Unified cloud platform to build and host apps and websites.
+* 🟢 [Render](https://render.com/) - Unified cloud platform to build and host apps, websites, and agent workflows.
 * 🟢 [Roboflow](https://roboflow.com/) - Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.
 * 🟢 [Runloop](https://runloop.ai/) - Provides secure cloud-based development environments (devboxes) for AI coding agents with enterprise-grade infrastructure, benchmarking tools, and scalable sandbox execution.
 * 🟢 [Shuttle](https://www.shuttle.dev/) - Rust-native cloud platform for building and deploying backend services.
@@ -452,7 +452,7 @@ Authentication, authorization, secrets management, identity providers, and fraud
 * 🟢 [Keet](https://www.trykeet.com/) - Provides authentication solutions for AI agents, enabling them to perform actions on behalf of users across various platforms.
 * 🟢 [Keycloak](https://www.keycloak.org/) - An open-source identity and access management solution for modern applications and services.
 * 🟢 [Ory](https://www.ory.sh/) - Offers open-source identity infrastructure for authentication, authorization, and user management.
-* 🟢 [Oso](https://www.osohq.com/) - Authorization framework with policy-as-code (now part of Netflix).
+* 🟢 [Oso](https://www.osohq.com/) - Authorization framework with policy-as-code, permissions for agent security.
 * 🟢 [Pangea](https://pangea.cloud/) - Security services API platform for auth, vault, audit, and more.
 * 🟢 [Permit](https://www.permit.io/) - Authorization-as-a-Service platform for baking-in access control in minutes.
 * 🟢 [PropelAuth](https://www.propelauth.com/) - B2B authentication and user management for multi-tenant apps.
