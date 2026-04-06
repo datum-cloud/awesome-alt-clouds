@@ -77,6 +77,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Firmus](https://firmus.co/) - Cloud service provider.
 * 🟢 [FluidStack](https://www.fluidstack.io/) - Offers decentralized GPU cloud computing for AI and rendering workloads.
 * 🟢 [FriendliAI](https://friendli.ai/) - Fast AI inference platform with 2-3x speed boost. Deploy 490K+ models instantly. Serverless & dedicated GPU options. 99.99% SLA.
+* 🟡 [Freestyle](https://freestyle.sh) - Infrastructure for managing and executing AI-generated code through sandboxed VMs, Git repositories, and deployment services.
 * 🟢 [Gcore](https://gcore.com/) - Delivers edge and cloud services with global infrastructure.
 * 🟢 [Genesis Cloud](https://www.genesiscloud.com/pricing) - Offers sustainable, high-performance GPU cloud computing for AI workloads.
 * 🟢 [GMI Cloud](https://www.gmicloud.ai/) - Provides GPU cloud services optimized for AI and deep learning tasks.
