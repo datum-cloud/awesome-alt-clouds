@@ -243,6 +243,15 @@
     ]
   },
   {
+    "name": "Freestyle",
+    "url": "https://freestyle.sh",
+    "description": "Infrastructure for managing and executing AI-generated code through sandboxed VMs, Git repositories, and deployment services.",
+    "score": 2,
+    "categories": [
+      "Infrastructure Clouds"
+    ]
+  },
+  {
     "name": "Gcore",
     "url": "https://gcore.com/",
     "description": "Delivers edge and cloud services with global infrastructure.",
