@@ -2774,7 +2774,7 @@
   {
     "name": "Render",
     "url": "https://render.com/",
-    "description": "Unified cloud platform to build and host apps and websites.",
+    "description": "Unified cloud platform to build and host apps, websites, and agent workflows.",
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
@@ -3017,7 +3017,7 @@
   {
     "name": "Oso",
     "url": "https://www.osohq.com/",
-    "description": "Authorization framework with policy-as-code (now part of Netflix).",
+    "description": "Authorization framework with policy-as-code, permissions for agent security.",
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
