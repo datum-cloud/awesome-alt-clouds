@@ -375,6 +375,8 @@ AI-powered code editors, IDEs, no-code/low-code builders, and full-stack app gen
 
 Platform-as-a-service and managed hosting providers for deploying and scaling web applications, APIs, and services.
 
+* 🟢 [Skyhook](https://skyhook.io/) - PaaS for deploying and managing Kubernetes clusters and workloads with GitOps support, preview environments, and AI assistance.
+
 ## Developer Tooling & CI/CD
 
 Build systems, artifact registries, CI/CD pipelines, cloud dev environments, testing frameworks, feature flags, and developer productivity tools.
