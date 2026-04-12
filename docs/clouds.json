@@ -2394,6 +2394,15 @@
     ]
   },
   {
+    "name": "Skyhook",
+    "url": "https://skyhook.io/",
+    "description": "PaaS for deploying and managing Kubernetes clusters and workloads with GitOps support, preview environments, and AI assistance.",
+    "score": 3,
+    "categories": [
+      "PaaS & Application Hosting"
+    ]
+  },
+  {
     "name": "Bolt",
     "url": "https://bolt.new/",
     "description": "A browser-based AI development environment that lets you generate, edit, and deploy full-stack applications instantly using natural language prompts.",
