@@ -3348,6 +3348,15 @@
     ]
   },
   {
+    "name": "Plain",
+    "url": "https://www.plain.com/",
+    "description": "Provides AI-powered customer support infrastructure for B2B teams with unified workspace, multi-channel orchestration, and intelligent automation across Slack, Teams, email, and more.",
+    "score": 3,
+    "categories": [
+      "Customer, Marketing & eCommerce"
+    ]
+  },
+  {
     "name": "Shopify",
     "url": "https://www.shopify.com/",
     "description": "An all-in-one commerce platform to start, run, and grow a business.",
