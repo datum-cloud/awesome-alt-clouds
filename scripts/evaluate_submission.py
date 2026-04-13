@@ -145,26 +145,78 @@ def fetch_page(url, timeout=15, retries=2):
     return None, None
 
 
+def _jina_markdown_to_soup(markdown_text, base_url):
+    """Convert Jina Reader markdown output into a BeautifulSoup object.
+
+    Jina's default (markdown) mode executes JavaScript and returns rendered
+    content, but as markdown — not HTML.  This helper extracts all markdown
+    links and builds a minimal HTML document so that the existing
+    ``find_link_matching`` / ``find_all('a')`` logic keeps working.
+    """
+    # Extract markdown links: [text](url)
+    links = re.findall(r'\[([^\]]*)\]\((https?://[^)]+)\)', markdown_text)
+
+    # Build minimal HTML with the extracted links + full text
+    html_parts = ['<html><body>']
+    for text, href in links:
+        html_parts.append(f'<a href="{href}">{text}</a>')
+    # Preserve full text so that get_text() searches (SLA, pricing indicators) work
+    html_parts.append(f'<div>{markdown_text}</div>')
+    html_parts.append('</body></html>')
+
+    return BeautifulSoup('\n'.join(html_parts), 'html.parser')
+
+
+def _soup_has_meaningful_content(soup):
+    """Return True if the soup contains real rendered content, not just an SPA shell."""
+    text = soup.get_text(strip=True)
+    links = soup.find_all('a', href=True)
+    # An empty SPA shell typically has very little visible text and no links.
+    # A real page has substantial text (>200 chars) and at least one link.
+    return len(text) > 200 and len(links) >= 1
+
+
 def fetch_page_with_fallback(url, timeout=15, retries=2):
     """Try Jina Reader first (renders JS, bypasses CDN blocks), then requests as fallback.
     Returns (soup, final_url, fetch_method)."""
-    # Stage 1: Jina Reader with HTML mode — renders JS and handles Cloudflare-protected sites.
-    # X-Return-Format: html ensures we get proper HTML with <a> tags for link detection,
-    # not the default markdown format which breaks find_all('a', href=True).
     jina_url = f"https://r.jina.ai/{url}"
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (compatible; awesome-alt-clouds-bot/1.0)',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'X-Return-Format': 'html',
-    }
+
+    # Stage 1a: Jina Reader in default markdown mode — actually executes JavaScript
+    # and returns rendered content.  HTML mode (X-Return-Format: html) returns the
+    # raw HTML *before* JS execution, which is an empty shell for SPAs.
     try:
-        response = requests.get(jina_url, headers=headers, timeout=timeout, allow_redirects=True)
+        md_headers = {
+            'User-Agent': 'Mozilla/5.0 (compatible; awesome-alt-clouds-bot/1.0)',
+            'Accept': 'text/plain',
+        }
+        response = requests.get(jina_url, headers=md_headers, timeout=timeout, allow_redirects=True)
+        response.raise_for_status()
+        if response.text and len(response.text) > 200:
+            soup = _jina_markdown_to_soup(response.text, url)
+            if _soup_has_meaningful_content(soup):
+                return soup, url, "jina"
+            else:
+                print(f"Jina markdown response too thin for {url}, trying HTML mode")
+    except Exception as e:
+        print(f"Jina Reader (markdown) failed for {url}: {e}")
+
+    # Stage 1b: Jina Reader in HTML mode — works well for static / server-rendered sites
+    try:
+        html_headers = {
+            'User-Agent': 'Mozilla/5.0 (compatible; awesome-alt-clouds-bot/1.0)',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'X-Return-Format': 'html',
+        }
+        response = requests.get(jina_url, headers=html_headers, timeout=timeout, allow_redirects=True)
         response.raise_for_status()
         if response.text and len(response.text) > 100:
             soup = BeautifulSoup(response.text, 'html.parser')
-            return soup, url, "jina"
+            if _soup_has_meaningful_content(soup):
+                return soup, url, "jina"
+            else:
+                print(f"Jina HTML response is an empty SPA shell for {url}, falling back")
     except Exception as e:
-        print(f"Jina Reader failed for {url}: {e}")
+        print(f"Jina Reader (HTML) failed for {url}: {e}")
 
     # Stage 2: direct requests scraper (cheaper but fails on JS-heavy / CDN-blocked sites)
     soup, final_url = fetch_page(url, timeout=timeout, retries=retries)
@@ -190,6 +242,32 @@ def find_link_matching(soup, base_url, patterns):
     return None
 
 
+def _probe_url(url, timeout=10):
+    """Try to fetch a URL and return (soup, final_url) if it returns 200."""
+    try:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        }
+        response = requests.get(url, headers=headers, timeout=timeout, allow_redirects=True)
+        if response.status_code == 200 and len(response.text) > 200:
+            return BeautifulSoup(response.text, 'html.parser'), response.url
+    except Exception:
+        pass
+    return None, None
+
+
+def _check_pricing_indicators(soup):
+    """Return True if the page contains pricing indicators."""
+    text = soup.get_text().lower()
+    price_indicators = [
+        '$', '€', '£', '/month', '/mo', '/year', '/yr', '/hr',
+        'per hour', 'per month', 'per year', 'free tier', 'free plan',
+        'pay as you go', 'pay-as-you-go', 'usage-based',
+    ]
+    return any(indicator in text for indicator in price_indicators)
+
+
 def check_pricing_page(soup, base_url):
     """Check for transparent public pricing"""
     result = {
@@ -203,20 +281,60 @@ def check_pricing_page(soup, base_url):
 
     if pricing_url:
         pricing_soup, final_url = fetch_page(pricing_url)
+        if pricing_soup and _check_pricing_indicators(pricing_soup):
+            result['passed'] = True
+            result['evidence'] = f'Pricing page found at {final_url}'
+            return result
         if pricing_soup:
-            # Look for pricing indicators
-            text = pricing_soup.get_text().lower()
-            price_indicators = ['$', '€', '£', '/month', '/mo', '/year', '/hr', 'per hour', 'free tier', 'pay as you go']
+            result['evidence'] = 'Pricing page exists but no clear pricing found'
 
-            for indicator in price_indicators:
-                if indicator in text:
-                    result['passed'] = True
-                    result['evidence'] = f'Pricing page found at {final_url}'
-                    return result
+    # Fallback: check if the homepage itself contains pricing indicators
+    if soup and _check_pricing_indicators(soup):
+        result['passed'] = True
+        result['evidence'] = 'Pricing information found on homepage'
+        return result
 
-            result['evidence'] = f'Pricing page exists but no clear pricing found'
+    # Fallback: probe common pricing URL patterns directly
+    parsed = urlparse(base_url)
+    base = f"{parsed.scheme}://{parsed.netloc}"
+    for path in ['/pricing', '/plans', '/price', '/#pricing', '/#plans']:
+        probe_url = base + path
+        probe_soup, probe_final = _probe_url(probe_url)
+        if probe_soup and _check_pricing_indicators(probe_soup):
+            result['passed'] = True
+            result['evidence'] = f'Pricing page found at {probe_final}'
+            return result
 
     return result
+
+
+def _has_signup_indicators(soup):
+    """Return True if the page contains signup/self-service indicators."""
+    signup_patterns = [
+        'signup', 'sign-up', 'sign up', 'register', 'get started',
+        'start free', 'try free', 'try for free', 'create account',
+        'start building', 'get started free', 'free trial', 'start trial',
+        'sign in', 'log in', 'login', 'signin',
+    ]
+
+    # Check links and buttons
+    for a in soup.find_all(['a', 'button']):
+        text = a.get_text().lower().strip()
+        href = a.get('href', '').lower()
+        for pattern in signup_patterns:
+            if pattern in text or pattern in href:
+                return True
+
+    # Check forms
+    for form in soup.find_all('form'):
+        form_text = form.get_text().lower()
+        if any(p in form_text for p in ['email', 'sign up', 'register', 'password']):
+            return True
+
+    # Check full page text as last resort (for Jina markdown-converted pages)
+    text = soup.get_text().lower()
+    strong_signals = ['sign up', 'create account', 'start free trial', 'get started free', 'try for free']
+    return any(signal in text for signal in strong_signals)
 
 
 def check_self_service(soup, base_url):
@@ -227,29 +345,23 @@ def check_self_service(soup, base_url):
         'evidence': 'No self-service signup found'
     }
 
-    signup_patterns = ['signup', 'sign-up', 'register', 'get started', 'start free', 'try free', 'create account']
-
     if not soup:
         return result
 
-    # Check for signup links/buttons
-    for a in soup.find_all(['a', 'button']):
-        text = a.get_text().lower()
-        href = a.get('href', '').lower()
+    if _has_signup_indicators(soup):
+        result['passed'] = True
+        result['evidence'] = 'Self-service signup available'
+        return result
 
-        for pattern in signup_patterns:
-            if pattern in text or pattern in href:
-                result['passed'] = True
-                result['evidence'] = f'Self-service signup available'
-                return result
-
-    # Check for signup forms
-    forms = soup.find_all('form')
-    for form in forms:
-        form_text = form.get_text().lower()
-        if any(p in form_text for p in ['email', 'sign up', 'register']):
+    # Fallback: probe common signup URL patterns
+    parsed = urlparse(base_url)
+    base = f"{parsed.scheme}://{parsed.netloc}"
+    for path in ['/signup', '/sign-up', '/register', '/login', '/signin']:
+        probe_soup, probe_final = _probe_url(base + path)
+        if probe_soup:
+            # A 200 on a signup/login page is strong evidence
             result['passed'] = True
-            result['evidence'] = 'Signup form found on homepage'
+            result['evidence'] = f'Signup page found at {probe_final}'
             return result
 
     return result
