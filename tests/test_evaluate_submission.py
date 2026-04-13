@@ -39,11 +39,20 @@ class TestFetchPageWithFallback:
         assert method == 'requests'
 
     def test_falls_back_to_jina_when_requests_fails(self):
-        html = '<html><body><a href="/pricing">Pricing $9/mo</a><p>Sign up today for cloud infrastructure services with transparent pricing.</p></body></html>'
+        # Jina markdown mode returns rendered content with markdown links
+        markdown = (
+            'Title: Example Cloud\n\n'
+            'URL Source: https://example.com\n\n'
+            'Markdown Content:\n'
+            'Welcome to Example Cloud. We provide infrastructure services.\n'
+            '[Pricing](https://example.com/pricing) starts at $9/mo.\n'
+            '[Sign up](https://example.com/signup) today for transparent pricing.\n'
+            'Our platform offers reliable cloud infrastructure with guaranteed uptime.\n'
+        )
 
         def side_effect(url, **kwargs):
             if 'r.jina.ai' in url:
-                return _make_response(html)
+                return _make_response(markdown)
             raise requests.exceptions.ConnectionError('blocked')
 
         with patch('requests.get', side_effect=side_effect):
@@ -75,21 +84,22 @@ class TestFetchPageWithFallback:
 
         assert any('r.jina.ai' in u and 'example.com' in u for u in captured)
 
-    def test_jina_sends_html_format_header(self):
-        """Jina must request HTML (not markdown) so <a> tag link detection works."""
-        captured_kwargs = []
+    def test_jina_tries_markdown_mode_first(self):
+        """Jina markdown mode (which renders JS) should be tried before HTML mode."""
+        captured_calls = []
 
         def side_effect(url, **kwargs):
             if 'r.jina.ai' in url:
-                captured_kwargs.append(kwargs)
+                headers = kwargs.get('headers', {})
+                mode = 'html' if headers.get('X-Return-Format') == 'html' else 'markdown'
+                captured_calls.append(mode)
             raise requests.exceptions.ConnectionError('blocked')
 
         with patch('requests.get', side_effect=side_effect):
             ev.fetch_page_with_fallback('https://example.com')
 
-        assert captured_kwargs, "Jina was never called"
-        headers = captured_kwargs[0].get('headers', {})
-        assert headers.get('X-Return-Format') == 'html'
+        assert captured_calls, "Jina was never called"
+        assert captured_calls[0] == 'markdown', f"Expected markdown first, got: {captured_calls}"
 
     def test_jina_is_tried_before_requests(self):
         """Jina must be the first attempt in the cascade."""
@@ -300,11 +310,19 @@ class TestEvaluateServiceCascade:
         assert result['fetch_failed'] is False
 
     def test_uses_jina_when_requests_fails(self):
-        html = '<html><body><a href="/pricing">Pricing $9/mo</a><p>Sign up today for cloud infrastructure services with transparent pricing and a public SLA.</p></body></html>'
+        markdown = (
+            'Title: Example Cloud\n\n'
+            'URL Source: https://example.com\n\n'
+            'Markdown Content:\n'
+            'Welcome to Example Cloud. We provide infrastructure services.\n'
+            '[Pricing](https://example.com/pricing) starts at $9/mo.\n'
+            '[Sign up](https://example.com/signup) today for transparent pricing.\n'
+            'Our platform offers reliable cloud infrastructure with a public SLA and 99.9% uptime.\n'
+        )
 
         def side_effect(url, **kwargs):
             if 'r.jina.ai' in url:
-                return _make_response(html)
+                return _make_response(markdown)
             raise requests.exceptions.ConnectionError('blocked')
 
         with patch('requests.get', side_effect=side_effect):
