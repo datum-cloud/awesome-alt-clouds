@@ -58,6 +58,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Cycle.io](https://cycle.io/) - Provides a container orchestration platform for deploying applications.
 * 🟢 [DataPacket](https://www.datapacket.com/) - Offers high-performance infrastructure for bandwidth-intensive applications.
 * 🟢 [Digital Ocean](https://www.digitalocean.com/) - Provides cloud computing services with simplicity and scalability.
+* 🟢 [Driver](https://driver.dev/) - Provides browser automation infrastructure running Chrome instances on real consumer hardware with residential IPs and authentic fingerprints for AI agents and web scraping.
 * 🟢 [E2E Cloud](https://www.e2enetworks.com/) - Offers cloud infrastructure with GPU instances for AI and machine learning.
 * 🟢 [Empromptu](https://empromptu.ai) - Cloud service provider.
 * 🟢 [exe.dev](https://exe.dev/) - Modern VM hosting with sub-second starts and persistent disks. Built for AI coding agents with built-in HTTPS/auth and sharing.
@@ -317,6 +318,7 @@ APIs and platforms for running inference on foundation models and open-source LL
 * 🟢 [Fireworks.ai](https://fireworks.ai/) - Delivers high-speed, cost-effective inference APIs with support for open-source models.
 * 🟢 [Groq](https://groq.com/) - Provides ultra-fast inference on custom hardware designed for AI workloads.
 * 🟢 [LeptonAI](https://lepton.ai/) - Provides infrastructure and tools to build and deploy AI models at scale.
+* 🟡 [Nomadic](https://www.nomadicai.com/) - Provides AI-powered video analysis platform that automatically identifies rare events and edge cases in robotic, autonomous vehicle, and construction footage for training physical AI systems.
 * 🟡 [Parallel](https://parallel.ai/) - Provides AI-optimized web search and data extraction APIs with high accuracy for AI agents and applications to access structured web intelligence.
 * 🟢 [Portkey](https://portkey.ai/) - AI Gateway control panel for production apps with unified gateway to 1600+ LLMs, observability, guardrails, and governance. OpenAI-compatible with semantic caching and SOC2/HIPAA/GDPR compliance.
 * 🟢 [Replicate](https://replicate.com/) - Run machine learning models in the cloud with an API.
