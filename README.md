@@ -256,6 +256,7 @@ Connectors, pipelines, and transformation tools for moving and synchronizing dat
 * 🟢 [Airbyte](https://airbyte.com/) - Open-source data integration platform with 600+ connectors and CDK for custom integrations.
 * 🟡 [Arroyo](https://arroyo.dev) - Provides cloud-native stream processing engine built in Rust that enables real-time data transformation, filtering, aggregation, and joins using SQL with sub-second results.
 * 🟢 [dbt Labs](https://www.getdbt.com/) - Empowers data practitioners to transform data in their warehouses by developing, testing, and documenting analytics code.
+* 🟢 [Firecrawl](https://www.firecrawl.dev/) - Provides web scraping and crawling API that converts websites into clean markdown or structured data, specifically designed for AI applications and LLM training.
 * 🟢 [Fivetran](https://www.fivetran.com/) - Automated data integration platform with 300+ connectors and zero-maintenance ETL pipelines.
 * 🟢 [Redpanda](https://www.redpanda.com/) - Kafka-compatible streaming data platform with built-in identity controls and policy enforcement for AI workloads.
 * 🟢 [Rivery](https://rivery.io/) - No-code data integration platform with visual workflows and 150+ connectors with built-in transformations.
