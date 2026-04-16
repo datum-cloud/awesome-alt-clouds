@@ -1,0 +1,56 @@
+name: Split Multi-URL Submission
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  split:
+    # Only run on submission issues that contain more than one real URL
+    if: contains(github.event.issue.labels.*.name, 'submission')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Count submitted URLs
+        id: url-count
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          # Count lines matching "N. https://..." that are not placeholders ("-")
+          count=$(printf '%s' "$ISSUE_BODY" | grep -cP '^\d+\.\s+https?://' || true)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          if [ "${count:-0}" -gt 1 ]; then
+            echo "is_multi=true" >> "$GITHUB_OUTPUT"
+            echo "Multi-URL submission detected ($count URLs) — will split."
+          else
+            echo "is_multi=false" >> "$GITHUB_OUTPUT"
+            echo "Single-URL submission — nothing to split."
+          fi
+
+      - name: Checkout
+        if: steps.url-count.outputs.is_multi == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        if: steps.url-count.outputs.is_multi == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        if: steps.url-count.outputs.is_multi == 'true'
+        run: pip install requests beautifulsoup4 anthropic
+
+      - name: Split submission into child issues
+        if: steps.url-count.outputs.is_multi == 'true'
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/split_submission.py
