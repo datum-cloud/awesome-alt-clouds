@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
       - name: Checkout repository
@@ -38,6 +39,16 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          BRANCH="update-blog-posts-$(date +%Y%m%d)"
+          git checkout -b "$BRANCH"
           git add docs/index.html
           git commit -m "Update blog posts from Zac Smith's author page"
-          git push
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "Update blog posts from Zac Smith's author page" \
+            --body "Automated daily update of blog posts from Strapi/Zac Smith's author page." \
+            --base main \
+            --head "$BRANCH" \
+            --label "automated" || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
