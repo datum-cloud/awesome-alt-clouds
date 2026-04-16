@@ -454,6 +454,7 @@ Authentication, authorization, secrets management, identity providers, and fraud
 * 🟡 [Infisical](https://infisical.com/) - All-in-one secrets management platform for application secrets, certificates, and SSH keys with dynamic secret generation.
 * 🟢 [JumpCloud](https://jumpcloud.com/) - Offers a cloud directory platform for secure identity, access, and device management across various operating systems.
 * 🟢 [Keet](https://www.trykeet.com/) - Provides authentication solutions for AI agents, enabling them to perform actions on behalf of users across various platforms.
+* 🟡 [Keycard](https://www.keycard.ai/) - Provides identity-based access control and governance for autonomous AI agents, offering policy enforcement, credential management, and audit trails for agent interactions with APIs and data.
 * 🟢 [Keycloak](https://www.keycloak.org/) - An open-source identity and access management solution for modern applications and services.
 * 🟢 [Ory](https://www.ory.sh/) - Offers open-source identity infrastructure for authentication, authorization, and user management.
 * 🟢 [Oso](https://www.osohq.com/) - Authorization framework with policy-as-code, permissions for agent security.
