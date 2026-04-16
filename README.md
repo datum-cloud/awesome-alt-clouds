@@ -511,6 +511,7 @@ CRM, customer engagement, marketing automation, newsletter, and eCommerce platfo
 * 🟢 [Mirakl](https://www.mirakl.com/) - Powers platforms by connecting businesses, sellers, systems, partners, data and consumers.
 * 🟢 [Plain](https://www.plain.com/) - Provides AI-powered customer support infrastructure for B2B teams with unified workspace, multi-channel orchestration, and intelligent automation across Slack, Teams, email, and more.
 * 🟢 [Shopify](https://www.shopify.com/) - An all-in-one commerce platform to start, run, and grow a business.
+* 🟢 [Stonly](https://stonly.com/) - Provides a knowledge management platform for customer service with interactive guides, AI-powered chatbots, and process automation to help support agents and enable customer self-service.
 * 🟢 [Zendesk](https://www.zendesk.com/) - A platform that makes it easy for companies and customers to create connections.
 
 ## Communications, IoT & Media
