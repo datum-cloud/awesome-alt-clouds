@@ -8,30 +8,30 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 
 ## Contents
 
+* [Criteria](#criteria)
+* [Infrastructure Clouds](#infrastructure-clouds)
+* [GPU & AI Compute Clouds](#gpu--ai-compute-clouds)
+* [Security, Compliance & Sovereignty Clouds](#security-compliance--sovereignty-clouds)
+* [Unikernels & WebAssembly](#unikernels--webassembly)
+* [Databases & Storage](#databases--storage)
+* [Analytics & Data Warehousing](#analytics--data-warehousing)
+* [Observability & Monitoring](#observability--monitoring)
+* [Data Integration & ETL](#data-integration--etl)
+* [Workflow & Operations Clouds](#workflow--operations-clouds)
+* [Network & Connectivity Clouds](#network--connectivity-clouds)
+* [AI Inference & Model APIs](#ai-inference--model-apis)
 * [AI Assistants & Copilots](#ai-assistants--copilots)
 * [AI Coding & App Generation](#ai-coding--app-generation)
-* [AI Inference & Model APIs](#ai-inference--model-apis)
-* [Analytics & Data Warehousing](#analytics--data-warehousing)
-* [Authorization, Identity & Fraud](#authorization-identity--fraud)
-* [Cloud Adjacent & Infrastructure Tooling](#cloud-adjacent--infrastructure-tooling)
-* [Communications, IoT & Media](#communications-iot--media)
-* [Criteria](#criteria)
-* [Customer, Marketing & eCommerce](#customer-marketing--ecommerce)
-* [Data Integration & ETL](#data-integration--etl)
-* [Databases & Storage](#databases--storage)
-* [Decentralized & Web3 Compute](#decentralized--web3-compute)
-* [Developer Tooling & CI/CD](#developer-tooling--cicd)
-* [Emerging & Unverified Providers](#emerging--unverified-providers)
-* [GPU & AI Compute Clouds](#gpu--ai-compute-clouds)
-* [Infrastructure Clouds](#infrastructure-clouds)
-* [Monetization & Billing Clouds](#monetization--billing-clouds)
-* [Network & Connectivity Clouds](#network--connectivity-clouds)
-* [Observability & Monitoring](#observability--monitoring)
 * [PaaS & Application Hosting](#paas--application-hosting)
-* [Security, Compliance & Sovereignty Clouds](#security-compliance--sovereignty-clouds)
+* [Developer Tooling & CI/CD](#developer-tooling--cicd)
+* [Authorization, Identity & Fraud](#authorization-identity--fraud)
+* [Monetization & Billing Clouds](#monetization--billing-clouds)
+* [Customer, Marketing & eCommerce](#customer-marketing--ecommerce)
+* [Communications, IoT & Media](#communications-iot--media)
+* [Decentralized & Web3 Compute](#decentralized--web3-compute)
 * [Source Code Control](#source-code-control)
-* [Unikernels & WebAssembly](#unikernels--webassembly)
-* [Workflow & Operations Clouds](#workflow--operations-clouds)
+* [Cloud Adjacent & Infrastructure Tooling](#cloud-adjacent--infrastructure-tooling)
+* [Emerging & Unverified Providers](#emerging--unverified-providers)
 
 ## Criteria
 
@@ -511,6 +511,7 @@ CRM, customer engagement, marketing automation, newsletter, and eCommerce platfo
 * 🟢 [Mirakl](https://www.mirakl.com/) - Powers platforms by connecting businesses, sellers, systems, partners, data and consumers.
 * 🟢 [Plain](https://www.plain.com/) - Provides AI-powered customer support infrastructure for B2B teams with unified workspace, multi-channel orchestration, and intelligent automation across Slack, Teams, email, and more.
 * 🟢 [Shopify](https://www.shopify.com/) - An all-in-one commerce platform to start, run, and grow a business.
+* 🟢 [Stonly](https://stonly.com/) - Provides a knowledge management platform for customer service with interactive guides, AI-powered chatbots, and process automation to help support agents and enable customer self-service.
 * 🟢 [Zendesk](https://www.zendesk.com/) - A platform that makes it easy for companies and customers to create connections.
 
 ## Communications, IoT & Media
