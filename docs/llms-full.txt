@@ -1,0 +1,189 @@
+# Awesome Alt Clouds — Full Reference
+
+> Curated directory of 419+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
+
+## About This Directory
+
+- [Directory Homepage](https://www.alt-cloud.org/): Interactive searchable directory. Filter by category, search by name or description, sort alphabetically, by score, or by recently added date. All data loaded from /clouds.json.
+- [Submit a Service](https://www.alt-cloud.org/submit/): Web form that creates a GitHub issue, triggers automated AI evaluation (pricing page detection, signup detection, status page detection), and opens a PR on pass.
+- [GitHub Repository](https://github.com/datum-cloud/awesome-alt-clouds): Source of truth. Contains README.md (the awesome list), evaluation scripts in /scripts, and GitHub Actions workflows in .github/workflows.
+- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
+
+## Evaluation Criteria
+
+Services are scored against 3 criteria. A minimum score of 2/3 is required for inclusion:
+
+1. **Transparent Public Pricing** — a publicly accessible pricing page with actual prices or tiers visible without signing up or contacting sales.
+2. **Usage-Based Self-Service** — ability to sign up and start using the service without sales intervention; includes free trials, free tiers, or pay-as-you-go billing.
+3. **Production Indicators** — a public SLA commitment, status page, or uptime transparency indicator (e.g., statuspage.io, status subdomain).
+
+Score legend: 🟢 = 3/3 criteria met | 🟡 = 2/3 criteria met
+
+## Categories
+
+### Infrastructure Clouds (40 services)
+
+General-purpose cloud compute, bare metal, and VPS providers. The original "alt clouds" offering virtualized compute, dedicated servers, GPU instances, storage, and Kubernetes services outside the hyperscaler ecosystem.
+
+Key services: Digital Ocean, Vultr, Linode, Scaleway, Hetzner, Civo, Latitude.sh, Gcore, OVH Cloud, Rackspace, LeaseWeb, DataPacket, IONOS Cloud, Atlantic.net, Openmetal.io, Servers.com, NetActuate, Salad, Spheron Network, Sustainable Metal Cloud, QBO, Lyceum, E2E Cloud, Hivelocity, Cycle.io, Beam, Driver, exe.dev.
+
+### GPU & AI Compute Clouds (35 services)
+
+Specialized GPU compute platforms for AI training, model fine-tuning, and high-performance workloads. Includes serverless GPU inference, GPU clusters, and distributed compute networks.
+
+Key services: Lambda Labs, Vast.ai, CoreWeave, Together AI, Banana.dev, Baseten, Anyscale, Aethir, Crusoe Energy, Fluidstack, Groq (hardware), Hyperbolic, Runpod, Lepton AI, TensorDock, Genesis Cloud, NVIDIA DGX Cloud, Modal, SF Compute, Nebius, Fal.ai.
+
+### Databases & Storage (35 services)
+
+Managed database services, vector databases, distributed SQL, time series, object storage, and data warehousing — all self-service with public pricing.
+
+Key services: Neon, PlanetScale, CockroachDB, Turso, Xata, Upstash, Railway (Postgres), Supabase, Fly.io Postgres, SingleStore, Timescale, QuestDB, InfluxDB Cloud, Cloudflare R2, Backblaze B2, Storj, Filebase, MinIO Cloud, Tigris, Weaviate, Qdrant, Pinecone, Milvus, Chroma, Zilliz.
+
+### Developer Tooling & CI/CD (34 services)
+
+CI/CD platforms, code hosting, testing infrastructure, feature flags, error monitoring, and developer workflow automation.
+
+Key services: Railway, Render, Fly.io, Deno Deploy, Netlify, Vercel (alt), Cloudflare Workers/Pages, Zeet, Porter, Depot, BuildKite, Semaphore, Earthly, Trunk, Codecov, Sentry (alt), LaunchDarkly, Split.io, Statsig, Unleash, Flipt.
+
+### Authorization, Identity & Fraud (32 services)
+
+Authentication, authorization, identity management, secrets management, and fraud detection services with self-service onboarding.
+
+Key services: Auth0, Clerk, WorkOS, Stytch, Ory, Keycloak, FusionAuth, Descope, PropelAuth, Frontegg, JumpCloud, Okta (alt tiers), Duo, Pangea, Permit.io, Oso, Pomerium, Doppler, Infisical, HashiCorp Vault Cloud, Sift Science.
+
+### Observability & Monitoring (25 services)
+
+Logging, metrics, tracing, APM, uptime monitoring, and error tracking platforms with pay-as-you-go or free tiers.
+
+Key services: Datadog (alt tiers), Grafana Cloud, New Relic, Honeycomb, Axiom, Highlight, OpenObserve, Signoz, Mezmo, Coralogix, Better Uptime, Checkly, Cronitor, Oh Dear, Pagerduty, Incident.io, Rootly, FireHydrant.
+
+### AI Assistants & Copilots (23 services)
+
+AI assistant platforms, copilot APIs, and conversational AI services for building customer-facing or developer-facing intelligent experiences.
+
+Key services: Anthropic Claude API, OpenAI (alt tiers), Cohere, AI21 Labs, Mistral AI, Perplexity API, You.com API, Kapa.ai, Mendable, Chatbase, Dust, Superagent, Relevance AI.
+
+### Network & Connectivity Clouds (22 services)
+
+CDN, edge networking, DNS, DDoS protection, VPN, and private networking platforms.
+
+Key services: Cloudflare, Fastly, BunnyCDN, KeyCDN, Fly.io networking, Tailscale, ZeroTier, Netbird, Headscale, Ngrok, Cloudflare Tunnel, NS1, DNSimple, Route 53 (alt), Vercara.
+
+### Monetization & Billing Clouds (21 services)
+
+Payment processing, subscription management, usage-based billing, metering, and revenue operations platforms.
+
+Key services: Stripe, Paddle, Lago, OpenMeter, Amberflo, Metronome, Orb, Stigg, Chargebee, Recurly, Maxio, Autumn, Useautumn, Paymongo, Lemon Squeezy.
+
+### Customer, Marketing & eCommerce (15 services)
+
+CRM, customer support, marketing automation, and e-commerce infrastructure platforms.
+
+Key services: Plain, Helpscout, Zendesk (alt tiers), Front, Hubspot (alt), Customer.io, Attio, Clarify, Klaviyo, Stonly, Jasper, Beehiiv, Shopify, Mirakl, Formbricks.
+
+### AI Coding & App Generation (14 services)
+
+AI-assisted code generation, app scaffolding, and developer productivity tools built on LLMs.
+
+Key services: GitHub Copilot (alt), Tabnine, Codeium, Cursor, Continue, Sourcegraph Cody, Replit AI, Bolt.new, Lovable, v0, Devin, SWE-agent.
+
+### PaaS & Application Hosting (17 services)
+
+Platform-as-a-service offerings for deploying web applications, APIs, and backend services with minimal infrastructure management.
+
+Key services: Heroku (alt tiers), Railway, Render, Fly.io, Porter, Zeet, Back4app, Koyeb, Adaptable.io, Northflank, Qoddi, Coolify, CapRover, Caprover.
+
+### Security, Compliance & Sovereignty Clouds (15 services)
+
+Security-focused cloud platforms with compliance certifications, data sovereignty options, air-gapped deployments, and sovereign cloud infrastructure.
+
+Key services: Hetzner (GDPR), OVH (French sovereignty), Exoscale, Cleura, STACKIT, Open Telekom Cloud, Bluvalt, T-Systems, Cipherstack, Idrivee2, Wasabi (compliance), Backblaze (HIPAA).
+
+### Communications, IoT & Media (15 services)
+
+Messaging APIs, email delivery, SMS, voice, video, push notifications, and IoT connectivity platforms.
+
+Key services: Twilio (alt tiers), Vonage/Nexmo, MessageBird, Sinch, Plivo, Telnyx, Postmark, Sendgrid (alt), Mailgun, Resend, Knock, Courier, Novu, Ably, Pusher.
+
+### Observability & Monitoring (25 services)
+
+See category details above.
+
+### Analytics & Data Warehousing (16 services)
+
+Cloud data warehouses, analytics databases, business intelligence platforms, and data lakehouse services.
+
+Key services: MotherDuck, Tinybird, ClickHouse Cloud, Firebolt, StarRocks Cloud, Hydra, Databend, DuckDB Cloud, Plandek, Redpanda Cloud.
+
+### Workflow & Operations Clouds (16 services)
+
+Workflow orchestration, job queues, event streaming, and operations automation platforms.
+
+Key services: Inngest, Temporal Cloud, Trigger.dev, Zeplo, Winglang, Upstash Qstash, Quirrel, Windmill, n8n Cloud, Make (Integromat), Pipedream, Tray.io.
+
+### Data Integration & ETL (7 services)
+
+Data pipeline, ETL, CDC, and integration platforms with self-service onboarding.
+
+Key services: Airbyte Cloud, Fivetran (alt tiers), Stitch, Segment (alt), Hightouch, Census, Polytomic, Firecrawl.
+
+### AI Inference & Model APIs (11 services)
+
+Hosted inference APIs for open-source and proprietary models, optimized for speed, cost, and scale.
+
+Key services: Groq, Fireworks.ai, Together AI, Replicate, Roboflow, Portkey, LeptonAI, Parallel, Cloudglue, Nomadic, Anchor.
+
+### Unikernels & WebAssembly (4 services)
+
+Edge computing, WebAssembly runtimes, and unikernel deployment platforms.
+
+Key services: Fermyon, Cosmonic, NanoVMs, Unikraft.
+
+### Source Code Control (3 services)
+
+Git hosting platforms with CI/CD integration and collaboration features.
+
+Key services: GitLab, Gitea Cloud, Sourcehut.
+
+### Cloud Adjacent & Infrastructure Tooling (4 services)
+
+Tools and platforms that extend or manage cloud infrastructure without being cloud providers themselves.
+
+Key services: Pulumi Cloud, Spacelift, env0, Scalr.
+
+### Decentralized & Web3 Compute (1 service)
+
+Blockchain-based and decentralized compute platforms.
+
+Key services: Akash Network.
+
+### Emerging & Unverified Providers (14 services)
+
+Services that passed automated evaluation but have limited track record or are early-stage. Scored 🟡 (2/3 criteria). Included for discovery; verify independently before production use.
+
+## Submission & Evaluation Pipeline
+
+- Submission form at https://www.alt-cloud.org/submit/ creates a GitHub issue
+- For single-URL submissions: evaluate-submission.yml workflow runs automatically
+- For multi-URL submissions: split-submission.yml creates one child issue per URL, evaluates each independently
+- Evaluation uses Python scripts with web scraping (Jina Reader + requests) and Claude AI for metadata generation
+- Passing services (score ≥ 2) get an automatic PR; failing services get a needs-review label for admin override
+- Admin override: comment `/approve 3` on any issue to force-approve with score override
+- clouds.json is regenerated on every PR merge; dateAdded comes from git history
+
+## Key Facts
+
+- 419+ services as of April 2026
+- 23 categories covering the full developer cloud ecosystem
+- Minimum inclusion score: 2/3 criteria
+- Machine-readable data: https://www.alt-cloud.org/clouds.json
+- Source: https://github.com/datum-cloud/awesome-alt-clouds
+- License: CC BY 4.0
+- Maintained by: Datum Cloud (https://github.com/datum-cloud)
+- Accepts community submissions via https://www.alt-cloud.org/submit/
+
+## Contact
+
+- Website: https://www.alt-cloud.org
+- GitHub Issues: https://github.com/datum-cloud/awesome-alt-clouds/issues
+- Submit a service: https://www.alt-cloud.org/submit/
