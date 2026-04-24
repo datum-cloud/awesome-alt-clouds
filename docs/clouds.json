@@ -6,7 +6,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-02-20"
   },
   {
     "name": "Atlantic.net",
@@ -15,7 +16,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Axiom",
@@ -24,7 +26,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-02-09"
   },
   {
     "name": "Beam",
@@ -33,7 +36,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Browser-Use",
@@ -42,7 +46,8 @@
     "score": 2,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-03-03"
   },
   {
     "name": "Civo",
@@ -51,7 +56,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Cycle.io",
@@ -60,7 +66,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "DataPacket",
@@ -69,7 +76,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Digital Ocean",
@@ -78,7 +86,18 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Driver",
+    "url": "https://driver.dev/",
+    "description": "Provides browser automation infrastructure running Chrome instances on real consumer hardware with residential IPs and authentic fingerprints for AI agents and web scraping.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-04-13"
   },
   {
     "name": "E2E Cloud",
@@ -87,7 +106,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Empromptu",
@@ -96,7 +116,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-02-20"
   },
   {
     "name": "exe.dev",
@@ -105,7 +126,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Firmus",
@@ -114,7 +136,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-02-18"
   },
   {
     "name": "Freestyle",
@@ -123,7 +146,8 @@
     "score": 2,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-04-06"
   },
   {
     "name": "Gcore",
@@ -132,7 +156,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Hetzner",
@@ -141,7 +166,8 @@
     "score": 2,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Hivelocity",
@@ -150,7 +176,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "IONOS Cloud",
@@ -159,7 +186,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Kernel",
@@ -168,7 +196,8 @@
     "score": 2,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-03-03"
   },
   {
     "name": "Latitude.sh",
@@ -177,7 +206,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "LeaseWeb",
@@ -186,7 +216,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Linode",
@@ -195,7 +226,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Lyceum",
@@ -204,7 +236,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Namespace",
@@ -213,7 +246,8 @@
     "score": 2,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-02-18"
   },
   {
     "name": "NetActuate",
@@ -222,7 +256,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Openmetal.io",
@@ -231,7 +266,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "OVH Cloud",
@@ -240,7 +276,8 @@
     "score": 2,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "QBO",
@@ -249,7 +286,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-10"
   },
   {
     "name": "Rackdog",
@@ -258,7 +296,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-02-18"
   },
   {
     "name": "Rackspace",
@@ -267,7 +306,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Salad",
@@ -276,7 +316,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Scaleway",
@@ -285,7 +326,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Seeweb",
@@ -294,7 +336,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Sent",
@@ -303,7 +346,8 @@
     "score": 2,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-03-03"
   },
   {
     "name": "Servers.com",
@@ -312,7 +356,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Spheron Network",
@@ -321,7 +366,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Sprites",
@@ -330,7 +376,8 @@
     "score": 2,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2026-03-02"
   },
   {
     "name": "Sustainable Metal Cloud",
@@ -339,7 +386,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Vultr",
@@ -348,7 +396,8 @@
     "score": 3,
     "categories": [
       "Infrastructure Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Aethir",
@@ -357,7 +406,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Anyscale",
@@ -366,7 +416,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Banana.dev",
@@ -375,7 +426,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Baseten",
@@ -384,7 +436,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Cerebrium",
@@ -393,7 +446,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "CoreWeave",
@@ -402,7 +456,8 @@
     "score": 2,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Crusoe Energy",
@@ -411,7 +466,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Cudo Compute",
@@ -420,7 +476,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Datacrunch.io",
@@ -429,7 +486,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Fal.ai",
@@ -438,7 +496,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "FluidStack",
@@ -447,7 +506,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "FriendliAI",
@@ -456,7 +516,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Genesis Cloud",
@@ -465,7 +526,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "GMI Cloud",
@@ -474,7 +536,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "GPU CLI",
@@ -483,7 +546,8 @@
     "score": 2,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2026-02-09"
   },
   {
     "name": "HydraHost",
@@ -492,7 +556,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Hyperbolic",
@@ -501,7 +566,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Hyperstack",
@@ -510,7 +576,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Lambda Labs",
@@ -519,7 +586,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "LeaderGPU",
@@ -528,7 +596,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Lightning.ai",
@@ -537,7 +606,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Modal",
@@ -546,7 +616,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Nebius",
@@ -555,7 +626,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "NeevCloud",
@@ -564,7 +636,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "NextGen Cloud",
@@ -573,7 +646,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Paperspace",
@@ -582,7 +656,8 @@
     "score": 2,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Parasail",
@@ -591,7 +666,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Runpod",
@@ -600,7 +676,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Shadeform",
@@ -609,7 +686,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "TensorDock",
@@ -618,7 +696,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "TensorWave",
@@ -627,7 +706,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Thunder Compute",
@@ -636,7 +716,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-30"
   },
   {
     "name": "Turboscale",
@@ -645,7 +726,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Vast.ai",
@@ -654,7 +736,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Voltage Park",
@@ -663,7 +746,8 @@
     "score": 3,
     "categories": [
       "GPU & AI Compute Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "CrowdStrike",
@@ -672,7 +756,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Fortinet",
@@ -681,7 +766,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "FPT Vietnam",
@@ -690,7 +776,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "GMO GPU Cloud",
@@ -699,7 +786,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Jottacloud",
@@ -708,7 +796,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "metalstack.cloud",
@@ -717,7 +806,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Netskope",
@@ -726,7 +816,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Ola Krutrim",
@@ -735,7 +826,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Operant",
@@ -744,7 +836,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Reliance",
@@ -753,7 +846,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Sakura Internet",
@@ -762,7 +856,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "T-Systems",
@@ -771,7 +866,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Wiz",
@@ -780,7 +876,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Yotta",
@@ -789,7 +886,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Zscaler",
@@ -798,7 +896,8 @@
     "score": 3,
     "categories": [
       "Security, Compliance & Sovereignty Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Cosmonic",
@@ -807,7 +906,8 @@
     "score": 3,
     "categories": [
       "Unikernels & WebAssembly"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "KraftCloud",
@@ -816,7 +916,8 @@
     "score": 3,
     "categories": [
       "Unikernels & WebAssembly"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "NanoVMs",
@@ -825,7 +926,8 @@
     "score": 3,
     "categories": [
       "Unikernels & WebAssembly"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Wasmer",
@@ -834,7 +936,8 @@
     "score": 3,
     "categories": [
       "Unikernels & WebAssembly"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Aiven",
@@ -843,7 +946,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Algolia",
@@ -852,7 +956,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "CedarDB",
@@ -861,7 +966,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Cockroach Labs",
@@ -870,7 +976,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Convex",
@@ -879,7 +986,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Couchbase",
@@ -888,7 +996,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Diffbot",
@@ -897,7 +1006,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Ditto",
@@ -906,7 +1016,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Gel",
@@ -915,7 +1026,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Hasura",
@@ -924,7 +1036,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Hydrolix",
@@ -933,7 +1046,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "InfluxData",
@@ -942,7 +1056,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Materialize",
@@ -951,7 +1066,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Meilisearch",
@@ -960,7 +1076,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Momento",
@@ -969,7 +1086,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "MongoDB",
@@ -978,7 +1096,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Neo4j",
@@ -987,7 +1106,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Neon",
@@ -996,7 +1116,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Planetscale",
@@ -1005,7 +1126,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Prisma",
@@ -1014,7 +1136,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "QuestDB",
@@ -1023,7 +1146,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "ReadySet",
@@ -1032,7 +1156,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Redis",
@@ -1041,7 +1166,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "SingleStore",
@@ -1050,7 +1176,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Steampipe",
@@ -1059,7 +1186,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Storadera",
@@ -1068,7 +1196,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Supabase",
@@ -1077,7 +1206,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "SurrealDB",
@@ -1086,7 +1216,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "TigerData",
@@ -1095,7 +1226,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Tigris",
@@ -1104,7 +1236,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Turso",
@@ -1113,7 +1246,8 @@
     "score": 2,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Typesense",
@@ -1122,7 +1256,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Upstash",
@@ -1131,7 +1266,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Wasabi",
@@ -1140,7 +1276,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Xata",
@@ -1149,7 +1286,8 @@
     "score": 3,
     "categories": [
       "Databases & Storage"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Amplitude",
@@ -1158,7 +1296,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "ClickHouse",
@@ -1167,7 +1306,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Databricks",
@@ -1176,7 +1316,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Domo",
@@ -1185,7 +1326,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "DuckDB",
@@ -1194,7 +1336,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Fathom",
@@ -1203,7 +1346,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Firebolt",
@@ -1212,7 +1356,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "FullStory",
@@ -1221,7 +1366,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Heap",
@@ -1230,7 +1376,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Mixpanel",
@@ -1239,7 +1386,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "MotherDuck",
@@ -1248,7 +1396,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Plausible",
@@ -1257,7 +1406,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "PostHog",
@@ -1266,7 +1416,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Snowflake",
@@ -1275,7 +1426,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Teradata",
@@ -1284,7 +1436,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Tinybird",
@@ -1293,7 +1446,8 @@
     "score": 3,
     "categories": [
       "Analytics & Data Warehousing"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "BetterStack",
@@ -1302,7 +1456,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Checkly",
@@ -1311,7 +1466,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Chronosphere",
@@ -1320,7 +1476,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Comet",
@@ -1329,7 +1486,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Coralogix",
@@ -1338,7 +1496,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Datadog",
@@ -1347,7 +1506,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Dynatrace",
@@ -1356,7 +1516,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Elastic",
@@ -1365,7 +1526,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Gigapipe",
@@ -1374,7 +1536,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2026-03-03"
   },
   {
     "name": "Grafana",
@@ -1383,7 +1546,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "groundcover",
@@ -1392,7 +1556,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Helicone",
@@ -1401,7 +1566,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Highlight",
@@ -1410,7 +1576,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Honeycomb",
@@ -1419,7 +1586,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Kentik",
@@ -1428,7 +1596,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Laminar",
@@ -1437,7 +1606,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "LogRocket",
@@ -1446,7 +1616,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Logz.io",
@@ -1455,7 +1626,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Mezmo",
@@ -1464,7 +1636,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "New Relic",
@@ -1473,7 +1646,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "OpenStatus",
@@ -1482,7 +1656,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Sentry",
@@ -1491,7 +1666,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Splunk",
@@ -1500,7 +1676,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Sumo Logic",
@@ -1509,7 +1686,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Weights & Biases",
@@ -1518,7 +1696,8 @@
     "score": 3,
     "categories": [
       "Observability & Monitoring"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Airbyte",
@@ -1527,7 +1706,8 @@
     "score": 3,
     "categories": [
       "Data Integration & ETL"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Arroyo",
@@ -1536,7 +1716,8 @@
     "score": 2,
     "categories": [
       "Data Integration & ETL"
-    ]
+    ],
+    "dateAdded": "2026-02-25"
   },
   {
     "name": "dbt Labs",
@@ -1545,7 +1726,18 @@
     "score": 3,
     "categories": [
       "Data Integration & ETL"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Firecrawl",
+    "url": "https://www.firecrawl.dev/",
+    "description": "Provides web scraping and crawling API that converts websites into clean markdown or structured data, specifically designed for AI applications and LLM training.",
+    "score": 3,
+    "categories": [
+      "Data Integration & ETL"
+    ],
+    "dateAdded": "2026-04-14"
   },
   {
     "name": "Fivetran",
@@ -1554,7 +1746,8 @@
     "score": 3,
     "categories": [
       "Data Integration & ETL"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Redpanda",
@@ -1563,7 +1756,8 @@
     "score": 3,
     "categories": [
       "Data Integration & ETL"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Rivery",
@@ -1572,7 +1766,8 @@
     "score": 3,
     "categories": [
       "Data Integration & ETL"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Alloy Automation",
@@ -1581,7 +1776,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Dagster",
@@ -1590,7 +1786,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Fastn",
@@ -1599,7 +1796,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Inngest",
@@ -1608,7 +1806,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Kestra",
@@ -1617,7 +1816,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Mabl",
@@ -1626,7 +1826,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Miter",
@@ -1635,7 +1836,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "n8n",
@@ -1644,7 +1846,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "PagerDuty",
@@ -1653,7 +1856,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Prefect",
@@ -1662,7 +1866,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Ryvn",
@@ -1671,7 +1876,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "ServiceNow",
@@ -1680,7 +1886,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Temporal",
@@ -1689,7 +1896,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Tines",
@@ -1698,7 +1906,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Windmill",
@@ -1707,7 +1916,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Zapier",
@@ -1716,7 +1926,8 @@
     "score": 3,
     "categories": [
       "Workflow & Operations Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Akamai",
@@ -1725,7 +1936,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Approximated",
@@ -1734,7 +1946,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Aviatrix",
@@ -1743,7 +1956,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "c/Side",
@@ -1752,7 +1966,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Cloudbrink",
@@ -1761,7 +1976,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Cloudflare",
@@ -1770,7 +1986,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "CtrlDNS",
@@ -1779,7 +1996,8 @@
     "score": 2,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2026-02-13"
   },
   {
     "name": "Fastly",
@@ -1788,7 +2006,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "IPinfo",
@@ -1797,7 +2016,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2026-03-23"
   },
   {
     "name": "Kong",
@@ -1806,7 +2026,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "LocalXpose",
@@ -1815,7 +2036,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Macrometa",
@@ -1824,7 +2046,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Megaport",
@@ -1833,7 +2056,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "NetBox Cloud",
@@ -1842,7 +2066,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Netmaker",
@@ -1851,7 +2076,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Pangolin",
@@ -1860,7 +2086,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Subspace",
@@ -1869,7 +2096,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Tailscale",
@@ -1878,7 +2106,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Twingate",
@@ -1887,7 +2116,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Versa Networks",
@@ -1896,7 +2126,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "ZeroTier",
@@ -1905,7 +2136,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2026-03-31"
   },
   {
     "name": "zrok",
@@ -1914,7 +2146,8 @@
     "score": 3,
     "categories": [
       "Network & Connectivity Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Anchor",
@@ -1923,7 +2156,18 @@
     "score": 2,
     "categories": [
       "AI Inference & Model APIs"
-    ]
+    ],
+    "dateAdded": "2026-03-20"
+  },
+  {
+    "name": "Cloudglue",
+    "url": "https://cloudglue.dev/",
+    "description": "Provides a video context engine API that structures, searches, and enables AI reasoning over video content for developers building chatbots, RAG systems, and video analysis applications.",
+    "score": 2,
+    "categories": [
+      "AI Inference & Model APIs"
+    ],
+    "dateAdded": "2026-04-16"
   },
   {
     "name": "Fireworks.ai",
@@ -1932,7 +2176,8 @@
     "score": 3,
     "categories": [
       "AI Inference & Model APIs"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Groq",
@@ -1941,7 +2186,8 @@
     "score": 3,
     "categories": [
       "AI Inference & Model APIs"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "LeptonAI",
@@ -1950,7 +2196,18 @@
     "score": 3,
     "categories": [
       "AI Inference & Model APIs"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Nomadic",
+    "url": "https://www.nomadicai.com/",
+    "description": "Provides AI-powered video analysis platform that automatically identifies rare events and edge cases in robotic, autonomous vehicle, and construction footage for training physical AI systems.",
+    "score": 2,
+    "categories": [
+      "AI Inference & Model APIs"
+    ],
+    "dateAdded": "2026-04-13"
   },
   {
     "name": "Parallel",
@@ -1959,7 +2216,8 @@
     "score": 2,
     "categories": [
       "AI Inference & Model APIs"
-    ]
+    ],
+    "dateAdded": "2026-03-31"
   },
   {
     "name": "Portkey",
@@ -1968,7 +2226,8 @@
     "score": 3,
     "categories": [
       "AI Inference & Model APIs"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Replicate",
@@ -1977,7 +2236,8 @@
     "score": 3,
     "categories": [
       "AI Inference & Model APIs"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Roboflow",
@@ -1986,7 +2246,8 @@
     "score": 3,
     "categories": [
       "AI Inference & Model APIs"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Together.ai",
@@ -1995,7 +2256,8 @@
     "score": 3,
     "categories": [
       "AI Inference & Model APIs"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "AssemblyAI",
@@ -2004,7 +2266,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Bluedot",
@@ -2013,7 +2276,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Character.ai",
@@ -2022,7 +2286,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "ChatGPT by OpenAI",
@@ -2031,7 +2296,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Chatsonic",
@@ -2040,7 +2306,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Claude",
@@ -2049,7 +2316,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Cohere",
@@ -2058,7 +2326,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "DeepAI",
@@ -2067,7 +2336,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Deepseek",
@@ -2076,7 +2346,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "ElevenLabs",
@@ -2085,7 +2356,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Elicit",
@@ -2094,7 +2366,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Kimi AI",
@@ -2103,7 +2376,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2026-02-09"
   },
   {
     "name": "Layer 9",
@@ -2112,7 +2386,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "NeuBird",
@@ -2121,7 +2396,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Parahelp",
@@ -2130,7 +2406,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Perplexity",
@@ -2139,7 +2416,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Playground",
@@ -2148,7 +2426,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Poe",
@@ -2157,7 +2436,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Resolve.ai",
@@ -2166,7 +2446,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "SharonAI",
@@ -2175,7 +2456,8 @@
     "score": 2,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2026-02-14"
   },
   {
     "name": "Supertrace AI",
@@ -2184,7 +2466,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Surfer AI",
@@ -2193,7 +2476,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Tavus",
@@ -2202,7 +2486,8 @@
     "score": 3,
     "categories": [
       "AI Assistants & Copilots"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Base44",
@@ -2211,7 +2496,8 @@
     "score": 3,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Bolt",
@@ -2220,7 +2506,8 @@
     "score": 3,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Codev",
@@ -2229,7 +2516,8 @@
     "score": 3,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "CopilotKit",
@@ -2238,7 +2526,8 @@
     "score": 3,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Cursor",
@@ -2247,7 +2536,8 @@
     "score": 3,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Git AI",
@@ -2256,7 +2546,8 @@
     "score": 2,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2026-03-31"
   },
   {
     "name": "GitHub Copilot",
@@ -2265,7 +2556,8 @@
     "score": 3,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Marblism",
@@ -2274,7 +2566,8 @@
     "score": 3,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Mesa",
@@ -2283,7 +2576,8 @@
     "score": 3,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "OB-1",
@@ -2292,7 +2586,8 @@
     "score": 3,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2026-03-31"
   },
   {
     "name": "Softgen",
@@ -2301,7 +2596,8 @@
     "score": 3,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Tabnine",
@@ -2310,7 +2606,8 @@
     "score": 3,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "v0",
@@ -2319,7 +2616,8 @@
     "score": 3,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Windsurf",
@@ -2328,7 +2626,8 @@
     "score": 3,
     "categories": [
       "AI Coding & App Generation"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Deno Deploy",
@@ -2337,7 +2636,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Flightcontrol",
@@ -2346,7 +2646,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Fly",
@@ -2355,7 +2656,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Gadget",
@@ -2364,7 +2666,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Heroku",
@@ -2373,7 +2676,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Koyeb",
@@ -2382,7 +2686,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Netlify",
@@ -2391,7 +2696,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Northflank",
@@ -2400,7 +2706,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Pantheon",
@@ -2409,7 +2716,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Platform.sh",
@@ -2418,7 +2726,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Porter",
@@ -2427,7 +2736,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Puter",
@@ -2436,7 +2746,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Railway",
@@ -2445,7 +2756,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Render",
@@ -2454,7 +2766,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Shuttle",
@@ -2463,7 +2776,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Skyhook",
@@ -2472,7 +2786,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2026-04-12"
   },
   {
     "name": "Upsun",
@@ -2481,7 +2796,8 @@
     "score": 3,
     "categories": [
       "PaaS & Application Hosting"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Browserbase",
@@ -2490,7 +2806,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "browserless",
@@ -2499,7 +2816,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Bubble",
@@ -2508,7 +2826,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Cloudsmith",
@@ -2517,7 +2836,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Coder",
@@ -2526,7 +2846,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Cypress",
@@ -2535,7 +2856,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Depot",
@@ -2544,7 +2866,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "DevZero",
@@ -2553,7 +2876,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Dosu",
@@ -2562,7 +2886,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "E2B",
@@ -2571,7 +2896,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Fabrica",
@@ -2580,7 +2906,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Firefly",
@@ -2589,7 +2916,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Flagsmith",
@@ -2598,7 +2926,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Gammacode",
@@ -2607,7 +2936,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Gitpod",
@@ -2616,7 +2946,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "HashiCorp Cloud Platform",
@@ -2625,7 +2956,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Helix",
@@ -2634,7 +2966,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-03-02"
   },
   {
     "name": "JetBrains",
@@ -2643,7 +2976,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Lightrun",
@@ -2652,7 +2986,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Linear",
@@ -2661,7 +2996,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Mintlify",
@@ -2670,7 +3006,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Notion",
@@ -2679,7 +3016,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Outerbase",
@@ -2688,7 +3026,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Prismic",
@@ -2697,7 +3036,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Release",
@@ -2706,7 +3046,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Replit",
@@ -2715,7 +3056,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Retool",
@@ -2724,7 +3066,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Runloop",
@@ -2733,7 +3076,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-02-23"
   },
   {
     "name": "StackBlitz",
@@ -2742,7 +3086,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Tensorlake",
@@ -2751,7 +3096,8 @@
     "score": 2,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-03-06"
   },
   {
     "name": "Tiptap",
@@ -2760,7 +3106,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Ubicloud",
@@ -2769,7 +3116,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Unleash",
@@ -2778,7 +3126,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Warp",
@@ -2787,7 +3136,8 @@
     "score": 3,
     "categories": [
       "Developer Tooling & CI/CD"
-    ]
+    ],
+    "dateAdded": "2026-02-13"
   },
   {
     "name": "Akeyless",
@@ -2796,7 +3146,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Aserto",
@@ -2805,7 +3156,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Auth0",
@@ -2814,7 +3166,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Authzed",
@@ -2823,7 +3176,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Bolster",
@@ -2832,7 +3186,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Boundary",
@@ -2841,7 +3196,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Cerbos",
@@ -2850,7 +3206,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "CipherStash",
@@ -2859,7 +3216,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Clerk",
@@ -2868,7 +3226,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Descope",
@@ -2877,7 +3236,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Doppler",
@@ -2886,7 +3246,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Duo",
@@ -2895,7 +3256,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Frontegg",
@@ -2904,7 +3266,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "FusionAuth",
@@ -2913,7 +3276,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Infisical",
@@ -2922,7 +3286,8 @@
     "score": 2,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "JumpCloud",
@@ -2931,7 +3296,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Keet",
@@ -2940,7 +3306,18 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Keycard",
+    "url": "https://www.keycard.ai/",
+    "description": "Provides identity-based access control and governance for autonomous AI agents, offering policy enforcement, credential management, and audit trails for agent interactions with APIs and data.",
+    "score": 2,
+    "categories": [
+      "Authorization, Identity & Fraud"
+    ],
+    "dateAdded": "2026-04-16"
   },
   {
     "name": "Keycloak",
@@ -2949,7 +3326,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Ory",
@@ -2958,7 +3336,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Oso",
@@ -2967,7 +3346,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Pangea",
@@ -2976,7 +3356,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Permit",
@@ -2985,7 +3366,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Pomerium",
@@ -2994,7 +3376,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "PropelAuth",
@@ -3003,7 +3386,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Sift Science",
@@ -3012,7 +3396,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "StrongDM",
@@ -3021,7 +3406,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Stytch",
@@ -3030,7 +3416,8 @@
     "score": 2,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Teleport",
@@ -3039,7 +3426,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Warrant",
@@ -3048,7 +3436,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "WorkOS",
@@ -3057,7 +3446,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Xpander.ai",
@@ -3066,7 +3456,8 @@
     "score": 3,
     "categories": [
       "Authorization, Identity & Fraud"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Amberflo",
@@ -3075,7 +3466,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Autumn",
@@ -3084,7 +3476,8 @@
     "score": 2,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2026-03-31"
   },
   {
     "name": "Bill",
@@ -3093,7 +3486,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Dodo Payments",
@@ -3102,7 +3496,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Lago",
@@ -3111,7 +3506,8 @@
     "score": 2,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Lemon Squeezy",
@@ -3120,7 +3516,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "m3ter",
@@ -3129,7 +3526,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Maxio",
@@ -3138,7 +3536,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Mercury",
@@ -3147,7 +3546,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-26"
   },
   {
     "name": "Metronome",
@@ -3156,7 +3556,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "N26",
@@ -3165,7 +3566,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "OpenMeter",
@@ -3174,7 +3576,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Orb",
@@ -3183,7 +3586,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Recurly",
@@ -3192,7 +3596,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Salesforce Revenue Cloud",
@@ -3201,7 +3606,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Schematic",
@@ -3210,7 +3616,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Stigg",
@@ -3219,7 +3626,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Stripe",
@@ -3228,7 +3636,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Togai",
@@ -3237,7 +3646,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "UniBee",
@@ -3246,7 +3656,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Wise",
@@ -3255,7 +3666,8 @@
     "score": 3,
     "categories": [
       "Monetization & Billing Clouds"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Attio",
@@ -3264,7 +3676,8 @@
     "score": 3,
     "categories": [
       "Customer, Marketing & eCommerce"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Beehiiv",
@@ -3273,7 +3686,8 @@
     "score": 3,
     "categories": [
       "Customer, Marketing & eCommerce"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Clarify",
@@ -3282,7 +3696,8 @@
     "score": 3,
     "categories": [
       "Customer, Marketing & eCommerce"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Customer.io",
@@ -3291,7 +3706,8 @@
     "score": 3,
     "categories": [
       "Customer, Marketing & eCommerce"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Formbricks",
@@ -3300,7 +3716,8 @@
     "score": 3,
     "categories": [
       "Customer, Marketing & eCommerce"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Front",
@@ -3309,7 +3726,8 @@
     "score": 3,
     "categories": [
       "Customer, Marketing & eCommerce"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Helpscout",
@@ -3318,7 +3736,8 @@
     "score": 3,
     "categories": [
       "Customer, Marketing & eCommerce"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Hubspot",
@@ -3327,7 +3746,18 @@
     "score": 3,
     "categories": [
       "Customer, Marketing & eCommerce"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Jasper",
+    "url": "https://www.jasper.ai/",
+    "description": "Provides AI-powered marketing automation platform with intelligent agents and content pipelines for creating, scaling, and managing brand-consistent marketing content across all channels.",
+    "score": 3,
+    "categories": [
+      "Customer, Marketing & eCommerce"
+    ],
+    "dateAdded": "2026-04-24"
   },
   {
     "name": "Klaviyo",
@@ -3336,7 +3766,8 @@
     "score": 3,
     "categories": [
       "Customer, Marketing & eCommerce"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Mirakl",
@@ -3345,7 +3776,8 @@
     "score": 3,
     "categories": [
       "Customer, Marketing & eCommerce"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Plain",
@@ -3354,7 +3786,8 @@
     "score": 3,
     "categories": [
       "Customer, Marketing & eCommerce"
-    ]
+    ],
+    "dateAdded": "2026-04-12"
   },
   {
     "name": "Shopify",
@@ -3363,7 +3796,18 @@
     "score": 3,
     "categories": [
       "Customer, Marketing & eCommerce"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Stonly",
+    "url": "https://stonly.com/",
+    "description": "Provides a knowledge management platform for customer service with interactive guides, AI-powered chatbots, and process automation to help support agents and enable customer self-service.",
+    "score": 3,
+    "categories": [
+      "Customer, Marketing & eCommerce"
+    ],
+    "dateAdded": "2026-04-16"
   },
   {
     "name": "Zendesk",
@@ -3372,7 +3816,8 @@
     "score": 3,
     "categories": [
       "Customer, Marketing & eCommerce"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "1NCE",
@@ -3381,7 +3826,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "api.video",
@@ -3390,7 +3836,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Gradium",
@@ -3399,7 +3846,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2026-02-13"
   },
   {
     "name": "Hologram",
@@ -3408,7 +3856,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Knock",
@@ -3417,7 +3866,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Mux",
@@ -3426,7 +3876,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Onomondo",
@@ -3435,7 +3886,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Particle",
@@ -3444,7 +3896,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Resend",
@@ -3453,7 +3906,8 @@
     "score": 2,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Samsara",
@@ -3462,7 +3916,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Sendbird",
@@ -3471,7 +3926,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "SLNG",
@@ -3480,7 +3936,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Soracom",
@@ -3489,7 +3946,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Twilio",
@@ -3498,7 +3956,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Wistia",
@@ -3507,7 +3966,8 @@
     "score": 3,
     "categories": [
       "Communications, IoT & Media"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Akash Network",
@@ -3516,7 +3976,8 @@
     "score": 3,
     "categories": [
       "Decentralized & Web3 Compute"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Gitea Cloud",
@@ -3525,7 +3986,8 @@
     "score": 3,
     "categories": [
       "Source Code Control"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "GitHub",
@@ -3534,7 +3996,8 @@
     "score": 3,
     "categories": [
       "Source Code Control"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "GitLab",
@@ -3543,7 +4006,8 @@
     "score": 3,
     "categories": [
       "Source Code Control"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Edgeless Systems",
@@ -3552,7 +4016,8 @@
     "score": 3,
     "categories": [
       "Cloud Adjacent & Infrastructure Tooling"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "ngrok",
@@ -3561,7 +4026,8 @@
     "score": 3,
     "categories": [
       "Cloud Adjacent & Infrastructure Tooling"
-    ]
+    ],
+    "dateAdded": "2025-05-05"
   },
   {
     "name": "Solo.io",
@@ -3570,7 +4036,8 @@
     "score": 3,
     "categories": [
       "Cloud Adjacent & Infrastructure Tooling"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Tetrate",
@@ -3579,7 +4046,8 @@
     "score": 3,
     "categories": [
       "Cloud Adjacent & Infrastructure Tooling"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "API7",
@@ -3588,7 +4056,8 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Apigee",
@@ -3597,7 +4066,8 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Chroma",
@@ -3606,7 +4076,8 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Eppo",
@@ -3615,7 +4086,8 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "FeatBit",
@@ -3624,7 +4096,8 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "KrakenD",
@@ -3633,7 +4106,8 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "LaunchDarkly",
@@ -3642,7 +4116,8 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "OpenObserve",
@@ -3651,7 +4126,8 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Oxide Computer",
@@ -3660,7 +4136,8 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Split",
@@ -3669,7 +4146,8 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Statsig",
@@ -3678,7 +4156,8 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Tggl",
@@ -3687,7 +4166,8 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Turbopuffer",
@@ -3696,7 +4176,8 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   },
   {
     "name": "Uptrace",
@@ -3705,6 +4186,7 @@
     "score": 3,
     "categories": [
       "Emerging & Unverified Providers"
-    ]
+    ],
+    "dateAdded": "2026-01-29"
   }
 ]
