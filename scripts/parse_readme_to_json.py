@@ -10,6 +10,60 @@ categories array.
 
 import json
 import re
+import subprocess
+
+
+# Regex shared between the parser and the git history walker
+_ENTRY_RE = re.compile(r'^\+?\s*\*\s*(🟢|🟡)?\s*\[([^\]]+)\]\(([^)]+)\)\s+-\s+(.+)$')
+
+
+def _build_date_added_map(readme_path: str) -> dict[str, str]:
+    """Return a mapping of URL -> ISO date string of first git commit that added it.
+
+    Walks the full git log for readme_path in reverse (oldest-first) order,
+    scanning diff additions (+lines) for entry URLs.  The first time a URL
+    appears in an addition line is recorded as its dateAdded.
+    """
+    try:
+        result = subprocess.run(
+            [
+                'git', 'log',
+                '--reverse',                 # oldest → newest
+                '--pretty=format:COMMIT_DATE:%ad',
+                '--date=short',              # YYYY-MM-DD
+                '-p',                        # include patch
+                '--',
+                readme_path,
+            ],
+            capture_output=True,
+            text=True,
+            cwd=None,  # inherit CWD
+        )
+    except FileNotFoundError:
+        # git not available (e.g. running outside a repo)
+        return {}
+
+    if result.returncode != 0 or not result.stdout:
+        return {}
+
+    date_map: dict[str, str] = {}
+    current_date: str | None = None
+
+    for line in result.stdout.splitlines():
+        if line.startswith('COMMIT_DATE:'):
+            current_date = line[len('COMMIT_DATE:'):]
+            continue
+        # Only look at added lines in the diff
+        if not line.startswith('+') or line.startswith('+++'):
+            continue
+        m = _ENTRY_RE.match(line)
+        if not m:
+            continue
+        url = m.group(3)
+        if url not in date_map and current_date:
+            date_map[url] = current_date
+
+    return date_map
 
 
 def parse_readme(readme_path):
@@ -17,6 +71,8 @@ def parse_readme(readme_path):
 
     with open(readme_path, 'r') as f:
         content = f.read()
+
+    date_map = _build_date_added_map(readme_path)
 
     # url → entry dict (for deduplication)
     seen = {}
@@ -55,6 +111,8 @@ def parse_readme(readme_path):
                 'score': score,
                 'categories': [current_category],
             }
+            if url in date_map:
+                entry['dateAdded'] = date_map[url]
             seen[url] = entry
             order.append(url)
 
