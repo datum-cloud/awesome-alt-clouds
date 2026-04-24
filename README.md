@@ -509,6 +509,7 @@ CRM, customer engagement, marketing automation, newsletter, and eCommerce platfo
 * 🟢 [Front](https://front.com/) - An AI-powered customer service platform for teams who know great CX drives revenue.
 * 🟢 [Helpscout](https://www.helpscout.com/) - A customer communication platform for businesses that want to treat customers like people.
 * 🟢 [Hubspot](https://www.hubspot.com/) - An AI-powered customer platform to connect your marketing, sales, and customer service.
+* 🟢 [Jasper](https://www.jasper.ai/) - Provides AI-powered marketing automation platform with intelligent agents and content pipelines for creating, scaling, and managing brand-consistent marketing content across all channels.
 * 🟢 [Klaviyo](https://www.klaviyo.com) - A CRM built for B2C that combines marketing, service, and analytics.
 * 🟢 [Mirakl](https://www.mirakl.com/) - Powers platforms by connecting businesses, sellers, systems, partners, data and consumers.
 * 🟢 [Plain](https://www.plain.com/) - Provides AI-powered customer support infrastructure for B2B teams with unified workspace, multi-channel orchestration, and intelligent automation across Slack, Teams, email, and more.
