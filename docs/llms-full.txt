@@ -7,7 +7,7 @@
 - [Directory Homepage](https://www.alt-cloud.org/): Interactive searchable directory. Filter by category, search by name or description, sort alphabetically, by score, or by recently added date. All data loaded from /clouds.json.
 - [Submit a Service](https://www.alt-cloud.org/submit/): Web form that creates a GitHub issue, triggers automated AI evaluation (pricing page detection, signup detection, status page detection), and opens a PR on pass.
 - [GitHub Repository](https://github.com/datum-cloud/awesome-alt-clouds): Source of truth. Contains README.md (the awesome list), evaluation scripts in /scripts, and GitHub Actions workflows in .github/workflows.
-- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
+- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 419+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
 
 ## Evaluation Criteria
 
@@ -15,7 +15,7 @@ Services are scored against 3 criteria. A minimum score of 2/3 is required for i
 
 1. **Transparent Public Pricing** — a publicly accessible pricing page with actual prices or tiers visible without signing up or contacting sales.
 2. **Usage-Based Self-Service** — ability to sign up and start using the service without sales intervention; includes free trials, free tiers, or pay-as-you-go billing.
-3. **Production Indicators** — a public SLA commitment, status page, or uptime transparency indicator (e.g., statuspage.io, status subdomain).
+3. **Production Indicators** — a public SLA commitment, status page, or uptime transparency indicator (e.g. statuspage.io, status subdomain).
 
 Score legend: 🟢 = 3/3 criteria met | 🟡 = 2/3 criteria met
 
@@ -25,141 +25,139 @@ Score legend: 🟢 = 3/3 criteria met | 🟡 = 2/3 criteria met
 
 General-purpose cloud compute, bare metal, and VPS providers. The original "alt clouds" offering virtualized compute, dedicated servers, GPU instances, storage, and Kubernetes services outside the hyperscaler ecosystem.
 
-Key services: Digital Ocean, Vultr, Linode, Scaleway, Hetzner, Civo, Latitude.sh, Gcore, OVH Cloud, Rackspace, LeaseWeb, DataPacket, IONOS Cloud, Atlantic.net, Openmetal.io, Servers.com, NetActuate, Salad, Spheron Network, Sustainable Metal Cloud, QBO, Lyceum, E2E Cloud, Hivelocity, Cycle.io, Beam, Driver, exe.dev.
+Services: Arcade, Atlantic.net, Axiom, Beam, Browser-Use, Civo, Cycle.io, DataPacket, Digital Ocean, Driver, E2E Cloud, Empromptu, exe.dev, Firmus, Freestyle, and 25 more.
 
 ### GPU & AI Compute Clouds (35 services)
 
 Specialized GPU compute platforms for AI training, model fine-tuning, and high-performance workloads. Includes serverless GPU inference, GPU clusters, and distributed compute networks.
 
-Key services: Lambda Labs, Vast.ai, CoreWeave, Together AI, Banana.dev, Baseten, Anyscale, Aethir, Crusoe Energy, Fluidstack, Groq (hardware), Hyperbolic, Runpod, Lepton AI, TensorDock, Genesis Cloud, NVIDIA DGX Cloud, Modal, SF Compute, Nebius, Fal.ai.
+Services: Aethir, Anyscale, Banana.dev, Baseten, Cerebrium, CoreWeave, Crusoe Energy, Cudo Compute, Datacrunch.io, Fal.ai, FluidStack, FriendliAI, Genesis Cloud, GMI Cloud, GPU CLI, and 20 more.
 
 ### Databases & Storage (35 services)
 
 Managed database services, vector databases, distributed SQL, time series, object storage, and data warehousing — all self-service with public pricing.
 
-Key services: Neon, PlanetScale, CockroachDB, Turso, Xata, Upstash, Railway (Postgres), Supabase, Fly.io Postgres, SingleStore, Timescale, QuestDB, InfluxDB Cloud, Cloudflare R2, Backblaze B2, Storj, Filebase, MinIO Cloud, Tigris, Weaviate, Qdrant, Pinecone, Milvus, Chroma, Zilliz.
+Services: Aiven, Algolia, CedarDB, Cockroach Labs, Convex, Couchbase, Diffbot, Ditto, Gel, Hasura, Hydrolix, InfluxData, Materialize, Meilisearch, Momento, and 20 more.
 
 ### Developer Tooling & CI/CD (34 services)
 
 CI/CD platforms, code hosting, testing infrastructure, feature flags, error monitoring, and developer workflow automation.
 
-Key services: Railway, Render, Fly.io, Deno Deploy, Netlify, Vercel (alt), Cloudflare Workers/Pages, Zeet, Porter, Depot, BuildKite, Semaphore, Earthly, Trunk, Codecov, Sentry (alt), LaunchDarkly, Split.io, Statsig, Unleash, Flipt.
+Services: Browserbase, browserless, Bubble, Cloudsmith, Coder, Cypress, Depot, DevZero, Dosu, E2B, Fabrica, Firefly, Flagsmith, Gammacode, Gitpod, and 19 more.
 
 ### Authorization, Identity & Fraud (32 services)
 
 Authentication, authorization, identity management, secrets management, and fraud detection services with self-service onboarding.
 
-Key services: Auth0, Clerk, WorkOS, Stytch, Ory, Keycloak, FusionAuth, Descope, PropelAuth, Frontegg, JumpCloud, Okta (alt tiers), Duo, Pangea, Permit.io, Oso, Pomerium, Doppler, Infisical, HashiCorp Vault Cloud, Sift Science.
+Services: Akeyless, Aserto, Auth0, Authzed, Bolster, Boundary, Cerbos, CipherStash, Clerk, Descope, Doppler, Duo, Frontegg, FusionAuth, Infisical, and 17 more.
 
 ### Observability & Monitoring (25 services)
 
 Logging, metrics, tracing, APM, uptime monitoring, and error tracking platforms with pay-as-you-go or free tiers.
 
-Key services: Datadog (alt tiers), Grafana Cloud, New Relic, Honeycomb, Axiom, Highlight, OpenObserve, Signoz, Mezmo, Coralogix, Better Uptime, Checkly, Cronitor, Oh Dear, Pagerduty, Incident.io, Rootly, FireHydrant.
+Services: BetterStack, Checkly, Chronosphere, Comet, Coralogix, Datadog, Dynatrace, Elastic, Gigapipe, Grafana, groundcover, Helicone, Highlight, Honeycomb, Kentik, and 10 more.
 
 ### AI Assistants & Copilots (23 services)
 
 AI assistant platforms, copilot APIs, and conversational AI services for building customer-facing or developer-facing intelligent experiences.
 
-Key services: Anthropic Claude API, OpenAI (alt tiers), Cohere, AI21 Labs, Mistral AI, Perplexity API, You.com API, Kapa.ai, Mendable, Chatbase, Dust, Superagent, Relevance AI.
+Services: AssemblyAI, Bluedot, Character.ai, ChatGPT by OpenAI, Chatsonic, Claude, Cohere, DeepAI, Deepseek, ElevenLabs, Elicit, Kimi AI, Layer 9, NeuBird, Parahelp, and 8 more.
 
 ### Network & Connectivity Clouds (22 services)
 
 CDN, edge networking, DNS, DDoS protection, VPN, and private networking platforms.
 
-Key services: Cloudflare, Fastly, BunnyCDN, KeyCDN, Fly.io networking, Tailscale, ZeroTier, Netbird, Headscale, Ngrok, Cloudflare Tunnel, NS1, DNSimple, Route 53 (alt), Vercara.
+Services: Akamai, Approximated, Aviatrix, c/Side, Cloudbrink, Cloudflare, CtrlDNS, Fastly, IPinfo, Kong, LocalXpose, Macrometa, Megaport, NetBox Cloud, Netmaker, and 7 more.
 
 ### Monetization & Billing Clouds (21 services)
 
 Payment processing, subscription management, usage-based billing, metering, and revenue operations platforms.
 
-Key services: Stripe, Paddle, Lago, OpenMeter, Amberflo, Metronome, Orb, Stigg, Chargebee, Recurly, Maxio, Autumn, Useautumn, Paymongo, Lemon Squeezy.
-
-### Customer, Marketing & eCommerce (15 services)
-
-CRM, customer support, marketing automation, and e-commerce infrastructure platforms.
-
-Key services: Plain, Helpscout, Zendesk (alt tiers), Front, Hubspot (alt), Customer.io, Attio, Clarify, Klaviyo, Stonly, Jasper, Beehiiv, Shopify, Mirakl, Formbricks.
-
-### AI Coding & App Generation (14 services)
-
-AI-assisted code generation, app scaffolding, and developer productivity tools built on LLMs.
-
-Key services: GitHub Copilot (alt), Tabnine, Codeium, Cursor, Continue, Sourcegraph Cody, Replit AI, Bolt.new, Lovable, v0, Devin, SWE-agent.
+Services: Amberflo, Autumn, Bill, Dodo Payments, Lago, Lemon Squeezy, m3ter, Maxio, Mercury, Metronome, N26, OpenMeter, Orb, Recurly, Salesforce Revenue Cloud, and 6 more.
 
 ### PaaS & Application Hosting (17 services)
 
 Platform-as-a-service offerings for deploying web applications, APIs, and backend services with minimal infrastructure management.
 
-Key services: Heroku (alt tiers), Railway, Render, Fly.io, Porter, Zeet, Back4app, Koyeb, Adaptable.io, Northflank, Qoddi, Coolify, CapRover, Caprover.
-
-### Security, Compliance & Sovereignty Clouds (15 services)
-
-Security-focused cloud platforms with compliance certifications, data sovereignty options, air-gapped deployments, and sovereign cloud infrastructure.
-
-Key services: Hetzner (GDPR), OVH (French sovereignty), Exoscale, Cleura, STACKIT, Open Telekom Cloud, Bluvalt, T-Systems, Cipherstack, Idrivee2, Wasabi (compliance), Backblaze (HIPAA).
-
-### Communications, IoT & Media (15 services)
-
-Messaging APIs, email delivery, SMS, voice, video, push notifications, and IoT connectivity platforms.
-
-Key services: Twilio (alt tiers), Vonage/Nexmo, MessageBird, Sinch, Plivo, Telnyx, Postmark, Sendgrid (alt), Mailgun, Resend, Knock, Courier, Novu, Ably, Pusher.
-
-### Observability & Monitoring (25 services)
-
-See category details above.
+Services: Deno Deploy, Flightcontrol, Fly, Gadget, Heroku, Koyeb, Netlify, Northflank, Pantheon, Platform.sh, Porter, Puter, Railway, Render, Shuttle, and 2 more.
 
 ### Analytics & Data Warehousing (16 services)
 
 Cloud data warehouses, analytics databases, business intelligence platforms, and data lakehouse services.
 
-Key services: MotherDuck, Tinybird, ClickHouse Cloud, Firebolt, StarRocks Cloud, Hydra, Databend, DuckDB Cloud, Plandek, Redpanda Cloud.
+Services: Amplitude, ClickHouse, Databricks, Domo, DuckDB, Fathom, Firebolt, FullStory, Heap, Mixpanel, MotherDuck, Plausible, PostHog, Snowflake, Teradata, and 1 more.
 
 ### Workflow & Operations Clouds (16 services)
 
 Workflow orchestration, job queues, event streaming, and operations automation platforms.
 
-Key services: Inngest, Temporal Cloud, Trigger.dev, Zeplo, Winglang, Upstash Qstash, Quirrel, Windmill, n8n Cloud, Make (Integromat), Pipedream, Tray.io.
+Services: Alloy Automation, Dagster, Fastn, Inngest, Kestra, Mabl, Miter, n8n, PagerDuty, Prefect, Ryvn, ServiceNow, Temporal, Tines, Windmill, and 1 more.
 
-### Data Integration & ETL (7 services)
+### Security, Compliance & Sovereignty Clouds (15 services)
 
-Data pipeline, ETL, CDC, and integration platforms with self-service onboarding.
+Security-focused cloud platforms with compliance certifications, data sovereignty options, air-gapped deployments, and sovereign cloud infrastructure.
 
-Key services: Airbyte Cloud, Fivetran (alt tiers), Stitch, Segment (alt), Hightouch, Census, Polytomic, Firecrawl.
+Services: CrowdStrike, Fortinet, FPT Vietnam, GMO GPU Cloud, Jottacloud, metalstack.cloud, Netskope, Ola Krutrim, Operant, Reliance, Sakura Internet, T-Systems, Wiz, Yotta, Zscaler.
+
+### Customer, Marketing & eCommerce (15 services)
+
+CRM, customer support, marketing automation, and e-commerce infrastructure platforms.
+
+Services: Attio, Beehiiv, Clarify, Customer.io, Formbricks, Front, Helpscout, Hubspot, Jasper, Klaviyo, Mirakl, Plain, Shopify, Stonly, Zendesk.
+
+### Communications, IoT & Media (15 services)
+
+Messaging APIs, email delivery, SMS, voice, video, push notifications, and IoT connectivity platforms.
+
+Services: 1NCE, api.video, Gradium, Hologram, Knock, Mux, Onomondo, Particle, Resend, Samsara, Sendbird, SLNG, Soracom, Twilio, Wistia.
+
+### AI Coding & App Generation (14 services)
+
+AI-assisted code generation, app scaffolding, and developer productivity tools built on LLMs.
+
+Services: Base44, Bolt, Codev, CopilotKit, Cursor, Git AI, GitHub Copilot, Marblism, Mesa, OB-1, Softgen, Tabnine, v0, Windsurf.
+
+### Emerging & Unverified Providers (14 services)
+
+Services that passed automated evaluation but have limited track record or are early-stage. Scored 🟡 (2/3 criteria). Included for discovery; verify independently before production use.
+
+Services: API7, Apigee, Chroma, Eppo, FeatBit, KrakenD, LaunchDarkly, OpenObserve, Oxide Computer, Split, Statsig, Tggl, Turbopuffer, Uptrace.
 
 ### AI Inference & Model APIs (11 services)
 
 Hosted inference APIs for open-source and proprietary models, optimized for speed, cost, and scale.
 
-Key services: Groq, Fireworks.ai, Together AI, Replicate, Roboflow, Portkey, LeptonAI, Parallel, Cloudglue, Nomadic, Anchor.
+Services: Anchor, Cloudglue, Fireworks.ai, Groq, LeptonAI, Nomadic, Parallel, Portkey, Replicate, Roboflow, Together.ai.
+
+### Data Integration & ETL (7 services)
+
+Data pipeline, ETL, CDC, and integration platforms with self-service onboarding.
+
+Services: Airbyte, Arroyo, dbt Labs, Firecrawl, Fivetran, Redpanda, Rivery.
 
 ### Unikernels & WebAssembly (4 services)
 
 Edge computing, WebAssembly runtimes, and unikernel deployment platforms.
 
-Key services: Fermyon, Cosmonic, NanoVMs, Unikraft.
-
-### Source Code Control (3 services)
-
-Git hosting platforms with CI/CD integration and collaboration features.
-
-Key services: GitLab, Gitea Cloud, Sourcehut.
+Services: Cosmonic, KraftCloud, NanoVMs, Wasmer.
 
 ### Cloud Adjacent & Infrastructure Tooling (4 services)
 
 Tools and platforms that extend or manage cloud infrastructure without being cloud providers themselves.
 
-Key services: Pulumi Cloud, Spacelift, env0, Scalr.
+Services: Edgeless Systems, ngrok, Solo.io, Tetrate.
 
-### Decentralized & Web3 Compute (1 service)
+### Source Code Control (3 services)
+
+Git hosting platforms with CI/CD integration and collaboration features.
+
+Services: Gitea Cloud, GitHub, GitLab.
+
+### Decentralized & Web3 Compute (1 services)
 
 Blockchain-based and decentralized compute platforms.
 
-Key services: Akash Network.
-
-### Emerging & Unverified Providers (14 services)
-
-Services that passed automated evaluation but have limited track record or are early-stage. Scored 🟡 (2/3 criteria). Included for discovery; verify independently before production use.
+Services: Akash Network.
 
 ## Submission & Evaluation Pipeline
 
@@ -173,8 +171,9 @@ Services that passed automated evaluation but have limited track record or are e
 
 ## Key Facts
 
-- 419+ services as of April 2026
+- 419+ services as of 2026-04-24
 - 23 categories covering the full developer cloud ecosystem
+- 392 services meet all 3 criteria (🟢); 27 meet 2 of 3 (🟡)
 - Minimum inclusion score: 2/3 criteria
 - Machine-readable data: https://www.alt-cloud.org/clouds.json
 - Source: https://github.com/datum-cloud/awesome-alt-clouds

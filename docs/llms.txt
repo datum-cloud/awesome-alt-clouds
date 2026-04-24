@@ -1,6 +1,6 @@
 # Awesome Alt Clouds
 
-> Curated directory of 419+ alternative cloud providers for developers — covering infrastructure, GPU compute, databases, AI inference, observability, developer tooling, and more. Each service is evaluated against 3 public criteria.
+> Curated directory of 419+ alternative cloud providers for developers — covering 23 categories including infrastructure, GPU compute, databases, AI inference, observability, developer tooling, and more. Each service is evaluated against 3 public criteria.
 
 ## Directory
 
@@ -19,7 +19,7 @@
 - Services must meet at least 2 of 3 criteria to be included: (1) transparent public pricing, (2) usage-based self-service signup, (3) public SLA or status page
 - Score legend: 🟢 = all 3 criteria met, 🟡 = 2 of 3 criteria met
 - Automated submission pipeline: form → GitHub issue → AI evaluation → PR → merge
-- Largest categories: Infrastructure Clouds (40), GPU & AI Compute Clouds (35), Databases & Storage (35), Developer Tooling & CI/CD (34), Authorization Identity & Fraud (32)
+- Largest categories: Infrastructure Clouds (40), GPU & AI Compute Clouds (35), Databases & Storage (35), Developer Tooling & CI/CD (34), Authorization, Identity & Fraud (32)
 - Community-maintained; maintained by Datum Cloud
 - Data available as JSON at /clouds.json and Markdown on GitHub
 
