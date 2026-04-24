@@ -2,12 +2,16 @@ name: Split Multi-URL Submission
 
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]
 
 jobs:
   split:
-    # Only run on submission issues that contain more than one real URL
-    if: contains(github.event.issue.labels.*.name, 'submission')
+    # Only run on submission issues that contain more than one real URL.
+    # Triggers when opened with the label already applied, or when the label
+    # is added later (e.g. by an admin to a manually-created issue).
+    if: |
+      (github.event.action == 'labeled' && github.event.label.name == 'submission') ||
+      (github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'submission'))
     runs-on: ubuntu-latest
     permissions:
       issues: write
