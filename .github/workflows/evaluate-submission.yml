@@ -2,12 +2,15 @@ name: Evaluate Submission
 
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]
 
 jobs:
   evaluate:
-    # Only run on issues with 'submission' label
-    if: contains(github.event.issue.labels.*.name, 'submission')
+    # Run when a submission issue is opened with the label already applied,
+    # OR when the 'submission' label is added to an existing issue.
+    if: |
+      (github.event.action == 'labeled' && github.event.label.name == 'submission') ||
+      (github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'submission'))
     runs-on: ubuntu-latest
     permissions:
       issues: write
