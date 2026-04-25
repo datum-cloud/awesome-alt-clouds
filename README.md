@@ -318,6 +318,7 @@ APIs and platforms for running inference on foundation models and open-source LL
 * 🟡 [Cloudglue](https://cloudglue.dev/) - Provides a video context engine API that structures, searches, and enables AI reasoning over video content for developers building chatbots, RAG systems, and video analysis applications.
 * 🟢 [Fireworks.ai](https://fireworks.ai/) - Delivers high-speed, cost-effective inference APIs with support for open-source models.
 * 🟢 [Groq](https://groq.com/) - Provides ultra-fast inference on custom hardware designed for AI workloads.
+* 🟢 [InfronAI](https://infron.ai/) - Provides unified access to 400+ AI models from 100+ providers with enterprise reliability, cost optimization, and zero data retention security features.
 * 🟢 [LeptonAI](https://lepton.ai/) - Provides infrastructure and tools to build and deploy AI models at scale.
 * 🟡 [Nomadic](https://www.nomadicai.com/) - Provides AI-powered video analysis platform that automatically identifies rare events and edge cases in robotic, autonomous vehicle, and construction footage for training physical AI systems.
 * 🟡 [Parallel](https://parallel.ai/) - Provides AI-optimized web search and data extraction APIs with high accuracy for AI agents and applications to access structured web intelligence.
