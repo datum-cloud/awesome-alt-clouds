@@ -169,8 +169,17 @@ def create_pr(data):
 
     run_command(f'git commit -m "{commit_msg}"')
 
-    # Push branch
-    run_command(f'git push origin {branch_name}')
+    # Push branch (force in case a previous run already pushed this branch)
+    run_command(f'git push --force origin {branch_name}')
+
+    # Skip PR creation if one already exists for this branch
+    existing_pr = run_command(
+        f'gh pr list --head {branch_name} --state open --json number --jq ".[0].number"',
+        check=False
+    )
+    if existing_pr.strip():
+        print(f"PR #{existing_pr.strip()} already exists for branch {branch_name}, skipping creation")
+        return True
 
     # Create PR
     if len(added_services) == 1:
