@@ -1514,6 +1514,40 @@
       }
     });
 
+    // URL routing helpers
+    function categoryToSlug(cat) {
+      return cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+
+    function slugToCategory(slug) {
+      const categories = getCategories();
+      return categories.find(c => categoryToSlug(c) === slug) || 'All';
+    }
+
+    function updateUrl() {
+      const params = new URLSearchParams();
+      if (searchTerm) params.set('search', searchTerm);
+      const hash = currentCategory === 'All' ? '' : '#' + categoryToSlug(currentCategory);
+      const qs = params.toString() ? '?' + params.toString() : '';
+      history.replaceState(null, '', window.location.pathname + qs + hash);
+    }
+
+    function initStateFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const searchParam = params.get('search') || '';
+      const hashSlug = window.location.hash.slice(1);
+
+      if (searchParam) {
+        searchTerm = searchParam;
+        document.getElementById('searchInput').value = searchParam;
+        document.getElementById('searchInputMobile').value = searchParam;
+      }
+      if (hashSlug) {
+        const matched = slugToCategory(hashSlug);
+        if (matched !== 'All') currentCategory = matched;
+      }
+    }
+
     // Sort function
     function handleSort() {
       currentSort = document.getElementById('sortSelect').value;
@@ -1560,6 +1594,7 @@
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         altClouds = await response.json();
+        initStateFromUrl();
         renderCategories();
         renderClouds();
       } catch (error) {
@@ -1706,16 +1741,32 @@
       currentCategory = category;
       renderCategories();
       renderClouds();
+      updateUrl();
       closeDrawer();
     }
 
     document.getElementById('searchInput').addEventListener('input', (e) => {
       searchTerm = e.target.value;
+      document.getElementById('searchInputMobile').value = searchTerm;
       renderClouds();
+      updateUrl();
     });
 
     document.getElementById('searchInputMobile').addEventListener('input', (e) => {
       searchTerm = e.target.value;
+      document.getElementById('searchInput').value = searchTerm;
+      renderClouds();
+      updateUrl();
+    });
+
+    window.addEventListener('popstate', () => {
+      const params = new URLSearchParams(window.location.search);
+      searchTerm = params.get('search') || '';
+      document.getElementById('searchInput').value = searchTerm;
+      document.getElementById('searchInputMobile').value = searchTerm;
+      const hashSlug = window.location.hash.slice(1);
+      currentCategory = hashSlug ? slugToCategory(hashSlug) : 'All';
+      renderCategories();
       renderClouds();
     });
 

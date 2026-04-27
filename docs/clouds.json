@@ -2265,7 +2265,7 @@
     "description": "Offers powerful speech-to-text and AI APIs for transcription, summarization, content moderation, and more.",
     "score": 3,
     "categories": [
-      "AI Assistants & Copilots"
+      "AI Inference & Model APIs"
     ],
     "dateAdded": "2025-05-05"
   },
@@ -2325,7 +2325,7 @@
     "description": "Enterprise AI platform with language models for automation, data insights, and custom solutions.",
     "score": 3,
     "categories": [
-      "AI Assistants & Copilots"
+      "AI Inference & Model APIs"
     ],
     "dateAdded": "2026-01-29"
   },
@@ -2335,7 +2335,7 @@
     "description": "Offers a suite of open AI APIs for developers, including text, image, and moderation tools.",
     "score": 3,
     "categories": [
-      "AI Assistants & Copilots"
+      "AI Inference & Model APIs"
     ],
     "dateAdded": "2025-05-05"
   },
@@ -2345,7 +2345,7 @@
     "description": "Provides developer tools and research models for AI-powered coding, content generation, and reasoning tasks.",
     "score": 3,
     "categories": [
-      "AI Assistants & Copilots"
+      "AI Inference & Model APIs"
     ],
     "dateAdded": "2025-05-05"
   },
@@ -2355,7 +2355,7 @@
     "description": "AI text-to-speech with ultra-realistic voices in 32+ languages, voice cloning, and conversational agents.",
     "score": 3,
     "categories": [
-      "AI Assistants & Copilots"
+      "AI Inference & Model APIs"
     ],
     "dateAdded": "2026-01-29"
   },
@@ -2495,7 +2495,7 @@
     "description": "An all-in-one AI platform to easily build fully functioning apps without coding.",
     "score": 3,
     "categories": [
-      "AI Coding & App Generation"
+      "AI App Builders"
     ],
     "dateAdded": "2026-01-29"
   },
@@ -2505,7 +2505,7 @@
     "description": "A browser-based AI development environment that lets you generate, edit, and deploy full-stack applications instantly using natural language prompts.",
     "score": 3,
     "categories": [
-      "AI Coding & App Generation"
+      "AI App Builders"
     ],
     "dateAdded": "2025-05-05"
   },
@@ -2515,7 +2515,7 @@
     "description": "A development assistant that uses AI to generate, analyze, and debug software code efficiently.",
     "score": 3,
     "categories": [
-      "AI Coding & App Generation"
+      "Agent Labs"
     ],
     "dateAdded": "2025-05-05"
   },
@@ -2525,7 +2525,7 @@
     "description": "Open-source framework and infrastructure for building in-app AI copilots and agents.",
     "score": 3,
     "categories": [
-      "AI Coding & App Generation"
+      "Agent Labs"
     ],
     "dateAdded": "2026-01-29"
   },
@@ -2535,7 +2535,7 @@
     "description": "An AI-enhanced code editor that integrates directly with your codebase to provide suggestions and automate changes.",
     "score": 3,
     "categories": [
-      "AI Coding & App Generation"
+      "Agent Labs"
     ],
     "dateAdded": "2025-05-05"
   },
@@ -2545,7 +2545,7 @@
     "description": "Provides open-source Git extension for tracking AI-generated code through the entire software development lifecycle with attribution, context storage, and team analytics.",
     "score": 2,
     "categories": [
-      "AI Coding & App Generation"
+      "Agent Labs"
     ],
     "dateAdded": "2026-03-31"
   },
@@ -2555,7 +2555,7 @@
     "description": "An AI-powered coding assistant developed by GitHub and OpenAI that suggests code snippets as you type.",
     "score": 3,
     "categories": [
-      "AI Coding & App Generation"
+      "Agent Labs"
     ],
     "dateAdded": "2025-05-05"
   },
@@ -2565,7 +2565,7 @@
     "description": "Generate full-stack web apps from a single prompt.",
     "score": 3,
     "categories": [
-      "AI Coding & App Generation"
+      "AI App Builders"
     ],
     "dateAdded": "2026-01-29"
   },
@@ -2575,7 +2575,7 @@
     "description": "AI-powered code review platform with custom agents that learn codebase standards and prevent tech debt.",
     "score": 3,
     "categories": [
-      "AI Coding & App Generation"
+      "Agent Labs"
     ],
     "dateAdded": "2026-01-29"
   },
@@ -2585,7 +2585,7 @@
     "description": "Provides a self-improving coding agent that handles the full development lifecycle from project management to pull requests, with multi-model AI support and workflow automation.",
     "score": 3,
     "categories": [
-      "AI Coding & App Generation"
+      "Agent Labs"
     ],
     "dateAdded": "2026-03-31"
   },
@@ -2595,7 +2595,7 @@
     "description": "Provides tools to automatically generate code, documentation, and tests to speed up software delivery.",
     "score": 3,
     "categories": [
-      "AI Coding & App Generation"
+      "AI App Builders"
     ],
     "dateAdded": "2025-05-05"
   },
@@ -2605,7 +2605,7 @@
     "description": "AI code assistant with private model options.",
     "score": 3,
     "categories": [
-      "AI Coding & App Generation"
+      "Agent Labs"
     ],
     "dateAdded": "2026-01-29"
   },
@@ -2615,7 +2615,7 @@
     "description": "AI-powered UI generation from text prompts to React code.",
     "score": 3,
     "categories": [
-      "AI Coding & App Generation"
+      "AI App Builders"
     ],
     "dateAdded": "2026-01-29"
   },
@@ -2625,7 +2625,7 @@
     "description": "An AI powered coding engine and IDE that is an alternative to GitHub Copilot. Formerly Codeium.",
     "score": 3,
     "categories": [
-      "AI Coding & App Generation"
+      "Agent Labs"
     ],
     "dateAdded": "2025-05-05"
   },
