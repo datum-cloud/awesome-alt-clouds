@@ -414,6 +414,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [Firefly](https://www.firefly.ai/) - A cloud asset management solution powered by Infrastructure-as-Code, assisting DevOps and SRE teams in managing their entire cloud infrastructure efficiently.
 * 🟢 [Flagsmith](https://www.flagsmith.com/) - Open-source feature flag and remote config platform with SaaS, self-hosted, or private cloud deployment options.
 * 🟢 [Gammacode](https://gammacode.dev/) - AI code intelligence platform with CLI/web interface, security scanning, and issue automation.
+* 🟢 [GitBook](https://www.gitbook.com/) - Provides AI-powered documentation platform that connects docs, products, and users with intelligent assistants, Git sync, and enterprise collaboration features.
 * 🟢 [Gitpod](https://www.gitpod.io/) - A platform for automated and standardized development environments, enabling developers to code from anywhere with pre-configured, on-demand workspaces.
 * 🟢 [HashiCorp Cloud Platform](https://www.hashicorp.com/cloud) - A fully-managed platform offering HashiCorp products-as-a-service, simplifying infrastructure and security management for developers.
 * 🟢 [Helix](https://helix.ml/) - Provides agent virtualization and fleet orchestration platform with isolated desktop environments for AI agents on Mac, Linux, and Kubernetes infrastructure.
