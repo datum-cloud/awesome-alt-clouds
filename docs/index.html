@@ -610,6 +610,63 @@
       box-shadow: 0 4px 12px var(--shadow);
     }
 
+    .ext-btn {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.625rem 1rem;
+      background: var(--bright-tangerine);
+      color: #fff;
+      border-radius: 8px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      font-family: 'IBM Plex Sans', sans-serif;
+      gap: 0.5rem;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .ext-btn:hover {
+      background: var(--rich-earth);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(62, 54, 46, 0.15);
+    }
+
+    .ext-btn-disabled {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.625rem 1rem;
+      background: var(--clay-beige);
+      color: var(--warm-stone);
+      border-radius: 8px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: inherit;
+      border: none;
+      cursor: not-allowed;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+
+    .ext-card {
+      background: var(--cream);
+      border: 1px solid var(--clay-beige);
+      border-radius: 10px;
+      padding: 1.25rem 1rem;
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.75rem;
+      position: relative;
+    }
+
     .resource-card:last-child {
       margin-bottom: 0;
     }
@@ -1188,6 +1245,12 @@
         <span>+</span>
         <span>Submit a Cloud</span>
       </a>
+      <button class="page-link" onclick="openModal('extensionModal'); closeDrawer()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path>
+        </svg>
+        <span>Browser extension</span>
+      </button>
       <button class="page-link" onclick="openModal('aboutModal'); closeDrawer()">
         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -1249,6 +1312,12 @@
         </a>
 
         <div class="page-links">
+          <button class="page-link" onclick="openModal('extensionModal')">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path>
+            </svg>
+            <span>Browser extension</span>
+          </button>
           <button class="page-link" onclick="openModal('aboutModal')">
             <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -1385,6 +1454,53 @@
     </div>
   </div>
 
+  <!-- Browser Extension Modal -->
+  <div class="modal-overlay" id="extensionModal" onclick="closeModalOnOverlay(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h2 class="modal-title">Browser Extension</h2>
+        <button class="modal-close" onclick="closeModal('extensionModal')">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-content">
+        <p style="font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Check whether any cloud provider you're browsing is an alternative cloud — right from your browser toolbar.</p>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: stretch;">
+
+          <!-- Google Chrome -->
+          <div class="ext-card">
+            <span id="ext-yours-chrome" style="display:none; position: absolute; top: 0.625rem; right: 0.625rem; font-size: 0.625rem; font-weight: 700; letter-spacing: 0.06em; padding: 0.2rem 0.5rem; background: var(--soft-sage); color: #fff; border-radius: 99px;">YOURS</span>
+            <img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome.svg" width="40" height="40" alt="Google Chrome"/>
+            <span style="font-weight: 600; font-size: 0.9375rem; color: var(--text-primary);">Google Chrome</span>
+            <a id="ext-btn-chrome" href="https://chromewebstore.google.com/detail/alt-cloud-checker/nijjhgdijgnlimemhdaghkhgiggofbin" target="_blank" rel="noopener noreferrer" class="ext-btn">
+              <span>+</span><span id="ext-btn-chrome-label">Add to browser</span>
+            </a>
+          </div>
+
+          <!-- Mozilla Firefox -->
+          <div class="ext-card">
+            <span id="ext-yours-firefox" style="display:none; position: absolute; top: 0.625rem; right: 0.625rem; font-size: 0.625rem; font-weight: 700; letter-spacing: 0.06em; padding: 0.2rem 0.5rem; background: var(--soft-sage); color: #fff; border-radius: 99px;">YOURS</span>
+            <img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/firefox/firefox.svg" width="40" height="40" alt="Mozilla Firefox"/>
+            <span style="font-weight: 600; font-size: 0.9375rem; color: var(--text-primary);">Mozilla Firefox</span>
+            <button disabled class="ext-btn-disabled">Coming soon</button>
+          </div>
+
+          <!-- Microsoft Edge -->
+          <div class="ext-card">
+            <span id="ext-yours-edge" style="display:none; position: absolute; top: 0.625rem; right: 0.625rem; font-size: 0.625rem; font-weight: 700; letter-spacing: 0.06em; padding: 0.2rem 0.5rem; background: var(--soft-sage); color: #fff; border-radius: 99px;">YOURS</span>
+            <img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/edge/edge.svg" width="40" height="40" alt="Microsoft Edge"/>
+            <span style="font-weight: 600; font-size: 0.9375rem; color: var(--text-primary);">Microsoft Edge</span>
+            <button disabled class="ext-btn-disabled">Coming soon</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Resources Modal -->
   <div class="modal-overlay" id="resourcesModal" onclick="closeModalOnOverlay(event)">
     <div class="modal" onclick="event.stopPropagation()">
@@ -1481,23 +1597,49 @@
     let searchTerm = '';
     let currentSort = 'alphabetical';
 
-    // Modal functions
+    // Modal ↔ hash mapping
+    const MODAL_HASHES = { aboutModal: 'about', resourcesModal: 'resources', extensionModal: 'extension' };
+    const HASH_MODALS  = Object.fromEntries(Object.entries(MODAL_HASHES).map(([k,v]) => [v, k]));
+
     function openModal(modalId) {
       document.getElementById(modalId).classList.add('active');
       document.body.style.overflow = 'hidden';
+      const hash = MODAL_HASHES[modalId];
+      if (hash) history.pushState({ modal: modalId }, '', '#' + hash);
     }
 
     function closeModal(modalId) {
       document.getElementById(modalId).classList.remove('active');
       document.body.style.overflow = '';
+      if (MODAL_HASHES[modalId] && location.hash === '#' + MODAL_HASHES[modalId]) {
+        history.pushState({}, '', location.pathname + location.search);
+      }
     }
 
     function closeModalOnOverlay(event) {
       if (event.target.classList.contains('modal-overlay')) {
+        const modalId = event.target.id;
         event.target.classList.remove('active');
         document.body.style.overflow = '';
+        if (MODAL_HASHES[modalId] && location.hash === '#' + MODAL_HASHES[modalId]) {
+          history.pushState({}, '', location.pathname + location.search);
+        }
       }
     }
+
+    // Sync modals when browser navigates back/forward
+    window.addEventListener('popstate', () => {
+      document.querySelectorAll('.modal-overlay.active').forEach(m => {
+        m.classList.remove('active');
+      });
+      const modalId = HASH_MODALS[location.hash.slice(1)];
+      if (modalId) {
+        document.getElementById(modalId).classList.add('active');
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    });
 
     // Drawer functions
     function toggleDrawer() {
@@ -1531,6 +1673,9 @@
         document.querySelectorAll('.modal-overlay.active').forEach(modal => {
           modal.classList.remove('active');
         });
+        if (HASH_MODALS[location.hash.slice(1)]) {
+          history.pushState({}, '', location.pathname + location.search);
+        }
         closeDrawer();
         document.body.style.overflow = '';
       }
@@ -1797,8 +1942,46 @@
       renderClouds();
     });
 
+    // Open modal if page loaded with a modal hash
+    const _initModalId = HASH_MODALS[location.hash.slice(1)];
+    if (_initModalId) {
+      document.getElementById(_initModalId).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
     // Initialize on page load
     loadClouds();
+
+    // Browser extension modal: detect current browser + installed state
+    (function initExtensionModal() {
+      const ua = navigator.userAgent;
+      const browser = /Edg\//.test(ua) ? 'edge' : /Chrome\//.test(ua) ? 'chrome' : /Firefox\//.test(ua) ? 'firefox' : null;
+
+      if (browser) {
+        const badge = document.getElementById('ext-yours-' + browser);
+        if (badge) badge.style.display = 'inline-block';
+      }
+
+      if (browser === 'chrome') {
+        const extId = 'nijjhgdijgnlimemhdaghkhgiggofbin';
+        let settled = false;
+        const settle = (installed) => {
+          if (settled) return;
+          settled = true;
+          if (installed) {
+            const label = document.getElementById('ext-btn-chrome-label');
+            if (label) label.textContent = 'Added to your browser';
+          }
+        };
+        setTimeout(() => settle(false), 1500);
+        ['icon128.png', 'icon48.png', 'icon.png'].forEach(p => {
+          const img = new Image();
+          img.onload = () => settle(true);
+          img.onerror = () => {};
+          img.src = `chrome-extension://${extId}/${p}`;
+        });
+      }
+    })();
   </script>
 </body>
 </html>
