@@ -400,6 +400,7 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 
 Build systems, artifact registries, CI/CD pipelines, cloud dev environments, testing frameworks, feature flags, and developer productivity tools.
 
+* 🟢 [Anaconda](https://www.anaconda.com/) - Provides enterprise Python package management and AI development platform with secure open-source libraries, environment management, and AI model deployment capabilities.
 * 🟢 [Browserbase](https://www.browserbase.com/) - A platform for running headless browsers for interact with websites via automation.
 * 🟢 [browserless](https://www.browserless.io/) - Headless browser automation platform providing managed Chrome, Firefox, and WebKit browsers for scraping, testing, and automation with bot detection bypass and CAPTCHA solving.
 * 🟢 [Bubble](https://bubble.io/) - No-code visual programming platform for building web and mobile apps with drag-and-drop interface and usage-based pricing.
