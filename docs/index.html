@@ -1597,23 +1597,49 @@
     let searchTerm = '';
     let currentSort = 'alphabetical';
 
-    // Modal functions
+    // Modal ↔ hash mapping
+    const MODAL_HASHES = { aboutModal: 'about', resourcesModal: 'resources', extensionModal: 'extension' };
+    const HASH_MODALS  = Object.fromEntries(Object.entries(MODAL_HASHES).map(([k,v]) => [v, k]));
+
     function openModal(modalId) {
       document.getElementById(modalId).classList.add('active');
       document.body.style.overflow = 'hidden';
+      const hash = MODAL_HASHES[modalId];
+      if (hash) history.pushState({ modal: modalId }, '', '#' + hash);
     }
 
     function closeModal(modalId) {
       document.getElementById(modalId).classList.remove('active');
       document.body.style.overflow = '';
+      if (MODAL_HASHES[modalId] && location.hash === '#' + MODAL_HASHES[modalId]) {
+        history.pushState({}, '', location.pathname + location.search);
+      }
     }
 
     function closeModalOnOverlay(event) {
       if (event.target.classList.contains('modal-overlay')) {
+        const modalId = event.target.id;
         event.target.classList.remove('active');
         document.body.style.overflow = '';
+        if (MODAL_HASHES[modalId] && location.hash === '#' + MODAL_HASHES[modalId]) {
+          history.pushState({}, '', location.pathname + location.search);
+        }
       }
     }
+
+    // Sync modals when browser navigates back/forward
+    window.addEventListener('popstate', () => {
+      document.querySelectorAll('.modal-overlay.active').forEach(m => {
+        m.classList.remove('active');
+      });
+      const modalId = HASH_MODALS[location.hash.slice(1)];
+      if (modalId) {
+        document.getElementById(modalId).classList.add('active');
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    });
 
     // Drawer functions
     function toggleDrawer() {
@@ -1647,6 +1673,9 @@
         document.querySelectorAll('.modal-overlay.active').forEach(modal => {
           modal.classList.remove('active');
         });
+        if (HASH_MODALS[location.hash.slice(1)]) {
+          history.pushState({}, '', location.pathname + location.search);
+        }
         closeDrawer();
         document.body.style.overflow = '';
       }
@@ -1912,6 +1941,13 @@
       renderCategories();
       renderClouds();
     });
+
+    // Open modal if page loaded with a modal hash
+    const _initModalId = HASH_MODALS[location.hash.slice(1)];
+    if (_initModalId) {
+      document.getElementById(_initModalId).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
 
     // Initialize on page load
     loadClouds();
