@@ -271,9 +271,34 @@
       display: none;
     }
 
+    .search-clear {
+      position: absolute;
+      right: 0.625rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      padding: 0.25rem;
+      cursor: pointer;
+      color: var(--warm-stone);
+      border-radius: 4px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+    }
+
+    .search-clear:hover {
+      color: var(--text-primary);
+    }
+
+    .search-clear.visible {
+      display: flex;
+    }
+
     .search-input {
       width: 100%;
-      padding: 0.5rem 0.875rem 0.5rem 2.25rem;
+      padding: 0.5rem 2rem 0.5rem 2.25rem;
       background: var(--cream);
       border: 2px solid var(--clay-beige);
       border-radius: 8px;
@@ -692,26 +717,7 @@
     }
 
     .cloud-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--bright-tangerine);
-      border-radius: 12px 12px 0 0;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .cloud-card:hover {
-      box-shadow: 0 8px 24px var(--shadow);
-      transform: translateY(-3px);
-      border-color: var(--soft-sage);
-    }
-
-    .cloud-card:hover::before {
-      opacity: 1;
+      display: none;
     }
 
     @keyframes slideUpCard {
@@ -895,6 +901,7 @@
 
     .cloud-url:hover {
       gap: 0.625rem;
+      text-decoration: underline;
     }
 
     .empty-state {
@@ -1220,6 +1227,11 @@
             id="searchInputMobile"
             placeholder="Search clouds..."
           >
+          <button class="search-clear" id="searchClearMobile" aria-label="Clear search" onclick="clearSearch()">
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -1275,7 +1287,6 @@
           <select class="sorter-select" id="sortSelect" onchange="handleSort()">
             <option value="alphabetical">Alphabetical</option>
             <option value="recent">Recently Added</option>
-            <option value="favorites">Community Favorites</option>
           </select>
         </div>
         <div class="search-box">
@@ -1288,6 +1299,11 @@
             id="searchInput"
             placeholder="Search clouds..."
           >
+          <button class="search-clear" id="searchClear" aria-label="Clear search" onclick="clearSearch()">
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -1503,9 +1519,15 @@
       }
     }
 
-    // Close modal/drawer on Escape key
+    // Close modal/drawer on Escape key; clear search if input is focused
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
+        const activeEl = document.activeElement;
+        if (activeEl && activeEl.classList.contains('search-input') && searchTerm) {
+          clearSearch();
+          activeEl.blur();
+          return;
+        }
         document.querySelectorAll('.modal-overlay.active').forEach(modal => {
           modal.classList.remove('active');
         });
@@ -1522,6 +1544,21 @@
     function slugToCategory(slug) {
       const categories = getCategories();
       return categories.find(c => categoryToSlug(c) === slug) || 'All';
+    }
+
+    function updateSearchClear() {
+      const visible = searchTerm.length > 0;
+      document.getElementById('searchClear').classList.toggle('visible', visible);
+      document.getElementById('searchClearMobile').classList.toggle('visible', visible);
+    }
+
+    function clearSearch() {
+      searchTerm = '';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('searchInputMobile').value = '';
+      updateSearchClear();
+      renderClouds();
+      updateUrl();
     }
 
     function updateUrl() {
@@ -1567,20 +1604,6 @@
             if (!b.dateAdded) return -1;
             return new Date(b.dateAdded) - new Date(a.dateAdded);
           });
-        case 'favorites':
-          // Sort by favorite flag first, then by score, then alphabetically
-          return sorted.sort((a, b) => {
-            // Favorites first
-            const favA = a.favorite ? 1 : 0;
-            const favB = b.favorite ? 1 : 0;
-            if (favB !== favA) return favB - favA;
-            // Then by score
-            const scoreA = a.score || 3;
-            const scoreB = b.score || 3;
-            if (scoreB !== scoreA) return scoreB - scoreA;
-            // Then alphabetically
-            return a.name.localeCompare(b.name);
-          });
         default:
           return sorted;
       }
@@ -1595,6 +1618,7 @@
         }
         altClouds = await response.json();
         initStateFromUrl();
+        updateSearchClear();
         renderCategories();
         renderClouds();
       } catch (error) {
@@ -1728,7 +1752,7 @@
 
             <div class="cloud-footer">
               <a href="${cloud.url}" target="_blank" rel="noopener noreferrer" class="cloud-url">
-                Learn more &rarr;
+                Visit &rarr;
               </a>
             </div>
           </div>
@@ -1748,6 +1772,7 @@
     document.getElementById('searchInput').addEventListener('input', (e) => {
       searchTerm = e.target.value;
       document.getElementById('searchInputMobile').value = searchTerm;
+      updateSearchClear();
       renderClouds();
       updateUrl();
     });
@@ -1755,6 +1780,7 @@
     document.getElementById('searchInputMobile').addEventListener('input', (e) => {
       searchTerm = e.target.value;
       document.getElementById('searchInput').value = searchTerm;
+      updateSearchClear();
       renderClouds();
       updateUrl();
     });
@@ -1764,6 +1790,7 @@
       searchTerm = params.get('search') || '';
       document.getElementById('searchInput').value = searchTerm;
       document.getElementById('searchInputMobile').value = searchTerm;
+      updateSearchClear();
       const hashSlug = window.location.hash.slice(1);
       currentCategory = hashSlug ? slugToCategory(hashSlug) : 'All';
       renderCategories();
