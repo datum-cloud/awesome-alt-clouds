@@ -342,6 +342,7 @@ Conversational AI products, chat interfaces, and AI-powered search engines built
 * 🟢 [Deepseek](https://deepseek.com/) - Provides developer tools and research models for AI-powered coding, content generation, and reasoning tasks.
 * 🟢 [ElevenLabs](https://elevenlabs.io/) - AI text-to-speech with ultra-realistic voices in 32+ languages, voice cloning, and conversational agents.
 * 🟢 [Elicit](https://elicit.org/) - An AI research assistant that helps automate tasks like literature reviews and hypothesis testing for academics and researchers.
+* 🟡 [Joggr](https://www.joggr.ai/) - Provides an AI-powered knowledge base that automatically generates and maintains documentation by connecting codebases, conversations, and tools for developers and AI agents.
 * 🟢 [Kimi AI](https://www.kimi.com) - Provides AI-powered conversational assistance with visual coding capabilities, agent swarm technology, and deep research tools for enhanced productivity.
 * 🟢 [Layer 9](https://layer9.com/) - AI network engineer that configures, monitors, and repairs network devices with 24/7 automation.
 * 🟢 [NeuBird](https://neubird.ai/) - An autonomous AI SRE platform.
