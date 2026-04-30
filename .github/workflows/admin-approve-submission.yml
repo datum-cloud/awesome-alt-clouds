@@ -18,10 +18,18 @@ jobs:
       pull-requests: write
 
     steps:
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Check if user is admin/maintainer
         id: check-permission
         uses: actions/github-script@v7
         with:
+          github-token: ${{ steps.app-token.outputs.token }}
           script: |
             const { data: permission } = await github.rest.repos.getCollaboratorPermissionLevel({
               owner: context.repo.owner,
@@ -49,6 +57,7 @@ jobs:
         id: parse
         uses: actions/github-script@v7
         with:
+          github-token: ${{ steps.app-token.outputs.token }}
           script: |
             const comment = context.payload.comment.body.trim();
             // Match formats:
@@ -108,6 +117,8 @@ jobs:
       - name: Checkout
         if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
         uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Set up Python
         if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
@@ -145,7 +156,7 @@ jobs:
       - name: Create PR
         if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           echo "=== Debug: Checking for submission_data.json ==="
@@ -166,6 +177,7 @@ jobs:
         if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
         uses: actions/github-script@v7
         with:
+          github-token: ${{ steps.app-token.outputs.token }}
           script: |
             // Remove old labels
             const labelsToRemove = ['needs-review', 'rejected'];
