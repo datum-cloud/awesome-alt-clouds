@@ -165,6 +165,7 @@ Managed databases, object storage, caching, and search engines — relational, N
 
 * 🟢 [Aiven](https://aiven.io/) - Offers managed open-source data infrastructure, including databases and messaging systems, on all major clouds.
 * 🟢 [Algolia](https://www.algolia.com/) - AI-powered search and discovery API with NeuralSearch and semantic understanding for <50ms search speed.
+* 🟢 [Archil](https://archil.com/) - Provides a cloud filesystem that mounts S3, GCS, and Azure Blob storage with sub-millisecond cached reads, full POSIX compatibility, and built-in serverless compute execution.
 * 🟢 [CedarDB](https://cedardb.com/) - Modern columnar database for real-time analytics.
 * 🟢 [Cockroach Labs](https://www.cockroachlabs.com/) - Develops CockroachDB, a distributed SQL database for building global, scalable cloud services.
 * 🟢 [Convex](https://www.convex.dev/) - Reactive backend platform with real-time database and serverless functions.
