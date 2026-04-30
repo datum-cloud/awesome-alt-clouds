@@ -2,16 +2,14 @@ name: Split Multi-URL Submission
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [labeled]
 
 jobs:
   split:
     # Only run on submission issues that contain more than one real URL.
-    # Triggers when opened with the label already applied, or when the label
-    # is added later (e.g. by an admin to a manually-created issue).
-    if: |
-      (github.event.action == 'labeled' && github.event.label.name == 'submission') ||
-      (github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'submission'))
+    # 'labeled' covers both template-applied labels (fires at creation) and
+    # manual label additions — removing 'opened' eliminates the double-run.
+    if: github.event.action == 'labeled' && github.event.label.name == 'submission'
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -19,13 +17,6 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Generate GitHub App token
-        id: app-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-
       - name: Count submitted URLs
         id: url-count
         env:
@@ -45,8 +36,6 @@ jobs:
       - name: Checkout
         if: steps.url-count.outputs.is_multi == 'true'
         uses: actions/checkout@v4
-        with:
-          token: ${{ steps.app-token.outputs.token }}
 
       - name: Set up Python
         if: steps.url-count.outputs.is_multi == 'true'
@@ -64,6 +53,6 @@ jobs:
           ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           REPO: ${{ github.repository }}
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/split_submission.py
