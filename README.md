@@ -347,6 +347,7 @@ Conversational AI products, chat interfaces, and AI-powered search engines built
 * 🟢 [Kimi AI](https://www.kimi.com) - Provides AI-powered conversational assistance with visual coding capabilities, agent swarm technology, and deep research tools for enhanced productivity.
 * 🟢 [Layer 9](https://layer9.com/) - AI network engineer that configures, monitors, and repairs network devices with 24/7 automation.
 * 🟢 [NeuBird](https://neubird.ai/) - An autonomous AI SRE platform.
+* 🟢 [Obvious](https://obvious.ai/) - Provides an AI agent platform that collaborates with users to build artifacts, automate workflows, and generate content across various professional use cases.
 * 🟢 [Parahelp](https://parahelp.com/) - AI support agent that automates complex customer support tickets end-to-end for software companies.
 * 🟢 [Perplexity](https://www.perplexity.ai/) - An AI-native search engine that answers questions with citations and real-time data.
 * 🟢 [Playground](https://playground.com/) - A tool for exploring and experimenting with generative AI across text, code, and image generation.
