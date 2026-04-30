@@ -18,6 +18,13 @@ jobs:
       pull-requests: write
 
     steps:
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Skip multi-URL submissions (handled by split-submission workflow)
         id: guard
         env:
@@ -34,6 +41,8 @@ jobs:
       - name: Checkout
         if: steps.guard.outputs.skip != 'true'
         uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Set up Python
         if: steps.guard.outputs.skip != 'true'
@@ -53,7 +62,7 @@ jobs:
           ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
           REPO: ${{ github.repository }}
         run: |
           python scripts/check_duplicates.py
@@ -83,6 +92,7 @@ jobs:
         if: steps.guard.outputs.skip != 'true' && steps.check_duplicate.outputs.is_duplicate != 'true'
         uses: actions/github-script@v7
         with:
+          github-token: ${{ steps.app-token.outputs.token }}
           script: |
             const fs = require('fs');
             const results = fs.readFileSync('evaluation_results.md', 'utf8');
@@ -98,6 +108,7 @@ jobs:
         if: steps.guard.outputs.skip != 'true' && steps.check_duplicate.outputs.is_duplicate != 'true'
         uses: actions/github-script@v7
         with:
+          github-token: ${{ steps.app-token.outputs.token }}
           script: |
             const fs = require('fs');
             const score = parseInt(fs.readFileSync('evaluation_score.txt', 'utf8').trim());
@@ -139,7 +150,7 @@ jobs:
       - name: Create PR if score >= 2
         if: steps.guard.outputs.skip != 'true' && steps.check_duplicate.outputs.is_duplicate != 'true' && fromJSON(steps.read_outputs.outputs.score) >= 2 && steps.read_outputs.outputs.has_data == 'true'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           python scripts/create_submission_pr.py
