@@ -404,6 +404,7 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 
 Build systems, artifact registries, CI/CD pipelines, cloud dev environments, testing frameworks, feature flags, and developer productivity tools.
 
+* 🟢 [Alpacon](https://www.alpacax.com/alpacon/pricing/) - Provides secure remote server access and management platform with web-based terminal, file transfer, monitoring, and team collaboration features for personal to enterprise use.
 * 🟢 [Anaconda](https://www.anaconda.com/) - Provides enterprise Python package management and AI development platform with secure open-source libraries, environment management, and AI model deployment capabilities.
 * 🟢 [Browserbase](https://www.browserbase.com/) - A platform for running headless browsers for interact with websites via automation.
 * 🟢 [browserless](https://www.browserless.io/) - Headless browser automation platform providing managed Chrome, Firefox, and WebKit browsers for scraping, testing, and automation with bot detection bypass and CAPTCHA solving.
