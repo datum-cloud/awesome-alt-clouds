@@ -3000,6 +3000,16 @@
     "dateAdded": "2026-05-12"
   },
   {
+    "name": "GitBook",
+    "url": "https://www.gitbook.com/",
+    "description": "Provides AI-powered documentation platform that connects docs, products, and users with intelligent assistants, Git sync, and enterprise collaboration features.",
+    "score": 3,
+    "categories": [
+      "Developer Tooling & CI/CD"
+    ],
+    "dateAdded": "2026-05-12"
+  },
+  {
     "name": "Gitpod",
     "url": "https://www.gitpod.io/",
     "description": "A platform for automated and standardized development environments, enabling developers to code from anywhere with pre-configured, on-demand workspaces.",

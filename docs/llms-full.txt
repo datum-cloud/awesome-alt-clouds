@@ -1,13 +1,13 @@
 # Awesome Alt Clouds — Full Reference
 
-> Curated directory of 425+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
+> Curated directory of 426+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
 
 ## About This Directory
 
 - [Directory Homepage](https://www.alt-cloud.org/): Interactive searchable directory. Filter by category, search by name or description, sort alphabetically, by score, or by recently added date. All data loaded from /clouds.json.
 - [Submit a Service](https://www.alt-cloud.org/submit/): Web form that creates a GitHub issue, triggers automated AI evaluation (pricing page detection, signup detection, status page detection), and opens a PR on pass.
 - [GitHub Repository](https://github.com/datum-cloud/awesome-alt-clouds): Source of truth. Contains README.md (the awesome list), evaluation scripts in /scripts, and GitHub Actions workflows in .github/workflows.
-- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 425+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
+- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 426+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
 
 ## Evaluation Criteria
 
@@ -33,17 +33,17 @@ Managed database services, vector databases, distributed SQL, time series, objec
 
 Services: Aiven, Algolia, Archil, CedarDB, Cockroach Labs, Convex, Couchbase, Diffbot, Ditto, Gel, Hasura, Hydrolix, InfluxData, Materialize, Meilisearch, and 21 more.
 
+### Developer Tooling & CI/CD (36 services)
+
+CI/CD platforms, code hosting, testing infrastructure, feature flags, error monitoring, and developer workflow automation.
+
+Services: Anaconda, Browserbase, browserless, Bubble, Cloudsmith, Coder, Cypress, Depot, DevZero, Dosu, E2B, Fabrica, Firefly, Flagsmith, Gammacode, and 21 more.
+
 ### GPU & AI Compute Clouds (35 services)
 
 Specialized GPU compute platforms for AI training, model fine-tuning, and high-performance workloads. Includes serverless GPU inference, GPU clusters, and distributed compute networks.
 
 Services: Aethir, Anyscale, Banana.dev, Baseten, Cerebrium, CoreWeave, Crusoe Energy, Cudo Compute, Datacrunch.io, Fal.ai, FluidStack, FriendliAI, Genesis Cloud, GMI Cloud, GPU CLI, and 20 more.
-
-### Developer Tooling & CI/CD (35 services)
-
-CI/CD platforms, code hosting, testing infrastructure, feature flags, error monitoring, and developer workflow automation.
-
-Services: Anaconda, Browserbase, browserless, Bubble, Cloudsmith, Coder, Cypress, Depot, DevZero, Dosu, E2B, Fabrica, Firefly, Flagsmith, Gammacode, and 20 more.
 
 ### Authorization, Identity & Fraud (32 services)
 
@@ -171,9 +171,9 @@ Services: Akash Network.
 
 ## Key Facts
 
-- 425+ services as of 2026-05-12
+- 426+ services as of 2026-05-12
 - 23 categories covering the full developer cloud ecosystem
-- 397 services meet all 3 criteria (🟢); 28 meet 2 of 3 (🟡)
+- 398 services meet all 3 criteria (🟢); 28 meet 2 of 3 (🟡)
 - Minimum inclusion score: 2/3 criteria
 - Machine-readable data: https://www.alt-cloud.org/clouds.json
 - Source: https://github.com/datum-cloud/awesome-alt-clouds
