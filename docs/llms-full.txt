@@ -1,13 +1,13 @@
 # Awesome Alt Clouds — Full Reference
 
-> Curated directory of 426+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
+> Curated directory of 427+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
 
 ## About This Directory
 
 - [Directory Homepage](https://www.alt-cloud.org/): Interactive searchable directory. Filter by category, search by name or description, sort alphabetically, by score, or by recently added date. All data loaded from /clouds.json.
 - [Submit a Service](https://www.alt-cloud.org/submit/): Web form that creates a GitHub issue, triggers automated AI evaluation (pricing page detection, signup detection, status page detection), and opens a PR on pass.
 - [GitHub Repository](https://github.com/datum-cloud/awesome-alt-clouds): Source of truth. Contains README.md (the awesome list), evaluation scripts in /scripts, and GitHub Actions workflows in .github/workflows.
-- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 426+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
+- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 427+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
 
 ## Evaluation Criteria
 
@@ -93,17 +93,17 @@ Workflow orchestration, job queues, event streaming, and operations automation p
 
 Services: Alloy Automation, Dagster, Fastn, Inngest, Kestra, Mabl, Miter, n8n, PagerDuty, Prefect, Ryvn, ServiceNow, Temporal, Tines, Windmill, and 1 more.
 
+### Customer, Marketing & eCommerce (16 services)
+
+CRM, customer support, marketing automation, and e-commerce infrastructure platforms.
+
+Services: Attio, Beehiiv, Clarify, Customer.io, Formbricks, Front, Helpscout, Hubspot, Jasper, Klaviyo, Loops, Mirakl, Plain, Shopify, Stonly, and 1 more.
+
 ### Security, Compliance & Sovereignty Clouds (15 services)
 
 Security-focused cloud platforms with compliance certifications, data sovereignty options, air-gapped deployments, and sovereign cloud infrastructure.
 
 Services: CrowdStrike, Fortinet, FPT Vietnam, GMO GPU Cloud, Jottacloud, metalstack.cloud, Netskope, Ola Krutrim, Operant, Reliance, Sakura Internet, T-Systems, Wiz, Yotta, Zscaler.
-
-### Customer, Marketing & eCommerce (15 services)
-
-CRM, customer support, marketing automation, and e-commerce infrastructure platforms.
-
-Services: Attio, Beehiiv, Clarify, Customer.io, Formbricks, Front, Helpscout, Hubspot, Jasper, Klaviyo, Mirakl, Plain, Shopify, Stonly, Zendesk.
 
 ### Communications, IoT & Media (15 services)
 
@@ -171,9 +171,9 @@ Services: Akash Network.
 
 ## Key Facts
 
-- 426+ services as of 2026-05-12
+- 427+ services as of 2026-05-12
 - 23 categories covering the full developer cloud ecosystem
-- 398 services meet all 3 criteria (🟢); 28 meet 2 of 3 (🟡)
+- 399 services meet all 3 criteria (🟢); 28 meet 2 of 3 (🟡)
 - Minimum inclusion score: 2/3 criteria
 - Machine-readable data: https://www.alt-cloud.org/clouds.json
 - Source: https://github.com/datum-cloud/awesome-alt-clouds
