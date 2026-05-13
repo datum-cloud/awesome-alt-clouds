@@ -59,6 +59,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [DataPacket](https://www.datapacket.com/) - Offers high-performance infrastructure for bandwidth-intensive applications.
 * 🟢 [Digital Ocean](https://www.digitalocean.com/) - Provides cloud computing services with simplicity and scalability.
 * 🟢 [Driver](https://driver.dev/) - Provides browser automation infrastructure running Chrome instances on real consumer hardware with residential IPs and authentic fingerprints for AI agents and web scraping.
+* 🟢 [DT Cloud](https://dtcloudnow.com/) - Provides comprehensive cloud computing services including VPS, Kubernetes, GPU cloud, storage, networking, security, and industry-specific solutions for Turkish market.
 * 🟢 [E2E Cloud](https://www.e2enetworks.com/) - Offers cloud infrastructure with GPU instances for AI and machine learning.
 * 🟢 [Empromptu](https://empromptu.ai) - Cloud service provider.
 * 🟢 [exe.dev](https://exe.dev/) - Modern VM hosting with sub-second starts and persistent disks. Built for AI coding agents with built-in HTTPS/auth and sharing.
