@@ -363,6 +363,7 @@ Conversational AI products, chat interfaces, and AI-powered search engines built
 
 AI-powered code editors, IDEs, no-code/low-code builders, and full-stack app generation tools.
 
+* 🟢 [9Router](https://9router.com/) - Provides a smart AI gateway that connects development tools to 60+ AI providers through one OpenAI-compatible endpoint with 3-tier fallback and token optimization.
 * 🟢 [Base44](https://base44.com/) - An all-in-one AI platform to easily build fully functioning apps without coding.
 * 🟢 [Bolt](https://bolt.new/) - A browser-based AI development environment that lets you generate, edit, and deploy full-stack applications instantly using natural language prompts.
 * 🟢 [Codev](https://codev.ai/) - A development assistant that uses AI to generate, analyze, and debug software code efficiently.
