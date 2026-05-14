@@ -1,0 +1,37 @@
+name: Auto-label Submissions
+
+# Safety net for mobile: the GitHub app drops URL params (including
+# &labels=submission) when it shows the template-chooser screen.
+# This workflow catches any issue opened without the label and adds it,
+# which then triggers the evaluate-submission and split-submission workflows.
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  label:
+    # Only act on issues whose title matches the form's pattern.
+    # The submit page always sets "[Submission] <domain>" as the title.
+    if: startsWith(github.event.issue.title, '[Submission]')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Add submission label if missing
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = context.payload.issue.labels.map(l => l.name);
+            if (!labels.includes('submission')) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['submission'],
+              });
+              core.info(`Added 'submission' label to issue #${context.issue.number}`);
+            } else {
+              core.info(`Issue #${context.issue.number} already has 'submission' label — skipping`);
+            }
