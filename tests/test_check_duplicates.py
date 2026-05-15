@@ -1,7 +1,7 @@
 # tests/test_check_duplicates.py
 import sys
 import os
-import json  # used by TestMain (added in a later task)
+import json
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'scripts'))
 
 import pytest
@@ -151,12 +151,12 @@ class TestCheckCloudsJson:
 
 
 # ---------------------------------------------------------------------------
-# check_github_issues
+# post_comment / add_label / close_issue
 # ---------------------------------------------------------------------------
 
 
 def _make_gh_response(issues, link_header=None):
-    """Build a mock requests.Response for the GitHub Issues API."""
+    """Build a mock requests.Response for the GitHub API."""
     mock = MagicMock()
     mock.status_code = 200
     mock.json.return_value = issues
@@ -165,104 +165,6 @@ def _make_gh_response(issues, link_header=None):
         mock.headers['Link'] = link_header
     mock.raise_for_status = MagicMock()
     return mock
-
-
-class TestCheckGithubIssues:
-
-    ISSUES = [
-        {
-            "number": 10,
-            "title": "Add Fly.io",
-            "body": "**URL:** https://fly.io\n**Name:** Fly.io",
-            "html_url": "https://github.com/owner/repo/issues/10",
-        },
-        {
-            "number": 11,
-            "title": "Add ZeroTier",
-            "body": "**URL:** https://www.zerotier.com\n**Name:** ZeroTier",
-            "html_url": "https://github.com/owner/repo/issues/11",
-        },
-        {
-            "number": 99,
-            "title": "Add something else",
-            "body": "no url here",
-            "html_url": "https://github.com/owner/repo/issues/99",
-        },
-    ]
-
-    def test_exact_domain_match_in_issues(self):
-        with patch('requests.get', return_value=_make_gh_response(self.ISSUES)):
-            match_type, issue = cd.check_github_issues(
-                'fly.io', 'token', 'owner/repo', current_issue_number=200
-            )
-        assert match_type == 'existing_issue'
-        assert issue['number'] == 10
-
-    def test_skips_current_issue(self):
-        # If the current issue number matches, it should NOT be returned as a duplicate
-        issues = [
-            {
-                "number": 200,
-                "title": "Add Fly.io",
-                "body": "**URL:** https://fly.io",
-                "html_url": "https://github.com/owner/repo/issues/200",
-            }
-        ]
-        with patch('requests.get', return_value=_make_gh_response(issues)):
-            result = cd.check_github_issues(
-                'fly.io', 'token', 'owner/repo', current_issue_number=200
-            )
-        assert result == (None, None)
-
-    def test_no_match_returns_none_tuple(self):
-        with patch('requests.get', return_value=_make_gh_response(self.ISSUES)):
-            result = cd.check_github_issues(
-                'brandnew.io', 'token', 'owner/repo', current_issue_number=999
-            )
-        assert result == (None, None)
-
-    def test_api_failure_returns_none_tuple(self):
-        with patch('requests.get', side_effect=Exception('network error')):
-            result = cd.check_github_issues(
-                'fly.io', 'token', 'owner/repo', current_issue_number=999
-            )
-        assert result == (None, None)
-
-    def test_paginates_when_link_header_present(self):
-        page1 = [
-            {
-                "number": 10,
-                "title": "Add Something",
-                "body": "**URL:** https://page1only.io",
-                "html_url": "https://github.com/owner/repo/issues/10",
-            }
-        ]
-        page2 = [
-            {
-                "number": 20,
-                "title": "Add Fly.io",
-                "body": "**URL:** https://fly.io",
-                "html_url": "https://github.com/owner/repo/issues/20",
-            }
-        ]
-        link_header = '<https://api.github.com/repos/owner/repo/issues?page=2>; rel="next"'
-
-        responses = [
-            _make_gh_response(page1, link_header=link_header),
-            _make_gh_response(page2),  # no next link → stop
-        ]
-
-        with patch('requests.get', side_effect=responses):
-            match_type, issue = cd.check_github_issues(
-                'fly.io', 'token', 'owner/repo', current_issue_number=999
-            )
-        assert match_type == 'existing_issue'
-        assert issue['number'] == 20
-
-
-# ---------------------------------------------------------------------------
-# post_comment / add_label / close_issue
-# ---------------------------------------------------------------------------
 
 class TestGitHubApiActions:
 
@@ -326,38 +228,27 @@ class TestBuildComment:
         'description': 'App hosting with global anycast networking.',
     }
 
-    ISSUE = {
-        'number': 10,
-        'title': 'Add Fly.io',
-        'html_url': 'https://github.com/owner/repo/issues/10',
-        'body': '**URL:** https://fly.io',
-    }
-
-    def test_exact_domain_clouds_json_comment_mentions_name(self):
-        comment = cd.build_comment('exact_domain', self.ENTRY, source='clouds_json')
+    def test_exact_domain_comment_mentions_name(self):
+        comment = cd.build_comment('exact_domain', self.ENTRY)
         assert 'Fly.io' in comment
         assert 'https://fly.io' in comment
         assert 'App hosting' in comment
 
-    def test_exact_domain_clouds_json_comment_contains_closing_text(self):
-        comment = cd.build_comment('exact_domain', self.ENTRY, source='clouds_json')
+    def test_exact_domain_comment_contains_closing_text(self):
+        comment = cd.build_comment('exact_domain', self.ENTRY)
         assert 'Closing' in comment or 'closing' in comment
 
     def test_fuzzy_name_comment_says_possible_duplicate(self):
-        comment = cd.build_comment('fuzzy_name', self.ENTRY, source='clouds_json')
+        comment = cd.build_comment('fuzzy_name', self.ENTRY)
         assert 'Possible Duplicate' in comment or 'possible duplicate' in comment.lower()
 
     def test_fuzzy_name_comment_does_not_mention_closing(self):
-        comment = cd.build_comment('fuzzy_name', self.ENTRY, source='clouds_json')
+        comment = cd.build_comment('fuzzy_name', self.ENTRY)
         assert 'Closing' not in comment
 
-    def test_existing_issue_comment_links_to_issue(self):
-        comment = cd.build_comment('existing_issue', self.ISSUE, source='github_issues')
-        assert 'https://github.com/owner/repo/issues/10' in comment
-
-    def test_existing_issue_comment_contains_closing_text(self):
-        comment = cd.build_comment('existing_issue', self.ISSUE, source='github_issues')
-        assert 'Closing' in comment or 'closing' in comment
+    def test_unknown_match_type_raises(self):
+        with pytest.raises(ValueError):
+            cd.build_comment('unknown_type', self.ENTRY)
 
 
 # ---------------------------------------------------------------------------
@@ -379,8 +270,8 @@ class TestMain:
         }
     ]
 
-    def _run_main(self, env, clouds_json_content=None, issues_response=None):
-        """Helper: run main() with patched env, clouds.json, and GitHub API."""
+    def _run_main(self, env, clouds_json_content=None):
+        """Helper: run main() with patched env and clouds.json."""
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             json.dump(clouds_json_content or self.CLOUDS, f)
             clouds_path = f.name
@@ -398,12 +289,7 @@ class TestMain:
                     with patch.object(cd, 'post_comment', no_op):
                         with patch.object(cd, 'add_label', no_op):
                             with patch.object(cd, 'close_issue', no_op):
-                                if issues_response is not None:
-                                    with patch('requests.get', return_value=issues_response):
-                                        cd.main()
-                                else:
-                                    with patch('requests.get', return_value=_make_gh_response([])):
-                                        cd.main()
+                                cd.main()
 
         os.unlink(clouds_path)
         return output_lines, no_op
@@ -437,8 +323,7 @@ class TestMain:
                     with patch.object(cd, 'post_comment', MagicMock()):
                         with patch.object(cd, 'add_label', MagicMock()):
                             with patch.object(cd, 'close_issue', close_mock):
-                                with patch('requests.get', return_value=_make_gh_response([])):
-                                    cd.main()
+                                cd.main()
         os.unlink(clouds_path)
         close_mock.assert_called_once()
 
@@ -482,8 +367,7 @@ class TestMain:
                     with patch.object(cd, 'post_comment', MagicMock()):
                         with patch.object(cd, 'add_label', MagicMock()):
                             with patch.object(cd, 'close_issue', close_mock):
-                                with patch('requests.get', return_value=_make_gh_response([])):
-                                    cd.main()
+                                cd.main()
         os.unlink(clouds_path)
         close_mock.assert_not_called()
 
@@ -499,6 +383,5 @@ class TestMain:
         with patch.dict(os.environ, env, clear=True):
             with patch.object(cd, '_CLOUDS_JSON_PATH', '/nonexistent/path/clouds.json'):
                 with patch.object(cd, '_write_github_output', side_effect=lambda k, v: output_lines.append(f'{k}={v}')):
-                    with patch('requests.get', return_value=_make_gh_response([])):
-                        cd.main()
+                    cd.main()
         assert any('is_duplicate=false' in line for line in output_lines)
