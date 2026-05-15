@@ -389,6 +389,7 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 * 🟢 [Gadget](https://gadget.dev/) - Full-stack framework with built-in database, auth, and deployment.
 * 🟢 [Heroku](https://www.heroku.com/) - Offers a platform as a service (PaaS) for deploying and managing applications.
 * 🟢 [Koyeb](https://www.koyeb.com/) - Offers a serverless platform to deploy applications globally.
+* 🟢 [Maritime](https://maritime.sh/) - Provides cloud hosting infrastructure specifically designed for AI agents with flat $1/month pricing, sleep/wake architecture, and one-click deployment from GitHub repos.
 * 🟢 [Netlify](https://www.netlify.com/) - Platform for building, deploying, and scaling modern web applications.
 * 🟢 [Northflank](https://northflank.com/) - A platform to build, deploy, and manage full-stack applications.
 * 🟢 [Pantheon](https://pantheon.io/) - A platform for running Wordpress, Drupal and Next.js websites.
