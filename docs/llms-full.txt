@@ -171,7 +171,7 @@ Services: Akash Network.
 
 ## Key Facts
 
-- 428+ services as of 2026-05-13
+- 428+ services as of 2026-05-15
 - 23 categories covering the full developer cloud ecosystem
 - 400 services meet all 3 criteria (🟢); 28 meet 2 of 3 (🟡)
 - Minimum inclusion score: 2/3 criteria
