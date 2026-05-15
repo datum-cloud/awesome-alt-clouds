@@ -404,6 +404,8 @@
       gap: 0.5rem;
       margin-bottom: 0.75rem;
       text-decoration: none;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .contribute-btn:hover {
@@ -1176,6 +1178,8 @@
       .search-input,
       .sorter-select {
         font-size: 1rem;
+      }
+
       .top-bar .search-box {
         display: none;
       }
@@ -1650,14 +1654,14 @@
     function openDrawer() {
       document.getElementById('mobileDrawer').classList.add('active');
       document.getElementById('drawerOverlay').classList.add('active');
-      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     }
 
     function closeDrawer() {
       document.getElementById('mobileDrawer').classList.remove('active');
       document.getElementById('drawerOverlay').classList.remove('active');
       if (!document.querySelector('.modal-overlay.active')) {
-        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
       }
     }
 
@@ -1677,7 +1681,7 @@
           history.pushState({}, '', location.pathname + location.search);
         }
         closeDrawer();
-        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
       }
     });
 
