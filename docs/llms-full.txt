@@ -1,13 +1,13 @@
 # Awesome Alt Clouds — Full Reference
 
-> Curated directory of 428+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
+> Curated directory of 429+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
 
 ## About This Directory
 
 - [Directory Homepage](https://www.alt-cloud.org/): Interactive searchable directory. Filter by category, search by name or description, sort alphabetically, by score, or by recently added date. All data loaded from /clouds.json.
 - [Submit a Service](https://www.alt-cloud.org/submit/): Web form that creates a GitHub issue, triggers automated AI evaluation (pricing page detection, signup detection, status page detection), and opens a PR on pass.
 - [GitHub Repository](https://github.com/datum-cloud/awesome-alt-clouds): Source of truth. Contains README.md (the awesome list), evaluation scripts in /scripts, and GitHub Actions workflows in .github/workflows.
-- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 428+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
+- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 429+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
 
 ## Evaluation Criteria
 
@@ -75,11 +75,11 @@ Payment processing, subscription management, usage-based billing, metering, and 
 
 Services: Amberflo, Autumn, Bill, Dodo Payments, Lago, Lemon Squeezy, m3ter, Maxio, Mercury, Metronome, N26, OpenMeter, Orb, Recurly, Salesforce Revenue Cloud, and 6 more.
 
-### PaaS & Application Hosting (17 services)
+### PaaS & Application Hosting (18 services)
 
 Platform-as-a-service offerings for deploying web applications, APIs, and backend services with minimal infrastructure management.
 
-Services: Deno Deploy, Flightcontrol, Fly, Gadget, Heroku, Koyeb, Netlify, Northflank, Pantheon, Platform.sh, Porter, Puter, Railway, Render, Shuttle, and 2 more.
+Services: Deno Deploy, Flightcontrol, Fly, Gadget, Heroku, Koyeb, Maritime, Netlify, Northflank, Pantheon, Platform.sh, Porter, Puter, Railway, Render, and 3 more.
 
 ### Analytics & Data Warehousing (16 services)
 
@@ -171,9 +171,9 @@ Services: Akash Network.
 
 ## Key Facts
 
-- 428+ services as of 2026-05-15
+- 429+ services as of 2026-05-17
 - 23 categories covering the full developer cloud ecosystem
-- 400 services meet all 3 criteria (🟢); 28 meet 2 of 3 (🟡)
+- 401 services meet all 3 criteria (🟢); 28 meet 2 of 3 (🟡)
 - Minimum inclusion score: 2/3 criteria
 - Machine-readable data: https://www.alt-cloud.org/clouds.json
 - Source: https://github.com/datum-cloud/awesome-alt-clouds

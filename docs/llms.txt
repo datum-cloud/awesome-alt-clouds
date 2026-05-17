@@ -1,21 +1,21 @@
 # Awesome Alt Clouds
 
-> Curated directory of 428+ alternative cloud providers for developers — covering 23 categories including infrastructure, GPU compute, databases, AI inference, observability, developer tooling, and more. Each service is evaluated against 3 public criteria.
+> Curated directory of 429+ alternative cloud providers for developers — covering 23 categories including infrastructure, GPU compute, databases, AI inference, observability, developer tooling, and more. Each service is evaluated against 3 public criteria.
 
 ## Directory
 
-- [Full Cloud Directory](https://www.alt-cloud.org/): Interactive directory of 428+ alternative cloud providers across 23 categories. Filter by category, search by name, sort by score or recently added.
+- [Full Cloud Directory](https://www.alt-cloud.org/): Interactive directory of 429+ alternative cloud providers across 23 categories. Filter by category, search by name, sort by score or recently added.
 - [Submit a Cloud Service](https://www.alt-cloud.org/submit/): Form to submit a new cloud service for automated evaluation and inclusion in the directory.
 
 ## Data
 
-- [clouds.json](https://www.alt-cloud.org/clouds.json): Machine-readable JSON file with all 428+ entries including name, URL, description, score (2 or 3), categories, and dateAdded. Updated automatically on each PR merge.
+- [clouds.json](https://www.alt-cloud.org/clouds.json): Machine-readable JSON file with all 429+ entries including name, URL, description, score (2 or 3), categories, and dateAdded. Updated automatically on each PR merge.
 - [README (Awesome List)](https://raw.githubusercontent.com/datum-cloud/awesome-alt-clouds/main/README.md): Canonical markdown source of the directory, organized by category with scoring badges. Hosted on GitHub.
 - [GitHub Repository](https://github.com/datum-cloud/awesome-alt-clouds): Source repository. Contains submission workflows, evaluation scripts, and contribution guidelines.
 
 ## Key Facts
 
-- 428+ cloud services listed across 23 categories
+- 429+ cloud services listed across 23 categories
 - Services must meet at least 2 of 3 criteria to be included: (1) transparent public pricing, (2) usage-based self-service signup, (3) public SLA or status page
 - Score legend: 🟢 = all 3 criteria met, 🟡 = 2 of 3 criteria met
 - Automated submission pipeline: form → GitHub issue → AI evaluation → PR → merge
