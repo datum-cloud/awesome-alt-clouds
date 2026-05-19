@@ -1,19 +1,13 @@
 name: Lint and format
 
 on:
+  push:
+    # DEV: feat/astro-migration + version tags — align with deploy-pages.yml
+    branches: [main, feat/astro-migration]
+    tags: ['v*']
   pull_request:
-    paths:
-      - 'src/**'
-      - 'astro.config.mjs'
-      - 'tsconfig.json'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'eslint.config.js'
-      - 'prettier.config.mjs'
-      - '.prettierignore'
-      - 'CONTRIBUTING.md'
-      - '.vscode/**'
-      - '.github/workflows/lint.yml'
+    branches: [main, feat/astro-migration]
+  workflow_dispatch:
 
 permissions:
   contents: read

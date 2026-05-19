@@ -2,18 +2,11 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
-    paths:
-      - 'README.md'
-      - 'src/**'
-      - 'public/**'
-      - 'astro.config.mjs'
-      - 'tsconfig.json'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'scripts/parse_readme_to_json.py'
-      - 'scripts/generate_llms.py'
-      - '.github/workflows/deploy-pages.yml'
+    # DEV: feat/astro-migration + version tags — revert to main-only after Phase 6
+    branches: [main, feat/astro-migration]
+    tags: ['v*']
+  pull_request:
+    branches: [main, feat/astro-migration]
   workflow_dispatch:
 
 # Allow one concurrent deployment; cancel in-progress runs on new push
@@ -65,6 +58,13 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: build
+    # PRs: build only. Deploy on push to main, feat/astro-migration, or v* tag.
+    if: |
+      github.event_name == 'push' && (
+        github.ref == 'refs/heads/main' ||
+        github.ref == 'refs/heads/feat/astro-migration' ||
+        startsWith(github.ref, 'refs/tags/v')
+      )
     runs-on: ubuntu-latest
     environment:
       name: github-pages
