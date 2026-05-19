@@ -26,6 +26,14 @@ body {
   line-height: 1.6;
 }
 
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 /* Card slide-up entrance (preserved from original) */
 @keyframes slideUpCard {
   from {
