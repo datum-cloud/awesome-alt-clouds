@@ -32,5 +32,8 @@
     "eslint-plugin-astro": "^1.7.0",
     "prettier": "^3.8.3",
     "typescript-eslint": "^8.59.4"
+  },
+  "overrides": {
+    "vite": "^7"
   }
 }
