@@ -16,6 +16,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     define: {
+      __SITE_PREVIEW__: JSON.stringify(preview),
       __SITE_BLOCK_BOTS__: JSON.stringify(blockSearchBots),
     },
   },

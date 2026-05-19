@@ -1,14 +1,16 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { asset } from "../../lib/assets";
+import { absoluteUrl } from "../../lib/site-urls";
 
 const homeUrl = asset("");
+const submitCanonical = `${absoluteUrl("submit")}/`;
 ---
 
 <Base
   title="Add a Cloud - Awesome Alt Clouds"
   description="Submit a cloud service for evaluation against the 3 inclusion criteria. Auto-evaluated by our bot."
-  canonical="https://www.alt-cloud.org/submit/"
+  canonical={submitCanonical}
 >
   <main
     class="min-h-screen flex items-center justify-center bg-cream p-8 text-warm-stone"

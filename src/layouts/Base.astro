@@ -1,7 +1,8 @@
 ---
 import "../styles/global.css";
 import { asset } from "../lib/assets";
-import { blockSearchBots } from "../lib/site";
+import { blockSearchBots, sitePreview } from "../lib/site";
+import { absoluteUrl, defaultCanonical, defaultOgImage, homepageUrl, siteRoot } from "../lib/site-urls";
 
 export interface Props {
   title?: string;
@@ -17,8 +18,8 @@ export interface Props {
 const {
   title = "Awesome Alt Clouds | Alternative Cloud Providers for Developers",
   description = "Discover specialized cloud infrastructure providers built for developers who have specialized requirements and need alternatives to hyperscalers.",
-  ogImage = "https://www.alt-cloud.org/og-image.png",
-  canonical = "https://www.alt-cloud.org/",
+  ogImage = defaultOgImage,
+  canonical = defaultCanonical,
   includeHomeJsonLd = false,
   cloudCount = 428,
 } = Astro.props;
@@ -83,21 +84,21 @@ const {
             "@graph": [
               {
                 "@type": "WebSite",
-                "@id": "https://www.alt-cloud.org/#website",
-                url: "https://www.alt-cloud.org/",
+                "@id": `${siteRoot}#website`,
+                url: homepageUrl(),
                 name: "Awesome Alt Clouds",
                 description: `Curated directory of ${cloudCount}+ alternative cloud providers evaluated against transparent pricing, self-service signup, and public SLA criteria.`,
                 inLanguage: "en",
-                publisher: { "@id": "https://www.alt-cloud.org/#organization" },
+                publisher: { "@id": `${siteRoot}#organization` },
               },
               {
                 "@type": "Organization",
-                "@id": "https://www.alt-cloud.org/#organization",
+                "@id": `${siteRoot}#organization`,
                 name: "Datum Cloud",
-                url: "https://www.alt-cloud.org",
+                url: siteRoot,
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://www.alt-cloud.org/og-image.png",
+                  url: defaultOgImage,
                   width: 1206,
                   height: 634,
                 },
@@ -118,10 +119,10 @@ const {
               },
               {
                 "@type": "Dataset",
-                "@id": "https://www.alt-cloud.org/#dataset",
+                "@id": `${siteRoot}#dataset`,
                 name: "Awesome Alt Clouds Directory",
                 description: `A curated, community-maintained dataset of ${cloudCount}+ alternative cloud service providers evaluated against 3 criteria: transparent public pricing, usage-based self-service signup, and public SLA or status page. Covers 23 categories including infrastructure, GPU compute, databases, AI inference, developer tooling, and more.`,
-                url: "https://www.alt-cloud.org/",
+                url: homepageUrl(),
                 keywords: [
                   "cloud computing",
                   "alternative cloud",
@@ -135,14 +136,14 @@ const {
                   "authorization",
                   "network connectivity",
                 ],
-                creator: { "@id": "https://www.alt-cloud.org/#organization" },
+                creator: { "@id": `${siteRoot}#organization` },
                 license: "https://creativecommons.org/licenses/by/4.0/",
                 isAccessibleForFree: true,
                 distribution: [
                   {
                     "@type": "DataDownload",
                     encodingFormat: "application/json",
-                    contentUrl: "https://www.alt-cloud.org/clouds.json",
+                    contentUrl: absoluteUrl("clouds.json"),
                     name: "clouds.json — machine-readable cloud services directory",
                   },
                   {
@@ -156,13 +157,13 @@ const {
               },
               {
                 "@type": "CollectionPage",
-                "@id": "https://www.alt-cloud.org/#webpage",
-                url: "https://www.alt-cloud.org/",
+                "@id": `${siteRoot}#webpage`,
+                url: homepageUrl(),
                 name: "Awesome Alt Clouds | Alternative Cloud Providers for Developers",
                 description:
                   "Discover specialized cloud infrastructure providers built for developers who have specialized requirements and need alternatives to hyperscalers.",
-                isPartOf: { "@id": "https://www.alt-cloud.org/#website" },
-                about: { "@id": "https://www.alt-cloud.org/#dataset" },
+                isPartOf: { "@id": `${siteRoot}#website` },
+                about: { "@id": `${siteRoot}#dataset` },
                 speakable: {
                   "@type": "SpeakableSpecification",
                   cssSelector: [".hero-title", ".hero-subtitle"],
@@ -174,7 +175,11 @@ const {
       )
     }
 
-    <script src="https://cdn.usefathom.com/script.js" data-site="ZQEMDUAQ" defer is:inline></script>
+    {
+      !sitePreview && (
+        <script src="https://cdn.usefathom.com/script.js" data-site="ZQEMDUAQ" defer is:inline />
+      )
+    }
   </head>
   <body class="bg-cream text-rich-earth font-sans">
     <slot />
