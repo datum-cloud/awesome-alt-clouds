@@ -1,0 +1,3 @@
+# Preview deploy — block all crawlers (site.config.mjs)
+User-agent: *
+Disallow: /
