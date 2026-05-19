@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import { asset } from "../lib/assets";
 import { clouds } from "../lib/clouds";
 
 const sortedClouds = [...clouds].sort((a, b) => a.name.localeCompare(b.name));
@@ -14,7 +15,7 @@ const cloudCount = clouds.length;
     class="md:hidden sticky top-0 z-50 flex items-center justify-between px-4 py-3 bg-cream border-b border-clay-beige">
     <div class="flex items-center gap-2.5">
       <img
-        src="/altclouds-logo.png"
+        src={asset("altclouds-logo.png")}
         alt="Alt Clouds"
         width="32"
         height="32"
@@ -86,7 +87,7 @@ const cloudCount = clouds.length;
     </div>
     <div class="p-4 border-t border-clay-beige flex flex-col gap-1 flex-shrink-0">
       <a
-        href="/submit/"
+        href={asset("submit/")}
         class="w-full py-2.5 px-3 bg-bright-tangerine hover:bg-rich-earth text-white text-sm font-semibold rounded-lg flex items-center justify-center gap-2 transition-all no-underline mb-3">
         <span>+</span><span>Submit a Cloud</span>
       </a>
@@ -154,7 +155,7 @@ const cloudCount = clouds.length;
       <div class="mb-6 pb-6 border-b border-clay-beige">
         <div class="flex items-center gap-3 mb-2">
           <img
-            src="/altclouds-logo.png"
+            src={asset("altclouds-logo.png")}
             alt="Alt Clouds"
             width="40"
             height="40"
@@ -184,7 +185,7 @@ const cloudCount = clouds.length;
 
       <div class="mt-auto pt-4 border-t border-clay-beige">
         <a
-          href="/submit/"
+          href={asset("submit/")}
           class="w-full py-2.5 px-3 bg-bright-tangerine hover:bg-rich-earth text-white text-[13px] font-semibold rounded-lg flex items-center justify-center gap-2 transition-all no-underline mb-3">
           <span>+</span><span>Add a Cloud</span>
         </a>
@@ -385,7 +386,7 @@ const cloudCount = clouds.length;
         <p class="text-sm text-warm-stone/80 mt-2">
           But hey, maybe you've discovered something new?
           <a
-            href="/submit/"
+            href={asset("submit/")}
             class="text-bright-tangerine"
             >Add it to our atlas!</a
           >

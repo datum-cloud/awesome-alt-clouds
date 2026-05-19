@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import { asset } from "../lib/assets";
+import { blockSearchBots } from "../lib/site";
 
 export interface Props {
   title?: string;
@@ -30,6 +32,16 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
 
+    {
+      blockSearchBots && (
+        <>
+          <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+          <meta name="googlebot" content="noindex, nofollow" />
+          <meta name="bingbot" content="noindex, nofollow" />
+        </>
+      )
+    }
+
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content="Awesome Alt Clouds - When you need something specialized" />
@@ -52,7 +64,7 @@ const {
     <meta name="twitter:image" content={ogImage} />
 
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/png" href="/altclouds-logo.png" />
+    <link rel="icon" type="image/png" href={asset("altclouds-logo.png")} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -1,5 +1,8 @@
 ---
 import Base from "../../layouts/Base.astro";
+import { asset } from "../../lib/assets";
+
+const homeUrl = asset("");
 ---
 
 <Base
@@ -34,7 +37,7 @@ import Base from "../../layouts/Base.astro";
       <!-- Main Form -->
       <div id="form-section">
         <a
-          href="/"
+          href={homeUrl}
           class="back-link inline-flex items-center gap-1.5 text-warm-stone hover:text-rich-earth text-sm mb-5 no-underline transition-colors"
         >
           <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -53,7 +56,7 @@ import Base from "../../layouts/Base.astro";
         </h1>
         <p class="text-warm-stone leading-relaxed mb-8">
           Expand the cloud atlas! Submit a service and our bot will evaluate it against our
-          <a href="/#criteria" class="text-bright-tangerine font-medium hover:opacity-80"
+          <a href={`${homeUrl}#criteria`} class="text-bright-tangerine font-medium hover:opacity-80"
             >3 criteria</a
           >. If it passes, a PR gets created automatically.
         </p>
@@ -156,7 +159,7 @@ import Base from "../../layouts/Base.astro";
       <!-- Step 2: Copy & open GitHub (mobile fallback) -->
       <div id="step2-section" class="hidden">
         <a
-          href="/"
+          href={homeUrl}
           class="back-link inline-flex items-center gap-1.5 text-warm-stone hover:text-rich-earth text-sm mb-5 no-underline transition-colors"
         >
           <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
