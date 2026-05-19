@@ -6,9 +6,6 @@ analysis/
 
 # Node / Astro
 node_modules/
-# Astro build output — track CNAME only, ignore other artifacts
-/dist/*
-!/dist/CNAME
 .astro/
 
 # Env files
