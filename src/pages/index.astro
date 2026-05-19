@@ -1,0 +1,953 @@
+---
+import Base from "../layouts/Base.astro";
+import { clouds } from "../lib/clouds";
+
+const sortedClouds = [...clouds].sort((a, b) => a.name.localeCompare(b.name));
+const cloudCount = clouds.length;
+---
+
+<Base
+  includeHomeJsonLd
+  cloudCount={cloudCount}>
+  <!-- Mobile Header -->
+  <div
+    class="md:hidden sticky top-0 z-50 flex items-center justify-between px-4 py-3 bg-cream border-b border-clay-beige">
+    <div class="flex items-center gap-2.5">
+      <img
+        src="/altclouds-logo.png"
+        alt="Alt Clouds"
+        width="32"
+        height="32"
+        class="rounded-md"
+      />
+      <span class="font-serif text-lg font-semibold text-rich-earth">Awesome Alt Clouds</span>
+    </div>
+    <button
+      id="burgerBtn"
+      aria-label="Open menu"
+      class="p-2 rounded-md text-rich-earth hover:bg-clay-beige transition-colors">
+      <svg
+        width="22"
+        height="22"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Drawer overlay -->
+  <div
+    id="drawerOverlay"
+    class="hidden fixed inset-0 bg-charcoal/50 backdrop-blur-sm z-60"
+    style="z-index: 60;">
+  </div>
+
+  <!-- Mobile drawer -->
+  <aside
+    id="mobileDrawer"
+    class="fixed top-0 left-0 bottom-0 w-[280px] bg-cream flex flex-col -translate-x-full transition-transform duration-300"
+    style="z-index: 70;">
+    <div class="flex items-center justify-between p-4 border-b border-clay-beige flex-shrink-0">
+      <span class="font-serif text-lg font-semibold text-rich-earth">Browse</span>
+      <button
+        id="drawerClose"
+        aria-label="Close menu"
+        class="p-2 rounded-md text-warm-stone hover:bg-clay-beige hover:text-rich-earth transition-colors">
+        <svg
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div class="flex-1 p-4 overflow-y-auto">
+      <div class="font-serif text-xs font-semibold uppercase tracking-wider text-warm-stone mb-3">
+        Categories
+      </div>
+      <div
+        class="flex flex-col gap-1"
+        id="drawerCategoryList">
+      </div>
+    </div>
+    <div class="p-4 border-t border-clay-beige flex flex-col gap-1 flex-shrink-0">
+      <a
+        href="/submit/"
+        class="w-full py-2.5 px-3 bg-bright-tangerine hover:bg-rich-earth text-white text-sm font-semibold rounded-lg flex items-center justify-center gap-2 transition-all no-underline mb-3">
+        <span>+</span><span>Submit a Cloud</span>
+      </a>
+      <button
+        data-modal-trigger="extensionModal"
+        class="page-link flex items-center gap-2 px-3 py-2.5 text-sm text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
+        <svg
+          width="16"
+          height="16"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
+          ></path>
+        </svg>
+        <span>Browser extension</span>
+      </button>
+      <button
+        data-modal-trigger="aboutModal"
+        class="page-link flex items-center gap-2 px-3 py-2.5 text-sm text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
+        <svg
+          width="16"
+          height="16"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <span>About / Philosophy</span>
+      </button>
+      <button
+        data-modal-trigger="resourcesModal"
+        class="page-link flex items-center gap-2 px-3 py-2.5 text-sm text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
+        <svg
+          width="16"
+          height="16"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+          ></path>
+        </svg>
+        <span>Resources</span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="flex min-h-screen">
+    <!-- Desktop sidebar -->
+    <aside
+      class="hidden md:flex w-[280px] bg-cream border-r border-clay-beige px-4 py-6 sticky top-0 h-screen overflow-y-auto flex-col lg:w-[280px]">
+      <div class="mb-6 pb-6 border-b border-clay-beige">
+        <div class="flex items-center gap-3 mb-2">
+          <img
+            src="/altclouds-logo.png"
+            alt="Alt Clouds"
+            width="40"
+            height="40"
+            class="rounded-lg"
+          />
+          <div>
+            <h1 class="font-serif text-xl font-semibold text-rich-earth">Awesome Alt Clouds</h1>
+          </div>
+        </div>
+        <p class="text-[13px] text-bright-tangerine font-medium mb-1">
+          When you Need Something .. Specialized!
+        </p>
+        <p class="text-[13px] text-warm-stone leading-snug">
+          Discover specialized infrastructure providers built for developers who think different
+        </p>
+      </div>
+
+      <div class="flex-1 mb-4 overflow-y-auto">
+        <div class="font-serif text-xs font-semibold uppercase tracking-wider text-warm-stone mb-3">
+          Categories
+        </div>
+        <div
+          class="flex flex-col gap-1"
+          id="categoryList">
+        </div>
+      </div>
+
+      <div class="mt-auto pt-4 border-t border-clay-beige">
+        <a
+          href="/submit/"
+          class="w-full py-2.5 px-3 bg-bright-tangerine hover:bg-rich-earth text-white text-[13px] font-semibold rounded-lg flex items-center justify-center gap-2 transition-all no-underline mb-3">
+          <span>+</span><span>Add a Cloud</span>
+        </a>
+
+        <div class="flex flex-col gap-2 mb-3">
+          <button
+            data-modal-trigger="extensionModal"
+            class="page-link flex items-center gap-2 px-3 py-2.5 text-[13px] text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
+            <svg
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
+              ></path>
+            </svg>
+            <span>Browser extension</span>
+          </button>
+          <button
+            data-modal-trigger="aboutModal"
+            class="page-link flex items-center gap-2 px-3 py-2.5 text-[13px] text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
+            <svg
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            <span>About / Philosophy</span>
+          </button>
+          <button
+            data-modal-trigger="resourcesModal"
+            class="page-link flex items-center gap-2 px-3 py-2.5 text-[13px] text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
+            <svg
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              ></path>
+            </svg>
+            <span>Resources</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-6">
+      <!-- Top bar -->
+      <div
+        class="flex items-center justify-between gap-4 mb-6 px-5 py-4 bg-white border border-clay-beige rounded-xl">
+        <div class="flex items-center gap-3">
+          <span class="hidden md:inline text-sm text-warm-stone font-medium">Sort by:</span>
+          <select
+            id="sortSelect"
+            class="sorter-select pl-3 pr-8 py-2 bg-cream border-2 border-clay-beige rounded-lg text-rich-earth text-sm cursor-pointer hover:border-soft-sage focus:border-soft-sage focus:outline-none focus:ring-2 focus:ring-soft-sage/15 transition-all">
+            <option value="alphabetical">Alphabetical</option>
+            <option value="recent">Recently Added</option>
+          </select>
+        </div>
+        <div class="relative flex-[0_1_300px]">
+          <svg
+            class="absolute left-3.5 top-1/2 -translate-y-1/2 text-warm-stone pointer-events-none"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            ></path>
+          </svg>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search clouds..."
+            class="w-full pl-9 pr-8 py-2 bg-cream border-2 border-clay-beige rounded-lg text-rich-earth text-base md:text-sm placeholder:text-warm-stone/60 focus:border-soft-sage focus:outline-none focus:ring-2 focus:ring-soft-sage/15 transition-all"
+          />
+          <button
+            id="searchClear"
+            aria-label="Clear search"
+            class="search-clear absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-warm-stone hover:text-rich-earth rounded hidden items-center justify-center transition-colors">
+            <svg
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Clouds grid (SSR'd from clouds.json, hydrated by client JS) -->
+      <div
+        id="cloudsGrid"
+        class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(320px,1fr))]">
+        {
+          sortedClouds.map((cloud, index) => {
+            const score = cloud.score ?? 3;
+            const badgeClass =
+              score === 3 ? "bg-soft-sage text-rich-earth" : "bg-clay-beige text-warm-stone";
+            const badgeText = `${score}/3`;
+            const host = (() => {
+              try {
+                return new URL(cloud.url).hostname;
+              } catch {
+                return "";
+              }
+            })();
+            const fallbackLetter = cloud.name.charAt(0).toUpperCase();
+            return (
+              <article
+                class="cloud-card-animate bg-white border border-clay-beige rounded-xl p-5 relative"
+                data-name={cloud.name.toLowerCase()}
+                data-description={cloud.description.toLowerCase()}
+                data-categories={cloud.categories.join("|")}
+                data-date-added={cloud.dateAdded ?? ""}
+                style={`animation-delay: ${Math.min(index, 5) * 0.05}s`}>
+                <div class="flex items-start gap-3.5 mb-3.5">
+                  <div class="w-11 h-11 rounded-[10px] flex-shrink-0 overflow-hidden flex items-center justify-center font-serif font-semibold text-lg text-warm-stone bg-cream">
+                    {host ? (
+                      <img
+                        src={`https://www.google.com/s2/favicons?domain=${host}&sz=64`}
+                        alt={fallbackLetter}
+                        class="w-full h-full object-contain"
+                        loading="lazy"
+                        onerror={`this.style.display='none';this.parentElement.textContent='${fallbackLetter}';`}
+                      />
+                    ) : (
+                      fallbackLetter
+                    )}
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="font-serif text-lg font-semibold text-rich-earth truncate">
+                      {cloud.name}
+                    </div>
+                    <div class="text-xs text-warm-stone">{cloud.categories.join(" · ")}</div>
+                  </div>
+                </div>
+
+                <div class="flex gap-2 mb-3.5">
+                  <div
+                    class={`badge px-2.5 py-1 rounded-full text-[11px] font-medium ${badgeClass} flex items-center gap-1`}
+                    title={`Criteria Score: ${score}/3`}>
+                    {badgeText}
+                  </div>
+                </div>
+
+                <p class="text-sm text-warm-stone leading-relaxed mb-3.5">{cloud.description}</p>
+
+                <div class="flex items-center pt-3.5 border-t border-clay-beige">
+                  <a
+                    href={cloud.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm font-medium text-bright-tangerine hover:underline inline-flex items-center gap-1.5 transition-all">
+                    Visit →
+                  </a>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+
+      <!-- Empty state (hidden by default; shown by client JS when filters yield zero) -->
+      <div
+        id="emptyState"
+        class="hidden text-center py-16 px-8 col-span-full">
+        <div class="text-5xl mb-4 opacity-40">🔍</div>
+        <p class="text-base text-warm-stone">Hmm, we couldn't find that cloud</p>
+        <p class="text-sm text-warm-stone/80 mt-2">
+          But hey, maybe you've discovered something new?
+          <a
+            href="/submit/"
+            class="text-bright-tangerine"
+            >Add it to our atlas!</a
+          >
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <!-- About modal -->
+  <div
+    id="aboutModal"
+    class="modal-overlay hidden fixed inset-0 bg-charcoal/60 backdrop-blur-sm items-center justify-center p-8"
+    style="z-index: 100;">
+    <div
+      class="modal-animate bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto border border-soft-sage shadow-2xl">
+      <div
+        class="flex items-center justify-between px-8 py-6 border-b border-clay-beige sticky top-0 bg-white z-10">
+        <h2 class="font-serif text-2xl font-semibold text-rich-earth">About / Philosophy</h2>
+        <button
+          data-modal-close="aboutModal"
+          class="p-2 text-warm-stone hover:bg-clay-beige hover:text-rich-earth rounded-lg transition-colors">
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div class="p-8 space-y-8">
+        <section>
+          <h3 class="font-serif text-lg font-semibold text-rich-earth mb-3 flex items-center gap-2">
+            Why Alternative Clouds Matter
+          </h3>
+          <p class="text-warm-stone leading-relaxed mb-3">
+            The cloud landscape has long been dominated by a few hyperscalers. While they offer
+            incredible breadth, many developers find themselves paying for complexity they don't
+            need, or missing specialized capabilities that could transform their applications.
+          </p>
+          <p class="text-warm-stone leading-relaxed mb-3">
+            Alternative cloud providers fill these gaps. They offer focused expertise, transparent
+            pricing, and often better economics for specific workloads.
+          </p>
+          <p class="text-warm-stone leading-relaxed">
+            We believe in a diverse cloud ecosystem where the best tool for the job isn't always the
+            biggest. This directory exists to help you discover these alternatives and make informed
+            choices.
+          </p>
+        </section>
+
+        <section>
+          <h3 class="font-serif text-lg font-semibold text-rich-earth mb-3">
+            Inclusion Criteria Explained
+          </h3>
+          <p class="text-warm-stone mb-3">
+            Every service in our directory must meet at least 2 of 3 criteria:
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span
+              class="inline-flex items-center gap-1.5 bg-soft-sage text-rich-earth px-3 py-1.5 rounded-md text-sm font-medium"
+              >Public Pricing</span
+            >
+            <span
+              class="inline-flex items-center gap-1.5 bg-soft-sage text-rich-earth px-3 py-1.5 rounded-md text-sm font-medium"
+              >Self-Service Signup</span
+            >
+            <span
+              class="inline-flex items-center gap-1.5 bg-soft-sage text-rich-earth px-3 py-1.5 rounded-md text-sm font-medium"
+              >Status Page / SLA</span
+            >
+          </div>
+          <ul class="space-y-2 text-warm-stone">
+            <li>
+              <strong class="text-rich-earth">Public Pricing:</strong> You can see what you'll pay before
+              signing up.
+            </li>
+            <li>
+              <strong class="text-rich-earth">Self-Service Signup:</strong> You can start using the service
+              today.
+            </li>
+            <li>
+              <strong class="text-rich-earth">Status Page / SLA:</strong> Public commitment to uptime
+              and transparency.
+            </li>
+          </ul>
+        </section>
+
+        <section class="text-center pt-4 border-t border-clay-beige">
+          <a
+            href="https://github.com/datum-cloud/awesome-alt-clouds"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-rich-earth hover:bg-charcoal text-cream rounded-lg text-sm font-medium transition-all">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              ></path>
+            </svg>
+            <span>View on GitHub</span>
+          </a>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Browser extension modal -->
+  <div
+    id="extensionModal"
+    class="modal-overlay hidden fixed inset-0 bg-charcoal/60 backdrop-blur-sm items-center justify-center p-8"
+    style="z-index: 100;">
+    <div
+      class="modal-animate bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto border border-soft-sage shadow-2xl">
+      <div
+        class="flex items-center justify-between px-8 py-6 border-b border-clay-beige sticky top-0 bg-white z-10">
+        <h2 class="font-serif text-2xl font-semibold text-rich-earth">Browser Extension</h2>
+        <button
+          data-modal-close="extensionModal"
+          class="p-2 text-warm-stone hover:bg-clay-beige hover:text-rich-earth rounded-lg transition-colors">
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div class="p-8">
+        <p class="text-warm-stone mb-6">
+          Check whether any cloud provider you're browsing is an alternative cloud — right from your
+          browser toolbar.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <div
+            class="flex-1 min-w-[180px] bg-cream border border-clay-beige rounded-xl p-5 flex flex-col items-center text-center gap-3">
+            <img
+              src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome.svg"
+              width="40"
+              height="40"
+              alt="Google Chrome"
+            />
+            <span class="font-semibold text-rich-earth">Google Chrome</span>
+            <a
+              href="https://chromewebstore.google.com/detail/alt-cloud-checker/nijjhgdijgnlimemhdaghkhgiggofbin"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-bright-tangerine hover:bg-rich-earth text-white text-sm font-semibold rounded-lg transition-all">
+              <span>+</span><span>Add to browser</span>
+            </a>
+          </div>
+          <div
+            class="flex-1 min-w-[180px] bg-cream border border-clay-beige rounded-xl p-5 flex flex-col items-center text-center gap-3">
+            <img
+              src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/firefox/firefox.svg"
+              width="40"
+              height="40"
+              alt="Mozilla Firefox"
+            />
+            <span class="font-semibold text-rich-earth">Mozilla Firefox</span>
+            <button
+              disabled
+              class="mt-auto px-4 py-2.5 bg-clay-beige text-warm-stone text-sm font-semibold rounded-lg cursor-not-allowed">
+              Coming soon
+            </button>
+          </div>
+          <div
+            class="flex-1 min-w-[180px] bg-cream border border-clay-beige rounded-xl p-5 flex flex-col items-center text-center gap-3">
+            <img
+              src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/edge/edge.svg"
+              width="40"
+              height="40"
+              alt="Microsoft Edge"
+            />
+            <span class="font-semibold text-rich-earth">Microsoft Edge</span>
+            <button
+              disabled
+              class="mt-auto px-4 py-2.5 bg-clay-beige text-warm-stone text-sm font-semibold rounded-lg cursor-not-allowed">
+              Coming soon
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resources modal -->
+  <div
+    id="resourcesModal"
+    class="modal-overlay hidden fixed inset-0 bg-charcoal/60 backdrop-blur-sm items-center justify-center p-8"
+    style="z-index: 100;">
+    <div
+      class="modal-animate bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto border border-soft-sage shadow-2xl">
+      <div
+        class="flex items-center justify-between px-8 py-6 border-b border-clay-beige sticky top-0 bg-white z-10">
+        <h2 class="font-serif text-2xl font-semibold text-rich-earth">Resources</h2>
+        <button
+          data-modal-close="resourcesModal"
+          class="p-2 text-warm-stone hover:bg-clay-beige hover:text-rich-earth rounded-lg transition-colors">
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div class="p-8 space-y-8">
+        <section>
+          <h3 class="font-serif text-lg font-semibold text-rich-earth mb-3">Comparison Tools</h3>
+          <div class="bg-cream border border-clay-beige rounded-xl p-5 mb-3">
+            <h4 class="font-serif font-semibold text-rich-earth mb-1">
+              <a
+                href="https://cloudprice.net"
+                target="_blank"
+                rel="noopener"
+                class="hover:text-bright-tangerine"
+                >CloudPrice.net</a
+              >
+            </h4>
+            <p class="text-sm text-warm-stone">
+              Compare compute instance pricing across dozens of cloud providers.
+            </p>
+          </div>
+          <div class="bg-cream border border-clay-beige rounded-xl p-5">
+            <h4 class="font-serif font-semibold text-rich-earth mb-1">
+              <a
+                href="https://gpulist.ai"
+                target="_blank"
+                rel="noopener"
+                class="hover:text-bright-tangerine"
+                >GPUList.ai</a
+              >
+            </h4>
+            <p class="text-sm text-warm-stone">
+              Real-time GPU availability tracker across cloud providers.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hydration data: serialized clouds for client-side filter/search/sort -->
+  <script
+    is:inline
+    id="clouds-data"
+    type="application/json"
+    set:html={JSON.stringify(sortedClouds)}
+  />
+
+  <script>
+    type Cloud = {
+      name: string;
+      url: string;
+      description: string;
+      score: 2 | 3;
+      categories: string[];
+      dateAdded?: string;
+    };
+
+    const dataEl = document.getElementById("clouds-data");
+    const altClouds: Cloud[] = dataEl ? JSON.parse(dataEl.textContent || "[]") : [];
+
+    let currentCategory = "All";
+    let searchTerm = "";
+    let currentSort: "alphabetical" | "recent" = "alphabetical";
+
+    const MODAL_HASHES: Record<string, string> = {
+      aboutModal: "about",
+      resourcesModal: "resources",
+      extensionModal: "extension",
+    };
+    const HASH_MODALS: Record<string, string> = Object.fromEntries(
+      Object.entries(MODAL_HASHES).map(([k, v]) => [v, k])
+    );
+
+    function categoryToSlug(cat: string): string {
+      return cat
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
+    }
+
+    function slugToCategory(slug: string): string {
+      const cats = getCategories();
+      return cats.find((c) => categoryToSlug(c) === slug) || "All";
+    }
+
+    function getCategories(): string[] {
+      const set = new Set<string>();
+      for (const c of altClouds) for (const cat of c.categories) set.add(cat);
+      return ["All", ...[...set].sort()];
+    }
+
+    function openModal(id: string) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.remove("hidden");
+      el.classList.add("flex");
+      document.body.style.overflow = "hidden";
+      const hash = MODAL_HASHES[id];
+      if (hash) history.pushState({ modal: id }, "", "#" + hash);
+    }
+
+    function closeModal(id: string) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.add("hidden");
+      el.classList.remove("flex");
+      document.body.style.overflow = "";
+      if (MODAL_HASHES[id] && location.hash === "#" + MODAL_HASHES[id]) {
+        history.pushState({}, "", location.pathname + location.search);
+      }
+    }
+
+    document.querySelectorAll<HTMLElement>("[data-modal-trigger]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-modal-trigger");
+        if (id) openModal(id);
+      });
+    });
+
+    document.querySelectorAll<HTMLElement>("[data-modal-close]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-modal-close");
+        if (id) closeModal(id);
+      });
+    });
+
+    document.querySelectorAll<HTMLElement>(".modal-overlay").forEach((overlay) => {
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) closeModal(overlay.id);
+      });
+    });
+
+    // Mobile drawer
+    const drawer = document.getElementById("mobileDrawer");
+    const drawerOverlay = document.getElementById("drawerOverlay");
+    const burgerBtn = document.getElementById("burgerBtn");
+    const drawerClose = document.getElementById("drawerClose");
+
+    function openDrawer() {
+      drawer?.classList.remove("-translate-x-full");
+      drawer?.classList.add("translate-x-0");
+      drawerOverlay?.classList.remove("hidden");
+      drawerOverlay?.classList.add("block");
+      document.body.style.overflow = "hidden";
+    }
+    function closeDrawer() {
+      drawer?.classList.add("-translate-x-full");
+      drawer?.classList.remove("translate-x-0");
+      drawerOverlay?.classList.add("hidden");
+      drawerOverlay?.classList.remove("block");
+      if (!document.querySelector(".modal-overlay.flex")) {
+        document.body.style.overflow = "";
+      }
+    }
+    burgerBtn?.addEventListener("click", openDrawer);
+    drawerClose?.addEventListener("click", closeDrawer);
+    drawerOverlay?.addEventListener("click", closeDrawer);
+
+    // ESC closes modals/drawer + clears search
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      const active = document.activeElement as HTMLElement | null;
+      if (active?.id === "searchInput" && searchTerm) {
+        clearSearch();
+        active.blur();
+        return;
+      }
+      document.querySelectorAll<HTMLElement>(".modal-overlay.flex").forEach((m) => {
+        m.classList.add("hidden");
+        m.classList.remove("flex");
+      });
+      if (HASH_MODALS[location.hash.slice(1)]) {
+        history.pushState({}, "", location.pathname + location.search);
+      }
+      closeDrawer();
+      document.body.style.overflow = "";
+    });
+
+    // Categories rendering
+    function renderCategories() {
+      const cats = getCategories();
+      const counts: Record<string, number> = { All: altClouds.length };
+      for (const c of altClouds) {
+        for (const cat of c.categories) counts[cat] = (counts[cat] || 0) + 1;
+      }
+      const html = cats
+        .map((cat) => {
+          const isActive = cat === currentCategory;
+          return `<button data-category="${cat.replace(/"/g, "&quot;")}" class="gap-2 [&>span]:text-left category-item flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer text-sm transition-all border border-transparent ${
+            isActive
+              ? "bg-rich-earth text-cream font-medium"
+              : "text-warm-stone hover:bg-clay-beige hover:text-rich-earth"
+          }"><span>${cat}</span><span class="font-mono text-xs opacity-70">${counts[cat] || 0}</span></button>`;
+        })
+        .join("");
+      const list = document.getElementById("categoryList");
+      const drawerList = document.getElementById("drawerCategoryList");
+      if (list) list.innerHTML = html;
+      if (drawerList) drawerList.innerHTML = html;
+      document.querySelectorAll<HTMLElement>("[data-category]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const cat = btn.getAttribute("data-category");
+          if (cat) filterByCategory(cat);
+        });
+      });
+    }
+
+    function filterByCategory(cat: string) {
+      currentCategory = cat;
+      renderCategories();
+      applyFilters();
+      updateUrl();
+      closeDrawer();
+    }
+
+    function applyFilters() {
+      const grid = document.getElementById("cloudsGrid");
+      const empty = document.getElementById("emptyState");
+      if (!grid) return;
+
+      const cards = Array.from(grid.querySelectorAll<HTMLElement>("article.cloud-card-animate"));
+      const term = searchTerm.toLowerCase();
+      let visibleCount = 0;
+
+      const matches: HTMLElement[] = [];
+      for (const card of cards) {
+        const cats = (card.dataset.categories || "").split("|");
+        const name = card.dataset.name || "";
+        const desc = card.dataset.description || "";
+        const inCat = currentCategory === "All" || cats.includes(currentCategory);
+        const inSearch = term === "" || name.includes(term) || desc.includes(term);
+        if (inCat && inSearch) {
+          card.classList.remove("hidden");
+          matches.push(card);
+          visibleCount++;
+        } else {
+          card.classList.add("hidden");
+        }
+      }
+
+      // Apply sort by reordering DOM
+      matches.sort((a, b) => {
+        if (currentSort === "alphabetical") {
+          return (a.dataset.name || "").localeCompare(b.dataset.name || "");
+        }
+        const da = a.dataset.dateAdded || "";
+        const db = b.dataset.dateAdded || "";
+        if (!da && !db) return 0;
+        if (!da) return 1;
+        if (!db) return -1;
+        return db.localeCompare(da);
+      });
+
+      for (const card of matches) grid.appendChild(card);
+
+      if (empty) {
+        empty.classList.toggle("hidden", visibleCount > 0);
+      }
+    }
+
+    // Search input
+    const searchInput = document.getElementById("searchInput") as HTMLInputElement | null;
+    const searchClear = document.getElementById("searchClear");
+
+    function updateSearchClear() {
+      if (!searchClear) return;
+      const visible = searchTerm.length > 0;
+      searchClear.classList.toggle("hidden", !visible);
+      searchClear.classList.toggle("flex", visible);
+    }
+
+    function clearSearch() {
+      searchTerm = "";
+      if (searchInput) searchInput.value = "";
+      updateSearchClear();
+      applyFilters();
+      updateUrl();
+    }
+
+    searchInput?.addEventListener("input", (e) => {
+      searchTerm = (e.target as HTMLInputElement).value;
+      updateSearchClear();
+      applyFilters();
+      updateUrl();
+    });
+    searchClear?.addEventListener("click", clearSearch);
+
+    // Sort
+    const sortSelect = document.getElementById("sortSelect") as HTMLSelectElement | null;
+    sortSelect?.addEventListener("change", () => {
+      currentSort = (sortSelect.value as "alphabetical" | "recent") || "alphabetical";
+      applyFilters();
+    });
+
+    function updateUrl() {
+      const params = new URLSearchParams();
+      if (searchTerm) params.set("search", searchTerm);
+      const hash = currentCategory === "All" ? "" : "#" + categoryToSlug(currentCategory);
+      const qs = params.toString() ? "?" + params.toString() : "";
+      history.replaceState(null, "", location.pathname + qs + hash);
+    }
+
+    function initFromUrl() {
+      const params = new URLSearchParams(location.search);
+      const s = params.get("search") || "";
+      if (s) {
+        searchTerm = s;
+        if (searchInput) searchInput.value = s;
+      }
+      const slug = location.hash.slice(1);
+      if (slug && !HASH_MODALS[slug]) {
+        const matched = slugToCategory(slug);
+        if (matched !== "All") currentCategory = matched;
+      }
+    }
+
+    window.addEventListener("popstate", () => {
+      const params = new URLSearchParams(location.search);
+      searchTerm = params.get("search") || "";
+      if (searchInput) searchInput.value = searchTerm;
+      updateSearchClear();
+      const slug = location.hash.slice(1);
+      currentCategory = slug && !HASH_MODALS[slug] ? slugToCategory(slug) : "All";
+      renderCategories();
+      applyFilters();
+    });
+
+    // Init
+    initFromUrl();
+    updateSearchClear();
+    renderCategories();
+    applyFilters();
+
+    // Open modal if loaded with hash
+    const initModalId = HASH_MODALS[location.hash.slice(1)];
+    if (initModalId) openModal(initModalId);
+  </script>
+</Base>

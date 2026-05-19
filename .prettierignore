@@ -1,0 +1,11 @@
+dist
+node_modules
+.astro
+package-lock.json
+public/clouds.json
+public/llms-full.txt
+docs
+/README.md
+/data/**
+/.github/**
+/analysis/**

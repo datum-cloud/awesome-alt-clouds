@@ -168,8 +168,9 @@ def build_comment(match_type: str, match: dict) -> str:
         raise ValueError(f'Unknown match_type: {match_type!r}')
 
 
-# Path to clouds.json — overridable in tests
-_CLOUDS_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', 'docs', 'clouds.json')
+# Path to clouds.json — overridable in tests.
+# Lives in public/ since the Astro migration (Phase 1, see analysis/2026-05-19-astro-migration-rfc.md).
+_CLOUDS_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', 'public', 'clouds.json')
 
 
 def _write_github_output(key: str, value: str) -> None:

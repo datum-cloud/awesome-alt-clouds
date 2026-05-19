@@ -1,1 +1,15 @@
 .DS_Store
+
+# Local-only scratch space (RFCs, notes, deep-analysis drafts)
+analysis/
+.worktrees/
+
+# Node / Astro
+node_modules/
+dist/
+.astro/
+
+# Env files
+.env
+.env.local
+.env.*.local

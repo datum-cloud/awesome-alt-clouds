@@ -1,0 +1,423 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base
+  title="Add a Cloud - Awesome Alt Clouds"
+  description="Submit a cloud service for evaluation against the 3 inclusion criteria. Auto-evaluated by our bot."
+  canonical="https://www.alt-cloud.org/submit/"
+>
+  <main
+    class="min-h-screen flex items-center justify-center bg-cream p-8 text-warm-stone"
+  >
+    <div
+      class="container relative bg-white border border-soft-sage rounded-2xl shadow-[0_4px_24px_rgba(62,54,46,0.08),0_1px_3px_rgba(62,54,46,0.04)] max-w-xl w-full p-10 overflow-hidden"
+    >
+      <!-- Constellation decoration -->
+      <svg
+        class="absolute top-6 right-6 w-[60px] h-[60px] opacity-15 pointer-events-none"
+        viewBox="0 0 60 60"
+      >
+        <circle cx="10" cy="15" r="3" class="fill-soft-sage"></circle>
+        <circle cx="30" cy="8" r="2" class="fill-soft-sage"></circle>
+        <circle cx="50" cy="20" r="3" class="fill-soft-sage"></circle>
+        <circle cx="25" cy="35" r="2" class="fill-soft-sage"></circle>
+        <circle cx="45" cy="45" r="3" class="fill-soft-sage"></circle>
+        <circle cx="15" cy="50" r="2" class="fill-soft-sage"></circle>
+        <line x1="10" y1="15" x2="30" y2="8" stroke="#A3B18A" stroke-width="1"></line>
+        <line x1="30" y1="8" x2="50" y2="20" stroke="#A3B18A" stroke-width="1"></line>
+        <line x1="25" y1="35" x2="45" y2="45" stroke="#A3B18A" stroke-width="1"></line>
+        <line x1="10" y1="15" x2="25" y2="35" stroke="#A3B18A" stroke-width="1"></line>
+        <line x1="25" y1="35" x2="15" y2="50" stroke="#A3B18A" stroke-width="1"></line>
+      </svg>
+
+      <!-- Main Form -->
+      <div id="form-section">
+        <a
+          href="/"
+          class="back-link inline-flex items-center gap-1.5 text-warm-stone hover:text-rich-earth text-sm mb-5 no-underline transition-colors"
+        >
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Back to directory
+        </a>
+        <h1
+          class="font-serif text-3xl font-semibold text-rich-earth mb-2 tracking-tight"
+        >
+          Add a Cloud
+        </h1>
+        <p class="text-warm-stone leading-relaxed mb-8">
+          Expand the cloud atlas! Submit a service and our bot will evaluate it against our
+          <a href="/#criteria" class="text-bright-tangerine font-medium hover:opacity-80"
+            >3 criteria</a
+          >. If it passes, a PR gets created automatically.
+        </p>
+
+        <div
+          class="bg-cream border border-soft-sage rounded-xl p-5 mb-6"
+        >
+          <h3 class="font-serif text-base font-semibold text-rich-earth mb-2">
+            What we look for
+          </h3>
+          <p class="text-sm leading-relaxed mb-3">Services need at least 2 of 3 criteria:</p>
+          <span
+            class="inline-block bg-clay-beige text-warm-stone px-2.5 py-1 rounded-md text-xs mr-1.5 mb-1.5"
+            >Public Pricing</span
+          >
+          <span
+            class="inline-block bg-clay-beige text-warm-stone px-2.5 py-1 rounded-md text-xs mr-1.5 mb-1.5"
+            >Self-Service Signup</span
+          >
+          <span
+            class="inline-block bg-clay-beige text-warm-stone px-2.5 py-1 rounded-md text-xs mr-1.5 mb-1.5"
+            >Status Page / SLA</span
+          >
+        </div>
+
+        <form id="submission-form">
+          <div class="mb-6">
+            <label class="block text-rich-earth font-medium mb-2 text-sm"
+              >Service URLs (up to 5)</label
+            >
+            <div id="url-inputs">
+              <input
+                type="text"
+                class="url-input w-full px-4 py-3.5 border-2 border-clay-beige rounded-xl text-base bg-cream text-charcoal focus:border-soft-sage focus:outline-none focus:ring-2 focus:ring-soft-sage/15 transition-all mb-2 placeholder:text-warm-stone/60"
+                name="url-1"
+                required
+                placeholder="https://coolcloud.io"
+              />
+            </div>
+            <button
+              type="button"
+              id="add-url-btn"
+              class="bg-transparent text-bright-tangerine border-2 border-bright-tangerine px-4 py-2 rounded-lg text-sm font-semibold mt-2 hover:bg-bright-tangerine hover:text-white hover:-translate-y-px transition-all"
+            >
+              + Add another
+            </button>
+            <p class="text-sm text-warm-stone mt-2 leading-relaxed">
+              We'll auto-generate the name, description, and category using AI
+            </p>
+          </div>
+
+          <div class="mb-6">
+            <label
+              for="submitter-name"
+              class="block text-rich-earth font-medium mb-2 text-sm"
+              >Your name (optional)</label
+            >
+            <input
+              type="text"
+              id="submitter-name"
+              name="submitter-name"
+              placeholder="Cloud Explorer"
+              class="w-full px-4 py-3.5 border-2 border-clay-beige rounded-xl text-base bg-cream text-charcoal focus:border-soft-sage focus:outline-none focus:ring-2 focus:ring-soft-sage/15 transition-all placeholder:text-warm-stone/60"
+            />
+          </div>
+
+          <div class="mb-6">
+            <label
+              for="notes"
+              class="block text-rich-earth font-medium mb-2 text-sm">Notes (optional)</label
+            >
+            <textarea
+              id="notes"
+              name="notes"
+              placeholder="Anything we should know about this service?"
+              class="w-full px-4 py-3.5 border-2 border-clay-beige rounded-xl text-base bg-cream text-charcoal focus:border-soft-sage focus:outline-none focus:ring-2 focus:ring-soft-sage/15 transition-all min-h-[80px] resize-y placeholder:text-warm-stone/60"
+            ></textarea>
+          </div>
+
+          <!-- Honeypot fields -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <div class="hp-field" aria-hidden="true">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <button
+            type="submit"
+            id="submit-btn"
+            class="bg-rich-earth hover:bg-charcoal text-cream py-4 px-8 rounded-xl text-base font-semibold w-full hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
+          >
+            Submit for Review
+          </button>
+        </form>
+      </div>
+
+      <!-- Step 2: Copy & open GitHub (mobile fallback) -->
+      <div id="step2-section" class="hidden">
+        <a
+          href="/"
+          class="back-link inline-flex items-center gap-1.5 text-warm-stone hover:text-rich-earth text-sm mb-5 no-underline transition-colors"
+        >
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Back to directory
+        </a>
+        <div class="mb-5">
+          <h2 class="font-serif text-2xl font-semibold text-rich-earth mb-1.5">
+            Almost there!
+          </h2>
+          <p class="text-sm text-warm-stone leading-relaxed">
+            Copy the text below, then open GitHub. Paste it into the issue body when prompted.
+          </p>
+        </div>
+        <div class="mb-5">
+          <label
+            class="block text-xs font-semibold uppercase tracking-wider text-warm-stone mb-1.5"
+            >Issue body</label
+          >
+          <textarea
+            id="issueBodyText"
+            readonly
+            class="w-full min-h-[180px] resize-none font-mono text-xs leading-relaxed px-4 py-3.5 border-2 border-clay-beige rounded-xl bg-cream text-charcoal"
+          ></textarea>
+        </div>
+        <button
+          id="copyBtn"
+          class="w-full py-3 bg-soft-sage hover:bg-[#8fa876] hover:text-white text-rich-earth font-semibold rounded-xl text-base transition-all mb-3"
+        >
+          📋 Copy to clipboard
+        </button>
+        <a
+          id="githubLink"
+          href="#"
+          target="_blank"
+          rel="noopener"
+          class="flex items-center justify-center gap-2 w-full py-4 bg-rich-earth hover:bg-charcoal text-cream font-semibold rounded-xl text-base no-underline hover:-translate-y-0.5 hover:shadow-lg transition-all"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+            ></path>
+          </svg>
+          Open GitHub to create issue
+        </a>
+        <p class="text-center text-xs text-warm-stone mt-3 leading-relaxed">
+          GitHub will open a blank issue — paste the copied text into the body field.
+        </p>
+      </div>
+
+      <!-- Fake success shown to spam bots -->
+      <div id="success" class="hidden text-center p-8">
+        <h2 class="font-serif text-2xl font-semibold text-rich-earth mb-3">
+          Thanks for expanding the atlas!
+        </h2>
+        <p class="text-warm-stone">Your submission has been received.</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const pageLoadTime = Date.now();
+    const MIN_SUBMIT_TIME = 3000;
+    const MAX_URLS = 5;
+    const GITHUB_OWNER = "datum-cloud";
+    const GITHUB_REPO = "awesome-alt-clouds";
+    let urlCount = 1;
+
+    const $ = <T extends HTMLElement = HTMLElement>(id: string) =>
+      document.getElementById(id) as T | null;
+
+    function isSpamSubmission(): boolean {
+      const hpWebsite = ($("website") as HTMLInputElement | null)?.value;
+      const hpEmail = ($("email") as HTMLInputElement | null)?.value;
+      if (hpWebsite || hpEmail) {
+        console.log("Spam detected: honeypot filled");
+        return true;
+      }
+      if (Date.now() - pageLoadTime < MIN_SUBMIT_TIME) {
+        console.log("Spam detected: submitted too quickly");
+        return true;
+      }
+      return false;
+    }
+
+    function ensureProtocol(url: string): string {
+      if (url && !url.startsWith("http://") && !url.startsWith("https://")) {
+        return "https://" + url;
+      }
+      return url;
+    }
+
+    function normalizeUrl(url: string): string {
+      url = ensureProtocol(url);
+      try {
+        const parsed = new URL(url);
+        parsed.hostname = parsed.hostname.toLowerCase();
+        parsed.pathname = parsed.pathname.toLowerCase();
+        return parsed.toString();
+      } catch {
+        return url.toLowerCase();
+      }
+    }
+
+    function extractDomain(url: string): string {
+      try {
+        const domain = new URL(url).hostname.replace("www.", "");
+        const first = domain.split(".")[0];
+        return first.charAt(0).toUpperCase() + first.slice(1);
+      } catch {
+        return "Unknown";
+      }
+    }
+
+    function addUrlInput() {
+      if (urlCount >= MAX_URLS) {
+        alert("Maximum 5 URLs allowed");
+        return;
+      }
+      urlCount++;
+      const container = $("url-inputs");
+      const input = document.createElement("input");
+      input.type = "text";
+      input.className =
+        "url-input w-full px-4 py-3.5 border-2 border-clay-beige rounded-xl text-base bg-cream text-charcoal focus:border-soft-sage focus:outline-none focus:ring-2 focus:ring-soft-sage/15 transition-all mb-2 placeholder:text-warm-stone/60";
+      input.name = `url-${urlCount}`;
+      input.placeholder = "https://anothercloud.dev";
+      container?.appendChild(input);
+      if (urlCount >= MAX_URLS) {
+        const btn = $("add-url-btn");
+        if (btn) btn.style.display = "none";
+      }
+    }
+
+    $("add-url-btn")?.addEventListener("click", addUrlInput);
+
+    $("url-inputs")?.addEventListener(
+      "blur",
+      (e) => {
+        const target = e.target as HTMLInputElement;
+        if (!target.classList.contains("url-input")) return;
+        const val = target.value.trim();
+        if (val) target.value = normalizeUrl(val);
+      },
+      true
+    );
+
+    async function copyIssueBody() {
+      const textarea = $<HTMLTextAreaElement>("issueBodyText");
+      const btn = $("copyBtn");
+      if (!textarea || !btn) return;
+      try {
+        await navigator.clipboard.writeText(textarea.value);
+        btn.textContent = "✓ Copied!";
+        setTimeout(() => {
+          btn.textContent = "📋 Copy to clipboard";
+        }, 2000);
+      } catch {
+        textarea.select();
+        btn.textContent = "Select all → copy manually";
+      }
+    }
+
+    $("copyBtn")?.addEventListener("click", copyIssueBody);
+
+    $("submission-form")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (isSpamSubmission()) {
+        $("form-section")?.classList.add("hidden");
+        $("success")?.classList.remove("hidden");
+        return;
+      }
+
+      const urlInputs = document.querySelectorAll<HTMLInputElement>(".url-input");
+      const urls = Array.from(urlInputs)
+        .map((input) => normalizeUrl(input.value.trim()))
+        .filter((url) => url.length > 0);
+
+      if (urls.length === 0) {
+        alert("Please enter at least one URL");
+        return;
+      }
+
+      const submitterName = ($("submitter-name") as HTMLInputElement | null)?.value || "";
+      const notes = ($("notes") as HTMLTextAreaElement | null)?.value || "";
+
+      const issueTitle =
+        urls.length === 1
+          ? `[Submission] ${extractDomain(urls[0])}`
+          : `[Submission] ${urls.length} services`;
+
+      const urlsList = urls.map((url, i) => `${i + 1}. ${url}`).join("\n");
+
+      const issueBody = `## Cloud Service Submission
+
+### URLs
+${urlsList}
+
+**Submitter:** ${submitterName || "Anonymous"}
+**Submitted:** ${new Date().toISOString()}
+**Count:** ${urls.length}
+
+### Notes
+${notes || "No additional notes provided."}
+
+---
+*This issue was automatically created via the submission form. A GitHub Action will evaluate each service and use AI to generate name, description, and category. Services that pass (2/3 or 3/3 criteria) will be added to a PR.*`;
+
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        const issueUrl =
+          `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/issues/new?` +
+          `title=${encodeURIComponent(issueTitle)}&labels=submission`;
+
+        const textarea = $<HTMLTextAreaElement>("issueBodyText");
+        const link = $<HTMLAnchorElement>("githubLink");
+        if (textarea) textarea.value = issueBody;
+        if (link) link.href = issueUrl;
+
+        $("form-section")?.classList.add("hidden");
+        $("step2-section")?.classList.remove("hidden");
+
+        try {
+          await navigator.clipboard.writeText(issueBody);
+          const btn = $("copyBtn");
+          if (btn) {
+            btn.textContent = "✓ Copied!";
+            setTimeout(() => {
+              btn.textContent = "📋 Copy to clipboard";
+            }, 2000);
+          }
+        } catch {
+          // Clipboard unavailable
+        }
+      } else {
+        const issueUrl =
+          `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/issues/new?` +
+          `title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}&labels=submission`;
+
+        const btn = $<HTMLButtonElement>("submit-btn");
+        if (btn) {
+          btn.disabled = true;
+          btn.textContent = "Opening GitHub…";
+        }
+
+        window.open(issueUrl, "_blank", "noopener");
+
+        setTimeout(() => {
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = "Submit for Review";
+          }
+        }, 4000);
+      }
+    });
+  </script>
+</Base>

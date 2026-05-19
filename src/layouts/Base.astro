@@ -1,0 +1,170 @@
+---
+import "../styles/global.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  /** Inject Dataset / CollectionPage JSON-LD on the homepage only */
+  includeHomeJsonLd?: boolean;
+  /** Cloud count for the homepage metadata blocks */
+  cloudCount?: number;
+}
+
+const {
+  title = "Awesome Alt Clouds | Alternative Cloud Providers for Developers",
+  description = "Discover specialized cloud infrastructure providers built for developers who have specialized requirements and need alternatives to hyperscalers.",
+  ogImage = "https://www.alt-cloud.org/og-image.png",
+  canonical = "https://www.alt-cloud.org/",
+  includeHomeJsonLd = false,
+  cloudCount = 428,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content="Awesome Alt Clouds - When you need something specialized" />
+    <meta
+      property="og:description"
+      content="A curated directory of alternative cloud providers to help developers source solutions offering public pricing, self-service signup, and transparent uptime at a glance. Now accepting contributions to the list."
+    />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1206" />
+    <meta property="og:image:height" content="634" />
+    <meta property="og:image:type" content="image/png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content="Awesome Alt Clouds - When you need something specialized" />
+    <meta
+      name="twitter:description"
+      content="A curated directory of alternative cloud providers to help developers source solutions offering public pricing, self-service signup, and transparent uptime at a glance. Now accepting contributions to the list."
+    />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/altclouds-logo.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    {
+      includeHomeJsonLd && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebSite",
+                "@id": "https://www.alt-cloud.org/#website",
+                url: "https://www.alt-cloud.org/",
+                name: "Awesome Alt Clouds",
+                description: `Curated directory of ${cloudCount}+ alternative cloud providers evaluated against transparent pricing, self-service signup, and public SLA criteria.`,
+                inLanguage: "en",
+                publisher: { "@id": "https://www.alt-cloud.org/#organization" },
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://www.alt-cloud.org/#organization",
+                name: "Datum Cloud",
+                url: "https://www.alt-cloud.org",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://www.alt-cloud.org/og-image.png",
+                  width: 1206,
+                  height: 634,
+                },
+                sameAs: [
+                  "https://github.com/datum-cloud",
+                  "https://github.com/datum-cloud/awesome-alt-clouds",
+                ],
+                knowsAbout: [
+                  "cloud computing",
+                  "alternative cloud providers",
+                  "infrastructure as a service",
+                  "GPU cloud computing",
+                  "developer tools",
+                  "database services",
+                  "AI inference APIs",
+                  "platform as a service",
+                ],
+              },
+              {
+                "@type": "Dataset",
+                "@id": "https://www.alt-cloud.org/#dataset",
+                name: "Awesome Alt Clouds Directory",
+                description: `A curated, community-maintained dataset of ${cloudCount}+ alternative cloud service providers evaluated against 3 criteria: transparent public pricing, usage-based self-service signup, and public SLA or status page. Covers 23 categories including infrastructure, GPU compute, databases, AI inference, developer tooling, and more.`,
+                url: "https://www.alt-cloud.org/",
+                keywords: [
+                  "cloud computing",
+                  "alternative cloud",
+                  "infrastructure as a service",
+                  "GPU cloud",
+                  "databases",
+                  "developer tools",
+                  "PaaS",
+                  "AI inference",
+                  "observability",
+                  "authorization",
+                  "network connectivity",
+                ],
+                creator: { "@id": "https://www.alt-cloud.org/#organization" },
+                license: "https://creativecommons.org/licenses/by/4.0/",
+                isAccessibleForFree: true,
+                distribution: [
+                  {
+                    "@type": "DataDownload",
+                    encodingFormat: "application/json",
+                    contentUrl: "https://www.alt-cloud.org/clouds.json",
+                    name: "clouds.json — machine-readable cloud services directory",
+                  },
+                  {
+                    "@type": "DataDownload",
+                    encodingFormat: "text/markdown",
+                    contentUrl:
+                      "https://raw.githubusercontent.com/datum-cloud/awesome-alt-clouds/main/README.md",
+                    name: "README.md — human-readable awesome list",
+                  },
+                ],
+              },
+              {
+                "@type": "CollectionPage",
+                "@id": "https://www.alt-cloud.org/#webpage",
+                url: "https://www.alt-cloud.org/",
+                name: "Awesome Alt Clouds | Alternative Cloud Providers for Developers",
+                description:
+                  "Discover specialized cloud infrastructure providers built for developers who have specialized requirements and need alternatives to hyperscalers.",
+                isPartOf: { "@id": "https://www.alt-cloud.org/#website" },
+                about: { "@id": "https://www.alt-cloud.org/#dataset" },
+                speakable: {
+                  "@type": "SpeakableSpecification",
+                  cssSelector: [".hero-title", ".hero-subtitle"],
+                },
+              },
+            ],
+          })}
+        />
+      )
+    }
+
+    <script src="https://cdn.usefathom.com/script.js" data-site="ZQEMDUAQ" defer is:inline></script>
+  </head>
+  <body class="bg-cream text-rich-earth font-sans">
+    <slot />
+  </body>
+</html>

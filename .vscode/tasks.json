@@ -1,0 +1,44 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Astro: Dev",
+      "type": "npm",
+      "script": "dev",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "isBackground": true
+    },
+    {
+      "label": "Astro: Build",
+      "type": "npm",
+      "script": "build",
+      "problemMatcher": ["$eslint-stylish"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Lint (ESLint + Astro check)",
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "Format check (Prettier)",
+      "type": "npm",
+      "script": "format:check",
+      "problemMatcher": []
+    },
+    {
+      "label": "Regenerate clouds.json",
+      "type": "shell",
+      "command": "python3 scripts/parse_readme_to_json.py README.md public/clouds.json && python3 scripts/generate_llms.py public/clouds.json public/",
+      "problemMatcher": []
+    }
+  ]
+}
