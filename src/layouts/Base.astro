@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { asset } from "../lib/assets";
 import { blockSearchBots, sitePreview } from "../lib/site";
+import { defaultDescription, defaultTitle, socialDescription, socialTitle } from "../lib/site-meta";
 import { absoluteUrl, defaultCanonical, defaultOgImage, homepageUrl, siteRoot } from "../lib/site-urls";
 
 export interface Props {
@@ -16,8 +17,8 @@ export interface Props {
 }
 
 const {
-  title = "Awesome Alt Clouds | Alternative Cloud Providers for Developers",
-  description = "Discover specialized cloud infrastructure providers built for developers who have specialized requirements and need alternatives to hyperscalers.",
+  title = defaultTitle,
+  description = defaultDescription,
   ogImage = defaultOgImage,
   canonical = defaultCanonical,
   includeHomeJsonLd = false,
@@ -45,11 +46,8 @@ const {
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:title" content="Awesome Alt Clouds - When you need something specialized" />
-    <meta
-      property="og:description"
-      content="A curated directory of alternative cloud providers to help developers source solutions offering public pricing, self-service signup, and transparent uptime at a glance. Now accepting contributions to the list."
-    />
+    <meta property="og:title" content={socialTitle} />
+    <meta property="og:description" content={socialDescription} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1206" />
     <meta property="og:image:height" content="634" />
@@ -57,11 +55,8 @@ const {
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonical} />
-    <meta name="twitter:title" content="Awesome Alt Clouds - When you need something specialized" />
-    <meta
-      name="twitter:description"
-      content="A curated directory of alternative cloud providers to help developers source solutions offering public pricing, self-service signup, and transparent uptime at a glance. Now accepting contributions to the list."
-    />
+    <meta name="twitter:title" content={socialTitle} />
+    <meta name="twitter:description" content={socialDescription} />
     <meta name="twitter:image" content={ogImage} />
 
     <link rel="canonical" href={canonical} />

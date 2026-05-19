@@ -15,4 +15,17 @@ export const siteConfig = {
 
   productionSite: "https://www.alt-cloud.org",
   productionBase: undefined,
+
+  seo: {
+    title: "Awesome Alt Clouds | Alternative Cloud Providers for Developers",
+    description:
+      "Discover specialized cloud infrastructure providers built for developers who have specialized requirements and need alternatives to hyperscalers.",
+    /** Appended to titles when `preview: true` (browser tab clarity on fork deploys) */
+    previewTitleSuffix: " (Preview)",
+    submit: {
+      title: "Add a Cloud - Awesome Alt Clouds",
+      description:
+        "Submit a cloud service for evaluation against the 3 inclusion criteria. Auto-evaluated by our bot.",
+    },
+  },
 };
