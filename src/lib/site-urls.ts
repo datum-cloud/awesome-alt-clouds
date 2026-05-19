@@ -2,7 +2,10 @@ import { siteConfig } from "../../site.config.mjs";
 
 const preview = siteConfig.preview;
 
-const siteOrigin = (preview ? siteConfig.previewSite : siteConfig.productionSite).replace(/\/$/, "");
+const siteOrigin = (preview ? siteConfig.previewSite : siteConfig.productionSite).replace(
+  /\/$/,
+  ""
+);
 const siteBasePath = preview
   ? (siteConfig.previewBase ?? "/").replace(/^\/?/, "/").replace(/\/?$/, "/")
   : (siteConfig.productionBase ?? "/").replace(/^\/?/, "/").replace(/\/?$/, "/");

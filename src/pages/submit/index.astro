@@ -140,11 +140,15 @@ const submitCanonical = `${absoluteUrl("submit")}/`;
           </div>
 
           <!-- Honeypot fields -->
-          <div class="hp-field" aria-hidden="true">
+          <div
+            class="pointer-events-none absolute top-0 left-0 z-[-1] h-0 w-0 overflow-hidden opacity-0"
+            aria-hidden="true">
             <label for="website">Website</label>
             <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
           </div>
-          <div class="hp-field" aria-hidden="true">
+          <div
+            class="pointer-events-none absolute top-0 left-0 z-[-1] h-0 w-0 overflow-hidden opacity-0"
+            aria-hidden="true">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" tabindex="-1" autocomplete="off" />
           </div>

@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Design tokens — earth-tone palette ported from docs/index.html */
 @theme {
   --color-warm-stone: #78716c;
   --color-soft-sage: #a3b18a;
@@ -13,74 +12,54 @@
   --font-sans: "IBM Plex Sans", -apple-system, system-ui, sans-serif;
   --font-serif: "Crimson Pro", Georgia, serif;
   --font-mono: "JetBrains Mono", monospace;
-}
 
-/* Base resets */
-html {
-  font-family: var(--font-sans);
-  background: var(--color-cream);
-  color: var(--color-rich-earth);
-}
+  --animate-slide-up-card: slide-up-card 0.4s ease-out both;
+  --animate-modal-in: modal-in 0.3s ease;
 
-body {
-  line-height: 1.6;
-}
-
-button:not(:disabled) {
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: not-allowed;
-}
-
-/* Card slide-up entrance (preserved from original) */
-@keyframes slideUpCard {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+  @keyframes slide-up-card {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
-.cloud-card-animate {
-  animation: slideUpCard 0.4s ease-out both;
-}
-
-/* Modal slide-in */
-@keyframes modalSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.modal-animate {
-  animation: modalSlideIn 0.3s ease;
-}
-
-/* Custom select arrow (matches original styling) */
-.sorter-select {
+@utility sorter-select {
+  appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2378716C' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
-  appearance: none;
 }
 
-/* Honeypot field — hidden from humans */
-.hp-field {
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 0;
-  width: 0;
-  z-index: -1;
+@layer base {
+  html {
+    @apply font-sans bg-cream text-rich-earth;
+  }
+
+  body {
+    @apply leading-relaxed;
+  }
+
+  button:not(:disabled) {
+    @apply cursor-pointer;
+  }
+
+  button:disabled {
+    @apply cursor-not-allowed;
+  }
 }

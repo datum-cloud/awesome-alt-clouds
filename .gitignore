@@ -6,6 +6,8 @@ analysis/
 
 # Node / Astro
 node_modules/
+dist/
+dist/**
 .astro/
 
 # Env files

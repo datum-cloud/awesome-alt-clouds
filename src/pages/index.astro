@@ -324,7 +324,7 @@ const cloudCount = clouds.length;
             const fallbackLetter = cloud.name.charAt(0).toUpperCase();
             return (
               <article
-                class="cloud-card-animate bg-white border border-clay-beige rounded-xl p-5 relative"
+                class="cloud-card animate-slide-up-card bg-white border border-clay-beige rounded-xl p-5 relative"
                 data-name={cloud.name.toLowerCase()}
                 data-description={cloud.description.toLowerCase()}
                 data-categories={cloud.categories.join("|")}
@@ -401,7 +401,7 @@ const cloudCount = clouds.length;
     class="modal-overlay hidden fixed inset-0 bg-charcoal/60 backdrop-blur-sm items-center justify-center p-8"
     style="z-index: 100;">
     <div
-      class="modal-animate bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto border border-soft-sage shadow-2xl">
+      class="animate-modal-in bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto border border-soft-sage shadow-2xl">
       <div
         class="flex items-center justify-between px-8 py-6 border-b border-clay-beige sticky top-0 bg-white z-10">
         <h2 class="font-serif text-2xl font-semibold text-rich-earth">About / Philosophy</h2>
@@ -509,7 +509,7 @@ const cloudCount = clouds.length;
     class="modal-overlay hidden fixed inset-0 bg-charcoal/60 backdrop-blur-sm items-center justify-center p-8"
     style="z-index: 100;">
     <div
-      class="modal-animate bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto border border-soft-sage shadow-2xl">
+      class="animate-modal-in bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto border border-soft-sage shadow-2xl">
       <div
         class="flex items-center justify-between px-8 py-6 border-b border-clay-beige sticky top-0 bg-white z-10">
         <h2 class="font-serif text-2xl font-semibold text-rich-earth">Browser Extension</h2>
@@ -595,7 +595,7 @@ const cloudCount = clouds.length;
     class="modal-overlay hidden fixed inset-0 bg-charcoal/60 backdrop-blur-sm items-center justify-center p-8"
     style="z-index: 100;">
     <div
-      class="modal-animate bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto border border-soft-sage shadow-2xl">
+      class="animate-modal-in bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto border border-soft-sage shadow-2xl">
       <div
         class="flex items-center justify-between px-8 py-6 border-b border-clay-beige sticky top-0 bg-white z-10">
         <h2 class="font-serif text-2xl font-semibold text-rich-earth">Resources</h2>
@@ -834,7 +834,7 @@ const cloudCount = clouds.length;
       const empty = document.getElementById("emptyState");
       if (!grid) return;
 
-      const cards = Array.from(grid.querySelectorAll<HTMLElement>("article.cloud-card-animate"));
+      const cards = Array.from(grid.querySelectorAll<HTMLElement>("article.cloud-card"));
       const term = searchTerm.toLowerCase();
       let visibleCount = 0;
 
