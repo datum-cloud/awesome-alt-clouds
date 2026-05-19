@@ -11,7 +11,7 @@ export const siteConfig = {
   blockSearchBots: true,
 
   previewSite: "https://ronggur.github.io",
-  previewBase: "/awesome-alt-clouds",
+  previewBase: "/awesome-alt-clouds/",
 
   productionSite: "https://www.alt-cloud.org",
   productionBase: undefined,
