@@ -1,0 +1,336 @@
+---
+/** Shared About / Extension / Resources modals + client behavior for any page with sidebar footer nav. */
+---
+
+<!-- About modal -->
+<div
+  id="aboutModal"
+  class="modal-overlay hidden fixed inset-0 bg-charcoal/60 backdrop-blur-sm items-center justify-center p-8"
+  style="z-index: 100;">
+  <div
+    class="animate-modal-in bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto border border-soft-sage shadow-2xl">
+    <div
+      class="flex items-center justify-between px-8 py-6 border-b border-clay-beige sticky top-0 bg-white z-10">
+      <h2 class="font-serif text-2xl font-semibold text-rich-earth">About / Philosophy</h2>
+      <button
+        type="button"
+        data-modal-close="aboutModal"
+        class="p-2 text-warm-stone hover:bg-clay-beige hover:text-rich-earth rounded-lg transition-colors">
+        <svg
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div class="p-8 space-y-8">
+      <section>
+        <h3 class="font-serif text-lg font-semibold text-rich-earth mb-3">
+          Why Alternative Clouds Matter
+        </h3>
+        <p class="text-warm-stone leading-relaxed mb-3">
+          The cloud landscape has long been dominated by a few hyperscalers. While they offer
+          incredible breadth, many developers find themselves paying for complexity they don't need,
+          or missing specialized capabilities that could transform their applications.
+        </p>
+        <p class="text-warm-stone leading-relaxed mb-3">
+          Alternative cloud providers fill these gaps. They offer focused expertise, transparent
+          pricing, and often better economics for specific workloads.
+        </p>
+        <p class="text-warm-stone leading-relaxed">
+          We believe in a diverse cloud ecosystem where the best tool for the job isn't always the
+          biggest. This directory exists to help you discover these alternatives and make informed
+          choices.
+        </p>
+      </section>
+
+      <section>
+        <h3 class="font-serif text-lg font-semibold text-rich-earth mb-3">
+          Inclusion Criteria Explained
+        </h3>
+        <p class="text-warm-stone mb-3">
+          Every service in our directory must meet at least 2 of 3 criteria:
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span
+            class="inline-flex items-center gap-1.5 bg-soft-sage text-rich-earth px-3 py-1.5 rounded-md text-sm font-medium"
+            >Public Pricing</span
+          >
+          <span
+            class="inline-flex items-center gap-1.5 bg-soft-sage text-rich-earth px-3 py-1.5 rounded-md text-sm font-medium"
+            >Self-Service Signup</span
+          >
+          <span
+            class="inline-flex items-center gap-1.5 bg-soft-sage text-rich-earth px-3 py-1.5 rounded-md text-sm font-medium"
+            >Status Page / SLA</span
+          >
+        </div>
+        <ul class="space-y-2 text-warm-stone">
+          <li>
+            <strong class="text-rich-earth">Public Pricing:</strong> You can see what you'll pay before
+            signing up.
+          </li>
+          <li>
+            <strong class="text-rich-earth">Self-Service Signup:</strong> You can start using the service
+            today.
+          </li>
+          <li>
+            <strong class="text-rich-earth">Status Page / SLA:</strong> Public commitment to uptime
+            and transparency.
+          </li>
+        </ul>
+      </section>
+
+      <section class="text-center pt-4 border-t border-clay-beige">
+        <a
+          href="https://github.com/datum-cloud/awesome-alt-clouds"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-rich-earth hover:bg-charcoal text-cream rounded-lg text-sm font-medium transition-all">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="currentColor">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+            ></path>
+          </svg>
+          <span>View on GitHub</span>
+        </a>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- Browser extension modal -->
+<div
+  id="extensionModal"
+  class="modal-overlay hidden fixed inset-0 bg-charcoal/60 backdrop-blur-sm items-center justify-center p-8"
+  style="z-index: 100;">
+  <div
+    class="animate-modal-in bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto border border-soft-sage shadow-2xl">
+    <div
+      class="flex items-center justify-between px-8 py-6 border-b border-clay-beige sticky top-0 bg-white z-10">
+      <h2 class="font-serif text-2xl font-semibold text-rich-earth">Browser Extension</h2>
+      <button
+        type="button"
+        data-modal-close="extensionModal"
+        class="p-2 text-warm-stone hover:bg-clay-beige hover:text-rich-earth rounded-lg transition-colors">
+        <svg
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div class="p-8">
+      <p class="text-warm-stone mb-6">
+        Check whether any cloud provider you're browsing is an alternative cloud — right from your
+        browser toolbar.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <div
+          class="flex-1 min-w-[180px] bg-cream border border-clay-beige rounded-xl p-5 flex flex-col items-center text-center gap-3">
+          <img
+            src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome.svg"
+            width="40"
+            height="40"
+            alt="Google Chrome"
+          />
+          <span class="font-semibold text-rich-earth">Google Chrome</span>
+          <a
+            href="https://chromewebstore.google.com/detail/alt-cloud-checker/nijjhgdijgnlimemhdaghkhgiggofbin"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-bright-tangerine hover:bg-rich-earth text-white text-sm font-semibold rounded-lg transition-all">
+            <span>+</span><span>Add to browser</span>
+          </a>
+        </div>
+        <div
+          class="flex-1 min-w-[180px] bg-cream border border-clay-beige rounded-xl p-5 flex flex-col items-center text-center gap-3">
+          <img
+            src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/firefox/firefox.svg"
+            width="40"
+            height="40"
+            alt="Mozilla Firefox"
+          />
+          <span class="font-semibold text-rich-earth">Mozilla Firefox</span>
+          <button
+            type="button"
+            disabled
+            class="mt-auto px-4 py-2.5 bg-clay-beige text-warm-stone text-sm font-semibold rounded-lg cursor-not-allowed">
+            Coming soon
+          </button>
+        </div>
+        <div
+          class="flex-1 min-w-[180px] bg-cream border border-clay-beige rounded-xl p-5 flex flex-col items-center text-center gap-3">
+          <img
+            src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/edge/edge.svg"
+            width="40"
+            height="40"
+            alt="Microsoft Edge"
+          />
+          <span class="font-semibold text-rich-earth">Microsoft Edge</span>
+          <button
+            type="button"
+            disabled
+            class="mt-auto px-4 py-2.5 bg-clay-beige text-warm-stone text-sm font-semibold rounded-lg cursor-not-allowed">
+            Coming soon
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Resources modal -->
+<div
+  id="resourcesModal"
+  class="modal-overlay hidden fixed inset-0 bg-charcoal/60 backdrop-blur-sm items-center justify-center p-8"
+  style="z-index: 100;">
+  <div
+    class="animate-modal-in bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto border border-soft-sage shadow-2xl">
+    <div
+      class="flex items-center justify-between px-8 py-6 border-b border-clay-beige sticky top-0 bg-white z-10">
+      <h2 class="font-serif text-2xl font-semibold text-rich-earth">Resources</h2>
+      <button
+        type="button"
+        data-modal-close="resourcesModal"
+        class="p-2 text-warm-stone hover:bg-clay-beige hover:text-rich-earth rounded-lg transition-colors">
+        <svg
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div class="p-8 space-y-8">
+      <section>
+        <h3 class="font-serif text-lg font-semibold text-rich-earth mb-3">Comparison Tools</h3>
+        <div class="bg-cream border border-clay-beige rounded-xl p-5 mb-3">
+          <h4 class="font-serif font-semibold text-rich-earth mb-1">
+            <a
+              href="https://cloudprice.net"
+              target="_blank"
+              rel="noopener"
+              class="hover:text-bright-tangerine"
+              >CloudPrice.net</a
+            >
+          </h4>
+          <p class="text-sm text-warm-stone">
+            Compare compute instance pricing across dozens of cloud providers.
+          </p>
+        </div>
+        <div class="bg-cream border border-clay-beige rounded-xl p-5">
+          <h4 class="font-serif font-semibold text-rich-earth mb-1">
+            <a
+              href="https://gpulist.ai"
+              target="_blank"
+              rel="noopener"
+              class="hover:text-bright-tangerine"
+              >GPUList.ai</a
+            >
+          </h4>
+          <p class="text-sm text-warm-stone">
+            Real-time GPU availability tracker across cloud providers.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script>
+  const MODAL_HASHES: Record<string, string> = {
+    aboutModal: "about",
+    resourcesModal: "resources",
+    extensionModal: "extension",
+  };
+  const HASH_MODALS: Record<string, string> = Object.fromEntries(
+    Object.entries(MODAL_HASHES).map(([k, v]) => [v, k])
+  );
+
+  function openModal(id: string) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove("hidden");
+    el.classList.add("flex");
+    document.body.style.overflow = "hidden";
+    const hash = MODAL_HASHES[id];
+    if (hash) history.pushState({ modal: id }, "", "#" + hash);
+  }
+
+  function closeModal(id: string) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add("hidden");
+    el.classList.remove("flex");
+    document.body.style.overflow = "";
+    if (MODAL_HASHES[id] && location.hash === "#" + MODAL_HASHES[id]) {
+      history.pushState({}, "", location.pathname + location.search);
+    }
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-modal-trigger]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-modal-trigger");
+      if (id) openModal(id);
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>("[data-modal-close]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-modal-close");
+      if (id) closeModal(id);
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>(".modal-overlay").forEach((overlay) => {
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeModal(overlay.id);
+    });
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    document.querySelectorAll<HTMLElement>(".modal-overlay.flex").forEach((m) => {
+      closeModal(m.id);
+    });
+  });
+
+  window.addEventListener("popstate", () => {
+    document.querySelectorAll<HTMLElement>(".modal-overlay.flex").forEach((m) => {
+      closeModal(m.id);
+    });
+    const initModalId = HASH_MODALS[location.hash.slice(1)];
+    if (initModalId) openModal(initModalId);
+  });
+
+  const initModalId = HASH_MODALS[location.hash.slice(1)];
+  if (initModalId) openModal(initModalId);
+</script>

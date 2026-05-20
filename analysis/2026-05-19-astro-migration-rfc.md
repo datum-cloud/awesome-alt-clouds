@@ -1,6 +1,6 @@
 # Astro Migration RFC — Evolving alt-cloud.org into a Community Destination
 
-> Status: **Phase 1 complete (parity scaffold) — Phase 2 next**
+> Status: **Phase 1 & 2 complete — Phase 3 next**
 > Author: planning session, 2026-05-19
 > Branch: `feat/astro-migration`
 > Tracks: [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164)
@@ -11,7 +11,7 @@
 |---|---|---|
 | 0 — RFC + decisions locked | ✅ done | Decisions in §11 below |
 | 1 — Astro scaffold with parity | ✅ done (2026-05-19) | See "Phase 1 — what landed" below |
-| 2 — Deeper company profiles (`/clouds/[slug]`) | ⏳ pending | |
+| 2 — Deeper company profiles (`/<slug>`) | ✅ done (2026-05-20) | Flat URL chosen instead of `/clouds/[slug]`. Plan: [2026-05-20-phase-2-detail-pages-plan.md](./2026-05-20-phase-2-detail-pages-plan.md). 5 sample MDX files seeded; architecture scales to 429+. |
 | 3 — Editorial / blog + RSS | ⏳ pending | `update_blog_posts.yml` cron paused in Phase 1 |
 | 4 — Discovery prep (`/categories/[slug]`, `/compare` stub) | ⏳ pending | |
 | 5 — SEO polish | ⏳ pending | |

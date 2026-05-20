@@ -2,9 +2,11 @@
 import Base from "../layouts/Base.astro";
 import { asset } from "../lib/assets";
 import { clouds } from "../lib/clouds";
+import { getFeaturedSlugs } from "../lib/profile";
 
 const sortedClouds = [...clouds].sort((a, b) => a.name.localeCompare(b.name));
 const cloudCount = clouds.length;
+const featuredSlugs = await getFeaturedSlugs();
 ---
 
 <Base
@@ -322,9 +324,11 @@ const cloudCount = clouds.length;
               }
             })();
             const fallbackLetter = cloud.name.charAt(0).toUpperCase();
+            const isFeatured = featuredSlugs.has(cloud.slug);
+            const detailHref = asset(cloud.slug);
             return (
               <article
-                class="cloud-card animate-slide-up-card bg-white border border-clay-beige rounded-xl p-5 relative"
+                class={`cloud-card animate-slide-up-card bg-white border border-clay-beige rounded-xl p-5 relative ${isFeatured ? "cloud-card--featured" : ""}`}
                 data-name={cloud.name.toLowerCase()}
                 data-description={cloud.description.toLowerCase()}
                 data-categories={cloud.categories.join("|")}
@@ -345,9 +349,17 @@ const cloudCount = clouds.length;
                     )}
                   </div>
                   <div class="flex-1 min-w-0">
-                    <div class="font-serif text-lg font-semibold text-rich-earth truncate">
-                      {cloud.name}
-                    </div>
+                    {isFeatured ? (
+                      <a
+                        href={detailHref}
+                        class="font-serif text-lg font-semibold text-rich-earth truncate block hover:text-bright-tangerine transition-colors no-underline">
+                        {cloud.name}
+                      </a>
+                    ) : (
+                      <div class="font-serif text-lg font-semibold text-rich-earth truncate">
+                        {cloud.name}
+                      </div>
+                    )}
                     <div class="text-xs text-warm-stone">{cloud.categories.join(" · ")}</div>
                   </div>
                 </div>
@@ -362,7 +374,7 @@ const cloudCount = clouds.length;
 
                 <p class="text-sm text-warm-stone leading-relaxed mb-3.5">{cloud.description}</p>
 
-                <div class="flex items-center pt-3.5 border-t border-clay-beige">
+                <div class="flex items-center justify-between gap-3 pt-3.5 border-t border-clay-beige">
                   <a
                     href={cloud.url}
                     target="_blank"
@@ -370,6 +382,13 @@ const cloudCount = clouds.length;
                     class="text-sm font-medium text-bright-tangerine hover:underline inline-flex items-center gap-1.5 transition-all">
                     Visit →
                   </a>
+                  {isFeatured && (
+                    <a
+                      href={detailHref}
+                      class="text-xs font-medium text-warm-stone hover:text-rich-earth inline-flex items-center gap-1 transition-colors no-underline">
+                      Details →
+                    </a>
+                  )}
                 </div>
               </article>
             );

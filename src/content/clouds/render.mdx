@@ -1,0 +1,64 @@
+---
+tagline: "The PaaS Heroku could have been — Git-driven deploys, managed services, and predictable pricing."
+headquarters: "San Francisco, CA, USA"
+foundedYear: 2019
+pricingModel: "monthly"
+openSource: false
+regions:
+  - "Oregon (US West)"
+  - "Ohio (US East)"
+  - "Virginia (US East)"
+  - "Frankfurt (EU Central)"
+  - "Singapore (Southeast Asia)"
+services:
+  - "Web Services (long-running apps with HTTPS)"
+  - "Private Services (internal HTTP/TCP)"
+  - "Static Sites (CDN-hosted frontends)"
+  - "Background Workers"
+  - "Cron Jobs"
+  - "Managed Postgres"
+  - "Managed Redis (Key Value)"
+  - "Persistent Disks"
+socials:
+  website: "https://render.com"
+  x: "https://twitter.com/render"
+  github: "https://github.com/renderinc"
+  linkedin: "https://www.linkedin.com/company/render-services-inc"
+---
+
+## The PaaS revival
+
+After Heroku ended its free tier in late 2022, a generation of developers went looking for the next "git push and it's live" experience. Render, Fly.io, and Railway emerged as the leading answers — each with a different opinion on how to balance simplicity with control.
+
+Render's bet is the most Heroku-like: a clean web console, declarative `render.yaml` for IaC, and a product surface limited to the things most web apps actually need. No Kubernetes, no IAM roles, no networking primitives unless you specifically opt in.
+
+## Pricing model
+
+Render uses **instance-based monthly pricing** rather than per-second usage:
+
+- Free tier: 1 web service with 750 hours/month, sleeps after inactivity
+- **Starter**: $7/month per service, always-on, 0.5 vCPU / 512 MB RAM
+- **Standard**: $25/month, 1 vCPU / 2 GB RAM
+- Larger tiers scale up to **Pro Max** at $450/month with 8 vCPU / 32 GB RAM
+
+Managed Postgres starts at **$6/month** for a 0.25 vCPU, 256 MB development instance. Bandwidth is 100 GB/month free on paid services, then $0.10/GB.
+
+## What you give up
+
+The Render experience is opinionated. You do not pick AMIs, configure VPCs, or write IAM policies. If your application needs that level of control — multi-region active-active, custom networking, complex IAM federations — Render is intentionally not the right tool.
+
+In return, deploys are a `git push`, secrets are environment variables in the dashboard, scaling is a slider, and the bill never has line items you cannot explain.
+
+## When it fits
+
+- **Side projects and MVPs** that need to be online today
+- **Small-to-midsize teams** who want PaaS economics with multi-region support
+- **Apps that outgrew Heroku** but are not ready to operate Kubernetes
+
+## When it doesn't
+
+Workloads with sustained high CPU/RAM utilization end up cheaper on bare-metal alternatives. Teams that need fine-grained IAM, custom networking, or workloads outside HTTP/cron will hit Render's ceiling.
+
+## Inclusion criteria
+
+Render meets all three criteria — [transparent published pricing](https://render.com/pricing), self-serve credit-card signup, and a [public uptime page](https://status.render.com/) plus documented SLAs on paid plans.

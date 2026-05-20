@@ -19,6 +19,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@astrojs/mdx": "^5.0.6",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.3.5",
     "tailwindcss": "^4.3.0",

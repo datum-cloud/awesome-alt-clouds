@@ -10,7 +10,78 @@ export interface Cloud {
   favorite?: boolean;
 }
 
-export const clouds = cloudsData as Cloud[];
+export interface CloudWithSlug extends Cloud {
+  slug: string;
+}
+
+/**
+ * Slugs that must remain owned by static routes / public files.
+ * If a cloud's slug ever equals one of these, the build fails (see assertion below).
+ * Items with dots cannot realistically collide with a slug (slugify strips dots),
+ * but they are kept here for defense-in-depth and documentation.
+ */
+const RESERVED_SLUGS = new Set<string>([
+  "submit",
+  "404",
+  "clouds.json",
+  "llms.txt",
+  "llms-full.txt",
+  "og-image.png",
+  "altclouds-logo.png",
+  "robots.txt",
+  "cname",
+  "rss.xml",
+  "sitemap-index.xml",
+]);
+
+/** Canonical slug derivation. Lowercase, alphanumeric, dash-separated. */
+export function slugify(name: string): string {
+  return name
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function buildCloudsWithSlugs(): CloudWithSlug[] {
+  const seen = new Map<string, string>();
+  const result: CloudWithSlug[] = [];
+
+  for (const cloud of cloudsData as Cloud[]) {
+    const slug = slugify(cloud.name);
+
+    if (!slug) {
+      throw new Error(
+        `[clouds] Cloud name "${cloud.name}" slugifies to an empty string. Rename in README.md.`
+      );
+    }
+
+    if (RESERVED_SLUGS.has(slug)) {
+      throw new Error(
+        `[clouds] Cloud "${cloud.name}" slugifies to reserved path "${slug}". ` +
+          `Reserved paths cannot be used as cloud slugs. Rename in README.md.`
+      );
+    }
+
+    const prior = seen.get(slug);
+    if (prior) {
+      throw new Error(
+        `[clouds] Slug collision detected: "${prior}" and "${cloud.name}" both produce slug "${slug}". ` +
+          `Disambiguate one of the entries in README.md.`
+      );
+    }
+    seen.set(slug, cloud.name);
+
+    result.push({ ...cloud, slug });
+  }
+
+  return result;
+}
+
+export const clouds: CloudWithSlug[] = buildCloudsWithSlugs();
+
+export const cloudsBySlug = new Map<string, CloudWithSlug>(clouds.map((c) => [c.slug, c]));
 
 export function getCategories(): string[] {
   const set = new Set<string>();

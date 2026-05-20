@@ -1,0 +1,50 @@
+---
+import { asset } from "../lib/assets";
+import CloudSearchDropdown from "./CloudSearchDropdown.astro";
+
+export interface Props {
+  featuredSlugs: string[];
+}
+
+const { featuredSlugs } = Astro.props;
+const homeHref = asset("");
+---
+
+<div
+  class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 mb-6 px-5 py-4 bg-white border border-clay-beige rounded-xl">
+  <a
+    href={homeHref}
+    class="back-link inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-warm-stone hover:text-rich-earth hover:bg-cream rounded-lg transition-colors no-underline self-start md:self-auto"
+    data-home-href={homeHref}>
+    <svg
+      width="16"
+      height="16"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M15 19l-7-7 7-7"
+      ></path>
+    </svg>
+    <span>Back to directory</span>
+  </a>
+  <CloudSearchDropdown featuredSlugs={featuredSlugs} />
+</div>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>(".back-link").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const sameOrigin =
+        document.referrer &&
+        new URL(document.referrer).origin === window.location.origin;
+      if (sameOrigin && window.history.length > 1) {
+        e.preventDefault();
+        window.history.back();
+      }
+    });
+  });
+</script>

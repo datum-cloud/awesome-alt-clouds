@@ -1,0 +1,317 @@
+---
+import { asset } from "../lib/assets";
+
+export interface Props {
+  featuredSlugs: string[];
+}
+
+const { featuredSlugs } = Astro.props;
+const cloudsJsonUrl = asset("clouds.json");
+const baseUrl = import.meta.env.BASE_URL;
+const baseNormalized = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+---
+
+<div
+  class="cloud-search relative w-full md:w-[320px]"
+  data-clouds-url={cloudsJsonUrl}
+  data-base-url={baseNormalized}>
+  <div class="relative">
+    <svg
+      class="absolute left-3.5 top-1/2 -translate-y-1/2 text-warm-stone pointer-events-none"
+      width="16"
+      height="16"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+      ></path>
+    </svg>
+    <input
+      type="text"
+      class="cloud-search-input w-full pl-9 pr-8 py-2 bg-cream border-2 border-clay-beige rounded-lg text-rich-earth text-base md:text-sm placeholder:text-warm-stone/60 focus:border-soft-sage focus:outline-none focus:ring-2 focus:ring-soft-sage/15 transition-all"
+      placeholder="Search clouds..."
+      autocomplete="off"
+      spellcheck="false"
+      role="combobox"
+      aria-expanded="false"
+      aria-controls="cloud-search-listbox"
+      aria-autocomplete="list"
+    />
+    <button
+      type="button"
+      class="cloud-search-clear absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-warm-stone hover:text-rich-earth rounded hidden items-center justify-center transition-colors"
+      aria-label="Clear search">
+      <svg
+        width="14"
+        height="14"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+          d="M6 18L18 6M6 6l12 12"
+        ></path>
+      </svg>
+    </button>
+  </div>
+  <ul
+    role="listbox"
+    class="cloud-search-listbox hidden absolute left-0 right-0 top-full mt-2 max-h-[360px] overflow-y-auto bg-white border border-clay-beige rounded-xl shadow-lg z-40">
+  </ul>
+</div>
+
+<script
+  is:inline
+  id="featured-slugs"
+  type="application/json"
+  set:html={JSON.stringify(featuredSlugs)}
+/>
+
+<script>
+  type Cloud = {
+    name: string;
+    url: string;
+    description: string;
+    categories: string[];
+    slug: string;
+  };
+
+  function slugify(name: string): string {
+    return name
+      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+  }
+
+  const featuredSlugsEl = document.getElementById("featured-slugs");
+  const featuredSlugs = new Set<string>(
+    featuredSlugsEl ? JSON.parse(featuredSlugsEl.textContent || "[]") : []
+  );
+
+  let cloudsCache: Cloud[] | null = null;
+  let cloudsLoading: Promise<Cloud[]> | null = null;
+
+  function loadClouds(cloudsUrl: string): Promise<Cloud[]> {
+    if (cloudsCache) return Promise.resolve(cloudsCache);
+    if (cloudsLoading) return cloudsLoading;
+    cloudsLoading = fetch(cloudsUrl)
+      .then((r) => r.json())
+      .then((data: Array<Omit<Cloud, "slug">>) => {
+        cloudsCache = data.map((c) => ({ ...c, slug: slugify(c.name) }));
+        return cloudsCache;
+      })
+      .catch(() => {
+        cloudsCache = [];
+        return cloudsCache;
+      });
+    return cloudsLoading;
+  }
+
+  function escapeHtml(s: string): string {
+    return s
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  const containers =
+    document.querySelectorAll<HTMLElement>(".cloud-search");
+
+  containers.forEach((container) => {
+    const cloudsUrl = container.dataset.cloudsUrl || "/clouds.json";
+    const baseUrl = container.dataset.baseUrl || "/";
+    const input = container.querySelector<HTMLInputElement>(
+      ".cloud-search-input"
+    );
+    const listbox = container.querySelector<HTMLUListElement>(
+      ".cloud-search-listbox"
+    );
+    const clearBtn = container.querySelector<HTMLButtonElement>(
+      ".cloud-search-clear"
+    );
+    if (!input || !listbox || !clearBtn) return;
+
+    let activeIndex = -1;
+    let currentMatches: Cloud[] = [];
+
+    function close() {
+      if (!listbox || !input) return;
+      listbox.classList.add("hidden");
+      listbox.innerHTML = "";
+      input.setAttribute("aria-expanded", "false");
+      activeIndex = -1;
+      currentMatches = [];
+    }
+
+    function open() {
+      if (!listbox || !input) return;
+      listbox.classList.remove("hidden");
+      input.setAttribute("aria-expanded", "true");
+    }
+
+    function setClearVisible(visible: boolean) {
+      if (!clearBtn) return;
+      clearBtn.classList.toggle("hidden", !visible);
+      clearBtn.classList.toggle("flex", visible);
+    }
+
+    function buildHref(slug: string) {
+      return `${baseUrl}${slug}`;
+    }
+
+    function render(matches: Cloud[], loading: boolean) {
+      if (!listbox) return;
+      if (loading) {
+        listbox.innerHTML =
+          '<li class="px-4 py-3 text-sm text-warm-stone">Searching…</li>';
+        open();
+        return;
+      }
+      if (matches.length === 0) {
+        listbox.innerHTML =
+          '<li class="px-4 py-3 text-sm text-warm-stone">No matches</li>';
+        open();
+        return;
+      }
+      const items = matches
+        .map((c, i) => {
+          const isFeatured = featuredSlugs.has(c.slug);
+          const name = escapeHtml(c.name);
+          const cats = escapeHtml(c.categories.join(" · "));
+          if (isFeatured) {
+            return `<li role="option" data-index="${i}" data-slug="${c.slug}" class="cloud-search-option">
+              <a href="${buildHref(c.slug)}" class="flex items-center justify-between gap-3 px-4 py-2.5 text-sm text-rich-earth hover:bg-cream transition-colors no-underline">
+                <span class="flex-1 min-w-0">
+                  <span class="block font-medium truncate">${name}</span>
+                  <span class="block text-xs text-warm-stone truncate">${cats}</span>
+                </span>
+                <span class="text-[10px] font-medium uppercase tracking-wider text-bright-tangerine flex-shrink-0">Details →</span>
+              </a>
+            </li>`;
+          }
+          return `<li role="option" aria-disabled="true" data-index="${i}" class="cloud-search-option cloud-search-option--disabled">
+            <span class="flex items-center justify-between gap-3 px-4 py-2.5 text-sm opacity-50 cursor-not-allowed">
+              <span class="flex-1 min-w-0">
+                <span class="block font-medium truncate text-rich-earth">${name}</span>
+                <span class="block text-xs text-warm-stone truncate">${cats}</span>
+              </span>
+              <span class="text-[10px] font-medium uppercase tracking-wider text-warm-stone flex-shrink-0">Listing only</span>
+            </span>
+          </li>`;
+        })
+        .join("");
+      listbox.innerHTML = items;
+      open();
+    }
+
+    function highlight(idx: number) {
+      if (!listbox) return;
+      const opts =
+        listbox.querySelectorAll<HTMLElement>(".cloud-search-option");
+      opts.forEach((o, i) => {
+        o.classList.toggle("bg-cream", i === idx);
+      });
+      activeIndex = idx;
+      const active = opts[idx];
+      if (active) active.scrollIntoView({ block: "nearest" });
+    }
+
+    function nextSelectable(from: number, dir: number): number {
+      const total = currentMatches.length;
+      if (total === 0) return -1;
+      let i = from;
+      for (let step = 0; step < total; step++) {
+        i = (i + dir + total) % total;
+        if (featuredSlugs.has(currentMatches[i].slug)) return i;
+      }
+      return -1;
+    }
+
+    function runSearch() {
+      if (!input) return;
+      const term = input.value.trim().toLowerCase();
+      setClearVisible(term.length > 0);
+      if (term.length === 0) {
+        close();
+        return;
+      }
+      if (!cloudsCache) {
+        render([], true);
+        loadClouds(cloudsUrl).then(() => {
+          if (input.value.trim().toLowerCase() === term) runSearch();
+        });
+        return;
+      }
+      const matches = cloudsCache
+        .filter(
+          (c) =>
+            c.name.toLowerCase().includes(term) ||
+            c.categories.some((cat) => cat.toLowerCase().includes(term))
+        )
+        .slice(0, 10);
+      currentMatches = matches;
+      render(matches, false);
+    }
+
+    input.addEventListener("focus", () => {
+      loadClouds(cloudsUrl);
+      if (input.value.trim().length > 0) runSearch();
+    });
+
+    input.addEventListener("input", runSearch);
+
+    clearBtn.addEventListener("click", () => {
+      input.value = "";
+      setClearVisible(false);
+      close();
+      input.focus();
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        const next = nextSelectable(activeIndex, 1);
+        if (next !== -1) highlight(next);
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        const next = nextSelectable(activeIndex === -1 ? 0 : activeIndex, -1);
+        if (next !== -1) highlight(next);
+      } else if (e.key === "Enter") {
+        if (activeIndex >= 0 && currentMatches[activeIndex]) {
+          const match = currentMatches[activeIndex];
+          if (featuredSlugs.has(match.slug)) {
+            e.preventDefault();
+            window.location.href = buildHref(match.slug);
+          }
+        }
+      } else if (e.key === "Escape") {
+        e.preventDefault();
+        if (input.value) {
+          input.value = "";
+          setClearVisible(false);
+        }
+        close();
+        input.blur();
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (e.target instanceof Node && !container.contains(e.target)) close();
+    });
+  });
+</script>
+
+<style>
+  .cloud-search-option--disabled {
+    pointer-events: none;
+  }
+</style>

@@ -1,0 +1,22 @@
+---
+export interface Props {
+  score: 2 | 3;
+  size?: "sm" | "md";
+}
+
+const { score, size = "sm" } = Astro.props;
+
+const badgeClass =
+  score === 3 ? "bg-soft-sage text-rich-earth" : "bg-clay-beige text-warm-stone";
+
+const sizeClass =
+  size === "md"
+    ? "px-3 py-1.5 text-xs"
+    : "px-2.5 py-1 text-[11px]";
+---
+
+<span
+  class={`inline-flex items-center gap-1 rounded-full font-medium ${badgeClass} ${sizeClass}`}
+  title={`Criteria Score: ${score}/3`}>
+  {score}/3
+</span>
