@@ -108,6 +108,24 @@ def main():
     score = data.get("score", "?")
     failed = data.get("failed", [])
 
+    # Only track services that show at least one qualifying signal.
+    # Score 0/3 means no pricing, no self-service, and no status page —
+    # there is nothing to build on and no path worth tracking.
+    try:
+        score_int = int(score)
+    except (ValueError, TypeError):
+        score_int = -1
+
+    if score_int == 0:
+        print(f"  Score is 0/3 — no qualifying signals found. Not adding to watchlist.")
+        with open("/tmp/watchlist_changed.txt", "w") as f:
+            f.write("false")
+        with open("/tmp/watchlist_name.txt", "w") as f:
+            f.write(name)
+        with open("/tmp/watchlist_skip_reason.txt", "w") as f:
+            f.write("score_zero")
+        return
+
     if failed:
         reason = f"Score {score}/3: {'; '.join(c.lower() for c in failed)}"
         criteria = "; ".join(failed)
