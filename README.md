@@ -146,6 +146,7 @@ Cloud platforms designed to ensure data residency, regulatory compliance, and na
 * 🟢 [Reliance](https://www.ril.com/) - Indian conglomerate with plans to develop sovereign cloud infrastructure to support the country's digital initiatives and data localization requirements.
 * 🟢 [Sakura Internet](https://www.sakura.ad.jp/corporate/en/information/equinix-and-sakura-internet-launch-strategic-partnership/) - Japanese cloud provider partnering with Equinix to offer GPU-based cloud services, supporting the growing demand for AI and ensuring data sovereignty.
 * 🟢 [T-Systems](https://www.t-systems.com/) - German IT services and consulting company providing sovereign cloud solutions to ensure data protection and compliance with European regulations.
+* 🟡 [TitanU AI](https://www.titanuai.com/) - Provides sovereign AI infrastructure with zero cloud dependency, local GGUF inference, cryptographic audit chains, and mesh-native architecture for complete data sovereignty.
 * 🟢 [Wiz](https://www.wiz.io/) - A cloud security platform that gives full-stack visibility into cloud infrastructure and prioritizes risk across workloads, containers, and identities.
 * 🟢 [Yotta](https://yotta.com/blog-need-of-sovereign-cloud-in-india/) - Indian data center and cloud services provider focusing on security, compliance, and innovation.
 * 🟢 [Zscaler](https://www.zscaler.com/) - Zero trust SASE platform with AI-driven cybersecurity and cloud protection.
