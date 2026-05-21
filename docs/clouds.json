@@ -870,6 +870,16 @@
     "dateAdded": "2026-05-21"
   },
   {
+    "name": "TitanU AI",
+    "url": "https://www.titanuai.com/",
+    "description": "Provides sovereign AI infrastructure with zero cloud dependency, local GGUF inference, cryptographic audit chains, and mesh-native architecture for complete data sovereignty.",
+    "score": 2,
+    "categories": [
+      "Security, Compliance & Sovereignty Clouds"
+    ],
+    "dateAdded": "2026-05-21"
+  },
+  {
     "name": "Wiz",
     "url": "https://www.wiz.io/",
     "description": "A cloud security platform that gives full-stack visibility into cloud infrastructure and prioritizes risk across workloads, containers, and identities.",
