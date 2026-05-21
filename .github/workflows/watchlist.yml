@@ -101,9 +101,18 @@ jobs:
               ? fs.readFileSync('/tmp/watchlist_name.txt', 'utf8').trim()
               : 'This service';
 
-            const body = changed === 'true'
-              ? `📋 **Added to Watchlist**\n\n${name} has been added to [WATCHLIST.md](../blob/main/WATCHLIST.md). It will be re-evaluated once the criteria listed in the evaluation results above have been addressed.`
-              : `ℹ️ **Already on Watchlist**\n\n${name} is already tracked in [WATCHLIST.md](../blob/main/WATCHLIST.md).`;
+            const skipReason = fs.existsSync('/tmp/watchlist_skip_reason.txt')
+              ? fs.readFileSync('/tmp/watchlist_skip_reason.txt', 'utf8').trim()
+              : '';
+
+            let body;
+            if (skipReason === 'score_zero') {
+              body = `⛔ **Not added to Watchlist**\n\n${name} scored 0/3 — no qualifying signals (no pricing, no self-service, no status page). The watchlist tracks services with real potential: at least one criterion already met. A 0/3 submission has nothing to build on and should be closed.`;
+            } else if (changed === 'true') {
+              body = `📋 **Added to Watchlist**\n\n${name} has been added to [WATCHLIST.md](../blob/main/WATCHLIST.md). It will be re-evaluated once the criteria listed in the evaluation results above have been addressed.`;
+            } else {
+              body = `ℹ️ **Already on Watchlist**\n\n${name} is already tracked in [WATCHLIST.md](../blob/main/WATCHLIST.md).`;
+            }
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,

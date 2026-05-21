@@ -32,13 +32,16 @@ We welcome additions, corrections, and improvements to this list of alternative 
 
 ## Borderline Submissions
 
-If your submission doesn't meet all three criteria yet, it may be added to the [Watchlist](WATCHLIST.md) instead of being rejected outright. The watchlist tracks promising candidates with a clear path to qualification.
+The [Watchlist](WATCHLIST.md) tracks services that show real potential but haven't crossed the qualification threshold yet.
 
-A submission lands on the watchlist when:
-- It scores 1/3 on the automated evaluation, **and**
-- A maintainer judges it worth tracking (e.g. the service is actively improving or is widely referenced in the community).
+| Score | Outcome |
+|-------|---------|
+| 0 / 3 | Declined. No pricing, no self-service, no status page — nothing to build on. |
+| 1 / 3 | Watchlist candidate. One signal is present; a maintainer may add it to track progress. |
+| 2 / 3 | Included (needs-review). A PR is opened automatically for admin sign-off. |
+| 3 / 3 | Included automatically. |
 
-Check the watchlist before re-submitting — your service may already be tracked there. To trigger a re-evaluation, comment on your original submission issue with evidence that the missing criteria are now met, or open a new submission.
+If your service lands on the watchlist, the "Criteria Needed" column shows exactly what must change. Address those gaps and re-submit, or comment on your original issue with evidence that the missing criteria are now met.
 
 💬 For questions or suggestions, feel free to [open an issue](https://github.com/datum-cloud/awesome-alt-clouds/issues).
 
