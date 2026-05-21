@@ -22,10 +22,12 @@ export interface CloudWithSlug extends Cloud {
  */
 const RESERVED_SLUGS = new Set<string>([
   "submit",
+  "watchlist",
   "404",
   "clouds.json",
   "llms.txt",
   "llms-full.txt",
+  "watchlist.json",
   "og-image.png",
   "altclouds-logo.png",
   "robots.txt",

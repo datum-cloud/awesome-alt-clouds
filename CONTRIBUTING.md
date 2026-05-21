@@ -26,6 +26,18 @@ If you'd rather open the PR yourself:
 
 Inclusion criteria: services must meet at least 2 of 3 — (1) transparent public pricing, (2) self-service signup, (3) public SLA or status page.
 
+### Borderline submissions
+
+If your submission doesn't meet all three criteria yet, it may be added to the [Watchlist](WATCHLIST.md) instead of being rejected outright. The watchlist tracks promising candidates with a clear path to qualification.
+
+A submission lands on the watchlist when:
+- It scores 1/3 on the automated evaluation, **and**
+- A maintainer judges it worth tracking (e.g. the service is actively improving or is widely referenced in the community).
+
+Check the watchlist before re-submitting — your service may already be tracked there. To trigger a re-evaluation, comment on your original submission issue with evidence that the missing criteria are now met, or open a new submission.
+
+The public watchlist page lives at `/watchlist/` and is generated from `WATCHLIST.md` on every deploy.
+
 ## 2. Working on the website
 
 The site is an [Astro](https://astro.build) static site with Tailwind CSS v4, hosted on GitHub Pages.

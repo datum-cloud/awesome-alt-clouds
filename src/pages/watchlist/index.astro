@@ -1,0 +1,176 @@
+---
+import Base from "../../layouts/Base.astro";
+import DetailTopBar from "../../components/DetailTopBar.astro";
+import DirectorySidebar from "../../components/DirectorySidebar.astro";
+import { getFeaturedSlugs } from "../../lib/profile";
+import { faviconUrl, watchlist } from "../../lib/watchlist";
+import { absoluteUrl } from "../../lib/site-urls";
+
+const watchlistCanonical = `${absoluteUrl("watchlist")}/`;
+const entryCount = watchlist.length;
+const entryLabel = entryCount === 1 ? "candidate" : "candidates";
+const featuredSlugs = [...(await getFeaturedSlugs())];
+---
+
+<Base
+  title="Watchlist | Awesome Alt Clouds"
+  description="Services submitted multiple times that don't yet meet inclusion criteria — tracked with a clear path to qualification."
+  canonical={watchlistCanonical}>
+  <div class="flex flex-col md:flex-row min-h-screen">
+    <DirectorySidebar activePage="watchlist" />
+
+    <main class="flex-1 p-5 md:p-8 min-w-0">
+      <DetailTopBar featuredSlugs={featuredSlugs} />
+
+      <div class="max-w-5xl">
+        <header class="mb-8">
+          <h1 class="font-serif text-3xl md:text-4xl font-semibold text-rich-earth mb-3">
+            Watchlist
+          </h1>
+          <p class="text-warm-stone leading-relaxed max-w-2xl">
+            Services that have been submitted multiple times but don't yet meet the inclusion
+            criteria. They're tracked here with a clear path to qualification — no more
+            re-litigating the same decisions.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="bg-white border border-clay-beige rounded-xl p-4">
+            <div class="text-xs font-semibold uppercase tracking-wide text-warm-stone mb-1">
+              Tracking
+            </div>
+            <div class="font-serif text-lg font-semibold text-rich-earth">
+              {entryCount}
+              {entryLabel}
+            </div>
+          </div>
+          <div class="bg-white border border-clay-beige rounded-xl p-4">
+            <div class="text-xs font-semibold uppercase tracking-wide text-warm-stone mb-1">
+              Qualify at
+            </div>
+            <div class="font-serif text-lg font-semibold text-rich-earth">2 / 3 criteria</div>
+          </div>
+          <div class="bg-white border border-clay-beige rounded-xl p-4">
+            <div class="text-xs font-semibold uppercase tracking-wide text-warm-stone mb-1">
+              Review cadence
+            </div>
+            <div class="font-serif text-lg font-semibold text-rich-earth">Quarterly</div>
+          </div>
+          <div class="bg-white border border-clay-beige rounded-xl p-4">
+            <div class="text-xs font-semibold uppercase tracking-wide text-warm-stone mb-1">
+              Stale after
+            </div>
+            <div class="font-serif text-lg font-semibold text-rich-earth">6 months</div>
+          </div>
+        </div>
+
+        {
+          entryCount === 0 ? (
+            <div class="text-center py-16 text-warm-stone">
+              <div
+                class="text-5xl mb-4 opacity-40"
+                aria-hidden="true">
+                ✅
+              </div>
+              <p>No entries on the watchlist right now.</p>
+            </div>
+          ) : (
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+              {watchlist.map((entry) => {
+                const logo = faviconUrl(entry.url);
+                const initial = entry.name.charAt(0).toUpperCase();
+                return (
+                  <article class="bg-white border border-clay-beige rounded-xl p-5 flex flex-col gap-3.5 hover:shadow-md hover:-translate-y-0.5 transition-all">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-lg bg-clay-beige flex items-center justify-center overflow-hidden shrink-0 font-serif text-lg font-semibold text-rich-earth">
+                        {logo ? (
+                          <img
+                            src={logo}
+                            alt=""
+                            width="40"
+                            height="40"
+                            class="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        ) : (
+                          initial
+                        )}
+                      </div>
+                      <div>
+                        <h2 class="font-serif text-lg font-semibold text-rich-earth">
+                          {entry.name}
+                        </h2>
+                        <p class="text-xs text-warm-stone">{entry.category}</p>
+                      </div>
+                    </div>
+
+                    <div class="bg-orange-50 border border-orange-100 rounded-lg p-3 text-sm text-warm-stone leading-relaxed">
+                      <div class="text-xs font-semibold uppercase tracking-wide text-bright-tangerine mb-1">
+                        Why it's not listed
+                      </div>
+                      {entry.reasonNotQualifying}
+                    </div>
+
+                    <div class="bg-green-50 border border-green-100 rounded-lg p-3 text-sm text-warm-stone leading-relaxed">
+                      <div class="text-xs font-semibold uppercase tracking-wide text-soft-sage mb-1">
+                        What would qualify it
+                      </div>
+                      {entry.criteriaNeed}
+                    </div>
+
+                    <footer class="flex items-center justify-between pt-3 border-t border-clay-beige mt-auto">
+                      <span class="font-mono text-xs text-warm-stone">
+                        Added {entry.dateAdded} · Reviewed {entry.lastReviewed}
+                      </span>
+                      <a
+                        href={entry.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-sm font-medium text-bright-tangerine hover:underline inline-flex items-center gap-1.5 transition-all no-underline">
+                        Visit →
+                      </a>
+                    </footer>
+                  </article>
+                );
+              })}
+            </div>
+          )
+        }
+
+        <section class="mt-10 pt-8 border-t border-clay-beige">
+          <h2 class="font-serif text-xl font-semibold text-rich-earth mb-4">How It Works</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-white border border-clay-beige rounded-xl p-4">
+              <h3 class="text-sm font-semibold text-rich-earth mb-2">Getting on the list</h3>
+              <p class="text-sm text-warm-stone leading-relaxed">
+                Services submitted two or more times with continued community interest land here
+                instead of being closed quietly.
+              </p>
+            </div>
+            <div class="bg-white border border-clay-beige rounded-xl p-4">
+              <h3 class="text-sm font-semibold text-rich-earth mb-2">Getting promoted</h3>
+              <p class="text-sm text-warm-stone leading-relaxed">
+                Score 2/3 or higher on a fresh evaluation. Open a new submission or comment on the
+                original issue with evidence that the missing criteria are now met.
+              </p>
+            </div>
+            <div class="bg-white border border-clay-beige rounded-xl p-4">
+              <h3 class="text-sm font-semibold text-rich-earth mb-2">Getting removed</h3>
+              <p class="text-sm text-warm-stone leading-relaxed">
+                Promoted to the main list, no progress for 6 months, or the service shuts down.
+                Maintainers review quarterly.
+              </p>
+            </div>
+            <div class="bg-white border border-clay-beige rounded-xl p-4">
+              <h3 class="text-sm font-semibold text-rich-earth mb-2">Criteria to qualify</h3>
+              <p class="text-sm text-warm-stone leading-relaxed">
+                Transparent public pricing page, usage-based self-service signup, and a public SLA
+                or status page. Any 2 of 3 is enough.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</Base>

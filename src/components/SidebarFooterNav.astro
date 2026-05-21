@@ -1,76 +1,90 @@
 ---
 import { asset } from "../lib/assets";
+import WatchlistNavLink from "./WatchlistNavLink.astro";
 
+export interface Props {
+  showMenu?: boolean;
+}
+
+const { showMenu = true } = Astro.props;
 const submitHref = asset("submit/");
 ---
 
 <div class="mt-auto pt-4 border-t border-clay-beige">
   <a
     href={submitHref}
-    class="w-full py-2.5 px-3 bg-bright-tangerine hover:bg-rich-earth text-white text-[13px] font-semibold rounded-lg flex items-center justify-center gap-2 transition-all no-underline mb-3">
+    class:list={[
+      "w-full py-2.5 px-3 bg-bright-tangerine hover:bg-rich-earth text-white text-[13px] font-semibold rounded-lg flex items-center justify-center gap-2 transition-all no-underline",
+      showMenu && "mb-3",
+    ]}>
     <span>+</span><span>Add a Cloud</span>
   </a>
 
-  <div class="flex flex-col gap-2">
-    <button
-      type="button"
-      data-modal-trigger="extensionModal"
-      class="page-link flex items-center gap-2 px-3 py-2.5 text-[13px] text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
-      <svg
-        width="16"
-        height="16"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        aria-hidden="true">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
-        ></path>
-      </svg>
-      <span>Browser extension</span>
-    </button>
-    <button
-      type="button"
-      data-modal-trigger="aboutModal"
-      class="page-link flex items-center gap-2 px-3 py-2.5 text-[13px] text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
-      <svg
-        width="16"
-        height="16"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        aria-hidden="true">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        ></path>
-      </svg>
-      <span>About / Philosophy</span>
-    </button>
-    <button
-      type="button"
-      data-modal-trigger="resourcesModal"
-      class="page-link flex items-center gap-2 px-3 py-2.5 text-[13px] text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
-      <svg
-        width="16"
-        height="16"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        aria-hidden="true">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-        ></path>
-      </svg>
-      <span>Resources</span>
-    </button>
-  </div>
+  {
+    showMenu && (
+      <div class="flex flex-col gap-2">
+        <WatchlistNavLink />
+        <button
+          type="button"
+          data-modal-trigger="extensionModal"
+          class="page-link flex items-center gap-2 px-3 py-2.5 text-[13px] text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
+          <svg
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
+            ></path>
+          </svg>
+          <span>Browser extension</span>
+        </button>
+        <button
+          type="button"
+          data-modal-trigger="aboutModal"
+          class="page-link flex items-center gap-2 px-3 py-2.5 text-[13px] text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
+          <svg
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          <span>About / Philosophy</span>
+        </button>
+        <button
+          type="button"
+          data-modal-trigger="resourcesModal"
+          class="page-link flex items-center gap-2 px-3 py-2.5 text-[13px] text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
+          <svg
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+            ></path>
+          </svg>
+          <span>Resources</span>
+        </button>
+      </div>
+    )
+  }
 </div>

@@ -1,0 +1,72 @@
+---
+import { asset } from "../lib/assets";
+import SidebarFooterNav from "./SidebarFooterNav.astro";
+
+export interface Props {
+  activePage?: "directory" | "watchlist";
+}
+
+const { activePage = "directory" } = Astro.props;
+
+const homeHref = asset("");
+const watchlistHref = asset("watchlist/");
+
+const navClass = (page: "directory" | "watchlist") =>
+  [
+    "flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm no-underline transition-colors",
+    activePage === page
+      ? "bg-rich-earth text-cream font-medium"
+      : "text-warm-stone hover:text-rich-earth hover:bg-clay-beige",
+  ].join(" ");
+---
+
+<aside
+  class="flex flex-col w-full md:w-[280px] md:flex-shrink-0 bg-cream md:border-r border-clay-beige px-4 py-6 md:sticky md:top-0 md:h-screen md:overflow-y-auto">
+  <div class="mb-6 pb-6 border-b border-clay-beige">
+    <a href={homeHref} class="flex items-center gap-3 mb-2 no-underline">
+      <img
+        src={asset("altclouds-logo.png")}
+        alt="Alt Clouds"
+        width="40"
+        height="40"
+        class="rounded-lg"
+      />
+      <div>
+        <span class="font-serif text-xl font-semibold text-rich-earth">Awesome Alt Clouds</span>
+      </div>
+    </a>
+    <p class="text-[13px] text-bright-tangerine font-medium mb-1">
+      When you Need Something .. Specialized!
+    </p>
+    <p class="text-[13px] text-warm-stone leading-snug">
+      Discover specialized infrastructure providers built for developers who think different
+    </p>
+  </div>
+
+  <nav class="flex flex-col gap-1 mb-6" aria-label="Site sections">
+    <a href={homeHref} class={navClass("directory")}>
+      <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+        ></path>
+      </svg>
+      <span>Directory</span>
+    </a>
+    <a href={watchlistHref} class={navClass("watchlist")}>
+      <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+        ></path>
+      </svg>
+      <span>Watchlist</span>
+    </a>
+  </nav>
+
+  <SidebarFooterNav showMenu={false} />
+</aside>

@@ -38,6 +38,9 @@ jobs:
       - name: Regenerate llms.txt and llms-full.txt
         run: python scripts/generate_llms.py public/clouds.json public/
 
+      - name: Regenerate watchlist.json from WATCHLIST.md
+        run: python scripts/generate_watchlist_json.py
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
