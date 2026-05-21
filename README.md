@@ -596,3 +596,5 @@ Why track these? The cloud landscape changes fast. Today's "contact sales only" 
 ## Contributing
 
 Pull requests welcome! Please ensure that submissions meet the Alt Cloud [contributing guide](CONTRIBUTING.md) and are categorized accurately.
+
+Submissions that don't yet meet the criteria may be tracked in the [Watchlist](WATCHLIST.md) — a structured list of candidates with a clear path to qualification.

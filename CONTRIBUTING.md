@@ -30,6 +30,16 @@ We welcome additions, corrections, and improvements to this list of alternative 
 3. Make your changes to `README.md`
 4. Submit a pull request and briefly explain your additions
 
-💬 For questions or suggestions, feel free to [open an issue](https://github.com/yourusername/awesome-alt-clouds/issues).
+## Borderline Submissions
+
+If your submission doesn't meet all three criteria yet, it may be added to the [Watchlist](WATCHLIST.md) instead of being rejected outright. The watchlist tracks promising candidates with a clear path to qualification.
+
+A submission lands on the watchlist when:
+- It scores 1/3 on the automated evaluation, **and**
+- A maintainer judges it worth tracking (e.g. the service is actively improving or is widely referenced in the community).
+
+Check the watchlist before re-submitting — your service may already be tracked there. To trigger a re-evaluation, comment on your original submission issue with evidence that the missing criteria are now met, or open a new submission.
+
+💬 For questions or suggestions, feel free to [open an issue](https://github.com/datum-cloud/awesome-alt-clouds/issues).
 
 Thank you!
