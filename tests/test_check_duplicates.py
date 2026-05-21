@@ -72,9 +72,11 @@ class TestNormalizeName:
         # "cloud ai labs" all stripped → empty
         assert cd.normalize_name('Cloud AI Labs') == ''
 
-    def test_two_non_noise_words_concatenated(self):
-        # Both words retained, joined without separator
-        assert cd.normalize_name('Acme Storage') == 'acmestorage'
+    def test_two_non_noise_words_space_joined(self):
+        assert cd.normalize_name('Acme Storage') == 'acme storage'
+
+    def test_namecheap(self):
+        assert cd.normalize_name('Namecheap') == 'namecheap'
 
 
 # ---------------------------------------------------------------------------
@@ -148,6 +150,17 @@ class TestCheckCloudsJson:
         }]
         match_type, entry = cd.check_clouds_json('other.io', 'Render', clouds)
         assert match_type == 'fuzzy_name'
+
+    def test_substring_false_positive_namecheap_vs_heap(self):
+        clouds = [{
+            "name": "Heap",
+            "url": "https://heap.io",
+            "description": "Product analytics.",
+            "score": 3,
+            "categories": [],
+        }]
+        result = cd.check_clouds_json('namecheap.com', 'Namecheap', clouds)
+        assert result == (None, None)
 
 
 # ---------------------------------------------------------------------------

@@ -1,8 +1,8 @@
 # Watchlist
 
-Candidates submitted to Awesome Alt Clouds that don't yet meet inclusion criteria. This list provides a transparent path forward for promising services and prevents the same submissions from being re-litigated from scratch.
+Services that show **real potential** but haven't crossed the qualification threshold yet. Potential means the service already meets at least one of the three criteria — it exists, it's production-grade in some way, and is moving in the right direction.
 
-Only companies submitted **two or more times** with continued community interest are tracked here — a signal that the service is worth watching even though it hasn't qualified yet.
+A score of 0/3 means no pricing, no self-service, and no status page — nothing to build on. Those submissions are declined outright. This list is for 1/3 cases: one signal is there, two are missing. That gap is closeable.
 
 ## How It Works
 
@@ -10,7 +10,7 @@ Only companies submitted **two or more times** with continued community interest
 
 **Community** — If you have evidence that a listed candidate now meets its missing criteria, comment on the original submission issue.
 
-**Maintainers** — Add entries by commenting `/watchlist` on any submission issue. Review the list quarterly and update "Last Reviewed" dates.
+**Maintainers** — Add entries by commenting `/watchlist` on a submission issue that scored 1/3. The bot will reject the command if the score is 0/3. Review the list quarterly.
 
 ## Promotion Rules
 

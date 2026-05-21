@@ -9,6 +9,7 @@ Alt Clouds provide value "as a service" directly on top of infrastructure. They 
 ## Contents
 
 * [Criteria](#criteria)
+* [Watchlist](WATCHLIST.md) — candidates with real potential that don't yet qualify
 * [Infrastructure Clouds](#infrastructure-clouds)
 * [GPU & AI Compute Clouds](#gpu--ai-compute-clouds)
 * [Security, Compliance & Sovereignty Clouds](#security-compliance--sovereignty-clouds)

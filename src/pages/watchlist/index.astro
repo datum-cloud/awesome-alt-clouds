@@ -14,7 +14,7 @@ const featuredSlugs = [...(await getFeaturedSlugs())];
 
 <Base
   title="Watchlist | Awesome Alt Clouds"
-  description="Services submitted multiple times that don't yet meet inclusion criteria — tracked with a clear path to qualification."
+  description="Services with real potential that haven't crossed the qualification threshold yet — tracked with a clear path forward."
   canonical={watchlistCanonical}>
   <div class="flex flex-col md:flex-row min-h-screen">
     <DirectorySidebar activePage="watchlist" />
@@ -28,9 +28,9 @@ const featuredSlugs = [...(await getFeaturedSlugs())];
             Watchlist
           </h1>
           <p class="text-warm-stone leading-relaxed max-w-2xl">
-            Services that have been submitted multiple times but don't yet meet the inclusion
-            criteria. They're tracked here with a clear path to qualification — no more
-            re-litigating the same decisions.
+            Services that show real potential but haven't crossed the qualification threshold yet.
+            A score of 0/3 is declined outright; this list tracks 1/3 cases where one signal is
+            present and the gap to qualification is closeable.
           </p>
         </header>
 
@@ -46,7 +46,13 @@ const featuredSlugs = [...(await getFeaturedSlugs())];
           </div>
           <div class="bg-white border border-clay-beige rounded-xl p-4">
             <div class="text-xs font-semibold uppercase tracking-wide text-warm-stone mb-1">
-              Qualify at
+              Minimum to enter
+            </div>
+            <div class="font-serif text-lg font-semibold text-rich-earth">1 / 3 criteria</div>
+          </div>
+          <div class="bg-white border border-clay-beige rounded-xl p-4">
+            <div class="text-xs font-semibold uppercase tracking-wide text-warm-stone mb-1">
+              Qualify for main list
             </div>
             <div class="font-serif text-lg font-semibold text-rich-earth">2 / 3 criteria</div>
           </div>
@@ -143,15 +149,16 @@ const featuredSlugs = [...(await getFeaturedSlugs())];
             <div class="bg-white border border-clay-beige rounded-xl p-4">
               <h3 class="text-sm font-semibold text-rich-earth mb-2">Getting on the list</h3>
               <p class="text-sm text-warm-stone leading-relaxed">
-                Services submitted two or more times with continued community interest land here
-                instead of being closed quietly.
+                A service must score 1/3 — at least one real qualifying signal. Score 0/3 means no
+                pricing, no self-service, no status page: nothing to build on, so it's declined
+                outright.
               </p>
             </div>
             <div class="bg-white border border-clay-beige rounded-xl p-4">
               <h3 class="text-sm font-semibold text-rich-earth mb-2">Getting promoted</h3>
               <p class="text-sm text-warm-stone leading-relaxed">
-                Score 2/3 or higher on a fresh evaluation. Open a new submission or comment on the
-                original issue with evidence that the missing criteria are now met.
+                Score 2/3 or higher on a fresh evaluation. Re-submit or comment on the original
+                issue with evidence that the missing criteria are now met.
               </p>
             </div>
             <div class="bg-white border border-clay-beige rounded-xl p-4">
