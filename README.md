@@ -451,6 +451,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 Authentication, authorization, secrets management, identity providers, and fraud and abuse prevention services.
 
 * 🟢 [Akeyless](https://www.akeyless.io/) - SaaS secrets management with zero-knowledge encryption. Distributed Fragments Cryptography eliminates vault overhead. 70% cost savings.
+* 🟢 [AlpacaX](https://www.alpacax.com/) - Provides secure, scoped infrastructure access for AI agents with command-level control, privileged operation approval, and comprehensive audit trails for safe production operations.
 * 🟢 [Aserto](https://www.aserto.com/) - Cloud-native authorization built on Open Policy Agent.
 * 🟢 [Auth0](https://auth0.com/) - A flexible, drop-in solution to add authentication and authorization services to applications, now part of Okta.
 * 🟢 [Authzed](https://authzed.com/) - Provides fine-grained, scalable authorization as a service, built on the open-source SpiceDB.
