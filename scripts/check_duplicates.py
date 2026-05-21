@@ -57,15 +57,17 @@ def normalize_name(name: str) -> str:
     """Normalise a service name for fuzzy matching.
 
     Lowercases, strips punctuation, removes noise words.
-    Example: 'ZeroTier Labs' -> 'zerotier'
+    Returns space-separated tokens to preserve word boundaries.
+
+    Examples:
+        'ZeroTier Labs' -> 'zerotier'
+        'Namecheap'     -> 'namecheap'
+        'Heap'          -> 'heap'
     """
-    # lowercase
     name = name.lower()
-    # replace punctuation with spaces (preserve word boundaries)
     name = re.sub(r'[^a-z0-9\s]', ' ', name)
-    # remove noise words
     parts = [w for w in name.split() if w not in _NAME_NOISE]
-    return ''.join(parts)
+    return ' '.join(parts)
 
 
 def check_clouds_json(
@@ -89,14 +91,16 @@ def check_clouds_json(
         if entry_domain and entry_domain == submitted_domain:
             return ('exact_domain', entry)
 
-        # Fuzzy name check (only keep first match, require min length to avoid false positives)
+        # Fuzzy name check: token-set intersection (not character substring).
+        # Character substring matching caused false positives like flagging
+        # "Namecheap" as a duplicate of "Heap" because 'heap' ⊆ 'namecheap'.
         if fuzzy_match is None and len(norm_submitted_name) >= 4:
             norm_entry_name = normalize_name(entry.get('name', ''))
-            if norm_entry_name and len(norm_entry_name) >= 4 and (
-                norm_submitted_name in norm_entry_name
-                or norm_entry_name in norm_submitted_name
-            ):
-                fuzzy_match = entry
+            if norm_entry_name and len(norm_entry_name) >= 4:
+                submitted_tokens = {t for t in norm_submitted_name.split() if len(t) >= 4}
+                entry_tokens = {t for t in norm_entry_name.split() if len(t) >= 4}
+                if submitted_tokens and entry_tokens and submitted_tokens & entry_tokens:
+                    fuzzy_match = entry
 
     if fuzzy_match is not None:
         return ('fuzzy_name', fuzzy_match)
