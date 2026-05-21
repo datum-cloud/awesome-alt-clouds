@@ -2,11 +2,15 @@
 """
 Duplicate detection for awesome-alt-clouds submissions.
 
-Reads submission info from environment variables, checks clouds.json
-(the authoritative list from README.md) for duplicates, posts a comment
-+ label + optionally closes the issue, then writes is_duplicate=true/false
-to $GITHUB_OUTPUT.
+Checks two sources in order:
+  1. clouds.json — blocks re-submission of already-listed services.
+  2. watchlist.json — flags re-submissions of watched candidates without
+     blocking them; lets the normal evaluation run so they can be promoted.
 
+Closed GitHub Issues are intentionally NOT checked. A declined submission
+must be able to re-submit freely — that is the whole point of the watchlist.
+
+Writes is_duplicate=true/false to $GITHUB_OUTPUT.
 Exits 0 always — failures are non-fatal to avoid blocking submissions.
 """
 
@@ -168,8 +172,9 @@ def build_comment(match_type: str, match: dict) -> str:
         raise ValueError(f'Unknown match_type: {match_type!r}')
 
 
-# Path to clouds.json — overridable in tests
+# Paths to data files — overridable in tests
 _CLOUDS_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', 'docs', 'clouds.json')
+_WATCHLIST_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', 'docs', 'watchlist.json')
 
 
 def _write_github_output(key: str, value: str) -> None:
@@ -211,9 +216,9 @@ def main() -> None:
     submitted_domain = normalize_domain(urls[0])
     submitted_name = issue_title
 
-    # Check clouds.json — the authoritative list derived from README.md.
-    # GitHub Issues are intentionally NOT checked: a previously-rejected submission
-    # should not block a valid resubmission.
+    # 1. Check clouds.json — the authoritative list derived from README.md.
+    #    Closed GitHub Issues are intentionally NOT checked: a previously-rejected
+    #    submission must be able to re-submit freely.
     clouds: list[dict] = []
     try:
         with open(_CLOUDS_JSON_PATH, 'r', encoding='utf-8') as f:
@@ -232,6 +237,39 @@ def main() -> None:
             close_issue(repo, issue_number, gh_token)
         _write_github_output('is_duplicate', 'true')
         _write_github_output('duplicate_reason', match_type)
+        return
+
+    # 2. Check watchlist.json — flag re-submissions of watched candidates so
+    #    reviewers know this is a repeat attempt, but do NOT block evaluation.
+    #    The service may have improved; let the evaluator decide.
+    watchlist: list[dict] = []
+    try:
+        with open(_WATCHLIST_JSON_PATH, 'r', encoding='utf-8') as f:
+            watchlist = json.load(f)
+    except (OSError, json.JSONDecodeError) as e:
+        logging.warning('Could not read watchlist.json: %s', e)
+
+    watchlist_match = next(
+        (entry for entry in watchlist if normalize_domain(entry.get('url', '')) == submitted_domain),
+        None,
+    )
+
+    if watchlist_match:
+        criteria = watchlist_match.get('criteriaNeed', 'see watchlist')
+        comment = (
+            '📋 **Watchlist Re-submission**\n\n'
+            f'This service is currently on the [Watchlist](https://alt-clouds.org/watchlist.html) '
+            f'and is being re-evaluated. Previously it did not qualify because: '
+            f'_{watchlist_match.get("reasonNotQualifying", "criteria not met")}_\n\n'
+            f'**Criteria still needed:** {criteria}\n\n'
+            'Proceeding with a fresh evaluation — if the criteria above are now met, '
+            'this submission will be promoted to the main list automatically.'
+        )
+        post_comment(repo, issue_number, comment, gh_token)
+        add_label(repo, issue_number, 'watchlist', gh_token)
+        # is_duplicate stays false — evaluation must run
+        _write_github_output('is_duplicate', 'false')
+        _write_github_output('duplicate_reason', 'watchlist_resubmission')
     else:
         _write_github_output('is_duplicate', 'false')
         _write_github_output('duplicate_reason', 'no_match')
