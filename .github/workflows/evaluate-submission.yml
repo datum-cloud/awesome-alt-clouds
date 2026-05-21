@@ -2,16 +2,25 @@ name: Evaluate Submission
 
 on:
   issues:
-    types: [labeled]
+    types: [opened, labeled]
 
 jobs:
   evaluate:
-    # Run when the 'submission' label is added — covers both issue templates
-    # (which apply the label at creation, firing a 'labeled' event) and
-    # manual label additions by admins. Using only 'labeled' avoids the
-    # double-run caused by GitHub firing both 'opened' and 'labeled' when
-    # an issue template pre-applies a label.
-    if: github.event.action == 'labeled' && github.event.label.name == 'submission'
+    # Trigger conditions:
+    # 1. 'labeled' with 'submission' — covers issue templates that pre-apply the
+    #    label (GitHub fires a user-context 'labeled' event) and manual additions.
+    # 2. 'opened' without the 'submission' label already present — covers mobile /
+    #    API submissions where the label is absent at creation and is later added
+    #    by the auto-label workflow via GITHUB_TOKEN. GitHub suppresses workflow
+    #    triggers for GITHUB_TOKEN-generated label events, so we catch these on
+    #    'opened' instead. The body-text guard ensures we only act on real
+    #    submission-form issues. Guarding on label absence prevents a double-run
+    #    when an issue template pre-applies the label (that path uses condition 1).
+    if: |
+      (github.event.action == 'labeled' && github.event.label.name == 'submission') ||
+      (github.event.action == 'opened' &&
+       contains(github.event.issue.body, 'automatically created via the submission form') &&
+       !contains(github.event.issue.labels.*.name, 'submission'))
     runs-on: ubuntu-latest
     permissions:
       issues: write
