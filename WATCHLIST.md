@@ -33,4 +33,5 @@ Maintainers review the watchlist **quarterly** (January, April, July, October). 
 
 | Name | URL | Likely Category | Date Added | Reason Not Qualifying | Criteria Needed | Last Reviewed |
 |------|-----|-----------------|------------|-----------------------|-----------------|---------------|
+| Opencode | https://opencode.ai/ | To be determined | 2026-05-21 | Score 1/3: transparent public pricing; usage-based self-service | Transparent Public Pricing; Usage-based Self-Service | 2026-05-21 |
 | Iren | https://iren.com | GPU & AI Compute Clouds | 2026-03-18 | Score 1/3: no transparent pricing, no self-service signup | Public pricing page; self-service signup | 2026-05-21 |
