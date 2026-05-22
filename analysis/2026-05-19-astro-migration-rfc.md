@@ -1,6 +1,6 @@
 # Astro Migration RFC — Evolving alt-cloud.org into a Community Destination
 
-> Status: **Phase 1 & 2 complete — Phase 3 next**
+> Status: **Phase 1, 2 & 2a complete — Phase 3 next**
 > Author: planning session, 2026-05-19
 > Branch: `feat/astro-migration`
 > Tracks: [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164)
@@ -12,8 +12,9 @@
 | 0 — RFC + decisions locked | ✅ done | Decisions in §11 below |
 | 1 — Astro scaffold with parity | ✅ done (2026-05-19) | See "Phase 1 — what landed" below |
 | 2 — Deeper company profiles (`/<slug>`) | ✅ done (2026-05-20) | Flat URL chosen instead of `/clouds/[slug]`. Plan: [2026-05-20-phase-2-detail-pages-plan.md](./2026-05-20-phase-2-detail-pages-plan.md). 5 sample MDX files seeded; architecture scales to 429+. |
-| 3 — Editorial / blog + RSS | ⏳ pending | `update_blog_posts.yml` cron paused in Phase 1 |
-| 4 — Discovery prep (`/categories/[slug]`, `/compare` stub) | ⏳ pending | |
+| 2a — Auto-generated profile MDX | ✅ done (2026-05-22) | Bot generates `status: draft` MDX on submission + batch backfill workflow. Plan: [2026-05-22-phase-2a-auto-profile-generation-plan.md](./2026-05-22-phase-2a-auto-profile-generation-plan.md). Flow: [2026-05-22-submission-to-mdx-flow.md](./2026-05-22-submission-to-mdx-flow.md). |
+| 3 — Editorial / blog + RSS | ⏳ **next** | See [Phase 3 — planned](#phase-3--planned-next) below. Issue #164 Idea 2. |
+| 4 — Comparison & discovery aids | 📋 planned | Category landings, side-by-side compare. Issue #164 Idea 3. See [Phase 4 — planned](#phase-4--planned-comparison--discovery-aids) below. |
 | 5 — SEO polish | ⏳ pending | |
 | 6 — Production cutover | ⏳ pending | Pages source needs flipping from "branch /docs" → "GitHub Actions" |
 
@@ -49,16 +50,207 @@
 - `python scripts/generate_llms.py public/clouds.json public/` → both llms files regenerate cleanly. ✅
 - SEO meta, JSON-LD, Fathom analytics, all 23 categories, search/filter/sort behavior, modals, mobile drawer — all match original.
 
-### What Phase 2 will pick up
+### Phase 2 — what landed
 
-1. Define `profiles` content collection with zod schema (regions, services, pricing model, etc.).
-2. Build `src/pages/clouds/[slug].astro` using `getStaticPaths` over `clouds.json` — every cloud gets a page automatically.
-3. Layout: profile hero, criteria scorecard, related providers.
-4. Seed 5–10 featured providers with hand-written enrichment MDs.
-5. Cross-link homepage cards to the new profile pages.
+- **URL shape**: flat `/<slug>` (e.g. `/neon/`), not `/clouds/[slug]` as originally sketched in §5.
+- **Content collection**: `src/content/clouds/*.mdx` with zod schema in `src/content.config.ts` (tagline, headquarters, regions, services, pricingModel, socials, etc.).
+- **Pages**: `src/pages/[slug].astro` — `getStaticPaths()` over publishable MDX profiles merged with `clouds.json` base data.
+- **Layout**: `src/layouts/CloudDetail.astro` with `DetailSidebar`, `DetailTopBar`, prose styling.
+- **Featured signal**: a cloud card links to a detail page iff a publishable MDX file exists (no separate `featured: true` field).
+- **Seeds**: 5 hand-authored profiles (`neon`, `hetzner`, `cloudflare`, `render`, `digital-ocean`) marked `status: reviewed`.
+- **Homepage**: cards with publishable profiles become clickable; search dropdown respects the same filter via `getFeaturedSlugs()`.
+
+### Phase 2a — what landed
+
+Phase 2a extends the submission pipeline and adds a batch backfill path so detail pages can be generated at scale without hand-writing every MDX file.
+
+**Publish gate**
+
+- MDX frontmatter carries `status: "draft" | "reviewed"` (default `"draft"`).
+- `getPublishableProfiles()` / `isProfilePublished()` in `src/lib/profile.ts` — reviewed profiles always build; draft profiles build only when `site.config.mjs` has `preview: true`.
+- Build-time flag via `__SITE_PREVIEW__` → `sitePreview` in `src/lib/site.ts` (never re-import `site.config.mjs` at runtime).
+- `DraftBanner.astro` renders on draft detail pages in preview deploys with an "Edit on GitHub" link.
+
+**Generator pipeline** (`scripts/`)
+
+| File | Role |
+|---|---|
+| `lib/fetcher.py` | Shared Jina markdown → Jina HTML → requests cascade (extracted from `evaluate_submission.py`) |
+| `lib/slugify.py` | Python mirror of `src/lib/clouds.ts:slugify()` — verified against all 429 cloud names |
+| `generate_cloud_profile.py` | Fetch page → Claude Sonnet → write `status: draft` MDX; never overwrite existing files |
+| `backfill_profiles.py` | Batch driver: reads `public/clouds.json`, skips existing MDX, filters by score/category, caps batch size |
+
+**CI integration**
+
+- `create_submission_pr.py` — calls `generate_and_stage_mdx()` before commit; draft MDX lands in the same commit as the README entry. Generation failure is non-fatal.
+- `backfill-profiles.yml` — `workflow_dispatch` with `batch_size`, `category_filter`, `score_filter`; opens a PR labelled `generated-profiles, needs-verification`.
+- `evaluate-submission.yml` — passes `ANTHROPIC_API_KEY` to the PR creation step.
+
+**Human review workflow**
+
+1. Bot opens PR with `status: draft` MDX.
+2. Maintainer spot-checks on fork preview deploy (`preview: true` shows draft pages + DraftBanner).
+3. Follow-up PR flips `status: reviewed` on accurate profiles.
+4. Production deploy (`preview: false`) picks up reviewed profiles only.
+
+**Locked decisions (Phase 2a)**
+
+| Decision | Choice |
+|---|---|
+| MDX merge policy | Auto-commit as `status: draft` + `needs-verification` label; flip to `reviewed` in follow-up PR |
+| Regeneration | Bot skips slug that already has MDX (no silent overwrite) |
+| Backfill scope | Pilot 20–30 clouds first; expand after quality review |
+| Refresh / cron | Deferred to Phase 3 — no `/refresh` trigger yet |
+
+### Phase 3 — planned (next)
+
+Maps to [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164) **Idea 2 — Editorial / blog**.
+
+**Goal:** Host short-form content (trends, new entrants, commentary) in-repo so the site stays fresh without duplicating the README as source of truth for listings.
+
+**Content model**
+
+```
+src/content/blog/
+  2026-06-welcome-to-alt-cloud.md   # date-prefixed slug convention
+```
+
+Zod schema (extend `src/content.config.ts`):
+
+```typescript
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    author: z.string(),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),   // excluded from production build when true
+    heroImage: z.string().optional(),
+  }),
+});
+```
+
+**Pages & routes**
+
+| Route | File | Notes |
+|---|---|---|
+| `/blog` | `src/pages/blog/index.astro` | Post list, newest first; filter by tag (optional MVP+) |
+| `/blog/<slug>` | `src/pages/blog/[slug].astro` | Full post with OG/Twitter meta, `BlogPosting` JSON-LD |
+| `/rss.xml` | `src/pages/rss.xml.ts` or `@astrojs/rss` | Feed of non-draft posts |
+
+**Layout & components**
+
+- `src/layouts/Post.astro` — article chrome matching site tokens (serif headings, warm-stone body).
+- Reuse `Base.astro` for meta; add per-post OG when `heroImage` is set.
+- Homepage: optional "Latest from the blog" strip (1–3 recent posts) — defer if scope tight.
+
+**Editorial workflow**
+
+1. Contributor opens PR adding/editing a file under `src/content/blog/`.
+2. Maintainer review (same as profile MDX — human gate, no bot generation for launch).
+3. Merge → `deploy-pages.yml` picks up new post on next build.
+4. `draft: true` posts build only on preview deploys (same pattern as cloud profile `status: draft`).
+
+**Retire legacy scraper**
+
+- Delete or archive `scripts/update_blog_posts.py` and `update-blog-posts.yml` once Astro blog is live.
+- The old script patched Datum blog cards into `docs/index.html` Resources modal — replace with either:
+  - **Option A (recommended):** hand-curated `src/content/blog/` posts only; or
+  - **Option B:** a thin ingest script that converts external RSS/HTML into MDX PRs (out of MVP).
+
+**Deliverables**
+
+- [ ] `blog` content collection + 1–2 seed posts (e.g. welcome post, "what is an alt cloud")
+- [ ] `/blog`, `/blog/<slug>`, `/rss.xml`
+- [ ] `CONTRIBUTING.md` — blog authoring section (frontmatter, draft flag, review process)
+- [ ] Retire `update_blog_posts.py` cron path
+
+**Estimate:** 1–2 days.
 
 ---
 
+### Phase 4 — planned (Comparison & discovery aids)
+
+Maps to [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164) **Idea 3 — Comparison & discovery aids**.
+
+**What already exists (Phase 1 homepage)**
+
+The Astro homepage (`src/pages/index.astro`) already ships client-side **search**, **category filter** (URL hash `#category=…`), and **sort** (alphabetical / recent via `dateAdded`). Phase 4 extends discovery from ephemeral filter state to **dedicated routes** and adds **side-by-side compare**.
+
+**Planned routes**
+
+| Route | Purpose |
+|---|---|
+| `/categories/<slug>` | Static landing page per category — SEO-friendly, shareable URL, filtered card grid |
+| `/compare` | Pick 2–3 providers; render attribute table side-by-side |
+| `/compare?a=neon&b=hetzner` | Shareable deep link (query params → pre-selected clouds) |
+
+**Category landing pages**
+
+```
+src/pages/categories/[slug].astro
+  getStaticPaths → 23 categories from clouds.json / CATEGORIES constant
+  Render: category title, description (from generate_llms.py _CAT_DESCRIPTIONS),
+          card grid filtered to that category, link to /compare pre-filtered
+```
+
+Slug convention: match README section slug, e.g. `infrastructure-clouds`, `databases-storage`.
+
+**Compare page — data sources**
+
+Comparison rows pull from merged cloud data already available at build time:
+
+| Attribute | Source |
+|---|---|
+| Name, URL, description, score, categories | `public/clouds.json` (README-derived) |
+| Tagline, regions, services, pricingModel, openSource, headquarters | `src/content/clouds/<slug>.mdx` frontmatter (when profile exists) |
+| Detail page link | Only if publishable MDX exists (`getFeaturedSlugs()`) |
+
+Clouds without a profile MDX still appear in compare — cells show "—" or README one-liner only.
+
+**Compare UI (MVP)**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  Compare alt clouds          [Cloud A ▼] [Cloud B ▼] [+]│
+├──────────────┬──────────────┬───────────────────────────┤
+│              │ Neon         │ Hetzner                   │
+├──────────────┼──────────────┼───────────────────────────┤
+│ Score        │ 3/3 🟢       │ 2/3 🟡                    │
+│ Categories   │ Databases…   │ Infrastructure…           │
+│ Pricing model│ usage-based  │ hourly                    │
+│ Regions      │ 3 regions    │ EU-focused                │
+│ …            │              │                           │
+└──────────────┴──────────────┴───────────────────────────┘
+```
+
+- `src/components/CompareTable.astro` — presentational; data passed from page.
+- Client island (minimal vanilla JS or `<script>`) for picker dropdowns + URL sync.
+- Cap at **3 clouds** per comparison (Issue #164: "two or three providers").
+
+**Schema readiness**
+
+Phase 2 MDX frontmatter already includes comparison-friendly optional fields: `regions`, `services`, `pricingModel`, `openSource`, `headquarters`, `foundedYear`. No schema break required — compare page reads what's populated; empty fields degrade gracefully.
+
+**Out of scope for Phase 4 MVP**
+
+- Full-text search across profile bodies
+- User-saved comparison lists (needs auth or localStorage-only — defer)
+- Automated "similar providers" recommendations
+- Compare more than 3 clouds
+
+**Deliverables**
+
+- [ ] `/categories/<slug>` for all 23 categories
+- [ ] `/compare` with 2-cloud picker + attribute table
+- [ ] Query-param deep links (`?a=&b=&c=`)
+- [ ] Nav link from homepage sidebar / category pages
+- [ ] Optional: "Compare" CTA on detail pages (`DetailSidebar`)
+
+**Estimate:** 1–2 days (can ship category pages and compare stub separately).
 
 ---
 
@@ -66,25 +258,37 @@
 
 [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164) reframes the site from "a surface for the list" into a community destination. Five proposed ideas, phased:
 
-| # | Idea | MVP scope |
-|---|---|---|
-| 1 | Deeper per-company profiles (data-driven from the repo) | ✅ MVP |
-| 2 | Editorial / blog | ✅ MVP |
-| 3 | Comparison & discovery aids (filter, side-by-side) | 🟡 Prepare structure |
-| 4 | Community & events, newsletter | ❌ Later |
-| 5 | Metadata footprint (OG, structured data, sitemap) | 🟢 Free win in Astro |
+| # | Idea | Issue #164 scope | RFC phase | Status |
+|---|---|---|---|---|
+| 1 | Deeper per-company profiles | ✅ MVP | Phase 2 + 2a | ✅ **Delivered** — Astro MDX at `/<slug>`, auto-gen pipeline, publish gate |
+| 2 | Editorial / blog | ✅ MVP | Phase 3 | ⏳ **Next** |
+| 3 | Comparison & discovery aids | 🟡 Prepare structure | Phase 4 | 📋 Planned — homepage filter/search exists; category landings + compare next |
+| 4 | Community & events, newsletter | ❌ Later | — | Not scoped |
+| 5 | Metadata footprint (OG, structured data, sitemap) | 🟢 Free win in Astro | Phase 5 | Partial — Base.astro JSON-LD live; per-page OG + sitemap pending |
 
-**Hard constraint from the issue itself**: *"The list in GitHub remains the canonical source of truth."* The migration must preserve `README.md` as the single editable source for the directory listings — profile MDs only *enrich*, never replace.
+**Hard constraint from the issue itself**: *"The list in GitHub remains the canonical source of truth."* The migration preserves `README.md` as the single editable source for directory listings — profile MDX and blog posts only *enrich*, never replace.
+
+**Issue #164 acceptance criteria — current scorecard**
+
+| Criterion | Status |
+|---|---|
+| Phase 1 scope agreed in writing | ✅ This RFC |
+| List in GitHub remains canonical | ✅ README → clouds.json; MDX/blog are additive |
+| At least one of: deeper profiles, blog, or discovery aid live | ✅ **Deeper profiles live** on `feat/astro-migration` (blog + compare next) |
 
 ## 2. Where the project is today (grounded)
 
-- **`README.md`** (~67 KB, ~430 entries across 23 categories) is the canonical source.
-- Auto-pipeline derives `docs/clouds.json`, `docs/llms.txt`, `docs/llms-full.txt` on every merge via `deploy-pages.yml` (Python: `parse_readme_to_json.py`, `generate_llms.py`).
-- Frontend is **two vanilla-JS HTML files**: `docs/index.html` (~66 KB, fetches `clouds.json` at runtime) + `docs/submit/index.html` (form → GitHub issue URL).
-- GitHub Pages serves from `docs/` on `main` (folder-based publish, not Actions-based).
-- `alt-cloud.org` custom domain configured in Pages settings — **no `CNAME` file in repo** (verified).
-- External runtime deps: Google Fonts + Fathom analytics only.
-- 23-category taxonomy duplicated in `scripts/evaluate_submission.py:CATEGORIES` and `scripts/generate_llms.py:_CAT_DESCRIPTIONS`.
+*Updated 2026-05-22 after Phase 2 + 2a.*
+
+- **`README.md`** (~430 entries, 23 categories) remains the canonical source for listings.
+- **Build pipeline:** `deploy-pages.yml` regenerates `public/clouds.json` + `llms*.txt` at CI time, then `npm run build` → Astro static site in `dist/`.
+- **Frontend:** Astro 5 + Tailwind v4 on branch `feat/astro-migration` (preview deploy on GitHub Pages).
+  - `/` — directory grid with search, category filter, sort; cards link to detail pages when publishable MDX exists.
+  - `/<slug>` — cloud detail pages from `src/content/clouds/*.mdx` merged with `clouds.json`.
+  - `/submit/`, `/watchlist/` — ported from legacy SPA.
+- **Profile coverage:** 5 hand-reviewed seeds + bot pipeline for auto-generated `status: draft` MDX (submission + batch backfill).
+- **Legacy `docs/`:** still present for reference; production cutover (Phase 6) pending.
+- **Not yet built:** `/blog`, `/categories/<slug>`, `/compare` (Phase 3 + 4).
 
 ## 3. Is GitHub Pages + Astro feasible?
 
@@ -110,22 +314,30 @@ README.md → parse_readme_to_json.py → docs/clouds.json
                                    fetch() at runtime in docs/index.html
 ```
 
-**After**
+**After (Phase 1 + 2 + 2a)**
 
 ```
 README.md ──→ parse_readme_to_json.py ──→ public/clouds.json (still public at /clouds.json)
                                           ↓
                                    import in Astro build
                                           +
-                              src/content/profiles/*.md (optional enrichment)
-                              src/content/blog/*.md       (editorial)
+                              src/content/clouds/*.mdx (hand-authored or bot-generated)
+                              src/content/blog/*.md       (editorial — Phase 3)
                                           ↓
                                    astro build → dist/
+                                   (draft MDX excluded in production via publish gate)
                                           ↓
                                   actions/deploy-pages
+
+New submission (score ≥ 2):
+  evaluate_submission.py → create_submission_pr.py
+    → README entry + generate_cloud_profile.py → src/content/clouds/<slug>.mdx (status: draft)
+
+Batch backfill (manual workflow_dispatch):
+  backfill_profiles.py → generate_cloud_profile.py → PR with N draft MDX files
 ```
 
-Key invariant preserved: **README is still the only place to edit listings.** Profile MDs only add extra fields (regions, services, hero, long-form description); they cannot create or remove entries.
+Key invariant preserved: **README is still the only place to edit listings.** Profile MDs enrich cards with narrative content, pricing detail, and metadata — they cannot create or remove directory entries. Auto-generated MDX always ships as `status: draft` until a maintainer marks it `reviewed`.
 
 ## 5. Proposed project structure
 
@@ -139,34 +351,32 @@ awesome-alt-clouds/
 ├── src/
 │   ├── pages/
 │   │   ├── index.astro             # directory (current homepage parity)
-│   │   ├── clouds/[slug].astro     # ← Idea 1: deeper profile (all ~430 pages)
+│   │   ├── [slug].astro            # ← Idea 1: flat profile URL (Phase 2 — landed)
 │   │   ├── categories/[slug].astro # ← Idea 3 prep: category landing pages
 │   │   ├── compare.astro           # ← Idea 3 placeholder + schema docs
 │   │   ├── blog/
-│   │   │   ├── index.astro         # ← Idea 2: blog index
+│   │   │   ├── index.astro         # ← Idea 2: blog index (Phase 3)
 │   │   │   └── [slug].astro        # blog post
 │   │   ├── rss.xml.js              # @astrojs/rss
-│   │   └── submit/index.astro      # ported from docs/submit/index.html (URL preserved)
+│   │   ├── submit/index.astro      # ported from docs/submit/index.html (URL preserved)
+│   │   └── watchlist/              # watchlist page (Phase 1 extension)
 │   ├── content/
-│   │   ├── config.ts               # zod schemas for profiles + blog
-│   │   ├── profiles/               # one .md per featured cloud (optional)
-│   │   │   ├── neon.md
-│   │   │   └── digital-ocean.md
-│   │   └── blog/
-│   │       └── 2026-06-welcome-to-alt-cloud.md
+│   │   ├── config.ts               # zod schemas — clouds collection (Phase 2)
+│   │   ├── clouds/                 # one .mdx per profile (Phase 2 + 2a)
+│   │   │   ├── neon.mdx            # hand-authored, status: reviewed
+│   │   │   └── …                   # bot-generated, status: draft
+│   │   └── blog/                   # Phase 3
 │   ├── layouts/
 │   │   ├── Base.astro              # shared <head>, OG, JSON-LD, Fathom
-│   │   ├── Profile.astro
-│   │   └── Post.astro
+│   │   └── CloudDetail.astro       # profile layout + DraftBanner (Phase 2a)
 │   ├── components/
-│   │   ├── CloudCard.astro
-│   │   ├── ProfileHeader.astro
-│   │   ├── CategoryFilter.astro    # client island
-│   │   ├── SearchBox.astro         # client island (vanilla, no framework)
+│   │   ├── DraftBanner.astro       # draft-profile notice (Phase 2a)
+│   │   ├── DetailSidebar.astro, DetailTopBar.astro, CloudSearchDropdown.astro, …
 │   │   └── CompareTable.astro      # stub for Idea 3
 │   ├── lib/
-│   │   ├── clouds.ts               # loads + merges clouds.json + profile MD
-│   │   └── slug.ts                 # canonical slug derivation
+│   │   ├── clouds.ts               # loads clouds.json + slugify()
+│   │   ├── profile.ts              # MergedCloud merge + publish gate (Phase 2 + 2a)
+│   │   └── site.ts                 # sitePreview build-time flag
 │   └── styles/global.css
 ├── public/                         # copied as-is into dist/
 │   ├── altclouds-logo.png
@@ -176,76 +386,72 @@ awesome-alt-clouds/
 │   ├── llms-full.txt
 │   ├── robots.txt
 │   └── CNAME                       # NEW: must add to preserve alt-cloud.org domain
-├── scripts/                        # Python pipeline mostly unchanged
+├── scripts/                        # Python pipeline
 │   ├── parse_readme_to_json.py     # output path → public/clouds.json
 │   ├── generate_llms.py            # output dir → public/
-│   ├── evaluate_submission.py      # unchanged
-│   ├── create_submission_pr.py     # unchanged
-│   ├── split_submission.py         # unchanged
-│   ├── check_duplicates.py         # path update: reads public/clouds.json
-│   ├── update_blog_posts.py        # ⚠ may be retired (see Open Q #5)
-│   └── scaffold_profiles.py        # NEW (optional): generate empty profile MDs
-├── tests/                          # existing pytests, path-update only
+│   ├── evaluate_submission.py      # 3-stage evaluation cascade
+│   ├── create_submission_pr.py     # README PR + inline MDX generation (Phase 2a)
+│   ├── generate_cloud_profile.py   # Claude → draft MDX (Phase 2a)
+│   ├── backfill_profiles.py        # batch MDX driver (Phase 2a)
+│   ├── lib/
+│   │   ├── fetcher.py              # shared Jina → requests cascade (Phase 2a)
+│   │   └── slugify.py              # Python slugify mirror (Phase 2a)
+│   ├── split_submission.py         # multi-URL split
+│   ├── check_duplicates.py         # reads public/clouds.json
+│   └── update_blog_posts.py        # ⚠ retire after Phase 3
+├── site.config.mjs                 # preview ↔ production switch (Phase 2a publish gate)
+├── tests/                          # existing pytests
 ├── docs/                           # ⚠ RETIRED after cutover (Pages source switches to Actions)
 └── .github/workflows/
-    ├── deploy-pages.yml            # MODIFIED: Python → Node → Astro → Pages Actions
-    ├── evaluate-submission.yml     # path updates only (clouds.json moves)
-    ├── split-submission.yml        # unchanged
-    ├── admin-approve-submission.yml # unchanged
-    ├── close-issue-on-pr-close.yml  # unchanged
+    ├── deploy-pages.yml            # Python → Node → Astro → Pages Actions
+    ├── evaluate-submission.yml     # single-URL pipeline (+ MDX gen in PR step)
+    ├── backfill-profiles.yml       # batch MDX generation (Phase 2a)
+    ├── split-submission.yml
+    ├── admin-approve-submission.yml
+    ├── close-issue-on-pr-close.yml
     └── update-blog-posts.yml       # ⚠ retire OR retarget to Astro blog
 ```
 
 ## 6. Content collection schemas (illustrative)
 
 ```typescript
-// src/content/config.ts
+// src/content.config.ts (as landed — clouds collection, not profiles/)
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
-const profiles = defineCollection({
-  type: 'content',
+const clouds = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/clouds' }),
   schema: z.object({
-    slug: z.string(),                        // must match slug(clouds.json.name)
+    status: z.enum(['draft', 'reviewed']).default('draft'),  // Phase 2a publish gate
+    tagline: z.string().optional(),
     headquarters: z.string().optional(),
+    foundedYear: z.number().int().optional(),
     regions: z.array(z.string()).optional(),
     services: z.array(z.string()).optional(),
     openSource: z.boolean().optional(),
     pricingModel: z.enum(['hourly', 'monthly', 'usage-based', 'subscription', 'mixed']).optional(),
-    foundedYear: z.number().optional(),
     socials: z.object({
       x: z.string().optional(),
       linkedin: z.string().optional(),
       github: z.string().optional(),
+      website: z.string().optional(),
     }).optional(),
     logo: z.string().optional(),
-    featured: z.boolean().default(false),
   }),
 });
 
-const blog = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    publishDate: z.date(),
-    updatedDate: z.date().optional(),
-    author: z.string(),
-    tags: z.array(z.string()).default([]),
-    draft: z.boolean().default(false),
-    heroImage: z.string().optional(),
-  }),
-});
+const blog = defineCollection({ /* Phase 3 */ });
 
-export const collections = { profiles, blog };
+export const collections = { clouds, blog };
 ```
 
-Profile page algorithm (`src/pages/clouds/[slug].astro`):
+Profile page algorithm (`src/pages/[slug].astro` — as landed):
 
-1. `getStaticPaths` iterates every entry in `clouds.json`.
-2. For each, look up matching MD in `getCollection('profiles')` by slug.
-3. Merge: JSON is required base; MD frontmatter overrides; MD body becomes long-form description.
+1. `getStaticPaths` calls `getPublishableProfiles()` — only MDX with `status: reviewed`, or any status when `preview: true`.
+2. For each publishable profile, merge MDX frontmatter + body with the matching `clouds.json` entry via `mergeCloudWithProfile()`.
+3. Homepage cards link to detail pages only when the slug appears in `getFeaturedSlugs()` (same publish filter).
 
-→ Every cloud gets a page (auto). Featured ones get rich content (manual MD).
+→ Detail pages exist only when an MDX file is present **and** publishable for the current deploy. Bot-generated profiles start as `draft` and require a maintainer flip to `reviewed` before production HTML is built.
 
 ## 7. URL stability checklist (zero broken links)
 
@@ -256,8 +462,8 @@ Profile page algorithm (`src/pages/clouds/[slug].astro`):
 | `/llms.txt`, `/llms-full.txt` | Preserved via `public/` |
 | `/submit/` | Preserved as `src/pages/submit/index.astro` |
 | `/og-image.png`, `/altclouds-logo.png` | Preserved via `public/` |
-| `/clouds/<slug>` | **NEW** — per-cloud profile pages |
-| `/blog`, `/blog/<slug>` | **NEW** — editorial |
+| `/<slug>` | **NEW (Phase 2)** — flat per-cloud profile pages (only when publishable MDX exists) |
+| `/blog`, `/blog/<slug>` | **NEW (Phase 3)** — editorial |
 | `/categories/<slug>` | **NEW** — category landing |
 | `/compare` | **NEW** — placeholder |
 | `/rss.xml` | **NEW** — for blog feed |
@@ -324,9 +530,10 @@ Notable changes:
 |---|---|---|
 | **0** | RFC committed to `analysis/`, decisions locked, branch created | ½ day |
 | **1** | Astro scaffold with **parity** to current site (same UX, no new features). Cutover-ready. | 2–3 days |
-| **2** | **Idea 1**: profile pages live for all ~430 clouds, 5–10 seeded with rich content | 2–3 days |
-| **3** | **Idea 2**: blog + RSS, 1–2 launch posts | 1–2 days |
-| **4** | **Idea 3 prep**: category landing pages + `/compare` stub + schema for compare-fields | 1 day |
+| **2** | **Idea 1**: profile pages at `/<slug>`, 5 seeds hand-authored + publish gate | ✅ done |
+| **2a** | **Auto-generated profiles**: bot writes `status: draft` MDX on submission + batch backfill workflow | ✅ done |
+| **3** | **Idea 2**: blog collection, `/blog`, `/rss.xml`, retire scraper, 1–2 seed posts | 1–2 days |
+| **4** | **Idea 3**: `/categories/<slug>` landings + `/compare` (2–3 clouds, query deep links) | 1–2 days |
 | **5** | SEO polish: per-page OG, dynamic JSON-LD, sitemap | ½ day |
 | **6** | Production cutover: verify CNAME, switch Pages source, monitor | ½ day |
 
@@ -336,13 +543,15 @@ Notable changes:
 
 **Phase 1 — Parity.** Visiting `/`, `/submit/`, `/clouds.json`, `/llms.txt`, `/og-image.png` produces visually & functionally identical output to the current site. Search, category filter (URL hash), sort (alphabetical / recent) all work. No new pages exposed yet.
 
-**Phase 2 — Profiles.** Every cloud in `clouds.json` has a working `/clouds/<slug>` page. 5–10 featured providers have hand-written enrichment via `src/content/profiles/<slug>.md`. Profile cards on `/` link to these pages.
+**Phase 2 — Profiles.** Clouds with a publishable MDX file at `src/content/clouds/<slug>.mdx` have a working `/<slug>` page. 5 hand-authored seeds marked `status: reviewed`. Homepage cards link only to publishable profiles. Draft profiles visible on preview deploys only.
 
-**Phase 3 — Blog.** `/blog` index lists posts sorted by `publishDate` desc. `/blog/<slug>` pages render with OG tags. `/rss.xml` validates. `CONTRIBUTING.md` documents post authoring. At least 1 inaugural post live.
+**Phase 2a — Auto-generated profiles.** New submissions (score ≥ 2) get a draft MDX staged in the same PR as the README entry. `backfill-profiles.yml` batch-generates profiles for clouds lacking MDX. All bot output is `status: draft`; maintainer follow-up PR flips to `reviewed` for production. No silent MDX overwrite.
 
-**Phase 4 — Discovery prep.** `/categories/<slug>` pages exist for all 23 categories (showing filtered cloud lists). `/compare` is a documented placeholder route. Profile schema has been extended with comparison-friendly optional fields (`regions`, `services`, `pricingModel`, etc.) so future side-by-side views are additive, not breaking.
+**Phase 3 — Blog.** `/blog` index lists non-draft posts sorted by `publishDate` desc. `/blog/<slug>` renders with OG tags and `BlogPosting` JSON-LD. `/rss.xml` validates. `CONTRIBUTING.md` documents post authoring. At least 1 inaugural post live. `update_blog_posts.py` retired.
 
-**Phase 5 — SEO.** Per-page JSON-LD `Organization` schema on profiles, `BlogPosting` on posts. Sitemap covers all routes. `og-image.png` retained; per-page OG image generation TBD (out of MVP).
+**Phase 4 — Comparison & discovery.** `/categories/<slug>` static pages exist for all 23 categories with filtered card grids and category descriptions. `/compare` renders a side-by-side attribute table for 2–3 selected clouds; shareable via `?a=&b=&c=` query params. Homepage search/filter/sort unchanged. Compare reads `clouds.json` + MDX frontmatter where available.
+
+**Phase 5 — SEO.** Per-page JSON-LD `Organization` on profiles, `BlogPosting` on posts. `@astrojs/sitemap` covers all routes. Per-page OG images TBD (out of MVP).
 
 **Phase 6 — Cutover.** Pages source switched from "branch `main` /docs" to "GitHub Actions". Custom domain `www.alt-cloud.org` still resolves. Fathom analytics still firing. Monitor for 48 h.
 
@@ -366,17 +575,37 @@ Notable changes:
 | 1 | Deploy mechanism | **A — Pages Actions** (`actions/upload-pages-artifact` + `actions/deploy-pages`) |
 | 2 | Commit `clouds.json` / `llms*.txt` back to git? | **No — artifact-only.** They're regenerated by every CI build. Git no longer carries derived files. |
 | 3 | Profile slug source | **Derive from `name`** via `slugify` (collisions fail the build) |
-| 4 | Profile authoring workflow | **PRs only.** No auto-stub generation on submission. |
+| 4 | Profile authoring workflow | **Phase 2 (original): PRs only, no auto-stub.** **Phase 2a (updated):** bot auto-generates `status: draft` MDX on submission + batch backfill; maintainer flips to `reviewed` for production. See [2026-05-22-phase-2a-auto-profile-generation-plan.md](./2026-05-22-phase-2a-auto-profile-generation-plan.md). |
 | 5 | `update_blog_posts.py` future | **Retire** after Phase 3. For Phase 1: cron paused, workflow kept as manual trigger. |
 | 6 | Styling | **Tailwind CSS v4** (user-requested override of the original "Astro scoped CSS" default) |
 | 7 | PR previews | **GitHub Pages only.** No Cloudflare / Netlify preview deploys (avoids extra services). |
 | 8 | TypeScript? | **Yes everywhere.** strict tsconfig; zod schemas for content collections in Phase 2/3. |
+| 9 | Blog authoring | **PR-only.** `draft: true` excluded from production (mirrors profile publish gate). No bot generation at launch. |
+| 10 | Compare data source | **`clouds.json` base + MDX frontmatter overlay.** Missing profile fields show "—"; no new data store. |
+| 11 | Category page slugs | **Derive from README `##` headings** via same slugify rules as cloud names. |
 
 ---
+
+## 12. Recommended execution order (post Phase 2a)
+
+```
+Phase 3 (blog)  ──►  Phase 4 (categories + compare)  ──►  Phase 5 (SEO)  ──►  Phase 6 (cutover)
+```
+
+**Why blog before compare?**
+
+- Issue #164 lists editorial as co-MVP with profiles; profiles are done.
+- Blog establishes a second content collection pattern (`draft` flag, PR workflow) reusable for future editorial calendar.
+- Compare benefits from more reviewed profile MDX in production (richer compare rows as backfill progresses).
+
+**Parallel option:** Category landing pages (Phase 4a) are independent of blog and could ship in a small PR before `/compare` (Phase 4b).
 
 ## Appendix A — Reference reading
 
 - Current architecture deep-dive: [`analysis/PROJECT_ANALYSIS.md`](./PROJECT_ANALYSIS.md)
+- Phase 2 detail pages plan: [`analysis/2026-05-20-phase-2-detail-pages-plan.md`](./2026-05-20-phase-2-detail-pages-plan.md)
+- Phase 2a auto-generation plan: [`analysis/2026-05-22-phase-2a-auto-profile-generation-plan.md`](./2026-05-22-phase-2a-auto-profile-generation-plan.md)
+- End-to-end submission → MDX flow: [`analysis/2026-05-22-submission-to-mdx-flow.md`](./2026-05-22-submission-to-mdx-flow.md)
 - Submission validation spec: `docs/superpowers/specs/2026-03-30-submission-validation-improvement-design.md`
 - Issue tracker: [datum-cloud/awesome-alt-clouds#164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164)
 - Astro Content Collections: <https://docs.astro.build/en/guides/content-collections/>
