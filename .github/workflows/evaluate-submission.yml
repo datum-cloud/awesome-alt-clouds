@@ -49,7 +49,7 @@ jobs:
         if: steps.guard.outputs.skip != 'true'
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install dependencies
         if: steps.guard.outputs.skip != 'true'
@@ -151,5 +151,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
+          # create_submission_pr.py also calls scripts/generate_cloud_profile.py
+          # to stage a draft MDX detail page next to the README change.
+          # Generation failure is non-fatal: the README PR still ships.
           python scripts/create_submission_pr.py

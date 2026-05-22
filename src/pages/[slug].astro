@@ -2,7 +2,7 @@
 import { render } from "astro:content";
 import { cloudsBySlug } from "../lib/clouds";
 import {
-  loadProfiles,
+  getPublishableProfiles,
   getFeaturedSlugs,
   mergeCloudWithProfile,
   type CloudProfile,
@@ -10,7 +10,7 @@ import {
 import CloudDetail from "../layouts/CloudDetail.astro";
 
 export async function getStaticPaths() {
-  const profiles = await loadProfiles();
+  const profiles = await getPublishableProfiles();
   return profiles.map((profile) => {
     const cloud = cloudsBySlug.get(profile.id);
     if (!cloud) {

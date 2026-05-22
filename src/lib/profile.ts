@@ -1,7 +1,9 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { cloudsBySlug, type CloudWithSlug } from "./clouds";
+import { sitePreview } from "./site";
 
 export type CloudProfile = CollectionEntry<"clouds">;
+export type ProfileStatus = "draft" | "reviewed";
 
 /**
  * Loads MDX entries and validates each entry's id (file basename) matches
@@ -28,8 +30,26 @@ export async function loadProfiles(): Promise<CloudProfile[]> {
   return entries;
 }
 
-export async function getFeaturedSlugs(): Promise<Set<string>> {
+export function getProfileStatus(profile: CloudProfile): ProfileStatus {
+  return profile.data.status ?? "draft";
+}
+
+/**
+ * Whether a profile page should be built and linked in the current deploy.
+ * Production (preview: false): reviewed only.
+ * Preview (preview: true): reviewed + draft.
+ */
+export function isProfilePublished(profile: CloudProfile, preview = sitePreview): boolean {
+  return getProfileStatus(profile) === "reviewed" || preview;
+}
+
+export async function getPublishableProfiles(): Promise<CloudProfile[]> {
   const profiles = await loadProfiles();
+  return profiles.filter((profile) => isProfilePublished(profile, sitePreview));
+}
+
+export async function getFeaturedSlugs(): Promise<Set<string>> {
+  const profiles = await getPublishableProfiles();
   return new Set(profiles.map((p) => p.id));
 }
 
@@ -46,6 +66,7 @@ export async function getFeaturedClouds(): Promise<CloudWithSlug[]> {
  * frontmatter wins for enrichment fields (headquarters, regions, etc.).
  */
 export interface MergedCloud extends CloudWithSlug {
+  status?: ProfileStatus;
   headquarters?: string;
   foundedYear?: number;
   regions?: string[];
@@ -70,6 +91,7 @@ export function mergeCloudWithProfile(
   const data = profile.data;
   return {
     ...cloud,
+    status: getProfileStatus(profile),
     headquarters: data.headquarters,
     foundedYear: data.foundedYear,
     regions: data.regions,

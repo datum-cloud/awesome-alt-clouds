@@ -2,9 +2,13 @@
  * Deploy profile — edit this file when switching fork preview ↔ production.
  *
  * Phase 6 cutover: set `preview: false` (and usually `blockSearchBots: false`).
+ *
+ * Cloud profile MDX pages:
+ * - `status: reviewed` → built in all deploys (production + preview)
+ * - `status: draft` → built only when `preview: true` (fork/staging)
  */
 export const siteConfig = {
-  /** Fork / staging on github.io — enables base path + default noindex */
+  /** Fork / staging on github.io — enables base path + default noindex; also publishes draft MDX profiles */
   preview: true,
 
   /** Block all crawlers (robots.txt + meta robots). Defaults to `preview` when omitted */

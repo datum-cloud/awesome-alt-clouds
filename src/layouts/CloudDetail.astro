@@ -2,6 +2,7 @@
 import Base from "./Base.astro";
 import DetailSidebar from "../components/DetailSidebar.astro";
 import DetailTopBar from "../components/DetailTopBar.astro";
+import DraftBanner from "../components/DraftBanner.astro";
 import { defaultDescription, defaultTitle } from "../lib/site-meta";
 import { absoluteUrl } from "../lib/site-urls";
 import type { MergedCloud } from "../lib/profile";
@@ -42,6 +43,8 @@ const canonical = absoluteUrl(cloud.slug);
             )
           }
         </header>
+
+        {cloud.status === "draft" && <DraftBanner slug={cloud.slug} />}
 
         <div class="prose-content">
           <slot />

@@ -12,6 +12,10 @@ import re
 import subprocess
 import sys
 
+sys.path.insert(0, os.path.dirname(__file__))
+
+from lib.slugify import slugify  # noqa: E402
+
 
 def run_command(cmd, check=True):
     """Run a shell command and return output"""
@@ -123,6 +127,69 @@ def add_entry_to_readme(submission):
     return True
 
 
+def generate_and_stage_mdx(service):
+    """Generate a draft MDX profile for `service` and stage it for commit.
+
+    Returns the generator's report dict (slug, output_path, fetch_method,
+    needs_verification) on success, or None if generation was skipped or failed.
+    Never raises — MDX generation must not block README PR creation.
+    """
+    name = service.get("name")
+    if not name:
+        return None
+
+    slug = slugify(name)
+    output_path = f"src/content/clouds/{slug}.mdx"
+
+    if os.path.exists(output_path):
+        print(f"MDX already exists for {slug}, skipping generation.")
+        return None
+
+    categories = service.get("categories")
+    if not categories:
+        categories = [service.get("category", "")] if service.get("category") else []
+
+    env = os.environ.copy()
+    env.update({
+        "CLOUD_NAME": name,
+        "CLOUD_URL": service.get("url", ""),
+        "CLOUD_SCORE": str(service.get("score", 3)),
+        "CLOUD_CATEGORIES": ",".join(c for c in categories if c),
+        "CLOUD_DESCRIPTION": service.get("description", ""),
+        "OUTPUT_PATH": output_path,
+        "DRY_RUN": "false",
+    })
+
+    generator = os.path.join(os.path.dirname(__file__), "generate_cloud_profile.py")
+    result = subprocess.run(
+        [sys.executable, generator],
+        env=env,
+        capture_output=True,
+        text=True,
+    )
+
+    if result.stdout:
+        print(result.stdout)
+    if result.returncode != 0 or not os.path.exists(output_path):
+        tail = (result.stderr or "")[-300:]
+        print(f"MDX generation failed for {name}: {tail}")
+        return None
+
+    subprocess.run(["git", "add", output_path], check=True)
+    print(f"Staged MDX: {output_path}")
+
+    report_path = "profile_generation_report.json"
+    if os.path.exists(report_path):
+        with open(report_path) as f:
+            return json.load(f)
+    return {
+        "slug": slug,
+        "output_path": output_path,
+        "fetch_method": "unknown",
+        "needs_verification": False,
+    }
+
+
 def create_pr(data):
     """Create a branch and PR for the submission(s)"""
     services = data['services']
@@ -156,6 +223,14 @@ def create_pr(data):
     if not added_services:
         print("No services were added to README")
         return False
+
+    # Auto-generate draft MDX detail page for each added service.
+    # Failures here are non-fatal: the README PR still goes out.
+    mdx_reports = []
+    for service in added_services:
+        report = generate_and_stage_mdx(service)
+        if report:
+            mdx_reports.append(report)
 
     # Commit changes
     run_command('git add README.md')
@@ -230,6 +305,14 @@ Please manually verify the 3 criteria before merging:
             badge = '🟢' if s['score'] == 3 else '🟡'
             status = "⚠️ Needs verification" if s.get('needs_manual_review') else "✅ Verified"
             pr_body += f"| {s['name']} | {s['category']} | {s['score']}/3 {badge} | {s['url']} | {status} |\n"
+
+    if mdx_reports:
+        pr_body += "\n\n### Auto-generated detail pages\n\n"
+        pr_body += "Each service below also has a `status: draft` MDX profile staged in this PR. "
+        pr_body += "Draft profiles are only built on preview deploys; they ship to production after a maintainer flips `status: reviewed`.\n\n"
+        for r in mdx_reports:
+            flag = " (needs verification — WebSearch fallback)" if r.get("needs_verification") else ""
+            pr_body += f"- `{r['output_path']}`{flag}\n"
 
     pr_body += f"""
 

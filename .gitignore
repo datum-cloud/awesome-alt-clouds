@@ -3,6 +3,7 @@
 # Local-only scratch space (RFCs, notes, deep-analysis drafts)
 # analysis/
 .worktrees/
+.tmp-*
 
 # Node / Astro
 node_modules/
@@ -14,4 +15,9 @@ dist/**
 .env
 .env.local
 .env.*.local
-scripts/__pycache__
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.venv-test/

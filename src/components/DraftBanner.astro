@@ -1,0 +1,29 @@
+---
+export interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+const editUrl = `https://github.com/datum-cloud/awesome-alt-clouds/edit/main/src/content/clouds/${slug}.mdx`;
+---
+
+<div
+  class="mb-6 flex items-start gap-3 rounded-lg border border-clay-beige bg-cream px-4 py-3 text-sm text-warm-stone"
+  role="note"
+  aria-label="Draft profile notice">
+  <span
+    class="mt-0.5 shrink-0 text-base"
+    aria-hidden="true"
+    >⚠</span
+  >
+  <div>
+    <span class="font-medium text-rich-earth">Auto-generated profile</span>
+    {" — "}pending human review. Found an inaccuracy?{" "}
+    <a
+      href={editUrl}
+      class="underline hover:text-rich-earth"
+      target="_blank"
+      rel="noopener noreferrer">
+      Edit on GitHub →
+    </a>
+  </div>
+</div>

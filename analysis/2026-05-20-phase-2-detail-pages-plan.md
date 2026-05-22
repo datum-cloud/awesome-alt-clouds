@@ -42,7 +42,7 @@ graph LR
 ## Decisions locked
 
 - **MDX scope (current)**: 5 sample MDX files. **Architecture scales to all 429** without code changes — only adding files.
-- **Detail page = featured signal**: a cloud "has a detail page" iff `src/content/clouds/<slug>.mdx` exists. No `featured: true` field. As MDX coverage grows, more cards become clickable automatically.
+- **Detail page = featured signal**: a cloud "has a detail page" iff `src/content/clouds/<slug>.mdx` exists **and** is publishable for the current deploy (`status: reviewed`, or `status: draft` when `site.config.mjs` has `preview: true`). No `featured: true` field.
 - **URL shape**: flat — `https://alt-cloud.org/<slug>` (e.g. `/neon`, `/hetzner`). NOT `/clouds/<slug>`. Implemented via `src/pages/[slug].astro`.
 - **Search strategy**: inline JS dropdown, performance-aware — see "Search performance" section. Shows all matching clouds; featured (has MDX) = anchor link, non-featured = `opacity-50 cursor-not-allowed aria-disabled`.
 - **URL contract**: all Phase 1 URLs unchanged. Detail pages occupy the root namespace, so reserved slugs (`submit`, `clouds.json`, etc.) are blocked at build time.

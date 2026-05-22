@@ -23,29 +23,56 @@ Badges: 🟢 = 3/3, 🟡 = 2/3.
 ```
 README.md                    # Source of truth — the actual awesome list (~430 entries, 23 categories)
 CONTRIBUTING.md              # Manual contribution guide
-docs/
-  index.html                 # The alt-cloud.org website (vanilla JS SPA reading clouds.json)
-  submit/index.html          # The submission form (creates GitHub issues)
+site.config.mjs              # Deploy profile (preview ↔ production switch; controls draft MDX visibility)
+astro.config.mjs             # Astro/Vite config; exposes __SITE_PREVIEW__ build-time global
+src/                         # Astro site (Phase 2 migration — replaces docs/index.html as primary frontend)
+  pages/
+    index.astro              # Homepage card grid (reads clouds.json + featured detail pages)
+    [slug].astro             # Per-cloud detail page; getStaticPaths() filters by publishability
+    submit/, watchlist/      # Submission form + watchlist views
+    robots.txt.ts            # Dynamic robots (noindex on preview)
+  content/
+    clouds/<slug>.mdx        # Hand-authored + auto-generated detail pages (frontmatter: status, regions, …)
+  content.config.ts          # Zod schema for the clouds collection (status: "draft" | "reviewed")
+  components/
+    DraftBanner.astro        # Notice shown atop draft profiles on preview deploys
+    DetailSidebar.astro, DetailTopBar.astro, CloudSearchDropdown.astro, …
+  layouts/CloudDetail.astro  # Detail-page chrome; mounts DraftBanner when status === "draft"
+  lib/
+    profile.ts               # MergedCloud type + publish gate (getPublishableProfiles, getFeaturedSlugs)
+    site.ts                  # sitePreview constant (reads __SITE_PREVIEW__)
+    clouds.ts                # slugify() — TS source of truth, mirrored in scripts/lib/slugify.py
+docs/                        # Legacy SPA + machine-readable exports (still deployed during migration)
+  index.html, submit/        # Vanilla-JS SPA + submission form
   clouds.json                # Machine-readable export of README
   llms.txt, llms-full.txt    # AI-readable summaries for LLM consumption
   superpowers/{plans,specs}/ # Design docs for the validation + duplicate features
 scripts/
   check_duplicates.py        # Pre-evaluation duplicate guard
-  evaluate_submission.py     # Main 3-stage evaluator (requests → Jina → Claude WebSearch)
-  create_submission_pr.py    # Builds the README PR from approved submission JSON
+  evaluate_submission.py     # Main 3-stage evaluator (Jina → requests → Claude WebSearch)
+  create_submission_pr.py    # Builds the README PR + stages auto-generated MDX (Phase 2a)
   split_submission.py        # Splits multi-URL issues into per-URL child issues
   parse_readme_to_json.py    # README → clouds.json (with dateAdded from git history)
   generate_llms.py           # clouds.json → llms.txt / llms-full.txt
+  generate_cloud_profile.py  # Phase 2a: page fetch → Claude Sonnet → draft MDX detail page
+  backfill_profiles.py       # Phase 2a: batch driver — generates MDX for clouds without one
   update_blog_posts.py       # Scrapes Datum blog into docs/index.html
+  watchlist_add.py, generate_watchlist_json.py
+  lib/
+    fetcher.py               # Shared Jina-markdown → Jina-HTML → requests cascade (extracted Phase 2a)
+    slugify.py               # Python mirror of src/lib/clouds.ts:slugify() (cross-checked vs all 429 names)
 .github/workflows/
-  evaluate-submission.yml    # Single-URL pipeline
+  evaluate-submission.yml    # Single-URL pipeline (now also stages a draft MDX via create_submission_pr.py)
   split-submission.yml       # Multi-URL pipeline
   admin-approve-submission.yml  # /approve command handler
   close-issue-on-pr-close.yml   # Cascade close: PR → child issue → parent tracker
   deploy-pages.yml           # Regenerates JSON + llms.txt on push to main
+  backfill-profiles.yml      # Phase 2a: workflow_dispatch — batch-generate MDX for N candidates → PR
   update-blog-posts.yml      # Daily cron to refresh blog cards
+  revalidate-submission.yml, watchlist.yml, auto-label-submission.yml, lint.yml
 tests/                       # pytest suites for check_duplicates + evaluate_submission
 data/candidates/             # Output of (apparent) auto-discovery scans
+analysis/                    # Phase plans + this analysis doc
 ```
 
 ---
@@ -170,16 +197,24 @@ When a PR closes (merged or not):
 
 ---
 
-## 4. Frontend (`docs/index.html`)
+## 4. Frontend
 
-A single-file vanilla-JS SPA:
+### Current — Astro site (`src/`, Phase 2 migration on `feat/astro-migration`)
 
-- `fetch('clouds.json')` on load, renders cards into a grid.
-- Client-side filtering by category (URL hash), search (URL query), and sort (alphabetical / recent via `dateAdded`).
-- Rich SEO: Open Graph, Twitter cards, JSON-LD `Dataset` schema, canonical URL.
-- Resources modal with auto-updated blog posts.
+The primary frontend is an Astro static site that builds the directory grid (`src/pages/index.astro`) plus a static detail page per cloud (`src/pages/[slug].astro`). Detail pages are MDX files in `src/content/clouds/` rendered through `src/layouts/CloudDetail.astro`.
 
-The submission form (`docs/submit/index.html`) is also a single-file form with anti-spam honeypot, URL normalization, mobile fallback, and constructs the GitHub `issues/new?...` URL directly — no backend.
+Key pieces:
+
+- **Sidebar + top bar** components (`DetailSidebar.astro`, `DetailTopBar.astro`) wrap each detail page; `CloudSearchDropdown.astro` powers the in-page search.
+- **`DraftBanner.astro`** renders only when the rendered profile carries `status: "draft"`, signalling that the page is auto-generated and pending human review.
+- **`site.config.mjs`** controls a single deploy switch (`preview: true | false`) that flips the base path, noindex defaults, draft-profile visibility, and crawler blocking in one place.
+- **Build-time flag** `__SITE_PREVIEW__` is defined by `astro.config.mjs` and re-exported as `sitePreview` from `src/lib/site.ts`. This guarantees every module sees the same value across the build — never re-import `site.config.mjs` directly from runtime code.
+
+### Legacy — vanilla SPA (`docs/index.html`, still deployed)
+
+A single-file vanilla-JS SPA: `fetch('clouds.json')` on load, renders cards into a grid, client-side filtering by category (URL hash), search (URL query), and sort (alphabetical / recent via `dateAdded`). Rich SEO: Open Graph, Twitter cards, JSON-LD `Dataset` schema, canonical URL. Resources modal with auto-updated blog posts.
+
+The submission form (`docs/submit/index.html`) is a single-file form with anti-spam honeypot, URL normalization, mobile fallback, and constructs the GitHub `issues/new?...` URL directly — no backend. The Astro version under `src/pages/submit/` mirrors it.
 
 ---
 
@@ -187,18 +222,102 @@ The submission form (`docs/submit/index.html`) is also a single-file form with a
 
 1. **README as the single source of truth.** All derived artifacts (`clouds.json`, `llms*.txt`, the website) are regenerated from README on every merge. Contributors never edit JSON.
 2. **`dateAdded` from git history.** No metadata fields are stored in README; the parser reconstructs entry age by walking `git log -p` for the first addition of each URL.
-3. **Three-stage fetch cascade with cost-aware ordering.** Free scrapers first; expensive Claude WebSearch only when both fail. Documented in `docs/superpowers/specs/`.
+3. **Three-stage fetch cascade with cost-aware ordering.** Free scrapers first; expensive Claude WebSearch only when both fail. Documented in `docs/superpowers/specs/`. The cascade lives in `scripts/lib/fetcher.py` and is shared by `evaluate_submission.py` and `generate_cloud_profile.py`.
 4. **Fail-open duplicate detection.** A duplicate-check failure never blocks evaluation — robustness over strictness.
 5. **GitHub App token (not `GITHUB_TOKEN`)** is used in workflows that need to bypass org rulesets / trigger downstream workflows (`APP_ID` + `APP_PRIVATE_KEY` secrets).
 6. **Idempotent PR creation** (`git push --force` + skip-if-exists check) so re-runs after fixes don't create duplicates.
 7. **Multi-category support.** A service listed under two `##` sections is deduplicated in `clouds.json` with both categories merged into one entry.
 8. **AI-readability is a first-class concern.** `llms.txt` and `llms-full.txt` are intentionally generated for LLM crawler consumption alongside the JSON/HTML.
+9. **Slug parity across languages.** `src/lib/clouds.ts:slugify()` is the canonical implementation; `scripts/lib/slugify.py` mirrors it byte-for-byte (cross-checked against all 429 cloud names). Filenames in `src/content/clouds/` must agree with the slug of the matching entry in `clouds.json`.
+10. **Draft-by-default for auto-generated content.** Any MDX written by the bot lands as `status: draft` and only renders on preview deploys; only a human-flipped `status: reviewed` ships HTML on production. The publish gate is a single shared filter (`isProfilePublished()` in `src/lib/profile.ts`) used by both `getStaticPaths()` and homepage link generation, so route and link visibility never drift apart.
 
 ---
 
-## 6. TL;DR
+## 6. Phase 2 / 2a — Detail Pages & Auto-Generated Profiles
 
-> A self-curating awesome list. Anyone submits a URL via a web form → GitHub issue → a Python+Claude bot scrapes the site, checks 3 objective inclusion criteria, generates name/description/category with AI, opens a PR. Maintainers can `/approve` to override. On merge, the website's JSON and LLM-readable files regenerate automatically. The README is the source of truth; everything else is derived.
+The Astro migration introduces a parallel **detail-page side-channel** that runs alongside the README→clouds.json flow. The README stays canonical; MDX files in `src/content/clouds/` enrich the cards with hand-written or AI-generated narratives, pricing, and metadata.
+
+### Content collection schema (`src/content.config.ts`)
+
+```ts
+status: z.enum(["draft", "reviewed"]).default("draft"),
+tagline, headquarters, foundedYear, regions, services,
+openSource, pricingModel, socials, logo
+```
+
+All fields are optional except `status`, which gates publication.
+
+### Production publish gate (Task 2b, landed)
+
+| `status` | `preview: false` (production) | `preview: true` (fork/staging) |
+|---|---|---|
+| `reviewed` | HTML built; card links; search clickable | same |
+| `draft` | **not built**; card not linked; search disabled | HTML built; card linked; search clickable |
+
+Implemented by:
+
+- `getProfileStatus(profile)` — reads frontmatter, defaults to `"draft"`.
+- `isProfilePublished(profile, preview)` — `reviewed` always, `draft` only when `preview === true`.
+- `getPublishableProfiles()` — drives `src/pages/[slug].astro` `getStaticPaths()`.
+- `getFeaturedSlugs()` — same filter; drives homepage card links and search dropdown.
+
+The build-time flag comes from `sitePreview` (`__SITE_PREVIEW__`), not a re-import of `site.config.mjs` — Vite inlines the value at config load, and a runtime re-import would risk stale caches.
+
+### Auto-generation pipeline (Phase 2a, landed)
+
+```text
+clouds.json  ──┐
+               ▼
+   ┌────────────────────────────┐
+   │ scripts/backfill_profiles  │  ← workflow_dispatch from backfill-profiles.yml
+   │   - select N candidates    │
+   │   - skip existing MDX      │
+   │   - filter by score/cat    │
+   └──────────┬─────────────────┘
+              │ per candidate
+              ▼
+   ┌────────────────────────────┐
+   │ scripts/generate_cloud_    │
+   │   profile.py               │
+   │   - fetch_page_with_       │
+   │     fallback (lib/fetcher) │
+   │   - Claude Sonnet prompt   │
+   │   - write status: draft    │
+   │     MDX, never overwrite   │
+   └──────────┬─────────────────┘
+              │ writes
+              ▼
+   src/content/clouds/<slug>.mdx (status: draft)
+              │
+              ▼
+   PR labeled `generated-profiles, needs-verification`
+              │
+              ▼
+   Maintainer reviews on preview deploy →
+   follow-up PR flips status: reviewed → production HTML
+```
+
+The same generator is also invoked **inline** from `create_submission_pr.py` whenever a single submission produces a PR: the draft MDX is staged in the same commit as the README change, so every new entry ships with a detail-page draft from day one. Generation failure is non-fatal — the README PR still goes out.
+
+### Why drafts never leak to production
+
+Four overlapping safeguards:
+
+1. **Schema default**: omitting `status` ⇒ `"draft"`.
+2. **`getPublishableProfiles()`** excludes drafts unless `preview: true`.
+3. **`getFeaturedSlugs()`** uses the same filter, so the homepage card isn't even a link.
+4. **No silent overwrite**: both `generate_cloud_profile.py` and `backfill_profiles.py` refuse to touch an existing MDX file (so a maintainer's `reviewed` flip can never be reverted by re-running the bot).
+
+### Detailed plans
+
+- [`analysis/2026-05-20-phase-2-detail-pages-plan.md`](./2026-05-20-phase-2-detail-pages-plan.md) — overall Phase 2 architecture.
+- [`analysis/2026-05-22-phase-2a-auto-profile-generation-plan.md`](./2026-05-22-phase-2a-auto-profile-generation-plan.md) — auto-generation pipeline, prompt design, publish gate.
+
+---
+
+## 7. TL;DR
+
+> A self-curating awesome list. Anyone submits a URL via a web form → GitHub issue → a Python+Claude bot scrapes the site, checks 3 objective inclusion criteria, generates name/description/category with AI, opens a PR. **A second Claude call drafts a full MDX detail page in the same PR, staged as `status: draft` so it only renders on preview deploys until a maintainer reviews it.** Maintainers can `/approve` to override the score gate or flip `status: reviewed` for production. On merge, the website's JSON, LLM-readable files, and Astro detail pages regenerate automatically. The README is the source of truth; everything else is derived.
 
 ---
 
@@ -247,6 +366,10 @@ The submission form (`docs/submit/index.html`) is also a single-file form with a
 ┌──────────────────────────────────────┐               │
 │ create_submission_pr.py              │ ◄─────────────┘
 │   - Insert entry alphabetically      │
+│   - generate_and_stage_mdx() →       │
+│     scripts/generate_cloud_profile   │
+│     writes status: draft MDX, git    │
+│     add to same commit               │
 │   - Open PR with Closes #N           │
 └──────────┬───────────────────────────┘
            │ admin merges
@@ -255,9 +378,49 @@ The submission form (`docs/submit/index.html`) is also a single-file form with a
 │ deploy-pages.yml                     │
 │   - parse_readme_to_json.py          │
 │   - generate_llms.py                 │
+│   - astro build (drafts excluded     │
+│     in production via publish gate)  │
 │   - commit [skip ci]                 │
 └──────────┬───────────────────────────┘
            │
            ▼
    alt-cloud.org refreshes
+```
+
+### Parallel detail-page side-channel (Phase 2a)
+
+```text
+┌──────────────────────────┐
+│ backfill-profiles.yml    │  (manual workflow_dispatch)
+│   batch_size, category,  │
+│   score filters          │
+└──────────┬───────────────┘
+           ▼
+┌──────────────────────────────────────┐
+│ scripts/backfill_profiles.py         │
+│   - load clouds.json                 │
+│   - skip existing MDX                │
+│   - filter score/category, cap N     │
+│   - subprocess generate_cloud_       │
+│     profile.py per candidate         │
+└──────────┬───────────────────────────┘
+           ▼
+┌──────────────────────────────────────┐
+│ scripts/generate_cloud_profile.py    │
+│   - lib.fetcher.fetch_page_with_     │
+│     fallback (Jina → requests)       │
+│   - Claude Sonnet → MDX              │
+│   - prepend `status: draft` (idempo) │
+│   - skip-if-exists                   │
+└──────────┬───────────────────────────┘
+           ▼
+   src/content/clouds/<slug>.mdx
+   labelled `generated-profiles,
+   needs-verification` on the PR
+           │
+           │ maintainer review on preview deploy
+           ▼
+   follow-up PR flips status: reviewed
+           ▼
+   production deploy picks it up
 ```

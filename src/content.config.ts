@@ -4,6 +4,7 @@ import { glob } from "astro/loaders";
 const clouds = defineCollection({
   loader: glob({ pattern: "**/*.mdx", base: "./src/content/clouds" }),
   schema: z.object({
+    status: z.enum(["draft", "reviewed"]).default("draft"),
     headquarters: z.string().optional(),
     foundedYear: z.number().int().optional(),
     regions: z.array(z.string()).optional(),
