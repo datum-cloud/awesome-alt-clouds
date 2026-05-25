@@ -372,6 +372,7 @@ AI-powered code editors, IDEs, no-code/low-code builders, and full-stack app gen
 * 🟢 [Codev](https://codev.ai/) - A development assistant that uses AI to generate, analyze, and debug software code efficiently.
 * 🟢 [CopilotKit](https://www.copilotkit.ai/) - Open-source framework and infrastructure for building in-app AI copilots and agents.
 * 🟢 [Cursor](https://www.cursor.so/) - An AI-enhanced code editor that integrates directly with your codebase to provide suggestions and automate changes.
+* 🟢 [Drydock](https://drydock.build/) - Provides AI-powered build, deployment, and operations platform that creates production applications from prompts, with global infrastructure across 45+ PoPs and automated DevOps.
 * 🟡 [Git AI](https://usegitai.com/) - Provides open-source Git extension for tracking AI-generated code through the entire software development lifecycle with attribution, context storage, and team analytics.
 * 🟢 [GitHub Copilot](https://github.com/features/copilot) - An AI-powered coding assistant developed by GitHub and OpenAI that suggests code snippets as you type.
 * 🟢 [Marblism](https://www.marblism.com/) - Generate full-stack web apps from a single prompt.
