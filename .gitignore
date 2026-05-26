@@ -27,3 +27,5 @@ docs/llms.txt
 docs/llms-full.txt
 public/llms.txt
 public/llms-full.txt
+backfill_summary.json
+profile_generation_report.json
