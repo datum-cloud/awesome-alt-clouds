@@ -1,0 +1,78 @@
+---
+status: draft
+tagline: "Edge-native cloud with a global PoP network built for low-latency delivery and compute."
+headquarters: "Luxembourg City, Luxembourg"
+pricingModel: mixed
+regions:
+  - "Amsterdam, Netherlands"
+  - "Frankfurt, Germany"
+  - "London, UK"
+  - "Paris, France"
+  - "Stockholm, Sweden"
+  - "Warsaw, Poland"
+  - "Almaty, Kazakhstan"
+  - "Dubai, UAE"
+  - "Hong Kong"
+  - "Singapore"
+  - "Tokyo, Japan"
+  - "São Paulo, Brazil"
+  - "Ashburn, VA, USA"
+  - "Chicago, IL, USA"
+  - "Los Angeles, CA, USA"
+services:
+  - "Cloud Compute (VMs)"
+  - "Bare Metal"
+  - "Managed Kubernetes"
+  - "CDN"
+  - "DDoS Protection"
+  - "DNS"
+  - "Object Storage"
+  - "Streaming Platform"
+  - "Web Application Firewall (WAF)"
+  - "Edge AI Inference"
+socials:
+  website: "https://gcore.com/"
+  x: "https://twitter.com/G_Core_Labs"
+  linkedin: "https://www.linkedin.com/company/gcore"
+  github: "https://github.com/G-Core"
+---
+
+## What makes Gcore different
+
+Gcore is built around a single premise: put compute and delivery infrastructure as close to end users as possible. Rather than anchoring workloads in a handful of large hyperscaler regions, Gcore operates over 180 points of presence worldwide and integrates CDN, DDoS protection, DNS, and cloud compute under one control plane. This means a developer can deploy a VM, attach object storage, and front everything with a globally distributed CDN without stitching together accounts across separate vendors.
+
+The network is genuinely Gcore-owned rather than resold capacity, which gives it more control over latency and routing than reseller-based edge providers. Its DDoS mitigation capacity—marketed at over 1.5 Tbps—is built into the same infrastructure rather than bolted on as a third-party scrubbing service. For gaming, streaming, and fintech companies that need both delivery and security at the edge, that tight integration is the primary architectural differentiator versus hyperscalers, where security and CDN are typically separate product lines with separate billing.
+
+Gcore has also invested in edge AI inference, allowing models to run at PoPs close to users rather than backhauling inference requests to a central region. This positions it against purpose-built AI inference clouds as well as hyperscaler inference endpoints.
+
+## Pricing model
+
+Gcore publishes per-resource pricing on its website. Representative figures include:
+
+- **Cloud VMs** starting around $3.50/month for shared-CPU instances; dedicated-CPU instances priced hourly.
+- **Bare Metal** servers available on hourly and monthly terms; monthly commitments offer meaningful discounts.
+- **CDN** traffic billed per GB delivered, with tiered rates that decrease at higher volume; a free tier covers initial usage.
+- **Object Storage** charged per GB stored plus per-request fees, similar to S3-compatible pricing elsewhere.
+- **DDoS Protection** available as a bundled add-on rather than a stand-alone metered service.
+
+The model is mixed: compute is hourly, storage and CDN are usage-based, and bare metal can be reserved monthly. Compared to hyperscaler pricing, the standout is the bundled security and delivery—you are not paying separately for CDN egress, DDoS scrubbing, and compute egress the way you would on AWS.
+
+## When it fits
+
+- **Media and streaming** workloads that need low-latency global delivery and origin compute in one platform.
+- **Gaming backends** requiring edge compute near player populations with integrated DDoS protection.
+- **Latency-sensitive APIs** that benefit from running closer to end users across multiple continents.
+- **Cost-sensitive CDN replacements** for teams currently paying high egress fees to a hyperscaler.
+- **Edge AI inference** where roundtrip time to a central region is unacceptable.
+
+## When it doesn't
+
+Gcore's managed services catalog (managed databases, ML training pipelines, serverless functions) is narrower than AWS, GCP, or Azure. Teams with deep dependencies on hyperscaler-native PaaS services or who need a broad ecosystem of first-party managed data services will find the offering limited.
+
+## Inclusion criteria
+
+Gcore meets all three inclusion criteria:
+
+1. **Transparent pricing** — per-resource prices published at [gcore.com/pricing](https://gcore.com/pricing).
+2. **Self-service signup** — accounts can be created without contacting sales at [gcore.com](https://gcore.com/).
+3. **Public SLA / status page** — service status available at [status.gcore.com](https://status.gcore.com/).

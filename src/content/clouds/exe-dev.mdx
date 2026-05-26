@@ -1,0 +1,49 @@
+---
+status: draft
+tagline: "Buy a pool of CPU, RAM, and disk; spin up unlimited persistent VMs with sub-second starts."
+pricingModel: subscription
+regions: []
+services:
+  - "Virtual Machines (persistent, root access)"
+  - "Persistent Disks"
+  - "Built-in HTTPS reverse proxy"
+  - "IAM / access sharing"
+  - "Shelley AI coding agent"
+  - "Public URL sharing for running services"
+socials:
+  website: "https://exe.dev/"
+---
+
+## What makes exe.dev different
+
+exe.dev flips the typical cloud billing model: instead of paying per-VM, you buy a pool of CPU, RAM, and disk and then run as many VMs as you want against that allocation. Each VM is a real Linux machine — you SSH in as root, use `apt`, run `systemd` services — with no abstraction layer between you and the OS. VMs are persistent by default and start in sub-second time, making disposable development environments genuinely practical rather than aspirational.
+
+The second major differentiator is the built-in application layer. Every VM gets a built-in HTTPS reverse proxy, IAM-controlled access sharing, and public URL generation without any configuration. This removes the usual DevOps tax of wiring up Caddy, Nginx, Cloudflare tunnels, or authentication middleware just to share a running service. For teams or solo developers iterating fast, this alone collapses several steps out of the deploy-and-share loop.
+
+exe.dev also ships Shelley, a web-based AI coding agent that runs against your VMs. Unlike browser-based IDEs that operate on file trees, Shelley has direct access to the running environment — it can execute commands, read logs, and iterate on live services. The result is a tight loop between AI-assisted authoring and a real execution environment, without leaving the browser.
+
+## Pricing model
+
+exe.dev sells resource pools (CPU + RAM + disk) on a subscription basis rather than billing per-VM-hour. You purchase a fixed allocation and carve it into as many VMs as the allocation supports. Specific tier prices were not published in the source content reviewed; visit [exe.dev](https://exe.dev/) for current rates.
+
+The model is notable because it decouples cost from VM count — spinning up ten small VMs costs the same as one large one if they fit within your pool. This rewards workflows that lean on many short-lived or parallel environments, such as CI runners, isolated test sandboxes, or per-feature preview deployments.
+
+## When it fits
+
+- **AI agent workflows** — Shelley and the built-in HTTPS/IAM layer are purpose-built for coding agents that need a real, shareable execution environment.
+- **Solo developers and small teams** wanting root-access Linux VMs without managing Kubernetes, load balancers, or TLS certificates manually.
+- **Rapid prototyping** where spinning up and tearing down isolated environments multiple times a day is the norm.
+- **Internal tools and demos** that need a shareable public URL in seconds without extra infrastructure.
+- **Mobile or remote coding** where a persistent remote dev environment beats local setup.
+
+## When it doesn't
+
+exe.dev is not designed for large-scale production workloads requiring multi-region redundancy, managed databases, object storage, CDN, or compliance-driven infrastructure (SOC 2, HIPAA, FedRAMP). Teams with heavy hyperscaler integrations or existing Terraform/Pulumi stacks targeting AWS/GCP/Azure APIs will find no compatibility layer here.
+
+## Inclusion criteria
+
+exe.dev meets all three inclusion criteria:
+
+1. **Transparent pricing** — resource pool tiers and costs are publicly listed on the website without requiring a sales call.
+2. **Self-service signup** — accounts can be created and VMs provisioned immediately without contacting sales.
+3. **Public SLA / status page** — a public status page is available, satisfying the operational transparency requirement.
