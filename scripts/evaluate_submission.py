@@ -349,7 +349,7 @@ Respond in this exact JSON format only, no other text:
 {{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name"}}"""
 
         message = client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model="claude-haiku-4-5",
             max_tokens=256,
             messages=[
                 {"role": "user", "content": prompt}
@@ -442,7 +442,7 @@ Respond in this exact JSON format only, no other text:
 }}"""
 
         message = client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model="claude-haiku-4-5",
             max_tokens=1024,
             tools=[{"type": "web_search_20250305", "name": "web_search", "max_uses": 6}],
             messages=[{"role": "user", "content": prompt}]

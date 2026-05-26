@@ -162,7 +162,7 @@ def generate_profile(
 
     print(f"Calling Claude for {name}...")
     message = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-haiku-4-5",
         max_tokens=2048,
         system=PROFILE_SYSTEM_PROMPT,
         messages=[
