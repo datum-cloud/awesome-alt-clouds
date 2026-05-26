@@ -21,3 +21,9 @@ __pycache__/
 *$py.class
 .venv/
 .venv-test/
+
+# Generated (regenerated on deploy / local build)
+docs/llms.txt
+docs/llms-full.txt
+public/llms.txt
+public/llms-full.txt
