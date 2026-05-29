@@ -1,0 +1,57 @@
+---
+status: reviewed
+tagline: "Serverless GPU inference platform with pass-through pricing and automatic autoscaling."
+pricingModel: "mixed"
+openSource: true
+regions:
+  - "US (primary)"
+services:
+  - "GPU Inference Hosting"
+  - "Autoscaling"
+  - "CI/CD Integration"
+  - "Performance Monitoring"
+  - "Business Analytics"
+  - "Automation API"
+  - "Request Logging & Search"
+socials:
+  website: "https://www.banana.dev/"
+  x: "https://x.com/bananadev_"
+  github: "https://github.com/bananaml"
+---
+
+## What makes Banana.dev different
+
+Banana.dev targets ML teams who need GPU inference without the operational overhead of Kubernetes or the cost markup of traditional serverless vendors. Unlike hyperscalers that bundle GPU pricing with infrastructure margins, Banana explicitly offers **pass-through pricing**—you pay the underlying compute cost plus a flat platform fee, with no hidden markup. The platform couples this with automatic GPU replica scaling tied to demand, eliminating idle time and overprovisioning.
+
+The developer experience centers on Potassium, Banana's open-source HTTP framework for ML backends, which simplifies model serving with a lightweight decorator-based API. This removes boilerplate compared to building custom containers or managing serverless function orchestration. Built-in observability—request tracing, latency monitoring, error tracking—and GitHub integration with CI/CD support address pain points teams encounter when deploying inference workloads across multiple endpoints.
+
+## Pricing model
+
+Banana charges a **flat monthly subscription** plus **at-cost compute**:
+
+- **Team plan**: $1,200/month + compute costs; supports 10 team members, 5 projects, and up to 50 parallel GPUs
+- **Enterprise plan**: Custom pricing + compute costs; adds SAML SSO, Automation API, higher parallel GPU limits, and dedicated support
+
+The key differentiator is "zero markup" on GPU costs—you pay what Banana pays for underlying infrastructure without vendor margin. This contrasts sharply with AWS SageMaker or other serverless GPU services that apply 30–50% premiums. No per-request or per-millisecond overage charges are mentioned; billing appears anchored to GPU reservation and utilization.
+
+## When it fits
+
+- **ML inference startups** shipping multiple model endpoints without DevOps overhead
+- **Real-time prediction APIs** requiring sub-second latency and automatic request scaling
+- **Cost-conscious teams** deploying inference workloads who want transparent, pass-through GPU pricing
+- **Rapid iteration on model serving** where CI/CD integration and built-in logging accelerate debugging
+- **Multi-tenant inference** where business analytics and per-endpoint usage tracking matter
+
+## When it doesn't
+
+- **Long-running batch jobs** or training pipelines (inference-only platform)
+- **Workloads requiring multi-region redundancy** (limited geographic footprint)
+- **Legacy code or non-containerized applications** with complex system dependencies
+
+## Inclusion criteria
+
+Banana.dev meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Explicit Team and Enterprise tier pricing listed at [banana.dev/#pricing](https://www.banana.dev/#pricing) with "at-cost compute" commitment
+2. **Self-service signup**: "Get Started" buttons present; documentation at [docs.banana.dev](https://docs.banana.dev/) indicates onboarding flow
+3. **Public SLA or status page**: Status updates and incident history available; note the site mentions a "[Sunset](https://www.banana.dev/blog/sunset)" post indicating company status changes

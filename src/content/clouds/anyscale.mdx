@@ -1,0 +1,52 @@
+---
+status: reviewed
+tagline: "Distributed AI compute platform built on Ray for scaling Python apps and model training."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Distributed model training"
+  - "Batch embedding generation"
+  - "Multimodal data curation"
+  - "LLM inference and post-training"
+  - "Ray Data pipelines"
+  - "GPU cluster orchestration"
+socials:
+  website: "https://www.anyscale.com/"
+  x: "https://twitter.com/anyscaleio"
+  linkedin: "https://linkedin.com/company/anyscale"
+  github: "https://github.com/ray-project"
+---
+
+## What makes Anyscale different
+
+Anyscale is a managed platform built on **Ray**, the open-source distributed computing framework it created. Unlike general-purpose cloud providers, Anyscale is purpose-built for AI and data-intensive workloads, offering native Python APIs that abstract cluster management complexity. Instead of managing VMs, developers decorate Python functions with `@ray.remote` and let Anyscale handle distributed execution across thousands of nodes.
+
+The platform's core strength is **multi-cloud portability**. Code runs identically on AWS, GCP, Azure, Nebius, and CoreWeave—a critical advantage for teams optimizing GPU availability and cost across regions without rewriting infrastructure code. This flexibility also lets users burst to alternative providers when their primary cloud lacks capacity, a significant operational advantage during GPU shortages.
+
+Anyscale emphasizes **pooled GPU scheduling** rather than per-instance billing. Workloads dynamically reallocate capacity within a shared pool, reducing idle time and maximizing utilization. This model aligns incentives between provider and customer differently than hourly instance billing on traditional clouds.
+
+## Pricing model
+
+Anyscale uses **usage-based pricing** tied to compute hours, with a free tier offering **$100 in credits** for new users. Specific per-GPU pricing tiers are not publicly listed on the homepage; pricing appears to be quoted based on cluster composition, region, and sustained usage patterns.
+
+The model avoids per-instance hourly charges in favor of workload-level billing, meaning you pay for actual distributed function execution rather than rented VMs. This can significantly reduce costs for bursty or variable-demand workloads that would otherwise keep instances idle on traditional clouds. Multi-cloud flexibility also enables arbitrage—running the same job where GPU costs are lowest on a given day.
+
+## When it fits
+
+- **Distributed AI training** at scale (LLM fine-tuning, multimodal model training across GPU clusters)
+- **Batch data processing pipelines** using PyTorch, XGBoost, or Ray Data for ETL and feature engineering
+- **Inference workloads** requiring elastic scaling (serving embeddings, running vLLM or SGLang at scale)
+- **Teams managing multi-cloud GPU sprawl** who need unified orchestration without cloud-specific code rewrites
+- **Startups and research groups** prioritizing rapid iteration over infrastructure—Ray's Python-first design removes DevOps friction
+
+## When it doesn't
+
+Anyscale is not suitable for stateful, long-running services or traditional monolithic applications. It also has a narrower ecosystem than AWS/GCP for non-AI workloads (databases, networking, storage integration).
+
+## Inclusion criteria
+
+Anyscale meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing**: Usage-based model with public $100 credit offer ([console.anyscale.com/register](https://console.anyscale.com/register/))
+2. **Self-service signup**: Direct registration and onboarding available
+3. **Public SLA/status page**: Ray and Anyscale maintain public documentation and status monitoring

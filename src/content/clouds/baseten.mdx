@@ -1,0 +1,47 @@
+---
+status: reviewed
+tagline: "Fast, reliable AI model inference with flexible deployment across clouds."
+pricingModel: "usage-based"
+regions:
+  - "Global (multi-cloud capacity)"
+services:
+  - "Dedicated Inference"
+  - "Model APIs"
+  - "Training"
+  - "Frontier Gateway"
+  - "Model Runtimes"
+  - "Multi-cloud Capacity Management"
+socials:
+  website: "https://www.baseten.co/"
+---
+
+## What makes Baseten different
+
+Baseten is purpose-built for AI model inference at scale, not a general-purpose cloud platform. Unlike AWS SageMaker or GCP Vertex AI, Baseten's entire infrastructure stack—including custom kernels and advanced decoding techniques—is optimized specifically for high-performance model serving. The platform emphasizes inference speed and cost efficiency through what they call the "Baseten Inference Stack," combining bleeding-edge performance research with inference-optimized hardware.
+
+The company differentiates further through deployment flexibility. Developers can run models on Baseten Cloud (fully managed), self-hosted (on their own infrastructure), or hybrid setups. This multi-cloud approach means you aren't locked into a single vendor's ecosystem—workloads can span AWS, GCP, or other clouds while using Baseten's management layer. The platform also includes "Forward Deployed Engineers" who embed with customers to optimize models from prototype to production, a hands-on support model rarely offered at scale by hyperscalers.
+
+## Pricing model
+
+Baseten uses a usage-based pricing model tied to compute consumption, but exact per-GPU or per-request rates are not published on their public website. Instead, they direct users to request pricing based on workload specifics. This is common for inference platforms serving high-volume production use cases where pricing depends heavily on model size, request volume, and latency requirements. Their Model APIs (pre-optimized endpoints) likely carry different pricing than dedicated inference deployments. The startup program suggests tiered access for early-stage companies, though details are not disclosed publicly.
+
+## When it fits
+
+- **High-scale inference workloads**: Teams deploying large language models, vision models, or compound AI systems that need sub-100ms latency and 99.99% uptime guarantees.
+- **Multi-cloud or hybrid deployments**: Organizations that want inference infrastructure independent of a single cloud provider, or need on-premises deployment with cloud management.
+- **Model-centric teams**: Companies prioritizing inference performance optimization over general-purpose compute; Baseten's research-driven approach appeals to teams that benefit from advanced decoding, custom kernels, and caching strategies.
+- **Rapid iteration and training**: Teams that want to train models and deploy them in one click, avoiding context switching between training and inference platforms.
+- **Monetized AI products**: Startups and enterprises using Frontier Gateway to expose models as managed APIs and capture usage-based revenue.
+
+## When it doesn't
+
+- **General compute or non-AI workloads**: Baseten is inference-focused; if you need traditional VMs, databases, or storage, hyperscalers are better suited.
+- **Price-sensitive, low-scale inference**: For hobby projects or lightly-used models, Baseten's per-request costs may exceed simple, cheaper alternatives like RunPod or Together AI.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Baseten publishes a [pricing page](https://www.baseten.co/pricing/) and usage-based model; specific rates require consultation but the framework is clear.
+
+✅ **Self-service signup**: The website offers immediate [sign-up](https://login.baseten.co/sign-up) without gating; users can begin experimenting with Model APIs or request dedicated infrastructure.
+
+✅ **Public SLA and status page**: Baseten maintains a [Service Level Agreement](https://www.baseten.co/service-level-agreement) and displays a [public status page](https://www.baseten.co/) indicating "all systems normal." SOC 2 Type II and HIPAA compliance are certified.
