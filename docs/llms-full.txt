@@ -1,13 +1,13 @@
 # Awesome Alt Clouds — Full Reference
 
-> Curated directory of 436+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
+> Curated directory of 437+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
 
 ## About This Directory
 
 - [Directory Homepage](https://www.alt-cloud.org/): Interactive searchable directory. Filter by category, search by name or description, sort alphabetically, by score, or by recently added date. All data loaded from /clouds.json.
 - [Submit a Service](https://www.alt-cloud.org/submit/): Web form that creates a GitHub issue, triggers automated AI evaluation (pricing page detection, signup detection, status page detection), and opens a PR on pass.
 - [GitHub Repository](https://github.com/datum-cloud/awesome-alt-clouds): Source of truth. Contains README.md (the awesome list), evaluation scripts in /scripts, and GitHub Actions workflows in .github/workflows.
-- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 436+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
+- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 437+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
 
 ## Evaluation Criteria
 
@@ -135,11 +135,11 @@ Data pipeline, ETL, CDC, and integration platforms with self-service onboarding.
 
 Services: Airbyte, Arroyo, dbt Labs, Firecrawl, Fivetran, Redpanda, Rivery.
 
-### Unikernels & WebAssembly (4 services)
+### Unikernels & WebAssembly (5 services)
 
 Edge computing, WebAssembly runtimes, and unikernel deployment platforms.
 
-Services: Cosmonic, KraftCloud, NanoVMs, Wasmer.
+Services: Cosmonic, KraftCloud, NanoVMs, Unikraft, Wasmer.
 
 ### Cloud Adjacent & Infrastructure Tooling (4 services)
 
@@ -171,9 +171,9 @@ Services: Akash Network.
 
 ## Key Facts
 
-- 436+ services as of 2026-06-03
+- 437+ services as of 2026-06-03
 - 23 categories covering the full developer cloud ecosystem
-- 407 services meet all 3 criteria (🟢); 29 meet 2 of 3 (🟡)
+- 408 services meet all 3 criteria (🟢); 29 meet 2 of 3 (🟡)
 - Minimum inclusion score: 2/3 criteria
 - Machine-readable data: https://www.alt-cloud.org/clouds.json
 - Source: https://github.com/datum-cloud/awesome-alt-clouds

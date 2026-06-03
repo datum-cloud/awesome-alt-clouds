@@ -940,6 +940,16 @@
     "dateAdded": "2026-06-03"
   },
   {
+    "name": "Unikraft",
+    "url": "https://unikraft.com/",
+    "description": "Provides unikernel-based cloud infrastructure platform enabling <10ms cold starts, VM-grade isolation, and 100K+ instances per server with custom Linux distributions.",
+    "score": 3,
+    "categories": [
+      "Unikernels & WebAssembly"
+    ],
+    "dateAdded": "2026-06-03"
+  },
+  {
     "name": "Wasmer",
     "url": "https://wasmer.io/",
     "description": "Offers a universal WebAssembly runtime that enables running applications safely and efficiently across various platforms, from desktop to cloud and edge.",
