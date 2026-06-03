@@ -2910,6 +2910,16 @@
     "dateAdded": "2026-06-03"
   },
   {
+    "name": "8gears Container Registry",
+    "url": "https://container-registry.com/",
+    "description": "Provides enterprise Harbor-based container registry service for storing, managing and distributing container artifacts securely at scale with multi-tenancy and RBAC.",
+    "score": 3,
+    "categories": [
+      "Developer Tooling & CI/CD"
+    ],
+    "dateAdded": "2026-06-03"
+  },
+  {
     "name": "Anaconda",
     "url": "https://www.anaconda.com/",
     "description": "Provides enterprise Python package management and AI development platform with secure open-source libraries, environment management, and AI model deployment capabilities.",
