@@ -159,6 +159,7 @@ Platforms leveraging unikernel and WebAssembly technologies for lightweight, sec
 * 🟢 [Cosmonic](https://cosmonic.com/) - A distributed compute mesh built on CNCF's wasmCloud, enabling secure, declarative deployments of WebAssembly applications across diverse environments.
 * 🟢 [KraftCloud](https://kraft.cloud/) - A next-generation cloud platform powered by unikernels, offering millisecond-scale operations and high-density deployments for efficient computing.
 * 🟢 [NanoVMs](https://nanovms.com/) - Provides a unikernel platform that allows deploying applications as secure, isolated virtual machines, enhancing performance and security.
+* 🟢 [Unikraft](https://unikraft.com/) - Provides unikernel-based cloud infrastructure platform enabling <10ms cold starts, VM-grade isolation, and 100K+ instances per server with custom Linux distributions.
 * 🟢 [Wasmer](https://wasmer.io/) - Offers a universal WebAssembly runtime that enables running applications safely and efficiently across various platforms, from desktop to cloud and edge.
 
 ## Databases & Storage
