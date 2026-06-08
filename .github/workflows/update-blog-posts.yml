@@ -45,19 +45,30 @@ jobs:
 
       - name: Commit and push changes
         if: steps.git-check.outputs.changed == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          BRANCH="update-blog-posts-$(date +%Y%m%d)"
-          git checkout -b "$BRANCH"
-          git add docs/index.html
-          git commit -m "Update blog posts from Zac Smith's author page"
-          git push origin "$BRANCH"
-          gh pr create \
-            --title "Update blog posts from Zac Smith's author page" \
-            --body "Automated daily update of blog posts from Strapi/Zac Smith's author page." \
-            --base main \
-            --head "$BRANCH" \
-            --label "automated" || true
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          set -euo pipefail
+          BRANCH="automation/update-blog-posts"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Always rebuild the branch from the current main so the PR diff stays
+          # scoped to today's change instead of accumulating prior auto-commits.
+          git checkout -B "$BRANCH"
+          git add docs/index.html
+          git commit -m "chore(blog-posts): auto-update from Zac Smith author page"
+          git push --force origin "$BRANCH"
+
+          # Reuse the existing open PR if there is one; force-push above already
+          # refreshed its diff. Otherwise open a new PR.
+          existing_pr="$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number // empty')"
+          if [ -z "$existing_pr" ]; then
+            gh pr create \
+              --title "Update blog posts from Zac Smith's author page" \
+              --body "Automated daily update of blog posts. This PR is force-updated each run; closing it is safe — the next run will reopen if there are further changes." \
+              --base main \
+              --head "$BRANCH" \
+              --label "automated"
+          else
+            echo "Existing PR #$existing_pr refreshed via force-push."
+          fi
