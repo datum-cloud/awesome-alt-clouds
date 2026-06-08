@@ -26,6 +26,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from lib.fetcher import fetch_page_with_fallback
 from lib.slugify import slugify
 
+PROFILE_MAX_TOKENS = 4096
 
 PROFILE_SYSTEM_PROMPT = (
     "You are a technical writer creating cloud provider profiles for alt-cloud.org — "
@@ -163,7 +164,7 @@ def generate_profile(
     print(f"Calling Claude for {name}...")
     message = client.messages.create(
         model="claude-haiku-4-5",
-        max_tokens=2048,
+        max_tokens=PROFILE_MAX_TOKENS,
         system=PROFILE_SYSTEM_PROMPT,
         messages=[
             {
@@ -175,6 +176,14 @@ def generate_profile(
         ],
     )
 
+    truncated = message.stop_reason == "max_tokens"
+    if truncated:
+        print(
+            f"WARNING: Response hit max_tokens ({PROFILE_MAX_TOKENS}) for {name} — "
+            "output may be truncated. Review the MDX before publishing.",
+            file=sys.stderr,
+        )
+
     mdx_raw = message.content[0].text.strip()
     mdx_raw = _strip_outer_code_fences(mdx_raw)
     mdx_raw = _prepend_status_draft(mdx_raw)
@@ -183,6 +192,7 @@ def generate_profile(
         "mdx": mdx_raw,
         "fetch_method": fetch_method or "failed",
         "slug": slugify(name),
+        "truncated": truncated,
     }
 
 
@@ -229,7 +239,8 @@ def main():
         "slug": result["slug"],
         "fetch_method": result["fetch_method"],
         "output_path": output_path,
-        "needs_verification": result["fetch_method"] == "failed",
+        "truncated": result["truncated"],
+        "needs_verification": result["fetch_method"] == "failed" or result["truncated"],
     }
     with open("profile_generation_report.json", "w") as f:
         json.dump(report, f, indent=2)
