@@ -1,0 +1,50 @@
+---
+status: draft
+tagline: "Deploy applications as lightweight unikernels—300% faster, more secure, zero DevOps overhead."
+pricingModel: usage-based
+openSource: true
+services:
+  - Unikernel compilation and deployment
+  - Multi-cloud orchestration (AWS, Azure, GCP, vSphere)
+  - Node.js, Go, and language runtime packages
+  - VM consolidation and density optimization
+  - Security hardening via minimal OS surface
+socials:
+  website: "https://nanovms.com/"
+  github: "https://github.com/nanovms"
+---
+
+## What makes NanoVMs different
+
+NanoVMs replaces traditional containers and virtual machines with **unikernels**—single-purpose, bootable images that include only the application and essential OS components. Unlike Docker containers (which still run a full Linux kernel) or hypervisor VMs (which are resource-heavy), unikernels eliminate entire layers of operating system bloat.
+
+The platform's core tool, **ops**, compiles applications into minimal VM images that boot in milliseconds and run 2–3× faster on public clouds. The security model is defensive by design: since a unikernel contains no shell, package manager, or system utilities, the attack surface for remote code execution shrinks dramatically. There's nothing to exploit beyond the application itself.
+
+NanoVMs targets any cloud—AWS, Azure, GCP, vSphere, or bare metal—with the same tooling, avoiding vendor lock-in while delivering performance gains across all platforms.
+
+## Pricing model
+
+NanoVMs operates on a **usage-based model** aligned with your cloud provider's metering. Because unikernels consolidate hundreds to thousands of VMs on the same hardware, you typically pay less per application instance than traditional deployments. No separate NanoVMs SaaS subscription is required; the ops toolchain is free and open-source.
+
+The economics improve dramatically at scale: if you're running microservices across many instances, unikernel consolidation can reduce your cloud bill while improving boot times and latency.
+
+## When it fits
+
+- **Microservices and serverless-like workloads** that benefit from fast boot times, high density, and minimal overhead
+- **Security-critical applications** (fintech, healthcare, government) where a minimal attack surface is non-negotiable
+- **High-performance APIs and edge services** that need sub-100ms boot latency and low memory footprint
+- **Cost-sensitive deployments** running many small, independent services on shared infrastructure
+- **Multi-cloud or hybrid-cloud strategies** where you need consistent tooling across AWS, Azure, GCP, and on-premises hypervisors
+
+## When it doesn't
+
+- **Monolithic or stateful applications** with complex OS dependencies or legacy library requirements may require significant refactoring
+- **Development teams unfamiliar with unikernel concepts** will face a learning curve; this is not a drop-in replacement for Docker
+
+## Inclusion criteria
+
+NanoVMs meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing**: Usage-based model aligned with underlying cloud costs; no hidden fees.
+2. **Self-service signup**: The `ops` toolchain is freely available via open-source; no gatekeeping or approval process.
+3. **Public SLA/status page**: The project maintains public documentation and community support channels.

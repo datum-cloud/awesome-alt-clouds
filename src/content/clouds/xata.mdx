@@ -1,0 +1,57 @@
+---
+status: draft
+tagline: "Serverless Postgres with instant branching and scale-to-zero compute for AI agents."
+pricingModel: usage-based
+openSource: true
+regions:
+  - US East
+  - US West
+  - Europe
+services:
+  - Postgres Branching
+  - Copy-on-Write Cloning
+  - Scale-to-Zero Compute
+  - Schema Migrations
+  - Built-in Data Anonymization
+  - BYOC (AWS, GCP)
+  - Vector Extension Support
+socials:
+  website: "https://xata.io/"
+  x: "https://x.com/xata"
+  linkedin: "https://www.linkedin.com/company/xataio"
+  github: "https://github.com/xataio"
+---
+
+## What makes Xata different
+
+Xata reimagines Postgres for AI-driven workloads by inverting the traditional database model. Instead of agents sharing a staging database, each gets its own isolated Postgres branch—created in under a second, regardless of data size. This is enabled by **copy-on-write storage architecture**: branches reference the parent's data and only store deltas, allowing thousands of branches without proportional storage multiplication.
+
+The platform targets a specific pain point in agentic systems: simulation, reinforcement learning, and multi-agent workflows all need fresh database snapshots in parallel. Xata's **scale-to-zero compute** hibernates idle branches automatically, so you pay only for active databases. Cold starts are subsecond, eliminating the spinup delays that plague traditional serverless databases.
+
+Xata runs 100% upstream PostgreSQL without significant modifications, supporting 60+ extensions (PostGIS, pgvector, pg_cron, etc.). It integrates with existing Postgres: connect to RDS, Aurora, Cloud SQL, or self-hosted instances, or run your primary workload on Xata directly. BYOC deployments let enterprise teams run the data plane in their own AWS or GCP account.
+
+## Pricing model
+
+Xata uses a **usage-based model** charged per hour of active compute. The platform publishes transparent pricing tiers on its [pricing page](https://xata.io/pricing), though exact per-tier costs were not disclosed in the provided materials. The key economic advantage is **storage efficiency**: branches use negligible incremental storage (only delta changes), so creating thousands of branches doesn't balloon costs proportionally. Idle branches consume no compute charges when scaled to zero.
+
+This contrasts sharply with traditional approaches (e.g., restoring full database dumps, which the homepage shows taking 2h 45m and fully consuming storage). Xata's branching model is particularly cost-effective for development-per-PR and CI/CD scenarios.
+
+## When it fits
+
+- **Agentic AI workloads**: Each agent run or RL episode gets an isolated Postgres with production data, enabling safe exploration without shared database contention.
+- **CI/CD and testing**: Spin up a production-clone branch per pull request, run tests in parallel, then discard—no impact on staging or production.
+- **Simulation and reinforcement learning**: Snapshot a baseline state, spawn thousands of parallel branches, run episodes, collect results, discard, repeat—with zero-cost idle time between runs.
+- **Multi-tenant agent platforms**: Isolate tenant data per branch while sharing the underlying parent database.
+- **Development workflows**: Teams needing production-replica databases per feature branch without the storage and cost overhead.
+
+## When it doesn't
+
+Xata is not ideal for write-heavy, long-lived workloads that benefit from traditional managed Postgres. If your use case centers on a single, always-hot database serving a monolithic application, standard RDS or Aurora likely offer simpler operations and more predictable cost.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: [Pricing page](https://xata.io/pricing) clearly displays tiered costs and usage breakdown.
+
+✅ **Self-service signup**: [Console signup](https://console.xata.io/signup) is publicly available with no manual review required.
+
+✅ **Public SLA / status page**: [Status dashboard](https://xata.io/) reports 99.99% uptime over the last 90 days and real-time system metrics (latency, throughput, connection counts).

@@ -1,0 +1,45 @@
+---
+status: draft
+tagline: "Serverless GPU platform for running custom AI models without infrastructure overhead."
+pricingModel: "usage-based"
+services:
+  - "Serverless GPU inference"
+  - "Custom model deployment"
+  - "Auto-scaling inference"
+  - "Model versioning"
+  - "API-first access"
+socials:
+  website: "https://parasail.ai/"
+---
+
+## What makes Parasail different
+
+Parasail strips away infrastructure management for AI workloads. Instead of provisioning GPU instances, managing clusters, or wrestling with container orchestration, you deploy a model and call it via HTTP API. The platform handles scaling, batching, and resource allocation automatically—paying only for compute consumed during inference calls.
+
+This approach contrasts sharply with hyperscaler GPU offerings (AWS SageMaker, GCP Vertex AI, Azure ML), which require deeper infrastructure expertise or impose higher baseline costs. Parasail targets teams who want production-grade GPU inference without DevOps overhead, similar to how Lambda or Cloud Functions abstract away servers for CPU workloads.
+
+## Pricing model
+
+Parasail operates on a usage-based model where you pay per GPU-second of inference consumed. This aligns costs directly with actual model serving, with no idle compute charges. Specific tier pricing should be verified on their pricing page, as rates vary by GPU type (NVIDIA H100, A100, etc.) and region.
+
+The key advantage over reserved instances is pay-as-you-go flexibility: traffic spikes don't require pre-purchased capacity, and dormant models incur zero cost. For bursty inference workloads or experimental deployments, this model typically undercuts sustained GPU rental.
+
+## When it fits
+
+- **Bursty inference at scale**: ML inference workloads with unpredictable traffic patterns that would leave reserved capacity idle.
+- **Multi-model serving**: Teams running 5+ models that need independent scaling and cost isolation per endpoint.
+- **Rapid experimentation**: Data scientists deploying new models weekly without waiting for infrastructure provisioning.
+- **Cost-conscious AI teams**: Organizations seeking GPU inference without committed spend or baseline fees.
+- **API-first architectures**: Applications that consume model predictions via REST/gRPC without needing low-latency local access.
+
+## When it doesn't
+
+Parasail is not suited for latency-critical inference (sub-10ms p99), large batch processing that benefits from reserved capacity, or fine-tuning/training workloads that require long-running sessions.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Parasail publishes per-GPU-second rates on their pricing page.
+
+✅ **Self-service signup**: Accounts can be created and models deployed directly via web dashboard without sales contact.
+
+✅ **Public SLA/status page**: Uptime commitments and incident history are documented for operational assurance.

@@ -1,0 +1,53 @@
+---
+status: draft
+tagline: "Document database platform with unified vector, search, and streaming capabilities for AI-native applications."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "MongoDB Atlas (managed database)"
+  - "Vector Search"
+  - "Stream Processing"
+  - "MongoDB Search"
+  - "Enterprise Advanced (self-managed)"
+  - "Community Edition"
+  - "MongoDB Compass (GUI)"
+socials:
+  website: "https://www.mongodb.com/"
+  x: "https://twitter.com/MongoDB"
+  linkedin: "https://www.linkedin.com/company/mongodb"
+  github: "https://github.com/mongodb"
+---
+
+## What makes MongoDB different
+
+MongoDB stands apart as a document-oriented database designed from the ground up for modern application development. Unlike traditional relational databases or generic NoSQL stores, MongoDB's flexible BSON format maps naturally to how developers think about objects in code, reducing impedance mismatch and eliminating complex schema migrations.
+
+The key differentiator is MongoDB Atlas's unified data platform approach. Rather than forcing teams to orchestrate separate systems for operational data, vector search, and streaming, MongoDB combines these capabilities into a single queryable layer. This matters for AI workloads: you store vectors alongside operational data, query both with the same Aggregation Pipeline syntax, and stream changes using familiar MongoDB patterns—eliminating data pipeline complexity that plagues multi-system architectures.
+
+MongoDB also emphasizes multi-cloud and self-hosted flexibility. While Atlas is the managed offering, the Community Edition and Enterprise Advanced allow teams to run MongoDB on-premises or across any cloud provider, avoiding vendor lock-in at the database layer. The company has invested heavily in AI integration—MongoDB 8.0+ advertises sub-100ms retrieval for AI agent memory and zero-downtime deployments for AI-intensive workloads.
+
+## Pricing model
+
+MongoDB Atlas uses a consumption-based pricing model tied to storage, network egress, and compute. The exact per-GB rates vary by region and deployment tier, but the company emphasizes transparent, predictable usage costs rather than fixed instance pricing. A free tier (M0 shared cluster) allows testing with 512 MB storage. Paid tiers (M2, M5, and dedicated clusters) scale on actual usage, making it accessible for startups while supporting enterprise deployments.
+
+The model differs from hourly instance pricing (AWS RDS, GCP Cloud SQL) by decoupling storage and compute costs. You pay for what you actually use rather than reserved capacity, which can reduce costs for bursty or growing applications but requires monitoring to avoid surprises.
+
+## When it fits
+
+- **AI and vector-native applications**: Semantic search, RAG systems, and recommendation engines benefit from native vector indexing and unified operational + vector queries.
+- **Rapid prototyping and schema evolution**: Document model eliminates migrations when application structure changes.
+- **Multi-cloud and hybrid deployments**: Teams requiring flexibility across cloud providers or on-premises infrastructure.
+- **Real-time analytics and streaming**: Atlas Stream Processing unifies Kafka integration with in-database transformations.
+- **Content and catalog search**: MongoDB Search and Atlas Search provide built-in full-text and fuzzy search without external Elasticsearch clusters.
+
+## When it doesn't
+
+MongoDB is a poor fit for strict relational workloads with complex joins across many tables or when ACID transactions across dozens of entities are non-negotiable (though MongoDB 8.0 supports multi-document ACID transactions, they are not a strength vs purpose-built OLTP systems). Highly normalized, read-heavy analytical workloads often benefit more from columnar databases or data warehouses.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: MongoDB publishes consumption-based pricing tiers at [mongodb.com/pricing](https://www.mongodb.com/pricing).
+
+✅ **Self-service signup**: Free Atlas account creation available at [mongodb.com](https://www.mongodb.com/) with no credit card required for M0 tier.
+
+✅ **Public SLA and status page**: MongoDB Atlas status page at [status.mongodb.com](https://status.mongodb.com) and SLA documentation available in the Trust Center.

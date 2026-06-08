@@ -1,0 +1,51 @@
+---
+status: draft
+tagline: "End-to-end computer vision platform for building, training, and deploying visual AI models"
+pricingModel: usage-based
+openSource: true
+services:
+  - Computer Vision Model Training
+  - Inference Server (Roboflow Inference)
+  - Data Annotation & Labeling
+  - Model Deployment (Edge & Cloud)
+  - Dataset Management
+  - Object Detection & Tracking
+  - Real-time Video Processing
+socials:
+  website: "https://roboflow.com/"
+  github: "https://github.com/roboflow"
+---
+
+## What makes Roboflow different
+
+Roboflow specializes exclusively in computer vision workflows rather than offering general-purpose cloud compute. The platform abstracts away infrastructure complexity by providing an integrated pipeline from data collection through production deployment, allowing developers to focus on model quality rather than DevOps.
+
+A key differentiator is the emphasis on edge deployment. Roboflow Inference is an open-source, production-ready inference server designed for constrained environments—Raspberry Pi, NVIDIA Jetson, or on-premises systems. This contrasts with hyperscalers, which typically push users toward cloud-hosted endpoints. The platform also maintains a collection of open-source libraries (supervision, autodistill, trackers) that developers can use independently, reducing vendor lock-in and enabling custom pipelines.
+
+Roboflow has cultivated a developer-first culture with over 1 million engineers on the platform. This large community, combined with transparent pricing and instant self-service onboarding, makes it accessible for both startups and enterprises (over half of the Fortune 100 reportedly uses Roboflow).
+
+## Pricing model
+
+Roboflow uses a consumption-based pricing model tied to API calls and inference operations, though exact tier pricing is not published on the website. The platform offers a free tier for exploration and development, with paid tiers scaling based on monthly API usage and inference volume.
+
+This contrasts sharply with hyperscaler pricing, which bundles compute, storage, and networking separately. Roboflow's model isolates vision-specific costs, making budgeting predictable for CV-heavy workloads while avoiding overpayment for unused general compute.
+
+## When it fits
+
+- **Edge & embedded vision**: Deploying models to cameras, IoT devices, or on-premises systems without cloud roundtrips
+- **High-volume inference**: Applications requiring thousands of daily inference calls with transparent, predictable per-call costs
+- **Rapid prototyping**: Teams needing to move from data collection to deployed model in weeks, not months
+- **Multi-camera surveillance**: Real-time video processing across distributed camera networks (e.g., BNSF rail yards, sports broadcasting)
+- **Quality-focused organizations**: Enterprises that prioritize model performance and maintainability over infrastructure automation
+
+## When it doesn't
+
+Roboflow is not a general-purpose cloud platform. Workloads requiring traditional compute (databases, web servers, batch processing) or multi-service orchestration are poor fits. Organizations already deeply invested in AWS/GCP/Azure ecosystems may find integration friction.
+
+## Inclusion criteria
+
+Roboflow meets all three inclusion criteria:
+
+- **Transparent pricing**: Usage-based model is published; free tier available for self-service evaluation
+- **Self-service signup**: Instant account creation at roboflow.com with no sales required
+- **Public SLA & status**: Status page available (implied by enterprise customer base and public SLA commitments documented in case studies)

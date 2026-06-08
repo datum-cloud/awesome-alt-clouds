@@ -1,0 +1,52 @@
+---
+status: draft
+tagline: "Custom domain proxy platform with global edge servers, SSL automation, and DDoS protection"
+pricingModel: "subscription"
+regions:
+  - "Global (multi-region edge network)"
+services:
+  - "Custom domain proxying"
+  - "Automatic SSL certificate management"
+  - "Web Application Firewall (WAF)"
+  - "DDoS protection"
+  - "Edge Sequences (request routing rules)"
+  - "DNS management"
+  - "Self-healing cluster infrastructure"
+  - "Bandwidth management"
+socials:
+  website: "https://approximated.app/"
+---
+
+## What makes Approximated different
+
+Approximated purpose-builds infrastructure specifically for multi-tenant SaaS platforms that need to serve user-provided custom domains at scale. Unlike general-purpose CDNs or serverless platforms, it automates the entire custom domain lifecycle—DNS validation, SSL certificate provisioning and renewal, and edge traffic routing—through a single API and dashboard.
+
+The platform operates dedicated clusters per customer, with globally distributed edge nodes that automatically route traffic through the nearest region. This architecture eliminates the operational burden of managing SSL certificates across hundreds or thousands of user domains, a pain point for marketplace platforms, white-label SaaS, and customer-branded solutions.
+
+A collective intelligence layer pools threat intelligence across all clusters, enabling DDoS and bot mitigation to improve for all users as the network grows. Edge Sequences allow rule-based request filtering and modification at the edge before traffic reaches your application, reducing load on origin servers.
+
+## Pricing model
+
+**$0.20 per custom domain per month**, with a $20/month minimum for accounts under 100 domains. The pricing scales with automatic volume discounts: 5% discount per 1,000 domains, capping at 50% off for customers managing 10,000+ domains.
+
+The service includes 400 GB of monthly bandwidth; overage bandwidth is billed at $0.05/GB. Self-hosted plans are available for on-premise deployments with optional white-glove onboarding, though specific self-hosted pricing is not published publicly.
+
+This model stands out because it decouples domain count from bandwidth costs and scales predictably—no surprise surges from traffic spikes on specific domains. The volume discount structure directly rewards growth without forcing account consolidation or platform migration.
+
+## When it fits
+
+- **Multi-tenant SaaS and white-label platforms** that give users custom domain assignment (e.g., customer success platforms, email deliverability tools, blog builders, marketplaces)
+- **Outbound email platforms** sending on behalf of customers who need DKIM/DMARC alignment on branded domains
+- **API-first businesses** that need programmatic domain onboarding at scale without manual DNS or SSL overhead
+- **Compliance-sensitive workloads** benefiting from centralized monitoring, self-healing, and a shared threat intelligence network
+- **High-volume, low-latency use cases** where edge proximity and automatic failover matter (99.993% average uptime claimed)
+
+## When it doesn't
+
+Approximated is not a general-purpose cloud provider—it does not offer compute, storage, or database services. It is purpose-built for custom domain routing and SSL management only, making it unsuitable as a standalone hosting platform. Workloads requiring full infrastructure-as-a-service should pair Approximated with a separate compute provider (AWS, Heroku, etc.).
+
+## Inclusion criteria
+
+✓ **Transparent pricing**: Published at https://approximated.app/#pricing with explicit per-domain costs ($0.20/month) and volume discount tiers  
+✓ **Self-service signup**: Free 7-day trial available at https://cloud.approximated.app/registration/new  
+✓ **Public SLA and status page**: SLA link present at https://approximated.app/ footer; status monitoring dashboard referenced in documentation

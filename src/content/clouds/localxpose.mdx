@@ -1,0 +1,54 @@
+---
+status: draft
+tagline: "Secure tunneling to expose localhost services globally in seconds, no VPN required."
+pricingModel: "subscription"
+regions:
+  - "North America"
+  - "Europe"
+  - "Asia Pacific"
+services:
+  - "HTTP/TLS tunneling"
+  - "TCP/UDP tunneling"
+  - "Custom domain routing"
+  - "SSL certificate management"
+  - "Access control & authentication"
+  - "Request logging & inspection"
+  - "Webhook replay"
+  - "Rate limiting & DDoS protection"
+socials:
+  website: "https://localxpose.io/"
+---
+
+## What makes LocalXpose different
+
+LocalXpose solves a specific pain point for developers and small-to-medium businesses: exposing localhost services and on-premises infrastructure to the internet without managing routers, firewalls, or enterprise VPN clients. Unlike traditional remote access solutions, LocalXpose uses a lightweight agent that encrypts all traffic through managed gateway infrastructure, eliminating the complexity of peer-to-peer networking and dynamic IP management.
+
+The platform is purpose-built for speed of deployment. Installation and first tunnel creation takes under 60 seconds; no network configuration, firewall rules, or infrastructure tickets required. This makes it particularly valuable for SaaS vendors, IoT integrators, and managed service providers who need to onboard customer sites quickly without imposing network burden on end-users.
+
+All traffic flows through encrypted channels with zero-config SSL certificate management via Let's Encrypt. Built-in DDoS protection, IP allow lists, scoped authentication tokens, and per-tunnel permissions provide security by default rather than as an afterthought. The platform includes real-time HTTP/TCP/UDP traffic inspection, request replay, and webhook debugging—features typically found in enterprise API gateways but offered here at a fraction of the complexity.
+
+## Pricing model
+
+LocalXpose offers a **free tier** for personal and light commercial use with basic tunneling capabilities. Paid tiers unlock reserved subdomains, TCP/UDP tunneling, multiple concurrent tunnels, team seats, and advanced features. Billing is **monthly or annual subscription** with no bandwidth overage charges—pricing remains predictable regardless of traffic volume.
+
+Specific pricing numbers are not published on the public site; signup is required to view paid tier costs. This subscription model contrasts with hyperscaler consumption-based pricing, making it easier for cost forecasting. No setup fees, no commitment locks, and cancellation is available at any time.
+
+## When it fits
+
+- **SaaS vendors** serving on-premises or firewalled customers (POS systems, ERP, managed services) who need reliable reverse proxy connectivity without customer-side network changes
+- **Webhook & API integrations** during development and production, with built-in payload inspection and replay for debugging
+- **IoT & IIoT deployments** requiring always-on connectivity from devices behind restrictive networks
+- **Development teams** needing secure preview environments and production deployments in minutes, not weeks
+- **Managed service providers** onboarding customer infrastructure at scale without firewall engineering overhead
+
+## When it doesn't
+
+LocalXpose is not a general-purpose cloud computing platform. It does not provide compute, storage, databases, or Kubernetes—only network access. It is not suitable for workloads requiring multi-region active-active failover or carrier-grade SLA guarantees beyond standard managed service reliability.
+
+## Inclusion criteria
+
+LocalXpose meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Free tier publicly available; paid tiers accessible via signup at https://localxpose.io/signup with no paywall obfuscation.
+2. **Self-service signup**: Account creation and tunnel deployment fully self-service with no sales process required.
+3. **Public SLA & status page**: SLA commitments and operational status available to registered users; uptime and reliability commitments implied by "50,000 active users and nearly 500 businesses" claim.

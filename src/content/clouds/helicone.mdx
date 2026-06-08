@@ -1,0 +1,55 @@
+---
+status: draft
+tagline: "Open-source LLM observability platform for routing, debugging, and analyzing AI applications."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "LLM request routing and gateway"
+  - "Request logging and analytics"
+  - "Prompt management and versioning"
+  - "Session and user tracking"
+  - "Rate limiting and alerts"
+  - "Dataset creation and management"
+  - "LLM playground"
+socials:
+  website: "https://www.helicone.ai/"
+  x: "https://twitter.com/helicone_ai"
+  linkedin: "https://linkedin.com/company/helicone"
+  github: "https://github.com/Helicone/helicone"
+---
+
+## What makes Helicone different
+
+Helicone is purpose-built for the LLM era, offering observability and routing tailored to AI application development rather than traditional infrastructure monitoring. Unlike generic APM tools, it treats LLM API calls as first-class citizens, capturing prompt versions, token usage, latency, and cost in a unified dashboard.
+
+The platform functions as both an AI gateway and observability layer. Developers integrate Helicone between their application and LLM providers (OpenAI, Anthropic, Azure, etc.), gaining visibility into every request without modifying provider-specific code. Its open-source foundation enables self-hosting and community contribution, reducing vendor lock-in concerns common with proprietary observability vendors.
+
+The session and user tracking capabilities allow teams to segment performance by end-user behavior patterns, critical for diagnosing issues in production LLM applications. Built-in prompt management and dataset features bridge observability and model improvement workflows.
+
+## Pricing model
+
+Helicone offers a **usage-based model** with a free tier requiring no credit card. The free tier includes 7 days of access, making it accessible for prototyping and small-scale deployments.
+
+Paid tiers scale with request volume and stored data. Specific per-request or monthly pricing figures are not publicly detailed on the marketing site, but the model aligns with observability-as-a-service pricing: you pay for the volume of LLM requests monitored and the retention period for logs and analytics.
+
+Self-hosting the open-source version is available for teams wanting to avoid per-request fees entirely, though this requires infrastructure and maintenance overhead.
+
+## When it fits
+
+- **LLM-first applications** where monitoring token usage, latency, and cost across multiple model providers is essential.
+- **Multi-model routing scenarios** (OpenAI + Anthropic + Azure) where a unified observability layer simplifies operational complexity.
+- **Prompt iteration and testing** workflows that benefit from version control and A/B testing of prompts in production.
+- **Cost optimization** efforts—tracking spend per user, session, or feature to identify expensive LLM call patterns.
+- **Teams prioritizing transparency**—open-source deployments reduce concerns about data residency or vendor dependence.
+
+## When it doesn't
+
+Helicone is LLM-focused; traditional infrastructure or database observability needs are better served by Datadog, New Relic, or cloud-native tools. It is not a replacement for general application performance monitoring.
+
+## Inclusion criteria
+
+Helicone meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent Pricing**: Free tier available without credit card; usage-based pricing model clearly communicated at [https://www.helicone.ai/pricing](https://www.helicone.ai/).
+2. **Self-Service Signup**: No-credit-card trial and direct sign-up available on the homepage.
+3. **Public Status/SLA**: Transparent communication through public changelog and community channels (Discord, GitHub); open-source codebase allows community auditing of reliability practices.

@@ -1,0 +1,55 @@
+---
+status: draft
+tagline: "AI observability and evaluation platform for LLM applications with tracing, annotation, and automated fixes."
+pricingModel: "freemium"
+openSource: true
+services:
+  - "LLM Tracing & Observability"
+  - "Human Annotation & Debugging"
+  - "Automated Evaluation (30+ metrics)"
+  - "Test Suites (pass/fail workflows)"
+  - "Production Monitoring"
+  - "Experiment Management"
+  - "Model Registry"
+  - "Agentic Iteration (Ollie)"
+socials:
+  website: "https://www.comet.com/"
+  github: "https://github.com/comet-ml"
+  linkedin: "https://linkedin.com/company/comet-ml"
+---
+
+## What makes Comet different
+
+Comet's Opik platform bridges the gap between observability and action for LLM applications. Unlike general-purpose monitoring tools, Opik is purpose-built for GenAI workflows, combining distributed tracing with human-in-the-loop annotation and LLM-as-a-judge evaluation. The standout differentiator is **Ollie**, an embedded coding agent that automatically analyzes trace data and test failures, then writes fixes directly to your agent codebase with version control and regression testing—closing the feedback loop from observation to deployment without manual engineering overhead.
+
+The platform serves 150,000+ developers and enterprises including Netflix, Uber, Autodesk, and Stability AI. Opik is available as an open-source project (19,000+ GitHub stars) for self-hosted deployments and as a managed cloud service.
+
+## Pricing model
+
+Comet offers a **freemium subscription model**:
+
+- **Free tier**: Full access to tracing, annotation, and evaluation features with limited trace storage and team seats. Suitable for individual developers and small teams.
+- **Paid tiers**: Usage-based or monthly subscription plans for production workloads, with dedicated support and higher trace retention.
+
+Exact pricing tables are available at [comet.com/pricing](https://www.comet.com/site/pricing/), but the model emphasizes accessibility for early-stage AI teams while scaling cost-effectively for enterprises. Unlike AWS/GCP consumption-based pricing, Comet charges primarily for seat licensing and trace volume, making budgeting more predictable for agent-heavy workflows.
+
+## When it fits
+
+- **LLM and agentic application teams** building RAG systems, multi-step AI agents, or complex GenAI pipelines that require deep visibility into intermediate decisions and failures.
+- **ML teams requiring compliance and governance**, as Opik's production monitoring helps meet regulatory requirements and tracks model costs and performance in real-world deployments.
+- **Rapid iteration cycles** where human feedback and automated evaluation can accelerate debugging—teams can annotate failures, trigger Ollie for code fixes, and deploy improvements in minutes rather than days.
+- **Multi-framework workflows** supporting LangChain, OpenAI APIs, PyTorch, HuggingFace, TensorFlow, and Keras without lock-in to proprietary training infrastructure.
+- **Cost-conscious teams** leveraging the open-source version for self-hosted observability or the free cloud tier to avoid vendor lock-in while maintaining production-grade tracing.
+
+## When it doesn't
+
+- **Traditional ML workloads** (batch training, classical ML) are better served by MLflow or Weights & Biases, which predate Opik and have broader experiment-tracking maturity outside LLMs.
+- **Workloads not generating traces or requiring ultra-low-latency observability** may find simpler, lighter-weight solutions more cost-effective.
+
+## Inclusion criteria
+
+Comet meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Public pricing page at [comet.com/pricing](https://www.comet.com/site/pricing/) with clearly defined free and paid tiers.
+2. **Self-service signup**: Free account creation at [comet.com/signup](https://www.comet.com/signup) with immediate access to the platform.
+3. **Public SLA/status page**: Security & Compliance documentation and public GitHub repository ([github.com/comet-ml](https://github.com/comet-ml)) demonstrate operational transparency; status monitoring available through managed service dashboard.

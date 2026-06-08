@@ -1,0 +1,56 @@
+---
+status: draft
+tagline: "AI-native observability platform combining monitoring, logging, tracing, and incident management—30x cheaper than Datadog."
+pricingModel: "usage-based"
+openSource: false
+services:
+  - "AI SRE (agentic root cause analysis)"
+  - "Incident management & on-call"
+  - "OpenTelemetry-native tracing (eBPF-based)"
+  - "Log management"
+  - "Infrastructure monitoring"
+  - "Uptime monitoring"
+  - "Error tracking"
+  - "Real user monitoring"
+  - "Status page"
+socials:
+  website: "https://betterstack.com/"
+  x: "https://twitter.com/BetterStackHQ"
+---
+
+## What makes BetterStack different
+
+BetterStack consolidates observability and incident response into a single platform with transparent, predictable pricing that undercuts Datadog by up to 30x. The core differentiator is aggressive cost structure combined with no data sampling—ingest 1 TB of logs, traces, and metrics per month for $687 versus Datadog's estimated $55,574. This appeals to teams that want enterprise-grade observability without the bill shock.
+
+The platform is OpenTelemetry-native from the ground up, meaning tracing, metrics, and logs flow through standardized APIs rather than proprietary SDKs. The AI SRE feature uses Claude-powered agentic workflows to automate incident triage and root cause analysis, reducing mean time to resolution. eBPF-based service mapping captures application topology without code instrumentation, and incident management integrates directly into Slack and Microsoft Teams for faster resolution workflows.
+
+## Pricing model
+
+BetterStack uses a straightforward usage-based model with bundled tiers. The example given is:
+
+- **1 TB logs/month + 1 TB traces/month + 1 TB metrics/month**: $687/month (annual billing)
+- Incident management includes 1 responder with the Tera bundle
+- Pricing is significantly lower if you accept European data location
+
+Key distinction: no "custom metrics" surcharge, no indexed span penalties, and no sampling-driven tiering. You pay for what you ingest, not what you query. This flattens the cost curve for high-volume observability compared to Datadog's dimensional metrics pricing or Grafana Cloud's carved-out buckets.
+
+## When it fits
+
+- **Cost-sensitive teams migrating from Datadog.** BetterStack offers migration assistance and will cover the remaining balance of your Datadog contract.
+- **Organizations running OpenTelemetry already.** Native OTEL support means no instrumentation translation layer.
+- **Incident-heavy workflows.** Slack/Teams integration and AI-powered incident triage reduce context switching and MTTR.
+- **Full-stack observability without tool sprawl.** Logs, traces, metrics, uptime, error tracking, and status pages in one place eliminates multi-vendor fatigue.
+- **Startups and mid-market teams.** Predictable, sub-$1k-per-month pricing removes the "surprise bill" risk common at scale.
+
+## When it doesn't
+
+- **Hyperscale environments with strict data residency.** BetterStack's default European region may not suit teams requiring US-only or multi-region compliance.
+- **Complex custom metrics or advanced alerting DSLs.** If your team has built deeply into Datadog's custom metrics or terraform-heavy alert rules, migration friction is non-trivial.
+
+## Inclusion criteria
+
+BetterStack meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing** — Usage-based tiers with published examples at https://betterstack.com/pricing
+2. **Self-service signup** — Free tier and instant onboarding available at https://betterstack.com/users/sign-up
+3. **Public SLA and status page** — System status and uptime commitments available at https://betterstack.com/ (status page link found in footer)

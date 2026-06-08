@@ -1,0 +1,43 @@
+---
+status: draft
+tagline: "Affordable on-demand GPUs for AI training and inference with OpenAI-compatible APIs."
+pricingModel: "usage-based"
+services:
+  - "On-Demand GPU Clusters (H100, H200)"
+  - "Serverless Inference API"
+  - "Reserved Clusters"
+  - "Dedicated Hosting"
+  - "AI Consulting Services"
+socials:
+  website: "https://hyperbolic.xyz/"
+---
+
+## What makes Hyperbolic different
+
+Hyperbolic positions itself as a purpose-built GPU compute platform for AI workloads, eliminating friction points that plague alternatives. Unlike hyperscaler quota systems and sales-gated access, Hyperbolic deploys H100 and H200 clusters in under a minute with no forms, waitlists, or quota limits. The platform is explicitly designed around developer velocity—pre-built images, SSH access, and a transparent dashboard replace the typical enterprise sales process.
+
+The serverless inference offering stands out through aggressive pricing (claimed 3–10x cheaper than inference competitors) and a model library that includes hard-to-find configurations. Hyperbolic serves Llama-3.1-405B-Base in BF16 and FP8 formats, positioning itself for both high-throughput and ultra-low-latency workloads. The OpenAI-compatible API minimizes switching costs, allowing teams to swap a base URL rather than rewrite code.
+
+## Pricing model
+
+Hyperbolic operates on pay-as-you-go usage-based pricing with support for credit card and cryptocurrency payments. On-demand clusters and serverless inference are both billed hourly with no long-term commitments. Reserved clusters offer discounted prepaid pricing for teams seeking predictable capacity. The platform explicitly advertises "zero hidden fees" and positions itself as 3–10x cheaper than legacy cloud inference providers, though specific per-token or per-GPU-hour rates are not disclosed in public materials.
+
+## When it fits
+
+- **AI model training and fine-tuning**: Teams needing immediate H100/H200 access without quota delays or procurement overhead.
+- **Open-source model serving**: Builders running Llama, Qwen, DeepSeek, or other open models via serverless inference with OpenAI-compatible endpoints.
+- **Cost-sensitive inference at scale**: Projects where inference cost is a primary constraint and 24/7 availability is not required.
+- **Rapid prototyping and experimentation**: Development teams iterating quickly and scaling resources elastically without long-term contracts.
+- **Production LLM deployments**: Workloads requiring dedicated hosting, single-tenant isolation, or high-throughput inference (100K+ tokens/min).
+
+## When it doesn't
+
+Hyperbolic is a poor fit for workloads requiring traditional managed services (databases, Kubernetes as a service), multi-region high-availability setups with SLA guarantees, or enterprise compliance frameworks (FedRAMP, SOC 2 certification not mentioned). Customers needing proprietary model ecosystems or deep integration with Microsoft/Google enterprise tooling should evaluate hyperscalers instead.
+
+## Inclusion criteria
+
+Hyperbolic meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing**: Usage-based pay-as-you-go model publicly available; pricing claims (3–10x cheaper) are advertised on the homepage.
+2. **Self-service signup**: Clusters deploy in under one minute with no sales calls, forms, or quota approval required; dashboard-driven instance management.
+3. **Public SLA or status page**: Not explicitly confirmed in available materials. Status/uptime information should be verified at https://hyperbolic.xyz/ or documentation.

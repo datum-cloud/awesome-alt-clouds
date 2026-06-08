@@ -1,0 +1,54 @@
+---
+status: draft
+tagline: "Serverless GPU compute for AI teams—scale from zero to 1000+ GPUs instantly."
+pricingModel: "usage-based"
+regions:
+  - "US (us-west-2, us-east-1)"
+  - "Europe (eu-west-1)"
+  - "Asia-Pacific"
+services:
+  - "LLM Inference"
+  - "Fine-tuning & Training"
+  - "Batch Processing"
+  - "Sandboxes (ephemeral compute)"
+  - "Multi-modal Inference (image, video, audio)"
+  - "Notebooks"
+socials:
+  website: "https://modal.com/"
+  x: "https://x.com/modal"
+  linkedin: "https://www.linkedin.com/company/modal-labs/"
+  github: "https://github.com/modal-labs"
+---
+
+## What makes Modal different
+
+Modal abstracts away infrastructure management by letting developers write AI workloads in pure Python and deploy them directly to GPU-backed cloud resources. Unlike traditional cloud platforms where you provision instances and manage autoscaling configurations, Modal uses a decorator-based SDK where you annotate functions with hardware requirements (e.g., `@app.function(gpu="H100")`) and the platform handles orchestration, cold-start optimization, and multi-cloud routing automatically.
+
+The platform's architecture is purpose-built for AI workloads: sub-second cold starts, instant autoscaling to handle burst demand, and seamless multi-GPU parallelization. Modal routes jobs across its own infrastructure and partner clouds (AWS, GCP) in real time, so users get access to any GPU type without pre-committed capacity. This "pay-per-second, scale-to-zero" model contrasts sharply with reserved instance commitments typical of hyperscalers.
+
+## Pricing model
+
+Modal charges usage-based pricing—you pay only for compute consumed, with billing in per-second increments. The platform offers **$30/month in free compute credits** for new users, making it accessible for prototyping. Exact per-GPU hourly rates are not publicly listed on the marketing site; pricing varies by GPU type (H100, A100, A10G, B200) and region. For specific rates, users must check the [Pricing page](https://modal.com/pricing) or contact sales.
+
+This model differs from AWS's on-demand or reserved instance pricing because there are no capacity reservations, no minimum commitments, and no per-second overhead for idle resources—Modal scales to zero between requests. For cost-sensitive workloads that spike unpredictably (e.g., batch inference, fine-tuning experiments), this can result in significant savings vs. reserved capacity.
+
+## When it fits
+
+- **LLM inference at scale**: Deploy and serve open-source or custom models with instant autoscaling and sub-10ms latency from global endpoints.
+- **Fine-tuning and training loops**: Quick iteration on single-GPU LoRA fine-tunes or multi-node training runs (up to 128 B200s) without managing cluster orchestration.
+- **Batch & async workloads**: Run large-scale inference jobs (embeddings, evaluations, dataset generation) across hundreds of GPUs in parallel.
+- **AI agents & sandboxes**: Execute untrusted or user-generated code in isolated, ephemeral containers—useful for chatbot backends or agent frameworks.
+- **Research and rapid prototyping**: GPU-accelerated experiments with on-demand scaling; pay only for compute time, no reserved capacity.
+
+## When it doesn't
+
+- **Long-running, cost-optimized workloads**: If your workload runs continuously for weeks or months, reserved instances on hyperscalers may be cheaper.
+- **Workloads requiring persistent, low-latency storage**: Modal is designed for stateless compute; persistent data management requires external storage integrations (S3, etc.).
+
+## Inclusion criteria
+
+Modal meets all three inclusion criteria:
+
+1. **Transparent pricing**: [Pricing page](https://modal.com/pricing) publicly lists compute credits and usage-based rates.
+2. **Self-service signup**: [Sign-up is immediate](https://modal.com/signup) with free tier ($30/month compute credits).
+3. **Public SLA & status**: [Security & compliance documentation](https://modal.com/docs/guide/security) confirms SOC2 and HIPAA; status and incident reporting available via [Slack community](https://modal.com/slack).

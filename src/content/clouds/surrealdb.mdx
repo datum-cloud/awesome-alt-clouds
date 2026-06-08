@@ -1,0 +1,48 @@
+---
+status: draft
+tagline: "Multi-model database with SQL, GraphQL, and real-time sync for modern applications."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Multi-model database (relational, document, graph)"
+  - "SQL and GraphQL query interface"
+  - "Real-time subscriptions and WebSocket support"
+  - "Full-text search"
+  - "Role-based access control (RBAC)"
+  - "Cloud-hosted and self-hosted deployments"
+socials:
+  website: "https://surrealdb.com/"
+  github: "https://github.com/surrealdb/surrealdb"
+  x: "https://twitter.com/surrealdb"
+  linkedin: "https://linkedin.com/company/surrealdb/"
+---
+
+## What makes SurrealDB different
+
+SurrealDB is a multi-model database designed to consolidate multiple database types into a single query engine. Rather than forcing developers to choose between relational, document, and graph paradigms, SurrealDB supports all three natively within the same cluster, using both SQL and GraphQL as first-class query languages. This unified approach reduces operational complexity for applications that traditionally required separate databases for different data shapes.
+
+The database emphasizes developer ergonomics through WebSocket-based real-time subscriptions, allowing clients to receive live updates when data changes—useful for collaborative applications, real-time dashboards, and multi-user systems. SurrealDB is open-source (Apache 2.0), enabling self-hosting and transparency into the codebase, which appeals to teams prioritizing data sovereignty or avoiding vendor lock-in.
+
+## Pricing model
+
+SurrealDB Cloud operates on a usage-based pricing model, charging for database operations (queries, mutations, subscriptions) and storage consumed. The database is free to self-host; costs only apply to managed cloud deployments. No published per-operation rates were found in the available documentation, but the provider emphasizes a pay-as-you-grow approach without minimum commitments, making it accessible to startups and small teams ramping up.
+
+Self-hosted deployments incur no SurrealDB licensing costs, appealing to organizations deploying on-premises or managing their own infrastructure in a third-party cloud.
+
+## When it fits
+
+- **Rapid prototyping and MVPs**: Multi-model support and real-time subscriptions accelerate development when schema evolution and live updates are requirements.
+- **Collaborative or real-time applications**: Chat, whiteboarding, shared workspaces, and dashboards benefit from built-in WebSocket subscriptions.
+- **Unified data platform**: Teams seeking to consolidate relational, document, and graph queries under one database reduce deployment and maintenance overhead.
+- **Privacy-conscious deployments**: Self-hosting eliminates reliance on third-party cloud providers for sensitive data.
+- **JavaScript/TypeScript stacks**: Native driver support and modern query patterns align well with Node.js and frontend applications.
+
+## When it doesn't
+
+SurrealDB may not suit workloads requiring massive scale (petabyte-range analytics), long-term operational maturity across large enterprises, or specialized requirements like columnar storage for OLAP, where mature alternatives (PostgreSQL, Snowflake, DuckDB) are better established. Teams deeply invested in SQL-only workflows will not benefit from the multi-model overhead.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Usage-based model clearly documented on the pricing page.  
+✅ **Self-service signup**: Cloud accounts can be created directly at https://surrealdb.com/.  
+✅ **Public SLA and status page**: Status monitoring available at https://status.surrealdb.com/.

@@ -1,0 +1,57 @@
+---
+status: draft
+tagline: "Instantly generates GraphQL APIs over PostgreSQL databases without boilerplate"
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "GraphQL API Engine"
+  - "PostgreSQL Query Abstraction"
+  - "Real-time Subscriptions"
+  - "Role-based Access Control"
+  - "Data Delivery Network (PromptQL)"
+  - "Authentication & Authorization"
+socials:
+  website: "https://hasura.io/"
+  github: "https://github.com/hasura"
+  x: "https://twitter.com/HasuraHQ"
+  linkedin: "https://www.linkedin.com/company/hasura/"
+---
+
+## What makes Hasura different
+
+Hasura eliminates the manual work of building REST or GraphQL APIs by auto-generating a full-featured GraphQL layer directly over existing PostgreSQL databases. Rather than writing resolvers and schema definitions by hand, developers declare data relationships once and Hasura compiles them into a production-ready GraphQL engine.
+
+The platform is open-source at its core, allowing teams to self-host or use the managed cloud service. This dual model appeals to enterprises that need on-premise flexibility without sacrificing developer velocity. Hasura's real-time subscriptions and fine-grained role-based access control (RBAC) mean complex authorization logic is declarative rather than scattered across application code.
+
+Unlike traditional API platforms that require significant boilerplate, Hasura's instant API generation lets teams move from database schema to deployed GraphQL in minutes, making it especially compelling for rapid prototyping and iterative product development.
+
+## Pricing model
+
+Hasura offers a **free tier** for development and small projects, with transparent usage-based pricing for production workloads. The managed cloud service charges based on:
+
+- **API calls** (queries and mutations)
+- **Real-time subscriptions** (concurrent connections)
+- **Data volume** transferred
+
+Exact per-unit rates are published on their pricing page. Self-hosted deployments are free (open-source), with optional professional support available. This usage-based model aligns costs with actual demand, making it attractive for variable or growing workloads where reserved capacity pricing would be wasteful.
+
+## When it fits
+
+- **Rapid API development**: Teams shipping GraphQL APIs faster than hand-written resolver approaches allow.
+- **Existing PostgreSQL adoption**: Organizations standardized on Postgres that need a modern API layer without rewriting backends.
+- **Real-time applications**: Chat, notifications, dashboards, and collaborative tools requiring instant data subscriptions.
+- **Multi-tenant SaaS**: Row-level security and role-based access control reduce the need for custom authorization middleware.
+- **Microservice API gateways**: Aggregating data across PostgreSQL sources without building orchestration layers.
+
+## When it doesn't
+
+- **Non-PostgreSQL databases**: Hasura's strength is PostgreSQL; support for MySQL, MongoDB, or other data stores is limited or via federation patterns requiring additional tooling.
+- **Compute-heavy workloads**: If your API layer needs complex business logic or data transformation beyond SQL, you may still need application servers alongside Hasura.
+
+## Inclusion criteria
+
+Hasura meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing**: Usage-based rates publicly listed at [https://hasura.io/pricing](https://hasura.io/pricing)
+2. **Self-service signup**: Free account creation at [https://hasura.io](https://hasura.io/)
+3. **Public SLA & status page**: Uptime commitments and status monitoring available at [status.hasura.io](https://status.hasura.io/)

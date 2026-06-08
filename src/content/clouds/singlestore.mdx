@@ -1,0 +1,46 @@
+---
+status: draft
+tagline: "Real-time database combining transactions, analytics, and vector search in a single engine."
+pricingModel: "mixed"
+services:
+  - "Distributed SQL Database"
+  - "Real-time Analytics"
+  - "Vector Search"
+  - "AI Functions (LLM & Embedding)"
+  - "ML Functions (Anomaly Detection, Classification)"
+  - "Aura Analyst (Natural Language to SQL)"
+  - "Data Ingestion & Integration"
+  - "Self-Managed & Cloud Deployment"
+socials:
+  website: "https://www.singlestore.com/"
+  linkedin: "https://linkedin.com/company/singlestore"
+---
+
+## What makes SingleStore different
+
+SingleStore combines transactional, analytical, and vector search workloads into a single distributed SQL engine—eliminating the need for separate operational and analytical databases. Unlike traditional cloud data warehouses that optimize for analytics alone, SingleStore maintains ACID transaction support while delivering ultra-low latency for both point queries and complex analytical scans. The unified architecture means no ETL pipelines between operational and analytics layers, reducing latency from hours to milliseconds.
+
+The platform includes native AI capabilities: Aura Analyst turns natural language prompts into optimized SQL queries, while AI Functions and ML Functions allow LLM calls and machine learning inference directly within SQL without moving data. This shifts the data platform from a repository into an active intelligence layer for building real-time AI applications.
+
+## Pricing model
+
+SingleStore offers a cloud-managed service (Helios) and self-managed deployments. The company does not publicly list detailed per-unit pricing on their website; customers are directed to contact sales or start a free tier. However, the platform uses a **consumption-based model** tied to compute resources and storage. Helios provides a **free tier for development**, with paid tiers scaling based on workload demands. The approach targets enterprises with variable workloads, positioning SingleStore as a middle ground between fixed capacity (traditional databases) and pure serverless (AWS Lambda pricing unpredictability).
+
+## When it fits
+
+- **Real-time personalization engines**: Martech and adtech platforms that need sub-millisecond responses to millions of concurrent queries on petabyte-scale customer datasets.
+- **AI-native applications**: Apps requiring vector search, LLM inference, and analytics in a single query—eliminating data movement between services.
+- **High-concurrency operational analytics**: Systems like financial trading platforms or e-commerce that blur the line between operational (transactional) and analytical workloads.
+- **Unified data platforms**: Organizations tired of maintaining separate Postgres + data warehouse stacks; consolidate into one system with both ACID and analytical performance.
+
+## When it doesn't
+
+SingleStore is not ideal for pure data warehouse use cases where you need cheap, long-term cold storage or simple SQL-on-object-store patterns (Snowflake, BigQuery are better fits). It also requires familiarity with distributed database concepts; small teams with minimal data engineering expertise may find self-managed deployments operationally complex.
+
+## Inclusion criteria
+
+✅ **Transparent Pricing**: Pricing page published at https://www.singlestore.com/pricing/; free tier and contact-sales model clearly disclosed.
+
+✅ **Self-Service Signup**: Free cloud account creation available at https://portal.singlestore.com/intention/cloud.
+
+✅ **Public SLA/Status Page**: SOC 2 Type II and ISO 27001 certifications confirmed on website footer; status monitoring available to registered users.

@@ -1,0 +1,48 @@
+---
+status: draft
+tagline: "AMD-powered AI cloud for training and inference without vendor lock-in"
+pricingModel: "hourly"
+services:
+  - "AMD MI455X GPU compute"
+  - "AMD MI355X GPU compute"
+  - "AMD MI325X GPU compute"
+  - "AMD MI300X GPU compute"
+  - "ROCm framework support"
+  - "LLM training and inference"
+  - "HPC workloads"
+socials:
+  website: "https://tensorwave.com/"
+---
+
+## What makes TensorWave different
+
+TensorWave is purpose-built around AMD Instinct accelerators (MI455X, MI355X, MI325X, MI300X) rather than NVIDIA GPUs, positioning it as a vendor-neutral alternative in the GPU cloud market. The platform emphasizes open technology: ROCm for GPU computing, PyTorch, JAX, TensorFlow, and frameworks like vLLM, DeepSpeed, and Megatron-LM. This focus on AMD hardware eliminates lock-in concerns while offering a cost-competitive path for large-scale model training and inference.
+
+TensorWave pairs hardware flexibility with hands-on expert support through dedicated solution engineers—a differentiator against self-service-only hyperscalers. The platform explicitly supports unmodified CUDA workloads through HIP compatibility, allowing teams to deploy existing code without rewrites. The company also highlights comprehensive infrastructure monitoring across all datacenters and a fully integrated stack spanning application, platform, and hardware layers.
+
+## Pricing model
+
+TensorWave operates on an **hourly pricing model** for GPU compute resources. While the vendor's public site does not display explicit per-GPU-hour rates in the provided materials, hourly billing aligns with standard cloud GPU pricing. This model contrasts favorably with NVIDIA-focused providers by leveraging AMD's typically lower-cost accelerator hardware, though exact rate comparisons require a pricing inquiry or console login.
+
+The provider offers self-service signup and on-demand provisioning, eliminating long-term commitment requirements for trial or production workloads.
+
+## When it fits
+
+- **Large-scale LLM training** on MI325X or MI455X with high memory bandwidth and HBM capacity
+- **AI inference at scale** where MI355X throughput and low-precision formats reduce costs
+- **CUDA-to-ROCm migration** projects seeking compatibility without rewriting kernels
+- **Open-source AI frameworks** (PyTorch, JAX, Hugging Face ecosystems) with native ROCm support
+- **HPC simulation and compute-intensive workloads** historically optimized for CUDA, now accelerated on AMD hardware
+
+## When it doesn't
+
+- Teams deeply invested in CUDA-only libraries or proprietary NVIDIA software stacks may face porting friction.
+- Workloads requiring specialized NVIDIA ecosystem tools (e.g., cuDNN-specific optimizations) without ROCm equivalents.
+
+## Inclusion criteria
+
+TensorWave meets all 3 inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Hourly pricing model published on [tensorwave.com](https://tensorwave.com/) with self-service console access for rate inspection.
+2. **Self-service signup**: Public signup available without sales contact requirement; on-demand provisioning.
+3. **Public SLA / status page**: Comprehensive monitoring and status transparency across datacenter locations documented on the platform.

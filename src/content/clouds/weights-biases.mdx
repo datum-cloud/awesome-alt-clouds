@@ -1,0 +1,50 @@
+---
+status: draft
+tagline: "AI developer platform for experiment tracking, model management, and LLM observability."
+pricingModel: "subscription"
+services:
+  - "Experiment Tracking"
+  - "Hyperparameter Optimization (Sweeps)"
+  - "Model Registry"
+  - "LLM Evaluation & Monitoring"
+  - "Serverless Inference"
+  - "Serverless Fine-tuning (RL/SFT)"
+  - "Traces & Debugging"
+  - "Weave Agent Framework"
+socials:
+  website: "https://wandb.ai/"
+  linkedin: "https://linkedin.com/company/weights-&-biases"
+  github: "https://github.com/wandb"
+---
+
+## What makes Weights & Biases different
+
+Weights & Biases is purpose-built for ML and LLM workflows rather than general-purpose cloud compute. The platform integrates experiment tracking, model versioning, and production monitoring into a single developer-focused ecosystem—eliminating the need to stitch together disparate tools for hyperparameter optimization, model registry, and observability.
+
+Unlike traditional cloud providers that offer infrastructure primitives, W&B provides high-level abstractions specifically for AI development: Sweeps for automated hyperparameter search, Tables for collaborative data exploration, and Weave for tracing and evaluating AI agents. This vertical focus means teams spend less time on infrastructure plumbing and more on model iteration.
+
+## Pricing model
+
+W&B operates on a subscription model with a free tier for individual developers and research. Paid tiers scale with usage and team size, though specific pricing figures are not publicly disclosed on their website—customers must request quotes or sign up to view tier details. This approach is typical for enterprise AI platforms where workload costs vary significantly by model size, inference volume, and team headcount.
+
+The platform's serverless inference and fine-tuning services charge on an hourly or usage basis, with access to multiple model families (Llama, Qwen, DeepSeek, Phi, etc.) without requiring users to manage underlying GPU infrastructure themselves.
+
+## When it fits
+
+- **ML experiment tracking and hyperparameter optimization**: Teams iterating on models who need reproducibility, visualization, and automated search across hyperparameter spaces.
+- **Model governance and registry**: Organizations requiring centralized versioning, metadata tracking, and approval workflows for production models.
+- **LLM evaluation and monitoring**: Enterprises building LLM applications who need rigorous evaluation, production tracing, and continuous monitoring without building custom infrastructure.
+- **Serverless model fine-tuning and inference**: Teams wanting to fine-tune or serve LLMs (Llama, Qwen, DeepSeek, Phi) without provisioning GPU clusters.
+- **Agent development and debugging**: Developers building AI agents who need traces, evaluations, and production monitoring built in.
+
+## When it doesn't
+
+W&B is not a general-purpose cloud provider and does not replace AWS, GCP, or Azure for non-ML workloads (databases, storage, compute-heavy applications, etc.). It is also most valuable for teams actively iterating on models; read-heavy production inference-only deployments may find lower-cost, specialized inference providers more suitable.
+
+## Inclusion criteria
+
+Weights & Biases meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Public pricing page and self-service tier information available at [wandb.ai/pricing](https://wandb.ai/site/pricing).
+2. **Self-service signup**: Free account creation available directly on the platform; no sales gate for core features.
+3. **Public SLA and status page**: Trust and security documentation at [wandb.ai/trust](https://wandb.ai/site/trust) and operational status monitoring available to registered users.

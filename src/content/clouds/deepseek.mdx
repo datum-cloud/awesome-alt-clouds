@@ -1,0 +1,51 @@
+---
+status: draft
+tagline: "Open-source AI models and API platform for developers building with reasoning and coding assistants."
+headquarters: "Hangzhou, China"
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "DeepSeek R1 (reasoning model)"
+  - "DeepSeek V3 (multimodal LLM)"
+  - "DeepSeek Coder V2 (code generation)"
+  - "DeepSeek VL (vision-language)"
+  - "DeepSeek Chat (web interface)"
+  - "API Platform (model inference)"
+  - "Mobile App"
+socials:
+  website: "https://deepseek.com/"
+  x: "https://twitter.com/deepseek_ai"
+  github: "https://github.com/deepseek-ai"
+---
+
+## What makes Deepseek different
+
+DeepSeek distinguishes itself through a commitment to open-source AI research and competitive pricing on proprietary model APIs. Rather than locking functionality behind closed ecosystems, DeepSeek publishes research models (R1, V3, Coder V2, VL, Math) on GitHub under open licenses, enabling developers to self-host, fine-tune, and customize. This dual approach—free, auditable models alongside commercial API access—contrasts with hyperscaler strategies that monetize proprietary lock-in.
+
+The platform emphasizes reasoning-grade performance at fraction-of-scale costs. DeepSeek R1, released in 2024, demonstrates competitive inference speeds and accuracy on complex problem-solving tasks, positioning it as an alternative to pricier reasoning APIs. DeepSeek Coder V2 targets software engineers directly with specialized code completion and generation, bypassing the need for general-purpose LLMs in coding workflows.
+
+## Pricing model
+
+DeepSeek uses a usage-based, token-counted pricing model accessible via their API platform. Specific pricing is listed on the [API pricing page](https://api-docs.deepseek.com/zh-cn/quick_start/pricing), with rates typically lower than OpenAI or Anthropic equivalents for comparable model sizes. Chat access via web and mobile app is free, with no artificial rate limits on free tier usage—a deliberate contrast to freemium models that throttle after quotas.
+
+The model supports pay-as-you-go billing with no upfront commitments, and developers can access all published research models (R1, V3, Coder V2) through a single API credential, reducing vendor fragmentation.
+
+## When it fits
+
+- **Open-source-first teams**: Organizations prioritizing auditability, reproducibility, and the ability to self-host can deploy DeepSeek models on their own infrastructure.
+- **Cost-sensitive AI applications**: Startups and enterprises evaluating LLM economics benefit from significantly lower token costs without sacrificing quality.
+- **Specialized coding tasks**: Teams needing dedicated code generation, completion, or refactoring benefit from DeepSeek Coder V2's engineering-focused training.
+- **Reasoning and math-heavy workloads**: R1's reinforcement-learning approach to step-by-step problem solving suits research, data analysis, and complex query answering.
+- **Multi-modal content generation**: DeepSeek VL enables image understanding and generation in a single platform, reducing API sprawl.
+
+## When it doesn't
+
+DeepSeek is not a general-purpose cloud infrastructure provider—it offers no compute, storage, networking, or database services. Enterprises requiring managed Kubernetes, object storage, or traditional IaaS should combine DeepSeek APIs with AWS, GCP, or Azure. Regional availability and latency guarantees may not match hyperscaler SLAs for latency-critical applications in underserved geographies.
+
+## Inclusion criteria
+
+DeepSeek meets all three inclusion criteria:
+
+1. **Transparent pricing**: [API pricing page](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) publicly lists per-token rates.
+2. **Self-service signup**: Account creation and API key generation available immediately at [platform.deepseek.com](https://platform.deepseek.com/).
+3. **Public SLA & status page**: [Service status page](https://status.deepseek.com/) provides real-time incident tracking and uptime visibility.

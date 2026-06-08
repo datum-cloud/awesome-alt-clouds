@@ -1,0 +1,52 @@
+---
+status: draft
+tagline: "Purpose-built time-series database for cloud, on-premises, and edge deployments."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "InfluxDB 3 Cloud Serverless"
+  - "InfluxDB 3 Cloud Dedicated"
+  - "InfluxDB 3 Enterprise (self-managed)"
+  - "InfluxDB 3 Core (OSS)"
+  - "Telegraf (data collection)"
+  - "Amazon Timestream for InfluxDB"
+socials:
+  website: "https://www.influxdata.com/"
+  github: "https://github.com/influxdata"
+---
+
+## What makes InfluxData different
+
+InfluxDB is purpose-built for time-series data, not a general-purpose database retrofitted for metrics. Its architecture optimizes for write-heavy ingestion, real-time queries, and efficient compression of sequential measurements—the core pattern in monitoring, IoT, and observability workloads. Unlike relational databases, InfluxDB uses a columnar, time-series-specific storage engine designed to handle millions of writes per second with minimal overhead.
+
+The company offers a rare flexibility: developers can choose self-hosted open-source (InfluxDB 3 Core), self-managed Enterprise deployments, fully managed Cloud Serverless, or dedicated Cloud instances. This multi-tier strategy caters to organizations ranging from startups testing locally to enterprises requiring air-gapped deployments or reserved capacity. Telegraf, the included data collection agent, integrates with 300+ input and output plugins out of the box, reducing operator burden for metric gathering across infrastructure.
+
+## Pricing model
+
+InfluxDB Cloud Serverless charges on a usage-based model: you pay for **write operations** (per 100,000 writes), **query operations** (per query), and **storage** (per GB-month). Exact rates are available on their pricing page but vary by region. InfluxDB Cloud Dedicated offers reserved capacity with monthly commitments, suitable for predictable, high-volume workloads.
+
+Self-managed tiers (Core OSS and Enterprise) have no direct vendor charges, though Enterprise requires a license for production support and advanced features. This mix of consumption-based and reserved pricing lets teams scale gradually without large upfront commitments, and the open-source option eliminates lock-in risk for early-stage projects.
+
+## When it fits
+
+- **Infrastructure & network monitoring**: Real-time collection of thousands of metric streams from servers, containers, and network devices.
+- **IoT and sensor analytics**: Edge deployments sending high-frequency telemetry requiring sub-second query latency.
+- **Machine learning feature pipelines**: Pre-aggregated, downsampled time-series data fed to training models.
+- **Energy and industrial IoT**: Predictive maintenance and asset monitoring in manufacturing, utilities, and battery storage systems.
+- **Observability and APM**: Metrics collection at scale, complementary to log and trace storage systems.
+
+## When it doesn't
+
+InfluxDB is not a general-purpose relational database and struggles with complex joins across non-time-series data. It is also not ideal for unstructured text search (use Elasticsearch or similar) or transactional ACID workloads requiring row-level consistency.
+
+## Open source
+
+InfluxDB 3 Core is open source under the Business Source License, allowing unlimited local use and community contributions. The company also maintains Telegraf as fully open source, lowering barriers to adoption and self-hosted architectures.
+
+## Inclusion criteria
+
+InfluxData meets all three alt-cloud inclusion criteria:
+
+1. **Transparent pricing**: Public pricing page at https://www.influxdata.com/influxdb-pricing/ with usage-based rates and examples.
+2. **Self-service signup**: Free tier and direct registration available at https://www.influxdata.com/influxdb-signup/.
+3. **Public SLA & status page**: Documented uptime commitments for Cloud tiers and public status dashboard accessible from their support portal.

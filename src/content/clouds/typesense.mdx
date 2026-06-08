@@ -1,0 +1,50 @@
+---
+status: draft
+tagline: "Open-source, typo-tolerant search engine delivering <50ms results with self-hosted or managed cloud options."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Typo-tolerant full-text search"
+  - "Vector & semantic search"
+  - "Geo-spatial search"
+  - "Faceted navigation & filtering"
+  - "Multi-tenant API keys & ACLs"
+  - "Autocomplete & instant search"
+  - "Federated search across multiple sources"
+  - "High availability replication"
+socials:
+  website: "https://typesense.org/"
+  github: "https://github.com/typesense"
+---
+
+## What makes Typesense different
+
+Typesense sits in the gap between Elasticsearch's operational complexity and Algolia's SaaS lock-in. It's a modern, in-memory search engine built for developers who want sub-50ms latency without wrestling with Java heap tuning or enterprise licensing costs. The architecture emphasizes simplicity: a single binary that runs in Docker, handles typo-tolerance out of the box, and exposes a clean REST API.
+
+Unlike Elasticsearch, which requires significant DevOps investment, Typesense is designed to "just work." Vector search and semantic capabilities are built-in rather than added via plugins. The project has gained traction with mid-market companies (Logitech, Kick, Lonely Planet, ElevenLabs) and appeared on the ThoughtWorks Technology Radar, signaling production-readiness for teams exhausted by Elasticsearch maintenance.
+
+## Pricing model
+
+Typesense Cloud is **usage-based**, billed per search query and documents stored. Exact per-unit pricing is not published on the main website, but the model is designed to scale linearly with demand—no fixed seats or reserved capacity. Self-hosted deployments (using the open-source binary) incur no direct licensing cost; you pay only for compute infrastructure.
+
+The usage-based approach differs from Algolia's per-operation SaaS model and Meilisearch's similar variable pricing, making it attractive for variable-load search workloads or cost-conscious teams deploying self-hosted.
+
+## When it fits
+
+- **Search-heavy applications**: e-commerce product search, content discovery platforms, recipe databases, documentation sites where typo-tolerance and sub-100ms latency are table stakes.
+- **Developer-friendly deployments**: teams wanting to avoid Elasticsearch's operational burden and preferring a single, self-contained binary.
+- **Multi-tenant SaaS**: built-in scoped API keys and per-user data isolation simplify multi-tenant search architectures.
+- **Real-time vector search**: semantic search, recommendations, and RAG (retrieval-augmented generation) pipelines with vector embeddings as first-class citizens.
+- **Cost-sensitive scale**: self-hosted deployments avoid SaaS per-query fees; cloud usage aligns costs with actual search volume.
+
+## When it doesn't
+
+Typesense is not a replacement for data warehousing, analytics, or OLAP workloads. It's also less mature than Elasticsearch for extreme scale (petabyte+ datasets) or complex aggregation queries across billions of documents.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Typesense Cloud uses published usage-based billing (searches, document storage); self-hosted open-source is free.
+
+✅ **Self-service signup**: Typesense Cloud allows instant provisioning without sales contact; Docker images and binaries available for self-hosted.
+
+✅ **Public SLA & status page**: The project maintains active documentation, GitHub issue tracking, and community support channels demonstrating operational transparency.

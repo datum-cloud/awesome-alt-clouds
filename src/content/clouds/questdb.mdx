@@ -1,0 +1,56 @@
+---
+status: draft
+tagline: "Open-source time-series database with ultra-low latency and SQL for real-time workloads."
+pricingModel: "mixed"
+openSource: true
+services:
+  - "Time-series database engine"
+  - "Distributed architecture"
+  - "SQL query interface"
+  - "Materialized views & aggregations"
+  - "Parquet & Iceberg integration"
+  - "Multi-tier storage"
+  - "AI agent connectivity"
+  - "Enterprise deployment (BYOC)"
+socials:
+  website: "https://questdb.com/"
+  github: "https://github.com/questdb/questdb"
+---
+
+## What makes QuestDB different
+
+QuestDB is purpose-built for latency-sensitive, high-throughput time-series workloads—a stark contrast to general-purpose cloud databases. The engine ingests 16M+ rows per second and delivers sub-10ms query latency, with benchmarks showing 10x faster ingestion than competing time-series databases. Its multi-tier storage architecture separates real-time ingestion from historical analytics, allowing operators to query across both layers with a single SQL interface.
+
+Unlike proprietary solutions like kdb+, QuestDB uses open data formats (Parquet, Iceberg) and standard SQL, eliminating vendor lock-in. This approach resonates with financial exchanges (B3, One Trading), tier-1 banks (HDFC, Mizuho), and aerospace firms (Airbus) that process billions of data points daily. The platform integrates natively with Kubernetes, Docker, and major cloud platforms (AWS, Azure, GCP), while remaining deployable on-premises or via bring-your-own-cloud (BYOC) arrangements.
+
+A newer differentiator is native AI agent support: coding agents can query QuestDB using standard SQL without learning domain-specific languages, reducing the barrier to autonomous data analysis in trading and risk systems.
+
+## Pricing model
+
+QuestDB offers a dual-license approach:
+
+- **Open Source (Free)**: Fully featured, self-hosted, MIT-licensed. Suitable for development, testing, and production deployments with in-house operations.
+- **Enterprise**: Subscription pricing for advanced features including distributed architecture, high availability (multi-AZ), bring-your-own-cloud deployment, and managed support. Specific per-node or per-seat pricing is available via sales contact.
+
+The open-source option is genuinely production-grade—customers like Airbus and One Trading run critical workloads on the open version, suggesting that commercial licensing is optional for many deployments. This contrasts with freemium models that cripple the free tier; QuestDB's choice makes it accessible to cost-conscious teams and startups.
+
+## When it fits
+
+- **Capital markets & trading**: Tick data ingestion, order-book analytics, real-time risk dashboards, trade-quote reconciliation via ASOF JOIN.
+- **IoT & infrastructure monitoring**: High-volume sensor data, edge ingestion, long-term historical analytics on immutable data.
+- **Cryptographic & blockchain systems**: OKX dashboard case study shows effectiveness for high-frequency exchange workloads.
+- **Aerospace & industrial**: Real-time telemetry from aircraft and equipment, as demonstrated by Airbus deployment.
+- **AI-driven applications**: Agents querying time-series data for anomaly detection, forecasting, or autonomous decision-making.
+
+## When it doesn't
+
+- **Unstructured data (images, documents, video)**: QuestDB is a columnar time-series engine, not a data lake for semi-structured or binary content.
+- **OLTP with complex transactions**: Not designed for multi-row ACID workloads typical of operational databases.
+
+## Inclusion criteria
+
+QuestDB meets **all three** inclusion criteria:
+
+1. **Transparent pricing**: Open-source tier is free and unlimited; enterprise pricing available via published contact form at [questdb.com/enterprise/contact/](https://questdb.com/enterprise/contact/).
+2. **Self-service signup**: Download and deploy immediately from [questdb.com/download/](https://questdb.com/download/); live demo available at [demo.questdb.io](https://demo.questdb.io/).
+3. **Public SLA & status**: Enterprise SLA details available through sales; community forum and public GitHub roadmap at [github.com/orgs/questdb/projects/15](https://github.com/orgs/questdb/projects/15).

@@ -1,0 +1,51 @@
+---
+status: draft
+tagline: "Serverless GPU inference platform for generative AI models with instant deployment"
+pricingModel: "usage-based"
+services:
+  - "Serverless GPU inference"
+  - "Model gallery (1000+ production-ready models)"
+  - "On-demand GPU clusters"
+  - "Fine-tuning and training"
+  - "Private model endpoints"
+  - "Workflow automation"
+regions:
+  - "Global (distributed)"
+socials:
+  website: "https://fal.ai/"
+  x: "https://twitter.com/fal_ai"
+  github: "https://github.com/fal-ai"
+  linkedin: "https://linkedin.com/company/fal-ai"
+---
+
+## What makes Fal.ai different
+
+Fal.ai focuses exclusively on generative media inference and training, rather than competing as a general-purpose cloud provider. Its core differentiator is the **fal Inference Engine**—a custom-built runtime claimed to be up to 10x faster than alternatives for diffusion models, with zero cold starts and automatic scaling from zero to thousands of GPUs instantly. This narrow focus allows deep optimization for the AI/ML workload rather than spreading engineering effort across compute, storage, and networking generalists.
+
+The platform ships with access to 1,000+ pre-built, production-ready models (image, video, audio, 3D, and code generation) via a unified API, eliminating the need for users to manage model versioning, containerization, or dependency resolution. Developers can call state-of-the-art open models or deploy private/fine-tuned variants with a single click, making time-to-production dramatically shorter than self-managed GPU infrastructure.
+
+Enterprise trust is built on SOC 2 compliance, 99.99% uptime SLA, private endpoints, and usage analytics—features typically found only in mature hyperscaler offerings, but here paired with a developer-first UX.
+
+## Pricing model
+
+Fal.ai offers **per-output pricing for serverless inference** and **hourly GPU pricing for dedicated compute clusters**. Published rates include H100/H200/B200 GPUs starting at **$1.20/hour** on the compute tier. Serverless pricing varies by model; specific per-inference costs are available in their pricing dashboard after signup, with no minimum commitment or hidden setup fees.
+
+The model is usage-based with optional reserved capacity for enterprise customers. This contrasts with traditional cloud providers' metered compute + storage bundles, making it simpler to predict costs when inference volume is the primary metric.
+
+## When it fits
+
+- **Generative media products**: Image, video, audio, or 3D generation features in consumer or B2B applications
+- **Model experimentation and prototyping**: Rapid iteration on multiple open models without GPU procurement or Kubernetes setup
+- **Fine-tuning at scale**: Dedicated cluster access with proprietary data-feeding infrastructure for training custom models
+- **Globally distributed inference**: Latency-sensitive applications needing instant scaling across regions without managing autoscaling groups
+- **Enterprise AI features**: Companies like Canva, Perplexity, and Poe using Fal to power production generative features with SLA guarantees
+
+## When it doesn't
+
+Fal.ai is **not suited for non-generative workloads** (databases, object storage, VMs, networking). For teams needing broad infrastructure (compute + storage + databases in one bill), a hyperscaler remains the better fit. Very cost-sensitive inference at massive scale may find cheaper per-GPU/hour rates elsewhere, though the elimination of cold starts and infrastructure overhead often makes Fal competitive on total cost of ownership.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Published hourly rates ($1.20–$2.00+ range for H100/H200/B200); per-output pricing accessible after free signup.  
+✅ **Self-service signup**: Free tier available; full API access without sales contact required.  
+✅ **Public SLA & status**: 99.99% uptime SLA documented; status page at [status.fal.ai](https://status.fal.ai).

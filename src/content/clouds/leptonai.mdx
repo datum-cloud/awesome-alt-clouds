@@ -1,0 +1,54 @@
+---
+status: draft
+tagline: "GPU-accelerated AI inference at scale with serverless deployment and pay-per-token pricing."
+pricingModel: usage-based
+regions:
+  - "US (multiple zones)"
+  - "Europe"
+  - "Asia Pacific"
+services:
+  - "Serverless AI inference"
+  - "Model API hosting"
+  - "GPU compute (A100, H100, L40S)"
+  - "Custom model deployment"
+  - "Batch processing"
+  - "Model marketplace"
+socials:
+  website: "https://lepton.ai/"
+  x: "https://twitter.com/leptonai"
+  linkedin: "https://www.linkedin.com/company/lepton-ai/"
+  github: "https://github.com/leptonai"
+---
+
+## What makes LeptonAI different
+
+LeptonAI focuses on making AI model inference accessible to developers through a serverless, pay-per-token model that eliminates infrastructure overhead. Unlike traditional cloud providers that charge by compute hour, LeptonAI charges based on actual token consumption—meaning you only pay when models are actively processing requests. This dramatically reduces costs for bursty, variable-load inference workloads.
+
+The platform abstracts away GPU resource management entirely. Developers deploy models via a simple API or web UI, specify required GPUs (A100, H100, L40S, etc.), and Lepton handles scaling, load balancing, and cold-start optimization. Built-in model versioning, A/B testing, and integrated monitoring make it particularly strong for teams iterating on production LLM applications without DevOps complexity.
+
+## Pricing model
+
+LeptonAI operates on a transparent, usage-based model where customers pay per token processed. Pricing varies by GPU type and model size—for example, running inference on an A100 GPU costs significantly less than H100-backed inference. There are no upfront commitments, idle compute charges, or hidden egress fees. The platform also offers a free tier for development and testing, making it accessible for prototyping.
+
+This approach contrasts sharply with hourly cloud billing: a model that receives 1,000 requests per day won't be charged for the 23 hours it's idle, only for the few minutes of actual compute time. For teams with unpredictable or low-volume inference needs, this can represent 60–80% cost savings compared to reserved GPU instances.
+
+## When it fits
+
+- **Startups and small teams** building LLM applications without dedicated DevOps: deploy and scale without infrastructure work.
+- **Variable-load inference**: applications with unpredictable traffic patterns where hourly GPU billing is wasteful.
+- **Multi-model experimentation**: rapid testing of different model architectures, quantization strategies, and fine-tuned variants.
+- **API-first AI services**: companies monetizing AI via APIs and needing transparent, per-token cost attribution to customers.
+- **Batch and asynchronous inference**: document processing, content generation, and background tasks where latency tolerance allows efficient batching.
+
+## When it doesn't
+
+- **Latency-critical applications** demanding sub-10ms guaranteed response times; serverless cold-start penalties may exceed SLAs.
+- **Long-running compute jobs** or traditional HPC workloads; LeptonAI is optimized for request-response inference, not training or simulation.
+
+## Inclusion criteria
+
+LeptonAI meets all three inclusion criteria:
+
+1. **Transparent pricing**: Published per-token and per-GPU pricing on the website; no hidden fees.
+2. **Self-service signup**: Free account creation and immediate model deployment via the Lepton console.
+3. **Public SLA & status page**: Operational status available at [status.lepton.ai](https://status.lepton.ai/).

@@ -1,0 +1,57 @@
+---
+status: draft
+tagline: "Browser-layer security for third-party scripts, AI agents, and PCI DSS 4.0.1 compliance."
+pricingModel: subscription
+regions:
+  - Global (no proxy/reverse proxy; client-side deployment)
+services:
+  - Script inventory and monitoring
+  - AI agent detection
+  - Device fingerprinting
+  - PCI DSS 6.4.3 & 11.6.1 automation
+  - Account takeover detection
+  - Chargeback evidence
+  - Compliance reporting
+socials:
+  website: "https://cside.dev/"
+---
+
+## What makes c/Side different
+
+c/Side fills a visibility gap that traditional cloud security tools leave open: the browser layer. While WAFs, SIEMs, and server-side fraud detection stop at the application boundary, c/Side runs as a single JavaScript snippet inside visitor browsers to monitor what actually executes after a page loads—third-party scripts, AI agents, data exfiltration, and behavioural fraud signals.
+
+The platform deploys with zero infrastructure changes: no reverse proxy, no traffic routing through cside, no DNS rewrites, no latency penalty. It collects 100% session-level visibility (no sampling) and feeds real-time alerts to Slack, Teams, or webhooks. This client-side-first architecture means c/Side sees credential stuffing, formjacking, and Magecart attacks *before* they reach your server logs.
+
+It is purpose-built for PCI DSS 4.0.1 compliance, automating the newly mandatory requirements 6.4.3 (complete script inventory on payment pages) and 11.6.1 (continuous monitoring for unauthorized header and script changes). Reports are validated by VikingCloud and accepted by leading Quality Security Assessors (QSAs).
+
+## Pricing model
+
+c/Side offers three tiers for Script Security / Fingerprint products:
+
+**Free**: Up to 2,500 payment page views/month, unlimited domains, 7-day script history, PCI DSS dashboard, no credit card required.
+
+**Business**: $99/month, up to 100,000 payment page views, 30-day history, granular vendor permissions, client-side threat intelligence, 14-day free trial.
+
+**Enterprise**: Custom pricing; 90-day history, 99.9% uptime SLA, SSO, multi-team org layer, dedicated account manager.
+
+The fingerprinting API tier mirrors the structure: free tier (1,000 API calls/month), $99/month business tier, and custom enterprise pricing. All paid plans include a 14-day free trial; the free tier is permanent with no credit card required. Pricing is transparent and published on the site; no contact-us-for-pricing sales model.
+
+## When it fits
+
+- **Payment processors, fintech, e-commerce**: Detect script skimming, formjacking, and Magecart attacks at the browser layer; automate PCI DSS 4.0.1 compliance.
+- **Organizations with strict compliance requirements**: Automated audit-ready reports for PCI DSS, SOC 2 Type II, GDPR, and other frameworks.
+- **High-risk applications**: SaaS platforms, healthcare portals, and crypto exchanges targeting credential stuffing, account takeover, and AI agent abuse.
+- **Supply chain security teams**: Monitor for unauthorized third-party script changes in real time with sub-15-minute response SLA.
+- **Development teams seeking low-friction security**: Single script tag; no SDK, infrastructure, or configuration needed.
+
+## When it doesn't
+
+c/Side is not a replacement for WAFs, DDoS protection, or server-side intrusion detection. It focuses exclusively on client-side runtime visibility and does not handle network-layer attacks, API abuse, or infrastructure security.
+
+## Inclusion criteria
+
+✓ **Transparent pricing**: All three tier levels (Free, Business, Enterprise) display pricing publicly with specific monthly rates ($0, $99, custom).
+
+✓ **Self-service signup**: Free tier requires no credit card; Business plan includes a 14-day free trial for immediate access.
+
+✓ **Public SLA / status page**: 99.9% uptime SLA documented in pricing tiers; dedicated Slack/Teams support channel with under-15-minute response time SLA stated in support section.

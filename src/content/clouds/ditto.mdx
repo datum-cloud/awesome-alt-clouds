@@ -1,0 +1,48 @@
+---
+status: draft
+tagline: "Edge-native, offline-first mobile database with built-in peer-to-peer mesh networking"
+pricingModel: subscription
+services:
+  - Offline-first mobile database
+  - Peer-to-peer mesh networking
+  - CRDT-powered conflict resolution
+  - Cloud sync
+  - Multi-platform SDKs
+  - Device discovery and automatic networking
+socials:
+  website: "https://www.ditto.com/"
+---
+
+## What makes Ditto different
+
+Ditto is purpose-built for edge and mobile devices, not adapted from cloud-first infrastructure. Unlike traditional cloud databases that assume constant connectivity, Ditto's architecture prioritizes resilience when networks are unavailable, bandwidth-constrained, or latency-sensitive.
+
+The core innovation is **automatic peer-to-peer mesh networking** combined with **CRDT-based conflict resolution**. Devices running Ditto automatically discover each other and form decentralized networks without manual configuration, servers, or access points. Data syncs directly between devices over BLE, P2P WiFi, LAN, or any available transport. When connectivity to the cloud becomes available, one or more devices opportunistically sync with your existing backend systems—but your operations never depend on that connection.
+
+This architecture eliminates single points of failure that plague centralized databases. Point-of-sale systems, airline crew tools, retail operations, and military deployments all require the ability to function reliably offline. Ditto trades eventual consistency (via CRDTs) for guaranteed availability.
+
+## Pricing model
+
+Ditto uses a **subscription-based model**, but specific tier pricing and limits are not publicly available on the marketing site. The company offers self-service signup and likely usage-based or per-device tiers, but interested users must contact sales or sign up for a free trial to see current pricing. This contrasts with competitors like AWS or traditional cloud databases that publish detailed pricing pages.
+
+## When it fits
+
+- **Offline-critical operations**: POS systems, airline crew tools, retail inventory management, field service apps that cannot tolerate downtime due to connectivity loss
+- **Mesh-enabled environments**: Military operations, remote sites, ships, aircraft, or locations with poor or no internet backbone
+- **Latency-sensitive mobile apps**: Real-time collaboration on mobile devices without cloud round-trips; seamless sync across teams in the same location
+- **Hybrid cloud-edge deployments**: Systems that benefit from local P2P sync when offline, then opportunistic cloud sync when available
+- **Multi-platform development**: Flutter, React, SwiftUI, Jetpack Compose apps requiring synchronized data across iOS, Android, and web
+
+## When it doesn't
+
+Ditto is not suitable for workloads requiring centralized analytics, large-scale historical data warehousing, or applications where all users expect real-time global consistency. Organizations deeply invested in SQL-based relational models and complex joins should evaluate whether CRDT semantics fit their data model before adopting.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Self-service signup available at https://www.ditto.com/  
+✅ **Self-service signup**: Free tier and trial options provided  
+✅ **Public SLA / status page**: Status and reliability information available to customers
+
+---
+
+*Ditto meets all 3 inclusion criteria for alt-cloud.org. Notable customers include Japan Airlines, Alaska Airlines, Chick-fil-A, and the U.S. Air Force.*

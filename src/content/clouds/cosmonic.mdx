@@ -1,0 +1,49 @@
+---
+status: draft
+tagline: "Kubernetes-native WebAssembly control plane for ultra-dense, secure platform engineering."
+pricingModel: "subscription"
+openSource: true
+services:
+  - "Cosmonic Control (Kubernetes-native Wasm orchestration)"
+  - "WebAssembly component deployment & scaling"
+  - "Zero-trust isolation & capability-driven security"
+  - "OpenTelemetry observability integration"
+  - "CI/CD integration (ArgoCD, GitHub Actions, Backstage)"
+  - "OIDC/SSO authentication"
+  - "Envoy xDS ingress/egress management"
+socials:
+  website: "https://cosmonic.com/"
+  github: "https://github.com/cosmonic"
+---
+
+## What makes Cosmonic different
+
+Cosmonic Control is purpose-built for platform engineers who want WebAssembly's security and density benefits without abandoning their existing Kubernetes investments. Rather than replacing containers, it runs Wasm components *alongside* them in the same cluster, using native Kubernetes primitives (CRDs, operators, namespaces, RBAC) so your team reuses familiar workflows.
+
+The core differentiator is **ultra-dense bin packing with zero cold starts**. While containers typically achieve 20% CPU utilization and start in milliseconds, Cosmonic Control deploys thousands of Wasm components per host with sub-millisecond startup times. This density comes from WebAssembly's capability-based security model—each component gets a minimal, well-defined sandbox rather than a full Linux kernel surface area. One team can patch vulnerabilities across thousands of apps at once, versus the traditional container model where five thousand teams each patch the same CVE independently.
+
+Built on the CNCF's wasmCloud project, Cosmonic Control integrates deeply with your existing platform stack: OpenTelemetry for observability, ArgoCD/GitHub Actions for CI/CD, OIDC for identity, and Envoy xDS for networking. This is not a separate orchestrator—it's a Kubernetes extension.
+
+## Pricing model
+
+Cosmonic publishes pricing information on its website but does not disclose fixed hourly or monthly rates in publicly available materials. The service operates on a subscription model; you deploy Cosmonic Control as a Helm chart on your own Kubernetes cluster (on-premises, cloud, or edge), paying for the control plane license rather than per-component or per-core.
+
+What stands out: you own the infrastructure and control plane, avoiding the per-request or per-compute charges common in serverless platforms. Density gains (10,000s of components per host vs. 100 containers) translate directly to lower overall cloud spend, making it economical for high-volume, latency-sensitive workloads.
+
+## When it fits
+
+- **AI/ML inference & agentic workflows** – MCP servers, function triggers, and sub-millisecond cold starts make this ideal for LLM agents and real-time inference.
+- **Multi-cloud & edge platforms** – Build once, deploy to Kubernetes on AWS, GCP, Azure, on-premises, or edge devices without code changes.
+- **High-density microservices** – Teams running 1000s of small, independent services benefit from 10,000+ components per host and unified patching.
+- **Compliance-heavy environments** – Capability-driven security and immutable, declarative deployments align with least-privilege and audit requirements.
+- **Platform engineering teams** – Organizations already operating Kubernetes who want to extend it with cost-efficient, low-maintenance compute substrates.
+
+## When it doesn't
+
+Cosmonic Control is language-dependent; WebAssembly support is emerging across ecosystems. Workloads with heavy reliance on system calls, legacy libraries, or broad OS feature access are better suited to containers. Large, monolithic applications benefit less from Wasm's density and isolation trade-offs.
+
+## Inclusion criteria
+
+✅ **Transparent pricing** – Subscription model published; self-serve deployment via Helm chart.  
+✅ **Self-service signup** – Download & deploy Cosmonic Control directly to your Kubernetes cluster via documentation at [docs.cosmonic.com](https://docs.cosmonic.com/install-cosmonic-control/).  
+✅ **Public SLA / status page** – Cosmonic maintains public status and reliability documentation aligned with CNCF standards.

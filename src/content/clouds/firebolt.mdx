@@ -1,0 +1,55 @@
+---
+status: draft
+tagline: "Cloud data warehouse engineered for sub-second analytics at scale."
+pricingModel: "usage-based"
+regions:
+  - "AWS US East (N. Virginia)"
+  - "AWS US West (Oregon)"
+  - "AWS EU (Ireland)"
+services:
+  - "Cloud Data Warehouse"
+  - "SQL Analytics Engine"
+  - "Fast Data Ingestion"
+  - "Firebolt Core (Self-hosted)"
+  - "Data Security & Compliance"
+  - "Mixed Workload Support"
+socials:
+  website: "https://www.firebolt.io/"
+  x: "https://twitter.com/fireboltdb"
+  linkedin: "https://linkedin.com/company/firebolt-io/"
+  github: "https://github.com/fireboltdb"
+---
+
+## What makes Firebolt different
+
+Firebolt is purpose-built for analytical workloads that demand both speed and scale. Unlike general-purpose cloud data warehouses, Firebolt's architecture optimizes for low-latency query performance on large datasets through GPU-accelerated indexing and a columnar storage engine. The platform separates compute from storage, allowing independent scaling of analytics engines and data repositories—a design choice that reduces costs when running mixed or bursty workloads.
+
+The product targets engineers and analytics teams that need millisecond-level query response times for interactive dashboards, real-time reporting, and exploratory data analysis. Firebolt competes on performance benchmarks rather than ecosystem breadth, positioning itself as faster than Snowflake, Redshift, and BigQuery for typical OLAP queries.
+
+Notably, Firebolt offers **Firebolt Core**, a free, self-hosted analytical query engine that runs on any infrastructure—a hybrid play that lets customers avoid cloud vendor lock-in while maintaining the option to scale into managed Firebolt Cloud.
+
+## Pricing model
+
+Firebolt uses a usage-based pricing model tied to compute consumption. The platform charges for **compute per second** during query execution, with pricing varying by engine size and region. Storage is billed separately at a per-GB-per-month rate.
+
+A free tier provides access to Firebolt's managed cloud service with limited resources, and Firebolt Core remains perpetually free for self-hosted deployments. This hybrid model differentiates Firebolt from pure SaaS competitors—teams can prototype for free, scale to cloud when needed, and retain the option to run workloads on-premises. Pricing details are available on the [Pricing page](https://www.firebolt.io/pricing).
+
+## When it fits
+
+- **Real-time dashboards & BI**: Sub-second query latency for interactive analytics tools and live reporting dashboards.
+- **High-cardinality data exploration**: Filtering, aggregating, and drilling into datasets with millions of unique values.
+- **Variable or bursty workloads**: On-demand compute scaling without paying for idle resources; separating compute from storage avoids overprovisioning.
+- **Multi-tenancy at scale**: Isolating analytic workloads across customers with guaranteed performance isolation.
+- **Cost-sensitive analytics**: Lower total cost of ownership compared to always-on warehouse solutions for batch or time-shifted queries.
+
+## When it doesn't
+
+Firebolt is not a good fit for transactional OLTP workloads, data lakes requiring unstructured data support, or teams deeply invested in Hadoop/Spark ecosystems. Organizations requiring extensive ETL orchestration tooling may need to integrate Firebolt with external workflow platforms like dbt or Apache Airflow.
+
+## Inclusion criteria
+
+Firebolt meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: [Pricing page](https://www.firebolt.io/pricing) publicly lists compute and storage rates.
+2. **Self-service signup**: [Free sign-up](https://go.firebolt.io/signup) available without sales contact; Firebolt Core is downloadable at no cost.
+3. **Public SLA & status**: Firebolt publishes availability commitments and maintains a [status page](https://status.firebolt.io/) for service health monitoring.

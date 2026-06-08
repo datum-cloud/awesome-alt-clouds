@@ -1,0 +1,53 @@
+---
+status: draft
+tagline: "In-memory data structure store for real-time caching, databases, and AI context retrieval"
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Redis Cloud (managed)"
+  - "Redis Software (self-managed)"
+  - "Redis Community (open source)"
+  - "Redis Flex (tiered storage)"
+  - "Vector Search"
+  - "Streams"
+  - "Pub/Sub"
+socials:
+  website: "https://redis.io/"
+  github: "https://github.com/redis/redis"
+---
+
+## What makes Redis different
+
+Redis is a purpose-built in-memory data structure store that powers real-time applications at scale. Unlike general-purpose databases, Redis stores data in RAM for sub-millisecond latency—essential for caching, sessions, leaderboards, and AI context retrieval. The open-source core (Redis 8) ships with 450+ commands supporting strings, lists, sets, sorted sets, hashes, streams, and vector search, giving developers flexibility to model complex data without schema overhead.
+
+Redis Cloud separates concerns cleanly: you deploy managed Redis without infrastructure burden, while Redis Software lets you self-manage on-premises or hybrid deployments. Redis Flex adds an innovative tiered storage layer combining RAM and flash, cutting storage costs by up to 80% for TB-scale workloads. Active-active geo-distribution enables multi-region replication with local-speed reads and zero-downtime failover—critical for globally distributed applications.
+
+## Pricing model
+
+Redis offers three deployment tiers with distinct pricing approaches:
+
+- **Redis Cloud (managed)**: Usage-based billing tied to memory provisioned, throughput, and data transfer. No published rate card on the homepage; sign up for a free tier to see pricing.
+- **Redis Software (self-managed)**: License-based for enterprise deployments; contact sales for quotes.
+- **Redis Community**: Completely free and open source.
+
+Redis Cloud includes a free tier for development and testing. Unlike hyperscaler databases that charge per operation, Redis pricing is tied to reserved capacity, making costs predictable for steady-state workloads. Multi-region active-active and Flex storage are premium features with additional pricing.
+
+## When it fits
+
+- **Real-time AI and LLM applications**: Redis Context Retriever powers vector search and semantic caching for agents, reducing hallucinations by providing fresh context instantly.
+- **Caching and sessions**: Sub-millisecond latency and high throughput eliminate database bottlenecks for user sessions, API responses, and hot data.
+- **Leaderboards and real-time analytics**: Sorted sets and streams handle fast-moving data (game rankings, live feeds, metrics aggregation).
+- **Message queues and pub/sub**: Streams and pub/sub enable event-driven architectures without a separate message broker.
+- **Multi-region failover**: Active-active geo-distribution suits globally distributed SaaS and gaming platforms needing zero-downtime deployments.
+
+## When it doesn't
+
+Redis is not a persistent primary database for cold data; it excels at hot, frequently accessed data. Workloads requiring complex joins, ACID transactions across multiple tables, or full-text search on unstructured text are better served by PostgreSQL or specialized search engines. Cost-sensitive batch processing (e.g., data warehousing) favors column stores over in-memory solutions.
+
+## Inclusion criteria
+
+Redis meets all three alt-cloud inclusion criteria:
+
+1. **Transparent pricing**: Self-service signup at [redis.io/cloud](https://redis.io/cloud/) with free tier; usage pricing visible after account creation.
+2. **Self-service signup**: Direct sign-up without sales calls; community version available at [redis.io/downloads](https://redis.io/downloads/).
+3. **Public SLA and status**: Enterprise SLA with 99.999% uptime guarantee; [Redis status page](https://redis.io/status/) publicly available.

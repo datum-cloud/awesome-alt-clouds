@@ -1,0 +1,54 @@
+---
+status: draft
+tagline: "S3-compatible object storage with zero egress fees, built for AI agents and distributed teams."
+pricingModel: usage-based
+regions:
+  - Global (multi-region)
+  - Single-region options available
+services:
+  - S3-compatible object storage
+  - Zero-copy bucket forks
+  - Point-in-time snapshots
+  - Bucket lifecycle management
+  - Webhook notifications
+  - Fine-grained IAM policies
+  - Agent kit SDK
+socials:
+  website: "https://www.tigrisdata.com/"
+  github: "https://github.com/tigrisdata"
+---
+
+## What makes Tigris different
+
+Tigris is purpose-built for AI workloads and agent-scale operations, eliminating the data transfer costs that make hyperscalers expensive at scale. Its zero egress fee model removes bandwidth surprises entirely—a critical advantage when feeding GPU training jobs or running millions of inference queries across regions.
+
+Beyond pricing, Tigris offers primitives designed for agent orchestration: zero-copy forks let you spawn isolated sandboxes for each agent without data duplication, whole-bucket snapshots enable durable rollback for failed experiments, and webhook-driven coordination wires up multi-agent pipelines without polling. The S3 API compatibility means existing code (boto3, rclone, PyTorch) works with a single endpoint swap.
+
+## Pricing model
+
+**$0/GB for storage and egress.** Tigris charges only for storage consumption with no separate bandwidth fees. Storage tiers are available:
+- **Standard** for frequent access
+- **Infrequent** for occasional reads  
+- **Archive** for long-term retention
+
+Lifecycle rules automate tiering. No per-account or per-region capacity limits. Free tier available for testing.
+
+This inverts the AWS S3 cost structure—where egress dominates for distributed workloads—making Tigris predictable for teams running multi-region ML pipelines or agent fleets.
+
+## When it fits
+
+- **AI training and inference**: Feed large datasets to distributed GPU clusters without egress penalties
+- **Agent checkpointing and coordination**: Store agent state, forks, and snapshots for multi-agent pipelines
+- **Experiment branching**: Use zero-copy forks to isolate model training runs without data duplication
+- **Global content distribution**: Serve user-generated or public assets from a single bucket across regions
+- **Durable rollback workflows**: Leverage snapshots for recovery from bad writes or model hallucinations
+
+## When it doesn't
+
+Tigris is new and focused on storage; it does not offer compute, networking, or database services. Teams needing an integrated cloud stack (compute + storage + databases) may prefer hyperscalers. Very high-frequency small-object workloads might benefit from edge-native or in-memory alternatives.
+
+## Inclusion criteria
+
+✓ **Transparent pricing**: Pricing page published at https://www.tigrisdata.com/pricing/ with clear $0/GB model.  
+✓ **Self-service signup**: Free tier and console access at https://console.storage.dev/signup.  
+✓ **Public SLA / status page**: Status page available at https://www.tigrisdata.com/status; SOC 2 Type II certified.

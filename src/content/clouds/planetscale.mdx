@@ -1,0 +1,58 @@
+---
+status: draft
+tagline: "Serverless MySQL at scale, powered by Vitess sharding and horizontal scalability."
+headquarters: "San Francisco, California, USA"
+pricingModel: "usage-based"
+openSource: true
+regions:
+  - "US East (N. Virginia)"
+  - "US West (N. California)"
+  - "EU West (Ireland)"
+  - "APAC (Tokyo)"
+services:
+  - "Serverless MySQL databases"
+  - "Vitess horizontal sharding"
+  - "Connection pooling"
+  - "Automated backups and point-in-time recovery"
+  - "Read replicas"
+  - "Branch & merge workflows"
+  - "Query insights & monitoring"
+  - "PostgreSQL support"
+socials:
+  website: "https://planetscale.com/"
+  x: "https://twitter.com/planetscaledb"
+  linkedin: "https://linkedin.com/company/planetscale/"
+  github: "https://github.com/vitessio"
+---
+
+## What makes PlanetScale different
+
+PlanetScale pioneered the managed Vitess offering—bringing YouTube's battle-tested sharding technology to developers without the operational overhead. Vitess allows horizontal scaling of MySQL by explicitly sharding data across multiple database nodes while presenting a single logical connection through VTGate, the stateless proxy layer. This shared-nothing architecture scales to petabytes and thousands of nodes, as proven by YouTube's infrastructure.
+
+Unlike traditional managed MySQL that hits vertical scaling limits, PlanetScale databases automatically partition data by sharding key, allowing linear horizontal growth. Developers define sharding logic upfront rather than retrofitting it later. The platform also introduces "branch and merge" workflows borrowed from version control—creating isolated database schemas for schema migrations without downtime, then merging changes back to production.
+
+## Pricing model
+
+PlanetScale uses a usage-based model with distinct tiers. The **Free tier** includes 5 GB storage and 1 billion row reads per month at no cost—sufficient for prototyping. **Scaler** and **Scaler Pro** tiers charge per read unit, write unit, and storage byte consumed, with automatic scaling and higher burst allowances. Storage costs roughly $0.40 per GB/month; compute is metered per million read and write units at rates starting around $0.25 per million reads.
+
+Pricing scales with actual usage rather than reserved capacity, making it attractive for variable workloads. The free tier is genuinely usable for small projects, differentiating it from cloud providers offering limited free credits.
+
+## When it fits
+
+- **High-growth products needing horizontal database scaling** without re-architecting the application layer
+- **MySQL shops** standardizing on a modern serverless platform with Vitess sharding built-in
+- **Teams requiring safe schema migrations** via database branching and zero-downtime deploys
+- **Read-heavy applications** leveraging read replicas for geographic distribution and query offloading
+- **PostgreSQL workloads** seeking similar serverless + branching features (growing support)
+
+## When it doesn't
+
+PlanetScale is MySQL/PostgreSQL only; NoSQL or specialized analytics workloads belong elsewhere. Workloads with hard requirements for on-premise deployment or maximum data residency control should evaluate self-hosted Vitess instead.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Published pricing tier details and per-unit costs on the [pricing page](https://planetscale.com/pricing).
+
+✅ **Self-service signup**: Free tier available immediately at https://planetscale.com/register.
+
+✅ **Public SLA & status page**: [Status page](https://status.planetscale.com/) and [SLA documentation](https://planetscale.com/docs/concepts/sla) publicly available.

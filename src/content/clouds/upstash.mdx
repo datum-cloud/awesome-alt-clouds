@@ -1,0 +1,53 @@
+---
+status: draft
+tagline: "Serverless Redis and Kafka with per-request pricing and global replication for edge computing"
+headquarters: "California, USA"
+pricingModel: "usage-based"
+openSource: true
+regions:
+  - "us-east-1"
+  - "us-west-1"
+  - "eu-west-1"
+  - "eu-central-1"
+  - "ap-southeast-1"
+  - "ap-northeast-1"
+services:
+  - "Redis (serverless key-value store)"
+  - "Kafka (serverless message streaming)"
+  - "Vector (vector database)"
+  - "QStash (serverless task queue)"
+  - "Search (full-text search)"
+  - "Workflow (serverless orchestration)"
+socials:
+  website: "https://upstash.com/"
+  x: "https://twitter.com/upstash"
+  github: "https://github.com/upstash"
+---
+
+## What makes Upstash different
+
+Upstash strips operational overhead from data infrastructure by offering truly serverless databases designed for edge computing and serverless functions. Unlike traditional Redis or Kafka deployments that require capacity planning, Upstash uses per-request pricing with automatic scaling—you pay only for what you consume, and the service scales to zero when unused. The platform emphasizes REST/HTTP APIs alongside native protocols, making it a natural fit for Cloudflare Workers, Vercel Edge Functions, and Fastly Edge—environments where traditional TCP connections are expensive or unavailable.
+
+The architecture prioritizes global low-latency access through multi-region replication (8+ regions) without downtime. Customers like Supabase and Branch explicitly contrast Upstash's serverless model with legacy Redis Cloud or self-managed Redis, where memory provisioning and instance sizing become operational burdens. Upstash's observability and ease of integration (npm install, initialize, query) appeal to small teams focused on product engineering rather than infrastructure management.
+
+## Pricing model
+
+Upstash uses consumption-based pricing with per-request rates and storage fees. The free tier includes limited requests and storage; paid tiers charge for reads, writes, and storage overages. For example, a customer with 12,004 requests and 420KB storage incurred $0.02 in demonstrated pricing. There are per-tier price caps—you never exceed a monthly maximum regardless of spike volume—providing cost predictability without Reserved Instance complexity. This approach contrasts sharply with AWS or GCP's hourly instance pricing, making Upstash economical for bursty, intermittent, or low-traffic workloads.
+
+## When it fits
+
+- **Edge function backends**: Caching, session storage, and rate limiting for serverless runtimes (Cloudflare Workers, Vercel Edge, Fastly)
+- **Bursty traffic applications**: Apps with unpredictable load spikes benefit from zero-downtime scaling and price caps
+- **Global low-latency services**: E-commerce, chat, leaderboards, and real-time features requiring sub-100ms latency across regions
+- **Developer teams avoiding ops**: Startups and small teams prioritizing product velocity over infrastructure management
+- **AI/LLM backends**: Vector storage and workflow orchestration for RAG pipelines and agent coordination
+
+## When it doesn't
+
+Upstash is not ideal for sustained, high-throughput workloads (e.g., thousands of requests per second) where per-request pricing becomes prohibitively expensive compared to reserved capacity models. Heavy transactional databases requiring ACID guarantees or complex relational operations also fall outside Upstash's strength (Redis and Kafka excel at specific patterns, not general-purpose SQL).
+
+## Inclusion criteria
+
+✓ **Transparent pricing**: [Pricing page](https://upstash.com/pricing) displays per-request rates and free tier limits.  
+✓ **Self-service signup**: [Console](https://console.upstash.com/) enables instant account creation without sales friction.  
+✓ **Public SLA & status**: [99.99% uptime guarantee](https://upstash.com/) documented; [status page](https://status.upstash.com/) and [latency monitoring](https://latency.upstash.io/) publicly available.

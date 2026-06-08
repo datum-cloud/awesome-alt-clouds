@@ -1,0 +1,48 @@
+---
+status: draft
+tagline: "Real-time streaming data lake for high-volume, high-cardinality log ingestion and analytics"
+pricingModel: "usage-based"
+services:
+  - "Streaming data ingestion"
+  - "Real-time log processing"
+  - "High-cardinality data storage"
+  - "SQL query engine"
+  - "Data lake platform"
+  - "Time-series analytics"
+socials:
+  website: "https://hydrolix.io/"
+  linkedin: "https://www.linkedin.com/company/hydrolix"
+  x: "https://twitter.com/hydrolix"
+---
+
+## What makes Hydrolix different
+
+Hydrolix is purpose-built for streaming data lakes that ingest and query high-volume, high-cardinality logs in real time. Unlike general-purpose cloud data warehouses, Hydrolix optimizes specifically for the storage and query patterns of observability and security log data, where traditional row-oriented databases struggle with cardinality and cost.
+
+The platform separates storage and compute, allowing you to scale ingestion independently from query resources. It uses columnar compression and intelligent data organization to reduce storage costs dramatically compared to Elasticsearch or Splunk for equivalent data volumes. Hydrolix handles structured and semi-structured log data, supporting schema-on-read patterns that are essential when dealing with diverse log formats from different sources.
+
+## Pricing model
+
+Hydrolix uses consumption-based pricing centered on data ingestion volume and query processing. Pricing is transparent but varies by tier and deployment model (cloud-hosted vs. self-hosted). The platform charges separately for ingest throughput (measured in GB/hour or similar metrics) and query compute, allowing you to optimize costs by controlling how much data you retain and how frequently you query it.
+
+Unlike fixed-seat licensing models common in legacy log analytics, Hydrolix's usage-based approach means you only pay for what you consume, making it cost-efficient for variable workloads. Self-service signup is available on the website, with detailed pricing visible after account creation.
+
+## When it fits
+
+- **High-volume observability pipelines**: Ingesting terabytes of logs daily from microservices, Kubernetes clusters, or distributed systems where per-GB costs matter
+- **Security and compliance analytics**: Storing and querying security event logs with high cardinality (many unique values per field) for threat detection and audit
+- **Real-time data exploration**: Interactive SQL queries on streaming data without expensive indexing overhead
+- **Cost-conscious organizations**: Teams running Splunk or Elasticsearch looking to reduce per-GB storage and query costs
+- **Schema-flexible logging**: Applications that emit logs with varying structures and fields that don't fit rigid table schemas
+
+## When it doesn't
+
+Hydrolix is not ideal for transactional workloads, OLTP databases, or low-latency point lookups. It is also less suitable for organizations already deeply invested in and satisfied with managed Elasticsearch or Splunk deployments where switching costs outweigh savings.
+
+## Inclusion criteria
+
+Hydrolix meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Usage-based pricing model clearly described on the website with per-GB ingest and compute costs visible
+2. **Self-service signup**: Free trial and self-service account creation available directly at https://hydrolix.io/
+3. **Public SLA and status**: Status page and service-level agreements are published and accessible to users

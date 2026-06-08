@@ -1,0 +1,56 @@
+---
+status: draft
+tagline: "Query cloud APIs and infrastructure with SQL—zero ETL, instant results."
+pricingModel: "mixed"
+openSource: true
+services:
+  - "SQL query engine for cloud APIs"
+  - "150+ data source plugins"
+  - "PostgreSQL Foreign Data Wrapper"
+  - "SQLite extension"
+  - "Turbot Pipes (managed cloud platform)"
+  - "Dashboards (Powerpipe)"
+  - "Workflows (Flowpipe)"
+socials:
+  website: "https://steampipe.io/"
+  github: "https://github.com/turbot/steampipe"
+---
+
+## What makes Steampipe different
+
+Steampipe flips the traditional data integration model on its head. Instead of extracting, transforming, and loading (ETL) cloud infrastructure data into a database, Steampipe implements zero-ETL by exposing APIs directly as SQL-queryable tables. You write standard SQL against cloud services like AWS, Azure, GCP, Slack, GitHub, Jira, and 150+ other integrations without managing a separate data warehouse.
+
+The core engine runs locally as a CLI tool with no database required. It uses PostgreSQL Foreign Data Wrapper (FDW) and SQLite extensions to virtualize remote APIs as relational tables in real time. This means fresh data on every query and dramatically reduced operational overhead compared to batch ETL pipelines.
+
+Steampipe is built and maintained by Turbot, a company focused on cloud governance and compliance. The project is open source (Apache 2.0) and community-driven, with plugins contributed by users and the core team.
+
+## Pricing model
+
+Steampipe itself is free and open source with no licensing costs. The managed cloud offering, **Turbot Pipes**, is free for developers with usage-based pricing for production deployments. Exact per-query or per-connection rates are not published publicly, but the free tier accommodates significant developer workloads.
+
+The ecosystem includes complementary commercial tools:
+- **Powerpipe** (dashboards for DevOps) – available as open source or managed SaaS
+- **Flowpipe** (workflow automation) – open source with optional managed hosting
+- **Guardrails** (policy enforcement) – enterprise governance platform
+
+This hybrid model allows individuals and small teams to get started at zero cost while providing premium options for teams requiring managed infrastructure, audit trails, or advanced governance features.
+
+## When it fits
+
+- **Compliance and security audits**: Query all cloud resources across regions and accounts to verify configurations against policies without building custom scrapers.
+- **Cost optimization**: Analyze resource inventory, tagging, and usage patterns in a single SQL interface across multiple cloud providers.
+- **Infrastructure as code validation**: Detect drift and configuration mismatches by querying live infrastructure state directly.
+- **Ad-hoc cloud investigations**: Quickly answer questions like "which S3 buckets are publicly readable?" without waiting for batch reports.
+- **Multi-cloud inventory**: Unify AWS, GCP, Azure, and SaaS tools into a common query language for cross-platform visibility.
+
+## When it doesn't
+
+Steampipe is not designed for real-time transactional workloads or applications requiring sub-second query latency at scale. It's a querying and exploration tool, not a replacement for operational databases. Workloads involving frequent writes or heavy streaming ingestion belong on traditional databases or data warehouses.
+
+## Inclusion criteria
+
+Steampipe meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Free tier clearly documented; managed platform pricing available at [pipes.turbot.com](https://pipes.turbot.com/).
+2. **Self-service signup**: CLI downloads available immediately; cloud platform signup at [Turbot Pipes](https://pipes.turbot.com/).
+3. **Public SLA and status page**: System status and incident reporting available at [status.turbot.com](https://status.turbot.com/) (operated by Turbot).

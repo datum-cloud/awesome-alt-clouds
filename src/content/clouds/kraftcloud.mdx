@@ -1,0 +1,47 @@
+---
+status: draft
+tagline: "VM-grade isolation with 10ms cold starts and 100K+ instances per server using unikernels"
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Unikernel-based compute"
+  - "Sandbox orchestration"
+  - "Advanced snapshotting & forking"
+  - "Kubernetes integration (EKS, GKE, AKS)"
+  - "BYOC & on-premises deployment"
+  - "AI agent infrastructure"
+  - "Database hosting"
+socials:
+  website: "https://kraft.cloud/"
+  github: "https://github.com/unikraft"
+---
+
+## What makes KraftCloud different
+
+KraftCloud operates on a fundamentally different architecture than traditional cloud providers. Rather than running full Linux distributions, the platform builds on **unikernels**—minimal, single-purpose operating systems compiled to include only the libraries and kernel features a specific application needs. This approach delivers three concrete advantages: cold starts in <10ms (versus seconds on traditional VMs), the ability to run 100K+ strongly-isolated instances on a single server, and infrastructure cost reductions of 10–100×.
+
+The platform is built on **Unikraft**, an open-source unikernel framework, and integrates seamlessly into existing infrastructure. Users can deploy on bare metal, BYOC (bring-your-own-cloud), dedicated hosts, or as a Kubernetes node—transparently running pods as micro-VMs that scale to zero in milliseconds. Unlike WebAssembly sandboxes, Unikraft instances offer full VM-grade isolation while maintaining the speed and density advantages. The engineering team includes infrastructure veterans from Google, AWS, Equinix Metal, and Vercel, backed by Vercel Ventures.
+
+## Pricing model
+
+KraftCloud uses a **usage-based pricing model** tied to compute density and execution time, directly reflecting the platform's core value: paying only for resources actually consumed rather than reserved capacity. The economics are designed to reward the high instance density; running 100,000 isolated databases or sandboxes on a single server means per-unit costs drop dramatically compared to traditional cloud VMs. Exact per-unit pricing tiers are not published on the website, but the platform emphasizes transparent, consumption-based billing with no setup fees or long-term commitments.
+
+## When it fits
+
+- **AI-powered applications** requiring rapid agent spawning, parallel debugging sessions, or ephemeral sandboxes that cold-start in milliseconds
+- **Database-as-a-service platforms** (e.g., PostgreSQL, SQLite) needing to run thousands of isolated instances per physical server
+- **Serverless workloads** with highly variable or bursty traffic where scale-to-zero performance and density matter
+- **On-premises or hybrid deployments** where organizations need full infrastructure control or multi-cloud flexibility
+- **Edge or latency-sensitive compute** where millisecond startup times and high per-server density unlock new use cases
+
+## When it doesn't
+
+Workloads requiring broad OS ecosystem compatibility or legacy software tied to full Linux distributions may face porting constraints. The platform is optimized for modern, containerized applications and does not currently compete on breadth of pre-built integrations or managed services (databases, message queues, etc.) that hyperscalers offer out of the box.
+
+## Inclusion criteria
+
+KraftCloud meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Usage-based model with no hidden fees; no long-term commitments required ([kraft.cloud](https://kraft.cloud/))
+2. **Self-service signup**: "No setup, no commitment"—users can deploy immediately or contact an engineer
+3. **Public SLA or status page**: Vercel Ventures backing and production deployments at scale (Vercel, Axiom, Prisma, Turso, FlutterFlow) indicate operational reliability; formal SLA details available upon engagement

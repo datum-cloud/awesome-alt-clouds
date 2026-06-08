@@ -1,0 +1,56 @@
+---
+status: draft
+tagline: "Unified monitoring and security platform for cloud-native applications and infrastructure."
+pricingModel: usage-based
+services:
+  - Infrastructure Monitoring
+  - Application Performance Monitoring (APM)
+  - Log Management
+  - Cloud Security Posture Management
+  - Synthetic Monitoring
+  - Real User Monitoring
+  - Cloud Cost Management
+  - Incident Response & Workflow Automation
+socials:
+  website: "https://www.datadoghq.com/"
+  x: "https://twitter.com/datadoghq"
+  linkedin: "https://linkedin.com/company/datadog"
+  github: "https://github.com/datadog"
+---
+
+## What makes Datadog different
+
+Datadog is not a cloud infrastructure provider but rather a comprehensive observability and security platform purpose-built for monitoring cloud-native workloads. Unlike AWS CloudWatch, GCP Cloud Monitoring, or Azure Monitor—which are optimized for their own ecosystems—Datadog provides unified visibility across AWS, Azure, GCP, Kubernetes, and on-premises environments from a single pane of glass.
+
+The platform combines infrastructure metrics, application performance traces, logs, and security signals into a single integrated experience. This multi-signal approach eliminates tool sprawl: teams can correlate infrastructure events with application errors and security threats without context-switching between separate systems. Datadog's agent-based architecture and extensive integration library (600+ integrations) make it flexible for heterogeneous environments, including hybrid and multi-cloud deployments where no single hyperscaler's native tools would suffice.
+
+## Pricing model
+
+Datadog uses a usage-based subscription model with pricing primarily metered by data volume ingested. Specific tiers vary by product module:
+
+- **Infrastructure Monitoring**: Charged per host per month (with tiered discounts for volume)
+- **Log Management**: Per GB of logs ingested
+- **APM**: Per million spans or per host, depending on deployment model
+- **Cloud Security**: Per host or per asset monitored
+
+Most modules offer free tiers to enable evaluation. Annual commitments and volume discounts are available for committed spend. Datadog's pricing is transparent—a [pricing calculator](https://www.datadoghq.com/pricing/) is publicly available to estimate monthly costs based on expected usage. This consumption-based model differs from hyperscaler monitoring, which is often bundled with compute costs; Datadog's unbundled approach appeals to teams seeking cost transparency and the ability to monitor multi-cloud environments without vendor lock-in.
+
+## When it fits
+
+- **Multi-cloud and hybrid environments**: Teams running workloads across AWS, Azure, GCP, and on-premises need a vendor-neutral observation layer.
+- **Complex microservices architectures**: APM with distributed tracing helps troubleshoot latency and errors across service boundaries in Kubernetes and containerized deployments.
+- **Security and compliance-heavy workflows**: Cloud Security Posture Management (CSPM), vulnerability scanning, and SIEM capabilities centralize security monitoring across cloud accounts.
+- **DevOps and SRE teams**: Incident response automation, workflow orchestration, and DORA metrics dashboards support modern SRE practices.
+- **Cost optimization**: Cloud Cost Management module helps identify wasted spend across cloud providers.
+
+## When it doesn't
+
+Datadog is a monitoring tool, not an infrastructure provider—it cannot host applications or compute directly. It is also most cost-effective for teams with moderate-to-high observability needs; teams with simple single-cloud deployments may find their hyperscaler's native monitoring sufficient and lower-cost.
+
+## Inclusion criteria
+
+Datadog meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: [Pricing page](https://www.datadoghq.com/pricing/) lists per-host and per-GB rates with a live cost calculator.
+2. **Self-service signup**: [Free trial](https://www.datadoghq.com/) available without vendor contact required.
+3. **Public SLA and status page**: [Trust Hub](https://www.datadoghq.com/trust/) and documented SLAs for platform availability.

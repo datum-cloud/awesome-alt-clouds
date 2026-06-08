@@ -1,0 +1,55 @@
+---
+status: draft
+tagline: "On-demand GPU cloud for training and deploying AI models with NVIDIA's latest hardware"
+pricingModel: "hourly"
+services:
+  - "GPU Compute (H100, A100, L40, RTX A6000, H200, B200, B300)"
+  - "AI Studio (managed model training & deployment)"
+  - "Spot VMs (discounted GPU instances)"
+  - "Secure Private Cloud"
+  - "Object Storage"
+  - "On-Demand Kubernetes"
+socials:
+  website: "https://www.hyperstack.cloud/"
+  github: "https://github.com/NexGenCloud"
+---
+
+## What makes Hyperstack different
+
+Hyperstack positions itself as a purpose-built GPU cloud for AI workloads rather than a general-purpose cloud provider. The platform focuses exclusively on accelerated compute, offering a curated selection of NVIDIA's latest GPUs—including early access to Blackwell (B200, B300) and Hopper (H100, H200) architectures. This specialization enables Hyperstack to optimize instance configurations and networking specifically for distributed training and inference.
+
+The AI Studio feature differentiates Hyperstack from pure IaaS providers like Lambda Labs or CoreWeave. It abstracts away infrastructure management, allowing users to upload datasets and fine-tune models through a managed interface without writing infrastructure code. Combined with developer tools (Python/Go SDKs, Terraform provider, LLM Inference Toolkit), Hyperstack targets ML engineers who want GPU access without DevOps overhead.
+
+The company is SOC 2 Type I certified and NVIDIA-badged, signaling compliance and partnership maturity. The platform also offers Spot VMs for cost-conscious batch workloads, reducing hourly rates significantly compared to on-demand pricing.
+
+## Pricing model
+
+Hyperstack uses transparent hourly billing with no upfront commitments. Pricing varies by GPU and availability tier:
+
+**On-Demand examples** (from pricing page):
+- NVIDIA H100 PCIe: $2.45/hour
+- NVIDIA H100 SXM: $1.36/hour
+- NVIDIA A100 SXM: $0.98/hour
+- NVIDIA L40: $0.35/hour
+- NVIDIA RTX A6000: $0.11/hour
+
+Spot VM pricing is substantially lower but subject to availability. The exact Spot rates are not listed on the homepage but are available after login. This pricing is competitive with specialist GPU clouds; hourly rates are typically lower than AWS EC2 GPU instances but comparable to other dedicated GPU providers like Lambda or CoreWeave.
+
+## When it fits
+
+- **AI model training and fine-tuning**: AI Studio removes infrastructure friction for teams training custom LLMs or vision models.
+- **GPU-accelerated HPC workloads**: Simulations, rendering, and data analytics benefit from the multi-GPU cluster configurations and Kubernetes support.
+- **Cost-conscious batch inference**: Spot VMs offer 50%+ discounts for non-realtime workloads.
+- **Teams avoiding major cloud lock-in**: Self-contained GPU access without dependency on AWS/GCP ecosystems.
+- **Early adoption of cutting-edge hardware**: Hyperstack prioritizes access to B300 and other latest NVIDIA chips.
+
+## When it doesn't
+
+- **General-purpose cloud needs**: No CPU-only compute, managed databases, or traditional serverless functions. Hyperstack is GPU-first.
+- **Multi-region failover requirements**: The site mentions regions but does not publish a public list; geographic redundancy appears limited.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Published hourly rates for all GPU SKUs on the pricing page.  
+✅ **Self-service signup**: Console login available; no mention of sales-gated access for standard offerings.  
+✅ **Public SLA/status page**: SLA document linked in footer; status monitoring available through support hub.

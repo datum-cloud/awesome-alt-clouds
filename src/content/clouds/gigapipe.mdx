@@ -1,0 +1,53 @@
+---
+status: draft
+tagline: "Unified polyglot observability for logs, metrics, traces, and profiles without vendor lock-in"
+foundedYear: 2018
+pricingModel: subscription
+openSource: true
+services:
+  - Log aggregation (Loki-compatible)
+  - Metrics collection (Prometheus-compatible)
+  - Distributed tracing (Tempo-compatible)
+  - Continuous profiling (Pyroscope-compatible)
+  - Unified storage and correlation
+  - Grafana visualization integration
+  - OpenTelemetry ingestion
+socials:
+  website: "https://gigapipe.com/"
+---
+
+## What makes Gigapipe different
+
+Gigapipe replaces the fragmented observability stack—where organizations juggle separate backends for logs, metrics, traces, and profiles—with a single unified engine built on ClickHouse. Rather than forcing users into vendor lock-in with proprietary query languages or closed ecosystems, Gigapipe implements drop-in API compatibility with industry-standard open-source tools: Prometheus, Loki, Tempo, and Pyroscope. This means you keep your existing Grafana dashboards and agent configurations while ditching the underlying vendor complexity.
+
+The platform emerged from the open-source project "cLoki" (started 2018) and evolved into a production-grade alternative to expensive SaaS offerings like Grafana Cloud, Datadog, and Elastic. All observability data—logs, metrics, traces, profiles—flows into a single correlated ClickHouse dataset, eliminating data silos and enabling cross-domain queries that would require manual joins or pipeline hacks in traditional stacks. Deployment is flexible: self-hosted, on-premise, or fully managed SaaS; all backed by flat-rate pricing with no per-gigabyte metering surprises.
+
+## Pricing model
+
+Gigapipe offers three tiers:
+
+- **Open Source (Free)**: Full AGPLv3 codebase, unlimited usage, community support. Requires self-hosting and operational overhead.
+- **Pro (€349/month)**: Fully managed SaaS. Ingestion capacity ranges from 1.5 to 15 TB/month; storage from 600 GB to 12 TB NVMe. Includes 14-day free trial, email and helpdesk support, standalone deployment. Storage is customizable on the pricing page.
+- **Enterprise (Custom)**: High-availability multi-node clusters, custom resource allocation, dedicated SLA, premium support, and migration assistance for large-scale deployments.
+
+The standout differentiator: flat-rate ingestion and query pricing with no metering per-event, per-GB-queried, or per-seat. Competitors like Datadog and Grafana Cloud charge by usage; Gigapipe's model rewards high-throughput environments and removes cost uncertainty.
+
+## When it fits
+
+- **High-volume observability**: Environments shipping 5+ TB/month of telemetry benefit most from unmetered ingestion pricing.
+- **Multi-tool observability**: Organizations already invested in Prometheus, Loki, Tempo, or Pyroscope can migrate without rewriting agents or dashboards.
+- **Vendor lock-in avoidance**: Teams prioritizing data ownership and AGPLv3 transparency over proprietary SaaS features.
+- **Hybrid and on-premise deployments**: Support for ClickHouse and S3-compatible storage enables private-cloud or edge scenarios.
+- **Cost-conscious startups**: Dramatically cheaper than Datadog or Grafana Cloud for similar scale.
+
+## When it doesn't
+
+Gigapipe is not ideal for teams requiring fully managed, zero-operations observability with extensive third-party app integrations (Slack workflows, PagerDuty automation). It also lacks the breadth of domain-specific features (APM, RUM, synthetic monitoring) that mature Datadog or New Relic deployments provide out-of-the-box.
+
+## Inclusion criteria
+
+Gigapipe meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Published tiers with concrete numbers (€349/month Pro, TB-based ingestion limits) on https://gigapipe.com/
+2. **Self-service signup**: 14-day free trial available directly on the website with no sales call required.
+3. **Public SLA and status page**: Dedicated SLA available for Enterprise tier customers; terms and support commitments documented on the site.

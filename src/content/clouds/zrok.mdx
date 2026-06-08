@@ -1,0 +1,48 @@
+---
+status: draft
+tagline: "Zero-trust tunneling platform for instant private or public sharing with automatic TLS."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Private secure tunneling"
+  - "Public application sharing"
+  - "File and content sharing"
+  - "Zero-trust overlay networking"
+  - "TLS encryption"
+  - "Decentralized resource sharing"
+socials:
+  website: "https://zrok.io/"
+  github: "https://github.com/openziti/zrok"
+---
+
+## What makes zrok different
+
+zrok is built on **OpenZiti**, NetFoundry's open-source zero-trust networking platform, giving it a fundamentally different security model than traditional VPN or tunneling solutions. Rather than trusting network perimeter controls, zrok encrypts and authenticates every connection at the application layer. This means you can share applications, files, and services from anywhere—behind NAT, firewalls, or private networks—without exposing infrastructure or opening inbound ports.
+
+The platform offers both **private peer-to-peer sharing** (where resources stay completely hidden from public internet) and **public sharing** (with automatic TLS) through the same simple CLI interface. Unlike generic tunneling tools, zrok is designed as a complete sharing framework that extends beyond HTTP proxies to support files, repositories, and custom decentralized resources. You can run it as a managed SaaS at zrok.io or self-host on your own OpenZiti network—even on a Raspberry Pi—without changing the codebase.
+
+## Pricing model
+
+zrok.io's public SaaS offering is **free to use**. The platform employs a usage-based model where services are metered but no payment is required for the free tier. This makes it ideal for developers, teams, and open-source projects seeking zero-trust sharing without upfront costs.
+
+For self-hosted deployments, you control infrastructure costs entirely. Since zrok is open source and runs on top of OpenZiti (also open source), you only pay for the compute and networking resources you provision. This removes vendor lock-in and gives organizations complete cost transparency.
+
+## When it fits
+
+- **Secure remote access to internal tools** — Share dashboards, databases, or development environments privately with team members without VPN infrastructure.
+- **Zero-trust application ingress** — Expose services from edge locations, on-premises data centers, or IoT devices without opening firewall rules.
+- **Frictionless file and artifact sharing** — Exchange sensitive files or build artifacts securely within teams or with external partners.
+- **Quick demos and collaboration** — Share a live application instance publicly with automatic TLS in seconds for testing or client demos.
+- **Self-hosted security-critical deployments** — Run your own sharing infrastructure for workloads that cannot use third-party SaaS.
+
+## When it doesn't
+
+zrok is not a full cloud platform—it handles tunneling and sharing, not compute, storage, or databases. Workloads requiring managed Kubernetes, data warehousing, or multi-region application hosting belong on traditional cloud providers.
+
+## Inclusion criteria
+
+zrok meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing** — Free tier clearly documented at [zrok.io](https://zrok.io/); self-hosted option has no vendor charges.
+2. **Self-service signup** — Users can sign up instantly via `zrok invite` CLI command; GitHub-based access available.
+3. **Public SLA / status page** — GitHub repository and OpenZiti documentation provide transparency; community-driven project with open issue tracking at [github.com/openziti/zrok](https://github.com/openziti/zrok).

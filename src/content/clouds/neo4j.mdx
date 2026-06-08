@@ -1,0 +1,49 @@
+---
+status: draft
+tagline: "Graph database platform for building AI-ready, connected data applications"
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "AuraDB (fully-managed graph database)"
+  - "Aura Graph Analytics"
+  - "Aura Agent"
+  - "Neo4j Graph Database (self-managed)"
+  - "Graph Data Science"
+  - "Bloom (query & visualization)"
+  - "Fleet Manager"
+socials:
+  website: "https://neo4j.com/"
+  github: "https://github.com/neo4j"
+---
+
+## What makes Neo4j different
+
+Neo4j is a **graph-first database** purpose-built to store and query relationships as first-class citizens, not afterthoughts. Unlike relational or document databases that require complex joins or denormalization to represent connected data, Neo4j's property graph model treats nodes (entities) and edges (relationships) with equal importance. This architectural choice delivers orders-of-magnitude faster query performance on relationship-heavy workloads—pattern matching, recommendation engines, and knowledge graphs execute in milliseconds rather than seconds.
+
+The platform combines a self-managed enterprise database with **AuraDB**, a fully-managed DBaaS available on AWS, Google Cloud, and Azure. Neo4j's integration with modern AI stacks (GraphRAG, agent memory frameworks, Model Context Protocol) positions it as infrastructure for retrieval-augmented generation and AI reasoning, where graph structure replaces flat vector similarity for semantic understanding.
+
+## Pricing model
+
+Neo4j AuraDB uses **consumption-based pricing** measured in compute units (CUs) and storage. Free tier includes up to 200 CUs/month and 100 GB storage. Production pricing scales with workload intensity; exact per-unit costs are quoted via their pricing page after signup. Self-managed Neo4j Graph Database follows traditional perpetual license or subscription models, with Enterprise and Community editions available.
+
+This approach differs from hyperscaler pay-per-API-call models: you pay for allocated capacity (compute) and data stored, not individual query counts. For read-heavy applications with variable traffic, AuraDB's auto-scaling can reduce overspend versus fixed reserved capacity, though lack of published per-unit pricing requires direct inquiry for cost estimation.
+
+## When it fits
+
+- **Knowledge graphs & semantic search**: Graph structure natively represents taxonomies, entity relationships, and multi-hop reasoning for RAG and AI applications.
+- **Real-time recommendations**: Sub-millisecond traversal of relationship graphs (e.g., "users who liked X also liked Y") at scale.
+- **Identity & access management**: Role-based access control and permission hierarchies map naturally to node-relationship models.
+- **Fraud detection & network analysis**: Detect rings, chains, and anomalous relationship patterns without expensive table joins.
+- **Digital twins & metadata management**: Model interconnected assets, dependencies, and versioning as graph structure.
+
+## When it doesn't
+
+Neo4j is a poor fit for transactional workloads that require ACID guarantees across many unrelated tables (traditional relational OLTP), or for unstructured document storage without inherent relationships. Time-series and bulk analytical scanning (star-schema OLAP) are better served by data warehouses; Neo4j excels at **relationship queries**, not dimension aggregation.
+
+## Inclusion criteria
+
+**✓ Transparent pricing**: [Pricing page](https://neo4j.com/pricing/) published; free tier and usage-based tiers documented.
+
+**✓ Self-service signup**: Free account creation available at https://neo4j.com/; no sales gatekeeping required to start.
+
+**✓ Public SLA & status**: Status page and support documentation available; [Trust Center](https://neo4j.com/trust-center/) publishes security and compliance details.

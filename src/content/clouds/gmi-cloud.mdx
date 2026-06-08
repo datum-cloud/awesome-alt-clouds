@@ -1,0 +1,52 @@
+---
+status: draft
+tagline: "AI-native inference cloud with serverless scaling and dedicated GPU infrastructure on NVIDIA hardware."
+pricingModel: "hourly"
+services:
+  - "Serverless GPU inference"
+  - "Dedicated GPU clusters"
+  - "NVIDIA H100 compute"
+  - "NVIDIA H200 compute"
+  - "Model library and API access"
+  - "Multi-node cluster orchestration"
+  - "RDMA-ready networking"
+socials:
+  website: "https://www.gmicloud.ai/"
+---
+
+## What makes GMI Cloud different
+
+GMI Cloud positions itself as **inference-first by design**, built on NVIDIA Reference Platform Cloud Architecture. Unlike general-purpose hyperscalers, it optimizes the entire stack for production AI workloads: serverless inference scales automatically to zero, request batching and traffic handling are built-in, and users can seamlessly transition from serverless APIs to bare-metal GPU clusters without re-architecting their stack. The platform emphasizes predictable performance and cost through dedicated infrastructure options, RDMA-ready networking for multi-node jobs, and root access for custom configurations.
+
+The provider claims measurable performance gains over alternatives: 3.7x higher throughput, 5.1x faster inference, and 30% lower costs based on real production workloads. This combination of serverless ergonomics with dedicated GPU control addresses a gap between managed inference platforms (which lack flexibility) and raw GPU rentals (which require more operational overhead).
+
+## Pricing model
+
+GMI Cloud uses transparent, hourly GPU pricing with no hidden fees:
+
+- **NVIDIA H100**: $2.00/GPU-hour
+- **NVIDIA H200**: $2.60/GPU-hour
+- **NVIDIA Blackwell**: Pre-order (pricing not yet published)
+
+Serverless inference pricing is included within these hourly rates, with automatic scaling and request batching built into the model. The pricing stands out for its simplicity—a single hourly rate rather than separate charges for compute, networking, or storage—and the inclusion of managed inference features at no additional cost.
+
+## When it fits
+
+- **AI teams running production inference** at scale: serverless APIs handle spike traffic automatically with cost-aware scheduling.
+- **Model training and fine-tuning**: H100/H200 dedicated clusters with RDMA networking for multi-node distributed training.
+- **Rapid iteration cycles**: Startups and research teams benefit from flexible commercial terms (referenced for Mirelo AI) and lower per-unit costs.
+- **Latency-sensitive workloads**: Real-time generative AI (e.g., video synthesis); Higgsfield achieved 65% lower p95 latency vs. alternatives.
+- **Organizations requiring root access and custom stacks**: Bare-metal infrastructure for specialized configurations and control.
+
+## When it doesn't
+
+- **General-purpose cloud workloads** (databases, web servers, CI/CD): GMI Cloud is GPU-specialized; hyperscalers offer broader service ecosystems.
+- **Cost-sensitive batch inference with long-running, predictable workloads** where upfront commitments might offer better economics; pricing is purely on-demand hourly consumption.
+
+## Inclusion criteria
+
+GMI Cloud meets all three inclusion criteria:
+
+1. **Transparent pricing**: Explicit hourly rates published on [pricing page](https://www.gmicloud.ai/en/pricing) ($2.00/H100, $2.60/H200).
+2. **Self-service signup**: [Console signup](https://console.gmicloud.ai/?auth=signup) available for immediate access.
+3. **Public SLA/status page**: Not explicitly confirmed in provided content; review the provider's documentation directly for current SLA commitments and status monitoring.

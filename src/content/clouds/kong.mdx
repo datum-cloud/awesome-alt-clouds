@@ -1,0 +1,55 @@
+---
+status: draft
+tagline: "Open-source API gateway and AI connectivity platform for managing microservices, APIs, and agentic traffic at scale"
+pricingModel: mixed
+openSource: true
+services:
+  - Kong Gateway (API Gateway)
+  - Kong Konnect (Control Plane)
+  - Kong AI Gateway
+  - Kong Event Gateway
+  - Kong Mesh (Service Mesh)
+  - Kong Ingress Controller
+  - Insomnia (API Client)
+socials:
+  website: "https://konghq.com/"
+  github: "https://github.com/Kong"
+---
+
+## What makes Kong different
+
+Kong is fundamentally an **open-source-first API gateway platform** that competes with managed API gateways by offering both free, self-hosted runtimes and a managed control plane (Kong Konnect). Unlike traditional cloud providers, Kong focuses exclusively on API and connectivity infrastructure—not compute, storage, or databases. This specialization means it works across any cloud (AWS, GCP, Azure, on-prem, edge) as a vendor-neutral layer.
+
+The platform has evolved beyond traditional API management into **AI connectivity**. Kong recently introduced an AI Gateway for managing LLM requests (rate limiting, cost control, fallback routing) and an Agent Gateway for governing agent-to-agent (A2A) traffic in agentic AI workflows. This positions Kong as infrastructure for the emerging AI operations stack rather than just legacy API governance.
+
+Kong's architecture is built on Nginx, making it lightweight and deployable anywhere—Kubernetes clusters, serverless containers, or bare metal. The open-source Kong Gateway is production-ready without licensing, creating a low-risk entry point for teams evaluating the platform before adopting the managed Konnect tier.
+
+## Pricing model
+
+Kong offers a **freemium + SaaS subscription model**:
+
+- **Kong Gateway (open-source)**: Free and self-hosted. No commercial licensing required.
+- **Kong Konnect**: Managed control plane with tiered subscriptions. Specific pricing not published on the main website, but Konnect includes runtime management, API service catalog, developer portal, and observability. Enterprise plans available with custom pricing.
+- **Support & Services**: Enterprise support, API advisory services, and forward-deployed engineers available; pricing on request.
+
+This hybrid approach lets organizations run Kong Gateway for free indefinitely while paying only for managed services (Konnect) if they want central control across distributed runtimes. There is no egress or compute-based pricing typical of hyperscalers—you pay for the management plane, not per-API-call unless you adopt usage-based billing features within Konnect.
+
+## When it fits
+
+- **Multi-cloud and hybrid deployments**: Teams that need a consistent API/AI gateway across AWS, GCP, Azure, and on-premises environments.
+- **Microservices and Kubernetes-native organizations**: Kong Ingress Controller and tight Kubernetes integration make it natural for cloud-native teams.
+- **API monetization and developer platforms**: Built-in usage metering, developer portal, and billing integration support internal API marketplaces and partner ecosystems.
+- **AI operations and LLM governance**: Kong AI Gateway and Agent Gateway handle token budgets, cost control, and failover for large language model deployments.
+- **Event-driven architectures**: Kong Event Gateway bridges Kafka and async systems with API-like governance.
+
+## When it doesn't
+
+Kong is not a full-stack cloud provider and cannot replace AWS, GCP, or Azure for compute, storage, or databases. It is also not ideal for teams seeking a single vendor for end-to-end infrastructure—you will still need a hyperscaler or alternative for underlying compute and data services.
+
+## Inclusion criteria
+
+Kong meets all three inclusion criteria:
+
+1. **Transparent pricing**: Open-source Kong Gateway has no cost; Konnect pricing tiers are available upon request. The freemium model is clearly documented.
+2. **Self-service signup**: Kong Konnect registration is self-service at https://konghq.com/products/kong-konnect.
+3. **Public SLA/status page**: Kong provides public documentation and enterprise support terms; specific uptime SLA available via enterprise contracts and support portal.

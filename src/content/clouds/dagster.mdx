@@ -1,0 +1,56 @@
+---
+status: draft
+tagline: "Unified control plane for orchestrating, monitoring, and scaling AI and data pipelines."
+pricingModel: "usage-based"
+openSource: true
+regions:
+  - "North America"
+  - "Europe"
+services:
+  - "Data pipeline orchestration"
+  - "Asset lineage and observability"
+  - "dbt, Databricks, and Python integration"
+  - "AI/ML workflow automation"
+  - "Data quality monitoring and alerting"
+  - "Compass (AI-driven analytics)"
+  - "Multi-tenant deployments"
+  - "Enterprise audit logging"
+socials:
+  website: "https://dagster.io/"
+  github: "https://github.com/dagster-io"
+---
+
+## What makes Dagster different
+
+Dagster positions itself as a unified control plane rather than a generic infrastructure orchestrator. Unlike traditional workflow tools that treat jobs as isolated units, Dagster builds its data model around *assets*—the actual tables, models, and datasets that matter to your business. This asset-centric approach enables automatic lineage tracking, cross-pipeline impact analysis, and contextual alerting without explicit configuration.
+
+The platform tightly integrates modern data stack tools (dbt, Databricks, Fivetran, Snowflake, BigQuery) while remaining agnostic to compute. You can orchestrate transformations wherever they run—in Snowflake's Dynamic Tables, on Databricks clusters, or in your own Kubernetes—and observe them all through a single pane of glass. Compass, Dagster's newer AI-driven analytics product, extends this to self-service insights: stakeholders query data in Slack or native tools while data engineers maintain governance through GitOps.
+
+Open-source availability and Python-first development make Dagster accessible for teams starting small but needing to scale; enterprises can deploy on their infrastructure or use Dagster+ for managed hosting.
+
+## Pricing model
+
+Dagster+ operates on a usage-based model tied to orchestration runs and compute consumption. The platform offers a free tier for development and small workloads, with pricing scaling based on monthly run volume and resource allocation. Specific per-unit pricing is not published on the website, but quotes are available via contact or signup at [dagster.plus/signup](https://dagster.plus/signup).
+
+The pricing stands out because it decouples orchestration costs from compute costs—you pay Dagster for coordination and observability, while compute (dbt, Databricks, Snowflake) bills separately. This transparency prevents surprise bills and aligns costs with actual pipeline activity rather than always-on infrastructure.
+
+## When it fits
+
+- **Modern data teams** using dbt, Databricks, or cloud data warehouses who need orchestration plus observability in a single tool.
+- **ML/AI workflows** requiring repeatable, observable training pipelines with data lineage and experiment tracking.
+- **Multi-tenant platforms** where teams need isolated code deployments and cross-workspace control planes.
+- **Data quality as a first-class concern**, with freshness monitoring, alerts, and automated remediation built into orchestration logic.
+- **Organizations standardizing on Python** for both data engineering and orchestration logic.
+
+## When it doesn't
+
+- **Traditional batch ETL on fixed schedules** without complex dependencies—simpler tools like Airflow or cron may be overkill.
+- **Real-time streaming workloads**; Dagster is asset-oriented and optimized for batch and scheduled execution, not event-driven architectures.
+
+## Inclusion criteria
+
+Dagster meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing**: Usage-based model documented at [dagster.plus/pricing](https://dagster.plus) with free tier and contact-for-quote enterprise plans.
+2. **Self-service signup**: Available at [dagster.plus/signup](https://dagster.plus/signup) with immediate access to managed cloud or self-hosted open-source deployments.
+3. **Public SLA/status**: Enterprise SLA and uptime commitments available; status monitoring accessible via support documentation.

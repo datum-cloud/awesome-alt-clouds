@@ -1,0 +1,52 @@
+---
+status: draft
+tagline: "eBPF-based observability platform with BYOC for logs, metrics, and traces"
+pricingModel: usage-based
+services:
+  - Infrastructure Monitoring
+  - Application Performance Monitoring
+  - Log Management
+  - Real User Monitoring
+  - Synthetic Performance Monitoring
+  - Kubernetes Monitoring
+  - AI Observability
+socials:
+  website: "https://www.groundcover.com/"
+  linkedin: "https://www.linkedin.com/company/groundcover-com/"
+  github: "https://github.com/groundcover-com"
+---
+
+## What makes groundcover different
+
+Groundcover uses eBPF (extended Berkeley Packet Filter) as its core sensing technology, enabling agentless or lightweight agent-based observability without requiring code instrumentation. This kernel-level approach captures system and network telemetry with minimal overhead, eliminating the need to modify applications or inject SDKs—a significant advantage over traditional APM tools that require extensive instrumentation.
+
+The platform's BYOC (Bring Your Own Cloud) architecture is another key differentiator. Rather than forcing customers into a managed SaaS model, groundcover allows organizations to deploy the backend in their own cloud accounts (AWS, GCP, Azure) or on-premises environments. This appeals to enterprises with strict data residency, compliance, or security requirements who want to avoid sending all telemetry to a third-party SaaS vendor.
+
+Groundcover also positions itself as a cost-efficient replacement for open-source stacks (Prometheus, Grafana, Loki, Jaeger). Organizations running DIY observability are plagued by operational overhead; groundcover bundles logs, metrics, traces, and RUM into a unified platform with integrated eBPF sensing, reducing the complexity and TCO of maintaining multiple tools.
+
+## Pricing model
+
+Groundcover uses a usage-based pricing model tied to the volume of observability data ingested (logs, metrics, traces). While exact per-unit rates are not disclosed publicly on the main website, the company offers a free tier and self-serve trial. Pricing is transparent upon signup, with no hidden per-seat licensing typical of legacy APM vendors. The cost calculator available on their website helps estimate consumption-based bills for specific workloads.
+
+The BYOC model has a cost advantage: since you control the backend infrastructure in your own cloud account, you pay for your compute and storage directly to your cloud provider, reducing lock-in and allowing more granular cost control.
+
+## When it fits
+
+- **Kubernetes-native teams** seeking unified observability for containerized microservices without heavy agent overhead
+- **Enterprises with strict data governance** requiring on-premises or customer-controlled cloud deployments
+- **Organizations replacing OSS stacks** (Prometheus, Grafana, Loki, Jaeger) seeking reduced operational burden
+- **Cost-conscious cloud users** who want to replace expensive per-seat APM tools with usage-based consumption
+- **AI/ML teams** building production AI systems requiring specialized observability for model performance and inference telemetry
+
+## When it doesn't
+
+- **Legacy monolithic applications** heavily dependent on agent-based instrumentation may require refactoring to benefit from eBPF's full potential
+- **Highly regulated industries** (healthcare, finance) may require compliance certifications or audit trails not yet fully documented in groundcover's public trust center
+
+## Inclusion criteria
+
+Groundcover meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Usage-based pricing model is disclosed; cost calculator and pricing page available at [groundcover.com/pricing](https://www.groundcover.com/pricing)
+2. **Self-service signup**: Free tier and trial available; playground environment at [play.groundcover.com](https://play.groundcover.com/) with no sales friction
+3. **Public SLA/status**: Trust center and service status documentation available; public documentation at [groundcover.com/trust-center](https://www.groundcover.com/trust-center)

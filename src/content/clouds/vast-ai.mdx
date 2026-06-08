@@ -1,0 +1,58 @@
+---
+status: draft
+tagline: "Marketplace for buying and selling GPU compute capacity at competitive, real-time prices."
+pricingModel: "usage-based"
+regions:
+  - "40+ global data centers"
+services:
+  - "GPU Cloud"
+  - "Serverless inference"
+  - "GPU Clusters"
+  - "Model Library"
+  - "CLI & Python SDK"
+  - "REST API"
+socials:
+  website: "https://vast.ai/"
+  x: "https://twitter.com/vastdotai"
+  github: "https://github.com/vast-ai"
+---
+
+## What makes Vast.ai different
+
+Vast.ai operates as a peer-to-peer marketplace for GPU compute rather than a traditional managed cloud. Providers list spare GPU capacity, and buyers bid for access in real-time. This supply-and-demand model eliminates the fixed pricing of hyperscalers, enabling transparent, per-second billing and dramatically lower costs for latency-tolerant workloads.
+
+The platform is built for programmability from the ground up. Every operation—from GPU discovery to instance provisioning—is available via CLI, Python SDK, or REST API. This design allows AI agents and orchestration frameworks to autonomously procure and optimize compute at scale, treating infrastructure as a flexible, queryable resource rather than a manual deployment target.
+
+Vast.ai hosts 20,000+ GPUs across 40+ data centers globally, spanning 68+ GPU types from RTX 4090s to H200s and Blackwell accelerators. The platform targets developers, AI teams, and cost-sensitive workloads rather than enterprise customers requiring SLAs or dedicated support.
+
+## Pricing model
+
+Vast.ai uses real-time, supply-driven pricing with per-second billing. Example rates (as of latest data):
+
+- **RTX 5090 Blackwell (32GB)**: $0.67/hr average; $0.21–$53.33/hr range
+- **B200 Blackwell (192GB)**: $4.25/hr average; $3.75–$8.75/hr range
+- **H200 Hopper (141GB)**: $3.75/hr average; $1.97–$7.24/hr range
+- **RTX 4090 Ada (24GB)**: $0.51/hr average; $0.13–$2.67/hr range
+- **H100 SXM (80GB)**: $2.33/hr average; $1.47–$5.33/hr range
+
+Accounts start with as little as $5 credit; no long-term contracts or sales involvement required. Pricing varies by availability and demand—users can filter by price, VRAM, model, and region via the console or API. Per-second billing means customers pay only for actual compute time, not reserved capacity.
+
+## When it fits
+
+- **AI training & fine-tuning**: Cost-effective large-scale training with flexible, hourly GPU access
+- **Inference workloads**: Serverless endpoints with automatic benchmarking across GPU types and autoscaling to zero
+- **Batch processing**: High-throughput data processing jobs that tolerate interruption or latency variance
+- **Graphics rendering**: 3D rendering and video generation workloads benefiting from real-time pricing
+- **Research & prototyping**: Academic and startup teams needing rapid GPU access without upfront commitment
+
+## When it doesn't
+
+Vast.ai is not ideal for production workloads requiring strict SLAs, guaranteed uptime, or low-latency failover. The marketplace model can result in price volatility and instance availability fluctuation depending on supplier capacity.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Real-time pricing visible on [vast.ai/pricing](https://vast.ai/pricing) for all GPU types; prices are programmatically queryable via API.
+
+✅ **Self-service signup**: Accounts open immediately via [cloud.vast.ai](https://cloud.vast.ai/) with $5 minimum; API key provisioned instantly.
+
+✅ **Public SLA/status**: SOC 2 certified; compliance and status information available at [vast.ai](https://vast.ai/).

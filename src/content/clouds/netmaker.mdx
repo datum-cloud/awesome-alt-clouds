@@ -1,0 +1,47 @@
+---
+status: draft
+tagline: "WireGuard-based mesh networking platform for zero-trust secure connectivity without VPN complexity."
+pricingModel: subscription
+openSource: true
+services:
+  - "Software Defined Networking (SDN)"
+  - "WireGuard-based VPN & mesh networking"
+  - "Zero-trust access & security"
+  - "Edge device management"
+  - "Multi-cloud network orchestration"
+  - "On-premises deployment option"
+  - "ACL & egress/ingress routing"
+socials:
+  website: "https://netmaker.io/"
+  github: "https://github.com/gravitl/netmaker"
+  linkedin: "https://linkedin.com/company/netmaker-io"
+  x: "https://twitter.com/netmaker_io"
+---
+
+## What makes Netmaker different
+
+Netmaker replaces traditional VPN and overlay network complexity with a declarative, peer-to-peer WireGuard mesh that operates at kernel level. Instead of chaining traffic through central gateways, Netmaker orchestrates direct encrypted tunnels between endpoints—reducing latency by 10-20x compared to conventional VPN solutions. The platform abstracts WireGuard's manual configuration burden: users define desired network topology via dashboard or CLI, and Netmaker automatically distributes the correct cryptographic keys and routing rules to all connected agents.
+
+Unlike cloud-native networking locked to a single provider, Netmaker works across AWS, Azure, GCP, on-premises hardware, and edge devices simultaneously. This makes it ideal for organizations avoiding vendor lock-in or managing hybrid multi-cloud infrastructure. The platform can be self-hosted entirely on your own infrastructure, keeping all network state and traffic orchestration under your control.
+
+## Pricing model
+
+Netmaker operates on a usage-based subscription model. The community edition is open-source and self-hosted at no cost. The managed SaaS offering scales with the number of nodes (devices/servers) connected to your networks. While exact per-node pricing is not publicly listed on the main site, the model rewards lean deployments and scales predictably as you add endpoints—a departure from egress-based cloud pricing that penalizes multi-region architectures.
+
+## When it fits
+
+- **Distributed teams & remote access**: Replace Azure VPN, FortiClient, or corporate VPN appliances with faster, simpler peer-to-peer access.
+- **Multi-cloud infrastructure**: Seamlessly connect Kubernetes clusters, databases, and workloads across AWS, GCP, Azure, and on-premises without cloud-specific lock-in.
+- **Edge computing at scale**: Centrally manage thousands of remote edge devices (routers, gateways, IoT nodes) with consistent security policies.
+- **Hybrid on-premises + cloud**: Bridge office networks, data centers, and cloud regions with high-performance encrypted overlay connectivity.
+- **AI/ML workload distribution**: Connect GPUs and training jobs across multiple cloud providers with zero-trust encryption and low latency.
+
+## When it doesn't
+
+Netmaker is not a replacement for application load balancing, DDoS protection, or WAF services. Organizations requiring managed Kubernetes, hosted databases, or serverless compute should pair Netmaker with complementary cloud services rather than expect it to provide those capabilities.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Subscription model documented; self-hosted community edition is free and open-source.  
+✅ **Self-service signup**: Dashboard-based onboarding available at https://dashboard.netmaker.io/  
+✅ **Public SLA/status page**: Status monitoring and incident tracking available.

@@ -1,0 +1,53 @@
+---
+status: draft
+tagline: "AI-centric cloud with massive GPU clusters and managed services for training and inference."
+pricingModel: "usage-based"
+regions:
+  - "Helsinki, Finland"
+services:
+  - "GPU compute (H100, H200, B200, B300, GB200, GB300)"
+  - "Managed Kubernetes clusters"
+  - "Slurm-based orchestration"
+  - "Managed MLflow"
+  - "Managed PostgreSQL"
+  - "Apache Spark"
+  - "Token Factory (LLM API service)"
+  - "Fast object storage"
+socials:
+  website: "https://nebius.com/"
+  linkedin: "https://www.linkedin.com/company/nebius"
+---
+
+## What makes Nebius different
+
+Nebius is purpose-built for large-scale AI workloads from the ground up. Rather than retrofitting GPU support onto a general-purpose cloud, Nebius designs its entire stack—from custom server and rack designs to InfiniBand networking—specifically for AI training and inference. The company operates ISEG, a supercomputer ranking #19 globally, demonstrating deep expertise in orchestrating thousands of GPUs efficiently.
+
+The platform stands out by combining cutting-edge hardware (latest NVIDIA GPUs including GB300 and GB200 series) with intelligent defaults. Pre-configured drivers, high-performance InfiniBand, and choice of Kubernetes or Slurm orchestration reduce the operational overhead typical of bare-metal GPU clouds. Token Factory, Nebius's companion service, provides managed access to LLMs via API, allowing developers to integrate inference without provisioning their own GPU clusters.
+
+The company has proven this approach with customers spanning AI research (Stanford's CRISPR-GPT), deep tech (Prisma Labs, Recraft), and mainstream platforms (Shopify, Brave, Revolut, JetBrains).
+
+## Pricing model
+
+Nebius operates on a usage-based model with transparent, per-GPU-hour pricing published on its [pricing page](https://nebius.com/prices). The exact rates depend on GPU type and region, but the company emphasizes "unparalleled efficiency" and "substantial customer value over competitors" through stack optimization.
+
+Pricing varies by GPU model—premium options like GB300 and B300 command higher rates than H100s. Managed services (Kubernetes, MLflow, PostgreSQL) carry additional charges. What differentiates Nebius pricing is the removal of hidden overhead: no charges for InfiniBand or inter-GPU networking within clusters, and 24/7 architect support is included at no extra cost for multi-node deployments.
+
+## When it fits
+
+- **Large-scale model training**: Teams needing 100+ GPUs in a single cluster for LLM or vision model training benefit from Nebius's purpose-built orchestration and networking.
+- **AI research**: Universities and research labs (Stanford, London Institute) use Nebius for reproducible, large-scale experiments with expert architecture support included.
+- **Managed LLM inference**: Token Factory provides a fast path to production LLM APIs without managing GPU infrastructure.
+- **Custom ML infrastructure**: Teams comfortable with Terraform, Kubernetes, or Slurm who want infrastructure-as-code and avoid vendor lock-in.
+- **Data-center-grade AI workloads**: Organizations needing supercomputer-level performance and reliability for time-sensitive training jobs.
+
+## When it doesn't
+
+Nebius is not a fit for general-purpose cloud needs (VMs, databases, static content, web apps). It lacks the breadth of non-AI services that AWS, GCP, or Azure provide. Early-stage startups with unpredictable, small-scale GPU needs may find hourly pricing less cost-effective than spot instances on hyperscalers, though Nebius's architecture focus can offset this for sustained workloads.
+
+## Inclusion criteria
+
+Nebius meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Published on [nebius.com/prices](https://nebius.com/prices) with per-GPU-hour rates.
+2. **Self-service signup**: Direct sign-up via [console.nebius.com](https://console.nebius.com/) with no mandatory sales contact required.
+3. **Public SLA & status page**: Service status available at [status.nebius.com](https://status.nebius.com/).

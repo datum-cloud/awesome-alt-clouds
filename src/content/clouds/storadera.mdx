@@ -1,0 +1,51 @@
+---
+status: draft
+tagline: "European S3-compatible object storage with transparent pricing and zero egress fees"
+pricingModel: "usage-based"
+regions:
+  - "Europe"
+services:
+  - "S3-compatible object storage"
+  - "Cloud backup"
+  - "Data archival"
+  - "Disaster recovery"
+socials:
+  website: "https://storadera.com"
+---
+
+## What makes Storadera different
+
+Storadera positions itself as a cost-effective, European alternative to AWS S3, Azure Blob Storage, and Google Cloud Storage. The provider's core differentiator is radical pricing simplicity: a flat €7/TB/month with **zero egress charges**—eliminating the surprise bandwidth costs that make hyperscaler storage expensive at scale. There are no delete penalties, minimum file sizes, or data caps, making the total cost of ownership predictable for long-term archival and backup workloads.
+
+The provider emphasizes data sovereignty and compliance by keeping all storage within European data centers, addressing regulatory concerns for businesses subject to GDPR and similar frameworks. This geographic focus, combined with S3 API compatibility, enables seamless integration with existing backup tools (Veeam, Synology Hyper Backup, etc.) without vendor lock-in or tool replacement.
+
+## Pricing model
+
+**€7 per TB per month** for storage with **zero download (egress) charges**. No hidden fees, no complicated tiers, and no delete penalties. New users receive 50GB free for 30 days to test the service.
+
+For comparison, Storadera's pricing significantly undercuts hyperscalers:
+- AWS S3: $24.50 USD/TB storage + $90 USD/TB egress
+- Azure Blob: $19.60 USD/TB storage + $80 USD/TB egress  
+- Google Cloud Storage: $23 USD/TB storage + $120 USD/TB egress
+
+The flat-rate model with included egress is particularly valuable for backup and archival use cases where download costs typically multiply the effective storage price.
+
+## When it fits
+
+- **Backup and disaster recovery**: Off-site backup targets with cost-effective retention and quick restoration
+- **Long-term archival**: Cold storage for compliance-mandated data retention without per-delete charges
+- **European data residency**: Workloads requiring data to remain within EU data centers for regulatory compliance
+- **Cost-conscious organizations**: Teams using S3-compatible tools who want predictable pricing without egress surprises
+- **Synology NAS and local storage offloading**: Extending capacity and creating redundancy for small-to-medium business infrastructure
+
+## When it doesn't
+
+Storadera is less suitable for high-frequency data access patterns or workloads requiring sub-millisecond latency. It is not a general-purpose compute platform and does not offer compute resources, databases, or managed services beyond object storage.
+
+## Inclusion criteria
+
+Storadera meets all 3 inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Public pricing of €7/TB with zero egress fees clearly stated on [storadera.com](https://storadera.com)
+2. **Self-service signup**: Free 50GB trial for 30 days with direct account creation on homepage
+3. **Public SLA/status page**: Operates as a fully managed service with published uptime commitments and regulatory compliance documentation

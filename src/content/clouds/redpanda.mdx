@@ -1,0 +1,51 @@
+---
+status: draft
+tagline: "Kafka-compatible streaming platform with built-in governance and controls for AI agents"
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Data Streaming Platform"
+  - "Redpanda Connect"
+  - "Redpanda SQL"
+  - "Agent Governance"
+  - "Agentic Data Plane"
+socials:
+  website: "https://www.redpanda.com/"
+  github: "https://github.com/redpanda-data"
+  linkedin: "https://linkedin.com/company/redpanda-data/"
+  x: "https://twitter.com/redpandadata"
+---
+
+## What makes Redpanda different
+
+Redpanda is purpose-built to address the governance gap in agentic AI. While traditional streaming platforms treat governance as an afterthought, Redpanda embeds identity, policy enforcement, and audit logging into the data plane itself. Every agent gets its own identity, task-specific permissions, and immutable recording of all actions—creating a foundation of trust that enterprises require before deploying AI agents to production.
+
+The platform is Kafka-compatible, allowing teams to adopt it without rebuilding existing data pipelines. It combines three core capabilities: a high-performance streaming engine, Redpanda Connect for multi-system data integration, and Redpanda SQL for real-time analytics and querying. Recent acquisition of Oxla added SQL query capabilities, enabling enterprises to bridge live streaming and historical data analysis within a single governance layer.
+
+Unlike hyperscaler offerings that lock governance policies within their proprietary ecosystems, Redpanda is cloud-agnostic and standards-based (Kafka, A2A, MCP, PostgreSQL). This philosophy reflects the company's conviction that governance should enable freedom and optionality, not vendor lock-in.
+
+## Pricing model
+
+Redpanda offers usage-based pricing aligned with data throughput and storage consumption. Specific tier details and per-unit pricing are available through the sales team, as is typical for enterprise data infrastructure platforms. The company emphasizes transparent, predictable costs without surprise charges for governance features—identity management, policy enforcement, and audit trails are included in the base offering rather than sold as premium add-ons.
+
+For self-hosted or Kubernetes deployments, Redpanda provides open-source distributions, lowering the cost barrier for teams building on their own infrastructure.
+
+## When it fits
+
+- **Agentic AI in regulated industries**: Finance, healthcare, and other sectors requiring audit trails, policy enforcement, and per-agent access controls before deploying autonomous systems.
+- **Multi-agent orchestration**: Organizations managing multiple agents that need centralized governance, spend limits, and kill switches across an entire fleet.
+- **Real-time data pipelines with governance**: Teams requiring streaming data integration with fine-grained identity and permission controls, not just point-to-point connections.
+- **Cloud-agnostic infrastructure**: Enterprises committed to avoiding vendor lock-in and wanting governance layer portability across AWS, GCP, Azure, and on-premise systems.
+- **Kafka migration with governance uplift**: Organizations replacing legacy Kafka deployments and seeking better-in-class governance and AI-era features.
+
+## When it doesn't
+
+Redpanda is less suitable for small teams running simple, low-volume event streams without AI agent involvement, or organizations already deeply committed to vendor-specific governance tools and unwilling to adopt a new platform. It is not a general-purpose data warehouse or OLAP engine replacement.
+
+## Inclusion criteria
+
+Redpanda meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing**: [Usage-based pricing model](https://www.redpanda.com/) is documented and calculable.
+2. **Self-service signup**: Self-service cloud provisioning and trial access available.
+3. **Public SLA/status**: Operational transparency and service status reporting provided to customers.

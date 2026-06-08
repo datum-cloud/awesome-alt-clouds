@@ -1,0 +1,54 @@
+---
+status: draft
+tagline: "Open-source observability and debugging platform built for AI agents and LLM applications."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Agent tracing and transcripts"
+  - "Signal-based alerting"
+  - "Custom dashboards with SQL"
+  - "Trace labeling and dataset curation"
+  - "Browser session replay"
+  - "Full-text search across spans"
+  - "PII redaction"
+  - "Self-hosted deployment"
+socials:
+  website: "https://laminar.sh/"
+  github: "https://github.com/lmnr-ai/lmnr"
+  x: "https://twitter.com/lmnr_ai"
+  linkedin: "https://linkedin.com/company/laminar-ai"
+---
+
+## What makes Laminar different
+
+Laminar is purpose-built for observability of AI agents and LLM applications rather than treating them as a generic workload. It captures the full execution graph of agent runs—LLM calls, tool invocations, sub-agent spawning, and reasoning steps—in a queryable, replay-able format designed for the complexity of agentic AI systems.
+
+Unlike generic application monitoring, Laminar's "Signals" feature lets teams define business-logic errors in plain English ("agent is stuck in a loop") rather than thresholds on metrics. The platform then scans all agent runs to catch violations and alert via Slack. This shifts from reactive metrics monitoring to proactive, semantic error detection for AI workflows.
+
+The platform is fully open-source under Apache 2.0, deployable via Docker in three lines, and self-hostable with full feature parity. It achieves HIPAA and SOC 2 Type II compliance, making it suitable for regulated environments. Built-in PII redaction at scale helps address privacy concerns common in LLM observability.
+
+## Pricing model
+
+Laminar operates a usage-based model. Specific per-unit pricing is not disclosed on their public pricing page; teams are encouraged to book a demo or sign up free to understand billing based on trace volume and retention. The free tier allows hands-on exploration of the product's core debugging and alerting capabilities.
+
+Compared to hyperscaler observability pricing (which charges per GB ingested and per query), Laminar's usage model is transparent to users who self-host, since ingestion and query costs disappear—only the open-source runtime applies.
+
+## When it fits
+
+- **AI agent debugging and validation**: Teams building Claude, OpenAI, or Anthropic agent applications who need fast iteration from failure to root cause.
+- **Multi-step LLM workflows**: Orchestrations involving sub-agents, tool chaining, and parallel execution where standard logs fall short.
+- **Regulated AI deployments**: Organizations requiring HIPAA or SOC 2 compliance in AI observability, for whom hyperscaler SaaS may not be sufficient.
+- **Dataset curation for fine-tuning**: Teams that want to label traces and extract high-quality training data directly from production agent runs.
+- **Cost-conscious teams**: Development teams or startups that benefit from open-source self-hosting to avoid per-event ingestion charges.
+
+## When it doesn't
+
+Laminar is not a general-purpose infrastructure observability platform. Teams needing broad metrics, logs, and traces across Kubernetes clusters, databases, and traditional microservices should pair Laminar with a general observability stack (e.g., Prometheus, Jaeger, or Grafana).
+
+## Inclusion criteria
+
+Laminar meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing**: Usage-based model documented; free tier available for exploration. [https://laminar.sh/pricing](https://laminar.sh/pricing)
+2. **Self-service signup**: Free account creation at [https://laminar.sh/sign-up](https://laminar.sh/sign-up)
+3. **Public SLA / status page**: Status page available at [https://laminar.sh/status](https://laminar.sh/status)

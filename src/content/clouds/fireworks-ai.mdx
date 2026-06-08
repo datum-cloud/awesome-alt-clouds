@@ -1,0 +1,51 @@
+---
+status: draft
+tagline: "High-speed inference APIs for open-source and proprietary AI models, built for speed and cost-efficiency."
+pricingModel: "usage-based"
+services:
+  - "Serverless inference"
+  - "On-demand GPU compute"
+  - "Model fine-tuning"
+  - "Enterprise RAG"
+  - "Code assistance APIs"
+  - "Conversational AI"
+  - "Agentic systems"
+socials:
+  website: "https://fireworks.ai/"
+---
+
+## What makes Fireworks.ai different
+
+Fireworks.ai positions itself as a specialized inference platform built by the creators of PyTorch, optimizing for speed and cost rather than breadth of services. Unlike hyperscalers offering monolithic cloud platforms, Fireworks focuses narrowly on inference workloads—reducing cold start latency, improving time-to-first-token metrics, and enabling developers to run the latest open-source models (DeepSeek, Llama, Flux, etc.) without GPU infrastructure management.
+
+The platform introduces "Serverless 2.0," which decouples reliability from reserved capacity, allowing users to control performance trade-offs explicitly rather than overprovisioning. This architecture appeals to teams building AI-native applications where inference latency directly impacts user experience—such as IDE copilots (Cursor), code generation (Cognition), and conversational agents.
+
+## Pricing model
+
+Fireworks.ai uses a transparent, usage-based pricing model indexed to per-token or per-request costs, with costs varying by model size and inference type. The homepage emphasizes "lowest cost" positioning versus closed models, but specific per-token rates are not displayed publicly; pricing details require visiting the [pricing page](https://fireworks.ai/pricing) or signing up.
+
+Two service tiers serve different audiences:
+- **AI Natives**: Day-0 support for latest models, optimized for developer velocity and cost.
+- **Enterprise**: SOC2, HIPAA, and GDPR compliance; bring-your-own-cloud or managed options; zero data retention and data sovereignty guarantees.
+
+This model stands out by eliminating the complexity of GPU provisioning and autoscaling that typically adds overhead to self-managed inference on hyperscalers.
+
+## When it fits
+
+- **AI-native startups** needing rapid iteration on inference workflows with minimal DevOps overhead.
+- **IDE and code-generation tools** requiring sub-100ms time-to-first-token for real-time autocomplete experiences.
+- **Fine-tuning workflows** where quantization-aware tuning and reinforcement learning are built into the platform.
+- **Privacy-sensitive applications** requiring HIPAA or GDPR compliance with zero data retention.
+- **Cost-optimized inference** for teams running multiple open-source models and wanting centralized billing and model routing.
+
+## When it doesn't
+
+Fireworks.ai is not a general-purpose cloud platform; it lacks compute, storage, and networking services outside the inference domain. Organizations needing a unified cloud environment spanning databases, object storage, and compute should stick with hyperscalers. It is also not suitable for workloads requiring custom CUDA kernels or low-level GPU control.
+
+## Inclusion criteria
+
+Fireworks.ai meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing**: Usage-based pricing model publicly documented at [fireworks.ai/pricing](https://fireworks.ai/pricing).
+2. **Self-service signup**: Free account creation available at [fireworks.ai/signup](https://fireworks.ai/signup) with immediate API access.
+3. **Public SLA/status page**: Trust center and compliance documentation accessible; status monitoring implied through enterprise SLA offerings for SOC2-compliant accounts.

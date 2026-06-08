@@ -1,0 +1,57 @@
+---
+status: draft
+tagline: "Affordable GPU cloud with 45+ GPU models and global availability, 80% cheaper than hyperscalers."
+pricingModel: "usage-based"
+regions:
+  - "100+ locations across 20+ countries"
+services:
+  - "GPU Cloud (H100 SXM, A100 SXM, RTX 4090, and 42+ other models)"
+  - "Instant VMs (pre-configured, seconds-to-deployment)"
+  - "CPU Cloud (Xeon and EPYC processors)"
+  - "KVM Virtualization with root access"
+  - "Windows 10/Desktop support"
+  - "REST API for infrastructure automation"
+socials:
+  website: "https://tensordock.com/"
+---
+
+## What makes TensorDock different
+
+TensorDock operates as a **GPU marketplace** rather than a single provider, connecting customers to vetted independent hosts across 100+ global locations. This model eliminates typical hyperscaler constraints: no quota limits, no price gouging, and no commitment requirements. You pay only for what you use, with continuous per-second billing that stops the moment you delete a server.
+
+The platform's core differentiator is **radical price transparency**. H100 SXM5 GPUs start at $2.25/hr—significantly below AWS, GCP, or Azure. Consumer GPUs like the RTX 4090 begin at $0.35/hr, and CPU-only instances start at $0.012/hr. A100 SXM4s (the inference workhorse) price from $1.80/hr. Because hosts compete directly, pricing naturally gravitates toward market efficiency. This is especially powerful for inference workloads where cost-per-query compounds quickly.
+
+TensorDock enforces a **99.99% uptime standard** across all hosts and requires maintenance windows to be scheduled at least two weeks in advance. Hosts failing to meet quality thresholds are removed. The platform provides root access and dedicated GPUs via KVM virtualization, allowing you to manage your own drivers, run Windows, and avoid the compatibility issues that sometimes plague containerized clouds.
+
+## Pricing model
+
+| GPU Model | Starting Price |
+|-----------|-----------------|
+| H100 SXM5 80GB | $2.25/hr |
+| A100 SXM4 40GB | $1.80/hr |
+| RTX 4090 | $0.35/hr |
+| CPU (Xeon/EPYC) | $0.012/hr |
+
+All pricing is **pay-as-you-go** with no prepayment required beyond a $5 minimum deposit. Billing is continuous; balance deductions begin immediately upon deployment and stop when you terminate the instance. Reserved pricing discounts are available for long-term commitments—contact sales for terms.
+
+What stands out: TensorDock charges **zero ingress/egress fees**, a major cost advantage for data-heavy training and inference pipelines. Most hyperscalers impose per-GB egress charges that can add 15–30% to total workload cost.
+
+## When it fits
+
+- **AI model training and fine-tuning** on limited budgets; the H100 pricing undercuts competitors by ~40–50%.
+- **Inference serving** for startups and indie builders where cost-per-query directly affects unit economics.
+- **GPU-accelerated rendering, gaming, or image processing** using consumer GPUs where per-hour flexibility beats committed capacity.
+- **Research teams and universities** with restricted budgets seeking enterprise-grade hardware without enterprise-grade costs.
+- **Multi-region deployments** where you need flexible host selection across 20+ countries without regional markup penalties.
+
+## When it doesn't
+
+TensorDock is a poor fit for workloads requiring managed services (no Kubernetes-as-a-service, no data warehouse, no managed databases). Compliance-heavy industries may find the marketplace model (multiple independent hosts) less suitable than single-vendor SLA commitments. Organizations requiring dedicated account teams should contact sales; the platform is self-service first.
+
+## Inclusion criteria
+
+TensorDock meets all three inclusion criteria:
+
+1. **Transparent pricing**: Specific hourly rates publicly listed on homepage and dashboard ([https://tensordock.com/](https://tensordock.com/))
+2. **Self-service signup**: Deploy-in-30-seconds dashboard with $5 minimum deposit required; no sales gate
+3. **Public SLA and status**: 99.99% uptime standard documented on the security page ([https://tensordock.com/security.html](https://tensordock.com/security.html)); well-documented REST API ([Postman docs](https://documenter.getpostman.com/view/20973002/2s8YzMYRDc))

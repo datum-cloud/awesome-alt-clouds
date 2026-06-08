@@ -1,0 +1,56 @@
+---
+status: draft
+tagline: "GPU cloud for AI/ML in Japan with bare metal servers, InfiniBand, and data sovereignty."
+headquarters: "Tokyo, Japan"
+foundedYear: 2019
+pricingModel: "monthly"
+regions:
+  - "Japan"
+services:
+  - "GPU Cloud (bare metal Tesla V100 servers)"
+  - "InfiniBand EDR interconnect"
+  - "Lustre distributed file storage"
+  - "CUDA/OpenCL development environment"
+  - "Docker/Singularity container support"
+  - "Multi-GPU NVLink clustering"
+---
+
+## What makes GMO GPU Cloud different
+
+GMO GPU Cloud is purpose-built for high-performance compute workloads that demand low-latency, high-throughput interconnection between compute and storage. Unlike general-purpose cloud providers, it combines bare metal Tesla V100 GPUs with 100 Gb/s InfiniBand EDR networking and Lustre distributed filesystem—infrastructure traditionally found in HPC supercomputing centers, not public clouds. This architectural choice eliminates the noisy-neighbor problem and unpredictable latency inherent to virtualized GPU offerings.
+
+The service reflects GMO Internet's internal use of GPUs across its ad-tech, FX trading, and e-commerce divisions. Rather than forcing customers to configure their own HPC stack, GMO provides a pre-integrated environment with CUDA, OpenCL, and container engines (Singularity/Docker) ready to use. For organizations in Japan with strict data residency requirements, this is the only option—data never leaves Japan.
+
+## Pricing model
+
+GMO GPU Cloud offered three fixed monthly plans at launch (March 2019):
+
+| Plan | GPUs | Initial Cost | Monthly Cost | GPU Memory |
+|------|------|--------------|--------------|-----------|
+| 1 GPU | 1x Tesla V100 | ¥882,000 | ¥97,000 | 16 GB |
+| 2 GPU | 2x Tesla V100 | ¥1,560,000 | ¥142,000 | 32 GB |
+| 4 GPU | 4x Tesla V100 | ¥2,880,000 | ¥230,000 | 64 GB |
+
+Initial costs could be paid in installments. The pricing reflects bare metal hardware and managed HPC-grade interconnect; it is significantly higher than hyperscaler on-demand GPU pricing but includes dedicated resources and low-latency networking at no extra charge. The original roadmap mentioned a future hourly billing option, though current status is unclear.
+
+## When it fits
+
+- **AI/ML model training and inference** requiring multi-GPU synchronization with sub-millisecond latency
+- **Molecular dynamics simulations and drug discovery** leveraging Lustre for high-throughput data access
+- **Scientific computing** (genome analysis, physics simulations) where file distribution and HPC toolchains are critical
+- **Japanese enterprises** needing strict data sovereignty and zero overseas data transfer
+- **Organizations migrating from on-premises HPC** who want managed infrastructure without capital expense
+
+## When it doesn't
+
+- Batch inference or inference-only workloads that don't require tight multi-GPU synchronization (hyperscaler spot GPUs are cheaper)
+- Workloads requiring GPUs outside Japan or multi-region failover
+- Development and testing where hourly billing would be preferable to fixed monthly commitments
+
+## Inclusion criteria
+
+GMO GPU Cloud meets all three inclusion criteria:
+
+1. **Transparent pricing**: Monthly plans with explicit costs published in the March 2019 press release
+2. **Self-service signup**: Service available via https://gpu.cloud.gmo.jp with same-day provisioning
+3. **Public SLA/status page**: Status monitoring available (specific SLA terms should be verified on the service portal)

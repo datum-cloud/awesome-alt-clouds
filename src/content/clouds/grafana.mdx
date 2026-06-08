@@ -1,0 +1,62 @@
+---
+status: draft
+tagline: "Full-stack observability platform unifying metrics, logs, and traces with AI-powered insights."
+pricingModel: "mixed"
+openSource: true
+services:
+  - "Metrics & Prometheus"
+  - "Log aggregation & analysis"
+  - "Distributed tracing"
+  - "Dashboards & visualization"
+  - "Alerting & incident response"
+  - "Synthetic monitoring"
+  - "Application performance monitoring"
+  - "AI Assistant for observability"
+socials:
+  website: "https://grafana.com/"
+  x: "https://twitter.com/grafana"
+  linkedin: "https://linkedin.com/company/grafana/"
+  github: "https://github.com/grafana"
+---
+
+## What makes Grafana different
+
+Grafana stands apart by combining an open-source visualization foundation with a cloud-native observability platform. Unlike monolithic competitors like Datadog or New Relic, Grafana embraces a composable architecture built on open standards—Prometheus, OpenTelemetry, and Loki—allowing teams to mix managed and self-hosted components without vendor lock-in.
+
+The platform's strength lies in cost efficiency and transparency. Grafana's Adaptive Telemetry suite automatically identifies high-value telemetry and aggregates the rest, claiming to cut observability costs by up to 80%. This contrasts sharply with traditional usage-based pricing where teams pay for every data point ingested. The company also invests heavily in AI-native observability features—a built-in AI Assistant helps engineers build dashboards, diagnose issues, and query complex datasets without deep platform expertise.
+
+Grafana Labs maintains tight integration with open-source projects (Grafana, Loki, Prometheus, Tempo, and Mimir), meaning your data and configurations are never locked into proprietary formats. You can run identical dashboards and queries across self-hosted and cloud deployments.
+
+## Pricing model
+
+Grafana Cloud offers a **Free Forever tier** with no time limit, making it accessible to startups and individual developers. Paid tiers scale from **Pro** (team collaboration, extended retention) through **Advanced** and **Enterprise** plans with higher ingestion limits and premium support.
+
+Specific pricing requires navigating to their pricing page, but the model emphasizes **what you actually use** rather than list-price surprises. Costs are primarily driven by:
+
+- **Metrics ingestion** (per million samples)
+- **Log ingestion** (per GB)
+- **Trace ingestion** (per million spans)
+- **Dashboards and users** (for premium tiers)
+
+Unlike hyperscalers' unpredictable overage charges, Grafana publishes transparent unit costs upfront. The Adaptive Telemetry feature further differentiates pricing by reducing billable data volume through intelligent filtering—a direct answer to observability cost sprawl.
+
+## When it fits
+
+- **Cost-conscious DevOps teams** seeking to replace expensive all-in-one vendors without sacrificing capability
+- **Organizations standardizing on OpenTelemetry** needing native support across metrics, logs, and traces
+- **Kubernetes-heavy environments** where Prometheus is already deployed; Grafana Cloud integrates seamlessly
+- **Multi-cloud or hybrid deployments** where vendor neutrality and portability matter
+- **Teams valuing transparency** in both pricing and product roadmap (open-source governance)
+
+## When it doesn't
+
+- **Enterprises requiring proprietary AI models** embedded in observability workflows (Grafana's AI is helpful but not as vertically integrated as Datadog's)
+- **Organizations with no Prometheus/OpenTelemetry footprint** may face a steeper onboarding curve compared to all-in-one SaaS platforms
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Published pricing tiers and per-unit costs at [grafana.com/pricing](https://grafana.com/pricing/)
+
+✅ **Self-service signup**: Free account creation at [grafana.com/auth/sign-up](https://grafana.com/auth/sign-up/create-user/)
+
+✅ **Public SLA & status page**: Grafana Cloud Status available at [status.grafana.com](https://grafana.com/products/cloud/status/)

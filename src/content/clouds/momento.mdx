@@ -1,0 +1,49 @@
+---
+status: draft
+tagline: "Serverless Valkey caching with sub-millisecond latency, instant scaling, and zero cluster management."
+pricingModel: "usage-based"
+openSource: false
+services:
+  - "Serverless caching"
+  - "Valkey/Redis-compatible cache"
+  - "Vector retrieval"
+  - "Session state storage"
+  - "Feature stores"
+  - "Real-time data access"
+socials:
+  website: "https://www.gomomento.com/"
+---
+
+## What makes Momento different
+
+Momento strips away cluster management entirely. Unlike self-managed Redis or AWS ElastiCache, there are no nodes to provision, no capacity planning, and no cold-start penalties when traffic spikes. The service scales automatically across multi-AZ deployments with zero downtime during upgrades.
+
+The platform is built on hardened Valkey (the community fork of Redis) tuned by engineers who have operated caches at hyperscale. This means reliability features like hot-key shielding, write coalescing to reduce tail latency, and automated failover come standard—no configuration required. Clients report 15% better performance than ElastiCache at half the operational cost, plus migration windows measured in weeks rather than months.
+
+Momento targets developers building real-time systems (gaming, fintech, media, AI) where milliseconds matter and operational overhead cannot be tolerated.
+
+## Pricing model
+
+Momento uses a usage-based model with transparent per-operation pricing. Specific unit costs are not published on the homepage, but the model is designed to charge for read/write operations and data stored, with no minimum commitments or cluster reservations.
+
+The value proposition centers on eliminating the hidden costs of self-managed caching: no EC2 instance fees, no DBA labor, no failover debugging at 3 AM. For bursty workloads and startups, the pay-as-you-go structure aligns cost with actual demand.
+
+## When it fits
+
+- **Real-time gaming**: Leaderboards, player session state, and live chat under unpredictable load spikes.
+- **Fintech & fraud detection**: Sub-millisecond feature lookups and transaction caching where latency directly impacts revenue.
+- **AI/LLM applications**: Embedding retrieval, agent memory, and feature stores requiring instant scaling.
+- **Media & streaming**: Personalization vector lookups and beaconing with zero buffering tolerance.
+- **Serverless-native stacks**: Applications already committed to FaaS that need caching without managing infrastructure.
+
+## When it doesn't
+
+Momento is not ideal for workloads requiring complex data structures beyond key-value operations, or applications with strict data residency requirements where region selection is limited. High-volume, predictable baseline loads that fit neatly into reserved capacity may be cheaper on self-managed solutions.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Usage-based model is published; per-operation pricing available upon signup or contact.
+
+✅ **Self-service signup**: Developers can create an account and start a free tier immediately at gomomento.com.
+
+✅ **Public SLA & status page**: Momento publishes reliability commitments and maintains operational transparency for enterprise customers.

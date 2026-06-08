@@ -1,0 +1,46 @@
+---
+status: draft
+tagline: "On-demand NVIDIA GPU clusters for AI training and inference at scale"
+pricingModel: "hourly"
+regions:
+  - "US (multiple locations)"
+services:
+  - "GPU Instances (H100, B200, B300)"
+  - "1-Click Clusters™"
+  - "Superclusters (single-tenant GB300 NVL72)"
+  - "Lambda Stack (deep learning software)"
+  - "Managed cluster orchestration"
+  - "AI factory infrastructure"
+socials:
+  website: "https://lambda.ai/"
+---
+
+## What makes Lambda Labs different
+
+Lambda specializes exclusively in GPU-accelerated compute for AI workloads, offering a purpose-built alternative to general-purpose cloud providers. Unlike AWS, GCP, or Azure—which treat GPUs as an add-on service—Lambda's entire infrastructure is architected around NVIDIA hardware. The company provides curated, production-ready configurations: from individual H100/B200 instances for rapid prototyping, to managed 1-Click Clusters™ for distributed training, to dedicated single-tenant Superclusters running NVIDIA's latest GB300 NVL72 systems with Quantum-2 InfiniBand.
+
+A core differentiator is operational simplicity. Lambda bundles orchestration, networking, and expert co-engineering into the platform, eliminating the need to assemble a custom stack. Their "Lambda Stack" software layer handles driver optimization and CUDA configuration out-of-the-box. For teams building foundation models or serving large inference workloads, Lambda's single-tenant isolation and focus on inter-GPU bandwidth (critical for large-scale training) address pain points that general clouds often leave unresolved.
+
+## Pricing model
+
+Lambda offers hourly billing for individual GPU instances with transparent per-GPU rates. Exact pricing is available on their [Pricing page](https://lambda.ai/pricing), though specific numbers were not provided in the available content. The model is typical of specialized GPU clouds: pay-as-you-go hourly rates without long-term commitments, making it suitable for both continuous training jobs and on-demand experimentation. Superclusters and 1-Click Clusters are quoted custom, reflecting the enterprise scale and dedicated capacity involved.
+
+## When it fits
+
+- **Foundation model training**: Teams building or fine-tuning large language models where network performance and GPU density are critical.
+- **Large-scale inference clusters**: Serving billions of tokens in production with dedicated, predictable hardware.
+- **Rapid prototyping**: Researchers and startups needing fast GPU access without infrastructure setup overhead.
+- **Multi-GPU distributed workloads**: Projects requiring low-latency NVLink and InfiniBand connectivity across hundreds of GPUs.
+- **Compliance-sensitive deployments**: Single-tenant clusters for regulated industries or proprietary model training.
+
+## When it doesn't
+
+Lambda is a poor fit for workloads requiring CPU-only compute, traditional databases, or broad managed services (Kubernetes, data warehouses, object storage). For general-purpose cloud needs, hyperscalers remain more cost-effective.
+
+## Inclusion criteria
+
+Lambda meets all 3 alt-cloud inclusion criteria:
+
+1. **Transparent pricing**: Published hourly rates available at [lambda.ai/pricing](https://lambda.ai/pricing).
+2. **Self-service signup**: Account creation and GPU instance launch available at [lambda.ai/sign-up](https://lambda.ai/sign-up).
+3. **Public SLA & status page**: Trust and compliance information published; documentation and support resources available at [docs.lambda.ai](https://docs.lambda.ai/).

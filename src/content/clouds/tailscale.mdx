@@ -1,0 +1,55 @@
+---
+status: draft
+tagline: "Zero-config VPN and mesh networking platform built on WireGuard for secure device connectivity."
+pricingModel: "freemium"
+openSource: true
+services:
+  - "Mesh VPN"
+  - "Zero Trust Access Control"
+  - "Device Management"
+  - "Multi-cloud Connectivity"
+  - "SSH & RDP Access"
+  - "Kubernetes Integration"
+  - "API & Webhooks"
+socials:
+  website: "https://tailscale.com/"
+  x: "https://twitter.com/tailscale"
+  linkedin: "https://linkedin.com/company/tailscale"
+  github: "https://github.com/tailscale"
+---
+
+## What makes Tailscale different
+
+Tailscale reimagines VPN infrastructure as an identity-based mesh network rather than a centralized gateway. Built on WireGuard—a modern, cryptographically-sound protocol—it eliminates traditional VPN complexity: no manual key rotation, no configuration files to manage, no clunky client software. Users authenticate via OAuth providers (Google, GitHub, Microsoft, etc.) and devices join a secure mesh automatically.
+
+The platform operates as an overlay network, meaning it works across clouds, on-premises infrastructure, and edge devices without requiring network topology changes. This makes it particularly effective for hybrid multi-cloud environments where EC2 instances, GKE clusters, on-prem servers, and developer laptops all need to communicate securely with zero configuration overhead.
+
+The open-source foundation (both client and server components are available on GitHub) differentiates Tailscale from closed vendor solutions. Users can audit the code, self-host the control plane, or rely on Tailscale's managed coordination service—genuine choice rather than vendor lock-in.
+
+## Pricing model
+
+Tailscale operates on a freemium subscription model:
+
+- **Free tier**: Personal use, up to 100 devices, unlimited users, no credit card required.
+- **Pro**: $4 USD/user/month (billed annually) or $8/month (monthly billing). Includes unlimited devices per user, device approval workflows, and advanced features.
+- **Business**: Custom pricing for teams needing SSO, policy audit logs, and priority support.
+
+There are no data transfer charges or per-device overage fees, making costs predictable for scaling teams. Self-hosted deployment options also exist for organizations that want to avoid SaaS entirely.
+
+## When it fits
+
+- **Distributed teams replacing legacy VPNs**: Organizations with remote workers needing infrastructure access without maintaining traditional VPN appliances.
+- **Multi-cloud CI/CD pipelines**: GitHub Actions runners, GitLab runners, and Kubernetes clusters spanning AWS, GCP, and Azure need secure inter-service communication.
+- **Edge & IoT deployments**: Devices (industrial equipment, smart appliances, embedded Linux boards) behind NAT can securely reach central control planes without port forwarding.
+- **Hybrid cloud migrations**: Workloads transitioning between on-premises and cloud retain connectivity without network refactoring.
+- **Zero Trust access to specific resources**: Applications and services that should not be internet-facing can be exposed only to authenticated Tailscale users.
+
+## When it doesn't
+
+Tailscale is not a replacement for WAF, DDoS protection, or API gateway infrastructure. It provides network-layer connectivity, not application-layer security controls. Organizations requiring hyperscaler-native networking constructs (AWS VPC Flow Logs, GCP VPC Service Controls) may find native cloud networking tools more integrated with compliance frameworks.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Publicly documented free and paid tiers at https://tailscale.com/pricing  
+✅ **Self-service signup**: Sign up immediately with OAuth—no sales call required.  
+✅ **Public SLA and status page**: Status page at https://status.tailscale.com/

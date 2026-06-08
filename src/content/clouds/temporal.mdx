@@ -1,0 +1,58 @@
+---
+status: draft
+tagline: "Durable execution platform for reliable workflows with automatic failure recovery."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Temporal Cloud (managed service)"
+  - "Temporal Server (self-hosted)"
+  - "Workflow Orchestration"
+  - "Activity Execution & Retry"
+  - "Durable State Management"
+  - "Task Queues"
+  - "Visibility & Debugging Tools"
+socials:
+  website: "https://temporal.io/"
+  github: "https://github.com/temporalio"
+---
+
+## What makes Temporal different
+
+Temporal is a durable execution platform purpose-built to handle failure as a first-class concern. Unlike traditional orchestration tools that manage task graphs, Temporal treats your code itself as durable—capturing full execution state at every step so workflows can resume exactly where they left off after any failure. This means developers write business logic sequentially without boilerplate retry logic, manual state tracking, or reconciliation code.
+
+The platform evolved from over 20 years of production experience at AWS (SQS, SWF), Microsoft Azure (Durable Functions), and Uber's Cadence project. It separates concerns cleanly: Workflows contain deterministic business logic, Activities handle external interactions (API calls, database operations), and the Temporal Service persists state and manages retries transparently. This architecture eliminates classes of bugs common in distributed systems—lost progress, orphaned processes, and manual recovery workflows.
+
+Temporal is fully open-source (MIT-licensed) and can be self-hosted or run on Temporal Cloud. This hybrid model appeals to enterprises that need both control and operational simplicity.
+
+## Pricing model
+
+Temporal Cloud uses consumption-based pricing tied to workflow execution metrics. Specific tier pricing was not disclosed in public materials, but the model charges for:
+
+- Workflow executions processed
+- Actions executed (activities, signals, timers)
+- Storage of workflow history
+- Data egress
+
+Self-hosted deployments via the open-source server have no licensing cost, only infrastructure expenses. This makes Temporal accessible for proof-of-concepts and gives teams flexibility to migrate between self-hosted and managed as scale requirements change.
+
+## When it fits
+
+- **AI agents & LLM pipelines** — Build agents that survive failures and long-running training orchestrations without losing progress.
+- **Order fulfillment & payment processing** — Handle multi-step transactions (inventory, payment, shipping) where a single service failure shouldn't lose the entire order.
+- **Customer onboarding & user acquisition** — Route leads and execute multi-step engagement flows with guaranteed completion, no dropped steps.
+- **Long-running operations** — Workflows that run for days, weeks, or months (deployments, migrations, data processing pipelines) without complexity overhead.
+- **Saga/compensating transactions** — Implement distributed transaction patterns cleanly as try…catch blocks rather than fragile state machines.
+
+## When it doesn't
+
+Temporal is not a general-purpose application platform. It excels at orchestration and long-running state machines but is not suitable as a primary compute engine for real-time, latency-sensitive operations. Workloads requiring sub-second response times or high-frequency micro-transactions are better served by traditional services.
+
+## Open source
+
+Temporal Server is 100% open-source under the MIT license and maintained actively on GitHub. The community can self-host, fork, and contribute. Temporal Cloud is the managed, commercial offering built on the same open-source foundation.
+
+## Inclusion criteria
+
+✅ **Transparent pricing** — Usage-based model published; see [Temporal Cloud pricing](https://temporal.io/cloud)  
+✅ **Self-service signup** — Signup available directly on temporal.io  
+✅ **Public SLA & status** — [Temporal Cloud status page](https://status.temporal.io/) and SLA documentation available

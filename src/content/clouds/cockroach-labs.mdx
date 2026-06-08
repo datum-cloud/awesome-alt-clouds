@@ -1,0 +1,52 @@
+---
+status: draft
+tagline: "PostgreSQL-compatible distributed SQL database for global, always-on applications"
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "CockroachDB Fully-Managed Cloud"
+  - "CockroachDB Bring Your Own Cloud (BYOC)"
+  - "CockroachDB Enterprise (self-hosted)"
+  - "Vector Search"
+  - "Change Data Capture (CDC)"
+  - "SQL compatibility layer"
+  - "Multi-region replication"
+  - "Automated backups and recovery"
+socials:
+  website: "https://www.cockroachlabs.com/"
+  x: "https://twitter.com/cockroachdb"
+  linkedin: "https://linkedin.com/company/cockroach-labs/"
+  github: "https://github.com/cockroachdb"
+---
+
+## What makes Cockroach Labs different
+
+CockroachDB is a distributed SQL database built for resilience and global scale from the ground up. Unlike traditional databases that require complex sharding logic or manual failover procedures, CockroachDB handles geographic distribution automatically with strong consistency guarantees and zero data loss during regional failures. Its PostgreSQL compatibility means teams can migrate existing applications with minimal code changes while gaining the benefits of a cloud-native architecture.
+
+The platform eliminates operational friction through online schema migrations, automated backups, and managed upgrades with zero downtime. This differs fundamentally from hyperscaler-managed databases, where maintenance windows and schema changes often require application coordination. CockroachDB's declarative geo-partitioning policies enable compliance with data residency regulations—critical for fintech and regulated industries—without maintaining separate databases per region.
+
+## Pricing model
+
+CockroachDB Fully-Managed uses consumption-based pricing, with charges for storage (per GB), compute (per vCPU-hour), and network egress. A free tier provides 5GB of free storage for development. The Bring Your Own Cloud (BYOC) option allows deployment on customer infrastructure with flexible licensing, while the Enterprise self-hosted edition offers perpetual and subscription licensing models.
+
+The usage-based approach avoids lock-in and aligns costs with actual consumption, making it attractive for variable or unpredictable workloads. Organizations pay only for what they use rather than provisioning fixed capacity.
+
+## When it fits
+
+- **Fintech and banking platforms**: Strong ACID guarantees, sub-millisecond latency, and regulatory compliance (DORA, PCI-DSS support) make CockroachDB ideal for payments and trading systems.
+- **Global SaaS applications**: Multi-region deployments with data locality policies eliminate data residency friction and reduce user-facing latency.
+- **AI/ML applications**: Horizontal scaling without rearchitecting application logic supports high-concurrency analytical workloads alongside transactional traffic.
+- **High-availability systems**: Automatic failover across regions with zero data loss suits mission-critical workloads where downtime is unacceptable.
+- **Database modernization projects**: PostgreSQL compatibility enables lift-and-shift migrations from legacy relational databases without rewriting application code.
+
+## When it doesn't
+
+CockroachDB is not optimized for simple, single-region OLAP (data warehouse) workloads where traditional columnar databases or BigQuery offer better price-performance. It also may be over-engineered for small applications with minimal availability or scale requirements.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Published pricing available at [https://www.cockroachlabs.com/pricing/](https://www.cockroachlabs.com/pricing/)
+
+✅ **Self-service signup**: Free tier and self-service cloud registration available without sales contact
+
+✅ **Public SLA and status page**: SLA and uptime commitments published; status and monitoring available to customers

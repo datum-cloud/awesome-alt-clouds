@@ -26,7 +26,8 @@ sys.path.insert(0, os.path.dirname(__file__))
 from lib.fetcher import fetch_page_with_fallback
 from lib.slugify import slugify
 
-PROFILE_MAX_TOKENS = 4096
+PROFILE_MAX_TOKENS = 2048
+PROFILE_MODEL = "claude-haiku-4-5"
 
 PROFILE_SYSTEM_PROMPT = (
     "You are a technical writer creating cloud provider profiles for alt-cloud.org — "
@@ -161,9 +162,9 @@ def generate_profile(
 
     client = anthropic.Anthropic(api_key=api_key)
 
-    print(f"Calling Claude for {name}...")
+    print(f"Calling Claude ({PROFILE_MODEL}) for {name}...")
     message = client.messages.create(
-        model="claude-haiku-4-5",
+        model=PROFILE_MODEL,
         max_tokens=PROFILE_MAX_TOKENS,
         system=PROFILE_SYSTEM_PROMPT,
         messages=[

@@ -1,0 +1,55 @@
+---
+status: draft
+tagline: "Serverless GPU infrastructure with 2–4s cold starts for deploying AI models at scale."
+pricingModel: "usage-based"
+regions:
+  - "us-east-1"
+  - "eu-west-2"
+  - "eu-north-1"
+  - "ap-south-1"
+services:
+  - "GPU Compute (12+ GPU types including H100, A100)"
+  - "Serverless Model Deployment"
+  - "Real-time Inference Endpoints"
+  - "Asynchronous Job Processing"
+  - "Voice Agent Infrastructure"
+  - "Model Training & Hyperparameter Sweep"
+  - "Multi-region Deployment"
+  - "WebSocket & REST API Endpoints"
+socials:
+  website: "https://www.cerebrium.ai/"
+  x: "https://x.com/cerebriumai"
+  linkedin: "https://www.linkedin.com/company/cerebrium/"
+  github: "https://github.com/CerebriumAI"
+---
+
+## What makes Cerebrium different
+
+Cerebrium strips away infrastructure complexity for AI teams by offering sub-second cold starts and elastic GPU scaling without capacity planning or reservations. Unlike traditional cloud providers that require VMs or Kubernetes clusters, Cerebrium uses memory and GPU snapshotting to launch containers in 2–4 seconds—critical for latency-sensitive voice agents and real-time inference. The platform handles sudden bursts automatically across 2,500+ GPUs distributed across multiple cloud providers and regions, eliminating the need to pre-reserve capacity.
+
+The developer experience is deliberately minimal: bring any Docker container or Python script, point Cerebrium to your entrypoint, and it runs exactly as written—no SDKs, decorators, or framework rewrites. This "your code, your way" philosophy appeals to teams migrating from on-prem or research environments who want serverless scaling without vendor lock-in. Native OpenTelemetry integration and end-to-end observability (logs, metrics, scaling events) make it straightforward to plug into existing monitoring stacks.
+
+## Pricing model
+
+Cerebrium uses a transparent, usage-based pricing model billed by GPU type and compute time. Specific per-unit rates are published on their [pricing page](https://www.cerebrium.ai/pricing), though exact dollar figures are not publicly listed in the provided content. The model differentiates from hyperscalers by charging only for active GPU runtime—no idle reservations, no commitment contracts, and no capacity planning premiums. Multi-region deployments and auto-scaling incur no additional orchestration fees.
+
+## When it fits
+
+- **Real-time voice and video agents** requiring sub-500ms latency for transcription, synthesis, or inference.
+- **LLM inference** at variable scale—serving vLLM, SGLang, or Triton without managing clusters or pre-sizing capacity.
+- **Distributed model training** (fine-tuning, hyperparameter sweeps) where code can be executed as-is without framework rewrites.
+- **Batch inference and embeddings** at high throughput, such as document processing or reranking pipelines.
+- **Research and rapid prototyping** where teams want production-grade scaling without DevOps overhead.
+
+## When it doesn't
+
+- **Long-running background jobs** with predictable, sustained load (reserved instances on AWS/GCP may be cheaper).
+- **Highly customized networking or VPC requirements** where isolation and on-prem hybrid deployments are critical.
+
+## Inclusion criteria
+
+Cerebrium meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing**: Pricing is published at [cerebrium.ai/pricing](https://www.cerebrium.ai/pricing) with usage-based model details.
+2. **Self-service signup**: Free tier available at [dashboard.cerebrium.ai/signup](https://dashboard.cerebrium.ai/signup) with no credit card required to start.
+3. **Public SLA/status page**: Status page live at [status.cerebrium.ai](https://status.cerebrium.ai/) tracking uptime and incident history.

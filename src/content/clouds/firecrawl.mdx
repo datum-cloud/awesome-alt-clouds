@@ -1,0 +1,56 @@
+---
+status: draft
+tagline: "Web scraping and crawling API optimized for AI—converts websites into clean markdown and structured data."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Web Search API"
+  - "Web Scraping API"
+  - "Page Interaction API"
+  - "Website Crawling"
+  - "Page Monitoring"
+  - "JavaScript Rendering"
+  - "JSON Schema Extraction"
+  - "Batch Processing"
+socials:
+  website: "https://www.firecrawl.dev/"
+  github: "https://github.com/firecrawl/firecrawl"
+---
+
+## What makes Firecrawl different
+
+Firecrawl is purpose-built for AI applications rather than general-purpose web data extraction. Instead of returning raw HTML like traditional scrapers, it delivers clean markdown optimized for LLM context windows by default—reducing token consumption and improving AI reasoning. The platform handles JavaScript rendering, smart content waiting, and dynamic page structures automatically, eliminating the configuration burden typical of Puppeteer or cURL-based solutions.
+
+The company positions itself as the infrastructure layer between AI systems and the live web. Beyond simple scraping, Firecrawl offers three integrated capabilities: Search (find relevant pages), Scrape (extract structured data), and Interact (click, fill forms, navigate multi-step flows). This combination enables AI agents to answer questions, enrich data, and automate workflows that require dynamic page navigation—tasks traditional web scrapers struggle with.
+
+With 125,000+ GitHub stars and 2.5M+ weekly SDK downloads, Firecrawl has built significant developer momentum. The open-source codebase is transparent and community-driven, while the hosted service includes Fire-engine (proprietary infrastructure for proxies, rendering, and reliability), dashboard analytics, and monitoring features.
+
+## Pricing model
+
+Firecrawl uses a **credit-based usage model**:
+
+- **Free tier**: 1,000 credits/month (1 credit = 1 page for scrape/crawl/map/monitor; 2 credits per 10 results for search; 2 credits per browser minute for interact)
+- **Hobby, Standard, Growth plans**: Higher monthly credit allotments and rate limits (exact pricing not published on the site but available on dashboard)
+- **Scale/Enterprise**: Custom annual plans with upfront credit grants
+- **Advanced features**: JSON format, Enhanced Mode, and other options cost additional credits per request
+
+Credits do not roll over month-to-month (except auto-recharge and annual plans). Failed requests are generally not billed, with the exception of FIRE-1 agent requests. The model avoids traditional per-hour cloud pricing, making it predictable for variable-volume workloads common in AI development.
+
+## When it fits
+
+- **AI agent development**: Equip reasoning systems with live web context via Search, Scrape, or Interact endpoints
+- **RAG pipelines**: Ingest fresh web content into retrieval-augmented generation workflows without token waste
+- **Lead enrichment & competitive intelligence**: Extract structured company or product data from dynamic websites at scale
+- **Price monitoring & content tracking**: Use the /monitor endpoint to detect page changes and trigger downstream workflows
+- **Headless automation**: Click through multi-page flows (logins, pagination, forms) that require interactive browsing
+
+## When it doesn't
+
+- **Static content storage**: Not designed as a data warehouse or long-term archive
+- **High-volume raw HTML extraction**: If you need unprocessed HTML and don't care about LLM optimization, simpler scrapers may be more cost-effective
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: [Pricing page](https://www.firecrawl.dev/) and FAQ clearly document credit costs, free tier, and plan options  
+✅ **Self-service signup**: [Agent onboarding](https://www.firecrawl.dev/agent-onboarding/SKILL.md) and [dashboard signup](https://www.firecrawl.dev/) enable immediate API access  
+✅ **Public SLA / status page**: Company maintains uptime monitoring and reliability benchmarks (P95 latency of 3.4s); status accessible via dashboard
