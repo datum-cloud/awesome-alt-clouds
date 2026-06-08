@@ -9,7 +9,8 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 
-AUTHOR_URL = "https://www.datum.net/authors/zac-smith/"
+AUTHOR_URL = "https://www.datum.net/authors/zachary-smith"
+SITE_BASE = "https://www.datum.net"
 INDEX_HTML_PATH = "docs/index.html"
 MAX_POSTS = 5
 
@@ -27,77 +28,38 @@ def fetch_blog_posts():
         print(f"Error fetching author page: {e}")
         return None
 
+    # The site silently redirects unknown author slugs to /404, so check the
+    # final URL rather than just the status code.
+    if response.url.rstrip('/').endswith('/404'):
+        print(f"Author page redirected to 404 — the slug in AUTHOR_URL may have changed: {AUTHOR_URL}")
+        return None
+
     soup = BeautifulSoup(response.text, 'html.parser')
     posts = []
 
-    # Find article links - adjust selectors based on actual page structure
-    # Common patterns for blog listing pages
-    article_elements = soup.find_all('article') or soup.find_all('div', class_=re.compile(r'post|article|blog'))
+    for item in soup.select('div.entry-list-item'):
+        link = item.find('a', class_='entry-list-item--wrapper', href=True)
+        if link is None:
+            continue
 
-    if not article_elements:
-        # Try finding links that look like blog posts
-        links = soup.find_all('a', href=re.compile(r'/blog/'))
-        seen_urls = set()
+        href = link['href']
+        full_url = f"{SITE_BASE}{href}" if href.startswith('/') else href
 
-        for link in links:
-            href = link.get('href', '')
-            if href in seen_urls or not href.startswith('/blog/') or href == '/blog/':
-                continue
+        title_elem = item.select_one('p.entry-list-item--title')
+        title = title_elem.get_text(strip=True) if title_elem else link.get_text(strip=True)
 
-            # Skip if it's just a category or tag link
-            if '/category/' in href or '/tag/' in href:
-                continue
+        time_elem = item.find('time')
+        date_text = time_elem.get_text(strip=True) if time_elem else ''
 
-            seen_urls.add(href)
-            title = link.get_text(strip=True)
+        posts.append({
+            'title': title,
+            'url': full_url,
+            'date': date_text,
+            'excerpt': '',
+        })
 
-            if title and len(title) > 5:  # Skip very short text (likely not titles)
-                full_url = f"https://www.datum.net{href}" if href.startswith('/') else href
-
-                # Try to find date near the link
-                parent = link.find_parent(['article', 'div', 'li'])
-                date_text = ""
-                if parent:
-                    date_elem = parent.find(string=re.compile(r'(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},?\s+\d{4}'))
-                    if date_elem:
-                        date_text = date_elem.strip()
-
-                posts.append({
-                    'title': title,
-                    'url': full_url,
-                    'date': date_text,
-                    'excerpt': ''  # Will try to fetch from article page if needed
-                })
-
-                if len(posts) >= MAX_POSTS:
-                    break
-
-    else:
-        for article in article_elements[:MAX_POSTS]:
-            title_elem = article.find(['h1', 'h2', 'h3', 'a'])
-            link_elem = article.find('a', href=re.compile(r'/blog/'))
-
-            if not title_elem or not link_elem:
-                continue
-
-            title = title_elem.get_text(strip=True)
-            href = link_elem.get('href', '')
-            full_url = f"https://www.datum.net{href}" if href.startswith('/') else href
-
-            # Find date
-            date_elem = article.find(string=re.compile(r'(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},?\s+\d{4}'))
-            date_text = date_elem.strip() if date_elem else ""
-
-            # Find excerpt
-            excerpt_elem = article.find('p')
-            excerpt = excerpt_elem.get_text(strip=True)[:200] if excerpt_elem else ""
-
-            posts.append({
-                'title': title,
-                'url': full_url,
-                'date': date_text,
-                'excerpt': excerpt
-            })
+        if len(posts) >= MAX_POSTS:
+            break
 
     return posts
 
@@ -131,8 +93,10 @@ def update_index_html(posts_html):
     with open(INDEX_HTML_PATH, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Pattern to match the blog posts container content
-    pattern = r'(<div id="blogPostsContainer">)\s*<!--.*?-->\s*(.*?)(</div>\s*<p style="margin-top: 1rem; text-align: center;">\s*<a href="https://www\.datum\.net/authors/zac-smith/")'
+    # Pattern to match the blog posts container content. The trailing anchor
+    # marker is the "View all posts" link, kept URL-agnostic so the replacement
+    # keeps working if the author URL changes again.
+    pattern = r'(<div id="blogPostsContainer">)\s*<!--.*?-->\s*(.*?)(</div>\s*<p style="margin-top: 1rem; text-align: center;">\s*<a href="https://www\.datum\.net/authors/[^"]+")'
 
     replacement = f'''\\1
             <!-- Blog posts auto-updated by GitHub Action -->
