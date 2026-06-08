@@ -195,6 +195,7 @@ Managed databases, object storage, caching, and search engines — relational, N
 * 🟢 [Storadera](https://storadera.com) - European S3 compatible cloud storage with predictable pricing, no egress fees, and multi-region infrastructure for backup, AI, and cloud workloads.
 * 🟢 [Supabase](https://supabase.com/) - An open-source Firebase alternative that provides a backend-as-a-service.
 * 🟢 [SurrealDB](https://surrealdb.com/) - Multi-model database for web, mobile, serverless, and cloud applications.
+* 🟡 [TiDB](https://www.pingcap.com/) - Provides a distributed SQL database optimized for AI agents with elastic scaling, unified vector/transactional queries, and ACID consistency for real-time AI workloads.
 * 🟢 [TigerData](https://www.tigerdata.com/) - PostgreSQL-based time-series database with compression and continuous aggregates.
 * 🟢 [Tigris](https://www.tigrisdata.com/) - A globally distributed S3-compatible object storage service that enables developers to store and access any amount of data.
 * 🟡 [Turso](https://turso.tech/) - Distributed SQLite database with global edge replication.
