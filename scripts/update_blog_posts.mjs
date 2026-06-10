@@ -75,10 +75,16 @@ async function main() {
     process.exit(1);
   }
 
+  // Ensure the URL includes a protocol — the secret may be stored as a bare hostname.
+  const strapiUrl =
+    STRAPI_URL.startsWith('http://') || STRAPI_URL.startsWith('https://')
+      ? STRAPI_URL
+      : `https://${STRAPI_URL}`;
+
   console.log(`Fetching articles from Strapi for author "${AUTHOR_SLUG}"…`);
 
   const { client, cache } = createStrapiRevalidate({
-    url: STRAPI_URL,
+    url: strapiUrl,
     token: STRAPI_TOKEN,
     cache: { driver: 'memory' },
   });
