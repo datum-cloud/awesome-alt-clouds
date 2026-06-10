@@ -75,6 +75,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [LeaseWeb](https://www.leaseweb.com/) - Full service hosting provider with a background in dedicated and managed servers.
 * 🟢 [Linode](https://www.linode.com/) - Provides cloud computing services designed for developers with straightforward pricing.
 * 🟢 [Lyceum](https://lyceum.technology/) - EU built and operated GPU cloud for developers and AI teams.
+* 🟢 [Mermaid](https://mermaid.ai/web/) - Cloud service provider.
 * 🟡 [Namespace](https://namespace.so/) - Cloud service provider.
 * 🟢 [NetActuate](https://netactuate.com/) - Provides hybrid cloud and edge computing solutions with a global network.
 * 🟢 [Openmetal.io](https://openmetal.io/) - Delivers on-demand private cloud infrastructure based on OpenStack.
