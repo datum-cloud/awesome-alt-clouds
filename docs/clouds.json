@@ -60,6 +60,16 @@
     "dateAdded": "2026-06-10"
   },
   {
+    "name": "Cognee",
+    "url": "https://www.cognee.ai/",
+    "description": "Cloud service provider.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-06-10"
+  },
+  {
     "name": "Cycle.io",
     "url": "https://cycle.io/",
     "description": "Provides a container orchestration platform for deploying applications.",
