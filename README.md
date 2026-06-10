@@ -56,6 +56,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Beam](https://www.beam.cloud) - Cloud infrastructure specifically built for high-performance applications and developer happiness.
 * 🟡 [Browser-Use](https://browser-use.com/) - Cloud service provider.
 * 🟢 [Civo](https://www.civo.com) - Provides cloud services with a focus on simplicity and developer experience.
+* 🟢 [Cognee](https://www.cognee.ai/) - Cloud service provider.
 * 🟢 [Cycle.io](https://cycle.io/) - Provides a container orchestration platform for deploying applications.
 * 🟢 [DataPacket](https://www.datapacket.com/) - Offers high-performance infrastructure for bandwidth-intensive applications.
 * 🟢 [Digital Ocean](https://www.digitalocean.com/) - Provides cloud computing services with simplicity and scalability.
