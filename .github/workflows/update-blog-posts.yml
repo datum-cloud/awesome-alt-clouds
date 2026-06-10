@@ -29,7 +29,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install dependencies
         run: npm install @datum-cloud/strapi-revalidate
@@ -69,8 +69,7 @@ jobs:
               --title "Update blog posts from Zac Smith's author page" \
               --body "Automated daily update of blog posts. This PR is force-updated each run; closing it is safe — the next run will reopen if there are further changes." \
               --base main \
-              --head "$BRANCH" \
-              --label "automated"
+              --head "$BRANCH"
           else
             echo "Existing PR #$existing_pr refreshed via force-push."
           fi
