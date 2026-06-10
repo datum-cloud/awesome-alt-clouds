@@ -78,6 +78,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [NetActuate](https://netactuate.com/) - Provides hybrid cloud and edge computing solutions with a global network.
 * 🟢 [Openmetal.io](https://openmetal.io/) - Delivers on-demand private cloud infrastructure based on OpenStack.
 * 🟡 [OVH Cloud](https://us.ovhcloud.com/) - Global cloud provider offering compute, storage, and network solutions.
+* 🟢 [Pingcap](https://www.pingcap.com/) - Cloud service provider.
 * 🟢 [QBO](https://qbo.io/) - GPU Cloud at the Edge & Beyond - Delivering high performance, streamlined infrastructure, and flexible AI/ML deployment.
 * 🟢 [Rackdog](https://rackdog.com/) - Cloud service provider.
 * 🟢 [Rackspace](https://www.rackspace.com/) - Provides hybrid cloud and managed hosting services.
