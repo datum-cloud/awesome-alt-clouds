@@ -250,6 +250,16 @@
     "dateAdded": "2026-06-10"
   },
   {
+    "name": "Mermaid",
+    "url": "https://mermaid.ai/web/",
+    "description": "Cloud service provider.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-06-10"
+  },
+  {
     "name": "Namespace",
     "url": "https://namespace.so/",
     "description": "Cloud service provider.",
