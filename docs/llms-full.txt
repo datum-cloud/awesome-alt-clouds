@@ -33,11 +33,11 @@ CI/CD platforms, code hosting, testing infrastructure, feature flags, error moni
 
 Services: 8gears Container Registry, Anaconda, Browserbase, browserless, Bubble, Cloudsmith, Coder, Cypress, Depot, DevZero, Dosu, E2B, Fabrica, Firefly, Flagsmith, and 23 more.
 
-### Databases & Storage (36 services)
+### Databases & Storage (37 services)
 
 Managed database services, vector databases, distributed SQL, time series, object storage, and data warehousing — all self-service with public pricing.
 
-Services: Aiven, Algolia, Archil, CedarDB, Cockroach Labs, Convex, Couchbase, Diffbot, Ditto, Gel, Hasura, Hydrolix, InfluxData, Materialize, Meilisearch, and 21 more.
+Services: Pingcap, Aiven, Algolia, Archil, CedarDB, Cockroach Labs, Convex, Couchbase, Diffbot, Ditto, Gel, Hasura, Hydrolix, InfluxData, Materialize, and 22 more.
 
 ### GPU & AI Compute Clouds (35 services)
 

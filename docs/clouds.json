@@ -305,7 +305,8 @@
     "description": "Cloud service provider.",
     "score": 3,
     "categories": [
-      "Infrastructure Clouds"
+      "Infrastructure Clouds",
+      "Databases & Storage"
     ],
     "dateAdded": "2026-06-10"
   },

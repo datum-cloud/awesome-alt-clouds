@@ -19,7 +19,7 @@
 - Services must meet at least 2 of 3 criteria to be included: (1) transparent public pricing, (2) usage-based self-service signup, (3) public SLA or status page
 - Score legend: 🟢 = all 3 criteria met, 🟡 = 2 of 3 criteria met
 - Automated submission pipeline: form → GitHub issue → AI evaluation → PR → merge
-- Largest categories: Infrastructure Clouds (43), Developer Tooling & CI/CD (38), Databases & Storage (36), GPU & AI Compute Clouds (35), Authorization, Identity & Fraud (33)
+- Largest categories: Infrastructure Clouds (43), Developer Tooling & CI/CD (38), Databases & Storage (37), GPU & AI Compute Clouds (35), Authorization, Identity & Fraud (33)
 - Community-maintained; maintained by Datum Cloud
 - Data available as JSON at /clouds.json and Markdown on GitHub
 
