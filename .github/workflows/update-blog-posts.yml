@@ -26,17 +26,19 @@ jobs:
         with:
           token: ${{ steps.app-token.outputs.token }}
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.11'
+          node-version: '20'
 
       - name: Install dependencies
-        run: |
-          pip install requests beautifulsoup4
+        run: npm install @datum-cloud/strapi-revalidate
 
       - name: Fetch and update blog posts
-        run: python scripts/update_blog_posts.py
+        env:
+          STRAPI_URL: ${{ secrets.STRAPI_URL }}
+          STRAPI_TOKEN: ${{ secrets.STRAPI_TOKEN }}
+        run: node scripts/update_blog_posts.mjs
 
       - name: Check for changes
         id: git-check
