@@ -14,7 +14,7 @@ Environment variables required:
   ISSUE_NUMBER      - Number of the parent issue
   REPO              - GitHub repository in owner/repo format
   GH_TOKEN          - GitHub token (for gh CLI calls)
-  ANTHROPIC_API_KEY - For Claude API calls inside evaluate_submission.py
+  QWEN_BASE_URL     - Base URL for Qwen API calls inside evaluate_submission.py
 """
 
 import json
