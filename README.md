@@ -106,6 +106,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟡 [CoreWeave](https://www.coreweave.com/) - A cloud platform optimized for AI, offering high-performance GPU compute and managed services.
 * 🟢 [Crusoe Energy](https://crusoecloud.com/) - Energy-efficient GPU computing using stranded and renewable energy sources.
 * 🟢 [Cudo Compute](https://www.cudocompute.com/) - Offers decentralized cloud computing with GPU support for AI applications.
+* 🟡 [Dapple](https://dapple.co/) - Offers an Enterprise OS Cloud that aggregates global GPU supply for regulated enterprises, ensuring strict isolation, residency, and compliance.
 * 🟢 [Datacrunch.io](https://datacrunch.io/) - Provides affordable GPU cloud services for AI training and inference.
 * 🟢 [Fal.ai](https://fal.ai/) - Provides serverless GPU inference for AI models with instant deployment.
 * 🟢 [FluidStack](https://www.fluidstack.io/) - Offers decentralized GPU cloud computing for AI and rendering workloads.
