@@ -2731,6 +2731,16 @@
     "dateAdded": "2026-06-12"
   },
   {
+    "name": "Niteshift",
+    "url": "https://niteshift.dev/",
+    "description": "Provides a full-stack cloud platform for coding agents to build, test, and deploy applications with isolated environments, service simulation, and integration with existing development tools.",
+    "score": 3,
+    "categories": [
+      "AI Coding & App Generation"
+    ],
+    "dateAdded": "2026-06-12"
+  },
+  {
     "name": "OB-1",
     "url": "https://www.openblocklabs.com/",
     "description": "Provides a self-improving coding agent that handles the full development lifecycle from project management to pull requests, with multi-model AI support and workflow automation.",
