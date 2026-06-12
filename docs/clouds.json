@@ -110,6 +110,16 @@
     "dateAdded": "2026-06-12"
   },
   {
+    "name": "DT Cloud",
+    "url": "https://dtcloudnow.com/",
+    "description": "Provides comprehensive cloud computing services including VPS, Kubernetes, GPU cloud, storage, networking, security, and industry-specific solutions for Turkish market.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-06-12"
+  },
+  {
     "name": "E2E Cloud",
     "url": "https://www.e2enetworks.com/",
     "description": "Offers cloud infrastructure with GPU instances for AI and machine learning.",

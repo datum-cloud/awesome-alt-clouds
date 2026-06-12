@@ -1,13 +1,13 @@
 # Awesome Alt Clouds — Full Reference
 
-> Curated directory of 445+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
+> Curated directory of 446+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
 
 ## About This Directory
 
 - [Directory Homepage](https://www.alt-cloud.org/): Interactive searchable directory. Filter by category, search by name or description, sort alphabetically, by score, or by recently added date. All data loaded from /clouds.json.
 - [Submit a Service](https://www.alt-cloud.org/submit/): Web form that creates a GitHub issue, triggers automated AI evaluation (pricing page detection, signup detection, status page detection), and opens a PR on pass.
 - [GitHub Repository](https://github.com/datum-cloud/awesome-alt-clouds): Source of truth. Contains README.md (the awesome list), evaluation scripts in /scripts, and GitHub Actions workflows in .github/workflows.
-- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 445+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
+- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 446+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
 
 ## Evaluation Criteria
 
@@ -21,11 +21,11 @@ Score legend: 🟢 = 3/3 criteria met | 🟡 = 2/3 criteria met
 
 ## Categories
 
-### Infrastructure Clouds (43 services)
+### Infrastructure Clouds (44 services)
 
 General-purpose cloud compute, bare metal, and VPS providers. The original "alt clouds" offering virtualized compute, dedicated servers, GPU instances, storage, and Kubernetes services outside the hyperscaler ecosystem.
 
-Services: Arcade, Atlantic.net, Axiom, Beam, Browser-Use, Civo, Cognee, Cycle.io, DataPacket, Digital Ocean, Driver, E2E Cloud, Empromptu, exe.dev, Firmus, and 28 more.
+Services: Arcade, Atlantic.net, Axiom, Beam, Browser-Use, Civo, Cognee, Cycle.io, DataPacket, Digital Ocean, Driver, DT Cloud, E2E Cloud, Empromptu, exe.dev, and 29 more.
 
 ### Developer Tooling & CI/CD (38 services)
 
@@ -171,9 +171,9 @@ Services: Akash Network.
 
 ## Key Facts
 
-- 445+ services as of 2026-06-12
+- 446+ services as of 2026-06-12
 - 23 categories covering the full developer cloud ecosystem
-- 415 services meet all 3 criteria (🟢); 30 meet 2 of 3 (🟡)
+- 416 services meet all 3 criteria (🟢); 30 meet 2 of 3 (🟡)
 - Minimum inclusion score: 2/3 criteria
 - Machine-readable data: https://www.alt-cloud.org/clouds.json
 - Source: https://github.com/datum-cloud/awesome-alt-clouds
