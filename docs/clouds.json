@@ -2071,6 +2071,16 @@
     "dateAdded": "2026-06-12"
   },
   {
+    "name": "Core Transit",
+    "url": "https://www.coretransit.net/",
+    "description": "Provides flexible IP routing, static IP addressing, and BGP services to extend deterministic connectivity to hard-to-reach locations for enterprises and MSPs.",
+    "score": 3,
+    "categories": [
+      "Network & Connectivity Clouds"
+    ],
+    "dateAdded": "2026-06-12"
+  },
+  {
     "name": "CtrlDNS",
     "url": "https://www.ctrldns.com/",
     "description": "Provides DNS management and control services for domain name resolution and network infrastructure management.",
