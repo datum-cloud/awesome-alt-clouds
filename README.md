@@ -303,6 +303,7 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 * 🟢 [c/Side](https://cside.dev/) - A next generation web security service that monitors, optimizes and secures 3rd party scripts.
 * 🟢 [Cloudbrink](https://cloudbrink.com/) - Delivers hybrid access-as-a-service with high-performance connectivity, zero trust security, and edge-native networking for remote users.
 * 🟢 [Cloudflare](https://www.cloudflare.com/) - Protects and accelerates websites and apps through global CDN, DDoS mitigation, Zero Trust access, and DNS services.
+* 🟢 [Core Transit](https://www.coretransit.net/) - Provides flexible IP routing, static IP addressing, and BGP services to extend deterministic connectivity to hard-to-reach locations for enterprises and MSPs.
 * 🟡 [CtrlDNS](https://www.ctrldns.com/) - Provides DNS management and control services for domain name resolution and network infrastructure management.
 * 🟢 [Fastly](https://www.fastly.com/) - An edge cloud platform designed for performance and security, enabling developers to build faster, more secure digital experiences.
 * 🟢 [IPinfo](https://ipinfo.io/) - Provides accurate IP address intelligence including geolocation, ASN data, privacy detection, and network information through APIs and data downloads for developers and enterprises.
