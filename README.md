@@ -385,6 +385,7 @@ AI-powered code editors, IDEs, no-code/low-code builders, and full-stack app gen
 * 🟢 [Marblism](https://www.marblism.com/) - Generate full-stack web apps from a single prompt.
 * 🟢 [Mesa](https://www.mesa.dev) - AI-powered code review platform with custom agents that learn codebase standards and prevent tech debt.
 * 🟢 [OB-1](https://www.openblocklabs.com/) - Provides a self-improving coding agent that handles the full development lifecycle from project management to pull requests, with multi-model AI support and workflow automation.
+* 🟢 [Ona](https://ona.com/) - Provides a platform to run and govern AI software agents in the cloud, offering standardized execution environments, security controls, and automated remediation for SDLC workflows.
 * 🟢 [Softgen](https://softgen.ai/) - Provides tools to automatically generate code, documentation, and tests to speed up software delivery.
 * 🟢 [Tabnine](https://www.tabnine.com/) - AI code assistant with private model options.
 * 🟢 [v0](https://v0.app/) - AI-powered UI generation from text prompts to React code.
