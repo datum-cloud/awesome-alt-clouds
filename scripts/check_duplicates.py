@@ -2,10 +2,15 @@
 """
 Duplicate detection for awesome-alt-clouds submissions.
 
-Reads submission info from environment variables, checks clouds.json and
-GitHub Issues for duplicates, posts a comment + label + optionally closes
-the issue, then writes is_duplicate=true/false to $GITHUB_OUTPUT.
+Checks two sources in order:
+  1. clouds.json — blocks re-submission of already-listed services.
+  2. watchlist.json — flags re-submissions of watched candidates without
+     blocking them; lets the normal evaluation run so they can be promoted.
 
+Closed GitHub Issues are intentionally NOT checked. A declined submission
+must be able to re-submit freely — that is the whole point of the watchlist.
+
+Writes is_duplicate=true/false to $GITHUB_OUTPUT.
 Exits 0 always — failures are non-fatal to avoid blocking submissions.
 """
 
@@ -52,15 +57,17 @@ def normalize_name(name: str) -> str:
     """Normalise a service name for fuzzy matching.
 
     Lowercases, strips punctuation, removes noise words.
-    Example: 'ZeroTier Labs' -> 'zerotier'
+    Returns space-separated tokens to preserve word boundaries.
+
+    Examples:
+        'ZeroTier Labs' -> 'zerotier'
+        'Namecheap'     -> 'namecheap'
+        'Heap'          -> 'heap'
     """
-    # lowercase
     name = name.lower()
-    # replace punctuation with spaces (preserve word boundaries)
     name = re.sub(r'[^a-z0-9\s]', ' ', name)
-    # remove noise words
     parts = [w for w in name.split() if w not in _NAME_NOISE]
-    return ''.join(parts)
+    return ' '.join(parts)
 
 
 def check_clouds_json(
@@ -84,77 +91,19 @@ def check_clouds_json(
         if entry_domain and entry_domain == submitted_domain:
             return ('exact_domain', entry)
 
-        # Fuzzy name check (only keep first match, require min length to avoid false positives)
+        # Fuzzy name check: token-set intersection (not character substring).
+        # Character substring matching caused false positives like flagging
+        # "Namecheap" as a duplicate of "Heap" because 'heap' ⊆ 'namecheap'.
         if fuzzy_match is None and len(norm_submitted_name) >= 4:
             norm_entry_name = normalize_name(entry.get('name', ''))
-            if norm_entry_name and len(norm_entry_name) >= 4 and (
-                norm_submitted_name in norm_entry_name
-                or norm_entry_name in norm_submitted_name
-            ):
-                fuzzy_match = entry
+            if norm_entry_name and len(norm_entry_name) >= 4:
+                submitted_tokens = {t for t in norm_submitted_name.split() if len(t) >= 4}
+                entry_tokens = {t for t in norm_entry_name.split() if len(t) >= 4}
+                if submitted_tokens and entry_tokens and submitted_tokens & entry_tokens:
+                    fuzzy_match = entry
 
     if fuzzy_match is not None:
         return ('fuzzy_name', fuzzy_match)
-
-    return (None, None)
-
-
-def check_github_issues(
-    submitted_domain: str,
-    gh_token: str,
-    repo: str,
-    current_issue_number: int,
-    max_issues: int = 500,
-) -> tuple[str | None, dict | None]:
-    """Check submitted domain against all GitHub Issues with label 'submission'.
-
-    Paginates up to max_issues. Skips the current issue.
-
-    Returns:
-        ('existing_issue', issue) — domain matches an existing issue's URL
-        (None, None)              — no match or API error
-    """
-    headers = {
-        'Authorization': f'Bearer {gh_token}',
-        'Accept': 'application/vnd.github+json',
-        'X-GitHub-Api-Version': '2022-11-28',
-    }
-    url: str | None = f'https://api.github.com/repos/{repo}/issues'
-    params = {'labels': 'submission', 'state': 'all', 'per_page': 100}
-
-    fetched = 0
-    try:
-        while url and fetched < max_issues:
-            resp = requests.get(url, headers=headers, params=params, timeout=15)
-            resp.raise_for_status()
-            issues = resp.json()
-            fetched += len(issues)
-
-            for issue in issues:
-                if issue.get('number') == current_issue_number:
-                    continue
-                body = issue.get('body') or ''
-                # Extract URLs from the issue body
-                urls_in_body = re.findall(r'https?://[^\s\)]+', body)
-                for raw_url in urls_in_body:
-                    if normalize_domain(raw_url) == submitted_domain:
-                        return ('existing_issue', issue)
-
-            # Follow pagination via Link header
-            link = resp.headers.get('Link', '')
-            next_url = None
-            for part in link.split(','):
-                if 'rel="next"' in part:
-                    match = re.search(r'<([^>]+)>', part)
-                    if match:
-                        next_url = match.group(1)
-                        break
-            url = next_url
-            params = {}  # params already encoded in next_url
-
-    except Exception as e:
-        logging.warning('GitHub Issues API check failed: %s', e)
-        return (None, None)
 
     return (None, None)
 
@@ -197,52 +146,39 @@ def close_issue(repo: str, issue_number: int, gh_token: str) -> None:
         logging.warning('Failed to close issue %s: %s', issue_number, e)
 
 
-def build_comment(match_type: str, match: dict, source: str) -> str:
+def build_comment(match_type: str, match: dict) -> str:
     """Build a GitHub comment body for a duplicate match.
 
     Args:
-        match_type: 'exact_domain', 'fuzzy_name', or 'existing_issue'
-        match:      the matching entry dict (from clouds.json or GitHub Issues)
-        source:     'clouds_json' or 'github_issues'
+        match_type: 'exact_domain' or 'fuzzy_name'
+        match:      the matching entry dict from clouds.json
     """
-    if match_type in ('exact_domain', 'existing_issue'):
-        if source == 'clouds_json':
-            name = match.get('name', 'Unknown')
-            url = match.get('url', '')
-            desc = match.get('description', '')
-            return (
-                '⚠️ **Duplicate Submission**\n\n'
-                'This service is already included in the Awesome Alt Clouds list:\n'
-                f'- **[{name}]({url})** — {desc}\n\n'
-                'Closing this issue as a duplicate. If you believe this is a different '
-                'service or a significant update, please reopen with additional context.'
-            )
-        else:  # github_issues
-            issue_url = match.get('html_url', '')
-            issue_title = match.get('title', 'existing issue')
-            return (
-                '⚠️ **Duplicate Submission**\n\n'
-                'This service has already been submitted:\n'
-                f'- **[{issue_title}]({issue_url})**\n\n'
-                'Closing this issue as a duplicate. If you believe this is a different '
-                'service or a significant update, please reopen with additional context.'
-            )
-    else:
-        if match_type != 'fuzzy_name':
-            raise ValueError(f'Unknown match_type: {match_type!r}')
-        name = match.get('name', 'Unknown')
-        url = match.get('url', '')
-        desc = match.get('description', '')
+    name = match.get('name', 'Unknown')
+    url = match.get('url', '')
+    desc = match.get('description', '')
+
+    if match_type == 'exact_domain':
+        return (
+            '⚠️ **Duplicate Submission**\n\n'
+            'This service is already included in the Awesome Alt Clouds list:\n'
+            f'- **[{name}]({url})** — {desc}\n\n'
+            'Closing this issue as a duplicate. If you believe this is a different '
+            'service or a significant update, please reopen with additional context.'
+        )
+    elif match_type == 'fuzzy_name':
         return (
             '⚠️ **Possible Duplicate**\n\n'
             'A similar service may already be listed:\n'
             f'- **[{name}]({url})** — {desc}\n\n'
             'Proceeding with admin review, but flagging as a possible duplicate.'
         )
+    else:
+        raise ValueError(f'Unknown match_type: {match_type!r}')
 
 
-# Path to clouds.json — overridable in tests
+# Paths to data files — overridable in tests
 _CLOUDS_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', 'docs', 'clouds.json')
+_WATCHLIST_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', 'docs', 'watchlist.json')
 
 
 def _write_github_output(key: str, value: str) -> None:
@@ -284,7 +220,9 @@ def main() -> None:
     submitted_domain = normalize_domain(urls[0])
     submitted_name = issue_title
 
-    # --- Check clouds.json ---
+    # 1. Check clouds.json — the authoritative list derived from README.md.
+    #    Closed GitHub Issues are intentionally NOT checked: a previously-rejected
+    #    submission must be able to re-submit freely.
     clouds: list[dict] = []
     try:
         with open(_CLOUDS_JSON_PATH, 'r', encoding='utf-8') as f:
@@ -294,21 +232,48 @@ def main() -> None:
 
     match_type, match = check_clouds_json(submitted_domain, submitted_name, clouds)
 
-    if match_type is None and gh_token and repo:
-        match_type, match = check_github_issues(
-            submitted_domain, gh_token, repo, current_issue_number=issue_number
-        )
-
     if match_type is not None:
         assert match is not None, f"match_type is {match_type!r} but match is None"
-        source = 'clouds_json' if match in clouds else 'github_issues'
-        comment = build_comment(match_type, match, source=source)
+        comment = build_comment(match_type, match)
         post_comment(repo, issue_number, comment, gh_token)
         add_label(repo, issue_number, 'duplicate', gh_token)
-        if match_type in ('exact_domain', 'existing_issue'):
+        if match_type == 'exact_domain':
             close_issue(repo, issue_number, gh_token)
         _write_github_output('is_duplicate', 'true')
         _write_github_output('duplicate_reason', match_type)
+        return
+
+    # 2. Check watchlist.json — flag re-submissions of watched candidates so
+    #    reviewers know this is a repeat attempt, but do NOT block evaluation.
+    #    The service may have improved; let the evaluator decide.
+    watchlist: list[dict] = []
+    try:
+        with open(_WATCHLIST_JSON_PATH, 'r', encoding='utf-8') as f:
+            watchlist = json.load(f)
+    except (OSError, json.JSONDecodeError) as e:
+        logging.warning('Could not read watchlist.json: %s', e)
+
+    watchlist_match = next(
+        (entry for entry in watchlist if normalize_domain(entry.get('url', '')) == submitted_domain),
+        None,
+    )
+
+    if watchlist_match:
+        criteria = watchlist_match.get('criteriaNeed', 'see watchlist')
+        comment = (
+            '📋 **Watchlist Re-submission**\n\n'
+            f'This service is currently on the [Watchlist](https://alt-clouds.org/watchlist.html) '
+            f'and is being re-evaluated. Previously it did not qualify because: '
+            f'_{watchlist_match.get("reasonNotQualifying", "criteria not met")}_\n\n'
+            f'**Criteria still needed:** {criteria}\n\n'
+            'Proceeding with a fresh evaluation — if the criteria above are now met, '
+            'this submission will be promoted to the main list automatically.'
+        )
+        post_comment(repo, issue_number, comment, gh_token)
+        add_label(repo, issue_number, 'watchlist', gh_token)
+        # is_duplicate stays false — evaluation must run
+        _write_github_output('is_duplicate', 'false')
+        _write_github_output('duplicate_reason', 'watchlist_resubmission')
     else:
         _write_github_output('is_duplicate', 'false')
         _write_github_output('duplicate_reason', 'no_match')

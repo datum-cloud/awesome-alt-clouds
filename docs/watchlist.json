@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Opencode",
+    "url": "https://opencode.ai/",
+    "category": "To be determined",
+    "dateAdded": "2026-05-21",
+    "reasonNotQualifying": "Score 1/3: transparent public pricing; usage-based self-service",
+    "criteriaNeed": "Transparent Public Pricing; Usage-based Self-Service",
+    "lastReviewed": "2026-05-21"
+  },
+  {
+    "name": "Iren",
+    "url": "https://iren.com",
+    "category": "GPU & AI Compute Clouds",
+    "dateAdded": "2026-03-18",
+    "reasonNotQualifying": "Score 1/3: no transparent pricing, no self-service signup",
+    "criteriaNeed": "Public pricing page; self-service signup",
+    "lastReviewed": "2026-05-21"
+  }
+]

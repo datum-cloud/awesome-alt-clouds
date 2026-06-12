@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'README.md'
+      - 'WATCHLIST.md'
       - 'docs/**'
   workflow_dispatch:
 
@@ -40,16 +41,20 @@ jobs:
         run: |
           python scripts/generate_llms.py docs/clouds.json docs/
 
+      - name: Generate watchlist.json from WATCHLIST.md
+        run: |
+          python scripts/generate_watchlist_json.py
+
       - name: Commit updated files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/clouds.json docs/llms.txt docs/llms-full.txt
+          git add docs/clouds.json docs/llms.txt docs/llms-full.txt docs/watchlist.json
 
           # Only commit if there are changes
           if ! git diff --staged --quiet; then
             git commit -m "Auto-update clouds.json from README [skip ci]"
             git push
           else
-            echo "No changes to clouds.json, llms.txt, or llms-full.txt"
+            echo "No changes to generated docs files"
           fi

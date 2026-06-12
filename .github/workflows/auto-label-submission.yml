@@ -1,0 +1,39 @@
+name: Auto-label Submissions
+
+# Safety net for mobile: the GitHub app drops ALL URL params (title, body,
+# labels) when it shows a blank new-issue screen. The user pastes the body
+# from clipboard but types a free-form title, so title-pattern matching is
+# unreliable. Instead we match on a unique footer the form always injects
+# into the body, which survives the paste step intact.
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  label:
+    # The submit form always appends this sentence to the issue body.
+    # Matching on body content is the only reliable signal when the title
+    # is typed freely by the user on mobile.
+    if: contains(github.event.issue.body, 'automatically created via the submission form')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Add submission label if missing
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = context.payload.issue.labels.map(l => l.name);
+            if (!labels.includes('submission')) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['submission'],
+              });
+              core.info(`Added 'submission' label to issue #${context.issue.number}`);
+            } else {
+              core.info(`Issue #${context.issue.number} already has 'submission' label — skipping`);
+            }

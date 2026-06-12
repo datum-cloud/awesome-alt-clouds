@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watchlist | Awesome Alt Clouds</title>
+  <meta name="description" content="Services with real potential that don't yet meet the Alt Clouds inclusion criteria — tracked here with a clear path to qualification.">
+  <link rel="canonical" href="https://www.alt-clouds.org/watchlist.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/datum-cloud/awesome-alt-clouds/main/altclouds-logo.png">
+  <script src="https://cdn.usefathom.com/script.js" data-site="ZQEMDUAQ" defer></script>
+  <style>
+    :root {
+      --warm-stone: #78716C;
+      --soft-sage: #A3B18A;
+      --clay-beige: #E9DCC9;
+      --rich-earth: #3E362E;
+      --bright-tangerine: #FF6B35;
+      --cream: #FAF7F0;
+      --charcoal: #2D2D2A;
+      --bg-primary: var(--cream);
+      --bg-card: #ffffff;
+      --text-primary: var(--rich-earth);
+      --text-secondary: var(--warm-stone);
+      --border: var(--clay-beige);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, system-ui, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── Layout ── */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: 280px;
+      background: var(--cream);
+      border-right: 1px solid var(--border);
+      padding: 1.5rem 1rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    .logo-section {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+      text-decoration: none;
+    }
+
+    .logo-img { width: 40px; height: 40px; border-radius: 8px; }
+
+    .logo-text h1 {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--rich-earth);
+    }
+
+    .tagline {
+      font-size: 0.8125rem;
+      color: var(--bright-tangerine);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .nav-item:hover { background: var(--clay-beige); color: var(--text-primary); }
+
+    .nav-item.active {
+      background: var(--rich-earth);
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .contribute-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.625rem;
+      background: var(--bright-tangerine);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .contribute-btn:hover { background: #e55a25; transform: translateY(-1px); }
+
+    /* ── Main content ── */
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+      max-width: 960px;
+    }
+
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
+    .page-title {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--rich-earth);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    /* ── Info strip ── */
+    .info-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+
+    .info-card-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--warm-stone);
+      margin-bottom: 0.375rem;
+    }
+
+    .info-card-value {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--rich-earth);
+    }
+
+    /* ── Watchlist cards ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .watch-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .watch-card:hover {
+      box-shadow: 0 4px 16px rgba(62, 54, 46, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .watch-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .watch-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--clay-beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--rich-earth);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .watch-logo img { width: 100%; height: 100%; object-fit: contain; }
+
+    .watch-name {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--rich-earth);
+    }
+
+    .watch-category {
+      font-size: 0.75rem;
+      color: var(--warm-stone);
+      margin-top: 0.125rem;
+    }
+
+    .watch-reason {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      background: #fff8f5;
+      border: 1px solid #fde8dc;
+      border-radius: 8px;
+      padding: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .watch-reason-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--bright-tangerine);
+      margin-bottom: 0.25rem;
+    }
+
+    .watch-criteria {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      background: #f5faf0;
+      border: 1px solid #d8eacc;
+      border-radius: 8px;
+      padding: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .watch-criteria-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--soft-sage);
+      margin-bottom: 0.25rem;
+    }
+
+    .watch-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .watch-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      color: var(--warm-stone);
+    }
+
+    .watch-url {
+      color: var(--bright-tangerine);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      transition: gap 0.2s;
+    }
+
+    .watch-url:hover { gap: 0.625rem; text-decoration: underline; }
+
+    /* ── Empty state ── */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-secondary);
+    }
+
+    .empty-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.4; }
+
+    /* ── Rules section ── */
+    .rules-section {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .rules-title {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--rich-earth);
+      margin-bottom: 1rem;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .rule-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+
+    .rule-card-title {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.375rem;
+    }
+
+    .rule-card-body {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main-content { padding: 1.25rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .page-title { font-size: 1.5rem; }
+      .mobile-back {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        color: var(--bright-tangerine);
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .mobile-back { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo-section">
+        <a href="/" class="logo">
+          <img src="https://raw.githubusercontent.com/datum-cloud/awesome-alt-clouds/main/altclouds-logo.png" alt="Alt Clouds" class="logo-img">
+          <div class="logo-text">
+            <h1>Awesome Alt Clouds</h1>
+          </div>
+        </a>
+        <p class="tagline">When you Need Something .. Specialized!</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="/" class="nav-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m0 0l7-7m-7 7l7 7"></path>
+          </svg>
+          Directory
+        </a>
+        <a href="watchlist.html" class="nav-item active">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+          </svg>
+          Watchlist
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a href="submit/" class="contribute-btn">
+          <span>+</span>
+          <span>Submit a Cloud</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <!-- Mobile back link -->
+      <a href="/" class="mobile-back">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m0 0l7-7m-7 7l7 7"></path>
+        </svg>
+        Back to Directory
+      </a>
+
+      <div class="page-header">
+        <h2 class="page-title">Watchlist</h2>
+        <p class="page-subtitle">
+          Services with real potential that haven't crossed the qualification threshold yet.
+          Potential means at least one criterion is already met — the gap is closeable.
+          A 0/3 score gets declined outright; only 1/3 gets tracked here.
+        </p>
+      </div>
+
+      <div class="info-strip" id="infoStrip">
+        <div class="info-card">
+          <div class="info-card-label">Tracking</div>
+          <div class="info-card-value" id="entryCount">—</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Minimum to enter</div>
+          <div class="info-card-value">1 / 3 criteria</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Review cadence</div>
+          <div class="info-card-value">Quarterly</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Stale after</div>
+          <div class="info-card-value">6 months</div>
+        </div>
+      </div>
+
+      <div class="cards-grid" id="cardsGrid">
+        <!-- Cards injected by JS -->
+      </div>
+
+      <div class="rules-section">
+        <h3 class="rules-title">How It Works</h3>
+        <div class="rules-grid">
+          <div class="rule-card">
+            <div class="rule-card-title">Getting on the list</div>
+            <div class="rule-card-body">
+              A service must score 1/3 — at least one real qualifying signal. Score 0/3 means no pricing, no self-service, no status page: nothing to build on, so it's declined outright.
+            </div>
+          </div>
+          <div class="rule-card">
+            <div class="rule-card-title">Getting promoted</div>
+            <div class="rule-card-body">
+              Score 2/3 or higher on a fresh evaluation. Re-submit or comment on the original issue with evidence that the missing criteria are now met.
+            </div>
+          </div>
+          <div class="rule-card">
+            <div class="rule-card-title">Getting removed</div>
+            <div class="rule-card-body">
+              Promoted to the main list, no progress for 6 months, or the service shuts down. Maintainers review quarterly.
+            </div>
+          </div>
+          <div class="rule-card">
+            <div class="rule-card-title">Criteria to qualify</div>
+            <div class="rule-card-body">
+              Transparent public pricing page, usage-based self-service signup, and a public SLA or status page. Any 2 of 3 is enough.
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    async function load() {
+      const grid = document.getElementById('cardsGrid');
+      const countEl = document.getElementById('entryCount');
+
+      let entries = [];
+      try {
+        const res = await fetch('watchlist.json');
+        if (!res.ok) throw new Error(res.status);
+        entries = await res.json();
+      } catch (e) {
+        grid.innerHTML = '<div class="empty-state"><div class="empty-icon">&#9729;</div><p>Could not load watchlist data.</p></div>';
+        return;
+      }
+
+      const plural = entries.length === 1 ? 'candidate' : 'candidates';
+      countEl.textContent = `${entries.length} ${plural}`;
+
+      if (entries.length === 0) {
+        grid.innerHTML = '<div class="empty-state"><div class="empty-icon">&#9989;</div><p>No entries on the watchlist right now.</p></div>';
+        return;
+      }
+
+      grid.innerHTML = entries.map(e => {
+        const initial = e.name.charAt(0).toUpperCase();
+        let logoHtml;
+        try {
+          const hostname = new URL(e.url).hostname;
+          const logoUrl = `https://www.google.com/s2/favicons?domain=${hostname}&sz=64`;
+          logoHtml = `<img src="${logoUrl}" alt="${initial}" onerror="this.style.display='none';this.parentElement.setAttribute('data-logo','${initial}');">`;
+        } catch {
+          logoHtml = initial;
+        }
+
+        return `
+          <div class="watch-card">
+            <div class="watch-card-header">
+              <div class="watch-logo" data-logo="${initial}">${logoHtml}</div>
+              <div>
+                <div class="watch-name">${e.name}</div>
+                <div class="watch-category">${e.category}</div>
+              </div>
+            </div>
+            <div class="watch-reason">
+              <div class="watch-reason-label">Why it's not listed</div>
+              ${e.reasonNotQualifying}
+            </div>
+            <div class="watch-criteria">
+              <div class="watch-criteria-label">What would qualify it</div>
+              ${e.criteriaNeed}
+            </div>
+            <div class="watch-footer">
+              <div class="watch-meta">Added ${e.dateAdded} · Reviewed ${e.lastReviewed}</div>
+              <a href="${e.url}" target="_blank" rel="noopener" class="watch-url">
+                Visit
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    load();
+  </script>
+</body>
+</html>

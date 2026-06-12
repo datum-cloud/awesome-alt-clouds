@@ -4,6 +4,9 @@ on:
   issues:
     types: [labeled]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   split:
     # Only run on submission issues that contain more than one real URL.
@@ -45,7 +48,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.url-count.outputs.is_multi == 'true'
-        run: pip install requests beautifulsoup4 anthropic
+        run: pip install requests beautifulsoup4 openai
 
       - name: Split submission into child issues
         if: steps.url-count.outputs.is_multi == 'true'
@@ -54,5 +57,5 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           REPO: ${{ github.repository }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          QWEN_BASE_URL: ${{ secrets.QWEN_BASE_URL }}
         run: python scripts/split_submission.py

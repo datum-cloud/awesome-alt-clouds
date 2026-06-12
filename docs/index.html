@@ -404,6 +404,8 @@
       gap: 0.5rem;
       margin-bottom: 0.75rem;
       text-decoration: none;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .contribute-btn:hover {
@@ -1176,6 +1178,8 @@
       .search-input,
       .sorter-select {
         font-size: 1rem;
+      }
+
       .top-bar .search-box {
         display: none;
       }
@@ -1245,6 +1249,12 @@
         <span>+</span>
         <span>Submit a Cloud</span>
       </a>
+      <a href="watchlist.html" class="page-link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+        </svg>
+        <span>Watchlist</span>
+      </a>
       <button class="page-link" onclick="openModal('extensionModal'); closeDrawer()">
         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path>
@@ -1312,6 +1322,12 @@
         </a>
 
         <div class="page-links">
+          <a href="watchlist.html" class="page-link">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+            </svg>
+            <span>Watchlist</span>
+          </a>
           <button class="page-link" onclick="openModal('extensionModal')">
             <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path>
@@ -1520,19 +1536,40 @@
             </svg>
             Blog & Insights
           </h3>
-          <p style="font-size: 0.8125rem; color: var(--warm-stone); margin-bottom: 1rem;">From <a href="https://www.datum.net/authors/zac-smith/" target="_blank" style="color: var(--bright-tangerine);">Zac Smith</a>, Co-Founder & CEO of Datum</p>
+          <p style="font-size: 0.8125rem; color: var(--warm-stone); margin-bottom: 1rem;">From <a href="https://www.datum.net/authors/zachary-smith" target="_blank" style="color: var(--bright-tangerine);">Zac Smith</a>, Co-Founder & CEO of Datum</p>
           <div id="blogPostsContainer">
             <!-- Blog posts auto-updated by GitHub Action -->
             <div class="resource-card">
               <h4 class="resource-card-title">
-                <a href="https://www.datum.net/blog/every-agent-needs-an-edge/" target="_blank">Why every agent needs its own edge (meet me room and backbone too!)Feb 10, 2026</a>
+                <a href="https://www.datum.net/blog/four-flavors" target="_blank">Our four deployment flavors</a>
               </h4>
-              <p class="resource-card-excerpt">Why every agent needs its own edge (meet me room and backbone too!)</p>
+              <p class="resource-card-excerpt">Public, dedicated, and bring your own cloud, plus pure open source.</p>
+              <div class="resource-card-meta">Apr 15, 2026</div>
+            </div>
+            <div class="resource-card">
+              <h4 class="resource-card-title">
+                <a href="https://www.datum.net/blog/every-agent-needs-an-edge" target="_blank">Why every agent needs its own edge (meet me room and backbone too!)</a>
+              </h4>
+              <p class="resource-card-excerpt">There is a new architecture in town, and the internet is playing catch up.</p>
               <div class="resource-card-meta">Feb 10, 2026</div>
+            </div>
+            <div class="resource-card">
+              <h4 class="resource-card-title">
+                <a href="https://www.datum.net/blog/internet-superpowers-for-every-builder" target="_blank">Internet superpowers for every builder</a>
+              </h4>
+              <p class="resource-card-excerpt">We've raised $13.6M to help upgrade the internet so that thousands of new clouds and billions of agents can interact  securely. No network team required.</p>
+              <div class="resource-card-meta">Nov 19, 2025</div>
+            </div>
+            <div class="resource-card">
+              <h4 class="resource-card-title">
+                <a href="https://www.datum.net/blog/open-source-strategy" target="_blank">Our OSS strategy, explained</a>
+              </h4>
+              <p class="resource-card-excerpt">Here’s how we think about trust— how to gain it and how to keep it efficiently. And how that led us to adopt an AGPL-3.0 license for our core technology.</p>
+              <div class="resource-card-meta">Feb 19, 2025</div>
             </div>
           </div>
           <p style="margin-top: 1rem; text-align: center;">
-            <a href="https://www.datum.net/authors/zac-smith/" target="_blank" style="color: var(--bright-tangerine); font-size: 0.875rem; font-weight: 500;">View all posts &rarr;</a>
+            <a href="https://www.datum.net/authors/zachary-smith" target="_blank" style="color: var(--bright-tangerine); font-size: 0.875rem; font-weight: 500;">View all posts &rarr;</a>
           </p>
         </div>
 
@@ -1650,14 +1687,14 @@
     function openDrawer() {
       document.getElementById('mobileDrawer').classList.add('active');
       document.getElementById('drawerOverlay').classList.add('active');
-      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     }
 
     function closeDrawer() {
       document.getElementById('mobileDrawer').classList.remove('active');
       document.getElementById('drawerOverlay').classList.remove('active');
       if (!document.querySelector('.modal-overlay.active')) {
-        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
       }
     }
 
@@ -1677,7 +1714,7 @@
           history.pushState({}, '', location.pathname + location.search);
         }
         closeDrawer();
-        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
       }
     });
 
