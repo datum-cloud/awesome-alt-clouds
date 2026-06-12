@@ -2751,6 +2751,16 @@
     "dateAdded": "2026-06-12"
   },
   {
+    "name": "Ona",
+    "url": "https://ona.com/",
+    "description": "Provides a platform to run and govern AI software agents in the cloud, offering standardized execution environments, security controls, and automated remediation for SDLC workflows.",
+    "score": 3,
+    "categories": [
+      "AI Coding & App Generation"
+    ],
+    "dateAdded": "2026-06-12"
+  },
+  {
     "name": "Softgen",
     "url": "https://softgen.ai/",
     "description": "Provides tools to automatically generate code, documentation, and tests to speed up software delivery.",

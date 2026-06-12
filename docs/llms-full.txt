@@ -1,13 +1,13 @@
 # Awesome Alt Clouds — Full Reference
 
-> Curated directory of 443+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
+> Curated directory of 444+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
 
 ## About This Directory
 
 - [Directory Homepage](https://www.alt-cloud.org/): Interactive searchable directory. Filter by category, search by name or description, sort alphabetically, by score, or by recently added date. All data loaded from /clouds.json.
 - [Submit a Service](https://www.alt-cloud.org/submit/): Web form that creates a GitHub issue, triggers automated AI evaluation (pricing page detection, signup detection, status page detection), and opens a PR on pass.
 - [GitHub Repository](https://github.com/datum-cloud/awesome-alt-clouds): Source of truth. Contains README.md (the awesome list), evaluation scripts in /scripts, and GitHub Actions workflows in .github/workflows.
-- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 443+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
+- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 444+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
 
 ## Evaluation Criteria
 
@@ -81,11 +81,11 @@ Platform-as-a-service offerings for deploying web applications, APIs, and backen
 
 Services: Deno Deploy, Flightcontrol, Fly, Gadget, Heroku, Koyeb, Maritime, Netlify, Northflank, Out Plane, Pantheon, Platform.sh, Porter, Puter, Railway, and 4 more.
 
-### AI Coding & App Generation (17 services)
+### AI Coding & App Generation (18 services)
 
 AI-assisted code generation, app scaffolding, and developer productivity tools built on LLMs.
 
-Services: 9Router, Base44, Bolt, Codev, CopilotKit, Cursor, Drydock, Git AI, GitHub Copilot, Marblism, Mesa, Niteshift, OB-1, Softgen, Tabnine, and 2 more.
+Services: 9Router, Base44, Bolt, Codev, CopilotKit, Cursor, Drydock, Git AI, GitHub Copilot, Marblism, Mesa, Niteshift, OB-1, Ona, Softgen, and 3 more.
 
 ### Security, Compliance & Sovereignty Clouds (16 services)
 
@@ -171,9 +171,9 @@ Services: Akash Network.
 
 ## Key Facts
 
-- 443+ services as of 2026-06-12
+- 444+ services as of 2026-06-12
 - 23 categories covering the full developer cloud ecosystem
-- 413 services meet all 3 criteria (🟢); 30 meet 2 of 3 (🟡)
+- 414 services meet all 3 criteria (🟢); 30 meet 2 of 3 (🟡)
 - Minimum inclusion score: 2/3 criteria
 - Machine-readable data: https://www.alt-cloud.org/clouds.json
 - Source: https://github.com/datum-cloud/awesome-alt-clouds
