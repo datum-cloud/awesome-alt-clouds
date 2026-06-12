@@ -485,13 +485,15 @@ Respond in this exact JSON format only, no other text:
 
         message = client.chat.completions.create(
             model=QWEN_MODEL,
-            max_tokens=256,
+            max_tokens=1024,
             messages=[
                 {"role": "user", "content": prompt}
-            ]
+            ],
+            extra_body={"chat_template_kwargs": {"enable_thinking": False}}
         )
 
-        response_text = message.choices[0].message.content.strip()
+        response_text = (message.choices[0].message.content or "").strip()
+        response_text = re.sub(r'<think>[\s\S]*?</think>', '', response_text).strip()
 
         # Parse JSON from response
         # Handle case where response might have markdown code blocks
@@ -573,10 +575,12 @@ Respond in this exact JSON format only, no other text:
         message = client.chat.completions.create(
             model=QWEN_MODEL,
             max_tokens=1024,
-            messages=[{"role": "user", "content": prompt}]
+            messages=[{"role": "user", "content": prompt}],
+            extra_body={"chat_template_kwargs": {"enable_thinking": False}}
         )
 
-        response_text = message.choices[0].message.content.strip()
+        response_text = (message.choices[0].message.content or "").strip()
+        response_text = re.sub(r'<think>[\s\S]*?</think>', '', response_text).strip()
 
         if not response_text:
             print(f"Qwen returned no text for {url}")
