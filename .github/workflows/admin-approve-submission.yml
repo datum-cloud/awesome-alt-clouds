@@ -129,7 +129,7 @@ jobs:
       - name: Install dependencies
         if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
         run: |
-          pip install requests beautifulsoup4 anthropic
+          pip install requests beautifulsoup4 openai
 
       - name: Re-evaluate with admin override
         if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
@@ -137,7 +137,7 @@ jobs:
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          QWEN_BASE_URL: ${{ secrets.QWEN_BASE_URL }}
           ADMIN_SCORE_OVERRIDE: ${{ steps.parse.outputs.score_override }}
           ADMIN_TARGET_URL: ${{ steps.parse.outputs.target_url }}
           ADMIN_APPROVED: 'true'
