@@ -511,6 +511,16 @@
     "dateAdded": "2026-06-12"
   },
   {
+    "name": "Dapple",
+    "url": "https://dapple.co/",
+    "description": "Offers an Enterprise OS Cloud that aggregates global GPU supply for regulated enterprises, ensuring strict isolation, residency, and compliance.",
+    "score": 2,
+    "categories": [
+      "GPU & AI Compute Clouds"
+    ],
+    "dateAdded": "2026-06-12"
+  },
+  {
     "name": "Datacrunch.io",
     "url": "https://datacrunch.io/",
     "description": "Provides affordable GPU cloud services for AI training and inference.",
