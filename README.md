@@ -384,6 +384,7 @@ AI-powered code editors, IDEs, no-code/low-code builders, and full-stack app gen
 * 🟢 [GitHub Copilot](https://github.com/features/copilot) - An AI-powered coding assistant developed by GitHub and OpenAI that suggests code snippets as you type.
 * 🟢 [Marblism](https://www.marblism.com/) - Generate full-stack web apps from a single prompt.
 * 🟢 [Mesa](https://www.mesa.dev) - AI-powered code review platform with custom agents that learn codebase standards and prevent tech debt.
+* 🟢 [Niteshift](https://niteshift.dev/) - Provides a full-stack cloud platform for coding agents to build, test, and deploy applications with isolated environments, service simulation, and integration with existing development tools.
 * 🟢 [OB-1](https://www.openblocklabs.com/) - Provides a self-improving coding agent that handles the full development lifecycle from project management to pull requests, with multi-model AI support and workflow automation.
 * 🟢 [Softgen](https://softgen.ai/) - Provides tools to automatically generate code, documentation, and tests to speed up software delivery.
 * 🟢 [Tabnine](https://www.tabnine.com/) - AI code assistant with private model options.
