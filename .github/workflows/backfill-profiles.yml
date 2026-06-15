@@ -16,6 +16,9 @@ on:
         required: false
         default: "3"
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   backfill:
     runs-on: ubuntu-latest
@@ -33,14 +36,14 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install anthropic requests beautifulsoup4
+        run: pip install openai requests beautifulsoup4
 
       - name: Run backfill
         env:
           BATCH_SIZE: ${{ github.event.inputs.batch_size }}
           CATEGORY_FILTER: ${{ github.event.inputs.category_filter }}
           SCORE_FILTER: ${{ github.event.inputs.score_filter }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          QWEN_BASE_URL: ${{ secrets.QWEN_BASE_URL }}
         run: python scripts/backfill_profiles.py
 
       - name: Check if any MDX files were generated

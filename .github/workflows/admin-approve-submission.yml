@@ -4,6 +4,9 @@ on:
   issue_comment:
     types: [created]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   approve:
     # Only run on issues (not PRs) with submission label when admin comments /approve or approve
@@ -124,12 +127,12 @@ jobs:
         if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install dependencies
         if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
         run: |
-          pip install requests beautifulsoup4 anthropic
+          pip install requests beautifulsoup4 openai
 
       - name: Re-evaluate with admin override
         if: steps.check-permission.outputs.allowed == 'true' && steps.parse.outputs.valid == 'true'
@@ -137,10 +140,10 @@ jobs:
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          QWEN_BASE_URL: ${{ secrets.QWEN_BASE_URL }}
           ADMIN_SCORE_OVERRIDE: ${{ steps.parse.outputs.score_override }}
           ADMIN_TARGET_URL: ${{ steps.parse.outputs.target_url }}
-          ADMIN_APPROVED: 'true'
+          ADMIN_APPROVED: "true"
         run: |
           echo "=== Admin Approval Mode ==="
           echo "Issue Number: $ISSUE_NUMBER"

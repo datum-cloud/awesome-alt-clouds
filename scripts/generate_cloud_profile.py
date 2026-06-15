@@ -9,7 +9,7 @@ Env vars (required unless noted):
   CLOUD_CATEGORIES  — comma-separated, e.g. "Databases & Storage"
   CLOUD_DESCRIPTION — one-line description from clouds.json
   OUTPUT_PATH       — defaults to src/content/clouds/<slug>.mdx
-  ANTHROPIC_API_KEY — Claude API key
+  QWEN_BASE_URL     — self-hosted Qwen endpoint (OpenAI-compatible)
   DRY_RUN           — if "true", print MDX to stdout instead of writing file
 
 On success (non-dry-run), writes:
@@ -19,6 +19,7 @@ On success (non-dry-run), writes:
 
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -27,7 +28,7 @@ from lib.fetcher import fetch_page_with_fallback
 from lib.slugify import slugify
 
 PROFILE_MAX_TOKENS = 2048
-PROFILE_MODEL = "claude-haiku-4-5"
+QWEN_MODEL = "qwen3.6-35b-a3b"
 
 PROFILE_SYSTEM_PROMPT = (
     "You are a technical writer creating cloud provider profiles for alt-cloud.org — "
@@ -147,37 +148,38 @@ def generate_profile(
     categories: list[str],
     description: str,
 ) -> dict:
-    """Fetch the page and call Claude. Returns {mdx, fetch_method, slug}."""
+    """Fetch the page and call Qwen. Returns {mdx, fetch_method, slug}."""
     print(f"Fetching {url}...")
     soup, _final_url, fetch_method = fetch_page_with_fallback(url)
     page_text = soup.get_text(separator="\n", strip=True) if soup else ""
     print(f"Fetch method: {fetch_method or 'failed'}, content length: {len(page_text)}")
 
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
-    if not api_key:
-        print("ERROR: ANTHROPIC_API_KEY not set", file=sys.stderr)
+    base_url = os.environ.get("QWEN_BASE_URL")
+    if not base_url:
+        print("ERROR: QWEN_BASE_URL not set", file=sys.stderr)
         sys.exit(1)
 
-    import anthropic
+    import openai
 
-    client = anthropic.Anthropic(api_key=api_key)
+    client = openai.OpenAI(base_url=base_url, api_key="not-needed")
 
-    print(f"Calling Claude ({PROFILE_MODEL}) for {name}...")
-    message = client.messages.create(
-        model=PROFILE_MODEL,
+    print(f"Calling Qwen ({QWEN_MODEL}) for {name}...")
+    message = client.chat.completions.create(
+        model=QWEN_MODEL,
         max_tokens=PROFILE_MAX_TOKENS,
-        system=PROFILE_SYSTEM_PROMPT,
         messages=[
+            {"role": "system", "content": PROFILE_SYSTEM_PROMPT},
             {
                 "role": "user",
                 "content": build_profile_prompt(
                     name, url, score, categories, description, page_text
                 ),
-            }
+            },
         ],
+        extra_body={"chat_template_kwargs": {"enable_thinking": False}},
     )
 
-    truncated = message.stop_reason == "max_tokens"
+    truncated = message.choices[0].finish_reason == "length"
     if truncated:
         print(
             f"WARNING: Response hit max_tokens ({PROFILE_MAX_TOKENS}) for {name} — "
@@ -185,7 +187,8 @@ def generate_profile(
             file=sys.stderr,
         )
 
-    mdx_raw = message.content[0].text.strip()
+    mdx_raw = (message.choices[0].message.content or "").strip()
+    mdx_raw = re.sub(r'<think>[\s\S]*?</think>', '', mdx_raw).strip()
     mdx_raw = _strip_outer_code_fences(mdx_raw)
     mdx_raw = _prepend_status_draft(mdx_raw)
 
