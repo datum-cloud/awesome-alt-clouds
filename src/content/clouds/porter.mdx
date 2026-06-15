@@ -1,0 +1,53 @@
+---
+status: draft
+tagline: A Kubernetes-powered PaaS that runs in your own AWS, GCP, or Azure account, simplifying deployment and management.
+headquarters: "San Francisco, CA"
+foundedYear: 2023
+pricingModel: usage-based
+openSource: false
+regions:
+  - "AWS (All major regions)"
+  - "GCP (All major regions)"
+  - "Azure (All major regions)"
+services:
+  - "Kubernetes PaaS"
+  - "Automated CI/CD"
+  - "Auto-scaling"
+  - "Managed Databases"
+  - "Preview Environments"
+  - "GPU Support"
+socials:
+  website: "https://porter.run/"
+  x: "https://twitter.com/PorterRun"
+  linkedin: "https://linkedin.com/company/porter-run"
+  github: "https://github.com/porter-dev"
+---
+
+## What makes Porter different
+
+Porter operates as a "bring-your-own-cloud" Platform as a Service (PaaS). Unlike traditional PaaS providers like Heroku or Render that host applications on their own infrastructure, Porter deploys a managed Kubernetes cluster directly into your existing AWS, Google Cloud, or Azure account. This architecture ensures that you retain full control over your data residency, network security, and cloud billing, while Porter abstracts away the operational complexity of managing Kubernetes.
+
+The platform is designed to accelerate development workflows by connecting directly to Git repositories. It automatically builds images (using buildpacks or Dockerfiles) and deploys them with zero-downtime strategies. Key features include automatic preview environments for pull requests, integrated monitoring and logging, and intelligent cost optimization through bin-packing. This allows engineering teams to focus on writing code rather than managing infrastructure, effectively combining the ease of use of Heroku with the flexibility and ownership of hyperscaler infrastructure.
+
+## Pricing model
+
+Porter utilizes a usage-based pricing model, charging only for the resources your applications actually consume. This includes the compute resources (CPU and memory) used by your containers and any managed services like databases. Because the underlying infrastructure runs in your own cloud account, you pay the standard rates to your cloud provider (AWS/GCP/Azure) for those resources, plus Porter's platform fee. This model avoids the fixed monthly costs associated with traditional PaaS tiers, making it cost-effective for variable workloads and startups that want to scale costs linearly with usage.
+
+## When it fits
+
+*   **Teams wanting PaaS simplicity without vendor lock-in:** Ideal for startups and growth-stage companies that want Heroku-like ease of deployment but need to keep infrastructure in their own cloud accounts for security or compliance reasons.
+*   **Multi-cloud strategies:** Perfect for organizations looking to migrate workloads across AWS, GCP, or Azure using a consistent deployment interface.
+*   **AI and ML workloads:** Supports GPU instances for training and inference, making it suitable for AI startups running complex models.
+*   **Development velocity:** Teams that benefit from automatic preview environments for every pull request and zero-downtime deployments.
+
+## When it doesn't
+
+*   **Strictly on-premises requirements:** Porter requires a cloud provider account (AWS, GCP, or Azure) and does not support bare-metal or on-premises deployments.
+*   **Non-containerized legacy apps:** While it supports various frameworks, the platform is optimized for containerized applications deployed via Git or Docker.
+
+## Inclusion criteria
+
+Porter meets all three inclusion criteria:
+1.  **Transparent Pricing:** Pricing is based on resource usage, with clear documentation on how compute and services are billed.
+2.  **Self-Service Signup:** Users can sign up and deploy applications directly through the web interface or CLI without sales intervention.
+3.  **Public SLA/Status Page:** Porter provides SOC 2 compliance documentation and maintains a status page for service reliability monitoring.

@@ -1,0 +1,61 @@
+---
+status: draft
+tagline: "Cloud-native artifact management platform supporting 30+ package formats with global CDN and security scanning."
+headquarters: "San Francisco, CA"
+foundedYear: 2017
+pricingModel: subscription
+openSource: false
+regions:
+  - "US East (Virginia)"
+  - "US West (Oregon)"
+  - "EU West (Ireland)"
+  - "EU Central (Frankfurt)"
+  - "Asia Pacific (Sydney)"
+  - "Asia Pacific (Tokyo)"
+services:
+  - "Cloud Repository"
+  - "Artifact Security"
+  - "Policy Engine"
+  - "Global CDN"
+  - "CI/CD Integration"
+  - "Private Package Management"
+  - "Dependency Management"
+socials:
+  website: "https://cloudsmith.com/"
+  x: "https://twitter.com/CloudsmithIO"
+  linkedin: "https://linkedin.com/company/cloudsmith"
+  github: "https://github.com/cloudsmith-io"
+---
+
+## What makes Cloudsmith different
+
+Cloudsmith distinguishes itself by serving as a universal artifact repository manager rather than a compute or storage provider. Unlike hyperscalers that often require complex IAM configurations and separate services for different package types (e.g., ECR for Docker, S3 for generic objects), Cloudsmith provides a unified interface for managing over 30 package formats including Docker, npm, PyPI, Maven, NuGet, Conan, and Helm. This "single pane of glass" approach significantly reduces the operational overhead for DevOps teams managing polyglot microservices architectures.
+
+The platform is built with a focus on security and compliance out-of-the-box. It features a built-in policy engine that allows organizations to enforce rules on artifact integrity, license compliance, and vulnerability scanning before packages are promoted to production environments. This shifts security left in the CI/CD pipeline, ensuring that only verified artifacts are deployed. Additionally, its global CDN ensures low-latency access to artifacts for developers and build agents distributed across the globe, a feature often requiring additional configuration with raw S3 or GCS buckets.
+
+Cloudsmith also emphasizes ease of integration. It offers native plugins for major CI/CD platforms like GitHub Actions, GitLab CI, Jenkins, and Azure DevOps, as well as language-specific tools. This reduces the friction of adoption compared to self-hosted solutions like Nexus or Artifactory, which require significant infrastructure maintenance, or hyperscaler native services that may lack cross-format support.
+
+## Pricing model
+
+Cloudsmith operates on a subscription-based pricing model with tiered plans: Free, Pro, Business, and Enterprise. The Free tier offers limited storage and repository counts, suitable for individual developers or small open-source projects. The Pro plan starts at $49/month per user, providing increased storage, private repositories, and basic security features. The Business tier, starting at $199/month per user, adds advanced security scanning, policy enforcement, and higher limits. Enterprise pricing is custom-quoted and includes features like SSO, audit logs, and dedicated support.
+
+The model stands out for its predictability. Unlike hyperscaler storage pricing which scales with usage volume and data transfer (egress fees), Cloudsmith’s pricing is primarily based on seat count and storage tiers. This makes cost forecasting easier for engineering teams, as costs are tied to team size rather than unpredictable build artifact volumes.
+
+## When it fits
+
+-   **Polyglot Microservices:** Organizations managing multiple programming languages and package formats who want a single repository solution.
+-   **Security-First DevOps:** Teams that need automated vulnerability scanning and license compliance checks integrated directly into their CI/CD pipelines.
+-   **Global Development Teams:** Companies with distributed developers requiring low-latency artifact access via a global CDN.
+-   **CI/CD Optimization:** Teams looking to reduce build times by caching dependencies in a high-performance, globally distributed repository.
+
+## When it doesn't
+
+-   **Compute-Intensive Workloads:** Cloudsmith does not provide compute, networking, or database services; it is strictly for artifact management.
+-   **Unstructured Data Storage:** It is not suitable for storing large media files, backups, or general-purpose object storage needs.
+
+## Inclusion criteria
+
+Cloudsmith meets all three inclusion criteria:
+1.  **Transparent Pricing:** Detailed pricing tiers are listed on their website (https://cloudsmith.com/pricing/).
+2.  **Self-Service Signup:** Users can create accounts and start using the free tier immediately without sales interaction (https://cloudsmith.com/signup/).
+3.  **Public SLA/Status Page:** Cloudsmith provides a public status page (https://status.cloudsmith.com/) and publishes SLAs in their terms of service.

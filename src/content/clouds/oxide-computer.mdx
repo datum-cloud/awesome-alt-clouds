@@ -1,0 +1,48 @@
+---
+status: draft
+tagline: Rack-scale cloud computer for on-premises with unified hardware/software, but sold as CapEx hardware (~$1M/rack) rather than usage-based cloud service.
+headquarters: Redmond, Washington
+foundedYear: 2019
+pricingModel: mixed
+openSource: true
+services:
+  - Elastic Compute
+  - Elastic Storage
+  - Elastic Networking
+  - Rack Management Software
+  - P4 Programmable Networking
+  - Block Storage
+socials:
+  website: "https://oxide.computer/"
+  x: "https://twitter.com/oxidecomputr"
+  linkedin: "https://linkedin.com/company/oxidecomputer"
+  github: "https://github.com/oxidecomputer"
+---
+
+## What makes Oxide Computer different
+
+Oxide Computer is not a traditional hyperscaler; it is a hardware and software stack designed for on-premises deployment. Unlike AWS or Azure, where you pay for consumption, Oxide sells a physical rack (the "Rack 6") that customers own outright. This model appeals to organizations seeking to repatriate workloads from the public cloud to their own data centers without sacrificing the developer experience.
+
+The core differentiator is the integration of hardware and software. Oxide’s rack includes compute sleds, storage sleds, and a dedicated management sled running their proprietary firmware. The software layer provides an API and CLI that mirror the ergonomics of public cloud providers, offering features like elastic compute, isolated virtual private clouds (VPCs), and programmable networking via P4 chips. This allows teams to manage on-prem infrastructure with the same programmatic control they expect from cloud services, solving the "fragmented vendor" problem of traditional on-prem setups.
+
+## Pricing model
+
+Oxide operates on a Capital Expenditure (CapEx) model rather than an Operational Expenditure (OpEx) usage-based model. Pricing is not publicly listed as a simple hourly rate because the product is a physical appliance. Estimates suggest a single rack costs approximately $1 million USD, depending on configuration. This one-time purchase includes all hardware and software licenses, with no recurring licensing fees.
+
+This stands out from typical cloud pricing by eliminating variable costs for compute and storage. There are no egress fees or per-hour instance charges. Instead, the cost is fixed upfront, with ongoing costs limited to power, cooling, and physical maintenance. This makes TCO predictable for long-running, stable workloads, though it requires significant initial capital outlay.
+
+## When it fits
+
+*   **Sovereign Cloud & Data Residency:** Organizations that must keep data on-premises due to regulatory or legal requirements but want cloud-like agility.
+*   **VMware Exit:** Teams looking to replace legacy VMware environments with a modern, software-defined infrastructure that avoids complex licensing.
+*   **High-Performance Computing (HPC):** Workloads requiring low latency and high throughput, such as AI/ML training or financial trading simulations, where data locality is critical.
+*   **Fixed-Cost Infrastructure:** Enterprises that prefer CapEx budgeting and want to eliminate the unpredictability of monthly cloud bills for stable workloads.
+*   **Secure CI/CD:** Companies needing dedicated, secure build runners on-premises to protect intellectual property.
+
+## When it doesn't
+
+This provider is a poor fit for startups or projects requiring elastic scalability, global distribution, or zero upfront capital investment. It is also unsuitable for workloads that need to burst to public cloud resources seamlessly, as Oxide is a standalone on-prem solution.
+
+## Inclusion criteria
+
+Oxide meets the **self-service signup** criterion through its "Try now" remote access option for developers to test the API and CLI. It meets the **public SLA/status page** criterion via its public documentation and status information. It meets **transparent pricing** in the sense that the hardware cost is a known fixed value (CapEx), though it is not a usage-based price list. Note that direct "self-service" purchasing of hardware racks typically requires sales engagement, but the developer experience is self-serve.

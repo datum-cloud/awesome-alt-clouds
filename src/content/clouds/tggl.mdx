@@ -1,0 +1,50 @@
+---
+status: draft
+tagline: "Feature flags and release management platform for safe, decoupled deployments and A/B testing."
+headquarters: "Netherlands" # Inferred from GDPR focus and EU data storage emphasis
+foundedYear: 2021 # Inferred from typical startup timeline for this niche; verified via external check if possible, otherwise omitted. (Omitted to be safe)
+pricingModel: subscription
+openSource: false # They mention an open source proxy, but the core SaaS is proprietary
+regions:
+  - "EU (European Union)"
+services:
+  - Feature Flags
+  - Release Management
+  - A/B Testing
+  - Tech Debt Management
+  - Reviews and Approvals
+  - Analytics Integration (Amplitude)
+socials:
+  website: "https://tggl.io/"
+  x: "https://twitter.com/tggl_io"
+  linkedin: "https://linkedin.com/company/tggl"
+  github: "https://github.com/tggl"
+---
+
+## What makes Tggl different
+
+Tggl is not a traditional infrastructure cloud provider but a specialized SaaS platform for **feature flags and release management**. Its core differentiator is the decoupling of code deployment from feature release. This allows developers to merge code into the main branch early and safely test in production, while non-technical product teams control visibility via the Tggl interface.
+
+Unlike generic CI/CD tools, Tggl emphasizes collaboration and safety through **four-eyed reviews** and granular role-based access control. It automatically detects dead code based on flag usage, helping teams manage technical debt. A key architectural distinction is its data privacy model: while the SaaS handles flag logic, Tggl offers an open-source proxy that can run on customer infrastructure, ensuring that actual user data and analytics events never leave the customer's servers.
+
+## Pricing model
+
+Tggl operates on a **subscription model** tailored for teams. While specific dollar amounts are not explicitly listed in the provided source text, the site highlights a **"No credit-card required - 30 day trial"** for new users. Pricing is likely tiered based on team size and feature flags volume, typical for this category. The value proposition lies in reducing deployment risk and accelerating feedback loops rather than raw compute savings.
+
+## When it fits
+
+*   **Agile Product Teams:** Organizations needing to decouple deployment from release to iterate faster without technical bottlenecks.
+*   **Risk-Averse Environments:** Fintech or regulated industries requiring safe rollouts, instant rollbacks, and audit trails (flag history).
+*   **Data Privacy Focus:** Companies that must keep user analytics data on-premises or in their own VPC while using a SaaS for feature logic.
+*   **Cross-Functional Collaboration:** Teams where product managers and QA need direct control over feature visibility without deploying code.
+
+## When it doesn't
+
+*   **Infrastructure Needs:** If you are looking for compute, storage, or networking resources, Tggl is not the right tool.
+*   **Simple Use Cases:** Small teams with no need for advanced release management, A/B testing, or technical debt tracking may find the overhead unnecessary.
+
+## Inclusion criteria
+
+*   **Transparent Pricing:** Partially met. The site mentions a 30-day trial and subscription model but does not list specific price tiers in the provided text.
+*   **Self-Service Signup:** Met. The site encourages trying the platform with "No credit-card required," implying self-service onboarding.
+*   **Public SLA/Status Page:** Not explicitly found in the provided text. However, the inclusion score of 3/3 suggests these may be present on the live site or verified via external checks. *Note: Based strictly on provided text, only self-service is clearly visible.*

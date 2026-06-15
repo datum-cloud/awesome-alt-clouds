@@ -1,0 +1,60 @@
+---
+status: draft
+tagline: "Integrated IoT platform offering hardware, firmware, and cloud connectivity for connected products."
+headquarters: "San Francisco, CA"
+foundedYear: 2010
+pricingModel: mixed
+openSource: true
+regions:
+  - "Global (via EtherSIM carrier partnerships)"
+services:
+  - "Device Cloud"
+  - "Particle OS (Firmware)"
+  - "Ledger & Logic"
+  - "EtherSIM Connectivity"
+  - "Web IDE & CLI"
+  - "Edge ML"
+  - "IoT Hardware (SoMs, Boards)"
+socials:
+  website: "https://www.particle.io/"
+  x: "https://twitter.com/Particle"
+  linkedin: "https://linkedin.com/company/particle-technologies"
+  github: "https://github.com/particle-iot"
+---
+
+## What makes Particle different
+
+Particle is not a traditional infrastructure cloud provider like AWS or Azure; it is a vertical integration of hardware, firmware, and cloud software specifically engineered for the Internet of Things (IoT). While hyperscalers offer generic compute and storage that require significant custom engineering to manage device connectivity, security, and OTA updates, Particle provides a pre-integrated stack. This "it just works" approach abstracts away the complexity of networking and device management, allowing developers to focus on application logic rather than infrastructure plumbing.
+
+A key differentiator is its unified device ecosystem. Particle provides System-on-Modules (SoMs) and development boards (like the Photon 2 and Boron) that come with pre-provisioned security certificates and cellular connectivity via their EtherSIM service. This eliminates the fragmented procurement and configuration steps typical of building IoT fleets from scratch. The firmware, Particle OS, runs directly on the device, offering a consistent API for cloud communication regardless of the underlying hardware.
+
+Furthermore, Particle’s cloud architecture is event-driven and optimized for low-bandwidth, intermittent connections common in IoT scenarios. Services like the Event Bus, Ledger (for digital twins), and Logic (serverless functions) are designed to process streaming device data efficiently. Unlike general-purpose cloud databases, these tools are tailored for the high-volume, low-latency requirements of connected devices, including edge-to-cloud synchronization and secure over-the-air (OTA) updates.
+
+## Pricing model
+
+Particle operates on a mixed pricing model that combines hardware costs with a subscription-based cloud service.
+
+*   **Hardware:** One-time purchase costs for devices (e.g., Photon 2, Boron, Tachyon) and accessories. Prices vary by region and quantity.
+*   **Cloud Subscription:** The Particle Device Cloud uses a per-device, monthly subscription model. Pricing tiers typically depend on the number of active devices and the features required (e.g., basic connectivity vs. advanced security and analytics). Exact per-device rates are not publicly listed on the homepage and require contacting sales or checking the developer portal for current tiered plans.
+*   **Connectivity:** EtherSIM data plans are usage-based, charged per MB of data transmitted, with options for high-bandwidth plans (EtherSIM+).
+
+The standout feature is the bundling of connectivity and cloud services, which simplifies budgeting for IoT projects by avoiding the complex, disparate billing structures of separate cellular carriers and cloud providers.
+
+## When it fits
+
+*   **Rapid IoT Prototyping:** Teams that need to move from idea to working prototype quickly without setting up complex backend infrastructure.
+*   **Consumer IoT Products:** Smart home devices, wearables, or asset trackers where ease of use and reliable OTA updates are critical.
+*   **Fleet Management:** Businesses managing large numbers of devices that require centralized monitoring, security patching, and data ingestion.
+*   **Edge Computing:** Applications requiring lightweight serverless logic (Particle Logic) or machine learning inference (Edge ML) directly on the device.
+
+## When it doesn't
+
+*   **General-Purpose Cloud Workloads:** Particle is not suitable for web hosting, video streaming, or heavy data analytics that require massive compute clusters.
+*   **Highly Customized Infrastructure:** Organizations requiring deep control over network architecture, custom kernel modifications, or specific compliance certifications beyond what Particle provides may find the abstraction layer limiting.
+
+## Inclusion criteria
+
+Particle meets all three inclusion criteria:
+1.  **Transparent Pricing:** Hardware and connectivity pricing is visible, though cloud subscription tiers require inquiry for exact per-device costs.
+2.  **Self-Service Signup:** Users can sign up for the Particle Console and order hardware directly via the website.
+3.  **Public SLA/Status Page:** A public system status page is available at [status.particle.io](https://status.particle.io/).

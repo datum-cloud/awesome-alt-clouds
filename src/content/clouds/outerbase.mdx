@@ -1,0 +1,54 @@
+---
+status: draft
+tagline: Serverless database UI and API layer for PostgreSQL and MySQL, now integrated with Cloudflare.
+headquarters: "San Francisco, CA"
+foundedYear: 2021
+pricingModel: usage-based
+openSource: false
+regions:
+  - "Global (via Cloudflare network)"
+services:
+  - "Database UI"
+  - "Serverless API Generation"
+  - "Row-Level Security"
+  - "Auth Integration"
+  - "Query Builder"
+socials:
+  website: "https://www.outerbase.com/"
+  x: "https://twitter.com/outerbase"
+  linkedin: "https://linkedin.com/company/outerbase"
+  github: "https://github.com/outerbase"
+---
+
+## What makes Outerbase different
+
+Outerbase distinguishes itself by acting as a developer-first interface and API layer for relational databases, primarily PostgreSQL and MySQL. Unlike traditional cloud database providers that focus on infrastructure management, Outerbase focuses on the developer experience (DX) of interacting with data. It provides a visual, spreadsheet-like interface for direct data manipulation, which is particularly useful for non-engineers or rapid prototyping, while simultaneously generating secure, serverless REST APIs from existing database schemas.
+
+The platform is designed to eliminate the boilerplate code typically required to build CRUD applications. By connecting directly to your database, Outerbase handles authentication, authorization (including Row-Level Security), and API generation automatically. This reduces the need for a dedicated backend service for simple data operations. Recently, Outerbase has been acquired by Cloudflare, allowing it to leverage Cloudflare’s global edge network for low-latency access and seamless integration with Cloudflare’s ecosystem of identity and security tools.
+
+Its architecture is built on the premise that developers should not need to write repetitive API code for standard database operations. Instead of deploying servers to handle requests, Outerbase executes queries directly against the connected database instance, scaling automatically with usage. This approach significantly reduces operational overhead and infrastructure costs for applications that are primarily data-driven rather than compute-intensive.
+
+## Pricing model
+
+Outerbase utilizes a usage-based pricing model, which aligns costs with actual database interactions. Pricing is generally determined by the number of API requests and the volume of data processed. While specific per-request costs can vary based on the tier and volume, the model is designed to be cost-effective for startups and small-to-medium applications that do not require dedicated server capacity.
+
+The standout feature of Outerbase's pricing is its pay-as-you-go structure, which eliminates the fixed costs associated with provisioning virtual machines or managed database instances for low-traffic applications. For developers, this means the cost scales linearly with usage, providing predictability for variable workloads. It is important to note that after the acquisition by Cloudflare, pricing structures may evolve to integrate more closely with Cloudflare’s billing systems, potentially offering bundled discounts for existing Cloudflare customers.
+
+## When it fits
+
+*   **Rapid Prototyping:** Teams need to quickly build and deploy a data interface without writing backend code.
+*   **Internal Tools:** Companies require a secure, user-friendly UI for non-technical staff to view or edit database records.
+*   **Serverless Architectures:** Applications built on serverless frameworks (e.g., Next.js, SvelteKit) that need a lightweight API layer for database operations.
+*   **Cost-Sensitive Startups:** Projects with variable traffic that cannot justify the fixed cost of dedicated database servers.
+
+## When it doesn't
+
+*   **High-Compute Workloads:** Applications requiring heavy server-side processing, complex joins, or large-scale data transformations are better served by traditional database engines or compute instances.
+*   **Strict Data Residency Requirements:** While Cloudflare has a global presence, specific local data residency laws may require dedicated infrastructure that Outerbase's managed abstraction does not explicitly guarantee in all regions.
+
+## Inclusion criteria
+
+Outerbase meets all three inclusion criteria:
+1.  **Transparent Pricing:** Pricing details are available on their website, outlining usage-based tiers.
+2.  **Self-Service Signup:** Users can create an account and connect databases directly through the web interface without sales involvement.
+3.  **Public SLA/Status Page:** As part of Cloudflare, it benefits from Cloudflare’s robust infrastructure and status monitoring, though specific Outerbase SLAs should be verified in their terms of service.

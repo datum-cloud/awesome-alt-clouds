@@ -1,0 +1,66 @@
+---
+status: draft
+tagline: "The fastest path from idea to production with fully managed app hosting and a rich add-on ecosystem."
+headquarters: "Boston, MA, USA"
+foundedYear: 2007
+pricingModel: subscription
+openSource: false
+regions:
+  - US (East)
+  - US (West)
+  - Europe (Frankfurt)
+  - Europe (London)
+services:
+  - Heroku Dynos (App Runtime)
+  - Heroku Postgres
+  - Heroku Redis
+  - Heroku Key-Value Store
+  - Heroku Data for Redis
+  - Heroku Managed Inference
+  - Heroku Connect
+  - Heroku Flow
+socials:
+  website: "https://www.heroku.com/"
+  x: "https://twitter.com/heroku"
+  linkedin: "https://linkedin.com/company/heroku"
+  github: "https://github.com/heroku"
+---
+
+## What makes Heroku different
+
+Heroku is the quintessential Platform as a Service (PaaS), designed to abstract away infrastructure management entirely. Unlike hyperscalers where you provision VMs, configure VPCs, and manage scaling policies, Heroku treats your application code as the primary unit of deployment. You push code via Git, and Heroku’s proprietary "slug compiler" builds and runs it inside "dynos"—isolated, ephemeral containers. This model eliminates the operational overhead of server maintenance, patching, and capacity planning, allowing developers to focus exclusively on application logic.
+
+The platform’s second major differentiator is its extensive ecosystem of managed services and add-ons. Rather than stitching together disparate cloud services, Heroku offers a marketplace of pre-integrated solutions for databases, caching, monitoring, and developer tools. This "one-click" provisioning model significantly reduces time-to-market. Furthermore, Heroku’s recent pivot towards AI capabilities, including Managed Inference and Model Context Protocol (MCP) support, allows developers to integrate AI agents and vector search (via pgvector) directly into their apps without managing GPU infrastructure.
+
+Heroku also emphasizes a "Sustaining Engineering" model, focusing on stability, security, and reliability over rapid feature churn. This approach appeals to enterprises and established startups that require predictable performance and compliance certifications (PCI, HIPAA, ISO, SOC) without the complexity of self-managed security controls.
+
+## Pricing model
+
+Heroku uses a subscription-based pricing model centered on "Dyno Hours." You pay for the compute capacity your dynos consume, billed monthly.
+
+*   **Hobby Dynos:** Free for one dyno per app (limited resources), ideal for prototypes.
+*   **Standard Dynos:** Start at $0.50 per dyno hour. You can scale by adding more dynos (horizontal scaling) or upgrading dyno sizes (vertical scaling).
+*   **Performance Dynos:** Start at $2.50 per dyno hour, offering higher resources and dedicated IP addresses.
+*   **Private Routers:** $25 per router hour for custom domains and advanced routing.
+*   **Add-ons:** Priced separately, ranging from free tiers (e.g., basic Heroku Postgres) to premium enterprise services.
+
+The standout feature is the simplicity: no hidden data transfer fees or complex tiered storage costs. You pay for what you run, and scaling is instantaneous.
+
+## When it fits
+
+*   **Startups and MVPs:** Rapid deployment with minimal DevOps overhead.
+*   **Web Applications:** Standard HTTP-based apps (Node.js, Python, Ruby, Java, Go, PHP).
+*   **Teams with Limited DevOps:** Organizations that want to avoid managing Kubernetes or VMs.
+*   **AI Agent Prototyping:** Quick integration of LLMs and vector databases using managed services.
+*   **Compliance-Heavy Apps:** Industries requiring HIPAA/PCI compliance without managing security infrastructure.
+
+## When it doesn't
+
+*   **Highly Custom Infrastructure:** Workloads requiring low-level OS access, specific kernel modules, or bare-metal performance.
+*   **Complex Microservices:** Apps needing fine-grained control over networking, service meshes, or custom orchestration.
+
+## Inclusion criteria
+
+*   **Transparent Pricing:** Yes, dyno and add-on prices are clearly listed on the pricing page.
+*   **Self-Service Signup:** Yes, users can sign up and deploy apps instantly via the dashboard or CLI.
+*   **Public SLA/Status Page:** Yes, Heroku provides a public status page (status.heroku.com) and offers SLAs for Enterprise plans.

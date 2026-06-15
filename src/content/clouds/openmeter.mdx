@@ -1,0 +1,52 @@
+---
+status: draft
+tagline: Open-source, real-time usage metering and billing infrastructure for consumption-based SaaS and AI products.
+headquarters: "San Francisco, CA, USA"
+foundedYear: 2022
+pricingModel: usage-based
+openSource: true
+services:
+  - Real-time Usage Metering
+  - Product Catalog & Pricing Engine
+  - Usage Limits & Quotas
+  - Stripe & CRM Integrations
+  - Event Streaming & Aggregation
+  - Developer SDKs (Node, Python, Go)
+socials:
+  website: "https://openmeter.io/"
+  x: "https://twitter.com/openmeterio"
+  linkedin: "https://linkedin.com/company/openmeter"
+  github: "https://github.com/openmeter"
+---
+
+## What makes OpenMeter different
+
+OpenMeter positions itself as the infrastructure layer for usage-based billing, specifically designed for developers building AI, API, and consumption-based SaaS products. Unlike traditional billing platforms that focus on invoice generation, OpenMeter’s core differentiator is its ability to handle high-velocity event ingestion and real-time aggregation. It allows companies to turn any event, log, or metric into billable revenue with millisecond latency.
+
+The platform is built on event-streaming techniques, enabling it to scale to millions of events per second. This architecture allows for real-time usage gating and limit enforcement at the edge, meaning developers can restrict user access or trigger notifications instantly based on consumption. It decouples the metering logic from the billing provider, integrating seamlessly with Stripe to handle the final invoicing while OpenMeter manages the complex data aggregation and product catalog.
+
+By providing SDKs for TypeScript, Python, and Go, OpenMeter embeds billing logic directly into the application code rather than forcing a post-hoc integration. This "code-first" approach allows for flexible product catalogs where pricing changes can be deployed in minutes without hardcoding adjustments, significantly reducing the engineering overhead typically associated with shifting pricing models.
+
+## Pricing model
+
+OpenMeter operates on a usage-based pricing model tied to the volume of events processed. While specific per-event costs are not explicitly detailed in the provided text, the model is transparent: you pay for the metering volume you consume. The platform offers a free tier to get started, allowing developers to test the SDKs and integrations.
+
+The standout feature of this pricing model is its alignment with the customer's success. Since it focuses on metering rather than transaction fees on the final invoice (which Stripe handles), costs scale linearly with the data ingested. This is particularly cost-effective for AI companies paying for OpenAI tokens or API calls, as it provides granular visibility into cost-per-user without the complexity of building a custom ingestion pipeline.
+
+## When it fits
+
+*   **AI and LLM Applications:** Companies using OpenAI, Anthropic, or other LLMs need to track token usage or prompt counts accurately to bill customers or manage internal costs.
+*   **API-First SaaS:** Products that charge per call, per request, or per unit of compute (e.g., serverless functions) benefit from the real-time aggregation and SDKs.
+*   **Consumption-Based Billing Models:** Startups moving from flat-rate to usage-based pricing that need to implement quotas, limits, and notifications quickly.
+*   **Developer-Led Billing:** Engineering teams that want to implement billing logic in code via SDKs rather than relying on finance teams to configure complex webhooks.
+
+## When it doesn't
+
+OpenMeter is not a full-service billing or payment processor; it does not handle credit card processing, tax calculation, or invoice delivery directly (it integrates with Stripe for this). It is also not suitable for simple, static subscription billing models that do not require granular usage tracking.
+
+## Inclusion criteria
+
+OpenMeter meets all three inclusion criteria:
+1.  **Transparent Pricing:** The website explicitly states a usage-based model with a free tier, and pricing details are accessible via the "Pricing" page.
+2.  **Self-Service Signup:** Users can "Get started" and sign up directly for the hosted cloud version or deploy the open-source version via GitHub.
+3.  **Public Status Page:** A dedicated "Status Page" is listed in the navigation, providing transparency into system uptime and incidents.

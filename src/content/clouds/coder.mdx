@@ -1,0 +1,51 @@
+---
+status: draft
+tagline: "Self-hosted cloud development environments that provision and manage workspaces, enabling developers to code from anywhere."
+headquarters: "San Francisco, CA"
+foundedYear: 2018
+pricingModel: "subscription"
+openSource: true
+services:
+  - "Coder Workspaces"
+  - "Coder Agents"
+  - "AI Governance"
+  - "Terraform Modules"
+  - "IDE Integrations (VS Code, JetBrains)"
+  - "Backstage Integration"
+socials:
+  website: "https://coder.com/"
+  x: "https://twitter.com/coder"
+  linkedin: "https://linkedin.com/company/codercom"
+  github: "https://github.com/coder"
+---
+
+## What makes Coder different
+
+Unlike traditional infrastructure providers that offer raw compute, Coder provides a platform for provisioning and managing self-hosted cloud development environments (CDEs). It acts as an abstraction layer over your existing infrastructure—whether on AWS, GCP, Azure, or on-premises Kubernetes—allowing developers to provision consistent, reproducible workspaces using Terraform. This "Infrastructure as Code" approach eliminates environment drift and reduces the time spent on setup.
+
+Coder distinguishes itself by supporting both human developers and AI coding agents within the same governance framework. Its "Coder Agents" feature allows organizations to deploy autonomous AI workflows on network-isolated infrastructure, ensuring that sensitive code and data never leave the corporate perimeter. This is particularly critical for industries with strict compliance requirements, such as government and finance.
+
+The platform is designed for security and control. By keeping the control plane self-hosted, organizations retain full ownership of their data and infrastructure. Coder integrates seamlessly with existing identity providers and supports a wide range of IDEs and tools, making it a versatile solution for enterprises looking to modernize their development workflows without migrating to a new cloud provider.
+
+## Pricing model
+
+Coder offers a self-service Premium tier for teams, with pricing based on the number of concurrent users. While specific per-user monthly costs are not publicly listed on the main pricing page, the company provides a free trial for the Premium tier and encourages users to start a trial to access advanced features. Enterprise customers with specific compliance or scale requirements should contact sales for custom licensing. This subscription model stands out for its simplicity compared to the complex, usage-based billing of underlying cloud providers, as Coder itself does not charge for the compute resources it provisions.
+
+## When it fits
+
+*   **Enterprise DevOps Teams:** Organizations needing to standardize development environments across large teams to reduce setup time and configuration drift.
+*   **High-Compliance Industries:** Government, defense, and financial services that require data residency controls and network isolation for development workloads.
+*   **AI-First Development:** Teams integrating AI coding agents (like Cursor or Windsurf) that need secure, governed access to codebases without exposing secrets to third-party AI providers.
+*   **Hybrid/Multi-Cloud Infrastructures:** Companies running infrastructure across multiple clouds or on-premises who want a unified interface for provisioning dev environments.
+
+## When it doesn't
+
+*   **Small Startups with Limited Infra:** Teams that do not have existing cloud infrastructure or DevOps resources to manage and maintain the Coder control plane may find the self-hosted model burdensome.
+*   **Raw Compute Needs:** Organizations looking for straightforward VM or container hosting without the need for development environment management tools.
+
+## Inclusion criteria
+
+Coder meets all three inclusion criteria:
+1.  **Transparent Pricing:** While exact numbers require a trial or sales contact, the subscription model is clearly defined, and a free trial is available for self-service evaluation.
+2.  **Self-Service Signup:** Users can install Coder open-source or start a Premium trial directly via the website without immediate sales intervention.
+3.  **Public SLA/Status:** Coder maintains a public status page (status.coder.com) and provides SLA details for its Premium service, as noted in their enterprise offerings.

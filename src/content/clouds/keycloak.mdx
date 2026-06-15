@@ -1,0 +1,55 @@
+---
+status: draft
+tagline: "Open-source identity and access management solution for modern applications and services."
+headquarters: "Red Hat, USA"
+foundedYear: 2014
+pricingModel: "free"
+openSource: true
+regions:
+  - "Self-hosted (Global)"
+services:
+  - "Authentication"
+  - "Authorization Services"
+  - "Single Sign-On (SSO)"
+  - "Identity Brokering"
+  - "User Federation"
+  - "Social Login"
+  - "Account Management Console"
+  - "Admin Console"
+socials:
+  website: "https://www.keycloak.org/"
+  github: "https://github.com/keycloak/keycloak"
+  linkedin: "https://www.linkedin.com/showcase/keycloak/"
+---
+
+## What makes Keycloak different
+
+Keycloak distinguishes itself from hyperscaler identity services by being entirely open-source and self-hostable. Unlike AWS Cognito or Azure AD B2C, which lock you into their proprietary ecosystems and data silos, Keycloak runs on your own infrastructure. This eliminates vendor lock-in and gives you complete control over your authentication data, compliance posture, and customization capabilities.
+
+It serves as a comprehensive Identity and Access Management (IAM) solution that supports standard protocols like OpenID Connect, OAuth 2.0, and SAML 2.0. Keycloak abstracts the complexity of user storage and authentication, allowing developers to focus on business logic rather than security infrastructure. It offers robust features such as Single Sign-On (SSO), Single Sign-Out, identity brokering with social networks, and user federation with existing LDAP or Active Directory servers.
+
+Furthermore, Keycloak provides fine-grained authorization services that go beyond simple role-based access control (RBAC). Administrators can define complex policies directly from the admin console, managing permissions for all connected services centrally. This flexibility makes it suitable for modern microservices architectures and legacy applications alike, bridging the gap between simple authentication and complex enterprise authorization requirements.
+
+## Pricing model
+
+Keycloak is free and open-source software (FOSS) released under the Apache License 2.0. There are no licensing fees, subscription costs, or usage-based charges associated with the software itself.
+
+The primary cost is operational: you are responsible for the infrastructure required to host Keycloak, including compute resources, storage, and networking. For managed alternatives, Red Hat offers **Red Hat Single Sign-On** (now part of Red Hat Advanced Cluster Management for Kubernetes) as a commercial distribution with enterprise support, SLAs, and additional features, but this is a separate commercial product from the open-source community edition.
+
+What makes this stand out is the total absence of per-user or per-authentication-transaction fees. Hyperscalers often charge for active users, API calls, or specific features like social login connectors. Keycloak allows you to scale to millions of users without incremental software costs, shifting the expense model entirely to infrastructure management.
+
+## When it fits
+
+*   **Organizations requiring data sovereignty:** When you must keep user data within your own infrastructure due to regulatory or compliance requirements (e.g., GDPR, HIPAA).
+*   **Existing Red Hat environments:** Teams already invested in the Red Hat ecosystem looking for a supported, enterprise-grade IAM solution.
+*   **Complex authorization needs:** Applications that require fine-grained, policy-based authorization that exceeds standard RBAC capabilities.
+*   **Multi-tenant applications:** SaaS providers needing to isolate tenant identities while potentially federating with their customers' existing IdPs.
+*   **Cost-sensitive projects:** Startups or internal tools where budget constraints make paying for AWS Cognito or Azure AD B2C prohibitive.
+
+## When it doesn't
+
+Keycloak is a poor fit for teams with zero DevOps resources who cannot manage the operational burden of securing, updating, and scaling an IAM server. It is also not suitable if you require a fully managed, serverless identity service with zero infrastructure maintenance.
+
+## Inclusion criteria
+
+Keycloak meets the **open source** inclusion criterion as it is freely available under the Apache 2.0 license. It meets the **transparent pricing** criterion as the core software is free (costs are limited to infrastructure). It does not inherently provide a public SLA or status page for the open-source community edition, as it is self-hosted; however, Red Hat offers SLAs for its commercial distributions.

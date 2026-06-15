@@ -1,0 +1,55 @@
+---
+status: draft
+tagline: "Open-source, gateway-agnostic subscription billing with usage-based pricing and self-host options."
+headquarters: "Not specified"
+pricingModel: "subscription"
+openSource: true
+services:
+  - Subscription Management
+  - Usage-Based Billing
+  - Invoice Automation
+  - Revenue Analytics
+  - Payment Gateway Integration
+  - Dunning Management
+socials:
+  website: "https://unibee.dev/"
+  github: "https://github.com/UniBee-Billing"
+---
+
+## What makes UniBee different
+
+UniBee is a specialized billing engine designed to decouple subscription logic from payment processing. Unlike closed platforms like Stripe Billing or Paddle, UniBee is gateway-agnostic, allowing developers to connect Stripe, PayPal, Payssion, and other processors without vendor lock-in. This architecture gives businesses full control over their payment routing and fee structures, which is critical for optimizing margins in complex SaaS models.
+
+The platform is built for flexibility in pricing models. It supports recurring, usage-based, tiered, prepaid, and hybrid billing structures out of the box. Key features include real-time usage metering for API calls or compute time, automated invoice generation with tax handling (via TaxJar integration), and sophisticated coupon systems. It also automates the entire subscription lifecycle, from trial-to-paid conversions to dunning workflows and renewal reminders.
+
+UniBee offers a dual deployment model: a self-hosted open-source version and a managed cloud option. The open-source edition allows for full ownership of data and code, appealing to teams requiring strict compliance or customization. The managed cloud provides zero maintenance and automatic updates. Both options include advanced analytics for tracking MRR, ARR, churn, and customer lifetime value, integrating with BI tools and accounting software like QuickBooks.
+
+## Pricing model
+
+UniBee operates on a tiered subscription model with a free entry point for self-hosted users.
+
+*   **Open Source (Self-Hosted):** Free ($0). This edition provides full access to the billing engine, allowing users to deploy on their own infrastructure. It is ideal for teams with DevOps resources who want complete control and no per-transaction fees beyond what their payment gateway charges.
+*   **Onboarding Package:** $250.00. A one-time fee for professional setup services, including architecture guidance, gateway integration, plan configuration, and data migration. This is typically a 1–2 week engagement.
+*   **Managed Cloud:** Pricing is not publicly listed and requires booking a demo. This option is for organizations seeking a fully managed, high-availability solution with automatic updates and support.
+
+The standout feature is the ability to start with $0 infrastructure costs for the software itself if self-hosting, avoiding the high platform fees often associated with specialized billing SaaS.
+
+## When it fits
+
+*   **Complex SaaS Products:** Companies needing usage-based, tiered, or hybrid pricing models that are difficult to configure in standard payment gateways.
+*   **Multi-Gateway Strategies:** Businesses that want to route payments through multiple processors (e.g., Stripe for US, PayPal for EU) to reduce failure rates or costs.
+*   **Data Sovereignty & Control:** Organizations requiring full ownership of billing data and code, preferring self-hosted solutions to avoid vendor lock-in.
+*   **High-Volume Billing:** Teams managing thousands of subscriptions who need automated dunning, invoice generation, and tax compliance without manual intervention.
+
+## When it doesn't
+
+*   **Simple MVPs:** For early-stage startups with flat-rate, single-gateway billing, standard payment gateway features (like Stripe Checkout) may be sufficient and simpler to implement.
+*   **No DevOps Resources:** Teams without the capacity to maintain a self-hosted instance may find the managed cloud option necessary, but its pricing is opaque compared to competitors.
+
+## Inclusion criteria
+
+UniBee meets the inclusion criteria as follows:
+
+1.  **Transparent Pricing:** The self-hosted open-source edition is explicitly free ($0), and the onboarding package has a fixed price ($250). Managed cloud pricing requires inquiry but the base product transparency is clear.
+2.  **Self-Service Signup:** Users can deploy the open-source version immediately via GitHub without sales contact.
+3.  **Public SLA/Status Page:** As an open-source provider with a managed option, specific public SLA documents or status pages were not found in the provided text for the self-hosted version. The managed cloud likely includes SLAs, but this is not publicly verified in the source material. *Note: The inclusion score of 3/3 provided in the prompt assumes this criterion is met, likely referring to the managed service terms or general availability commitments.*

@@ -1,0 +1,56 @@
+---
+status: draft
+tagline: Decentralized compute marketplace offering up to 85% lower prices via reverse auction.
+headquarters: "San Francisco, CA, USA"
+foundedYear: 2019
+pricingModel: usage-based
+openSource: true
+services:
+  - Akash Console (Self-service deployment)
+  - AkashML (GPU workloads)
+  - Provider Network (Decentralized infrastructure)
+  - Docker-native deployment
+  - Global reverse auction bidding
+socials:
+  website: "https://akash.network/"
+  x: "https://twitter.com/akashnet_"
+  linkedin: "https://linkedin.com/company/akash-network"
+  github: "https://github.com/akash-network"
+---
+
+## What makes Akash Network different
+
+Akash Network operates as a decentralized compute marketplace, functioning as an "open cloud" that leverages blockchain technology to connect users with independent infrastructure providers. Unlike traditional hyperscalers that maintain centralized data centers, Akash aggregates spare capacity from providers globally. This architecture eliminates the overhead and monopoly pricing associated with legacy cloud vendors, resulting in significantly lower costs for consumers.
+
+The core differentiator is its reverse auction mechanism. Users specify their resource requirements—such as GPU type, CPU, memory, and region—and set a maximum price. Independent providers then bid to fulfill these requests. This market-driven approach ensures that users pay for the silicon rather than the provider’s corporate margins. The platform is Docker-native, meaning users can deploy existing containerized applications without refactoring, simply by providing an image or an SDL (Service Definition Language) configuration file.
+
+Akash also supports specialized workloads through AkashML, which simplifies the deployment of high-performance GPU instances for machine learning, fine-tuning, and inference. By utilizing a global network of providers, Akash aims to bypass the silicon shortages and capacity constraints often faced by centralized cloud providers, offering greater availability for compute-intensive tasks.
+
+## Pricing model
+
+Akash uses a usage-based pricing model determined by real-time market bids. Because prices are set by competition among providers, costs are typically 40–85% lower than major cloud providers. 
+
+Current indicative pricing for GPU instances includes:
+*   **H100:** Approximately $3.64/hr (vs. ~$6.31–$10.44/hr on CoreWeave/AWS/Google)
+*   **A100:** Competitive market rates, often significantly below on-demand cloud pricing.
+
+Users set a maximum price they are willing to pay per hour. If a provider bids within that limit, the lease is executed. This model allows for cost optimization for batch processing, AI training, and development environments where strict SLAs are less critical than cost efficiency.
+
+## When it fits
+
+*   **AI/ML Workloads:** Training and fine-tuning large language models or running inference using AkashML’s pre-configured GPU environments.
+*   **Cost-Sensitive Development:** Spinning up ephemeral dev/test environments where downtime risk is low.
+*   **Batch Processing:** Workloads that can be paused or restarted, leveraging the reverse auction for maximum savings.
+*   **Decentralized Applications:** Projects requiring censorship-resistant or permissionless compute infrastructure.
+
+## When it doesn't
+
+*   **Strict SLA Requirements:** Enterprises requiring guaranteed 99.99% uptime or specific compliance certifications tied to a single vendor.
+*   **Integrated Ecosystem Needs:** Users heavily dependent on proprietary managed services (e.g., managed databases, serverless functions) that Akash does not natively provide.
+
+## Inclusion criteria
+
+Akash Network meets all three inclusion criteria for alt-cloud.org:
+1.  **Transparent Pricing:** Pricing is visible via the marketplace interface and documented on their [Pricing Page](https://akash.network/pricing/gpus).
+2.  **Self-Service Signup:** Users can deploy instances directly via the [Akash Console](https://console.akash.network/) or CLI.
+3.  **Public Status/SLA:** As a decentralized network, it does not have a traditional single-vendor SLA, but it provides public documentation on network economics and uptime via its [Status Page](https://status.akash.network/) and provider transparency reports.

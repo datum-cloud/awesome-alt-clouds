@@ -1,0 +1,55 @@
+---
+status: draft
+tagline: Cloud-native development environments and AI agent orchestration platform for secure, standardized coding.
+headquarters: "Berlin, Germany"
+foundedYear: 2018
+pricingModel: subscription
+openSource: true
+regions:
+  - "US-East (Virginia)"
+  - "US-West (Oregon)"
+  - "EU-Central (Frankfurt)"
+  - "EU-West (Amsterdam)"
+services:
+  - "Gitpod Workspaces"
+  - "Ona (AI Agent Platform)"
+  - "Gitpod CLI"
+  - "Gitpod IDE (VS Code)"
+  - "Gitpod API"
+socials:
+  website: "https://www.gitpod.io/"
+  x: "https://x.com/gitpod"
+  linkedin: "https://linkedin.com/company/gitpod"
+  github: "https://github.com/gitpod-io"
+---
+
+## What makes Gitpod different
+
+Gitpod is not an infrastructure provider in the traditional sense; it is a developer experience platform that abstracts away the complexity of setting up local development environments. By providing ephemeral, cloud-hosted VS Code workspaces, Gitpod ensures that every developer, from intern to senior engineer, works in an identical, pre-configured environment. This eliminates the "it works on my machine" problem and significantly reduces onboarding time.
+
+The platform has recently expanded into AI agent orchestration with **Ona**, allowing teams to run background AI agents securely within governed cloud environments. Unlike running LLMs on local laptops, Ona provides standardized execution environments with kernel-level governance, network isolation, and policy controls. This enables organizations to delegate repetitive coding tasks, CVE remediation, and refactoring to AI agents without exposing sensitive code or compromising security.
+
+## Pricing model
+
+Gitpod operates on a freemium subscription model. The **Free** tier offers a limited amount of workspace hours per month, ideal for individual contributors or small experiments. The **Team** and **Enterprise** plans are subscription-based, priced per user per month, and include features like shared workspaces, SSO, and advanced security controls.
+
+For AI agent usage via Ona, pricing is typically bundled into Enterprise contracts or billed based on compute consumption for agent execution. Gitpod’s model stands out by charging for *developer productivity time* and *agent compute* rather than raw IaaS resources like EC2 instances, aligning costs directly with value delivered to the engineering workflow.
+
+## When it fits
+
+-   **Distributed Teams:** Organizations with remote or hybrid developers needing consistent, zero-config environments.
+-   **AI-First Engineering:** Teams looking to integrate AI agents into their CI/CD and development workflows with strict security guardrails.
+-   **Onboarding Heavy Workloads:** Companies with large engineering teams where onboarding new developers takes days due to complex local setup.
+-   **Security-Conscious DevOps:** Enterprises requiring GDPR compliance, SOC 2 certification, and isolated execution environments for sensitive code.
+
+## When it doesn't
+
+-   **Low-Level Infrastructure Control:** Teams needing direct access to bare metal, custom kernels, or specific hardware accelerators not provided in standard workspace images.
+-   **Long-Running Background Services:** Gitpod workspaces are ephemeral and designed for interactive development; they are not suitable for hosting permanent APIs or databases.
+
+## Inclusion criteria
+
+Gitpod meets all three inclusion criteria:
+1.  **Transparent Pricing:** Pricing details for Free, Team, and Enterprise tiers are publicly available on their pricing page.
+2.  **Self-Service Signup:** Users can sign up and start using Gitpod immediately via GitHub/GitLab integration without sales interaction.
+3.  **Public SLA/Status Page:** Gitpod maintains a public status page (status.gitpod.io) to monitor service health.

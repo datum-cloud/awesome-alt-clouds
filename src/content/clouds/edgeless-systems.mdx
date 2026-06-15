@@ -1,0 +1,41 @@
+---
+status: draft
+tagline: "Confidential computing platform using TEEs for runtime encryption of AI and cloud workloads."
+headquarters: "Munich, Germany"
+foundedYear: 2018
+pricingModel: subscription
+openSource: true
+services:
+  - Privatemode AI
+  - Contrast
+  - MarbleRun
+  - EGo
+---
+
+## What makes Edgeless Systems different
+
+Edgeless Systems specializes in confidential computing, enabling data to remain encrypted even while in use. Unlike traditional cloud providers where data is decrypted in memory—exposing it to infrastructure operators—Edgeless leverages Trusted Execution Environments (TEEs) such as AMD SEV-SNP, Intel TDX, and Intel SGX. This architecture ensures that cloud administrators and other tenants cannot access your data or code, addressing critical privacy and sovereignty concerns.
+
+The platform is built around three core products: **Privatemode AI** for secure large language model inference, **Contrast** for managing confidential containers on Kubernetes, and **MarbleRun** for orchestrating Intel SGX enclaves. By abstracting the complexity of TEE attestation and lifecycle management, Edgeless allows developers to deploy sensitive workloads with minimal configuration changes.
+
+## Pricing model
+
+Edgeless Systems operates primarily on a **subscription** and **enterprise sales** model. Publicly available per-unit pricing is not listed on their website; instead, customers are directed to "Book a demo" or contact sales for quotes. Privatemode AI appears to be a managed service, while Contrast and MarbleRun can be self-hosted or managed, depending on the engagement. This model stands out from typical cloud providers by focusing on software licensing and support rather than pure compute/storage consumption metering.
+
+## When it fits
+
+*   **Regulated Industries:** Healthcare, finance, and public sector organizations requiring GDPR, NIS2, or DORA compliance where data sovereignty is paramount.
+*   **Confidential AI:** Enterprises wanting to run LLMs on proprietary data without exposing prompts or models to the cloud provider.
+*   **Multi-Party Computation:** Scenarios where multiple parties need to compute on joint data without revealing their individual inputs.
+*   **Hybrid/Multi-Cloud Sovereignty:** Organizations using sovereign clouds (e.g., STACKIT) or hybrid setups that need consistent security policies across environments.
+
+## When it doesn't
+
+*   **General Purpose Workloads:** For standard web hosting, databases, or non-sensitive compute, the overhead and complexity of TEEs are unnecessary compared to standard VMs.
+*   **GPU-Intensive Training:** While inference is supported via Privatemode, large-scale model training may still face hardware limitations or lack of direct GPU passthrough in some TEE configurations compared to standard cloud instances.
+
+## Inclusion criteria
+
+*   **Transparent Pricing:** Partially met. While specific dollar amounts are not public, the subscription/enterprise model is clearly stated, and public documentation is available.
+*   **Self-Service Signup:** Met. Users can access public documentation, open-source code on GitHub, and demo requests without sales intervention for initial exploration.
+*   **Public SLA/Status Page:** Met. The company provides service level agreements for managed services and maintains a public status page for service availability.

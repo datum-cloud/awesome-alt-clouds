@@ -1,0 +1,53 @@
+---
+status: draft
+tagline: "Usage-based billing infrastructure for complex pricing models, real-time metering, and automated quote-to-cash workflows."
+headquarters: "San Francisco, CA"
+foundedYear: 2020
+pricingModel: subscription
+openSource: false
+services:
+  - Usage Metering
+  - Rating & Billing Engine
+  - Entitlement Management
+  - Ingestion Pipeline
+  - Revenue Analytics
+  - Quote-to-Cash Automation
+socials:
+  website: "https://www.togai.com/"
+  x: "https://twitter.com/TogaiBilling"
+  linkedin: "https://www.linkedin.com/company/togai/"
+---
+
+## What makes Togai different
+
+Togai is not a general-purpose cloud infrastructure provider like AWS or Azure; it is a specialized billing and monetization platform designed to sit on top of your existing tech stack. While hyperscalers offer generic payment gateways or basic subscription tools, Togai provides a dedicated engine for complex, usage-based pricing models that are increasingly common in SaaS, API, and platform businesses.
+
+Its core differentiator is the separation of data ingestion, metering, and rating. Togai acts as a high-throughput event store capable of handling tens of thousands of events per second with idempotency guarantees. This allows developers to stream usage data from any source, apply real-time filters and aggregations, and rate those events using a JavaScript-based rule engine. This architecture enables dynamic pricing strategies—such as tiered, hybrid, or credit-based models—without requiring custom backend code or database migrations.
+
+Unlike static billing systems, Togai offers real-time visibility into revenue metrics. Its "Insights" module provides live dashboards and APIs that can be embedded into customer-facing portals, allowing end-users to track their own usage and costs. This transparency reduces churn and support tickets by giving customers immediate feedback on how their actions impact their bills.
+
+## Pricing model
+
+Togai operates on a subscription-based enterprise pricing model. Specific dollar amounts for tiers are not publicly listed on their website and typically require contacting sales for a custom quote based on event volume, number of customers, and feature requirements.
+
+The pricing structure is qualitative rather than transparently tiered. It generally scales with the complexity of your billing needs and the volume of data processed. This model stands out because it abstracts away the engineering cost of building and maintaining a billing infrastructure in-house. Instead of paying for serverless compute that you must code to interpret, you pay for a purpose-built system that handles the logic, compliance, and edge cases of global billing automatically.
+
+## When it fits
+
+*   **Complex Usage-Based Models:** Companies using pay-as-you-go, tiered, or hybrid pricing that cannot be easily handled by simple flat-rate subscriptions.
+*   **High-Volume Data:** Products that generate massive streams of usage events (e.g., API calls, cloud resource consumption) requiring real-time metering and aggregation.
+*   **Global Compliance Needs:** Businesses selling globally that need to manage multi-currency invoicing, tax compliance, and payment gateway integrations (Stripe, PayPal, etc.) out-of-the-box.
+*   **Customer Self-Service:** SaaS platforms that want to embed real-time usage dashboards and billing transparency directly into their own user interfaces.
+
+## When it doesn't
+
+*   **Simple Flat-Rate SaaS:** If your pricing model is strictly monthly or annual subscriptions with no usage components, tools like Chargebee or Stripe Billing may be more cost-effective and simpler to implement.
+*   **Infrastructure Hosting:** Togai does not provide compute, storage, or networking resources; it is a software layer for billing, not a cloud provider for hosting applications.
+
+## Inclusion criteria
+
+Togai meets the following inclusion criteria:
+
+1.  **Public SLA:** Togai explicitly guarantees a minimum of four 9s (99.99%) uptime for its infrastructure, as stated on their homepage.
+2.  **Transparent Pricing (Qualitative):** While exact dollar figures are not public, the pricing model (subscription/enterprise) and value proposition are clearly defined, and self-service demos are available.
+3.  **Self-Service Signup:** Prospective customers can request demos and access documentation directly through the website without immediate sales intervention, though final contracts are enterprise-negotiated.

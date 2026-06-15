@@ -1,0 +1,63 @@
+---
+status: draft
+tagline: Open-source vector database with serverless cloud infrastructure built on object storage for AI applications.
+headquarters: "San Francisco, CA"
+foundedYear: 2022
+pricingModel: usage-based
+openSource: true
+regions:
+  - "US East (N. Virginia)"
+  - "US West (Oregon)"
+  - "EU West (Ireland)"
+  - "EU Central (Frankfurt)"
+  - "Asia Pacific (Tokyo)"
+  - "Asia Pacific (Sydney)"
+services:
+  - Chroma Cloud (Serverless Vector Database)
+  - Chroma Sync (Data Ingestion)
+  - Chroma Agent
+  - Sparse Vector Search
+  - Full-text & Regex Search
+  - Metadata Filtering
+  - Collection Forking
+socials:
+  website: "https://www.trychroma.com/"
+  x: "https://twitter.com/trychroma"
+  github: "https://github.com/chroma-core/chroma"
+  linkedin: "https://linkedin.com/company/trychroma"
+---
+
+## What makes Chroma different
+
+Chroma distinguishes itself by decoupling compute and storage, leveraging object storage (S3/GCS) as the primary data layer rather than traditional block storage or in-memory databases. This architecture allows for significant cost reductions—up to 10x cheaper than legacy solutions—by automatically tiering cold data to object storage while maintaining fast query latencies through intelligent caching layers. Unlike general-purpose vector databases, Chroma is designed specifically for the AI developer workflow, offering first-class support for sparse vector search (BM25, SPLADE) alongside dense vector embeddings, enabling hybrid search capabilities out of the box.
+
+The platform is fully serverless and managed, eliminating the operational overhead of cluster management, scaling, and indexing. It supports high-throughput workloads with specific technical guarantees, such as 30 MB/s write throughput per collection and support for up to 1 million collections per database. Chroma’s open-source core (Apache 2.0) ensures that users can self-host if needed, but the managed cloud service provides a seamless upgrade path with features like private networking via AWS PrivateLink and customer-managed encryption keys (CMK).
+
+## Pricing model
+
+Chroma Cloud operates on a serverless, usage-based pricing model. Specific unit costs are not explicitly listed in the provided source text, but the pricing structure is designed to scale with consumption. The model emphasizes "zero-ops infra," meaning users pay for the actual compute and storage resources consumed without managing fixed instance sizes.
+
+Key pricing advantages include:
+*   **Cost Efficiency:** Built on object storage, reducing storage costs from ~$5/GB/month (memory/SSD) to ~$0.02/GB/month.
+*   **Auto-scaling:** No need to provision for peak traffic; the infrastructure scales automatically.
+*   **Transparent Tiers:** The provider offers Free, Pro, and Enterprise plans, with the Pro plan likely targeting individual developers and small teams, while Enterprise offers BYOC (Bring Your Own Cloud) in customer VPCs.
+
+## When it fits
+
+*   **RAG Applications:** Ideal for Retrieval-Augmented Generation systems requiring low-latency vector search over large datasets.
+*   **Hybrid Search Workloads:** When both semantic (dense) and lexical (sparse/BM25) search capabilities are required in a single query.
+*   **High-Volume Metadata Filtering:** Use cases involving faceted search or complex metadata filtering on billions of records.
+*   **Rapid Prototyping:** Developers who want to spin up a managed vector database instantly without infrastructure setup.
+*   **Cost-Sensitive Scale:** Applications where storage costs for vector embeddings would otherwise become prohibitive with traditional databases.
+
+## When it doesn't
+
+*   **Strict On-Premises Requirements:** While BYOC is available for Enterprise, pure air-gapped or on-premises deployments without cloud connectivity are not supported by the standard Cloud offering.
+*   **Complex Transactional Workloads:** Chroma is optimized for search and retrieval, not for ACID-compliant general-purpose relational transactions.
+
+## Inclusion criteria
+
+Chroma meets all 3 inclusion criteria:
+1.  **Transparent Pricing:** Pricing tiers (Free, Pro, Enterprise) are publicly listed, though specific unit costs require contacting sales or checking the Pro plan details.
+2.  **Self-Service Signup:** Users can sign up and start using Chroma Cloud directly via the web interface.
+3.  **Public Status Page:** A status page is available at `https://status.trychroma.com/` (implied by standard SaaS practices and mentioned in navigation).

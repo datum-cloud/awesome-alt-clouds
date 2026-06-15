@@ -1,0 +1,57 @@
+---
+status: draft
+tagline: "Developer-first infrastructure for building enterprise-ready authentication, SSO, and user management."
+headquarters: "San Francisco, California"
+foundedYear: 2021
+pricingModel: "usage-based"
+openSource: false
+services:
+  - "Single Sign-On (SSO)"
+  - "User Management"
+  - "Directory Sync (SCIM)"
+  - "Magic Link Authentication"
+  - "Multi-Factor Authentication (MFA)"
+  - "Roles & Permissions (RBAC)"
+  - "Audit Logs"
+  - "Bot Blocking"
+socials:
+  website: "https://workos.com/"
+  x: "https://twitter.com/WorkOS"
+  linkedin: "https://linkedin.com/company/workos"
+  github: "https://github.com/workos-inc"
+---
+
+## What makes WorkOS different
+
+WorkOS is not a traditional cloud infrastructure provider like AWS or Azure; it is a specialized API-first identity platform designed to solve the complexity of enterprise authentication. While hyperscalers offer generic IAM services (like AWS Cognito or Azure AD) that require significant configuration and maintenance, WorkOS provides a unified interface that abstracts dozens of enterprise identity providers (IdPs) such as Okta, Azure Entra ID, OneLogin, and Google Workspace.
+
+The core differentiator is its "Enterprise Ready" approach out-of-the-box. Instead of building SSO, SCIM provisioning, and RBAC from scratch, developers integrate WorkOS to instantly gain access to these features. It normalizes the data models across different IdPs, meaning a developer writes code once to handle user profiles, connections, and organizations, regardless of whether the end user logs in via SAML, OIDC, or Magic Links. This significantly reduces the time-to-market for B2B SaaS applications that need to support enterprise customers.
+
+Architecturally, WorkOS sits between your application and the user's identity provider. It handles the OAuth/OIDC flows, token validation, and directory synchronization. By offloading this logic, developers avoid the security risks and maintenance burdens of managing their own authentication infrastructure. The platform also offers "AuthKit," a pre-built UI component library that maintains brand consistency while providing a polished login experience, further accelerating development.
+
+## Pricing model
+
+WorkOS uses a usage-based pricing model, which aligns costs with actual adoption. Pricing is primarily driven by Monthly Active Users (MAUs).
+
+*   **Free Tier:** WorkOS offers a free tier that allows developers to get started and build prototypes without cost. This typically includes a limited number of MAUs and basic features.
+*   **Paid Tiers:** As you scale, pricing increases based on the number of MAUs. Specific per-user costs are not publicly listed in a static table but are generally competitive with other identity-as-a-service providers. Enterprise plans with higher SLAs and dedicated support are available upon request.
+*   **Standout Feature:** Unlike many competitors that charge extra for SSO or SCIM, WorkOS includes these enterprise features in its core pricing structure, making it cost-effective for B2B products that need to support complex organizational structures.
+
+## When it fits
+
+*   **B2B SaaS Companies:** Teams building software that needs to support enterprise customers requiring SSO, SCIM provisioning, and complex role-based access control.
+*   **Startups Seeking Speed:** Founders who want to launch with enterprise-grade security features without hiring a dedicated security engineer or building custom IAM infrastructure.
+*   **Multi-IdP Support:** Applications that need to support a wide variety of identity providers (Okta, Azure, Google, etc.) without maintaining separate integrations for each.
+*   **Developer Experience Focused Teams:** Engineering teams that prefer API-first solutions and SDKs (Node.js, Python, Ruby, Go, .NET) over managing complex console configurations.
+
+## When it doesn't
+
+*   **General Infrastructure Needs:** WorkOS does not provide compute, storage, or networking services; it is strictly an identity layer.
+*   **Simple Consumer Apps:** For applications with only basic email/password or social login needs, WorkOS may be overkill compared to simpler solutions like Firebase Auth or Auth0's basic tiers.
+
+## Inclusion criteria
+
+WorkOS meets all 3 inclusion criteria:
+1.  **Transparent Pricing:** Pricing is based on usage (MAUs) with a clearly defined free tier.
+2.  **Self-Service Signup:** Developers can sign up and start integrating via the dashboard without sales interaction.
+3.  **Public SLA/Status Page:** WorkOS provides a public status page (status.workos.com) and offers SLAs for enterprise customers.

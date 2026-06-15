@@ -1,0 +1,78 @@
+---
+status: draft
+tagline: Deploy apps globally on hardware-isolated VMs with sub-100ms latency and built-in private networking.
+headquarters: San Francisco, CA, USA
+foundedYear: 2017
+pricingModel: usage-based
+openSource: false
+regions:
+  - Ashburn, Virginia (us-east)
+  - Chicago, Illinois (us-central)
+  - Dallas, Texas (us-south)
+  - Los Angeles, California (us-west)
+  - Seattle, Washington (us-north)
+  - Toronto, Canada (ca-central)
+  - London, UK (eu-west)
+  - Paris, France (eu-central)
+  - Frankfurt, Germany (eu-central-1)
+  - Stockholm, Sweden (eu-north)
+  - Amsterdam, Netherlands (eu-west-1)
+  - Mumbai, India (ap-south)
+  - Bangalore, India (ap-south-1)
+  - Singapore (ap-southeast)
+  - Sydney, Australia (ap-southeast-2)
+  - Tokyo, Japan (ap-northeast)
+  - São Paulo, Brazil (sa-east)
+services:
+  - Fly Machines
+  - Fly Apps
+  - Fly Postgres
+  - Fly Redis
+  - Fly Volumes
+  - Fly Private Networking
+  - Fly Sprites (Sandbox)
+  - Fly Kubernetes (Deprecated/Retiring)
+socials:
+  website: "https://fly.io"
+  x: "https://twitter.com/flydotio"
+  linkedin: "https://linkedin.com/company/fly-io"
+  github: "https://github.com/superfly"
+---
+
+## What makes Fly different
+
+Fly.io distinguishes itself by deploying applications as lightweight, hardware-virtualized containers called "Machines" that run directly on bare metal. Unlike traditional PaaS platforms that often abstract away infrastructure complexity to the point of opacity, Fly provides the simplicity of Heroku with the control and performance of VMs. Each Machine is KVM-isolated, memory-safe, and can start in under a second, allowing for true serverless-like scaling without the cold-start penalties associated with container orchestration overhead.
+
+A core differentiator is its focus on global distribution and low-latency user experience. Fly automatically places your application close to your users across 16+ regions, ensuring sub-100ms response times. It handles the complexity of distributed systems natively, offering built-in private networking with end-to-end encryption and granular routing. This allows developers to run clustered databases like CockroachDB or distributed Postgres clusters without managing complex Terraform configurations or network peering setups.
+
+Additionally, Fly has introduced "Sprites," a sandbox environment designed for running untrusted or AI-generated code. These sandboxes are fully isolated VMs that can be checkpointed and restored, paying only for actual CPU and memory consumption down to the second. This architecture appeals to developers building scalable agents or running experimental code where security and resource efficiency are paramount, bridging the gap between static hosting and full virtual machine management.
+
+## Pricing model
+
+Fly.io uses a usage-based pricing model, charging for compute time, bandwidth, and storage.
+
+*   **Compute:** Charged per CPU core-hour and GB-hour of RAM. The base price is approximately $5 per VM-month for a small instance (1 shared CPU, 256MB RAM), with costs scaling linearly for larger instances.
+*   **Bandwidth:** Ingress is free. Egress is charged per GB, typically around $0.05/GB for the first few TBs, with volume discounts.
+*   **Storage:** Fly Volumes (NVMe SSDs) are charged per GB-month, roughly $0.15/GB. Snapshots are charged separately based on retained data size.
+*   **Databases:** Managed Postgres and Redis are priced by instance type and storage, starting at around $15/month for the smallest shared CPU instance.
+
+Fly’s pricing stands out for its transparency and lack of hidden egress fees compared to hyperscalers, though users must monitor usage closely as it can scale quickly with high traffic or large storage needs. The "pay-per-second" billing for Machines ensures you aren't charged for idle time.
+
+## When it fits
+
+*   **Latency-sensitive applications:** Global deployments requiring sub-100ms response times for end-users.
+*   **Microservices and distributed systems:** Applications that benefit from private networking and easy clustering of stateful services.
+*   **AI Agents and Untrusted Code:** Running ephemeral, isolated sandboxes (Sprites) for AI-generated code or user-submitted scripts.
+*   **Developers seeking Heroku-like simplicity:** Teams wanting VM-level control and performance without managing Kubernetes or complex infrastructure code.
+
+## When it doesn't
+
+*   **Heavy batch processing:** Workloads requiring massive, sustained compute power may find Fly’s per-second billing and smaller instance sizes less cost-effective than reserved instances on AWS or GCP.
+*   **Specialized GPU workloads:** While Fly supports GPUs, the selection and availability are more limited compared to dedicated GPU cloud providers.
+
+## Inclusion criteria
+
+Fly.io meets all three inclusion criteria:
+1.  **Transparent pricing:** Detailed pricing for compute, storage, and bandwidth is available at https://fly.io/docs/about/pricing/.
+2.  **Self-service signup:** Users can sign up and deploy applications via the web dashboard or CLI without sales interaction at https://fly.io/app/sign-up.
+3.  **Public SLA/status page:** Fly provides a public status page at https://status.fly.io/ and publishes SLA details for its paid plans.

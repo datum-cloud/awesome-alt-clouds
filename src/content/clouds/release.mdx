@@ -1,0 +1,52 @@
+---
+status: draft
+tagline: GitOps-driven ephemeral environment management for full-stack apps, deployed to your own cloud.
+headquarters: "San Francisco, CA"
+foundedYear: 2021
+pricingModel: usage-based
+openSource: false
+services:
+  - Ephemeral Environments
+  - Git-Push Deployments
+  - Instant Datasets
+  - Release CLI
+  - Release Delivery (On-Prem)
+  - Release.ai
+socials:
+  website: "https://release.com/"
+  x: "https://twitter.com/ReleaseHQ"
+  linkedin: "https://linkedin.com/company/releasehq"
+  github: "https://github.com/release"
+---
+
+## What makes Release different
+
+Release is not a managed cloud provider in the traditional sense; it is a deployment and environment orchestration layer that runs on your existing cloud infrastructure (AWS, GCP, or Azure). This "deploy to your own cloud" architecture eliminates vendor lock-in and prevents the "surprise bill" phenomenon common with platform-as-a-service (PaaS) providers like Vercel or Heroku. By managing infrastructure via GitOps, Release ensures that every environment is reproducible and version-controlled.
+
+The core differentiator is its focus on ephemeral environments for full-stack applications. Unlike static preview deployments, Release can spin up complete application stacks, including databases and background workers, on-demand. These environments can be paused when inactive and resumed when needed, allowing teams to scale to zero during non-working hours or when branches are idle. This approach significantly reduces pre-production cloud costs while maintaining the developer experience of instant previews.
+
+Additionally, Release offers "Instant Datasets," a feature that allows developers to create realistic, production-like data snapshots for testing without duplicating entire database volumes. This solves a common pain point in full-stack development where realistic data is required for accurate testing but is costly and complex to manage. The platform supports AI/ML workflows through Release.ai and on-premise deployments via Release Delivery, catering to organizations with strict security or compliance requirements.
+
+## Pricing model
+
+Release operates on a usage-based pricing model tied to the resources consumed by ephemeral environments (compute, storage, and database instances) running on your own cloud account. While specific per-unit pricing is not publicly listed on the homepage, the value proposition centers on cost savings of 30-70% compared to always-on pre-production environments. Customers pay for the underlying cloud resources they provision, with Release acting as the orchestration layer. This model stands out because it aligns costs directly with usage rather than flat platform fees, making it economically viable for large teams with many concurrent developers.
+
+## When it fits
+
+*   **Teams outgrowing Heroku:** Organizations seeking more control over their infrastructure and cost structure while retaining Git-push simplicity.
+*   **Full-stack development teams:** Groups that need to spin up complete application stacks (frontend, backend, database) for each pull request.
+*   **Cost-conscious engineering:** Teams looking to reduce pre-production cloud spend by pausing unused environments.
+*   **Security/compliance-heavy orgs:** Companies requiring data residency or on-premise deployment capabilities (via Release Delivery).
+*   **AI/ML workflows:** Teams needing scalable ephemeral environments for model training and testing.
+
+## When it doesn't
+
+*   **Simple static sites:** For basic static websites, a CDN or object storage solution is often more appropriate and simpler than a full orchestration layer.
+*   **No cloud management interest:** Teams unwilling to manage their own cloud accounts or infrastructure configurations will not find value in a "bring your own cloud" model.
+
+## Inclusion criteria
+
+Release meets all three inclusion criteria:
+1.  **Transparent pricing:** Usage-based model is clearly described, though specific rates require contact.
+2.  **Self-service signup:** Available via their website.
+3.  **Public SLA/status page:** See [Release Status](https://status.release.com/).

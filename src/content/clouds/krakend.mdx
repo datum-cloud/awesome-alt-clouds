@@ -1,0 +1,55 @@
+---
+status: draft
+tagline: "High-performance, low-latency API gateway for microservices and AI, available as open source or enterprise."
+headquarters: "Milan, Italy"
+foundedYear: 2016
+pricingModel: mixed
+openSource: true
+services:
+  - Open Source API Gateway
+  - Enterprise API Gateway
+  - AI Gateway
+  - API Designer
+  - Training & Certification
+socials:
+  website: "https://www.krakend.io/"
+  x: "https://twitter.com/krakend"
+  linkedin: "https://linkedin.com/company/krakend"
+  github: "https://github.com/krakend"
+---
+
+## What makes KrakenD different
+
+KrakenD distinguishes itself from hyperscaler-managed API gateways (such as AWS API Gateway or Azure API Management) by offering a lightweight, high-performance binary written in Go. Unlike traditional gateways that rely on heavy plugin ecosystems or serverless function invocations for every request, KrakenD uses a declarative configuration approach to route, aggregate, and transform API calls with minimal latency. This architecture allows it to handle significantly higher throughput per core compared to many Java or Node.js-based alternatives.
+
+The platform is unique in its unified approach to traditional REST/GraphQL APIs and modern AI workloads. Its "AI Gateway" feature allows teams to manage LLM routing, token budgeting, prompt guardrails, and fallback logic for models like OpenAI, Anthropic, and Gemini within the same infrastructure used for backend microservices. This eliminates the need for separate AI-specific proxy layers, consolidating security and governance across both legacy and generative AI traffic.
+
+Furthermore, KrakenD operates as a true sidecar or reverse proxy that can be self-hosted on any infrastructure (on-prem, private cloud, or public cloud). This gives organizations complete data sovereignty and avoids vendor lock-in, a stark contrast to managed cloud services where the control plane and data plane are tightly coupled to the provider's ecosystem.
+
+## Pricing model
+
+KrakenD employs a dual pricing model based on deployment type:
+
+1.  **Open Source:** The core API gateway is free to use under the Apache 2.0 license. Users can deploy it on their own infrastructure at no software cost, paying only for the underlying compute resources (e.g., EC2 instances, VMs).
+2.  **Enterprise:** For organizations requiring production SLAs, 24/7 support, and advanced governance features, KrakenD offers a paid Enterprise edition. Specific pricing tiers are not publicly listed and require contacting sales. This typically includes features like centralized management, audit logs, and dedicated support.
+3.  **AI Gateway:** The AI capabilities are part of the same binary. Enterprise customers likely gain access to advanced token tracking and guardrail features, while open-source users get the base routing and filtering capabilities.
+
+The model stands out because it allows enterprises to start with zero-cost open-source deployment and scale up to paid support without changing the underlying technology stack, avoiding the steep egress fees often associated with managed cloud APIs.
+
+## When it fits
+
+*   **High-Performance Microservices:** Teams needing sub-millisecond latency and high throughput for critical transactional APIs.
+*   **Data Sovereignty Requirements:** Government or financial institutions (e.g., E-Government, Open Banking) that must keep API traffic on-premises or in private clouds.
+*   **AI Application Development:** Startups or enterprises building LLM-powered apps that need centralized token budgeting, prompt injection protection, and model fallbacks.
+*   **Multi-Cloud Strategies:** Organizations wanting a consistent API gateway layer across AWS, GCP, and Azure without relying on provider-specific managed services.
+
+## When it doesn't
+
+*   **Serverless-First Architectures:** If you are deeply invested in AWS Lambda or Azure Functions and want a fully managed, zero-infrastructure gateway, KrakenD requires you to manage the gateway instances yourself.
+*   **Low-Traffic Projects:** For small projects with negligible traffic, the operational overhead of self-hosting and maintaining a high-performance gateway may be unnecessary compared to simpler, fully managed alternatives.
+
+## Inclusion criteria
+
+*   **Transparent Pricing:** Partially. The open-source version is free, but enterprise pricing is "contact sales," lacking specific dollar amounts for the paid tier.
+*   **Self-Service Signup:** Yes. Users can download the open-source version or sign up for the community/enterprise trials directly via the website without sales intervention for the OSS path.
+*   **Public SLA/Status Page:** Yes. The Enterprise offering includes SLAs, and the company maintains a public status page (status.krakend.io) and trust center for transparency.

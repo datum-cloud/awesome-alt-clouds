@@ -1,0 +1,88 @@
+---
+status: draft
+tagline: "Automated infrastructure and CI/CD on AWS, giving you PaaS simplicity with full AWS control."
+headquarters: "San Francisco, CA"
+foundedYear: 2021
+pricingModel: "subscription"
+openSource: false
+regions:
+  - "US East (N. Virginia)"
+  - "US East (Ohio)"
+  - "US West (N. California)"
+  - "US West (Oregon)"
+  - "EU West (Ireland)"
+  - "EU West (London)"
+  - "EU Central (Frankfurt)"
+  - "EU Central (Zurich)"
+  - "EU South (Milan)"
+  - "EU North (Stockholm)"
+  - "Asia Pacific (Tokyo)"
+  - "Asia Pacific (Seoul)"
+  - "Asia Pacific (Osaka)"
+  - "Asia Pacific (Mumbai)"
+  - "Asia Pacific (Singapore)"
+  - "Asia Pacific (Sydney)"
+  - "Asia Pacific (Melbourne)"
+  - "Asia Pacific (Jakarta)"
+  - "South America (São Paulo)"
+  - "Canada Central (Montreal)"
+  - "Canada East (Quebec)"
+  - "Israel (Tel Aviv)"
+  - "UAE (Dubai)"
+  - "UK South (London)"
+  - "UK West (Cardiff)"
+  - "Switzerland North (Zurich)"
+  - "Switzerland West (Geneva)"
+  - "Norway East (Oslo)"
+  - "Norway West (Bergen)"
+services:
+  - "ECS / Fargate Hosting"
+  - "Lambda Functions"
+  - "RDS Databases"
+  - "ElastiCache (Redis)"
+  - "S3 Static Sites"
+  - "CloudFront CDN"
+  - "Preview Environments"
+  - "CI/CD Automation"
+socials:
+  website: "https://www.flightcontrol.dev/"
+  x: "https://twitter.com/flightcontrolhq"
+  linkedin: "https://www.linkedin.com/company/flightcontrol-dev"
+  github: "https://github.com/flightcontrolHQ"
+---
+
+## What makes Flightcontrol different
+
+Flightcontrol is a Platform-as-a-Service (PaaS) that deploys to **your own AWS account**. Unlike traditional PaaS providers like Heroku or Vercel that lock you into their infrastructure, Flightcontrol acts as an automation layer over AWS. It provisions and manages AWS resources—such as ECS clusters, Fargate tasks, Lambda functions, RDS instances, and CloudFront distributions—directly within your AWS environment. This architecture ensures you retain full visibility, ownership, and control over your infrastructure while enjoying the developer experience of a managed platform.
+
+The platform automates the complexity of AWS, eliminating the need for manual Terraform scripts or complex CI/CD pipelines. Developers can define services using a visual config or code config (YAML), and Flightcontrol handles the provisioning, scaling, and deployment. It supports Nixpacks for zero-Dockerfile builds, monorepos, and ephemeral preview environments for every pull request. By consolidating infrastructure management into a single dashboard, it reduces DevOps overhead significantly, allowing engineering teams to focus on code rather than infrastructure maintenance.
+
+## Pricing model
+
+Flightcontrol operates on a **subscription-based model** with three tiers:
+
+*   **Starter:** $49/month. Includes core hosting features, limited preview environments, and community support.
+*   **Pro:** $199/month. Adds unlimited preview environments, advanced networking, and priority support.
+*   **Business:** Custom pricing. Includes 24/7 emergency support, dedicated account management, and SLA guarantees.
+
+In addition to the platform subscription, you pay **directly to AWS** for the underlying infrastructure usage (EC2, RDS, Data Transfer, etc.). Flightcontrol provides cost transparency tools to help monitor these AWS costs per project and service. This model stands out by decoupling platform fees from infrastructure costs, allowing teams to scale infrastructure usage independently of platform features.
+
+## When it fits
+
+*   Teams migrating from Heroku, Render, or Railway who want the scalability and reliability of AWS without the operational burden.
+*   Companies that require full infrastructure ownership and data residency controls (since resources live in your AWS account).
+*   Engineering teams looking to reduce DevOps overhead and hire fewer infrastructure specialists.
+*   Projects needing ephemeral preview environments for pull requests to improve testing velocity.
+*   Applications requiring both serverless (Lambda) and containerized (ECS/Fargate) workloads in a unified dashboard.
+
+## When it doesn't
+
+*   Organizations strictly prohibited from using third-party management tools or automation layers over their cloud accounts.
+*   Teams requiring deep, low-level customization of AWS networking or IAM policies that bypass Flightcontrol's abstraction.
+
+## Inclusion criteria
+
+Flightcontrol meets all 3 inclusion criteria:
+1.  **Transparent pricing:** Pricing tiers are clearly listed on their website ($49, $199, Custom).
+2.  **Self-service signup:** Users can start a free trial or demo directly via `app.flightcontrol.dev/signup`.
+3.  **Public SLA/status page:** They offer SLA guarantees on their Business plan and maintain a public status page at `status.flightcontrol.dev`.

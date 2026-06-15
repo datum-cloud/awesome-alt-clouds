@@ -1,0 +1,60 @@
+---
+status: draft
+tagline: "Zero-trust infrastructure access platform providing cryptographic identity and least-privileged access for humans, machines, and AI."
+headquarters: "San Francisco, CA"
+foundedYear: 2018
+pricingModel: "subscription"
+openSource: true
+services:
+  - "SSH Access"
+  - "Kubernetes Access"
+  - "Database Access"
+  - "Web Application Access"
+  - "Bot Access"
+  - "Terraform Provider"
+  - "Audit Logs"
+  - "Access Requests"
+socials:
+  website: "https://goteleport.com/"
+  x: "https://twitter.com/goteleport"
+  linkedin: "https://linkedin.com/company/goteleport"
+  github: "https://github.com/gravitational/teleport"
+---
+
+## What makes Teleport different
+
+Teleport is not a traditional infrastructure provider like AWS or Azure; it is a unified identity layer that sits on top of existing infrastructure. While hyperscalers provide the compute and storage, Teleport provides the cryptographic identity and access control that secures them. Its core differentiator is the elimination of static credentials (like SSH keys or passwords) in favor of short-lived, cryptographically signed certificates. This approach fundamentally changes how access is managed, shifting from "trust but verify" to "zero trust by default."
+
+The platform unifies access for humans, machines, and increasingly, AI agents. Unlike traditional Privileged Access Management (PAM) tools that often focus solely on human users, Teleport’s architecture extends identity to non-deterministic actors like AI agents and automation bots. It integrates natively with Kubernetes, databases, and standard SSH environments, providing a single control plane for all access paths. This reduces the attack surface by removing standing privileges and credential sprawl, which are common vectors for lateral movement in hybrid and multi-cloud environments.
+
+Teleport also emphasizes hardware-rooted trust, supporting TPMs and HSMs to secure the identity root of trust. This ensures that even if a server is compromised, the attacker cannot forge identities or impersonate legitimate access. The platform’s audit capabilities provide granular, session-level recording and logging, which is critical for compliance in regulated industries. By centralizing access governance, Teleport allows engineering teams to maintain security without sacrificing the speed and flexibility required for modern development workflows.
+
+## Pricing model
+
+Teleport operates on a subscription-based model with both Free and paid tiers.
+
+*   **Free Tier:** Available for small teams, supporting up to 10 users. It includes core features like SSH, Kubernetes, and database access, along with basic audit logs. This tier is self-service and requires no credit card.
+*   **Pro Tier:** Priced at $50 per user per month (billed annually) or $60 per user per month (billed monthly). This includes advanced features like SSO, SCIM, RBAC, and enhanced audit logging.
+*   **Enterprise Tier:** Custom pricing for organizations requiring advanced compliance features (FedRAMP, HIPAA), dedicated support, and SSO/SAML integration at scale.
+
+The model stands out because it is user-centric rather than infrastructure-centric. Pricing does not scale with the number of servers or compute resources, making it predictable regardless of infrastructure size. The generous free tier allows for easy adoption and testing without financial commitment.
+
+## When it fits
+
+*   **Organizations with complex access needs:** Teams managing hybrid cloud, multi-cloud, or on-premises environments that need a unified access plane.
+*   **Compliance-heavy industries:** Companies in finance, healthcare, or government that require strict audit trails, session recording, and FedRAMP/HIPAA compliance.
+*   **AI and Agent-heavy workflows:** Organizations deploying AI agents that need secure, authenticated access to infrastructure and tools.
+*   **Security-conscious engineering teams:** Teams looking to eliminate SSH keys and passwords, replacing them with short-lived certificates and just-in-time access.
+*   **Kubernetes-native shops:** Organizations that need secure access to Kubernetes clusters without exposing nodes directly to the internet.
+
+## When it doesn't
+
+*   **Providers needing raw infrastructure:** Teleport does not offer compute, storage, or networking services; it is a security layer, not a cloud platform.
+*   **Simple, small-scale setups:** For very small teams with minimal security requirements, the overhead of implementing Teleport may outweigh the benefits compared to simpler solutions.
+
+## Inclusion criteria
+
+Teleport meets all 3 inclusion criteria:
+1.  **Transparent pricing:** Clear pricing for Free, Pro, and Enterprise tiers is available at https://goteleport.com/pricing/.
+2.  **Self-service signup:** Users can sign up for the Free tier directly at https://goteleport.com/ without sales interaction.
+3.  **Public SLA/status page:** A public status page is available at https://status.goteleport.com/ to monitor service health.

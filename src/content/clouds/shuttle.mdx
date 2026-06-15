@@ -1,0 +1,57 @@
+---
+status: draft
+tagline: Rust-native PaaS that turns code annotations into cloud infrastructure, offering Vercel-like simplicity for backends.
+headquarters: Remote (Global)
+openSource: true
+regions:
+  - AWS US East (N. Virginia)
+  - AWS EU West (Ireland)
+services:
+  - Compute (Serverless Functions)
+  - Managed PostgreSQL
+  - Managed Redis
+  - Object Storage (S3)
+  - Secrets Management
+  - CI/CD Integration
+socials:
+  website: "https://www.shuttle.dev/"
+  x: "https://twitter.com/shuttle_dev"
+  linkedin: "https://linkedin.com/company/shuttle-hq"
+  github: "https://github.com/shuttle-hq"
+---
+
+## What makes Shuttle different
+
+Shuttle reimagines backend deployment by leveraging Rust's type system to eliminate infrastructure-as-code boilerplate. Unlike traditional PaaS providers that require separate configuration files (like `serverless.yml` or `docker-compose`), Shuttle infers your infrastructure needs directly from your application code. By using simple annotations and function arguments, developers can declare dependencies on databases, secrets, or storage, and Shuttle automatically provisions the underlying AWS resources.
+
+This "code-first" approach significantly reduces the cognitive load for developers. You write a Rust service, add a `#[shuttle_runtime::main]` attribute, and optionally request a database by adding it as a function argument. The Shuttle CLI handles the packaging, compilation, and deployment to AWS, ensuring that your app runs on industry-standard infrastructure without ever requiring you to log into the AWS Console.
+
+Shuttle also emphasizes developer velocity and flexibility. It supports major Rust frameworks like Axum, Rocket, and Actix, and offers instant redeployments by caching build artifacts. Furthermore, it avoids vendor lock-in by allowing you to deploy your application to your own AWS account or run it locally, giving you full control over your infrastructure lifecycle.
+
+## Pricing model
+
+Shuttle operates on a freemium model with usage-based pricing for production workloads.
+
+*   **Free Tier:** Includes limited compute hours and storage for development and testing. This allows developers to build and deploy small projects at no cost.
+*   **Pro/Production Tier:** Charges based on compute usage (vCPU/seconds) and storage. While exact per-unit pricing fluctuates, it is generally competitive with serverless offerings from hyperscalers, bundling the cost of managed databases and networking into a single, simplified bill.
+
+The standout feature is the transparency: you pay for what you use, with no hidden fees for the underlying AWS resources they provision on your behalf.
+
+## When it fits
+
+*   **Rust Developers:** Ideal for teams building high-performance backend services in Rust who want to avoid DevOps overhead.
+*   **Rapid Prototyping:** Perfect for startups and indie hackers who need to ship backend MVPs quickly without configuring CI/CD pipelines or cloud accounts.
+*   **Serverless Workloads:** Suitable for APIs, webhooks, and event-driven architectures that benefit from auto-scaling and pay-per-use pricing.
+*   **Educational Projects:** Great for learning cloud concepts without the complexity of managing IAM roles, VPCs, and security groups manually.
+
+## When it doesn't
+
+*   **Non-Rust Stacks:** Currently, Shuttle is tightly coupled to the Rust ecosystem; it does not support Python, Node.js, or Go applications.
+*   **Complex Infrastructure Needs:** If your application requires deep customization of network topology, specific Kubernetes configurations, or legacy on-premise integrations, Shuttle's abstraction layer may be too restrictive.
+
+## Inclusion criteria
+
+Shuttle meets all three inclusion criteria:
+1.  **Transparent Pricing:** Pricing details are available on their website, outlining free tier limits and production rates.
+2.  **Self-Service Signup:** Users can sign up and start deploying via the CLI or web dashboard without sales intervention.
+3.  **Public SLA/Status Page:** Shuttle provides a public status page at [status.shuttle.dev](https://status.shuttle.dev) to monitor service health.

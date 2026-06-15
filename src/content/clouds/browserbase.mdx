@@ -1,0 +1,51 @@
+---
+status: draft
+tagline: "Browser-as-a-Service platform enabling AI agents to reliably interact with the web."
+headquarters: "San Francisco, California"
+foundedYear: 2022
+pricingModel: usage-based
+openSource: true
+services:
+  - Browser-as-a-Service
+  - Search API
+  - Fetch API
+  - Stagehand SDK
+  - Browser Session Management
+socials:
+  website: "https://www.browserbase.com/"
+  x: "https://twitter.com/browserbasehq"
+  linkedin: "https://linkedin.com/company/browserbase"
+  github: "https://github.com/browserbasehq"
+---
+
+## What makes Browserbase different
+
+Browserbase solves the "last mile" problem of AI by providing a managed infrastructure for headless browser automation. Unlike traditional cloud providers where you must manage the complexity of Puppeteer or Playwright deployments, scaling, and IP rotation, Browserbase offers a unified API to spin up isolated, real browser sessions. This abstraction allows AI agents to navigate the unstructured web as reliably as they consume structured APIs.
+
+The platform distinguishes itself through its "Browser-as-a-Service" architecture, which handles the heavy lifting of session management, concurrency, and anti-bot detection. By offering specialized tools like the Search API and Fetch API, it bridges the gap between LLM reasoning capabilities and real-world web interaction. The inclusion of the open-source Stagehand SDK further simplifies agent development, providing a standardized way for models to understand and interact with web elements.
+
+This focus on reliability is critical for use cases involving login walls, dynamic content, and complex user flows that standard scraping tools often fail to handle. Browserbase ensures that agents can perform actions like form filling, data extraction, and navigation without interruption, effectively mirroring human interaction at scale.
+
+## Pricing model
+
+Browserbase operates on a usage-based pricing model, primarily charging per browser session minute. This aligns costs directly with compute consumption, avoiding the overhead of reserved instances or complex tiered subscriptions typical of IaaS providers.
+
+Specific pricing tiers vary based on concurrency and region, but the core unit is the active browser session. For example, basic plans often start with a free tier for development, followed by pay-as-you-go rates for production workloads. The Fetch API and Search API may have separate usage-based pricing structures. This model stands out for its simplicity and predictability for automation workloads, as you only pay for the time your agents are actively browsing.
+
+## When it fits
+
+*   **AI Agent Infrastructure:** Ideal for developers building autonomous agents that need to navigate, scrape, or interact with websites.
+*   **Web Automation & Testing:** Perfect for QA teams requiring scalable, headless browser environments for end-to-end testing without managing infrastructure.
+*   **Data Extraction:** Suitable for extracting data from websites that require JavaScript rendering, logins, or anti-bot bypasses.
+*   **Competitive Intelligence:** Use cases involving monitoring price changes, job listings, or product updates across multiple sites simultaneously.
+
+## When it doesn't
+
+*   **General Compute:** It is not a substitute for general-purpose cloud compute, storage, or database services.
+*   **Static Content:** For simple HTTP requests to static sites, standard HTTP clients or lightweight scrapers are more cost-effective and efficient.
+
+## Inclusion criteria
+
+*   **Transparent Pricing:** Yes, pricing details are publicly available on their website.
+*   **Self-Service Signup:** Yes, developers can create an account and start using the API immediately without sales involvement.
+*   **Public SLA/Status Page:** Yes, Browserbase provides a public status page at status.browserbase.com to monitor service health.

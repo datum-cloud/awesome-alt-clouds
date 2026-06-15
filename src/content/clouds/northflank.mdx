@@ -1,0 +1,58 @@
+---
+status: draft
+tagline: "A Kubernetes-based platform to deploy, scale, and manage full-stack apps and AI workloads across any cloud."
+headquarters: "London, UK"
+foundedYear: 2019
+pricingModel: "usage-based"
+openSource: false
+regions:
+  - "Northflank Cloud (Multi-region)"
+  - "Bring Your Own Cloud (AWS, GCP, Azure, Oracle)"
+services:
+  - "Application Hosting"
+  - "Managed Databases"
+  - "Serverless Functions"
+  - "Scheduled Jobs"
+  - "AI/ML Inference & Training"
+  - "GitOps & CI/CD"
+  - "Preview Environments"
+socials:
+  website: "https://northflank.com/"
+  x: "https://twitter.com/northflank"
+  linkedin: "https://linkedin.com/company/northflank"
+  github: "https://github.com/northflank"
+---
+
+## What makes Northflank different
+
+Northflank positions itself as the "operating system for your engineering team," bridging the gap between traditional PaaS simplicity and the flexibility of Kubernetes. Unlike hyperscalers that require complex infrastructure glue, Northflank provides a unified control plane for deploying containers, databases, and jobs. Its core differentiator is the ability to run workloads either on Northflank’s proprietary cloud infrastructure or, crucially, on your existing cloud accounts (AWS, GCP, Azure, Oracle) via its "Bring Your Own Cloud" (BYOC) model. This allows teams to retain data residency and security control while leveraging Northflank’s management layer.
+
+The platform is designed for polyglot development, supporting virtually any language or framework without requiring specific buildpacks. It integrates deeply with Git providers to automate builds and deployments, supporting ephemeral preview environments for pull requests. For AI workloads, Northflank offers specialized features such as fractional GPU support, spot instance orchestration, and tools for serving inference models or running long-running agents, addressing the specific needs of modern AI-native applications.
+
+Northflank abstracts away Kubernetes complexity while remaining Kubernetes-native. It can run on any Kubernetes cluster, including EKS, GKE, AKS, Rancher, and OpenShift, effectively "fixing" K8s by providing a simpler UX for app deployment, secrets management, and observability. This makes it particularly attractive for teams that want the power of cloud-native infrastructure without the operational overhead of managing K8s clusters manually.
+
+## Pricing model
+
+Northflank operates on a usage-based pricing model. Costs are primarily driven by the compute resources (vCPU and RAM) allocated to services, the storage used by managed databases, and the number of API requests or data transfer. They offer a free tier for testing and small projects, which includes limited compute and storage. For production workloads, pricing scales linearly with resource consumption.
+
+The "Bring Your Own Cloud" option introduces a hybrid cost structure: you pay Northflank for the management platform and support, while separately paying your cloud provider (AWS, GCP, etc.) for the underlying compute and storage resources. This model stands out because it decouples the management fee from the infrastructure cost, allowing users to optimize cloud spend while still accessing Northflank's features. Specific per-unit pricing is not publicly listed as fixed rates but is calculated based on real-time usage, similar to AWS EC2 or GCP Compute Engine, but aggregated through Northflank's dashboard.
+
+## When it fits
+
+*   **AI/ML Startups:** Teams needing to deploy inference models, run training jobs, and manage vector databases with easy GPU scaling.
+*   **Engineering Teams Seeking Velocity:** Organizations that want to eliminate infrastructure glue code and focus on shipping features, using GitOps for automated CI/CD.
+*   **Data-Sensitive Enterprises:** Companies that require data residency controls or must run within their own VPCs (BYOC) but want a managed PaaS experience.
+*   **Polyglot Microservices:** Applications built with diverse tech stacks (e.g., Rust, Python, Node.js) that need consistent deployment and scaling patterns.
+*   **Preview Environments:** Teams needing to spin up ephemeral, full-stack environments for every pull request to facilitate code review.
+
+## When it doesn't
+
+*   **Pure IaaS Needs:** Users who require raw, unmanaged access to compute instances without any orchestration layer.
+*   **Extremely Low-Budget Static Sites:** Simple static sites might be overkill for a platform designed for dynamic services and databases; cheaper CDNs or static hosts may be more appropriate.
+
+## Inclusion criteria
+
+Northflank meets all three inclusion criteria:
+1.  **Transparent Pricing:** Usage-based pricing is clearly outlined on their pricing page, with a free tier available for testing. ([Pricing](https://northflank.com/pricing))
+2.  **Self-Service Signup:** Users can sign up and start deploying applications without sales intervention. ([Sign Up](https://northflank.com/signup))
+3.  **Public SLA/Status Page:** Northflank provides a public status page to monitor service health and uptime. ([Status](https://status.northflank.com/))
