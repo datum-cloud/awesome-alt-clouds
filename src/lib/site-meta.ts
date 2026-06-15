@@ -15,6 +15,26 @@ export const defaultDescription = seo.description;
 export const submitTitle = withPreviewTitle(seo.submit.title);
 export const submitDescription = seo.submit.description;
 
+export const blogTitle = withPreviewTitle(seo.blog.title);
+export const blogDescription = seo.blog.description;
+
+export type PageMetaKey = "home" | "submit" | "blog";
+
+export function getPageMeta(page: PageMetaKey): { title: string; description: string } {
+  switch (page) {
+    case "home":
+      return { title: defaultTitle, description: defaultDescription };
+    case "submit":
+      return { title: submitTitle, description: submitDescription };
+    case "blog":
+      return { title: blogTitle, description: blogDescription };
+    default: {
+      const _exhaustive: never = page;
+      throw new Error(`Unknown page meta key: ${_exhaustive}`);
+    }
+  }
+}
+
 /** Short title for Open Graph / Twitter (no preview suffix). */
 export const socialTitle = "Awesome Alt Clouds - When you need something specialized";
 

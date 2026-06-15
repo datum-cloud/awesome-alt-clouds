@@ -4,16 +4,17 @@ import CloudSearchDropdown from "./CloudSearchDropdown.astro";
 
 export interface Props {
   featuredSlugs: string[];
+  backHref?: string;
+  backLabel?: string;
 }
 
-const { featuredSlugs } = Astro.props;
-const homeHref = asset("");
+const { featuredSlugs, backHref = asset(""), backLabel = "Back to directory" } = Astro.props;
 ---
 
 <div
   class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 mb-6 px-5 py-4 bg-white border border-clay-beige rounded-xl">
   <a
-    href={homeHref}
+    href={backHref}
     class="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-warm-stone hover:text-rich-earth hover:bg-cream rounded-lg transition-colors no-underline self-start md:self-auto">
     <svg
       width="16"
@@ -29,7 +30,7 @@ const homeHref = asset("");
         d="M15 19l-7-7 7-7"
       ></path>
     </svg>
-    <span>Back to directory</span>
+    <span>{backLabel}</span>
   </a>
   <CloudSearchDropdown featuredSlugs={featuredSlugs} />
 </div>

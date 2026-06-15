@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import { asset } from "../lib/assets";
+import BlogNavLink from "../components/BlogNavLink.astro";
 import WatchlistNavLink from "../components/WatchlistNavLink.astro";
 import { clouds } from "../lib/clouds";
 import { getFeaturedSlugs } from "../lib/profile";
@@ -95,6 +96,7 @@ const featuredSlugs = await getFeaturedSlugs();
         <span>+</span><span>Submit a Cloud</span>
       </a>
       <WatchlistNavLink />
+      <BlogNavLink />
       <button
         data-modal-trigger="extensionModal"
         class="page-link flex items-center gap-2 px-3 py-2.5 text-sm text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
@@ -196,6 +198,7 @@ const featuredSlugs = await getFeaturedSlugs();
 
         <div class="flex flex-col gap-2 mb-3">
           <WatchlistNavLink />
+          <BlogNavLink />
           <button
             data-modal-trigger="extensionModal"
             class="page-link flex items-center gap-2 px-3 py-2.5 text-[13px] text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">

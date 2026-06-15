@@ -1,0 +1,26 @@
+---
+import { render } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
+import { getPublishablePosts, type BlogPost as BlogPostEntry } from "../../lib/blog";
+import { getFeaturedSlugs } from "../../lib/profile";
+
+export async function getStaticPaths() {
+  const posts = await getPublishablePosts();
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface PageProps {
+  post: BlogPostEntry;
+}
+
+const { post } = Astro.props as PageProps;
+const featuredSlugs = [...(await getFeaturedSlugs())];
+const { Content } = await render(post);
+---
+
+<BlogPost post={post} featuredSlugs={featuredSlugs}>
+  <Content />
+</BlogPost>

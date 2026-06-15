@@ -1,0 +1,108 @@
+---
+import Base from "./Base.astro";
+import DetailTopBar from "../components/DetailTopBar.astro";
+import DirectorySidebar from "../components/DirectorySidebar.astro";
+import { formatPostDate, type BlogPost } from "../lib/blog";
+import { asset } from "../lib/assets";
+import { absoluteUrl, siteRoot } from "../lib/site-urls";
+
+export interface Props {
+  post: BlogPost;
+  featuredSlugs: string[];
+}
+
+const { post, featuredSlugs } = Astro.props;
+const { title, description, publishDate, updatedDate, author, tags, draft, heroImage } =
+  post.data;
+
+const pageTitle = `${title} | Awesome Alt Clouds`;
+const canonical = absoluteUrl(`blog/${post.id}`);
+const blogIndexHref = asset("blog/");
+const ogImage = heroImage ? absoluteUrl(heroImage.replace(/^\//, "")) : undefined;
+const formattedDate = formatPostDate(publishDate);
+const formattedUpdated = updatedDate ? formatPostDate(updatedDate) : undefined;
+---
+
+<Base title={pageTitle} description={description} canonical={canonical} ogImage={ogImage}>
+  <Fragment slot="head">
+    <meta property="og:type" content="article" />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: title,
+        description,
+        datePublished: publishDate.toISOString(),
+        dateModified: (updatedDate ?? publishDate).toISOString(),
+        author: {
+          "@type": "Person",
+          name: author,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Datum Cloud",
+          url: siteRoot,
+        },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": canonical,
+        },
+        ...(heroImage ? { image: absoluteUrl(heroImage.replace(/^\//, "")) } : {}),
+      })}
+    />
+  </Fragment>
+
+  <div class="flex flex-col md:flex-row min-h-screen">
+    <DirectorySidebar activePage="blog" />
+
+    <main class="flex-1 p-5 md:p-8 min-w-0">
+      <DetailTopBar
+        featuredSlugs={featuredSlugs}
+        backHref={blogIndexHref}
+        backLabel="Back to blog"
+      />
+
+      <article class="blog-post max-w-4xl">
+        {
+          draft && (
+            <div class="mb-6 px-4 py-3 bg-orange-50 border border-orange-100 rounded-lg text-sm text-warm-stone">
+              <span class="font-semibold text-bright-tangerine">Draft preview</span> — this post is
+              not published in production builds.
+            </div>
+          )
+        }
+
+        <header class="mb-8">
+          <div class="text-xs font-medium text-warm-stone uppercase tracking-wider mb-2">
+            {formattedDate}
+            {formattedUpdated && formattedUpdated !== formattedDate && (
+              <span> · Updated {formattedUpdated}</span>
+            )}
+            <span> · {author}</span>
+          </div>
+          <h1 class="font-serif text-3xl md:text-4xl font-semibold text-rich-earth leading-tight">
+            {title}
+          </h1>
+          <p class="mt-3 text-base text-warm-stone leading-relaxed">{description}</p>
+          {
+            tags.length > 0 && (
+              <div class="mt-4 flex flex-wrap gap-2">
+                {tags.map((tag) => (
+                  <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-clay-beige text-rich-earth">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )
+          }
+        </header>
+
+        <div class="prose-content">
+          <slot />
+        </div>
+      </article>
+    </main>
+  </div>
+</Base>

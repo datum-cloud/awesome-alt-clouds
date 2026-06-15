@@ -21,6 +21,7 @@ export interface CloudWithSlug extends Cloud {
  * but they are kept here for defense-in-depth and documentation.
  */
 const RESERVED_SLUGS = new Set<string>([
+  "blog",
   "submit",
   "watchlist",
   "404",

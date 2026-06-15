@@ -61,6 +61,14 @@ const {
 
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/png" href={asset("altclouds-logo.png")} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Awesome Alt Clouds"
+      href={asset("rss.xml")}
+    />
+
+    <slot name="head" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

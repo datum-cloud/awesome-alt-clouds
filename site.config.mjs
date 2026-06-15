@@ -31,5 +31,10 @@ export const siteConfig = {
       description:
         "Submit a cloud service for evaluation against the 3 inclusion criteria. Auto-evaluated by our bot.",
     },
+    blog: {
+      title: "Blog | Awesome Alt Clouds",
+      description:
+        "Editorial notes on alternative cloud providers — trends, new entrants, and commentary from the Awesome Alt Clouds community.",
+    },
   },
 };

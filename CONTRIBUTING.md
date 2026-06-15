@@ -65,15 +65,58 @@ Layout:
 
 See `.cursor/rules/docs-frontend.mdc` for conventions and URL stability rules.
 
-## 3. Writing on the blog (Phase 3, coming soon)
+## 3. Writing on the blog
 
-The blog (`src/content/blog/`) will use Astro Content Collections with TypeScript + zod frontmatter validation. Until Phase 3 lands, please open an issue if you'd like to propose a post.
+The blog lives at `/blog/` and is built from Markdown files in `src/content/blog/`. Posts use Astro Content Collections with TypeScript + zod frontmatter validation.
+
+### Adding a post
+
+1. Fork the repository and create a branch.
+2. Add a new file under `src/content/blog/` using the naming convention `YYYY-MM-short-slug.md` (for example, `2026-06-welcome-to-alt-cloud.md`).
+3. Fill in the required frontmatter:
+
+   ```yaml
+   ---
+   title: Your post title
+   description: One-sentence summary for the index page and RSS feed.
+   publishDate: 2026-06-15
+   author: Your Name
+   tags:
+     - guide
+   draft: false
+   ---
+   ```
+
+   Optional fields:
+
+   - `updatedDate` — set when you revise a published post
+   - `heroImage` — path under `public/` (for example, `/blog-images/my-cover.png`)
+
+4. Write the body in Markdown below the frontmatter.
+5. Open a pull request. A maintainer reviews before merge.
+
+### Draft posts
+
+Set `draft: true` to keep a post out of production builds. Draft posts appear only on preview deploys (`preview: true` in `site.config.mjs`), mirroring the cloud profile `status: draft` workflow.
+
+### What not to edit
+
+- Do not add listings in blog posts — `README.md` remains the canonical source for directory entries.
+- Do not hand-edit build output in `dist/`.
+
+### RSS
+
+Non-draft posts are published to `/rss.xml` automatically on every deploy.
+
+### Legacy Datum blog scraper (separate system)
+
+`scripts/update_blog_posts.mjs` and `.github/workflows/update-blog-posts.yml` are **kept**. That automation fetches Datum blog posts from Strapi and patches the Resources modal in the legacy `docs/index.html` file. It is independent of the in-repo Astro blog at `/blog/` — both can run in parallel until Phase 6 cutover retires `docs/`.
 
 ## Architectural notes
 
 - Listings are the **source of truth in `README.md`** — automation everywhere else.
 - The Python submission pipeline (issue → AI evaluation → PR) lives in `scripts/` and runs in `.github/workflows/`. See `analysis/PROJECT_ANALYSIS.md` for the full pipeline.
-- The Astro migration is tracked in `analysis/2026-05-19-astro-migration-rfc.md` (Phase 1 complete).
+- The Astro migration is tracked in `analysis/2026-05-19-astro-migration-rfc.md` (Phase 3 complete).
 
 For questions or suggestions, [open an issue](https://github.com/datum-cloud/awesome-alt-clouds/issues).
 

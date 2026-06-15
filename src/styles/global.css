@@ -63,3 +63,107 @@
     @apply cursor-not-allowed;
   }
 }
+
+.prose-content {
+  color: var(--color-rich-earth);
+  line-height: 1.7;
+}
+
+.prose-content > * + * {
+  margin-top: 1.25rem;
+}
+
+.prose-content h2 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-rich-earth);
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-clay-beige);
+}
+
+.prose-content h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-rich-earth);
+  margin-top: 1.75rem;
+}
+
+.prose-content h4 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-rich-earth);
+  margin-top: 1.25rem;
+}
+
+.prose-content p {
+  color: var(--color-warm-stone);
+}
+
+.prose-content a {
+  color: var(--color-bright-tangerine);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.prose-content a:hover {
+  border-bottom-color: var(--color-bright-tangerine);
+}
+
+.prose-content ul,
+.prose-content ol {
+  color: var(--color-warm-stone);
+  padding-left: 1.5rem;
+}
+
+.prose-content ul {
+  list-style: disc;
+}
+
+.prose-content ol {
+  list-style: decimal;
+}
+
+.prose-content li + li {
+  margin-top: 0.4rem;
+}
+
+.prose-content code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background-color: var(--color-clay-beige);
+  color: var(--color-rich-earth);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+}
+
+.prose-content pre {
+  background-color: var(--color-charcoal);
+  color: var(--color-cream);
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+}
+
+.prose-content pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.prose-content blockquote {
+  border-left: 3px solid var(--color-soft-sage);
+  padding-left: 1rem;
+  color: var(--color-warm-stone);
+  font-style: italic;
+}
+
+.prose-content strong {
+  color: var(--color-rich-earth);
+  font-weight: 600;
+}

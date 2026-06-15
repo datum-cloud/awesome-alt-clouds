@@ -24,4 +24,18 @@ const clouds = defineCollection({
   }),
 });
 
-export const collections = { clouds };
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    author: z.string(),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+    heroImage: z.string().optional(),
+  }),
+});
+
+export const collections = { clouds, blog };
