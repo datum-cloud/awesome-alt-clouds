@@ -21,7 +21,7 @@ socials:
 
 ## What makes Cerbos different
 
-Cerbos addresses the critical gap left by traditional Identity and Access Management (IAM) systems: fine-grained, runtime authorization. While IdPs like Okta or Azure AD handle authentication and IGA tools handle role provisioning, Cerbos enforces *what* an identity can actually do at the resource level. It operates as an externalized authorization engine that evaluates policies in real-time, supporting complex models including RBAC, ABAC, ReBAC, and PBAC.
+Cerbos addresses the critical gap left by traditional Identity and Access Management (IAM) systems: fine-grained, runtime authorization. While IdPs like Okta or Azure AD handle authentication and IGA tools handle role provisioning, Cerbos enforces _what_ an identity can actually do at the resource level. It operates as an externalized authorization engine that evaluates policies in real-time, supporting complex models including RBAC, ABAC, ReBAC, and PBAC.
 
 The platform is built on an open-source core, specifically the Cerbos PDP (Policy Decision Point), which is stateless, high-performance, and capable of sub-millisecond decision times. This allows it to scale horizontally across distributed systems, API gateways, and AI agents. Unlike generic policy engines that require assembling primitives, Cerbos uses a YAML-based policy language designed specifically for authorization, making it readable for security teams and easy to version-control via CI/CD pipelines.
 
@@ -35,20 +35,21 @@ Specific pricing tiers and numbers are not publicly listed on the website; users
 
 ## When it fits
 
-*   **Complex Access Control Needs:** Teams requiring fine-grained, contextual authorization (ABAC/ReBAC) that goes beyond simple role-based access.
-*   **AI and Agent Security:** Organizations deploying AI agents or MCP servers that need strict, revocable access boundaries to prevent over-permissioning.
-*   **Compliance-Heavy Environments:** Enterprises that need detailed, immutable logs of every access decision for audits (SOC 2, HIPAA, GDPR).
-*   **Microservices and Distributed Systems:** Architectures where authorization logic is currently scattered across multiple services and needs to be centralized and standardized.
-*   **Developer-First Security:** Teams that want to define policies as code (YAML) and integrate authorization checks directly into their CI/CD workflows.
+- **Complex Access Control Needs:** Teams requiring fine-grained, contextual authorization (ABAC/ReBAC) that goes beyond simple role-based access.
+- **AI and Agent Security:** Organizations deploying AI agents or MCP servers that need strict, revocable access boundaries to prevent over-permissioning.
+- **Compliance-Heavy Environments:** Enterprises that need detailed, immutable logs of every access decision for audits (SOC 2, HIPAA, GDPR).
+- **Microservices and Distributed Systems:** Architectures where authorization logic is currently scattered across multiple services and needs to be centralized and standardized.
+- **Developer-First Security:** Teams that want to define policies as code (YAML) and integrate authorization checks directly into their CI/CD workflows.
 
 ## When it doesn't
 
-*   **Simple RBAC Only:** If your application only requires basic, static role-based access control without context or relationships, a standard IdP feature set may suffice without the overhead of a separate engine.
-*   **No Engineering Resources:** Organizations lacking the engineering capacity to maintain the open-source PDP or integrate the SDKs into their applications.
+- **Simple RBAC Only:** If your application only requires basic, static role-based access control without context or relationships, a standard IdP feature set may suffice without the overhead of a separate engine.
+- **No Engineering Resources:** Organizations lacking the engineering capacity to maintain the open-source PDP or integrate the SDKs into their applications.
 
 ## Inclusion criteria
 
 This provider meets all 3 inclusion criteria:
+
 1.  **Transparent Pricing:** While specific numbers are quote-based, the model (Open Source vs. Paid Enterprise) is clearly defined, and the value proposition for each is transparent.
 2.  **Self-Service Signup:** Users can self-service sign up for the open-source PDP and playground at https://cerbos.dev/playground and access extensive documentation.
 3.  **Public SLA/Status Page:** The provider lists compliance standards (SOC 2, ISO 27001, etc.) and offers a demo/contact path for enterprise SLAs, indicating a professional service posture.

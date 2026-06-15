@@ -37,27 +37,28 @@ By separating authorization from identity, AuthZed enables granular control over
 
 AuthZed utilizes a mixed pricing model with distinct tiers for Cloud and Dedicated deployments.
 
-*   **AuthZed Cloud**: A self-service SaaS option. Pricing is generally based on operations (Zanzibar operations) and the number of active objects. They offer a Starter Program providing $700 in credits for new users to test the platform. Specific per-operation costs are not publicly listed in fixed cents but are tiered based on volume.
-*   **AuthZed Dedicated**: For enterprise customers requiring isolated infrastructure, dedicated SpiceDB instances are available. Pricing is customized based on scale, compliance needs, and support levels.
-*   **Open Source**: SpiceDB is available under the Apache 2.0 license for self-hosting, which is free to use but requires the user to manage infrastructure and scaling.
+- **AuthZed Cloud**: A self-service SaaS option. Pricing is generally based on operations (Zanzibar operations) and the number of active objects. They offer a Starter Program providing $700 in credits for new users to test the platform. Specific per-operation costs are not publicly listed in fixed cents but are tiered based on volume.
+- **AuthZed Dedicated**: For enterprise customers requiring isolated infrastructure, dedicated SpiceDB instances are available. Pricing is customized based on scale, compliance needs, and support levels.
+- **Open Source**: SpiceDB is available under the Apache 2.0 license for self-hosting, which is free to use but requires the user to manage infrastructure and scaling.
 
-The model stands out by charging for authorization *operations* rather than just user seats, aligning costs with actual system load and complexity.
+The model stands out by charging for authorization _operations_ rather than just user seats, aligning costs with actual system load and complexity.
 
 ## When it fits
 
-*   Applications requiring complex, hierarchical permissions (e.g., GitHub-style repositories, folder structures).
-*   AI/LLM applications needing to enforce data privacy boundaries during RAG or agent execution.
-*   SaaS platforms where users need to share specific resources with external parties or teams dynamically.
-*   Companies looking to replace custom-built authorization logic to reduce technical debt and security risks.
+- Applications requiring complex, hierarchical permissions (e.g., GitHub-style repositories, folder structures).
+- AI/LLM applications needing to enforce data privacy boundaries during RAG or agent execution.
+- SaaS platforms where users need to share specific resources with external parties or teams dynamically.
+- Companies looking to replace custom-built authorization logic to reduce technical debt and security risks.
 
 ## When it doesn't
 
-*   Simple applications with flat, role-based access control (RBAC) needs that can be handled by basic IAM.
-*   Projects requiring strict compliance with specific regional data residency laws that AuthZed's public cloud regions do not cover (though Dedicated may help).
+- Simple applications with flat, role-based access control (RBAC) needs that can be handled by basic IAM.
+- Projects requiring strict compliance with specific regional data residency laws that AuthZed's public cloud regions do not cover (though Dedicated may help).
 
 ## Inclusion criteria
 
 AuthZed meets all 3 inclusion criteria:
+
 1.  **Transparent Pricing**: Public pricing tiers and a self-service Cloud signup are available at [https://authzed.com/pricing](https://authzed.com/pricing).
 2.  **Self-Service Signup**: Users can sign up for AuthZed Cloud directly at [https://authzed.com/cloud/signup](https://authzed.com/cloud/signup).
 3.  **Public SLA/Status Page**: A public status page is available at [https://authzed.com/status](https://authzed.com/status).

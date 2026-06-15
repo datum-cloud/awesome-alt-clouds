@@ -32,26 +32,27 @@ Shuttle also emphasizes developer velocity and flexibility. It supports major Ru
 
 Shuttle operates on a freemium model with usage-based pricing for production workloads.
 
-*   **Free Tier:** Includes limited compute hours and storage for development and testing. This allows developers to build and deploy small projects at no cost.
-*   **Pro/Production Tier:** Charges based on compute usage (vCPU/seconds) and storage. While exact per-unit pricing fluctuates, it is generally competitive with serverless offerings from hyperscalers, bundling the cost of managed databases and networking into a single, simplified bill.
+- **Free Tier:** Includes limited compute hours and storage for development and testing. This allows developers to build and deploy small projects at no cost.
+- **Pro/Production Tier:** Charges based on compute usage (vCPU/seconds) and storage. While exact per-unit pricing fluctuates, it is generally competitive with serverless offerings from hyperscalers, bundling the cost of managed databases and networking into a single, simplified bill.
 
 The standout feature is the transparency: you pay for what you use, with no hidden fees for the underlying AWS resources they provision on your behalf.
 
 ## When it fits
 
-*   **Rust Developers:** Ideal for teams building high-performance backend services in Rust who want to avoid DevOps overhead.
-*   **Rapid Prototyping:** Perfect for startups and indie hackers who need to ship backend MVPs quickly without configuring CI/CD pipelines or cloud accounts.
-*   **Serverless Workloads:** Suitable for APIs, webhooks, and event-driven architectures that benefit from auto-scaling and pay-per-use pricing.
-*   **Educational Projects:** Great for learning cloud concepts without the complexity of managing IAM roles, VPCs, and security groups manually.
+- **Rust Developers:** Ideal for teams building high-performance backend services in Rust who want to avoid DevOps overhead.
+- **Rapid Prototyping:** Perfect for startups and indie hackers who need to ship backend MVPs quickly without configuring CI/CD pipelines or cloud accounts.
+- **Serverless Workloads:** Suitable for APIs, webhooks, and event-driven architectures that benefit from auto-scaling and pay-per-use pricing.
+- **Educational Projects:** Great for learning cloud concepts without the complexity of managing IAM roles, VPCs, and security groups manually.
 
 ## When it doesn't
 
-*   **Non-Rust Stacks:** Currently, Shuttle is tightly coupled to the Rust ecosystem; it does not support Python, Node.js, or Go applications.
-*   **Complex Infrastructure Needs:** If your application requires deep customization of network topology, specific Kubernetes configurations, or legacy on-premise integrations, Shuttle's abstraction layer may be too restrictive.
+- **Non-Rust Stacks:** Currently, Shuttle is tightly coupled to the Rust ecosystem; it does not support Python, Node.js, or Go applications.
+- **Complex Infrastructure Needs:** If your application requires deep customization of network topology, specific Kubernetes configurations, or legacy on-premise integrations, Shuttle's abstraction layer may be too restrictive.
 
 ## Inclusion criteria
 
 Shuttle meets all three inclusion criteria:
+
 1.  **Transparent Pricing:** Pricing details are available on their website, outlining free tier limits and production rates.
 2.  **Self-Service Signup:** Users can sign up and start deploying via the CLI or web dashboard without sales intervention.
 3.  **Public SLA/Status Page:** Shuttle provides a public status page at [status.shuttle.dev](https://status.shuttle.dev) to monitor service health.

@@ -28,29 +28,31 @@ Akash also supports specialized workloads through AkashML, which simplifies the 
 
 ## Pricing model
 
-Akash uses a usage-based pricing model determined by real-time market bids. Because prices are set by competition among providers, costs are typically 40–85% lower than major cloud providers. 
+Akash uses a usage-based pricing model determined by real-time market bids. Because prices are set by competition among providers, costs are typically 40–85% lower than major cloud providers.
 
 Current indicative pricing for GPU instances includes:
-*   **H100:** Approximately $3.64/hr (vs. ~$6.31–$10.44/hr on CoreWeave/AWS/Google)
-*   **A100:** Competitive market rates, often significantly below on-demand cloud pricing.
+
+- **H100:** Approximately $3.64/hr (vs. ~$6.31–$10.44/hr on CoreWeave/AWS/Google)
+- **A100:** Competitive market rates, often significantly below on-demand cloud pricing.
 
 Users set a maximum price they are willing to pay per hour. If a provider bids within that limit, the lease is executed. This model allows for cost optimization for batch processing, AI training, and development environments where strict SLAs are less critical than cost efficiency.
 
 ## When it fits
 
-*   **AI/ML Workloads:** Training and fine-tuning large language models or running inference using AkashML’s pre-configured GPU environments.
-*   **Cost-Sensitive Development:** Spinning up ephemeral dev/test environments where downtime risk is low.
-*   **Batch Processing:** Workloads that can be paused or restarted, leveraging the reverse auction for maximum savings.
-*   **Decentralized Applications:** Projects requiring censorship-resistant or permissionless compute infrastructure.
+- **AI/ML Workloads:** Training and fine-tuning large language models or running inference using AkashML’s pre-configured GPU environments.
+- **Cost-Sensitive Development:** Spinning up ephemeral dev/test environments where downtime risk is low.
+- **Batch Processing:** Workloads that can be paused or restarted, leveraging the reverse auction for maximum savings.
+- **Decentralized Applications:** Projects requiring censorship-resistant or permissionless compute infrastructure.
 
 ## When it doesn't
 
-*   **Strict SLA Requirements:** Enterprises requiring guaranteed 99.99% uptime or specific compliance certifications tied to a single vendor.
-*   **Integrated Ecosystem Needs:** Users heavily dependent on proprietary managed services (e.g., managed databases, serverless functions) that Akash does not natively provide.
+- **Strict SLA Requirements:** Enterprises requiring guaranteed 99.99% uptime or specific compliance certifications tied to a single vendor.
+- **Integrated Ecosystem Needs:** Users heavily dependent on proprietary managed services (e.g., managed databases, serverless functions) that Akash does not natively provide.
 
 ## Inclusion criteria
 
 Akash Network meets all three inclusion criteria for alt-cloud.org:
+
 1.  **Transparent Pricing:** Pricing is visible via the marketplace interface and documented on their [Pricing Page](https://akash.network/pricing/gpus).
 2.  **Self-Service Signup:** Users can deploy instances directly via the [Akash Console](https://console.akash.network/) or CLI.
 3.  **Public Status/SLA:** As a decentralized network, it does not have a traditional single-vendor SLA, but it provides public documentation on network economics and uptime via its [Status Page](https://status.akash.network/) and provider transparency reports.

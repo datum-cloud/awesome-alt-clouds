@@ -30,12 +30,12 @@ Inclusion criteria: services must meet at least 2 of 3 — (1) transparent publi
 
 The [Watchlist](WATCHLIST.md) tracks services that show real potential but haven't crossed the qualification threshold yet.
 
-| Score | Outcome |
-|-------|---------|
-| 0 / 3 | Declined. No pricing, no self-service, no status page — nothing to build on. |
+| Score | Outcome                                                                                |
+| ----- | -------------------------------------------------------------------------------------- |
+| 0 / 3 | Declined. No pricing, no self-service, no status page — nothing to build on.           |
 | 1 / 3 | Watchlist candidate. One signal is present; a maintainer may add it to track progress. |
-| 2 / 3 | Included (needs-review). A PR is opened automatically for admin sign-off. |
-| 3 / 3 | Included automatically. |
+| 2 / 3 | Included (needs-review). A PR is opened automatically for admin sign-off.              |
+| 3 / 3 | Included automatically.                                                                |
 
 If your service lands on the watchlist, the "Criteria Needed" column shows exactly what must change. Address those gaps and re-submit, or comment on your original issue with evidence that the missing criteria are now met.
 
@@ -88,7 +88,6 @@ The blog lives at `/blog/` and is built from Markdown files in `src/content/blog
    ```
 
    Optional fields:
-
    - `updatedDate` — set when you revise a published post
    - `heroImage` — path under `public/` (for example, `/blog-images/my-cover.png`)
 

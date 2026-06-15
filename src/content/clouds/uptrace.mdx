@@ -31,27 +31,28 @@ Uptrace supports a "cloud-only" managed service for teams seeking zero ops, as w
 
 Uptrace uses a transparent, usage-based pricing model with no per-seat fees. The free tier includes 1TB of span data and 100k metrics per month. Paid plans scale with data ingestion and timeseries volume:
 
-*   **Spans/Logs:** Billed per GB ingested. Standard retention is 4 weeks. Cold storage (S3/HDD) for data beyond 4 weeks costs $0.01 per GB-month. Dropped data (sampling) costs $0.01 per GB.
-*   **Metrics:** Billed per million ingested datapoints. The rate starts at $0.025 per 1M datapoints and decreases with volume. A timeseries is defined as a metric with unique labels.
-*   **Infra Hosts:** Some plans bundle infrastructure monitoring capacity (e.g., 350 hosts).
+- **Spans/Logs:** Billed per GB ingested. Standard retention is 4 weeks. Cold storage (S3/HDD) for data beyond 4 weeks costs $0.01 per GB-month. Dropped data (sampling) costs $0.01 per GB.
+- **Metrics:** Billed per million ingested datapoints. The rate starts at $0.025 per 1M datapoints and decreases with volume. A timeseries is defined as a metric with unique labels.
+- **Infra Hosts:** Some plans bundle infrastructure monitoring capacity (e.g., 350 hosts).
 
 This model allows users to pay only for what they store, avoiding the hidden costs of per-host licensing or expensive egress fees associated with other platforms.
 
 ## When it fits
 
-*   **OpenTelemetry Adopters:** Teams already using or planning to adopt OpenTelemetry who want a backend that natively supports it without complex adapters.
-*   **Cost-Conscious Engineering Teams:** Organizations looking to reduce observability bills by up to 90% compared to Datadog or New Relic, especially those with high-volume telemetry data.
-*   **EU-Centric Companies:** Businesses requiring strict GDPR compliance and data residency within the European Union.
-*   **Microservices Architectures:** Environments with many small services generating numerous spans, where per-span or per-host pricing would be prohibitive.
+- **OpenTelemetry Adopters:** Teams already using or planning to adopt OpenTelemetry who want a backend that natively supports it without complex adapters.
+- **Cost-Conscious Engineering Teams:** Organizations looking to reduce observability bills by up to 90% compared to Datadog or New Relic, especially those with high-volume telemetry data.
+- **EU-Centric Companies:** Businesses requiring strict GDPR compliance and data residency within the European Union.
+- **Microservices Architectures:** Environments with many small services generating numerous spans, where per-span or per-host pricing would be prohibitive.
 
 ## When it doesn't
 
-*   **Non-OpenTelemetry Shops:** Teams heavily invested in proprietary agent-based solutions (like Datadog Agent) that do not easily export to OTel may face migration friction.
-*   **Global Multi-Region Needs:** Currently, Uptrace Cloud is limited to EU data centers; teams requiring native low-latency ingestion in the US or Asia may need to self-host or accept higher network latency.
+- **Non-OpenTelemetry Shops:** Teams heavily invested in proprietary agent-based solutions (like Datadog Agent) that do not easily export to OTel may face migration friction.
+- **Global Multi-Region Needs:** Currently, Uptrace Cloud is limited to EU data centers; teams requiring native low-latency ingestion in the US or Asia may need to self-host or accept higher network latency.
 
 ## Inclusion criteria
 
 Uptrace meets all three inclusion criteria:
+
 1.  **Transparent Pricing:** Detailed pricing per GB and per datapoint is published on their website.
 2.  **Self-Service Signup:** Users can start a free trial or use the public live demo without sales intervention.
 3.  **Public SLA/Status:** A 99.9% uptime SLA is stated for the Cloud plan, and a community-supported status is implied through their public deployment options.

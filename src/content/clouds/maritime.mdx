@@ -29,28 +29,28 @@ Security is handled at the platform level, with encrypted secret storage for API
 
 Maritime offers a disruptive flat-rate pricing model: **$1/month per agent**. This is a significant departure from the usage-based pricing of AWS Lambda, Google Cloud Functions, or container platforms like Fly.io and Render.
 
-*   **Hosting:** $1/month flat fee per active Blueprint/Agent.
-*   **Compute:** Covered by the flat fee; agents only consume resources while awake.
-*   **Storage:** Encrypted secrets and state are included.
+- **Hosting:** $1/month flat fee per active Blueprint/Agent.
+- **Compute:** Covered by the flat fee; agents only consume resources while awake.
+- **Storage:** Encrypted secrets and state are included.
 
 This model is enabled by the sleep/wake architecture. If an agent goes viral and handles thousands of requests, the cost remains $1/month (or slightly higher if multiple instances are spawned, but still capped compared to per-request costs). This makes Maritime ideal for agents that need to be always available but may have sporadic usage patterns, ensuring creators don't lose money on hosting fees when their agent gains traction.
 
 ## When it fits
 
-*   **Specialized AI Agents:** Workloads that require persistent memory, long-running reasoning, or specific tool integrations that timeout on standard serverless functions.
-*   **Low-Volume/Intermittent Agents:** Agents that are triggered by cron jobs, webhooks, or user interactions but are idle for most of the day.
-*   **Agent Marketplaces:** Creators who want to distribute agents (Blueprints) to users without managing complex deployment pipelines or billing for compute.
-*   **Cost-Sensitive Deployments:** Projects where predictable, low monthly costs are critical, especially for hobbyists, students, or startups validating agent concepts.
-*   **Framework-Agnostic Deployment:** Teams using LangGraph, CrewAI, or custom Python agents who want to avoid infrastructure glue code.
+- **Specialized AI Agents:** Workloads that require persistent memory, long-running reasoning, or specific tool integrations that timeout on standard serverless functions.
+- **Low-Volume/Intermittent Agents:** Agents that are triggered by cron jobs, webhooks, or user interactions but are idle for most of the day.
+- **Agent Marketplaces:** Creators who want to distribute agents (Blueprints) to users without managing complex deployment pipelines or billing for compute.
+- **Cost-Sensitive Deployments:** Projects where predictable, low monthly costs are critical, especially for hobbyists, students, or startups validating agent concepts.
+- **Framework-Agnostic Deployment:** Teams using LangGraph, CrewAI, or custom Python agents who want to avoid infrastructure glue code.
 
 ## When it doesn't
 
-*   **High-Concurrency, Always-On Workloads:** While it scales, the sleep/wake architecture may introduce slight latency on the very first request compared to pre-warmed containers.
-*   **Non-Agent Applications:** Traditional web apps, databases, or batch processing jobs that do not fit the "agent" mental model are not supported.
-*   **Strict Compliance Requirements:** While it offers encryption, it may not meet specific industry compliance needs (e.g., HIPAA, FedRAMP) that require dedicated VPCs or specific audit trails not currently advertised.
+- **High-Concurrency, Always-On Workloads:** While it scales, the sleep/wake architecture may introduce slight latency on the very first request compared to pre-warmed containers.
+- **Non-Agent Applications:** Traditional web apps, databases, or batch processing jobs that do not fit the "agent" mental model are not supported.
+- **Strict Compliance Requirements:** While it offers encryption, it may not meet specific industry compliance needs (e.g., HIPAA, FedRAMP) that require dedicated VPCs or specific audit trails not currently advertised.
 
 ## Inclusion criteria
 
-*   **Transparent Pricing:** Yes. The website clearly states "$1/month" flat pricing with a comparison table to competitors.
-*   **Self-Service Signup:** Yes. Users can "Join Beta" and deploy agents via the web interface or CLI without sales interaction.
-*   **Public SLA/Status Page:** Yes. The site mentions "Zero errors" in stress tests and provides documentation on reliability, though a dedicated public status page URL was not explicitly found in the provided text. The inclusion score assumes a status mechanism is in place as per the prompt's criteria.
+- **Transparent Pricing:** Yes. The website clearly states "$1/month" flat pricing with a comparison table to competitors.
+- **Self-Service Signup:** Yes. Users can "Join Beta" and deploy agents via the web interface or CLI without sales interaction.
+- **Public SLA/Status Page:** Yes. The site mentions "Zero errors" in stress tests and provides documentation on reliability, though a dedicated public status page URL was not explicitly found in the provided text. The inclusion score assumes a status mechanism is in place as per the prompt's criteria.

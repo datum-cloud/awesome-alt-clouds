@@ -31,31 +31,32 @@ The platform is designed for cross-cloud compatibility. Agents can run in any en
 
 Mesa uses a simple, usage-based pricing model with a generous free tier and no minimums.
 
-*   **Free Tier:** Includes 50 GB of storage, 1,000 repositories, and 200 GB/month of egress. Virtual filesystem reads are unlimited and free.
-*   **Scale (Pay-as-you-go):**
-    *   Storage: $0.18 / GB / month
-    *   Egress: $0.11 / GB (for Git and REST API access)
-    *   *Note:* Reads via MesaFS (the mounted virtual filesystem) do not count toward egress limits.
-*   **Enterprise:** Custom pricing with volume discounts, committed-use options, and self-hosted deployments.
+- **Free Tier:** Includes 50 GB of storage, 1,000 repositories, and 200 GB/month of egress. Virtual filesystem reads are unlimited and free.
+- **Scale (Pay-as-you-go):**
+  - Storage: $0.18 / GB / month
+  - Egress: $0.11 / GB (for Git and REST API access)
+  - _Note:_ Reads via MesaFS (the mounted virtual filesystem) do not count toward egress limits.
+- **Enterprise:** Custom pricing with volume discounts, committed-use options, and self-hosted deployments.
 
 This model stands out by decoupling storage costs from read operations when using MesaFS, incentivizing high-frequency agent access patterns that are typically expensive on traditional cloud storage.
 
 ## When it fits
 
-*   **AI Agent Applications:** Building agentic workflows that require parallel execution, branching, and merging of code or data.
-*   **Development Environments:** Creating ephemeral, versioned dev environments that can be forked and rolled back instantly.
-*   **Collaborative Coding:** Scenarios requiring human-in-the-loop approval gates for agent-generated code or changes.
-*   **Cross-Cloud Workloads:** Deploying agents across multiple cloud providers while maintaining a consistent file state.
-*   **Data-Intensive AI:** Managing large datasets, models, or media files with random access capabilities and deduplication.
+- **AI Agent Applications:** Building agentic workflows that require parallel execution, branching, and merging of code or data.
+- **Development Environments:** Creating ephemeral, versioned dev environments that can be forked and rolled back instantly.
+- **Collaborative Coding:** Scenarios requiring human-in-the-loop approval gates for agent-generated code or changes.
+- **Cross-Cloud Workloads:** Deploying agents across multiple cloud providers while maintaining a consistent file state.
+- **Data-Intensive AI:** Managing large datasets, models, or media files with random access capabilities and deduplication.
 
 ## When it doesn't
 
-*   **Static Web Hosting:** Mesa is not a CDN or static hosting provider; it is a backend storage and compute layer for applications.
-*   **Simple Object Storage:** If you only need durable, long-term storage without versioning or low-latency concurrent access, traditional S3/GCS buckets are more cost-effective.
+- **Static Web Hosting:** Mesa is not a CDN or static hosting provider; it is a backend storage and compute layer for applications.
+- **Simple Object Storage:** If you only need durable, long-term storage without versioning or low-latency concurrent access, traditional S3/GCS buckets are more cost-effective.
 
 ## Inclusion criteria
 
 Mesa meets all 3 inclusion criteria:
+
 1.  **Transparent Pricing:** Detailed pricing tiers and calculator are available at [mesa.dev/pricing](https://www.mesa.dev/pricing).
 2.  **Self-Service Signup:** Users can join the waitlist and start building immediately via the web interface.
 3.  **Public SLA/Status:** Enterprise plans offer custom SLAs, and SOC 2 Type II audit reports are available for enterprise customers.

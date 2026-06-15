@@ -18,7 +18,7 @@ socials:
 
 ## What makes Cosmonic different
 
-Cosmonic Control is purpose-built for platform engineers who want WebAssembly's security and density benefits without abandoning their existing Kubernetes investments. Rather than replacing containers, it runs Wasm components *alongside* them in the same cluster, using native Kubernetes primitives (CRDs, operators, namespaces, RBAC) so your team reuses familiar workflows.
+Cosmonic Control is purpose-built for platform engineers who want WebAssembly's security and density benefits without abandoning their existing Kubernetes investments. Rather than replacing containers, it runs Wasm components _alongside_ them in the same cluster, using native Kubernetes primitives (CRDs, operators, namespaces, RBAC) so your team reuses familiar workflows.
 
 The core differentiator is **ultra-dense bin packing with zero cold starts**. While containers typically achieve 20% CPU utilization and start in milliseconds, Cosmonic Control deploys thousands of Wasm components per host with sub-millisecond startup times. This density comes from WebAssembly's capability-based security model—each component gets a minimal, well-defined sandbox rather than a full Linux kernel surface area. One team can patch vulnerabilities across thousands of apps at once, versus the traditional container model where five thousand teams each patch the same CVE independently.
 

@@ -38,26 +38,28 @@ The platform is fully serverless and managed, eliminating the operational overhe
 Chroma Cloud operates on a serverless, usage-based pricing model. Specific unit costs are not explicitly listed in the provided source text, but the pricing structure is designed to scale with consumption. The model emphasizes "zero-ops infra," meaning users pay for the actual compute and storage resources consumed without managing fixed instance sizes.
 
 Key pricing advantages include:
-*   **Cost Efficiency:** Built on object storage, reducing storage costs from ~$5/GB/month (memory/SSD) to ~$0.02/GB/month.
-*   **Auto-scaling:** No need to provision for peak traffic; the infrastructure scales automatically.
-*   **Transparent Tiers:** The provider offers Free, Pro, and Enterprise plans, with the Pro plan likely targeting individual developers and small teams, while Enterprise offers BYOC (Bring Your Own Cloud) in customer VPCs.
+
+- **Cost Efficiency:** Built on object storage, reducing storage costs from ~$5/GB/month (memory/SSD) to ~$0.02/GB/month.
+- **Auto-scaling:** No need to provision for peak traffic; the infrastructure scales automatically.
+- **Transparent Tiers:** The provider offers Free, Pro, and Enterprise plans, with the Pro plan likely targeting individual developers and small teams, while Enterprise offers BYOC (Bring Your Own Cloud) in customer VPCs.
 
 ## When it fits
 
-*   **RAG Applications:** Ideal for Retrieval-Augmented Generation systems requiring low-latency vector search over large datasets.
-*   **Hybrid Search Workloads:** When both semantic (dense) and lexical (sparse/BM25) search capabilities are required in a single query.
-*   **High-Volume Metadata Filtering:** Use cases involving faceted search or complex metadata filtering on billions of records.
-*   **Rapid Prototyping:** Developers who want to spin up a managed vector database instantly without infrastructure setup.
-*   **Cost-Sensitive Scale:** Applications where storage costs for vector embeddings would otherwise become prohibitive with traditional databases.
+- **RAG Applications:** Ideal for Retrieval-Augmented Generation systems requiring low-latency vector search over large datasets.
+- **Hybrid Search Workloads:** When both semantic (dense) and lexical (sparse/BM25) search capabilities are required in a single query.
+- **High-Volume Metadata Filtering:** Use cases involving faceted search or complex metadata filtering on billions of records.
+- **Rapid Prototyping:** Developers who want to spin up a managed vector database instantly without infrastructure setup.
+- **Cost-Sensitive Scale:** Applications where storage costs for vector embeddings would otherwise become prohibitive with traditional databases.
 
 ## When it doesn't
 
-*   **Strict On-Premises Requirements:** While BYOC is available for Enterprise, pure air-gapped or on-premises deployments without cloud connectivity are not supported by the standard Cloud offering.
-*   **Complex Transactional Workloads:** Chroma is optimized for search and retrieval, not for ACID-compliant general-purpose relational transactions.
+- **Strict On-Premises Requirements:** While BYOC is available for Enterprise, pure air-gapped or on-premises deployments without cloud connectivity are not supported by the standard Cloud offering.
+- **Complex Transactional Workloads:** Chroma is optimized for search and retrieval, not for ACID-compliant general-purpose relational transactions.
 
 ## Inclusion criteria
 
 Chroma meets all 3 inclusion criteria:
+
 1.  **Transparent Pricing:** Pricing tiers (Free, Pro, Enterprise) are publicly listed, though specific unit costs require contacting sales or checking the Pro plan details.
 2.  **Self-Service Signup:** Users can sign up and start using Chroma Cloud directly via the web interface.
 3.  **Public Status Page:** A status page is available at `https://status.trychroma.com/` (implied by standard SaaS practices and mentioned in navigation).

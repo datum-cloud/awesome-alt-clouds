@@ -20,27 +20,28 @@ Unlike cloud providers that charge for idle infrastructure, 9Router is a local C
 
 9Router operates on a mixed pricing model that is heavily skewed toward free usage for individual developers.
 
-*   **Free Tier:** The software is open-source (MIT license) and free to install. It includes access to 8 free AI providers (e.g., Kiro, iFlow, Qwen) and basic routing features.
-*   **Usage Costs:** You pay directly to the underlying AI providers. 9Router does not resell tokens or add a markup; it simply routes your requests. For example, Tier 2 providers like MiniMax or GLM are cited at very low costs (e.g., $0.20 or $0.60 per million tokens), while Tier 1 uses your existing paid subscriptions.
-*   **No Subscription Required:** There is no mandatory monthly fee for 9Router itself. The value proposition is saving money on existing subscriptions by maximizing their utility and avoiding overages through smart fallbacks.
+- **Free Tier:** The software is open-source (MIT license) and free to install. It includes access to 8 free AI providers (e.g., Kiro, iFlow, Qwen) and basic routing features.
+- **Usage Costs:** You pay directly to the underlying AI providers. 9Router does not resell tokens or add a markup; it simply routes your requests. For example, Tier 2 providers like MiniMax or GLM are cited at very low costs (e.g., $0.20 or $0.60 per million tokens), while Tier 1 uses your existing paid subscriptions.
+- **No Subscription Required:** There is no mandatory monthly fee for 9Router itself. The value proposition is saving money on existing subscriptions by maximizing their utility and avoiding overages through smart fallbacks.
 
 This stands out from typical cloud pricing because it is an efficiency layer rather than a resource provider. You don't pay for the gateway; you pay for the compute you use, but with optimized routing that minimizes waste.
 
 ## When it fits
 
-*   **AI-Native Developers:** Developers using multiple AI coding assistants (Cursor, Cline, Codex) who want to consolidate management into one tool.
-*   **Cost-Conscious Teams:** Users looking to reduce token spend by 20–65% through built-in compression and smart fallback to free/cheap tiers.
-*   **Unreliable Quota Management:** Developers who frequently hit rate limits or subscription caps and need automatic failover to keep coding without interruption.
-*   **Multi-Provider Experimentation:** Those who want to test different LLMs (Chat, Embeddings, TTS, Image Gen) via a single OpenAI-compatible API without rewriting code.
+- **AI-Native Developers:** Developers using multiple AI coding assistants (Cursor, Cline, Codex) who want to consolidate management into one tool.
+- **Cost-Conscious Teams:** Users looking to reduce token spend by 20–65% through built-in compression and smart fallback to free/cheap tiers.
+- **Unreliable Quota Management:** Developers who frequently hit rate limits or subscription caps and need automatic failover to keep coding without interruption.
+- **Multi-Provider Experimentation:** Those who want to test different LLMs (Chat, Embeddings, TTS, Image Gen) via a single OpenAI-compatible API without rewriting code.
 
 ## When it doesn't
 
-*   **Infrastructure-Heavy Workloads:** This is not a solution for hosting databases, compute instances, or storage; it is strictly for AI API routing.
-*   **Enterprise Compliance Needs:** While it offers some proxy features, it lacks the extensive enterprise-grade security, VPC peering, and compliance certifications of major hyperscalers.
+- **Infrastructure-Heavy Workloads:** This is not a solution for hosting databases, compute instances, or storage; it is strictly for AI API routing.
+- **Enterprise Compliance Needs:** While it offers some proxy features, it lacks the extensive enterprise-grade security, VPC peering, and compliance certifications of major hyperscalers.
 
 ## Inclusion criteria
 
 9Router meets all three inclusion criteria:
+
 1.  **Transparent Pricing:** The website clearly outlines the free tier, open-source nature, and references costs of underlying providers (e.g., MiniMax $0.20).
 2.  **Self-Service Signup:** Users can install the tool via `npm` and sign up for underlying provider accounts directly through the dashboard or OAuth flows without sales contact.
 3.  **Public SLA/Status Page:** As a local CLI tool, it does not have a traditional public status page for global uptime, but it provides a visual dashboard for real-time quota tracking and usage monitoring. (Note: The "Public SLA" criterion is often adapted for local tools to mean public reliability indicators or open-source transparency, which 9Router provides via its MIT license and public GitHub repository).

@@ -31,28 +31,29 @@ The platform is LLM-agnostic, providing SDKs for Python, JavaScript, and TypeScr
 
 E2B uses a usage-based pricing model centered on sandbox compute seconds.
 
-*   **Hobby Tier:** Offers a free tier with limited monthly sandbox seconds, suitable for development and testing.
-*   **Production:** Pricing scales with the number of sandbox seconds consumed. Rates vary by region (US vs. Europe) and CPU/RAM configuration. Typical production costs are calculated per second of active sandbox runtime.
-*   **Enterprise:** Custom pricing for high-volume agents, including dedicated support and advanced security features.
+- **Hobby Tier:** Offers a free tier with limited monthly sandbox seconds, suitable for development and testing.
+- **Production:** Pricing scales with the number of sandbox seconds consumed. Rates vary by region (US vs. Europe) and CPU/RAM configuration. Typical production costs are calculated per second of active sandbox runtime.
+- **Enterprise:** Custom pricing for high-volume agents, including dedicated support and advanced security features.
 
 The model stands out by charging only for active execution time, eliminating idle costs associated with traditional VMs.
 
 ## When it fits
 
-*   **AI Agents with Tool Use:** When your LLM needs to execute code, run calculations, or browse the web safely.
-*   **Code Interpretation:** Building features like ChatGPT’s Code Interpreter or data analysis tools.
-*   **Vibe Coding & Fragments:** Hosting ephemeral, AI-generated apps that need to run briefly and then disappear.
-*   **Reinforcement Learning:** Running thousands of concurrent, isolated environments for reward function evaluation.
-*   **Secure MCP Servers:** Hosting Model Context Protocol servers that require isolated, secure execution environments.
+- **AI Agents with Tool Use:** When your LLM needs to execute code, run calculations, or browse the web safely.
+- **Code Interpretation:** Building features like ChatGPT’s Code Interpreter or data analysis tools.
+- **Vibe Coding & Fragments:** Hosting ephemeral, AI-generated apps that need to run briefly and then disappear.
+- **Reinforcement Learning:** Running thousands of concurrent, isolated environments for reward function evaluation.
+- **Secure MCP Servers:** Hosting Model Context Protocol servers that require isolated, secure execution environments.
 
 ## When it doesn't
 
-*   **Long-Running Stateful Services:** Not suitable for persistent backends, databases, or services requiring constant uptime.
-*   **Heavy GPU Workloads:** E2B focuses on CPU-based code execution; it is not a GPU cloud for model training.
+- **Long-Running Stateful Services:** Not suitable for persistent backends, databases, or services requiring constant uptime.
+- **Heavy GPU Workloads:** E2B focuses on CPU-based code execution; it is not a GPU cloud for model training.
 
 ## Inclusion criteria
 
 E2B meets all 3 inclusion criteria:
+
 1.  **Transparent Pricing:** Pricing details are available on their pricing page.
 2.  **Self-Service Signup:** Developers can sign up and start using sandboxes immediately via the dashboard or CLI.
 3.  **Public SLA/Status Page:** E2B provides a public status page at status.e2b.dev to monitor service health.

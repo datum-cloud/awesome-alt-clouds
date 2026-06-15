@@ -33,19 +33,20 @@ The model stands out by decoupling build compute from CI runner compute. Instead
 
 ## When it fits
 
-*   **Teams with slow Docker builds:** Organizations experiencing build times exceeding several minutes on standard CI runners.
-*   **Multi-platform requirements:** Developers needing to build ARM64 and AMD64 images simultaneously, where Depot provides significant speedups over emulated builds.
-*   **High-frequency CI/CD pipelines:** Projects with many commits per day where caching efficiency yields the highest ROI.
-*   **SaaS Platforms:** Companies that need to build container images for end-users programmatically via an API.
+- **Teams with slow Docker builds:** Organizations experiencing build times exceeding several minutes on standard CI runners.
+- **Multi-platform requirements:** Developers needing to build ARM64 and AMD64 images simultaneously, where Depot provides significant speedups over emulated builds.
+- **High-frequency CI/CD pipelines:** Projects with many commits per day where caching efficiency yields the highest ROI.
+- **SaaS Platforms:** Companies that need to build container images for end-users programmatically via an API.
 
 ## When it doesn't
 
-*   **Simple static sites:** Projects that do not involve containerization or complex build steps will not benefit from the overhead of integrating Depot.
-*   **Fully serverless architectures:** If your entire stack runs on AWS Lambda or Vercel Edge Functions without custom image builds, Depot is unnecessary.
+- **Simple static sites:** Projects that do not involve containerization or complex build steps will not benefit from the overhead of integrating Depot.
+- **Fully serverless architectures:** If your entire stack runs on AWS Lambda or Vercel Edge Functions without custom image builds, Depot is unnecessary.
 
 ## Inclusion criteria
 
 Depot meets all three inclusion criteria:
+
 1.  **Transparent pricing:** Usage-based pricing is available via their dashboard and documentation.
 2.  **Self-service signup:** Users can sign up and start using the service via [https://depot.dev/start](https://depot.dev/start).
 3.  **Public SLA/Status page:** Depot provides status updates and reliability information, meeting the transparency requirement for operational health.

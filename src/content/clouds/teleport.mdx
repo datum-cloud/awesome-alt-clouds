@@ -33,28 +33,29 @@ Teleport also emphasizes hardware-rooted trust, supporting TPMs and HSMs to secu
 
 Teleport operates on a subscription-based model with both Free and paid tiers.
 
-*   **Free Tier:** Available for small teams, supporting up to 10 users. It includes core features like SSH, Kubernetes, and database access, along with basic audit logs. This tier is self-service and requires no credit card.
-*   **Pro Tier:** Priced at $50 per user per month (billed annually) or $60 per user per month (billed monthly). This includes advanced features like SSO, SCIM, RBAC, and enhanced audit logging.
-*   **Enterprise Tier:** Custom pricing for organizations requiring advanced compliance features (FedRAMP, HIPAA), dedicated support, and SSO/SAML integration at scale.
+- **Free Tier:** Available for small teams, supporting up to 10 users. It includes core features like SSH, Kubernetes, and database access, along with basic audit logs. This tier is self-service and requires no credit card.
+- **Pro Tier:** Priced at $50 per user per month (billed annually) or $60 per user per month (billed monthly). This includes advanced features like SSO, SCIM, RBAC, and enhanced audit logging.
+- **Enterprise Tier:** Custom pricing for organizations requiring advanced compliance features (FedRAMP, HIPAA), dedicated support, and SSO/SAML integration at scale.
 
 The model stands out because it is user-centric rather than infrastructure-centric. Pricing does not scale with the number of servers or compute resources, making it predictable regardless of infrastructure size. The generous free tier allows for easy adoption and testing without financial commitment.
 
 ## When it fits
 
-*   **Organizations with complex access needs:** Teams managing hybrid cloud, multi-cloud, or on-premises environments that need a unified access plane.
-*   **Compliance-heavy industries:** Companies in finance, healthcare, or government that require strict audit trails, session recording, and FedRAMP/HIPAA compliance.
-*   **AI and Agent-heavy workflows:** Organizations deploying AI agents that need secure, authenticated access to infrastructure and tools.
-*   **Security-conscious engineering teams:** Teams looking to eliminate SSH keys and passwords, replacing them with short-lived certificates and just-in-time access.
-*   **Kubernetes-native shops:** Organizations that need secure access to Kubernetes clusters without exposing nodes directly to the internet.
+- **Organizations with complex access needs:** Teams managing hybrid cloud, multi-cloud, or on-premises environments that need a unified access plane.
+- **Compliance-heavy industries:** Companies in finance, healthcare, or government that require strict audit trails, session recording, and FedRAMP/HIPAA compliance.
+- **AI and Agent-heavy workflows:** Organizations deploying AI agents that need secure, authenticated access to infrastructure and tools.
+- **Security-conscious engineering teams:** Teams looking to eliminate SSH keys and passwords, replacing them with short-lived certificates and just-in-time access.
+- **Kubernetes-native shops:** Organizations that need secure access to Kubernetes clusters without exposing nodes directly to the internet.
 
 ## When it doesn't
 
-*   **Providers needing raw infrastructure:** Teleport does not offer compute, storage, or networking services; it is a security layer, not a cloud platform.
-*   **Simple, small-scale setups:** For very small teams with minimal security requirements, the overhead of implementing Teleport may outweigh the benefits compared to simpler solutions.
+- **Providers needing raw infrastructure:** Teleport does not offer compute, storage, or networking services; it is a security layer, not a cloud platform.
+- **Simple, small-scale setups:** For very small teams with minimal security requirements, the overhead of implementing Teleport may outweigh the benefits compared to simpler solutions.
 
 ## Inclusion criteria
 
 Teleport meets all 3 inclusion criteria:
+
 1.  **Transparent pricing:** Clear pricing for Free, Pro, and Enterprise tiers is available at https://goteleport.com/pricing/.
 2.  **Self-service signup:** Users can sign up for the Free tier directly at https://goteleport.com/ without sales interaction.
 3.  **Public SLA/status page:** A public status page is available at https://status.goteleport.com/ to monitor service health.

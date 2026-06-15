@@ -31,24 +31,24 @@ Developer experience is central to Deno Deploy's design. It offers first-class O
 
 Deno Deploy operates on a generous usage-based pricing model with a robust free tier. The free tier includes:
 
-*   **300,000 requests per month**
-*   **100 GB bandwidth per month**
-*   **Unlimited deployments**
+- **300,000 requests per month**
+- **100 GB bandwidth per month**
+- **Unlimited deployments**
 
 For higher usage, paid plans start at $10/month for the "Pro" plan, which includes 1 million requests and 1 TB bandwidth. Additional usage is billed per request and per GB of bandwidth. This model stands out for its simplicity and lack of hidden costs for compute time, focusing instead on request volume and data transfer, which aligns well with edge computing workloads.
 
 ## When it fits
 
-*   **High-latency sensitive applications:** APIs and web apps where global edge distribution reduces latency for international users.
-*   **Jamstack and Static Sites:** Perfect for hosting static sites with serverless functions for dynamic interactions.
-*   **Serverless APIs:** REST or GraphQL APIs that benefit from fast cold starts and elastic scalability.
-*   **Developer-centric workflows:** Teams that value TypeScript-first development, GitHub integration, and built-in observability.
-*   **Testing and CI/CD:** Leveraging branch database clones for isolated testing environments.
+- **High-latency sensitive applications:** APIs and web apps where global edge distribution reduces latency for international users.
+- **Jamstack and Static Sites:** Perfect for hosting static sites with serverless functions for dynamic interactions.
+- **Serverless APIs:** REST or GraphQL APIs that benefit from fast cold starts and elastic scalability.
+- **Developer-centric workflows:** Teams that value TypeScript-first development, GitHub integration, and built-in observability.
+- **Testing and CI/CD:** Leveraging branch database clones for isolated testing environments.
 
 ## When it doesn't
 
-*   **Heavy compute workloads:** Applications requiring long-running processes or significant CPU-intensive tasks are not suitable for serverless edge execution.
-*   **Custom OS dependencies:** Workloads requiring specific OS-level configurations or kernel modules cannot run in V8 isolates.
+- **Heavy compute workloads:** Applications requiring long-running processes or significant CPU-intensive tasks are not suitable for serverless edge execution.
+- **Custom OS dependencies:** Workloads requiring specific OS-level configurations or kernel modules cannot run in V8 isolates.
 
 ## Inclusion criteria
 

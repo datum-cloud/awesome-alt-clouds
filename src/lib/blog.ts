@@ -14,9 +14,7 @@ export async function getPublishablePosts(): Promise<BlogPost[]> {
 }
 
 export function sortedByDate(posts: BlogPost[]): BlogPost[] {
-  return [...posts].sort(
-    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
-  );
+  return [...posts].sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 }
 
 export function postUrl(slug: string): string {

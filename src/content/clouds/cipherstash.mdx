@@ -34,19 +34,20 @@ Keysets (cryptographically separated groups of keys for isolation) and Clients (
 
 ## When it fits
 
-*   **AI & Agentic Applications:** Securing data access for AI agents where prompt injection risks require zero-blast-radius containment.
-*   **Multi-tenant SaaS:** Implementing cryptographic multitenancy with provable isolation between customers using distinct keysets.
-*   **Regulated Industries:** Healthcare and finance requiring HIPAA/GDPR compliance with immutable, cryptographic audit trails for every access event.
-*   **Existing Postgres Stacks:** Teams seeking to add field-level encryption without migrating to a new database or managing custom envelope encryption logic.
+- **AI & Agentic Applications:** Securing data access for AI agents where prompt injection risks require zero-blast-radius containment.
+- **Multi-tenant SaaS:** Implementing cryptographic multitenancy with provable isolation between customers using distinct keysets.
+- **Regulated Industries:** Healthcare and finance requiring HIPAA/GDPR compliance with immutable, cryptographic audit trails for every access event.
+- **Existing Postgres Stacks:** Teams seeking to add field-level encryption without migrating to a new database or managing custom envelope encryption logic.
 
 ## When it doesn't
 
-*   **Non-Postgres Databases:** The solution is currently built specifically for Postgres and does not support other database engines.
-*   **Read-Heavy, Low-Security Workloads:** If data does not require field-level granularity or searchable encryption, the overhead of integration may be unnecessary.
+- **Non-Postgres Databases:** The solution is currently built specifically for Postgres and does not support other database engines.
+- **Read-Heavy, Low-Security Workloads:** If data does not require field-level granularity or searchable encryption, the overhead of integration may be unnecessary.
 
 ## Inclusion criteria
 
 CipherStash meets all 3 inclusion criteria:
+
 1.  **Transparent Pricing:** The pricing model is clearly defined on their website, detailing charges for Data Keys and Keysets while stating decryption is free.
 2.  **Self-service Signup:** Users can start via SDKs and open-source tools, with a direct path to integration.
 3.  **Public SLA/Status Page:** The provider lists SOC 2 Type II certification and GDPR compliance, indicating robust operational standards and transparency.

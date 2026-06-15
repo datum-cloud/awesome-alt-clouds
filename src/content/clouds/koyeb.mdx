@@ -37,27 +37,28 @@ Furthermore, Koyeb has heavily optimized its infrastructure for AI inference. It
 
 Koyeb operates on a usage-based pricing model, charging for compute resources (CPU/RAM) and GPU hours. There are no upfront costs or long-term commitments.
 
-*   **Compute:** Pricing is determined by the amount of CPU and RAM allocated to your service. For example, a `koyeb-free` tier offers limited resources for development, while production tiers scale based on actual usage. Specific rates vary by region and instance type, but generally, CPU credits are consumed based on runtime.
-*   **GPU Inference:** GPU instances are billed per hour. For instance, an A100 instance might cost significantly more per hour than a CPU instance, but you only pay when the GPU is active. Koyeb claims up to 80% savings compared to hyperscaler equivalents due to efficient resource utilization and spot-instance-like pricing for idle periods.
-*   **Network:** Egress traffic is billed per GB. Koyeb offers a generous free tier for network egress within the same region for small projects.
+- **Compute:** Pricing is determined by the amount of CPU and RAM allocated to your service. For example, a `koyeb-free` tier offers limited resources for development, while production tiers scale based on actual usage. Specific rates vary by region and instance type, but generally, CPU credits are consumed based on runtime.
+- **GPU Inference:** GPU instances are billed per hour. For instance, an A100 instance might cost significantly more per hour than a CPU instance, but you only pay when the GPU is active. Koyeb claims up to 80% savings compared to hyperscaler equivalents due to efficient resource utilization and spot-instance-like pricing for idle periods.
+- **Network:** Egress traffic is billed per GB. Koyeb offers a generous free tier for network egress within the same region for small projects.
 
 The standout feature is the "scale-to-zero" capability. If no requests hit your application, you pay nothing for compute, making it cost-effective for APIs with sporadic traffic.
 
 ## When it fits
 
-*   **AI/ML Inference Endpoints:** Deploying large language models (LLMs) or image generation models where GPU access is needed but cluster management is undesirable.
-*   **Global APIs:** Applications requiring low-latency access for users worldwide, leveraging Koyeb’s global routing.
-*   **Sporadic Workloads:** APIs or background jobs that experience bursty traffic, benefiting from scale-to-zero to minimize costs.
-*   **Simplified CI/CD:** Teams wanting a tight Git-to-production loop without maintaining complex deployment pipelines or Kubernetes manifests.
+- **AI/ML Inference Endpoints:** Deploying large language models (LLMs) or image generation models where GPU access is needed but cluster management is undesirable.
+- **Global APIs:** Applications requiring low-latency access for users worldwide, leveraging Koyeb’s global routing.
+- **Sporadic Workloads:** APIs or background jobs that experience bursty traffic, benefiting from scale-to-zero to minimize costs.
+- **Simplified CI/CD:** Teams wanting a tight Git-to-production loop without maintaining complex deployment pipelines or Kubernetes manifests.
 
 ## When it doesn't
 
-*   **Heavy Batch Processing:** Workloads requiring persistent, high-throughput batch processing may find the scale-to-zero cold starts and per-second billing less predictable than reserved instances.
-*   **Strict Compliance Requirements:** While Koyeb is SOC 2 compliant, it may not meet the specific regulatory requirements (e.g., HIPAA, FedRAMP) that hyperscalers have established mature programs for.
+- **Heavy Batch Processing:** Workloads requiring persistent, high-throughput batch processing may find the scale-to-zero cold starts and per-second billing less predictable than reserved instances.
+- **Strict Compliance Requirements:** While Koyeb is SOC 2 compliant, it may not meet the specific regulatory requirements (e.g., HIPAA, FedRAMP) that hyperscalers have established mature programs for.
 
 ## Inclusion criteria
 
 Koyeb meets all three inclusion criteria:
+
 1.  **Transparent Pricing:** Detailed pricing for compute, GPU, and egress is available on their [Pricing Page](https://www.koyeb.com/pricing).
 2.  **Self-Service Signup:** Users can sign up and deploy applications immediately via the [Koyeb App](https://app.koyeb.com/auth/signup) without sales contact.
 3.  **Public SLA/Status Page:** Koyeb provides a public status page at [status.koyeb.com](https://status.koyeb.com) and offers a Service Level Agreement (SLA) for uptime guarantees, detailed in their [Terms of Service](https://www.koyeb.com/terms).
