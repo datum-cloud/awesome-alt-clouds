@@ -250,6 +250,16 @@
     "dateAdded": "2026-06-15"
   },
   {
+    "name": "Loophole Labs",
+    "url": "https://loopholelabs.io/",
+    "description": "Offers Kubernetes scale-to-zero capabilities by hibernating idle pods in-place and waking them in under 50ms, eliminating overprovisioning without code changes.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-06-15"
+  },
+  {
     "name": "Lyceum",
     "url": "https://lyceum.technology/",
     "description": "EU built and operated GPU cloud for developers and AI teams.",
