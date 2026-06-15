@@ -75,6 +75,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Latitude.sh](https://www.latitude.sh/) - Provides global bare metal servers for developers.
 * 🟢 [LeaseWeb](https://www.leaseweb.com/) - Full service hosting provider with a background in dedicated and managed servers.
 * 🟢 [Linode](https://www.linode.com/) - Provides cloud computing services designed for developers with straightforward pricing.
+* 🟢 [Loophole Labs](https://loopholelabs.io/) - Offers Kubernetes scale-to-zero capabilities by hibernating idle pods in-place and waking them in under 50ms, eliminating overprovisioning without code changes.
 * 🟢 [Lyceum](https://lyceum.technology/) - EU built and operated GPU cloud for developers and AI teams.
 * 🟢 [Mermaid](https://mermaid.ai/web/) - Cloud service provider.
 * 🟡 [Namespace](https://namespace.so/) - Cloud service provider.
