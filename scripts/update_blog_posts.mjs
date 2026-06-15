@@ -50,7 +50,7 @@ function updateIndexHtml(postsHtml) {
   // Match from the container opening tag through to (but not including) the
   // "View all posts" anchor, keeping the anchor intact.
   const pattern =
-    /(<div id="blogPostsContainer">)\s*<!--.*?-->.*?(<\/div>\s*<p style="margin-top: 1rem; text-align: center;">\s*<a href="https:\/\/www\.datum\.net\/authors\/[^"]+\")/s;
+    /(<div id="blogPostsContainer">)\s*<!--.*?-->.*?(<\/div>\s*<p style="margin-top: 1rem; text-align: center;">\s*<a href="https:\/\/www\.datum\.net\/authors\/[^"]+")/s;
 
   let matched = false;
   const newContent = content.replace(pattern, (_match, open, tail) => {

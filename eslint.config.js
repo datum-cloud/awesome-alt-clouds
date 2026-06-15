@@ -1,6 +1,7 @@
 import eslint from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
 import eslintPluginAstro from "eslint-plugin-astro";
+import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default [
@@ -12,6 +13,7 @@ export default [
       "docs/**",
       "public/clouds.json",
       "package-lock.json",
+      ".tmp-*.mjs",
     ],
   },
   eslint.configs.recommended,
@@ -23,6 +25,12 @@ export default [
     rules: {
       // Inline scripts in .astro pages are intentional (filter UI, submit form).
       "astro/no-unused-define-vars-in-style": "off",
+    },
+  },
+  {
+    files: ["**/*.mjs", "scripts/**/*.js"],
+    languageOptions: {
+      globals: globals.node,
     },
   },
 ];
