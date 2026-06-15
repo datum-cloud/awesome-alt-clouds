@@ -200,4 +200,4 @@ The MDX collection is the single switchboard. This is why we keep the "MDX prese
 - Per-cloud OG image generation → Phase 5
 - `/categories/<slug>` landing pages → Phase 4
 - `/compare` stub → Phase 4
-- Blog / RSS → Phase 3
+- Blog / RSS → [Phase 3 plan](./2026-06-15-phase-3-blog-plan.md) (landed 2026-06-15)

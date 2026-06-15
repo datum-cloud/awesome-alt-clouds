@@ -1,6 +1,6 @@
 # Astro Migration RFC — Evolving alt-cloud.org into a Community Destination
 
-> Status: **Phase 1, 2 & 2a complete — Phase 3 next**
+> Status: **Phase 1, 2, 2a & 3 complete — Phase 4 next**
 > Author: planning session, 2026-05-19
 > Branch: `feat/astro-migration`
 > Tracks: [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164)
@@ -13,8 +13,8 @@
 | 1 — Astro scaffold with parity | ✅ done (2026-05-19) | See "Phase 1 — what landed" below |
 | 2 — Deeper company profiles (`/<slug>`) | ✅ done (2026-05-20) | Flat URL chosen instead of `/clouds/[slug]`. Plan: [2026-05-20-phase-2-detail-pages-plan.md](./2026-05-20-phase-2-detail-pages-plan.md). 5 sample MDX files seeded; architecture scales to 429+. |
 | 2a — Auto-generated profile MDX | ✅ done (2026-05-22) | Bot generates `status: draft` MDX on submission + batch backfill workflow. Plan: [2026-05-22-phase-2a-auto-profile-generation-plan.md](./2026-05-22-phase-2a-auto-profile-generation-plan.md). Flow: [2026-05-22-submission-to-mdx-flow.md](./2026-05-22-submission-to-mdx-flow.md). |
-| 3 — Editorial / blog + RSS | ⏳ **next** | See [Phase 3 — planned](#phase-3--planned-next) below. Issue #164 Idea 2. |
-| 4 — Comparison & discovery aids | 📋 planned | Category landings, side-by-side compare. Issue #164 Idea 3. See [Phase 4 — planned](#phase-4--planned-comparison--discovery-aids) below. |
+| 3 — Editorial / blog + RSS | ✅ done (2026-06-15) | Plan: [2026-06-15-phase-3-blog-plan.md](./2026-06-15-phase-3-blog-plan.md). `/blog`, `/blog/<slug>`, `/rss.xml`; 2 seed posts. Legacy `update_blog_posts.mjs` + `update-blog-posts.yml` **kept**. |
+| 4 — Comparison & discovery aids | 📋 **next** | Category landings, side-by-side compare. Issue #164 Idea 3. See [Phase 4 — planned](#phase-4--planned-comparison--discovery-aids) below. |
 | 5 — SEO polish | ⏳ pending | |
 | 6 — Production cutover | ⏳ pending | Pages source needs flipping from "branch /docs" → "GitHub Actions" |
 
@@ -102,6 +102,29 @@ Phase 2a extends the submission pipeline and adds a batch backfill path so detai
 | Backfill scope | Pilot 20–30 clouds first; expand after quality review |
 | Refresh / cron | Deferred to Phase 3 — no `/refresh` trigger yet |
 
+### Phase 3 — what landed
+
+Maps to [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164) **Idea 2 — Editorial / blog**. Full plan: [2026-06-15-phase-3-blog-plan.md](./2026-06-15-phase-3-blog-plan.md).
+
+- **Content collection**: `blog` in `src/content.config.ts` with zod schema (`title`, `description`, `publishDate`, `author`, `tags`, `draft`, optional `heroImage`).
+- **Lib**: `src/lib/blog.ts` — `getPublishablePosts()`, `isPostPublished()`, `sortedByDate()`, `postUrl()`, `formatPostDate()`. Draft posts excluded from production builds (same pattern as profile `status: draft`).
+- **Routes**: `/blog/` (index), `/blog/<slug>/` (posts), `/rss.xml` (RSS via `@astrojs/rss`).
+- **Layouts & components**:
+  - `src/layouts/BlogPost.astro` — mirrors `CloudDetail.astro` shell; uses `DirectorySidebar` + `DetailTopBar`.
+  - `DirectorySidebar.astro` — third nav item "Blog" alongside Directory / Watchlist.
+  - `BlogNavLink.astro` — homepage sidebar + mobile drawer link.
+  - `.prose-content` styles moved to `src/styles/global.css` (shared with cloud detail pages).
+- **SEO**: per-post `BlogPosting` JSON-LD; RSS auto-discovery `<link>` in `Base.astro`; `seo.blog` block in `site.config.mjs`.
+- **Seed posts**: `2026-06-welcome-to-alt-cloud.md`, `2026-06-what-is-an-alt-cloud.md`.
+- **Docs**: `CONTRIBUTING.md` §3 — full blog authoring spec.
+- **Legacy scraper kept**: `scripts/update_blog_posts.mjs` and `.github/workflows/update-blog-posts.yml` remain active. They continue to patch Datum blog cards into the legacy `docs/index.html` Resources modal — separate from the new in-repo Astro blog at `/blog/`.
+
+**Deferred from Phase 3 MVP**
+
+- Homepage "Latest from the blog" strip
+- Tag landing pages (`/blog/tags/<tag>/`)
+- Automated external RSS/HTML ingest into `src/content/blog/`
+
 ### Phase 3 — planned (next)
 
 Maps to [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164) **Idea 2 — Editorial / blog**.
@@ -156,17 +179,17 @@ const blog = defineCollection({
 
 **Retire legacy scraper**
 
-- Delete or archive `scripts/update_blog_posts.py` and `update-blog-posts.yml` once Astro blog is live.
+- ~~Delete or archive `scripts/update_blog_posts.py` and `update-blog-posts.yml` once Astro blog is live.~~ **Decision reversed (2026-06-15):** keep `scripts/update_blog_posts.mjs` and `update-blog-posts.yml`. The Astro blog (`/blog/`) and the legacy Datum scraper (`docs/index.html` Resources modal) serve different surfaces and coexist.
 - The old script patched Datum blog cards into `docs/index.html` Resources modal — replace with either:
   - **Option A (recommended):** hand-curated `src/content/blog/` posts only; or
   - **Option B:** a thin ingest script that converts external RSS/HTML into MDX PRs (out of MVP).
 
 **Deliverables**
 
-- [ ] `blog` content collection + 1–2 seed posts (e.g. welcome post, "what is an alt cloud")
-- [ ] `/blog`, `/blog/<slug>`, `/rss.xml`
-- [ ] `CONTRIBUTING.md` — blog authoring section (frontmatter, draft flag, review process)
-- [ ] Retire `update_blog_posts.py` cron path
+- [x] `blog` content collection + 1–2 seed posts (e.g. welcome post, "what is an alt cloud")
+- [x] `/blog`, `/blog/<slug>`, `/rss.xml`
+- [x] `CONTRIBUTING.md` — blog authoring section (frontmatter, draft flag, review process)
+- [x] Legacy scraper kept (`update_blog_posts.mjs` + `update-blog-posts.yml`)
 
 **Estimate:** 1–2 days.
 
@@ -261,7 +284,7 @@ Phase 2 MDX frontmatter already includes comparison-friendly optional fields: `r
 | # | Idea | Issue #164 scope | RFC phase | Status |
 |---|---|---|---|---|
 | 1 | Deeper per-company profiles | ✅ MVP | Phase 2 + 2a | ✅ **Delivered** — Astro MDX at `/<slug>`, auto-gen pipeline, publish gate |
-| 2 | Editorial / blog | ✅ MVP | Phase 3 | ⏳ **Next** |
+| 2 | Editorial / blog | ✅ MVP | Phase 3 | ✅ **Delivered** — `/blog/`, `/rss.xml`; plan: [2026-06-15-phase-3-blog-plan.md](./2026-06-15-phase-3-blog-plan.md) |
 | 3 | Comparison & discovery aids | 🟡 Prepare structure | Phase 4 | 📋 Planned — homepage filter/search exists; category landings + compare next |
 | 4 | Community & events, newsletter | ❌ Later | — | Not scoped |
 | 5 | Metadata footprint (OG, structured data, sitemap) | 🟢 Free win in Astro | Phase 5 | Partial — Base.astro JSON-LD live; per-page OG + sitemap pending |
@@ -285,10 +308,10 @@ Phase 2 MDX frontmatter already includes comparison-friendly optional fields: `r
 - **Frontend:** Astro 5 + Tailwind v4 on branch `feat/astro-migration` (preview deploy on GitHub Pages).
   - `/` — directory grid with search, category filter, sort; cards link to detail pages when publishable MDX exists.
   - `/<slug>` — cloud detail pages from `src/content/clouds/*.mdx` merged with `clouds.json`.
-  - `/submit/`, `/watchlist/` — ported from legacy SPA.
+  - `/submit/`, `/watchlist/`, `/blog/`, `/rss.xml` — Astro routes (blog: Phase 3).
 - **Profile coverage:** 5 hand-reviewed seeds + bot pipeline for auto-generated `status: draft` MDX (submission + batch backfill).
 - **Legacy `docs/`:** still present for reference; production cutover (Phase 6) pending.
-- **Not yet built:** `/blog`, `/categories/<slug>`, `/compare` (Phase 3 + 4).
+- **Not yet built:** `/categories/<slug>`, `/compare` (Phase 4).
 
 ## 3. Is GitHub Pages + Astro feasible?
 
@@ -398,7 +421,7 @@ awesome-alt-clouds/
 │   │   └── slugify.py              # Python slugify mirror (Phase 2a)
 │   ├── split_submission.py         # multi-URL split
 │   ├── check_duplicates.py         # reads public/clouds.json
-│   └── update_blog_posts.py        # ⚠ retire after Phase 3
+│   └── update_blog_posts.mjs       # Datum blog → docs/index.html Resources modal (kept)
 ├── site.config.mjs                 # preview ↔ production switch (Phase 2a publish gate)
 ├── tests/                          # existing pytests
 ├── docs/                           # ⚠ RETIRED after cutover (Pages source switches to Actions)
@@ -409,7 +432,7 @@ awesome-alt-clouds/
     ├── split-submission.yml
     ├── admin-approve-submission.yml
     ├── close-issue-on-pr-close.yml
-    └── update-blog-posts.yml       # ⚠ retire OR retarget to Astro blog
+    └── update-blog-posts.yml       # Daily cron: Datum blog → docs/index.html (kept)
 ```
 
 ## 6. Content collection schemas (illustrative)
@@ -547,7 +570,7 @@ Notable changes:
 
 **Phase 2a — Auto-generated profiles.** New submissions (score ≥ 2) get a draft MDX staged in the same PR as the README entry. `backfill-profiles.yml` batch-generates profiles for clouds lacking MDX. All bot output is `status: draft`; maintainer follow-up PR flips to `reviewed` for production. No silent MDX overwrite.
 
-**Phase 3 — Blog.** `/blog` index lists non-draft posts sorted by `publishDate` desc. `/blog/<slug>` renders with OG tags and `BlogPosting` JSON-LD. `/rss.xml` validates. `CONTRIBUTING.md` documents post authoring. At least 1 inaugural post live. `update_blog_posts.py` retired.
+**Phase 3 — Blog.** `/blog` index lists non-draft posts sorted by `publishDate` desc. `/blog/<slug>` renders with OG tags and `BlogPosting` JSON-LD. `/rss.xml` validates. `CONTRIBUTING.md` documents post authoring. At least 1 inaugural post live. Legacy `update_blog_posts.mjs` scraper kept (patches `docs/index.html` Resources modal separately).
 
 **Phase 4 — Comparison & discovery.** `/categories/<slug>` static pages exist for all 23 categories with filtered card grids and category descriptions. `/compare` renders a side-by-side attribute table for 2–3 selected clouds; shareable via `?a=&b=&c=` query params. Homepage search/filter/sort unchanged. Compare reads `clouds.json` + MDX frontmatter where available.
 
@@ -563,7 +586,7 @@ Notable changes:
 | Break `/clouds.json` consumers (incl. our own current site if rolled back) | Ship `public/clouds.json` from day 1; smoke-test the URL on preview |
 | README contributors confused which file to edit | Update `CONTRIBUTING.md` + `.cursor/rules/docs-frontend.mdc` with the new layout |
 | Build adds Node dep to a Python-centric repo | Document in README; pin `package.json` + commit `package-lock.json` |
-| Existing `update_blog_posts.py` scraper conflicts with new blog | Decide explicitly: retire it OR retarget to ingest external posts into `src/content/blog/` |
+| Existing `update_blog_posts.mjs` scraper | **Kept** — patches legacy `docs/index.html` Resources modal; Astro blog at `/blog/` is a separate in-repo editorial surface |
 | URL slug collisions (e.g., two clouds with same slug) | `slug.ts` returns slug + checks uniqueness at build time; fail build if collision |
 | Cursor rules (`docs-frontend.mdc`, etc.) become stale immediately | Update them in the same PR that lands Phase 1 |
 | Submission evaluation pipeline references `docs/clouds.json` paths | Audit `check_duplicates.py`, `evaluate_submission.py`, tests; bump all path constants together |
@@ -576,7 +599,7 @@ Notable changes:
 | 2 | Commit `clouds.json` / `llms*.txt` back to git? | **No — artifact-only.** They're regenerated by every CI build. Git no longer carries derived files. |
 | 3 | Profile slug source | **Derive from `name`** via `slugify` (collisions fail the build) |
 | 4 | Profile authoring workflow | **Phase 2 (original): PRs only, no auto-stub.** **Phase 2a (updated):** bot auto-generates `status: draft` MDX on submission + batch backfill; maintainer flips to `reviewed` for production. See [2026-05-22-phase-2a-auto-profile-generation-plan.md](./2026-05-22-phase-2a-auto-profile-generation-plan.md). |
-| 5 | `update_blog_posts.py` future | **Retire** after Phase 3. For Phase 1: cron paused, workflow kept as manual trigger. |
+| 5 | `update_blog_posts.mjs` future | **Keep** — continues patching Datum blog cards into legacy `docs/index.html` Resources modal; independent of Astro `/blog/` |
 | 6 | Styling | **Tailwind CSS v4** (user-requested override of the original "Astro scoped CSS" default) |
 | 7 | PR previews | **GitHub Pages only.** No Cloudflare / Netlify preview deploys (avoids extra services). |
 | 8 | TypeScript? | **Yes everywhere.** strict tsconfig; zod schemas for content collections in Phase 2/3. |
@@ -605,6 +628,7 @@ Phase 3 (blog)  ──►  Phase 4 (categories + compare)  ──►  Phase 5 (S
 - Current architecture deep-dive: [`analysis/PROJECT_ANALYSIS.md`](./PROJECT_ANALYSIS.md)
 - Phase 2 detail pages plan: [`analysis/2026-05-20-phase-2-detail-pages-plan.md`](./2026-05-20-phase-2-detail-pages-plan.md)
 - Phase 2a auto-generation plan: [`analysis/2026-05-22-phase-2a-auto-profile-generation-plan.md`](./2026-05-22-phase-2a-auto-profile-generation-plan.md)
+- Phase 3 blog plan: [`analysis/2026-06-15-phase-3-blog-plan.md`](./2026-06-15-phase-3-blog-plan.md)
 - End-to-end submission → MDX flow: [`analysis/2026-05-22-submission-to-mdx-flow.md`](./2026-05-22-submission-to-mdx-flow.md)
 - Submission validation spec: `docs/superpowers/specs/2026-03-30-submission-validation-improvement-design.md`
 - Issue tracker: [datum-cloud/awesome-alt-clouds#164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164)

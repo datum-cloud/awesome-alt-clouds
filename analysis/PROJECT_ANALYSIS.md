@@ -29,17 +29,26 @@ src/                         # Astro site (Phase 2 migration — replaces docs/i
   pages/
     index.astro              # Homepage card grid (reads clouds.json + featured detail pages)
     [slug].astro             # Per-cloud detail page; getStaticPaths() filters by publishability
+    blog/index.astro         # Blog index (Phase 3)
+    blog/[slug].astro        # Blog post pages
+    rss.xml.ts               # RSS feed of non-draft posts
     submit/, watchlist/      # Submission form + watchlist views
     robots.txt.ts            # Dynamic robots (noindex on preview)
   content/
     clouds/<slug>.mdx        # Hand-authored + auto-generated detail pages (frontmatter: status, regions, …)
-  content.config.ts          # Zod schema for the clouds collection (status: "draft" | "reviewed")
+    blog/<slug>.md           # Editorial posts (frontmatter: title, publishDate, draft, tags, …)
+  content.config.ts          # Zod schema for clouds + blog collections
   components/
     DraftBanner.astro        # Notice shown atop draft profiles on preview deploys
+    BlogNavLink.astro        # Homepage sidebar link to /blog/
+    DirectorySidebar.astro   # Site nav: Directory / Watchlist / Blog
     DetailSidebar.astro, DetailTopBar.astro, CloudSearchDropdown.astro, …
-  layouts/CloudDetail.astro  # Detail-page chrome; mounts DraftBanner when status === "draft"
+  layouts/
+    CloudDetail.astro        # Detail-page chrome; mounts DraftBanner when status === "draft"
+    BlogPost.astro           # Blog post chrome (Phase 3)
   lib/
     profile.ts               # MergedCloud type + publish gate (getPublishableProfiles, getFeaturedSlugs)
+    blog.ts                  # Blog publish gate (getPublishablePosts, sortedByDate, postUrl)
     site.ts                  # sitePreview constant (reads __SITE_PREVIEW__)
     clouds.ts                # slugify() — TS source of truth, mirrored in scripts/lib/slugify.py
 docs/                        # Legacy SPA + machine-readable exports (still deployed during migration)
@@ -56,7 +65,7 @@ scripts/
   generate_llms.py           # clouds.json → llms.txt / llms-full.txt
   generate_cloud_profile.py  # Phase 2a: page fetch → Claude Sonnet → draft MDX detail page
   backfill_profiles.py       # Phase 2a: batch driver — generates MDX for clouds without one
-  update_blog_posts.py       # Scrapes Datum blog into docs/index.html
+  update_blog_posts.mjs      # Datum Strapi → docs/index.html Resources modal (legacy; kept alongside Astro blog)
   watchlist_add.py, generate_watchlist_json.py
   lib/
     fetcher.py               # Shared Jina-markdown → Jina-HTML → requests cascade (extracted Phase 2a)
@@ -201,11 +210,12 @@ When a PR closes (merged or not):
 
 ### Current — Astro site (`src/`, Phase 2 migration on `feat/astro-migration`)
 
-The primary frontend is an Astro static site that builds the directory grid (`src/pages/index.astro`) plus a static detail page per cloud (`src/pages/[slug].astro`). Detail pages are MDX files in `src/content/clouds/` rendered through `src/layouts/CloudDetail.astro`.
+The primary frontend is an Astro static site that builds the directory grid (`src/pages/index.astro`), per-cloud detail pages (`src/pages/[slug].astro`), and an in-repo editorial blog (`src/pages/blog/` + `/rss.xml`). Detail pages are MDX files in `src/content/clouds/`; blog posts are Markdown in `src/content/blog/`.
 
 Key pieces:
 
-- **Sidebar + top bar** components (`DetailSidebar.astro`, `DetailTopBar.astro`) wrap each detail page; `CloudSearchDropdown.astro` powers the in-page search.
+- **Sidebar + top bar** components (`DetailSidebar.astro`, `DetailTopBar.astro`, `DirectorySidebar.astro`) wrap detail, watchlist, and blog pages; `CloudSearchDropdown.astro` powers the in-page search.
+- **`BlogPost.astro`** renders blog articles with the same chrome as cloud detail pages; `BlogNavLink.astro` links to `/blog/` from the homepage sidebar.
 - **`DraftBanner.astro`** renders only when the rendered profile carries `status: "draft"`, signalling that the page is auto-generated and pending human review.
 - **`site.config.mjs`** controls a single deploy switch (`preview: true | false`) that flips the base path, noindex defaults, draft-profile visibility, and crawler blocking in one place.
 - **Build-time flag** `__SITE_PREVIEW__` is defined by `astro.config.mjs` and re-exported as `sitePreview` from `src/lib/site.ts`. This guarantees every module sees the same value across the build — never re-import `site.config.mjs` directly from runtime code.
@@ -312,10 +322,48 @@ Four overlapping safeguards:
 
 - [`analysis/2026-05-20-phase-2-detail-pages-plan.md`](./2026-05-20-phase-2-detail-pages-plan.md) — overall Phase 2 architecture.
 - [`analysis/2026-05-22-phase-2a-auto-profile-generation-plan.md`](./2026-05-22-phase-2a-auto-profile-generation-plan.md) — auto-generation pipeline, prompt design, publish gate.
+- [`analysis/2026-06-15-phase-3-blog-plan.md`](./2026-06-15-phase-3-blog-plan.md) — in-repo blog, RSS, publish gate, UI chrome, legacy scraper coexistence.
 
 ---
 
-## 7. TL;DR
+## 7. Phase 3 — Editorial Blog + RSS
+
+Phase 3 adds short-form editorial content at `/blog/` without changing README as the listings source of truth. Posts live in `src/content/blog/` as Markdown with zod-validated frontmatter.
+
+### Content collection schema (`src/content.config.ts`)
+
+```ts
+title, description, publishDate, updatedDate?, author,
+tags (default []), draft (default false), heroImage?
+```
+
+### Publish gate (`src/lib/blog.ts`)
+
+Mirrors the profile `status: draft` pattern:
+
+- `draft: false` → built in all deploys; included in `/rss.xml`
+- `draft: true` → built only when `site.config.mjs` has `preview: true`
+
+`getPublishablePosts()` drives `getStaticPaths()` on blog post pages and the RSS endpoint.
+
+### Routes
+
+| Route | Source |
+|---|---|
+| `/blog/` | `src/pages/blog/index.astro` |
+| `/blog/<slug>/` | `src/pages/blog/[slug].astro` |
+| `/rss.xml` | `src/pages/rss.xml.ts` (`@astrojs/rss`) |
+
+### Two blog systems
+
+1. **Astro in-repo blog** — PR-authored Markdown → `/blog/` (Phase 3)
+2. **Legacy Datum scraper** — `update_blog_posts.mjs` patches `docs/index.html` Resources modal; workflow kept running independently
+
+See [`analysis/2026-06-15-phase-3-blog-plan.md`](./2026-06-15-phase-3-blog-plan.md) for full architecture, UI layout, and verification steps.
+
+---
+
+## 8. TL;DR
 
 > A self-curating awesome list. Anyone submits a URL via a web form → GitHub issue → a Python+Claude bot scrapes the site, checks 3 objective inclusion criteria, generates name/description/category with AI, opens a PR. **A second Claude call drafts a full MDX detail page in the same PR, staged as `status: draft` so it only renders on preview deploys until a maintainer reviews it.** Maintainers can `/approve` to override the score gate or flip `status: reviewed` for production. On merge, the website's JSON, LLM-readable files, and Astro detail pages regenerate automatically. The README is the source of truth; everything else is derived.
 

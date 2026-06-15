@@ -274,14 +274,14 @@ python scripts/generate_watchlist_json.py
 
 | Script | Purpose | Triggered by |
 |--------|---------|--------------|
-| `update_blog_posts.py` | Scrapes Datum blog author page; updates Resources modal in `docs/index.html` | `update-blog-posts.yml` (daily cron) |
+| `update_blog_posts.mjs` | Fetches Datum blog posts from Strapi; updates Resources modal in `docs/index.html` | `update-blog-posts.yml` (daily cron + `workflow_dispatch`) |
 
 **Run locally:**
 
 ```bash
 cd "$(git rev-parse --show-toplevel)"
 
-python scripts/update_blog_posts.py
+node scripts/update_blog_posts.mjs
 ```
 
 ---
@@ -310,7 +310,7 @@ python3 -m pip install --user --break-system-packages -r requirements-dev.txt
 | Package | Used by |
 |---------|---------|
 | `requests` | Most scripts |
-| `beautifulsoup4` | `fetcher.py`, `evaluate_submission.py`, `update_blog_posts.py` |
+| `beautifulsoup4` | `fetcher.py`, `evaluate_submission.py` |
 | `anthropic` | `evaluate_submission.py`, `generate_cloud_profile.py` |
 | `pytest` | `tests/` |
 | `ruff` | Lint/format for `scripts/` and `tests/` (config in `pyproject.toml`) |
