@@ -18,7 +18,7 @@ socials:
 
 ## What makes KraftCloud different
 
-KraftCloud operates on a fundamentally different architecture than traditional cloud providers. Rather than running full Linux distributions, the platform builds on **unikernels**—minimal, single-purpose operating systems compiled to include only the libraries and kernel features a specific application needs. This approach delivers three concrete advantages: cold starts in <10ms (versus seconds on traditional VMs), the ability to run 100K+ strongly-isolated instances on a single server, and infrastructure cost reductions of 10–100×.
+KraftCloud operates on a fundamentally different architecture than traditional cloud providers. Rather than running full Linux distributions, the platform builds on **unikernels**—minimal, single-purpose operating systems compiled to include only the libraries and kernel features a specific application needs. This approach delivers three concrete advantages: cold starts in under 10ms (versus seconds on traditional VMs), the ability to run 100K+ strongly-isolated instances on a single server, and infrastructure cost reductions of 10–100×.
 
 The platform is built on **Unikraft**, an open-source unikernel framework, and integrates seamlessly into existing infrastructure. Users can deploy on bare metal, BYOC (bring-your-own-cloud), dedicated hosts, or as a Kubernetes node—transparently running pods as micro-VMs that scale to zero in milliseconds. Unlike WebAssembly sandboxes, Unikraft instances offer full VM-grade isolation while maintaining the speed and density advantages. The engineering team includes infrastructure veterans from Google, AWS, Equinix Metal, and Vercel, backed by Vercel Ventures.
 
