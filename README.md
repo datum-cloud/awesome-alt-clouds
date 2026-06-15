@@ -507,6 +507,7 @@ Usage metering, subscription management, billing infrastructure, and financial o
 * 🟡 [Autumn](https://useautumn.com/) - Provides a billing infrastructure layer between applications and Stripe, handling subscriptions, usage tracking, limits, and complex pricing models for AI products.
 * 🟢 [Bill](https://www.bill.com/) - A comprehensive financial operations platform for bills, invoices, expenses, budgets, and more.
 * 🟢 [Dodo Payments](https://dodopayments.com/) - Merchant of Record platform for global payments with automated tax compliance in 150+ countries.
+* 🟡 [Hyperline](https://www.hyperline.co/) - Provides a unified revenue management platform for quote-to-cash processes, featuring CPQ, Stripe Billing integration, AI-driven billing, and global invoicing.
 * 🟡 [Lago](https://www.getlago.com/) - An open-source metering and usage-based billing platform designed for transparency and developer experience.
 * 🟢 [Lemon Squeezy](https://www.lemonsqueezy.com/) - The all-in-one platform for SaaS that provides payments, tax & subscriptions.
 * 🟢 [m3ter](https://www.m3ter.com/) - Usage data infrastructure for pricing and billing.
