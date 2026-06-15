@@ -1,14 +1,10 @@
 name: Update Blog Posts
 
-# NOTE: The scheduled cron is paused during the Astro migration (Phase 1).
-# This workflow patches docs/index.html which is being replaced by the Astro
-# site at src/pages/. Once Phase 3 (Editorial / Blog) lands, this workflow
-# will be retired or retargeted to write to src/content/blog/.
-# See: analysis/2026-05-19-astro-migration-rfc.md
 on:
-  # schedule:
-  #   - cron: '0 6 * * *'
-  workflow_dispatch: # Allow manual trigger only
+  schedule:
+    # Run daily at 6 AM UTC
+    - cron: "0 6 * * *"
+  workflow_dispatch: # Allow manual trigger
 
 jobs:
   update-posts:
@@ -30,17 +26,19 @@ jobs:
         with:
           token: ${{ steps.app-token.outputs.token }}
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: "3.11"
+          node-version: "20"
 
       - name: Install dependencies
-        run: |
-          pip install requests beautifulsoup4
+        run: npm install @datum-cloud/strapi-revalidate
 
       - name: Fetch and update blog posts
-        run: python scripts/update_blog_posts.py
+        env:
+          STRAPI_URL: ${{ secrets.STRAPI_URL }}
+          STRAPI_TOKEN: ${{ secrets.STRAPI_TOKEN }}
+        run: node scripts/update_blog_posts.mjs
 
       - name: Check for changes
         id: git-check
