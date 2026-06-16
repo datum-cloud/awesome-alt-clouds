@@ -1,7 +1,9 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { siteConfig } from "./site.config.mjs";
+import { sitemapChunks } from "./src/lib/sitemap-chunks.ts";
 
 const preview = siteConfig.preview;
 const blockSearchBots = siteConfig.blockSearchBots ?? preview;
@@ -11,7 +13,7 @@ export default defineConfig({
   site: preview ? siteConfig.previewSite : siteConfig.productionSite,
   base: preview ? siteConfig.previewBase : siteConfig.productionBase,
   trailingSlash: "ignore",
-  integrations: [mdx()],
+  integrations: [mdx(), sitemap({ chunks: sitemapChunks })],
   build: {
     format: "directory",
   },

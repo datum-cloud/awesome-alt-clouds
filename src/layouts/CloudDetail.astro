@@ -17,12 +17,54 @@ const { cloud, featuredSlugs } = Astro.props;
 const pageTitle = `${cloud.name} — ${defaultTitle}`;
 const pageDescription = cloud.tagline || cloud.description || defaultDescription;
 const canonical = absoluteUrl(cloud.slug);
+
+const sameAs = [
+  cloud.socials?.website,
+  cloud.socials?.x,
+  cloud.socials?.linkedin,
+  cloud.socials?.github,
+].filter((url): url is string => Boolean(url));
+
+const profileJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${canonical}#organization`,
+      name: cloud.name,
+      url: cloud.url,
+      description: pageDescription,
+      ...(cloud.logo ? { logo: cloud.logo } : {}),
+      ...(sameAs.length > 0 ? { sameAs } : {}),
+      ...(cloud.headquarters
+        ? { address: { "@type": "PostalAddress", addressLocality: cloud.headquarters } }
+        : {}),
+      ...(cloud.foundedYear ? { foundingDate: String(cloud.foundedYear) } : {}),
+      mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+    },
+    {
+      "@type": "WebPage",
+      "@id": canonical,
+      url: canonical,
+      name: pageTitle,
+      description: pageDescription,
+      mainEntity: { "@id": `${canonical}#organization` },
+    },
+  ],
+};
 ---
 
 <Base
   title={pageTitle}
   description={pageDescription}
   canonical={canonical}>
+  <Fragment slot="head">
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(profileJsonLd)}
+    />
+  </Fragment>
   <div class="flex flex-col md:flex-row min-h-screen">
     <DetailSidebar cloud={cloud} />
 

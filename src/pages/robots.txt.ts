@@ -1,17 +1,13 @@
-import type { APIRoute } from "astro";
 import { blockSearchBots } from "../lib/site";
+import { absoluteUrl } from "../lib/site-urls";
 
-export const GET: APIRoute = () => {
-  const body = blockSearchBots
-    ? [
-        "# Preview deploy — block all crawlers (site.config.mjs)",
-        "User-agent: *",
-        "Disallow: /",
-        "",
-      ].join("\n")
-    : ["User-agent: *", "Allow: /", ""].join("\n");
+/** Build-time endpoint — emits static dist/robots.txt on GitHub Pages. */
+export async function GET() {
+  const lines = blockSearchBots
+    ? ["User-agent: *", "Disallow: /"]
+    : ["User-agent: *", "Allow: /", "", `Sitemap: ${absoluteUrl("sitemap-index.xml")}`];
 
-  return new Response(body, {
-    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  return new Response(lines.join("\n") + "\n", {
+    headers: { "Content-Type": "text/plain" },
   });
-};
+}
