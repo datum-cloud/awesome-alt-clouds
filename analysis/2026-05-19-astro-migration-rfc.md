@@ -1,6 +1,6 @@
 # Astro Migration RFC — Evolving alt-cloud.org into a Community Destination
 
-> Status: **Phase 1, 2, 2a & 3 complete — Phase 4 next**
+> Status: **Phase 1–3 & 5 complete — Phase 4 next**
 > Author: planning session, 2026-05-19
 > Branch: `feat/astro-migration`
 > Tracks: [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164)
@@ -15,7 +15,7 @@
 | 2a — Auto-generated profile MDX | ✅ done (2026-05-22) | Bot generates `status: draft` MDX on submission + batch backfill workflow. Plan: [2026-05-22-phase-2a-auto-profile-generation-plan.md](./2026-05-22-phase-2a-auto-profile-generation-plan.md). Flow: [2026-05-22-submission-to-mdx-flow.md](./2026-05-22-submission-to-mdx-flow.md). |
 | 3 — Editorial / blog + RSS | ✅ done (2026-06-15) | Plan: [2026-06-15-phase-3-blog-plan.md](./2026-06-15-phase-3-blog-plan.md). `/blog`, `/blog/<slug>`, `/rss.xml`; 2 seed posts. Legacy `update_blog_posts.mjs` + `update-blog-posts.yml` **kept**. |
 | 4 — Comparison & discovery aids | 📋 **next** | Category landings, side-by-side compare. Issue #164 Idea 3. See [Phase 4 — planned](#phase-4--planned-comparison--discovery-aids) below. |
-| 5 — SEO polish | ⏳ pending | |
+| 5 — SEO polish | ✅ done (2026-06-16) | Plan: [2026-06-16-phase-5-seo-plan.md](./2026-06-16-phase-5-seo-plan.md). `@astrojs/sitemap`, build-time `robots.txt`, per-profile `Organization` JSON-LD. |
 | 6 — Production cutover | ⏳ pending | Pages source needs flipping from "branch /docs" → "GitHub Actions" |
 
 ### Phase 1 — what landed
@@ -277,6 +277,28 @@ Phase 2 MDX frontmatter already includes comparison-friendly optional fields: `r
 
 ---
 
+### Phase 5 — what landed
+
+Maps to [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164) **Idea 5 — Metadata footprint**. Full plan: [2026-06-16-phase-5-seo-plan.md](./2026-06-16-phase-5-seo-plan.md).
+
+- **`@astrojs/sitemap`** — integrated in `astro.config.mjs`; build emits `sitemap-index.xml` + `sitemap-0.xml` covering all static routes (~400+ profile pages, blog, submit, watchlist, homepage).
+- **Build-time `robots.txt`** — `src/pages/robots.txt.ts` endpoint (same pattern as `rss.xml.ts`). Preview deploys (`blockSearchBots: true`) → `Disallow: /`. Production cutover flips automatically when `preview: false` — no manual file edit.
+- **Per-profile JSON-LD** — `CloudDetail.astro` injects `@graph` with `Organization` (cloud provider) + `WebPage` (profile page) via `<Fragment slot="head">`. Fields from `MergedCloud`: name, url, description, logo, sameAs, headquarters, foundedYear.
+- **Already in place from earlier phases**: homepage JSON-LD graph in `Base.astro`; `BlogPosting` JSON-LD in `BlogPost.astro`; canonical/OG/Twitter meta on all pages; RSS auto-discovery.
+
+**Deferred from Phase 5 MVP**
+
+- Per-page OG images (favicon-based or generated)
+- `BreadcrumbList` JSON-LD on profile/blog/category pages
+
+**Phase 5 verification**
+
+- `npm run build` → 408 pages; sitemap generated
+- `dist/robots.txt` reflects `blockSearchBots` (preview: `Disallow: /`)
+- Profile HTML includes valid `Organization` + `WebPage` JSON-LD (e.g. `/neon/`)
+
+---
+
 ## 1. Issue #164 — What's actually being asked
 
 [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164) reframes the site from "a surface for the list" into a community destination. Five proposed ideas, phased:
@@ -287,7 +309,7 @@ Phase 2 MDX frontmatter already includes comparison-friendly optional fields: `r
 | 2 | Editorial / blog | ✅ MVP | Phase 3 | ✅ **Delivered** — `/blog/`, `/rss.xml`; plan: [2026-06-15-phase-3-blog-plan.md](./2026-06-15-phase-3-blog-plan.md) |
 | 3 | Comparison & discovery aids | 🟡 Prepare structure | Phase 4 | 📋 Planned — homepage filter/search exists; category landings + compare next |
 | 4 | Community & events, newsletter | ❌ Later | — | Not scoped |
-| 5 | Metadata footprint (OG, structured data, sitemap) | 🟢 Free win in Astro | Phase 5 | Partial — Base.astro JSON-LD live; per-page OG + sitemap pending |
+| 5 | Metadata footprint (OG, structured data, sitemap) | 🟢 Free win in Astro | Phase 5 | ✅ **Delivered** — sitemap, build-time robots.txt, profile JSON-LD; plan: [2026-06-16-phase-5-seo-plan.md](./2026-06-16-phase-5-seo-plan.md). Per-page OG images still TBD. |
 
 **Hard constraint from the issue itself**: *"The list in GitHub remains the canonical source of truth."* The migration preserves `README.md` as the single editable source for directory listings — profile MDX and blog posts only *enrich*, never replace.
 
@@ -297,19 +319,20 @@ Phase 2 MDX frontmatter already includes comparison-friendly optional fields: `r
 |---|---|
 | Phase 1 scope agreed in writing | ✅ This RFC |
 | List in GitHub remains canonical | ✅ README → clouds.json; MDX/blog are additive |
-| At least one of: deeper profiles, blog, or discovery aid live | ✅ **Deeper profiles live** on `feat/astro-migration` (blog + compare next) |
+| At least one of: deeper profiles, blog, or discovery aid live | ✅ **Profiles + blog live** on `feat/astro-migration` (compare next) |
 
 ## 2. Where the project is today (grounded)
 
-*Updated 2026-05-22 after Phase 2 + 2a.*
+*Updated 2026-06-16 after Phase 5.*
 
 - **`README.md`** (~430 entries, 23 categories) remains the canonical source for listings.
 - **Build pipeline:** `deploy-pages.yml` regenerates `public/clouds.json` + `llms*.txt` at CI time, then `npm run build` → Astro static site in `dist/`.
-- **Frontend:** Astro 5 + Tailwind v4 on branch `feat/astro-migration` (preview deploy on GitHub Pages).
+- **Frontend:** Astro 6 + Tailwind v4 on branch `feat/astro-migration` (preview deploy on GitHub Pages).
   - `/` — directory grid with search, category filter, sort; cards link to detail pages when publishable MDX exists.
-  - `/<slug>` — cloud detail pages from `src/content/clouds/*.mdx` merged with `clouds.json`.
-  - `/submit/`, `/watchlist/`, `/blog/`, `/rss.xml` — Astro routes (blog: Phase 3).
-- **Profile coverage:** 5 hand-reviewed seeds + bot pipeline for auto-generated `status: draft` MDX (submission + batch backfill).
+  - `/<slug>` — cloud detail pages from `src/content/clouds/*.mdx` merged with `clouds.json`; per-page `Organization` JSON-LD.
+  - `/submit/`, `/watchlist/`, `/blog/`, `/rss.xml` — Astro routes.
+  - `/sitemap-index.xml`, `/robots.txt` — build-time SEO artifacts (Phase 5).
+- **Profile coverage:** 168+ reviewed MDX profiles (backfill) + bot pipeline for auto-generated `status: draft` MDX.
 - **Legacy `docs/`:** still present for reference; production cutover (Phase 6) pending.
 - **Not yet built:** `/categories/<slug>`, `/compare` (Phase 4).
 
@@ -380,7 +403,8 @@ awesome-alt-clouds/
 │   │   ├── blog/
 │   │   │   ├── index.astro         # ← Idea 2: blog index (Phase 3)
 │   │   │   └── [slug].astro        # blog post
-│   │   ├── rss.xml.js              # @astrojs/rss
+│   │   ├── rss.xml.ts              # @astrojs/rss (Phase 3)
+│   │   ├── robots.txt.ts           # build-time robots.txt (Phase 5)
 │   │   ├── submit/index.astro      # ported from docs/submit/index.html (URL preserved)
 │   │   └── watchlist/              # watchlist page (Phase 1 extension)
 │   ├── content/
@@ -407,7 +431,6 @@ awesome-alt-clouds/
 │   ├── clouds.json                 # ← /clouds.json URL preserved
 │   ├── llms.txt
 │   ├── llms-full.txt
-│   ├── robots.txt
 │   └── CNAME                       # NEW: must add to preserve alt-cloud.org domain
 ├── scripts/                        # Python pipeline
 │   ├── parse_readme_to_json.py     # output path → public/clouds.json
@@ -555,9 +578,9 @@ Notable changes:
 | **1** | Astro scaffold with **parity** to current site (same UX, no new features). Cutover-ready. | 2–3 days |
 | **2** | **Idea 1**: profile pages at `/<slug>`, 5 seeds hand-authored + publish gate | ✅ done |
 | **2a** | **Auto-generated profiles**: bot writes `status: draft` MDX on submission + batch backfill workflow | ✅ done |
-| **3** | **Idea 2**: blog collection, `/blog`, `/rss.xml`, retire scraper, 1–2 seed posts | 1–2 days |
+| **3** | **Idea 2**: blog collection, `/blog`, `/rss.xml`, retire scraper, 1–2 seed posts | ✅ done |
 | **4** | **Idea 3**: `/categories/<slug>` landings + `/compare` (2–3 clouds, query deep links) | 1–2 days |
-| **5** | SEO polish: per-page OG, dynamic JSON-LD, sitemap | ½ day |
+| **5** | SEO polish: per-page OG, dynamic JSON-LD, sitemap | ✅ done |
 | **6** | Production cutover: verify CNAME, switch Pages source, monitor | ½ day |
 
 **Total: ~7–10 working days** for a single engineer.
@@ -612,8 +635,10 @@ Notable changes:
 ## 12. Recommended execution order (post Phase 2a)
 
 ```
-Phase 3 (blog)  ──►  Phase 4 (categories + compare)  ──►  Phase 5 (SEO)  ──►  Phase 6 (cutover)
+Phase 3 (blog)  ──►  Phase 5 (SEO) ✅  ──►  Phase 4 (categories + compare)  ──►  Phase 6 (cutover)
 ```
+
+**Phase 5 landed 2026-06-16** ahead of Phase 4 because it has no UX surface — only sitemap, robots.txt, and profile JSON-LD. Phase 4 (category landings + compare) is next.
 
 **Why blog before compare?**
 
@@ -629,6 +654,7 @@ Phase 3 (blog)  ──►  Phase 4 (categories + compare)  ──►  Phase 5 (S
 - Phase 2 detail pages plan: [`analysis/2026-05-20-phase-2-detail-pages-plan.md`](./2026-05-20-phase-2-detail-pages-plan.md)
 - Phase 2a auto-generation plan: [`analysis/2026-05-22-phase-2a-auto-profile-generation-plan.md`](./2026-05-22-phase-2a-auto-profile-generation-plan.md)
 - Phase 3 blog plan: [`analysis/2026-06-15-phase-3-blog-plan.md`](./2026-06-15-phase-3-blog-plan.md)
+- Phase 5 SEO plan: [`analysis/2026-06-16-phase-5-seo-plan.md`](./2026-06-16-phase-5-seo-plan.md)
 - End-to-end submission → MDX flow: [`analysis/2026-05-22-submission-to-mdx-flow.md`](./2026-05-22-submission-to-mdx-flow.md)
 - Submission validation spec: `docs/superpowers/specs/2026-03-30-submission-validation-improvement-design.md`
 - Issue tracker: [datum-cloud/awesome-alt-clouds#164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164)

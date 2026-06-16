@@ -24,7 +24,7 @@ Badges: 🟢 = 3/3, 🟡 = 2/3.
 README.md                    # Source of truth — the actual awesome list (~430 entries, 23 categories)
 CONTRIBUTING.md              # Manual contribution guide
 site.config.mjs              # Deploy profile (preview ↔ production switch; controls draft MDX visibility)
-astro.config.mjs             # Astro/Vite config; exposes __SITE_PREVIEW__ build-time global
+astro.config.mjs             # Astro/Vite config; @astrojs/sitemap; exposes __SITE_PREVIEW__ build-time global
 src/                         # Astro site (Phase 2 migration — replaces docs/index.html as primary frontend)
   pages/
     index.astro              # Homepage card grid (reads clouds.json + featured detail pages)
@@ -32,8 +32,8 @@ src/                         # Astro site (Phase 2 migration — replaces docs/i
     blog/index.astro         # Blog index (Phase 3)
     blog/[slug].astro        # Blog post pages
     rss.xml.ts               # RSS feed of non-draft posts
+    robots.txt.ts            # Build-time robots.txt (Disallow on preview; Sitemap on production)
     submit/, watchlist/      # Submission form + watchlist views
-    robots.txt.ts            # Dynamic robots (noindex on preview)
   content/
     clouds/<slug>.mdx        # Hand-authored + auto-generated detail pages (frontmatter: status, regions, …)
     blog/<slug>.md           # Editorial posts (frontmatter: title, publishDate, draft, tags, …)
@@ -44,7 +44,7 @@ src/                         # Astro site (Phase 2 migration — replaces docs/i
     DirectorySidebar.astro   # Site nav: Directory / Watchlist / Blog
     DetailSidebar.astro, DetailTopBar.astro, CloudSearchDropdown.astro, …
   layouts/
-    CloudDetail.astro        # Detail-page chrome; mounts DraftBanner when status === "draft"
+    CloudDetail.astro        # Detail-page chrome; Organization JSON-LD; DraftBanner when status === "draft"
     BlogPost.astro           # Blog post chrome (Phase 3)
   lib/
     profile.ts               # MergedCloud type + publish gate (getPublishableProfiles, getFeaturedSlugs)
@@ -82,6 +82,7 @@ scripts/
 tests/                       # pytest suites for check_duplicates + evaluate_submission
 data/candidates/             # Output of (apparent) auto-discovery scans
 analysis/                    # Phase plans + this analysis doc
+  2026-06-16-phase-5-seo-plan.md  # Sitemap, robots.txt, profile JSON-LD
 ```
 
 ---
@@ -210,14 +211,14 @@ When a PR closes (merged or not):
 
 ### Current — Astro site (`src/`, Phase 2 migration on `feat/astro-migration`)
 
-The primary frontend is an Astro static site that builds the directory grid (`src/pages/index.astro`), per-cloud detail pages (`src/pages/[slug].astro`), and an in-repo editorial blog (`src/pages/blog/` + `/rss.xml`). Detail pages are MDX files in `src/content/clouds/`; blog posts are Markdown in `src/content/blog/`.
+The primary frontend is an Astro static site that builds the directory grid (`src/pages/index.astro`), per-cloud detail pages (`src/pages/[slug].astro`), and an in-repo editorial blog (`src/pages/blog/` + `/rss.xml`). Detail pages are MDX files in `src/content/clouds/`; blog posts are Markdown in `src/content/blog/`. Build also emits `/sitemap-index.xml` and `/robots.txt` (Phase 5).
 
 Key pieces:
 
 - **Sidebar + top bar** components (`DetailSidebar.astro`, `DetailTopBar.astro`, `DirectorySidebar.astro`) wrap detail, watchlist, and blog pages; `CloudSearchDropdown.astro` powers the in-page search.
 - **`BlogPost.astro`** renders blog articles with the same chrome as cloud detail pages; `BlogNavLink.astro` links to `/blog/` from the homepage sidebar.
 - **`DraftBanner.astro`** renders only when the rendered profile carries `status: "draft"`, signalling that the page is auto-generated and pending human review.
-- **`site.config.mjs`** controls a single deploy switch (`preview: true | false`) that flips the base path, noindex defaults, draft-profile visibility, and crawler blocking in one place.
+- **`site.config.mjs`** controls a single deploy switch (`preview: true | false`) that flips the base path, noindex defaults, draft-profile visibility, crawler blocking (`blockSearchBots`), and `robots.txt` content in one place.
 - **Build-time flag** `__SITE_PREVIEW__` is defined by `astro.config.mjs` and re-exported as `sitePreview` from `src/lib/site.ts`. This guarantees every module sees the same value across the build — never re-import `site.config.mjs` directly from runtime code.
 
 ### Legacy — vanilla SPA (`docs/index.html`, still deployed)
@@ -363,7 +364,35 @@ See [`analysis/2026-06-15-phase-3-blog-plan.md`](./2026-06-15-phase-3-blog-plan.
 
 ---
 
-## 8. TL;DR
+## 8. Phase 5 — SEO Polish
+
+Phase 5 adds build-time SEO artifacts and per-profile structured data without new UI routes.
+
+### Sitemap (`@astrojs/sitemap`)
+
+Integrated in `astro.config.mjs`. On `astro build`, emits `sitemap-index.xml` + `sitemap-0.xml` listing all static HTML routes (homepage, profiles, blog, submit, watchlist). Draft profiles and draft blog posts are excluded automatically because they are not built in production (`preview: false`).
+
+### Build-time `robots.txt`
+
+`src/pages/robots.txt.ts` is an Astro endpoint that runs at build time (same pattern as `rss.xml.ts`) — not runtime dynamic. On GitHub Pages the output is a static file in `dist/`.
+
+- Preview (`blockSearchBots: true`): `Disallow: /`
+- Production: `Allow: /` + `Sitemap: <absoluteUrl>/sitemap-index.xml`
+
+### Profile JSON-LD
+
+`CloudDetail.astro` injects `@graph` with:
+
+- `Organization` — the cloud provider (name, url, description, logo, sameAs, headquarters, foundingDate)
+- `WebPage` — the profile page itself
+
+Homepage JSON-LD (`WebSite`, `Organization`, `Dataset`, `CollectionPage`) remains in `Base.astro`. Blog posts carry `BlogPosting` JSON-LD from Phase 3.
+
+See [`analysis/2026-06-16-phase-5-seo-plan.md`](./2026-06-16-phase-5-seo-plan.md) for decisions, verification, and deferred items (per-page OG images, BreadcrumbList).
+
+---
+
+## 9. TL;DR
 
 > A self-curating awesome list. Anyone submits a URL via a web form → GitHub issue → a Python+Claude bot scrapes the site, checks 3 objective inclusion criteria, generates name/description/category with AI, opens a PR. **A second Claude call drafts a full MDX detail page in the same PR, staged as `status: draft` so it only renders on preview deploys until a maintainer reviews it.** Maintainers can `/approve` to override the score gate or flip `status: reviewed` for production. On merge, the website's JSON, LLM-readable files, and Astro detail pages regenerate automatically. The README is the source of truth; everything else is derived.
 

@@ -196,8 +196,8 @@ The MDX collection is the single switchboard. This is why we keep the "MDX prese
 
 ## Out of scope (deferred)
 
-- `JSON-LD Organization` schema per detail page → Phase 5 SEO polish
-- Per-cloud OG image generation → Phase 5
+- ~~`JSON-LD Organization` schema per detail page~~ → ✅ Phase 5 ([2026-06-16-phase-5-seo-plan.md](./2026-06-16-phase-5-seo-plan.md))
+- Per-cloud OG image generation → Phase 5+ (still TBD)
 - `/categories/<slug>` landing pages → Phase 4
 - `/compare` stub → Phase 4
 - Blog / RSS → [Phase 3 plan](./2026-06-15-phase-3-blog-plan.md) (landed 2026-06-15)

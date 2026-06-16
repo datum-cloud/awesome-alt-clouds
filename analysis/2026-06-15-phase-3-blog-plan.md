@@ -255,12 +255,13 @@ Build result (2026-06-15): **408 pages** including blog routes and RSS.
 - Homepage "Latest from the blog" strip (1–3 recent posts)
 - Tag landing pages (`/blog/tags/<tag>/`)
 - Automated external RSS/HTML ingest into `src/content/blog/` (RFC Option B)
-- Per-post OG image generation (Phase 5)
-- Sitemap coverage for blog routes (Phase 5 — `@astrojs/sitemap`)
+- Per-post OG image generation (Phase 5+ — still TBD)
+- ~~Sitemap coverage for blog routes~~ → ✅ Phase 5 (`@astrojs/sitemap`; [2026-06-16-phase-5-seo-plan.md](./2026-06-16-phase-5-seo-plan.md))
 - Retiring `update_blog_posts.mjs` (explicitly kept per 2026-06-15 decision)
 
 ## Related docs
 
 - [2026-05-19-astro-migration-rfc.md](./2026-05-19-astro-migration-rfc.md) — master migration RFC; Phase 3 row + acceptance criteria
+- [2026-06-16-phase-5-seo-plan.md](./2026-06-16-phase-5-seo-plan.md) — sitemap + robots.txt (covers blog routes)
 - [2026-05-22-phase-2a-auto-profile-generation-plan.md](./2026-05-22-phase-2a-auto-profile-generation-plan.md) — publish gate pattern this phase mirrors
 - [CONTRIBUTING.md](../CONTRIBUTING.md) — contributor-facing authoring guide
