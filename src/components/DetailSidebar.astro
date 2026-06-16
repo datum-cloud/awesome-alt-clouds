@@ -2,7 +2,6 @@
 import { asset } from "../lib/assets";
 import type { MergedCloud } from "../lib/profile";
 import ScoreBadge from "./ScoreBadge.astro";
-import SidebarFooterNav from "./SidebarFooterNav.astro";
 
 export interface Props {
   cloud: MergedCloud;
@@ -77,13 +76,22 @@ const homeHref = asset("");
       <h1 class="font-serif text-2xl font-semibold text-rich-earth leading-tight mb-1">
         {cloud.name}
       </h1>
+      {cloud.tagline && <p class="text-sm text-warm-stone leading-snug">{cloud.tagline}</p>}
+    </div>
+    <div class="flex w-full items-center justify-between gap-3">
       {
-        cloud.tagline && (
-          <p class="text-sm text-warm-stone leading-snug">{cloud.tagline}</p>
+        cloud.url ? (
+          <a
+            href={cloud.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-bright-tangerine hover:underline inline-flex items-center gap-1.5 transition-all">
+            Visit →
+          </a>
+        ) : (
+          <span />
         )
       }
-    </div>
-    <div class="flex items-center gap-2">
       <ScoreBadge
         score={cloud.score}
         size="md"
@@ -119,17 +127,13 @@ const homeHref = asset("");
           {cloud.headquarters && (
             <div class="flex justify-between items-baseline gap-2 text-xs">
               <dt class="text-warm-stone">Headquarters</dt>
-              <dd class="text-rich-earth font-medium text-right">
-                {cloud.headquarters}
-              </dd>
+              <dd class="text-rich-earth font-medium text-right">{cloud.headquarters}</dd>
             </div>
           )}
           {cloud.foundedYear && (
             <div class="flex justify-between items-baseline gap-2 text-xs">
               <dt class="text-warm-stone">Founded</dt>
-              <dd class="text-rich-earth font-medium text-right">
-                {cloud.foundedYear}
-              </dd>
+              <dd class="text-rich-earth font-medium text-right">{cloud.foundedYear}</dd>
             </div>
           )}
           {cloud.pricingModel && (
@@ -151,9 +155,7 @@ const homeHref = asset("");
           {cloud.dateAdded && (
             <div class="flex justify-between items-baseline gap-2 text-xs">
               <dt class="text-warm-stone">Listed</dt>
-              <dd class="text-rich-earth font-medium text-right">
-                {cloud.dateAdded}
-              </dd>
+              <dd class="text-rich-earth font-medium text-right">{cloud.dateAdded}</dd>
             </div>
           )}
         </dl>
@@ -250,6 +252,4 @@ const homeHref = asset("");
         </div>
       )
   }
-
-  <SidebarFooterNav showMenu={false} />
 </aside>
