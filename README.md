@@ -243,6 +243,7 @@ Logging, metrics, tracing, error tracking, uptime monitoring, and session replay
 * 🟢 [Datadog](https://www.datadoghq.com/) - A monitoring and security platform for cloud applications.
 * 🟢 [Dynatrace](https://www.dynatrace.com/) - Offers a unified observability and security platform powered by AI, providing analytics and automation for multicloud environments.
 * 🟢 [Elastic](https://www.elastic.co/) - Provides search-powered solutions for observability, security, and enterprise search.
+* 🟢 [Future AGI](https://github.com/future-agi/future-agi) - Open-source platform to simulate, evaluate, trace, guardrail, route, and optimize LLM and AI agent apps in one feedback loop, so agents don't just get monitored, they self-improve. Self-hostable. Apache-2.0.
 * 🟢 [Gigapipe](https://gigapipe.com/) - Provides unified polyglot observability platform for logs, metrics, traces and profiles with drop-in compatibility for Loki, Prometheus, Tempo, and Pyroscope.
 * 🟢 [Grafana](https://grafana.com/) - An open-source platform for monitoring and observability, enabling visualization of metrics, logs, and traces.
 * 🟢 [groundcover](https://www.groundcover.com/) - eBPF-based observability platform with BYOC architecture for logs, metrics, and traces.
