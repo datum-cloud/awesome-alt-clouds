@@ -417,6 +417,7 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 * 🟢 [Render](https://render.com/) - Unified cloud platform to build and host apps, websites, and agent workflows.
 * 🟢 [Shuttle](https://www.shuttle.dev/) - Rust-native cloud platform for building and deploying backend services.
 * 🟢 [Skyhook](https://skyhook.io/) - PaaS for deploying and managing Kubernetes clusters and workloads with GitOps support, preview environments, and AI assistance.
+* 🟢 [Static.app](https://static.app/) - Provides static website hosting with drag-and-drop deployment, built-in forms, SSL certificates, code editor, and desktop sync app for seamless file management.
 * 🟢 [Upsun](https://upsun.com/) - An application hosting platform from the team at Platform.sh.
 
 ## Developer Tooling & CI/CD
