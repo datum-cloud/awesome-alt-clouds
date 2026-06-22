@@ -33,5 +33,7 @@ Maintainers review the watchlist **quarterly** (January, April, July, October). 
 
 | Name | URL | Likely Category | Date Added | Reason Not Qualifying | Criteria Needed | Last Reviewed |
 |------|-----|-----------------|------------|-----------------------|-----------------|---------------|
-| Opencode | https://opencode.ai/ | To be determined | 2026-05-21 | Score 1/3: transparent public pricing; usage-based self-service | Transparent Public Pricing; Usage-based Self-Service | 2026-05-21 |
-| Iren | https://iren.com | GPU & AI Compute Clouds | 2026-03-18 | Score 1/3: no transparent pricing, no self-service signup | Public pricing page; self-service signup | 2026-05-21 |
+| Opencode | https://opencode.ai/ | AI Coding & App Generation | 2026-05-21 | Score 1/3: no public pricing, no usage-based billing (GitHub Copilot login available but not billed directly) | Transparent Public Pricing; Usage-based Self-Service | 2026-06-22 |
+| Iren | https://iren.com | GPU & AI Compute Clouds | 2026-03-18 | Score 1/3: no transparent pricing, no self-service signup — enterprise sales model only | Public pricing page; self-service signup | 2026-06-22 |
+| Tiiny | https://tiiny.host/ | PaaS & Application Hosting | 2026-06-22 | Score 1/3: bot missed pricing page (community confirmed https://tiiny.host/pricing exists); status page verified at status.tiiny.host; self-service signup unverified | Transparent Public Pricing; Usage-based Self-Service | 2026-06-22 |
+| Highrise | https://www.highrise.ai/ | GPU & AI Compute Clouds | 2026-06-22 | Score 1/3: GPU cloud backed by Hut 8 (Nasdaq: HUT); SLA referenced on site but no public status page; no public rate card despite pay-as-you-go claims; partial self-service CTA | Transparent Public Pricing; Usage-based Self-Service | 2026-06-22 |
