@@ -1,10 +1,12 @@
 # 🌥️ Awesome Alt Clouds [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src='altclouds-logo.png' align='right' width='100'>](https://github.com/datum-cloud/awesome-alt-clouds/)
+[<img src='altclouds-logo.png' align='right' width='100'>](https://www.alt-cloud.org/)
 
 A curated list of **Alt Clouds** — non-hyperscale cloud providers delivering specialized infrastructure and services.
 
 Alt Clouds provide value "as a service" directly on top of infrastructure. They cater to specific workloads, compliance requirements, and developer needs, offering transparency, automation, and critical services with public SLAs.
+
+Browse the live directory and use the browser extension at **[alt-cloud.org](https://www.alt-cloud.org/)**.
 
 ## Contents
 
@@ -56,6 +58,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Beam](https://www.beam.cloud) - Cloud infrastructure specifically built for high-performance applications and developer happiness.
 * 🟡 [Browser-Use](https://browser-use.com/) - Cloud service provider.
 * 🟢 [Civo](https://www.civo.com) - Provides cloud services with a focus on simplicity and developer experience.
+* 🟢 [cloudscale.ch](https://cloudscale.ch/) - Swiss IaaS provider offering VMs, GPU servers, load balancers, and object storage with per-hour pricing and full Swiss data residency.
 * 🟢 [Cognee](https://www.cognee.ai/) - Cloud service provider.
 * 🟢 [Cycle.io](https://cycle.io/) - Provides a container orchestration platform for deploying applications.
 * 🟢 [DataPacket](https://www.datapacket.com/) - Offers high-performance infrastructure for bandwidth-intensive applications.
@@ -65,7 +68,9 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [E2E Cloud](https://www.e2enetworks.com/) - Offers cloud infrastructure with GPU instances for AI and machine learning.
 * 🟢 [Empromptu](https://empromptu.ai) - Cloud service provider.
 * 🟢 [exe.dev](https://exe.dev/) - Modern VM hosting with sub-second starts and persistent disks. Built for AI coding agents with built-in HTTPS/auth and sharing.
+* 🟢 [Exoscale](https://www.exoscale.com/) - European cloud provider offering compute instances, managed Kubernetes, databases, object storage, block storage, and GPU servers with self-service signup.
 * 🟢 [Firmus](https://firmus.co/) - Cloud service provider.
+* 🟢 [Flow Swiss](https://flow.swiss/) - Swiss cloud provider offering compute, managed Kubernetes, App Engine, Mac Bare Metal hosting, and Apple Silicon CI services with ISO 27001 certification and Swiss data protection compliance.
 * 🟡 [Freestyle](https://freestyle.sh) - Infrastructure for managing and executing AI-generated code through sandboxed VMs, Git repositories, and deployment services.
 * 🟢 [Gcore](https://gcore.com/) - Delivers edge and cloud services with global infrastructure.
 * 🟡 [Hetzner](https://www.hetzner.com/) - Provides dedicated servers and cloud services in Europe.
@@ -417,7 +422,6 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 * 🟢 [Render](https://render.com/) - Unified cloud platform to build and host apps, websites, and agent workflows.
 * 🟢 [Shuttle](https://www.shuttle.dev/) - Rust-native cloud platform for building and deploying backend services.
 * 🟢 [Skyhook](https://skyhook.io/) - PaaS for deploying and managing Kubernetes clusters and workloads with GitOps support, preview environments, and AI assistance.
-* 🟢 [Static.app](https://static.app/) - Provides static website hosting with drag-and-drop deployment, built-in forms, SSL certificates, code editor, and desktop sync app for seamless file management.
 * 🟢 [Upsun](https://upsun.com/) - An application hosting platform from the team at Platform.sh.
 
 ## Developer Tooling & CI/CD
@@ -615,6 +619,8 @@ Why track these? The cloud landscape changes fast. Today's "contact sales only" 
 
 ## Contributing
 
-Pull requests welcome! Please ensure that submissions meet the Alt Cloud [contributing guide](CONTRIBUTING.md) and are categorized accurately.
+**To submit a new service**, use the form at **[alt-cloud.org/submit](https://www.alt-cloud.org/submit/)** — this triggers the automated validation pipeline that scores your submission against the three criteria and opens a GitHub issue with the results.
+
+Direct pull requests are welcome for corrections, description improvements, or categorization changes. Please follow the [contributing guide](CONTRIBUTING.md).
 
 Submissions that don't yet meet the criteria may be tracked in the [Watchlist](WATCHLIST.md) — a structured list of candidates with a clear path to qualification.
