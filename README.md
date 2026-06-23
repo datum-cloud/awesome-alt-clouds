@@ -411,6 +411,7 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 * 🟢 [Heroku](https://www.heroku.com/) - Offers a platform as a service (PaaS) for deploying and managing applications.
 * 🟢 [Koyeb](https://www.koyeb.com/) - Offers a serverless platform to deploy applications globally.
 * 🟢 [Maritime](https://maritime.sh/) - Provides cloud hosting infrastructure specifically designed for AI agents with flat $1/month pricing, sleep/wake architecture, and one-click deployment from GitHub repos.
+* 🟢 [Namecheap](https://www.namecheap.com/) - Provides domain registration, web hosting, email services, SSL certificates, and website security tools for individuals and businesses.
 * 🟢 [Netlify](https://www.netlify.com/) - Platform for building, deploying, and scaling modern web applications.
 * 🟢 [Northflank](https://northflank.com/) - A platform to build, deploy, and manage full-stack applications.
 * 🟢 [Out Plane](https://outplane.com/) - Provides a cloud PaaS platform for developers to deploy applications in 60 seconds with managed PostgreSQL, Redis, auto-scaling, and compliance features without Kubernetes or YAML.
