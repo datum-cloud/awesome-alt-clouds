@@ -120,26 +120,26 @@ class TestFetchPageWithFallback:
 
 
 # ---------------------------------------------------------------------------
-# evaluate_with_qwen
+# evaluate_with_claude
 # ---------------------------------------------------------------------------
 
-class TestEvaluateWithQwen:
+class TestEvaluateWithClaude:
 
-    def _make_qwen_response(self, json_text):
-        """Build a fake OpenAI ChatCompletion response."""
-        choice = MagicMock()
-        choice.message.content = json_text
+    def _make_claude_response(self, json_text):
+        """Build a fake Anthropic messages response."""
+        content_block = MagicMock()
+        content_block.text = json_text
         response = MagicMock()
-        response.choices = [choice]
+        response.content = [content_block]
         return response
 
-    def _mock_openai(self, mock_client):
-        """Return a combined context that stubs QWEN_BASE_URL and openai.OpenAI."""
-        fake_openai = MagicMock()
-        fake_openai.OpenAI.return_value = mock_client
+    def _mock_anthropic(self, mock_client):
+        """Return a combined context that stubs ANTHROPIC_API_KEY and anthropic.Anthropic."""
+        fake_anthropic = MagicMock()
+        fake_anthropic.Anthropic.return_value = mock_client
         stack = ExitStack()
-        stack.enter_context(patch.object(ev, 'QWEN_BASE_URL', 'http://mock-qwen/v1'))
-        stack.enter_context(patch.dict(sys.modules, {'openai': fake_openai}))
+        stack.enter_context(patch.object(ev, 'ANTHROPIC_API_KEY', 'mock-api-key'))
+        stack.enter_context(patch.dict(sys.modules, {'anthropic': fake_anthropic}))
         return stack
 
     def test_returns_structured_result_on_success(self):
@@ -155,31 +155,31 @@ class TestEvaluateWithQwen:
             "recommendation": "Pricing and status page found — looks legit"
         }'''
 
-        mock_msg = self._make_qwen_response(json_payload)
+        mock_msg = self._make_claude_response(json_payload)
         mock_client = MagicMock()
-        mock_client.chat.completions.create.return_value = mock_msg
+        mock_client.messages.create.return_value = mock_msg
 
-        with self._mock_openai(mock_client):
-            result = ev.evaluate_with_qwen('https://example.com')
+        with self._mock_anthropic(mock_client):
+            result = ev.evaluate_with_claude('https://example.com')
 
         assert result is not None
         assert result['score'] == 3
         assert result['name'] == 'Example Cloud'
-        assert result['fetch_method'] == 'qwen_fallback'
+        assert result['fetch_method'] == 'claude_websearch'
         assert result['recommendation'] == 'Pricing and status page found — looks legit'
         assert result['criteria'][0]['evidence'] == 'https://example.com/pricing'
 
-    def test_returns_none_when_no_base_url(self):
-        with patch.object(ev, 'QWEN_BASE_URL', None):
-            result = ev.evaluate_with_qwen('https://example.com')
+    def test_returns_none_when_no_api_key(self):
+        with patch.object(ev, 'ANTHROPIC_API_KEY', None):
+            result = ev.evaluate_with_claude('https://example.com')
         assert result is None
 
     def test_returns_none_on_api_error(self):
         mock_client = MagicMock()
-        mock_client.chat.completions.create.side_effect = Exception('API error')
+        mock_client.messages.create.side_effect = Exception('API error')
 
-        with self._mock_openai(mock_client):
-            result = ev.evaluate_with_qwen('https://example.com')
+        with self._mock_anthropic(mock_client):
+            result = ev.evaluate_with_claude('https://example.com')
 
         assert result is None
 
@@ -196,12 +196,12 @@ class TestEvaluateWithQwen:
             "recommendation": "Partial — signup process unclear"
         }'''
 
-        mock_msg = self._make_qwen_response(json_payload)
+        mock_msg = self._make_claude_response(json_payload)
         mock_client = MagicMock()
-        mock_client.chat.completions.create.return_value = mock_msg
+        mock_client.messages.create.return_value = mock_msg
 
-        with self._mock_openai(mock_client):
-            result = ev.evaluate_with_qwen('https://example.com')
+        with self._mock_anthropic(mock_client):
+            result = ev.evaluate_with_claude('https://example.com')
 
         assert result['score'] == 2
 
@@ -218,12 +218,12 @@ class TestEvaluateWithQwen:
             "recommendation": "Looks good"
         }'''
 
-        mock_msg = self._make_qwen_response(json_payload)
+        mock_msg = self._make_claude_response(json_payload)
         mock_client = MagicMock()
-        mock_client.chat.completions.create.return_value = mock_msg
+        mock_client.messages.create.return_value = mock_msg
 
-        with self._mock_openai(mock_client):
-            result = ev.evaluate_with_qwen('https://example.com')
+        with self._mock_anthropic(mock_client):
+            result = ev.evaluate_with_claude('https://example.com')
 
         assert result['category'] == 'Infrastructure Clouds'
 
@@ -239,7 +239,7 @@ class TestGenerateSingleResultMarkdownWebSearch:
             'url': 'https://example.com',
             'company_name': 'Example Cloud',
             'score': score,
-            'fetch_method': 'qwen_fallback',
+            'fetch_method': 'claude_websearch',
             'needs_manual_review': score < 3,
             'recommendation': 'Pricing and status page found — looks legit',
             'criteria': [
@@ -335,7 +335,7 @@ class TestEvaluateServiceCascade:
         assert result['fetch_method'] == 'jina'
         assert result['fetch_failed'] is False
 
-    def test_calls_qwen_fallback_when_both_scrapers_fail(self):
+    def test_calls_claude_fallback_when_both_scrapers_fail(self):
         ws_result = {
             'criteria': [
                 {'name': 'Transparent Public Pricing', 'passed': True, 'evidence': 'https://example.com/pricing'},
@@ -347,18 +347,18 @@ class TestEvaluateServiceCascade:
             'description': 'Provides cloud infrastructure.',
             'category': 'Infrastructure Clouds',
             'recommendation': 'Pricing and status page found — looks legit',
-            'fetch_method': 'qwen_fallback',
+            'fetch_method': 'claude_websearch',
         }
 
         def side_effect(url, **kwargs):
             raise requests.exceptions.ConnectionError('blocked')
 
         with patch('requests.get', side_effect=side_effect):
-            with patch.object(ev, 'evaluate_with_qwen', return_value=ws_result) as mock_ws:
+            with patch.object(ev, 'evaluate_with_claude', return_value=ws_result) as mock_ws:
                 result = ev.evaluate_service('https://example.com')
 
         mock_ws.assert_called_once_with('https://example.com')
-        assert result['fetch_method'] == 'qwen_fallback'
+        assert result['fetch_method'] == 'claude_websearch'
         assert result['ai_metadata']['name'] == 'Example Cloud'
         assert result['recommendation'] == 'Pricing and status page found — looks legit'
 
@@ -367,7 +367,7 @@ class TestEvaluateServiceCascade:
             raise requests.exceptions.ConnectionError('blocked')
 
         with patch('requests.get', side_effect=side_effect):
-            with patch.object(ev, 'evaluate_with_qwen', return_value=None):
+            with patch.object(ev, 'evaluate_with_claude', return_value=None):
                 result = ev.evaluate_service('https://example.com')
 
         assert result['fetch_failed'] is True
