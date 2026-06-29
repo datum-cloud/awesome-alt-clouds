@@ -641,6 +641,16 @@
     "dateAdded": "2026-06-29"
   },
   {
+    "name": "Highrise",
+    "url": "https://www.highrise.ai/",
+    "description": "Provides a unified platform for developing, training, and deploying AI models with access to thousands of NVIDIA GPUs at competitive pricing, backed by Hut 8 infrastructure.",
+    "score": 2,
+    "categories": [
+      "GPU & AI Compute Clouds"
+    ],
+    "dateAdded": "2026-06-29"
+  },
+  {
     "name": "HydraHost",
     "url": "https://hydrahost.com/",
     "description": "Affordable GPU compute focused on researchers and indie developers.",
