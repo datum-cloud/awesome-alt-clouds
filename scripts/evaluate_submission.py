@@ -18,8 +18,16 @@ import requests
 from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
+CLAUDE_MODEL = "claude-haiku-4-5-20251001"
+
 QWEN_BASE_URL = os.environ.get("QWEN_BASE_URL")
 QWEN_MODEL = "qwen3.6-35b-a3b"
+
+# Set LLM_PROVIDER=qwen to use the self-hosted Qwen endpoint instead of Claude.
+# Defaults to claude. Whichever provider is selected, the corresponding secret
+# (ANTHROPIC_API_KEY or QWEN_BASE_URL) must be present.
+LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "claude").lower()
 
 # Categories available in the awesome list
 CATEGORIES = [
@@ -434,17 +442,17 @@ def extract_company_name(url, soup):
     return domain.split('.')[0].title()
 
 
-def generate_metadata_with_qwen(url, page_content=None):
-    """Use Qwen API to generate name, description, and category"""
-    if not QWEN_BASE_URL:
-        print("ERROR: QWEN_BASE_URL not set, cannot generate AI metadata")
+def generate_metadata_with_claude(url, page_content=None):
+    """Use Claude API to generate name, description, and category"""
+    if not ANTHROPIC_API_KEY:
+        print("ERROR: ANTHROPIC_API_KEY not set, cannot generate AI metadata")
         return None
 
-    print(f"Calling Qwen API for {url}...")
+    print(f"Calling Claude API for {url}...")
 
     try:
-        from openai import OpenAI
-        client = OpenAI(base_url=QWEN_BASE_URL, api_key="none")
+        import anthropic
+        client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
         categories_list = "\n".join(f"- {cat}" for cat in CATEGORIES)
 
@@ -467,7 +475,7 @@ Based on the website content, provide:
 Respond in this exact JSON format only, no other text:
 {{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name"}}"""
         else:
-            # Fallback: Ask Qwen to use its knowledge (for Cloudflare-blocked sites)
+            # Fallback: Ask Claude to use its knowledge (for Cloudflare-blocked sites)
             prompt = f"""I need metadata for a cloud service submission, but I couldn't fetch the website content (likely Cloudflare protected).
 
 URL: {url}
@@ -483,17 +491,15 @@ If you don't recognize this service, make a reasonable guess based on the domain
 Respond in this exact JSON format only, no other text:
 {{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name"}}"""
 
-        message = client.chat.completions.create(
-            model=QWEN_MODEL,
+        message = client.messages.create(
+            model=CLAUDE_MODEL,
             max_tokens=1024,
             messages=[
                 {"role": "user", "content": prompt}
-            ],
-            extra_body={"chat_template_kwargs": {"enable_thinking": False}}
+            ]
         )
 
-        response_text = (message.choices[0].message.content or "").strip()
-        response_text = re.sub(r'<think>[\s\S]*?</think>', '', response_text).strip()
+        response_text = message.content[0].text.strip()
 
         # Parse JSON from response
         # Handle case where response might have markdown code blocks
@@ -513,6 +519,180 @@ Respond in this exact JSON format only, no other text:
         if len(metadata.get('description', '')) > 200:
             metadata['description'] = metadata['description'][:197] + "..."
 
+        print(f"Claude generated metadata: {metadata}")
+        return metadata
+
+    except Exception as e:
+        print(f"Error calling Claude API: {e}")
+        return None
+
+
+def evaluate_with_claude(url):
+    """Last-resort evaluation using Claude when both scrapers fail.
+
+    Returns a dict with criteria, score, name, description, category,
+    recommendation, and fetch_method='claude_websearch', or None on failure.
+    """
+    if not ANTHROPIC_API_KEY:
+        print("ERROR: ANTHROPIC_API_KEY not set, cannot use Claude fallback")
+        return None
+
+    print(f"Falling back to Claude for {url}...")
+
+    try:
+        import anthropic
+        client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+
+        domain = urlparse(url).netloc.replace('www.', '')
+        categories_list = "\n".join(f"- {cat}" for cat in CATEGORIES)
+
+        prompt = f"""Evaluate this cloud service for an awesome list based on your knowledge.
+
+URL: {url}
+Domain: {domain}
+
+Based on what you know about this service, assess these 3 criteria and provide evidence URLs where possible:
+1. Transparent Public Pricing - public pricing page with actual prices shown
+2. Usage-based Self-Service - can sign up and use without contacting sales
+3. Production Indicators - public SLA or status page exists
+
+Also provide:
+- name: official service name (short, no taglines)
+- description: what the service does (max 200 chars, start with "Provides", "Offers", "Delivers", etc.)
+- category: best fit from this list:
+{categories_list}
+- recommendation: one sentence (e.g. "Pricing and status page found — looks legit" or "No SLA evidence found — review carefully")
+
+If you cannot confirm a criterion, set passed to false and evidence to "Not found".
+
+Respond in this exact JSON format only, no other text:
+{{
+  "criteria": [
+    {{"name": "Transparent Public Pricing", "passed": true, "evidence": "https://example.com/pricing"}},
+    {{"name": "Usage-based Self-Service", "passed": true, "evidence": "https://example.com/signup"}},
+    {{"name": "Production Indicators", "passed": false, "evidence": "Not found"}}
+  ],
+  "name": "Service Name",
+  "description": "Description under 200 chars.",
+  "category": "Category Name",
+  "recommendation": "One sentence recommendation"
+}}"""
+
+        message = client.messages.create(
+            model=CLAUDE_MODEL,
+            max_tokens=1024,
+            messages=[{"role": "user", "content": prompt}]
+        )
+
+        response_text = message.content[0].text.strip()
+
+        if not response_text:
+            print(f"Claude returned no text for {url}")
+            return None
+
+        # Strip markdown code fences if present
+        if "```" in response_text:
+            json_match = re.search(r'\{[\s\S]+\}', response_text)
+            if json_match:
+                response_text = json_match.group(0)
+
+        data = json.loads(response_text)
+
+        # Validate and normalise
+        score = sum(1 for c in data.get('criteria', []) if c.get('passed'))
+        if data.get('category') not in CATEGORIES:
+            print(f"Warning: invalid category '{data.get('category')}', defaulting")
+            data['category'] = "Infrastructure Clouds"
+        if len(data.get('description', '')) > 200:
+            data['description'] = data['description'][:197] + "..."
+
+        print(f"Claude fallback result: score={score}/3, name={data['name']}")
+        return {
+            'criteria': data['criteria'],
+            'score': score,
+            'name': data['name'],
+            'description': data['description'],
+            'category': data['category'],
+            'recommendation': data.get('recommendation', ''),
+            'fetch_method': 'claude_websearch',
+        }
+
+    except Exception as e:
+        print(f"Error in Claude fallback for {url}: {e}")
+        return None
+
+
+def generate_metadata_with_qwen(url, page_content=None):
+    """Use Qwen API to generate name, description, and category"""
+    if not QWEN_BASE_URL:
+        print("ERROR: QWEN_BASE_URL not set, cannot generate AI metadata")
+        return None
+
+    print(f"Calling Qwen API for {url}...")
+
+    try:
+        from openai import OpenAI
+        client = OpenAI(base_url=QWEN_BASE_URL, api_key="none")
+
+        categories_list = "\n".join(f"- {cat}" for cat in CATEGORIES)
+
+        if page_content and len(page_content.strip()) > 100:
+            truncated_content = page_content[:15000]
+            prompt = f"""Analyze this cloud service website and provide metadata for an awesome list entry.
+
+URL: {url}
+
+Page content:
+{truncated_content}
+
+Based on the website content, provide:
+1. **Name**: The official service/company name (short, no taglines)
+2. **Description**: A concise description (max 200 characters) of what the service does, written in third person, starting with a verb like "Provides", "Offers", "Delivers", etc.
+3. **Category**: The most appropriate category from this list:
+{categories_list}
+
+Respond in this exact JSON format only, no other text:
+{{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name"}}"""
+        else:
+            prompt = f"""I need metadata for a cloud service submission, but I couldn't fetch the website content (likely Cloudflare protected).
+
+URL: {url}
+
+Based on your knowledge of this service (from the URL/domain), provide:
+1. **Name**: The official service/company name (short, no taglines)
+2. **Description**: A concise description (max 200 characters) of what the service does, written in third person, starting with a verb like "Provides", "Offers", "Delivers", etc.
+3. **Category**: The most appropriate category from this list:
+{categories_list}
+
+If you don't recognize this service, make a reasonable guess based on the domain name.
+
+Respond in this exact JSON format only, no other text:
+{{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name"}}"""
+
+        message = client.chat.completions.create(
+            model=QWEN_MODEL,
+            max_tokens=1024,
+            messages=[{"role": "user", "content": prompt}],
+            extra_body={"chat_template_kwargs": {"enable_thinking": False}}
+        )
+
+        response_text = (message.choices[0].message.content or "").strip()
+        response_text = re.sub(r'<think>[\s\S]*?</think>', '', response_text).strip()
+
+        if "```" in response_text:
+            json_match = re.search(r'\{[^}]+\}', response_text)
+            if json_match:
+                response_text = json_match.group(0)
+
+        metadata = json.loads(response_text)
+
+        if metadata.get('category') not in CATEGORIES:
+            print(f"Warning: Invalid category '{metadata.get('category')}', defaulting to Infrastructure Clouds")
+            metadata['category'] = "Infrastructure Clouds"
+
+        if len(metadata.get('description', '')) > 200:
+            metadata['description'] = metadata['description'][:197] + "..."
+
         print(f"Qwen generated metadata: {metadata}")
         return metadata
 
@@ -525,7 +705,7 @@ def evaluate_with_qwen(url):
     """Last-resort evaluation using Qwen when both scrapers fail.
 
     Returns a dict with criteria, score, name, description, category,
-    recommendation, and fetch_method='qwen_fallback', or None on failure.
+    recommendation, and fetch_method='claude_websearch', or None on failure.
     """
     if not QWEN_BASE_URL:
         print("ERROR: QWEN_BASE_URL not set, cannot use Qwen fallback")
@@ -586,7 +766,6 @@ Respond in this exact JSON format only, no other text:
             print(f"Qwen returned no text for {url}")
             return None
 
-        # Strip markdown code fences if present
         if "```" in response_text:
             json_match = re.search(r'\{[\s\S]+\}', response_text)
             if json_match:
@@ -594,7 +773,6 @@ Respond in this exact JSON format only, no other text:
 
         data = json.loads(response_text)
 
-        # Validate and normalise
         score = sum(1 for c in data.get('criteria', []) if c.get('passed'))
         if data.get('category') not in CATEGORIES:
             print(f"Warning: invalid category '{data.get('category')}', defaulting")
@@ -610,12 +788,26 @@ Respond in this exact JSON format only, no other text:
             'description': data['description'],
             'category': data['category'],
             'recommendation': data.get('recommendation', ''),
-            'fetch_method': 'qwen_fallback',
+            'fetch_method': 'claude_websearch',
         }
 
     except Exception as e:
         print(f"Error in Qwen fallback for {url}: {e}")
         return None
+
+
+def generate_metadata(url, page_content=None):
+    """Dispatch to the provider selected by LLM_PROVIDER."""
+    if LLM_PROVIDER == "qwen":
+        return generate_metadata_with_qwen(url, page_content)
+    return generate_metadata_with_claude(url, page_content)
+
+
+def evaluate_with_llm(url):
+    """Dispatch last-resort LLM evaluation to the provider selected by LLM_PROVIDER."""
+    if LLM_PROVIDER == "qwen":
+        return evaluate_with_qwen(url)
+    return evaluate_with_claude(url)
 
 
 def evaluate_service(url):
@@ -625,8 +817,8 @@ def evaluate_service(url):
     soup, final_url, fetch_method = fetch_page_with_fallback(url)
 
     if fetch_method is None:
-        # Both scrapers failed — try Claude web search as last resort
-        ws_result = evaluate_with_qwen(url)
+        # Both scrapers failed — try LLM fallback as last resort
+        ws_result = evaluate_with_llm(url)
         if ws_result:
             return {
                 'url': url,
@@ -634,7 +826,7 @@ def evaluate_service(url):
                 'score': ws_result['score'],
                 'criteria': ws_result['criteria'],
                 'fetch_failed': False,
-                'fetch_method': 'qwen_fallback',
+                'fetch_method': 'claude_websearch',
                 'needs_manual_review': ws_result['score'] < 3,
                 'ai_metadata': {
                     'name': ws_result['name'],
@@ -700,7 +892,7 @@ def generate_single_result_markdown(result, ai_metadata=None):
         status = "Does Not Meet Criteria"
         emoji = "red_circle"
 
-    web_search_badge = " *(verified via web search)*" if fetch_method == "qwen_fallback" else ""
+    web_search_badge = " *(verified via web search)*" if fetch_method == "claude_websearch" else ""
 
     md = f"""### {result['company_name']}
 
@@ -708,7 +900,7 @@ def generate_single_result_markdown(result, ai_metadata=None):
 **Score:** {score}/3 :{emoji}: {status}{web_search_badge}
 """
 
-    if fetch_method == "qwen_fallback" and recommendation:
+    if fetch_method == "claude_websearch" and recommendation:
         md += f"\n> :mag: {recommendation}\n"
 
     if fetch_failed:
@@ -729,7 +921,7 @@ def generate_single_result_markdown(result, ai_metadata=None):
 
         evidence = c['evidence']
         # Render evidence as a clickable link if it's a URL
-        if fetch_method == "qwen_fallback" and evidence.startswith("http"):
+        if fetch_method == "claude_websearch" and evidence.startswith("http"):
             evidence = f"[{evidence}]({evidence})"
 
         md += f"| {c['name']} | {status_icon} | {evidence} |\n"
@@ -877,7 +1069,7 @@ def main():
 
         if should_pass:
             # Claude web search already generated metadata — use it directly
-            if result.get('fetch_method') == 'qwen_fallback' and result.get('ai_metadata'):
+            if result.get('fetch_method') == 'claude_websearch' and result.get('ai_metadata'):
                 ai_metadata = result['ai_metadata']
                 result['company_name'] = ai_metadata['name']
                 passing_services.append({
@@ -892,7 +1084,7 @@ def main():
             else:
                 # Scraped successfully — call Claude for metadata as before
                 page_content = result.get('page_content', '')
-                ai_metadata = generate_metadata_with_qwen(url, page_content)
+                ai_metadata = generate_metadata(url, page_content)
                 if ai_metadata:
                     result['company_name'] = ai_metadata['name']
                     result['ai_metadata'] = ai_metadata
@@ -907,7 +1099,7 @@ def main():
                     })
                 elif admin_approved:
                     fallback_name = result['company_name']
-                    print(f"Warning: Claude API failed, using fallback for {fallback_name}")
+                    print(f"Warning: Claude metadata call failed, using fallback for {fallback_name}")
                     passing_services.append({
                         'name': fallback_name,
                         'url': url,
