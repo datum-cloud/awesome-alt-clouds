@@ -574,6 +574,7 @@ Messaging, notifications, email, voice, video, and IoT connectivity platforms fo
 * 🟢 [Sendbird](https://sendbird.com/) - Communications API providing chat, voice, video, and AI messaging infrastructure with mobile/web SDKs.
 * 🟢 [SLNG](https://www.slng.ai) - Global speech AI gateway with multi-region support, model routing, and compliance for voice applications.
 * 🟢 [Soracom](https://soracom.io/) - Delivers cellular connectivity and edge services for IoT deployments, with APIs and billing tailored to developers and startups.
+* 🟢 [Telnyx](https://telnyx.com/) - Provides a carrier-grade global communications platform combining owned network infrastructure with AI inference capabilities for real-time voice, messaging, and AI agent deployment.
 * 🟢 [Twilio](https://www.twilio.com/docs/iot) - Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
 * 🟢 [Wistia](https://wistia.com/) - A one-stop video marketing shop to create, host, market and analyze your videos.
 
