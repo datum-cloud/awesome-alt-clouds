@@ -2891,6 +2891,16 @@
     "dateAdded": "2026-06-29"
   },
   {
+    "name": "Alien",
+    "url": "https://www.alien.dev/",
+    "description": "Enables deploying applications directly into customer AWS, GCP, and Azure accounts for secure, agentless multi-cloud distribution with full observability.",
+    "score": 3,
+    "categories": [
+      "PaaS & Application Hosting"
+    ],
+    "dateAdded": "2026-06-29"
+  },
+  {
     "name": "Deno Deploy",
     "url": "https://deno.com/deploy",
     "description": "Globally distributed edge platform for JavaScript and TypeScript serverless apps.",
