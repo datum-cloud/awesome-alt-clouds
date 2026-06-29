@@ -2421,6 +2421,16 @@
     "dateAdded": "2026-06-29"
   },
   {
+    "name": "Sail Research",
+    "url": "https://www.sailresearch.com/",
+    "description": "Provides cost-efficient inference infrastructure for running leading open-source AI models on demand, optimized for long-horizon agents with flexible completion windows.",
+    "score": 3,
+    "categories": [
+      "AI Inference & Model APIs"
+    ],
+    "dateAdded": "2026-06-29"
+  },
+  {
     "name": "Swirls",
     "url": "https://swirls.ai/",
     "description": "Provides a deployment platform for agentic systems with declarative configuration, durable execution, human-in-the-loop workflows, and cryptographic policy enforcement.",
