@@ -33,6 +33,11 @@ const baseUrl = asset("");
 
 <script>
   import {
+    compareToggleState,
+    renderCompactCompareToggle,
+    renderFullCompareToggle,
+  } from "../lib/compare-toggle-icons";
+  import {
     COMPARE_CHANGE_EVENT,
     clear,
     getItems,
@@ -49,7 +54,6 @@ const baseUrl = asset("");
   const goBtn = document.getElementById("compare-tray-go") as HTMLButtonElement | null;
   const baseUrl = tray?.getAttribute("data-base") ?? "/";
 
-  const LABEL_ADD = "Compare +";
   const LABEL_IN = "In compare";
   const LABEL_FULL = "Full";
 
@@ -75,14 +79,20 @@ const baseUrl = asset("");
       btn.disabled = !selected && full;
 
       if (label) {
-        if (compact) {
-          label.textContent = selected ? "✓" : full ? "—" : "+";
-        } else if (selected) {
-          label.textContent = LABEL_IN;
-        } else if (full) {
-          label.textContent = LABEL_FULL;
-        } else {
-          label.textContent = LABEL_ADD;
+        const state = compareToggleState(selected, !selected && full);
+        label.innerHTML = compact
+          ? renderCompactCompareToggle(state)
+          : renderFullCompareToggle(state);
+
+        if (!compact) {
+          if (selected) {
+            btn.setAttribute("aria-label", LABEL_IN);
+          } else if (full) {
+            btn.setAttribute("aria-label", LABEL_FULL);
+          } else {
+            const name = btn.getAttribute("data-compare-name") ?? "provider";
+            btn.setAttribute("aria-label", `Add ${name} to compare`);
+          }
         }
       }
     });

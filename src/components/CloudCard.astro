@@ -1,6 +1,7 @@
 ---
 import { asset } from "../lib/assets";
 import type { CloudWithSlug } from "../lib/clouds";
+import { compareIconAdd } from "../lib/compare-toggle-icons";
 
 export interface Props {
   cloud: CloudWithSlug;
@@ -40,8 +41,8 @@ const detailHref = asset(cloud.slug);
     data-compare-name={cloud.name}
     aria-pressed="false"
     aria-label={`Add ${cloud.name} to compare`}
-    class="compare-toggle compare-toggle--compact absolute top-3 right-3 z-10 w-7 h-7 flex items-center justify-center rounded-full text-xs font-semibold text-warm-stone bg-cream border border-clay-beige hover:border-soft-sage hover:text-rich-earth transition-colors disabled:opacity-50 disabled:cursor-not-allowed aria-pressed:bg-soft-sage aria-pressed:border-soft-sage aria-pressed:text-rich-earth">
-    <span data-compare-label>+</span>
+    class="compare-toggle compare-toggle--compact absolute top-3 right-3 z-10 w-7 h-7 flex items-center justify-center rounded-full text-warm-stone bg-cream border border-clay-beige hover:border-soft-sage hover:text-rich-earth transition-colors disabled:opacity-50 disabled:cursor-not-allowed aria-pressed:bg-soft-sage aria-pressed:border-soft-sage aria-pressed:text-rich-earth">
+    <span data-compare-label class="flex items-center justify-center" set:html={compareIconAdd} />
   </button>
   <div class="flex items-start gap-3.5 mb-3.5">
     <div
