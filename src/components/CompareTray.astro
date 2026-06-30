@@ -23,8 +23,7 @@ const baseUrl = asset("");
       <button
         type="button"
         id="compare-tray-go"
-        class="compare-tray-go flex-1 py-2.5 px-4 bg-bright-tangerine hover:bg-rich-earth text-white text-sm font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-bright-tangerine"
-        disabled>
+        class="compare-tray-go flex-1 py-2.5 px-4 bg-bright-tangerine hover:bg-rich-earth text-white text-sm font-semibold rounded-lg transition-colors">
         Compare
       </button>
     </div>
@@ -124,7 +123,6 @@ const baseUrl = asset("");
       .join("");
 
     goBtn.textContent = `Compare (${items.length})`;
-    goBtn.disabled = items.length < 2;
     updateToggleButtons();
   }
 
@@ -161,7 +159,7 @@ const baseUrl = asset("");
 
     if (target.closest("#compare-tray-go") || target.id === "compare-tray-go") {
       const slugs = getItems().map((i: CompareItem) => i.slug);
-      if (slugs.length >= 2) {
+      if (slugs.length > 0) {
         window.location.href = buildCompareUrl(slugs);
       }
       return;
