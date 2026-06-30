@@ -1,0 +1,82 @@
+---
+export interface Props {
+  slot: number;
+  label: string;
+  initialSlug?: string;
+  initialName?: string;
+}
+
+const { slot, label, initialSlug = "", initialName = "" } = Astro.props;
+const listboxId = `compare-picker-listbox-${slot}`;
+const hasInitial = Boolean(initialSlug);
+---
+
+<div
+  class="compare-picker-root relative flex-1 min-w-[180px]"
+  data-slot={slot}>
+  <span class="block text-xs font-medium text-warm-stone uppercase tracking-wider mb-1.5">
+    {label}
+  </span>
+  <div class="relative">
+    <svg
+      class="absolute left-3 top-1/2 -translate-y-1/2 text-warm-stone pointer-events-none"
+      width="16"
+      height="16"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+      ></path>
+    </svg>
+    <input
+      type="text"
+      class="compare-picker-input w-full pl-9 pr-8 py-2.5 bg-white border-2 border-clay-beige rounded-lg text-rich-earth text-sm placeholder:text-warm-stone/60 hover:border-soft-sage focus:border-soft-sage focus:outline-none focus:ring-2 focus:ring-soft-sage/15 transition-all"
+      placeholder="Search provider…"
+      autocomplete="off"
+      spellcheck="false"
+      role="combobox"
+      aria-expanded="false"
+      aria-controls={listboxId}
+      aria-autocomplete="list"
+      aria-label={label}
+      value={initialName}
+    />
+    <input
+      type="hidden"
+      class="compare-picker-slug"
+      value={initialSlug}
+    />
+    <button
+      type="button"
+      class:list={[
+        "compare-picker-clear absolute right-2 top-1/2 -translate-y-1/2 p-1 text-warm-stone hover:text-rich-earth rounded items-center justify-center transition-colors",
+        hasInitial ? "flex" : "hidden",
+      ]}
+      aria-label="Clear selection">
+      <svg
+        width="14"
+        height="14"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+          d="M6 18L18 6M6 6l12 12"
+        ></path>
+      </svg>
+    </button>
+  </div>
+  <ul
+    id={listboxId}
+    role="listbox"
+    class="compare-picker-listbox hidden absolute left-0 right-0 top-full mt-1 max-h-[280px] overflow-y-auto bg-white border border-clay-beige rounded-xl shadow-lg z-40">
+  </ul>
+</div>

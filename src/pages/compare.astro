@@ -1,0 +1,325 @@
+---
+import Base from "../layouts/Base.astro";
+import CompareCloudPicker from "../components/CompareCloudPicker.astro";
+import CompareTable from "../components/CompareTable.astro";
+import DetailTopBar from "../components/DetailTopBar.astro";
+import DirectorySidebar from "../components/DirectorySidebar.astro";
+import { COMPARE_ROWS, toCompareCloud, type CompareCloud } from "../lib/compare";
+import { clouds } from "../lib/clouds";
+import { getAllMergedClouds, getFeaturedSlugs } from "../lib/profile";
+import { defaultTitle } from "../lib/site-meta";
+import { absoluteUrl } from "../lib/site-urls";
+
+const pageTitle = `Compare alt clouds — ${defaultTitle}`;
+const pageDescription =
+  "Side-by-side comparison of alternative cloud providers — criteria scores, pricing models, regions, and more.";
+const canonical = `${absoluteUrl("compare")}/`;
+
+const featuredSlugs = await getFeaturedSlugs();
+const mergedClouds = await getAllMergedClouds();
+const compareBySlug = Object.fromEntries(
+  mergedClouds.map((cloud) => [
+    cloud.slug,
+    toCompareCloud(cloud, featuredSlugs.has(cloud.slug)),
+  ])
+);
+
+const sortedNames = [...clouds]
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((c) => ({ slug: c.slug, name: c.name }));
+
+function slugFromParam(value: string | null): string | undefined {
+  if (!value) return undefined;
+  const trimmed = value.trim();
+  return compareBySlug[trimmed] ? trimmed : undefined;
+}
+
+const paramA = slugFromParam(Astro.url.searchParams.get("a"));
+const paramB = slugFromParam(Astro.url.searchParams.get("b"));
+const paramC = slugFromParam(Astro.url.searchParams.get("c"));
+
+const initialSlotSlugs = [paramA, paramB, paramC];
+const initialColumns: (CompareCloud | undefined)[] = [
+  paramA ? compareBySlug[paramA] : undefined,
+  paramB ? compareBySlug[paramB] : undefined,
+  paramC ? compareBySlug[paramC] : undefined,
+];
+
+const comparePayload = JSON.stringify({
+  clouds: compareBySlug,
+  rows: COMPARE_ROWS,
+  names: sortedNames,
+});
+---
+
+<Base title={pageTitle} description={pageDescription} canonical={canonical} showCompareTray={false}>
+  <div class="flex flex-col md:flex-row min-h-screen">
+    <DirectorySidebar activePage="compare" />
+
+    <main class="flex-1 p-5 md:p-8 min-w-0">
+      <DetailTopBar featuredSlugs={[...featuredSlugs]} />
+
+      <div class="max-w-5xl">
+        <header class="mb-8">
+          <h1 class="font-serif text-3xl md:text-4xl font-semibold text-rich-earth mb-3">
+            Compare alt clouds
+          </h1>
+          <p class="text-warm-stone leading-relaxed max-w-2xl">
+            Pick two or three providers to compare criteria scores, pricing models, regions, and
+            other attributes side by side. Share your comparison via the URL.
+          </p>
+        </header>
+
+        <div class="mb-6 flex flex-col gap-4">
+          <div class="flex flex-col sm:flex-row flex-wrap gap-3 items-end justify-between">
+            <div
+              class="flex flex-col sm:flex-row flex-wrap gap-3 flex-1"
+              id="compare-pickers"
+              aria-label="Select clouds to compare">
+              {
+                [0, 1, 2].map((slot) => (
+                  <CompareCloudPicker
+                    slot={slot}
+                    label={slot === 2 ? "Cloud C (optional)" : `Cloud ${String.fromCharCode(65 + slot)}`}
+                    initialSlug={initialSlotSlugs[slot]}
+                    initialName={
+                      initialSlotSlugs[slot]
+                        ? compareBySlug[initialSlotSlugs[slot]!]?.name
+                        : undefined
+                    }
+                  />
+                ))
+              }
+            </div>
+            <button
+              type="button"
+              id="compare-clear-all"
+              class="text-sm font-medium text-warm-stone hover:text-rich-earth transition-colors py-2.5 px-3">
+              Clear all
+            </button>
+          </div>
+        </div>
+
+        <div id="compare-table-container">
+          <CompareTable columns={initialColumns} />
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script id="compare-data" type="application/json" set:html={comparePayload} />
+
+  <script>
+    import { clear, getItems, setItems } from "../lib/compare-store";
+    import {
+      getPickerSlugs,
+      initComparePickers,
+      setPickerSlugs,
+    } from "../lib/compare-picker";
+
+    const MAX_COLUMNS = 3;
+    const baseUrl = import.meta.env.BASE_URL;
+
+    /** @type {{ clouds: Record<string, { slug: string, name: string, score: number, url: string, hasProfile: boolean, categories?: string[], description?: string, tagline?: string, pricingModel?: string, headquarters?: string, foundedYear?: number, openSource?: boolean, regions?: string[], services?: string[], dateAdded?: string }>, rows: { key: string, label: string }[], names: { slug: string, name: string }[] }} */
+    const payload = JSON.parse(document.getElementById("compare-data")?.textContent || "{}");
+    const { clouds: cloudMap, rows, names } = payload;
+
+    const pickerRoots = [
+      ...document.querySelectorAll<HTMLElement>(".compare-picker-root"),
+    ];
+
+    const PRICING_LABELS = {
+      hourly: "Hourly",
+      monthly: "Monthly",
+      "usage-based": "Usage-based",
+      subscription: "Subscription",
+      mixed: "Mixed",
+    };
+
+    function formatValue(key, cloud) {
+      if (!cloud) return "—";
+      switch (key) {
+        case "score":
+          return `${cloud.score}/3`;
+        case "categories":
+          return cloud.categories?.length ? cloud.categories.join(" · ") : "—";
+        case "description":
+          return cloud.description || "—";
+        case "tagline":
+          return cloud.tagline || "—";
+        case "pricingModel":
+          return cloud.pricingModel
+            ? PRICING_LABELS[cloud.pricingModel] || cloud.pricingModel
+            : "—";
+        case "headquarters":
+          return cloud.headquarters || "—";
+        case "foundedYear":
+          return cloud.foundedYear != null ? String(cloud.foundedYear) : "—";
+        case "openSource":
+          return cloud.openSource === undefined ? "—" : cloud.openSource ? "Yes" : "No";
+        case "regions":
+          return cloud.regions?.length ? cloud.regions.join(", ") : "—";
+        case "services":
+          return cloud.services?.length ? cloud.services.join(", ") : "—";
+        case "dateAdded":
+          return cloud.dateAdded || "—";
+        default:
+          return "—";
+      }
+    }
+
+    function scoreBadgeClass(score) {
+      return score === 3 ? "bg-soft-sage text-rich-earth" : "bg-clay-beige text-warm-stone";
+    }
+
+    function getSelectedSlugs() {
+      return getPickerSlugs(pickerRoots);
+    }
+
+    function uniqueSlugs(slugs) {
+      const unique = [];
+      for (const slug of slugs) {
+        if (!unique.includes(slug)) unique.push(slug);
+      }
+      return unique.slice(0, MAX_COLUMNS);
+    }
+
+    function syncStoreFromSlugs(slugs) {
+      const items = slugs
+        .filter((slug) => cloudMap[slug])
+        .map((slug) => ({ slug, name: cloudMap[slug].name }));
+      setItems(items);
+    }
+
+    function renderTable(slugs) {
+      const columns = slugs
+        .map((slug) => cloudMap[slug])
+        .filter(Boolean)
+        .slice(0, MAX_COLUMNS);
+      const container = document.getElementById("compare-table-container");
+      if (!container) return;
+
+      if (columns.length === 0) {
+        container.innerHTML = `
+          <div class="overflow-x-auto rounded-xl border border-clay-beige bg-white">
+            <div class="p-8 text-center text-warm-stone">
+              <p class="text-base mb-1">Select two or three providers to compare</p>
+              <p class="text-sm text-warm-stone/80">Use the pickers above, add providers from the directory, or share a link like <code class="text-xs">?a=neon&b=hetzner</code></p>
+            </div>
+          </div>`;
+        return;
+      }
+
+      const headerCells = columns
+        .map(
+          (cloud) => `
+          <th scope="col" class="text-left font-serif font-semibold text-rich-earth px-4 py-3">
+            <div class="flex flex-col gap-1">
+              ${
+                cloud.hasProfile
+                  ? `<a href="${baseUrl}${cloud.slug}/" class="hover:text-bright-tangerine transition-colors no-underline">${cloud.name}</a>`
+                  : `<span>${cloud.name}</span>`
+              }
+              <a href="${cloud.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-normal text-bright-tangerine hover:underline">Visit ↗</a>
+            </div>
+          </th>`
+        )
+        .join("");
+
+      const bodyRows = rows
+        .map((row) => {
+          const cells = columns
+            .map((cloud) => {
+              if (row.key === "score") {
+                return `<td class="text-rich-earth px-4 py-3 align-top"><span class="inline-flex items-center gap-1 rounded-full font-medium px-2.5 py-1 text-[11px] ${scoreBadgeClass(cloud.score)}" title="Criteria Score: ${cloud.score}/3">${cloud.score}/3</span></td>`;
+              }
+              return `<td class="text-rich-earth px-4 py-3 align-top">${formatValue(row.key, cloud)}</td>`;
+            })
+            .join("");
+          return `
+          <tr class="border-b border-clay-beige last:border-b-0">
+            <th scope="row" class="text-left text-warm-stone font-medium px-4 py-3 align-top whitespace-nowrap">${row.label}</th>
+            ${cells}
+          </tr>`;
+        })
+        .join("");
+
+      container.innerHTML = `
+        <div class="overflow-x-auto rounded-xl border border-clay-beige bg-white">
+          <table class="w-full min-w-[640px] border-collapse text-sm" id="compare-table">
+            <thead>
+              <tr class="border-b border-clay-beige bg-cream">
+                <th scope="col" class="text-left font-serif font-semibold text-rich-earth px-4 py-3 w-[140px]">Attribute</th>
+                ${headerCells}
+              </tr>
+            </thead>
+            <tbody>${bodyRows}</tbody>
+          </table>
+        </div>`;
+    }
+
+    function syncPickerValues(slugs) {
+      setPickerSlugs(pickerRoots, slugs, cloudMap);
+    }
+
+    function updateUrl(slugs) {
+      const params = new URLSearchParams();
+      if (slugs[0]) params.set("a", slugs[0]);
+      if (slugs[1]) params.set("b", slugs[1]);
+      if (slugs[2]) params.set("c", slugs[2]);
+      const query = params.toString();
+      const next = query ? `${window.location.pathname}?${query}` : window.location.pathname;
+      window.history.replaceState(null, "", next);
+    }
+
+    function slugsFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const slugs = [];
+      for (const key of ["a", "b", "c"]) {
+        const value = params.get(key);
+        if (value && cloudMap[value]) slugs.push(value);
+      }
+      return slugs;
+    }
+
+    function applySelection(slugs, syncStore = true) {
+      const normalized = uniqueSlugs(slugs);
+      if (syncStore) syncStoreFromSlugs(normalized);
+      syncPickerValues(normalized);
+      renderTable(normalized);
+      updateUrl(normalized);
+    }
+
+    function onPickerChange() {
+      applySelection(getSelectedSlugs());
+    }
+
+    initComparePickers({
+      roots: pickerRoots,
+      names,
+      cloudMap,
+      onChange: onPickerChange,
+    });
+
+    function init() {
+      let slugs = slugsFromUrl();
+      if (slugs.length === 0) {
+        slugs = getItems()
+          .map((item) => item.slug)
+          .filter((slug) => cloudMap[slug]);
+      }
+      applySelection(slugs);
+    }
+
+    document.getElementById("compare-clear-all")?.addEventListener("click", () => {
+      clear();
+      applySelection([], false);
+    });
+
+    window.addEventListener("popstate", () => {
+      applySelection(slugsFromUrl());
+    });
+
+    init();
+  </script>
+</Base>

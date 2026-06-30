@@ -2,6 +2,8 @@
 import Base from "../layouts/Base.astro";
 import { asset } from "../lib/assets";
 import BlogNavLink from "../components/BlogNavLink.astro";
+import CloudCard from "../components/CloudCard.astro";
+import CompareNavLink from "../components/CompareNavLink.astro";
 import WatchlistNavLink from "../components/WatchlistNavLink.astro";
 import { clouds } from "../lib/clouds";
 import { getFeaturedSlugs } from "../lib/profile";
@@ -97,6 +99,7 @@ const featuredSlugs = await getFeaturedSlugs();
       </a>
       <WatchlistNavLink />
       <BlogNavLink />
+      <CompareNavLink />
       <button
         data-modal-trigger="extensionModal"
         class="page-link flex items-center gap-2 px-3 py-2.5 text-sm text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
@@ -199,6 +202,7 @@ const featuredSlugs = await getFeaturedSlugs();
         <div class="flex flex-col gap-2 mb-3">
           <WatchlistNavLink />
           <BlogNavLink />
+          <CompareNavLink />
           <button
             data-modal-trigger="extensionModal"
             class="page-link flex items-center gap-2 px-3 py-2.5 text-[13px] text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full">
@@ -317,88 +321,13 @@ const featuredSlugs = await getFeaturedSlugs();
         id="cloudsGrid"
         class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(320px,1fr))]">
         {
-          sortedClouds.map((cloud, index) => {
-            const score = cloud.score ?? 3;
-            const badgeClass =
-              score === 3 ? "bg-soft-sage text-rich-earth" : "bg-clay-beige text-warm-stone";
-            const badgeText = `${score}/3`;
-            const host = (() => {
-              try {
-                return new URL(cloud.url).hostname;
-              } catch {
-                return "";
-              }
-            })();
-            const fallbackLetter = cloud.name.charAt(0).toUpperCase();
-            const isFeatured = featuredSlugs.has(cloud.slug);
-            const detailHref = asset(cloud.slug);
-            return (
-              <article
-                class={`cloud-card animate-slide-up-card bg-white border border-clay-beige rounded-xl p-5 relative ${isFeatured ? "cloud-card--featured" : ""}`}
-                data-name={cloud.name.toLowerCase()}
-                data-description={cloud.description.toLowerCase()}
-                data-categories={cloud.categories.join("|")}
-                data-date-added={cloud.dateAdded ?? ""}
-                style={`animation-delay: ${Math.min(index, 5) * 0.05}s`}>
-                <div class="flex items-start gap-3.5 mb-3.5">
-                  <div class="w-11 h-11 rounded-[10px] flex-shrink-0 overflow-hidden flex items-center justify-center font-serif font-semibold text-lg text-warm-stone bg-cream">
-                    {host ? (
-                      <img
-                        src={`https://www.google.com/s2/favicons?domain=${host}&sz=64`}
-                        alt={fallbackLetter}
-                        class="w-full h-full object-contain"
-                        loading="lazy"
-                        onerror={`this.style.display='none';this.parentElement.textContent='${fallbackLetter}';`}
-                      />
-                    ) : (
-                      fallbackLetter
-                    )}
-                  </div>
-                  <div class="flex-1 min-w-0">
-                    {isFeatured ? (
-                      <a
-                        href={detailHref}
-                        class="font-serif text-lg font-semibold text-rich-earth truncate block hover:text-bright-tangerine transition-colors no-underline">
-                        {cloud.name}
-                      </a>
-                    ) : (
-                      <div class="font-serif text-lg font-semibold text-rich-earth truncate">
-                        {cloud.name}
-                      </div>
-                    )}
-                    <div class="text-xs text-warm-stone">{cloud.categories.join(" · ")}</div>
-                  </div>
-                </div>
-
-                <div class="flex gap-2 mb-3.5">
-                  <div
-                    class={`badge px-2.5 py-1 rounded-full text-[11px] font-medium ${badgeClass} flex items-center gap-1`}
-                    title={`Criteria Score: ${score}/3`}>
-                    {badgeText}
-                  </div>
-                </div>
-
-                <p class="text-sm text-warm-stone leading-relaxed mb-3.5">{cloud.description}</p>
-
-                <div class="flex items-center justify-between gap-3 pt-3.5 border-t border-clay-beige">
-                  <a
-                    href={cloud.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-sm font-medium text-bright-tangerine hover:underline inline-flex items-center gap-1.5 transition-all">
-                    Visit →
-                  </a>
-                  {isFeatured && (
-                    <a
-                      href={detailHref}
-                      class="text-xs font-medium text-warm-stone hover:text-rich-earth inline-flex items-center gap-1 transition-colors no-underline">
-                      Details →
-                    </a>
-                  )}
-                </div>
-              </article>
-            );
-          })
+          sortedClouds.map((cloud, index) => (
+            <CloudCard
+              cloud={cloud}
+              featured={featuredSlugs.has(cloud.slug)}
+              index={index}
+            />
+          ))
         }
       </div>
 

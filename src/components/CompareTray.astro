@@ -1,0 +1,171 @@
+---
+import { asset } from "../lib/assets";
+
+const baseUrl = asset("");
+---
+
+<div
+  id="compare-tray"
+  class="compare-tray fixed bottom-6 left-1/2 z-50 hidden w-[calc(100%-2rem)] max-w-lg -translate-x-1/2"
+  data-base={baseUrl}
+  role="region"
+  aria-label="Compare selection">
+  <div
+    class="compare-tray-panel flex flex-col gap-3 rounded-xl border border-clay-beige bg-white px-4 py-3 shadow-lg">
+    <div class="compare-tray-chips flex flex-wrap gap-2 min-h-[28px]"></div>
+    <div class="compare-tray-actions flex items-center justify-between gap-3">
+      <button
+        type="button"
+        id="compare-tray-clear"
+        class="text-xs font-medium text-warm-stone hover:text-rich-earth transition-colors">
+        Clear
+      </button>
+      <button
+        type="button"
+        id="compare-tray-go"
+        class="compare-tray-go flex-1 py-2.5 px-4 bg-bright-tangerine hover:bg-rich-earth text-white text-sm font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-bright-tangerine"
+        disabled>
+        Compare
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import {
+    COMPARE_CHANGE_EVENT,
+    clear,
+    getItems,
+    has,
+    isFull,
+    initCrossTabSync,
+    remove,
+    toggle,
+    type CompareItem,
+  } from "../lib/compare-store";
+
+  const tray = document.getElementById("compare-tray");
+  const chipsEl = tray?.querySelector(".compare-tray-chips");
+  const goBtn = document.getElementById("compare-tray-go") as HTMLButtonElement | null;
+  const baseUrl = tray?.getAttribute("data-base") ?? "/";
+
+  const LABEL_ADD = "Compare +";
+  const LABEL_IN = "In compare";
+  const LABEL_FULL = "Full";
+
+  function buildCompareUrl(slugs: string[]): string {
+    const params = new URLSearchParams();
+    if (slugs[0]) params.set("a", slugs[0]);
+    if (slugs[1]) params.set("b", slugs[1]);
+    if (slugs[2]) params.set("c", slugs[2]);
+    const query = params.toString();
+    const path = `${baseUrl}compare/`.replace(/\/{2,}/g, "/");
+    return query ? `${path}?${query}` : path;
+  }
+
+  function updateToggleButtons(): void {
+    const full = isFull();
+    document.querySelectorAll<HTMLButtonElement>("[data-compare-toggle]").forEach((btn) => {
+      const slug = btn.getAttribute("data-compare-slug") ?? "";
+      const selected = has(slug);
+      const compact = btn.hasAttribute("data-compare-compact");
+      const label = btn.querySelector("[data-compare-label]");
+
+      btn.setAttribute("aria-pressed", selected ? "true" : "false");
+      btn.disabled = !selected && full;
+
+      if (label) {
+        if (compact) {
+          label.textContent = selected ? "✓" : full ? "—" : "+";
+        } else if (selected) {
+          label.textContent = LABEL_IN;
+        } else if (full) {
+          label.textContent = LABEL_FULL;
+        } else {
+          label.textContent = LABEL_ADD;
+        }
+      }
+    });
+  }
+
+  function renderTray(): void {
+    const items = getItems();
+    if (!tray || !chipsEl || !goBtn) return;
+
+    if (items.length === 0) {
+      tray.classList.add("hidden");
+      tray.classList.remove("flex");
+      return;
+    }
+
+    tray.classList.remove("hidden");
+    tray.classList.add("flex");
+
+    chipsEl.innerHTML = items
+      .map(
+        (item) => `
+        <span class="compare-tray-chip inline-flex items-center gap-1.5 pl-2.5 pr-1 py-1 bg-cream border border-clay-beige rounded-full text-xs font-medium text-rich-earth">
+          <span class="truncate max-w-[120px]">${escapeHtml(item.name)}</span>
+          <button type="button" class="compare-tray-remove flex-shrink-0 w-5 h-5 flex items-center justify-center rounded-full text-warm-stone hover:bg-clay-beige hover:text-rich-earth transition-colors" data-remove-slug="${escapeHtml(item.slug)}" aria-label="Remove ${escapeHtml(item.name)} from compare">
+            <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </span>`
+      )
+      .join("");
+
+    goBtn.textContent = `Compare (${items.length})`;
+    goBtn.disabled = items.length < 2;
+    updateToggleButtons();
+  }
+
+  function escapeHtml(text: string): string {
+    return text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function handleToggleClick(event: Event): void {
+    const target = event.target as HTMLElement;
+    const btn = target.closest<HTMLButtonElement>("[data-compare-toggle]");
+    if (!btn || btn.disabled) return;
+
+    const slug = btn.getAttribute("data-compare-slug");
+    const name = btn.getAttribute("data-compare-name");
+    if (!slug || !name) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    toggle({ slug, name });
+  }
+
+  function handleTrayClick(event: Event): void {
+    const target = event.target as HTMLElement;
+    const removeBtn = target.closest<HTMLButtonElement>("[data-remove-slug]");
+    if (removeBtn) {
+      const slug = removeBtn.getAttribute("data-remove-slug");
+      if (slug) remove(slug);
+      return;
+    }
+
+    if (target.closest("#compare-tray-go") || target.id === "compare-tray-go") {
+      const slugs = getItems().map((i: CompareItem) => i.slug);
+      if (slugs.length >= 2) {
+        window.location.href = buildCompareUrl(slugs);
+      }
+      return;
+    }
+
+    if (target.closest("#compare-tray-clear") || target.id === "compare-tray-clear") {
+      clear();
+    }
+  }
+
+  document.addEventListener("click", handleToggleClick);
+  tray?.addEventListener("click", handleTrayClick);
+
+  initCrossTabSync(renderTray);
+  window.addEventListener(COMPARE_CHANGE_EVENT, renderTray);
+  renderTray();
+</script>

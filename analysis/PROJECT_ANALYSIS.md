@@ -29,6 +29,8 @@ src/                         # Astro site (Phase 2 migration — replaces docs/i
   pages/
     index.astro              # Homepage card grid (reads clouds.json + featured detail pages)
     [slug].astro             # Per-cloud detail page; getStaticPaths() filters by publishability
+    categories/[slug].astro  # Category landing pages — 23 static routes (Phase 4)
+    compare.astro            # Side-by-side compare for 2–3 clouds; searchable pickers (Phase 4)
     blog/index.astro         # Blog index (Phase 3)
     blog/[slug].astro        # Blog post pages
     rss.xml.ts               # RSS feed of non-draft posts
@@ -39,6 +41,12 @@ src/                         # Astro site (Phase 2 migration — replaces docs/i
     blog/<slug>.md           # Editorial posts (frontmatter: title, publishDate, draft, tags, …)
   content.config.ts          # Zod schema for clouds + blog collections
   components/
+    CloudCard.astro          # Shared provider card (homepage + category pages; Phase 4)
+    CompareTray.astro        # Floating compare basket (localStorage, max 3; Phase 4)
+    CompareButton.astro      # Detail-page compare toggle (Phase 4)
+    CompareCloudPicker.astro # Type-to-search combobox for /compare columns (Phase 4)
+    CompareTable.astro       # Side-by-side attribute table (Phase 4)
+    CompareNavLink.astro     # Sidebar link to /compare (Phase 4)
     DraftBanner.astro        # Notice shown atop draft profiles on preview deploys
     BlogNavLink.astro        # Homepage sidebar link to /blog/
     DirectorySidebar.astro   # Site nav: Directory / Watchlist / Blog
@@ -47,7 +55,11 @@ src/                         # Astro site (Phase 2 migration — replaces docs/i
     CloudDetail.astro        # Detail-page chrome; Organization JSON-LD; DraftBanner when status === "draft"
     BlogPost.astro           # Blog post chrome (Phase 3)
   lib/
-    profile.ts               # MergedCloud type + publish gate (getPublishableProfiles, getFeaturedSlugs)
+    profile.ts               # MergedCloud type + publish gate (getPublishableProfiles, getFeaturedSlugs, getAllMergedClouds)
+    categories.ts            # 23 category descriptions + slug helpers (Phase 4; sync with generate_llms.py)
+    compare.ts                 # Compare row definitions + formatting (Phase 4)
+    compare-store.ts         # localStorage compare basket (`aac:compare`; Phase 4)
+    compare-picker.ts        # Searchable picker logic for /compare (Phase 4)
     blog.ts                  # Blog publish gate (getPublishablePosts, sortedByDate, postUrl)
     site.ts                  # sitePreview constant (reads __SITE_PREVIEW__)
     clouds.ts                # slugify() — TS source of truth, mirrored in scripts/lib/slugify.py
@@ -82,7 +94,8 @@ scripts/
 tests/                       # pytest suites for check_duplicates + evaluate_submission
 data/candidates/             # Output of (apparent) auto-discovery scans
 analysis/                    # Phase plans + this analysis doc
-  2026-06-16-phase-5-seo-plan.md  # Sitemap, robots.txt, profile JSON-LD
+  2026-06-16-phase-5-seo-plan.md       # Sitemap, robots.txt, profile JSON-LD
+  2026-06-30-phase-4-discovery-plan.md # Category landings, compare page, compare tray
 ```
 
 ---

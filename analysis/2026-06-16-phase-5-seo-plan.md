@@ -9,7 +9,7 @@
 
 Close the SEO gaps left after Phases 1–3: sitemap generation for all static routes, build-time `robots.txt` tied to the preview/production deploy profile, and per-profile `Organization` JSON-LD on cloud detail pages. No new UI routes — only build-time artifacts and `<head>` enrichment.
 
-Shipped in parallel with Phase 4 (category landings + compare) because it has no UX surface.
+Shipped ahead of Phase 4 (category landings + compare) because it has no UX surface. **Phase 4 landed 2026-06-30** — see [2026-06-30-phase-4-discovery-plan.md](./2026-06-30-phase-4-discovery-plan.md).
 
 ## Acceptance criteria (RFC §9)
 
@@ -118,7 +118,7 @@ Note: `/rss.xml` is an API route, not an HTML page — it may or may not appear 
 
 - Per-page OG images (favicon-based or generated)
 - `BreadcrumbList` JSON-LD on profile/blog/category pages
-- Phase 4 category landings + compare (tracked separately)
+- ~~Phase 4 category landings + compare~~ ✅ landed 2026-06-30
 
 ## Related docs
 

@@ -41,6 +41,11 @@ export function isCloudProfileSitemapUrl(url: string): boolean {
   return cloudSlugs.has(rel);
 }
 
+export function isCategorySitemapUrl(url: string): boolean {
+  const rel = relativeSitePath(url);
+  return rel.startsWith("categories/");
+}
+
 type SitemapChunkFn = (item: SitemapItem) => SitemapItem | undefined;
 
 function blogChunk(item: SitemapItem): SitemapItem | undefined {
@@ -53,8 +58,14 @@ function cloudsChunk(item: SitemapItem): SitemapItem | undefined {
   return { ...item, changefreq: ChangeFreqEnum.MONTHLY, priority: 0.7 };
 }
 
-/** Named sitemap files: sitemap-blog-0.xml, sitemap-clouds-0.xml; remainder → sitemap-pages-0.xml */
+function categoriesChunk(item: SitemapItem): SitemapItem | undefined {
+  if (!isCategorySitemapUrl(item.url)) return undefined;
+  return { ...item, changefreq: ChangeFreqEnum.WEEKLY, priority: 0.75 };
+}
+
+/** Named sitemap files: sitemap-blog-0.xml, sitemap-clouds-0.xml, sitemap-categories-0.xml; remainder → sitemap-pages-0.xml */
 export const sitemapChunks: Record<string, SitemapChunkFn> = {
   blog: blogChunk,
   clouds: cloudsChunk,
+  categories: categoriesChunk,
 };

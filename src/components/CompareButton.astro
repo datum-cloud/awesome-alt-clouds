@@ -1,0 +1,22 @@
+---
+export interface Props {
+  slug: string;
+  name: string;
+  class?: string;
+}
+
+const { slug, name, class: className = "" } = Astro.props;
+---
+
+<button
+  type="button"
+  data-compare-toggle
+  data-compare-slug={slug}
+  data-compare-name={name}
+  aria-pressed="false"
+  class:list={[
+    "compare-toggle inline-flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-medium text-rich-earth bg-white border border-clay-beige rounded-lg hover:border-soft-sage hover:text-bright-tangerine transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-clay-beige disabled:hover:text-rich-earth aria-pressed:bg-soft-sage aria-pressed:border-soft-sage aria-pressed:text-rich-earth aria-pressed:hover:text-rich-earth",
+    className,
+  ]}>
+  <span data-compare-label>Compare +</span>
+</button>

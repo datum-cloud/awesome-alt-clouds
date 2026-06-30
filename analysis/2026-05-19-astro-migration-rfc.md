@@ -1,6 +1,6 @@
 # Astro Migration RFC — Evolving alt-cloud.org into a Community Destination
 
-> Status: **Phase 1–3 & 5 complete — Phase 4 next**
+> Status: **Phase 1–5 complete — Phase 6 (cutover) next**
 > Author: planning session, 2026-05-19
 > Branch: `feat/astro-migration`
 > Tracks: [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164)
@@ -14,7 +14,7 @@
 | 2 — Deeper company profiles (`/<slug>`) | ✅ done (2026-05-20) | Flat URL chosen instead of `/clouds/[slug]`. Plan: [2026-05-20-phase-2-detail-pages-plan.md](./2026-05-20-phase-2-detail-pages-plan.md). 5 sample MDX files seeded; architecture scales to 429+. |
 | 2a — Auto-generated profile MDX | ✅ done (2026-05-22) | Bot generates `status: draft` MDX on submission + batch backfill workflow. Plan: [2026-05-22-phase-2a-auto-profile-generation-plan.md](./2026-05-22-phase-2a-auto-profile-generation-plan.md). Flow: [2026-05-22-submission-to-mdx-flow.md](./2026-05-22-submission-to-mdx-flow.md). |
 | 3 — Editorial / blog + RSS | ✅ done (2026-06-15) | Plan: [2026-06-15-phase-3-blog-plan.md](./2026-06-15-phase-3-blog-plan.md). `/blog`, `/blog/<slug>`, `/rss.xml`; 2 seed posts. Legacy `update_blog_posts.mjs` + `update-blog-posts.yml` **kept**. |
-| 4 — Comparison & discovery aids | 📋 **next** | Category landings, side-by-side compare. Issue #164 Idea 3. See [Phase 4 — planned](#phase-4--planned-comparison--discovery-aids) below. |
+| 4 — Comparison & discovery aids | ✅ done (2026-06-30) | Category landings, `/compare`, versus-style tray, search pickers. Plan: [2026-06-30-phase-4-discovery-plan.md](./2026-06-30-phase-4-discovery-plan.md). |
 | 5 — SEO polish | ✅ done (2026-06-16) | Plan: [2026-06-16-phase-5-seo-plan.md](./2026-06-16-phase-5-seo-plan.md). `@astrojs/sitemap`, build-time `robots.txt`, per-profile `Organization` JSON-LD. |
 | 6 — Production cutover | ⏳ pending | Pages source needs flipping from "branch /docs" → "GitHub Actions" |
 
@@ -195,85 +195,35 @@ const blog = defineCollection({
 
 ---
 
-### Phase 4 — planned (Comparison & discovery aids)
+### Phase 4 — what landed (Comparison & discovery aids)
 
-Maps to [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164) **Idea 3 — Comparison & discovery aids**.
+Maps to [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/164) **Idea 3 — Comparison & discovery aids**. Full plan: [2026-06-30-phase-4-discovery-plan.md](./2026-06-30-phase-4-discovery-plan.md).
 
-**What already exists (Phase 1 homepage)**
-
-The Astro homepage (`src/pages/index.astro`) already ships client-side **search**, **category filter** (URL hash `#category=…`), and **sort** (alphabetical / recent via `dateAdded`). Phase 4 extends discovery from ephemeral filter state to **dedicated routes** and adds **side-by-side compare**.
-
-**Planned routes**
+**Routes**
 
 | Route | Purpose |
 |---|---|
 | `/categories/<slug>` | Static landing page per category — SEO-friendly, shareable URL, filtered card grid |
-| `/compare` | Pick 2–3 providers; render attribute table side-by-side |
+| `/compare` | Pick 2–3 providers; side-by-side attribute table |
 | `/compare?a=neon&b=hetzner` | Shareable deep link (query params → pre-selected clouds) |
 
-**Category landing pages**
+**Category landing pages** — `src/pages/categories/[slug].astro` with `getStaticPaths` over 23 categories; intro copy from `src/lib/categories.ts` (synced with `generate_llms.py:_CAT_DESCRIPTIONS`); shared `CloudCard.astro` grid; `CollectionPage` JSON-LD; `sitemap-categories-0.xml`.
 
-```
-src/pages/categories/[slug].astro
-  getStaticPaths → 23 categories from clouds.json / CATEGORIES constant
-  Render: category title, description (from generate_llms.py _CAT_DESCRIPTIONS),
-          card grid filtered to that category, link to /compare pre-filtered
-```
+**Compare page** — `src/pages/compare.astro` + `CompareTable.astro`; data from `clouds.json` merged with MDX frontmatter via `getAllMergedClouds()`. Type-to-search column pickers (`CompareCloudPicker.astro`, `compare-picker.ts`) replace native `<select>` dropdowns.
 
-Slug convention: match README section slug, e.g. `infrastructure-clouds`, `databases-storage`.
-
-**Compare page — data sources**
-
-Comparison rows pull from merged cloud data already available at build time:
-
-| Attribute | Source |
-|---|---|
-| Name, URL, description, score, categories | `public/clouds.json` (README-derived) |
-| Tagline, regions, services, pricingModel, openSource, headquarters | `src/content/clouds/<slug>.mdx` frontmatter (when profile exists) |
-| Detail page link | Only if publishable MDX exists (`getFeaturedSlugs()`) |
-
-Clouds without a profile MDX still appear in compare — cells show "—" or README one-liner only.
-
-**Compare UI (MVP)**
-
-```
-┌─────────────────────────────────────────────────────────┐
-│  Compare alt clouds          [Cloud A ▼] [Cloud B ▼] [+]│
-├──────────────┬──────────────┬───────────────────────────┤
-│              │ Neon         │ Hetzner                   │
-├──────────────┼──────────────┼───────────────────────────┤
-│ Score        │ 3/3 🟢       │ 2/3 🟡                    │
-│ Categories   │ Databases…   │ Infrastructure…           │
-│ Pricing model│ usage-based  │ hourly                    │
-│ Regions      │ 3 regions    │ EU-focused                │
-│ …            │              │                           │
-└──────────────┴──────────────┴───────────────────────────┘
-```
-
-- `src/components/CompareTable.astro` — presentational; data passed from page.
-- Client island (minimal vanilla JS or `<script>`) for picker dropdowns + URL sync.
-- Cap at **3 clouds** per comparison (Issue #164: "two or three providers").
-
-**Schema readiness**
-
-Phase 2 MDX frontmatter already includes comparison-friendly optional fields: `regions`, `services`, `pricingModel`, `openSource`, `headquarters`, `foundedYear`. No schema break required — compare page reads what's populated; empty fields degrade gracefully.
-
-**Out of scope for Phase 4 MVP**
-
-- Full-text search across profile bodies
-- User-saved comparison lists (needs auth or localStorage-only — defer)
-- Automated "similar providers" recommendations
-- Compare more than 3 clouds
+**Versus-style compare tray** — `CompareTray.astro` in `Base.astro`; `compare-store.ts` persists up to 3 providers in `localStorage`; **Compare +** on detail pages and cloud cards; floating **Compare (n)** navigates to `/compare?a=&b=&c=`.
 
 **Deliverables**
 
-- [ ] `/categories/<slug>` for all 23 categories
-- [ ] `/compare` with 2-cloud picker + attribute table
-- [ ] Query-param deep links (`?a=&b=&c=`)
-- [ ] Nav link from homepage sidebar / category pages
-- [ ] Optional: "Compare" CTA on detail pages (`DetailSidebar`)
+- [x] `/categories/<slug>` for all 23 categories
+- [x] `/compare` with 2–3 cloud picker + attribute table
+- [x] Query-param deep links (`?a=&b=&c=`)
+- [x] Nav link from homepage sidebar / category pages
+- [x] Compare CTA on detail pages and cloud cards
+- [x] Compare tray (localStorage basket + floating button)
+- [x] Searchable combobox pickers on compare page
 
-**Estimate:** 1–2 days (can ship category pages and compare stub separately).
+**Out of scope (deferred):** full-text profile search, auth-backed saved lists, "similar providers", >3 clouds, per-page OG images.
 
 ---
 
@@ -307,7 +257,7 @@ Maps to [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/16
 |---|---|---|---|---|
 | 1 | Deeper per-company profiles | ✅ MVP | Phase 2 + 2a | ✅ **Delivered** — Astro MDX at `/<slug>`, auto-gen pipeline, publish gate |
 | 2 | Editorial / blog | ✅ MVP | Phase 3 | ✅ **Delivered** — `/blog/`, `/rss.xml`; plan: [2026-06-15-phase-3-blog-plan.md](./2026-06-15-phase-3-blog-plan.md) |
-| 3 | Comparison & discovery aids | 🟡 Prepare structure | Phase 4 | 📋 Planned — homepage filter/search exists; category landings + compare next |
+| 3 | Comparison & discovery aids | 🟡 Prepare structure | Phase 4 | ✅ **Delivered** — category landings + compare; plan: [2026-06-30-phase-4-discovery-plan.md](./2026-06-30-phase-4-discovery-plan.md) |
 | 4 | Community & events, newsletter | ❌ Later | — | Not scoped |
 | 5 | Metadata footprint (OG, structured data, sitemap) | 🟢 Free win in Astro | Phase 5 | ✅ **Delivered** — sitemap, build-time robots.txt, profile JSON-LD; plan: [2026-06-16-phase-5-seo-plan.md](./2026-06-16-phase-5-seo-plan.md). Per-page OG images still TBD. |
 
@@ -319,22 +269,24 @@ Maps to [Issue #164](https://github.com/datum-cloud/awesome-alt-clouds/issues/16
 |---|---|
 | Phase 1 scope agreed in writing | ✅ This RFC |
 | List in GitHub remains canonical | ✅ README → clouds.json; MDX/blog are additive |
-| At least one of: deeper profiles, blog, or discovery aid live | ✅ **Profiles + blog live** on `feat/astro-migration` (compare next) |
+| At least one of: deeper profiles, blog, or discovery aid live | ✅ **Profiles, blog, categories + compare live** on `feat/astro-migration` |
 
 ## 2. Where the project is today (grounded)
 
-*Updated 2026-06-16 after Phase 5.*
+*Updated 2026-06-30 after Phase 4.*
 
 - **`README.md`** (~430 entries, 23 categories) remains the canonical source for listings.
 - **Build pipeline:** `deploy-pages.yml` regenerates `public/clouds.json` + `llms*.txt` at CI time, then `npm run build` → Astro static site in `dist/`.
-- **Frontend:** Astro 6 + Tailwind v4 on branch `feat/astro-migration` (preview deploy on GitHub Pages).
+- **Frontend:** Astro 5 + Tailwind v4 on branch `feat/astro-migration` (preview deploy on GitHub Pages).
   - `/` — directory grid with search, category filter, sort; cards link to detail pages when publishable MDX exists.
   - `/<slug>` — cloud detail pages from `src/content/clouds/*.mdx` merged with `clouds.json`; per-page `Organization` JSON-LD.
+  - `/categories/<slug>` — 23 category landing pages with filtered card grids (Phase 4).
+  - `/compare` — side-by-side attribute table for 2–3 clouds; searchable pickers; `?a=&b=&c=` deep links (Phase 4).
   - `/submit/`, `/watchlist/`, `/blog/`, `/rss.xml` — Astro routes.
   - `/sitemap-index.xml`, `/robots.txt` — build-time SEO artifacts (Phase 5).
+- **Compare tray:** site-wide floating basket (`localStorage`, max 3) via `CompareTray.astro` in `Base.astro` (Phase 4).
 - **Profile coverage:** 168+ reviewed MDX profiles (backfill) + bot pipeline for auto-generated `status: draft` MDX.
 - **Legacy `docs/`:** still present for reference; production cutover (Phase 6) pending.
-- **Not yet built:** `/categories/<slug>`, `/compare` (Phase 4).
 
 ## 3. Is GitHub Pages + Astro feasible?
 
@@ -635,18 +587,14 @@ Notable changes:
 ## 12. Recommended execution order (post Phase 2a)
 
 ```
-Phase 3 (blog)  ──►  Phase 5 (SEO) ✅  ──►  Phase 4 (categories + compare)  ──►  Phase 6 (cutover)
+Phase 3 (blog)  ──►  Phase 5 (SEO) ✅  ──►  Phase 4 (categories + compare) ✅  ──►  Phase 6 (cutover)
 ```
 
-**Phase 5 landed 2026-06-16** ahead of Phase 4 because it has no UX surface — only sitemap, robots.txt, and profile JSON-LD. Phase 4 (category landings + compare) is next.
+**Phase 4 landed 2026-06-30** — category landings, `/compare`, versus-style compare tray, and searchable column pickers. See [2026-06-30-phase-4-discovery-plan.md](./2026-06-30-phase-4-discovery-plan.md).
 
-**Why blog before compare?**
+**Phase 5 landed 2026-06-16** ahead of Phase 4 because it has no UX surface — only sitemap, robots.txt, and profile JSON-LD.
 
-- Issue #164 lists editorial as co-MVP with profiles; profiles are done.
-- Blog establishes a second content collection pattern (`draft` flag, PR workflow) reusable for future editorial calendar.
-- Compare benefits from more reviewed profile MDX in production (richer compare rows as backfill progresses).
-
-**Parallel option:** Category landing pages (Phase 4a) are independent of blog and could ship in a small PR before `/compare` (Phase 4b).
+**Next:** Phase 6 production cutover (flip Pages source from legacy `docs/` to Actions artifact).
 
 ## Appendix A — Reference reading
 
@@ -654,6 +602,7 @@ Phase 3 (blog)  ──►  Phase 5 (SEO) ✅  ──►  Phase 4 (categories + c
 - Phase 2 detail pages plan: [`analysis/2026-05-20-phase-2-detail-pages-plan.md`](./2026-05-20-phase-2-detail-pages-plan.md)
 - Phase 2a auto-generation plan: [`analysis/2026-05-22-phase-2a-auto-profile-generation-plan.md`](./2026-05-22-phase-2a-auto-profile-generation-plan.md)
 - Phase 3 blog plan: [`analysis/2026-06-15-phase-3-blog-plan.md`](./2026-06-15-phase-3-blog-plan.md)
+- Phase 4 discovery plan: [`analysis/2026-06-30-phase-4-discovery-plan.md`](./2026-06-30-phase-4-discovery-plan.md)
 - Phase 5 SEO plan: [`analysis/2026-06-16-phase-5-seo-plan.md`](./2026-06-16-phase-5-seo-plan.md)
 - End-to-end submission → MDX flow: [`analysis/2026-05-22-submission-to-mdx-flow.md`](./2026-05-22-submission-to-mdx-flow.md)
 - Submission validation spec: `docs/superpowers/specs/2026-03-30-submission-validation-improvement-design.md`

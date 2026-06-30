@@ -3,7 +3,7 @@ import { asset } from "../lib/assets";
 import SidebarFooterNav from "./SidebarFooterNav.astro";
 
 export interface Props {
-  activePage?: "directory" | "watchlist" | "blog";
+  activePage?: "directory" | "watchlist" | "blog" | "compare";
 }
 
 const { activePage = "directory" } = Astro.props;
@@ -11,8 +11,9 @@ const { activePage = "directory" } = Astro.props;
 const homeHref = asset("");
 const watchlistHref = asset("watchlist/");
 const blogHref = asset("blog/");
+const compareHref = asset("compare/");
 
-const navClass = (page: "directory" | "watchlist" | "blog") =>
+const navClass = (page: "directory" | "watchlist" | "blog" | "compare") =>
   [
     "flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm no-underline transition-colors",
     activePage === page
@@ -77,6 +78,17 @@ const navClass = (page: "directory" | "watchlist" | "blog") =>
         ></path>
       </svg>
       <span>Blog</span>
+    </a>
+    <a href={compareHref} class={navClass("compare")}>
+      <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v2M9 7h6"
+        ></path>
+      </svg>
+      <span>Compare</span>
     </a>
   </nav>
 

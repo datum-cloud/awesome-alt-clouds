@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import CompareTray from "../components/CompareTray.astro";
 import { asset } from "../lib/assets";
 import { blockSearchBots, sitePreview } from "../lib/site";
 import { defaultDescription, defaultTitle, socialDescription, socialTitle } from "../lib/site-meta";
@@ -14,6 +15,8 @@ export interface Props {
   includeHomeJsonLd?: boolean;
   /** Cloud count for the homepage metadata blocks */
   cloudCount?: number;
+  /** Show floating compare tray (disabled on /compare itself) */
+  showCompareTray?: boolean;
 }
 
 const {
@@ -23,6 +26,7 @@ const {
   canonical = defaultCanonical,
   includeHomeJsonLd = false,
   cloudCount = 428,
+  showCompareTray = true,
 } = Astro.props;
 ---
 
@@ -186,5 +190,6 @@ const {
   </head>
   <body class="bg-cream text-rich-earth font-sans">
     <slot />
+    {showCompareTray && <CompareTray />}
   </body>
 </html>

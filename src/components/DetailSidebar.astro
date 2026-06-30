@@ -1,6 +1,7 @@
 ---
 import { asset } from "../lib/assets";
 import type { MergedCloud } from "../lib/profile";
+import CompareButton from "./CompareButton.astro";
 import ScoreBadge from "./ScoreBadge.astro";
 
 export interface Props {
@@ -97,6 +98,11 @@ const homeHref = asset("");
         size="md"
       />
     </div>
+    <CompareButton
+      slug={cloud.slug}
+      name={cloud.name}
+      class="mt-3 w-full"
+    />
   </div>
 
   <div class="py-5 border-b border-clay-beige">

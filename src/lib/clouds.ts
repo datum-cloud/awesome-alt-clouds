@@ -24,6 +24,8 @@ const RESERVED_SLUGS = new Set<string>([
   "blog",
   "submit",
   "watchlist",
+  "compare",
+  "categories",
   "404",
   "clouds.json",
   "llms.txt",

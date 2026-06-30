@@ -1,0 +1,25 @@
+---
+import { asset } from "../lib/assets";
+
+const compareHref = asset("compare/");
+---
+
+<a
+  href={compareHref}
+  class="page-link flex items-center gap-2 px-3 py-2.5 text-[13px] text-warm-stone hover:text-rich-earth hover:bg-clay-beige rounded-lg transition-colors text-left w-full no-underline">
+  <svg
+    width="16"
+    height="16"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    aria-hidden="true">
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v2M9 7h6"
+    ></path>
+  </svg>
+  <span>Compare</span>
+</a>

@@ -103,3 +103,12 @@ export function mergeCloudWithProfile(
     tagline: data.tagline,
   };
 }
+
+/** All clouds merged with optional MDX frontmatter (for compare, exports, etc.). */
+export async function getAllMergedClouds(): Promise<MergedCloud[]> {
+  const profiles = await loadProfiles();
+  const profileBySlug = new Map(profiles.map((p) => [p.id, p]));
+  return [...cloudsBySlug.values()].map((cloud) =>
+    mergeCloudWithProfile(cloud, profileBySlug.get(cloud.slug))
+  );
+}
