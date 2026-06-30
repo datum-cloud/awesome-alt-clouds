@@ -9,7 +9,9 @@ Env vars (required unless noted):
   CLOUD_CATEGORIES  — comma-separated, e.g. "Databases & Storage"
   CLOUD_DESCRIPTION — one-line description from clouds.json
   OUTPUT_PATH       — defaults to src/content/clouds/<slug>.mdx
-  QWEN_BASE_URL     — self-hosted Qwen endpoint (OpenAI-compatible)
+  LLM_PROVIDER      — "claude" (default) or "qwen"
+  ANTHROPIC_API_KEY — Claude API key (required when LLM_PROVIDER=claude)
+  QWEN_BASE_URL     — self-hosted Qwen endpoint (OpenAI-compatible, required when LLM_PROVIDER=qwen)
   DRY_RUN           — if "true", print MDX to stdout instead of writing file
 
 On success (non-dry-run), writes:
@@ -29,6 +31,12 @@ from lib.slugify import slugify
 
 PROFILE_MAX_TOKENS = 2048
 QWEN_MODEL = "qwen3.6-35b-a3b"
+CLAUDE_MODEL = "claude-haiku-4-5-20251001"
+
+# Set LLM_PROVIDER=qwen to use the self-hosted Qwen endpoint instead of Claude.
+# Defaults to claude. The corresponding secret (ANTHROPIC_API_KEY or
+# QWEN_BASE_URL) must be present for the selected provider.
+LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "claude").lower()
 
 PROFILE_SYSTEM_PROMPT = (
     "You are a technical writer creating cloud provider profiles for alt-cloud.org — "
@@ -141,19 +149,8 @@ def _prepend_status_draft(mdx: str) -> str:
     return "---\nstatus: draft\n" + mdx[3:].lstrip("\n")
 
 
-def generate_profile(
-    name: str,
-    url: str,
-    score: int,
-    categories: list[str],
-    description: str,
-) -> dict:
-    """Fetch the page and call Qwen. Returns {mdx, fetch_method, slug}."""
-    print(f"Fetching {url}...")
-    soup, _final_url, fetch_method = fetch_page_with_fallback(url)
-    page_text = soup.get_text(separator="\n", strip=True) if soup else ""
-    print(f"Fetch method: {fetch_method or 'failed'}, content length: {len(page_text)}")
-
+def _call_qwen_for_profile(user_prompt: str) -> tuple[str, bool]:
+    """Call the self-hosted Qwen endpoint. Returns (raw_text, truncated)."""
     base_url = os.environ.get("QWEN_BASE_URL")
     if not base_url:
         print("ERROR: QWEN_BASE_URL not set", file=sys.stderr)
@@ -163,23 +160,69 @@ def generate_profile(
 
     client = openai.OpenAI(base_url=base_url, api_key="not-needed")
 
-    print(f"Calling Qwen ({QWEN_MODEL}) for {name}...")
+    print(f"Calling Qwen ({QWEN_MODEL})...")
     message = client.chat.completions.create(
         model=QWEN_MODEL,
         max_tokens=PROFILE_MAX_TOKENS,
         messages=[
             {"role": "system", "content": PROFILE_SYSTEM_PROMPT},
-            {
-                "role": "user",
-                "content": build_profile_prompt(
-                    name, url, score, categories, description, page_text
-                ),
-            },
+            {"role": "user", "content": user_prompt},
         ],
         extra_body={"chat_template_kwargs": {"enable_thinking": False}},
     )
 
     truncated = message.choices[0].finish_reason == "length"
+    raw_text = (message.choices[0].message.content or "").strip()
+    raw_text = re.sub(r'<think>[\s\S]*?</think>', '', raw_text).strip()
+    return raw_text, truncated
+
+
+def _call_claude_for_profile(user_prompt: str) -> tuple[str, bool]:
+    """Call the Claude API. Returns (raw_text, truncated)."""
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        print("ERROR: ANTHROPIC_API_KEY not set", file=sys.stderr)
+        sys.exit(1)
+
+    import anthropic
+
+    client = anthropic.Anthropic(api_key=api_key)
+
+    print(f"Calling Claude ({CLAUDE_MODEL})...")
+    message = client.messages.create(
+        model=CLAUDE_MODEL,
+        max_tokens=PROFILE_MAX_TOKENS,
+        system=PROFILE_SYSTEM_PROMPT,
+        messages=[{"role": "user", "content": user_prompt}],
+    )
+
+    truncated = message.stop_reason == "max_tokens"
+    raw_text = (message.content[0].text if message.content else "").strip()
+    return raw_text, truncated
+
+
+def generate_profile(
+    name: str,
+    url: str,
+    score: int,
+    categories: list[str],
+    description: str,
+) -> dict:
+    """Fetch the page and call the selected LLM. Returns {mdx, fetch_method, slug}."""
+    print(f"Fetching {url}...")
+    soup, _final_url, fetch_method = fetch_page_with_fallback(url)
+    page_text = soup.get_text(separator="\n", strip=True) if soup else ""
+    print(f"Fetch method: {fetch_method or 'failed'}, content length: {len(page_text)}")
+
+    user_prompt = build_profile_prompt(
+        name, url, score, categories, description, page_text
+    )
+
+    if LLM_PROVIDER == "qwen":
+        mdx_raw, truncated = _call_qwen_for_profile(user_prompt)
+    else:
+        mdx_raw, truncated = _call_claude_for_profile(user_prompt)
+
     if truncated:
         print(
             f"WARNING: Response hit max_tokens ({PROFILE_MAX_TOKENS}) for {name} — "
@@ -187,8 +230,6 @@ def generate_profile(
             file=sys.stderr,
         )
 
-    mdx_raw = (message.choices[0].message.content or "").strip()
-    mdx_raw = re.sub(r'<think>[\s\S]*?</think>', '', mdx_raw).strip()
     mdx_raw = _strip_outer_code_fences(mdx_raw)
     mdx_raw = _prepend_status_draft(mdx_raw)
 

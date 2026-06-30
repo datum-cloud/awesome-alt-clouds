@@ -36,13 +36,15 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install openai requests beautifulsoup4
+        run: pip install anthropic openai requests beautifulsoup4
 
       - name: Run backfill
         env:
           BATCH_SIZE: ${{ github.event.inputs.batch_size }}
           CATEGORY_FILTER: ${{ github.event.inputs.category_filter }}
           SCORE_FILTER: ${{ github.event.inputs.score_filter }}
+          LLM_PROVIDER: ${{ vars.LLM_PROVIDER || 'claude' }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           QWEN_BASE_URL: ${{ secrets.QWEN_BASE_URL }}
         run: python scripts/backfill_profiles.py
 

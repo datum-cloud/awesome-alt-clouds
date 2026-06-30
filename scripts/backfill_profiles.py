@@ -12,7 +12,9 @@ Env vars:
   SCORE_FILTER        — only process clouds with this score: "2", "3", or "all" (default: "3")
   CONTENT_DIR         — path to MDX content dir (default: src/content/clouds)
   CLOUDS_JSON         — path to clouds.json (default: public/clouds.json)
-  QWEN_BASE_URL       — passed through to generate_cloud_profile
+  LLM_PROVIDER        — passed through to generate_cloud_profile ("claude" default, or "qwen")
+  ANTHROPIC_API_KEY   — passed through to generate_cloud_profile (claude provider)
+  QWEN_BASE_URL       — passed through to generate_cloud_profile (qwen provider)
   DRY_RUN             — if "true", print slugs that would be processed; no API calls
 """
 
