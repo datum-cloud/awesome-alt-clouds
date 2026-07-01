@@ -1,13 +1,13 @@
 # Awesome Alt Clouds — Full Reference
 
-> Curated directory of 455+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
+> Curated directory of 456+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
 
 ## About This Directory
 
 - [Directory Homepage](https://www.alt-cloud.org/): Interactive searchable directory. Filter by category, search by name or description, sort alphabetically, by score, or by recently added date. All data loaded from /clouds.json.
 - [Submit a Service](https://www.alt-cloud.org/submit/): Web form that creates a GitHub issue, triggers automated AI evaluation (pricing page detection, signup detection, status page detection), and opens a PR on pass.
 - [GitHub Repository](https://github.com/datum-cloud/awesome-alt-clouds): Source of truth. Contains README.md (the awesome list), evaluation scripts in /scripts, and GitHub Actions workflows in .github/workflows.
-- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 455+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
+- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 456+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
 
 ## Evaluation Criteria
 
@@ -111,17 +111,17 @@ CRM, customer support, marketing automation, and e-commerce infrastructure platf
 
 Services: Attio, Beehiiv, Clarify, Customer.io, Formbricks, Front, Helpscout, Hubspot, Jasper, Klaviyo, Loops, Mirakl, Plain, Shopify, Stonly, and 1 more.
 
+### Communications, IoT & Media (16 services)
+
+Messaging APIs, email delivery, SMS, voice, video, push notifications, and IoT connectivity platforms.
+
+Services: 1NCE, api.video, Gradium, Hologram, Knock, Mux, Onomondo, Particle, Resend, Samsara, Sendbird, SLNG, Soracom, Telnyx, Twilio, and 1 more.
+
 ### AI Inference & Model APIs (15 services)
 
 Hosted inference APIs for open-source and proprietary models, optimized for speed, cost, and scale.
 
 Services: Anchor, Cloudglue, Fireworks.ai, Groq, InfronAI, LeptonAI, Mistral AI, Nomadic, Parallel, Portkey, Replicate, Roboflow, Sail Research, Swirls, Together.ai.
-
-### Communications, IoT & Media (15 services)
-
-Messaging APIs, email delivery, SMS, voice, video, push notifications, and IoT connectivity platforms.
-
-Services: 1NCE, api.video, Gradium, Hologram, Knock, Mux, Onomondo, Particle, Resend, Samsara, Sendbird, SLNG, Soracom, Twilio, Wistia.
 
 ### Emerging & Unverified Providers (14 services)
 
@@ -171,9 +171,9 @@ Services: Akash Network.
 
 ## Key Facts
 
-- 455+ services as of 2026-06-29
+- 456+ services as of 2026-07-01
 - 23 categories covering the full developer cloud ecosystem
-- 423 services meet all 3 criteria (🟢); 32 meet 2 of 3 (🟡)
+- 424 services meet all 3 criteria (🟢); 32 meet 2 of 3 (🟡)
 - Minimum inclusion score: 2/3 criteria
 - Machine-readable data: https://www.alt-cloud.org/clouds.json
 - Source: https://github.com/datum-cloud/awesome-alt-clouds
