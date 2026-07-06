@@ -132,6 +132,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Nebius](https://nebius.com/) - Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services.
 * 🟢 [NeevCloud](https://www.neevcloud.com/) - India-based GPU cloud offering secure, scalable AI compute.
 * 🟢 [NextGen Cloud](https://www.nextgencloud.com/) - Delivers sustainable, high-performance cloud infrastructure for AI workloads.
+* 🟡 [Nuza](https://nuza.io/) - GPU spot exchange on Solana with per-second billing in USDC, on-chain escrow with automatic refunds for unused time, and a public pricing API.
 * 🟢 [Ornn](https://ornn.com/) - Provides financial infrastructure for GPU compute markets, including reference pricing indices, market data, capacity financing, and compute access platforms.
 * 🟡 [Paperspace](https://www.paperspace.com/) - Cloud computing with GPU support for AI development and deployment. Now owned by DigitalOcean.
 * 🟢 [Parasail](https://parasail.ai/) - Serverless GPU platform to run custom AI models easily.
