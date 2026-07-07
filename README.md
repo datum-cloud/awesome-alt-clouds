@@ -234,6 +234,7 @@ Cloud data warehouses, OLAP engines, product analytics, and BI platforms for que
 * 🟢 [MotherDuck](https://motherduck.com/) - Serverless analytics platform powered by DuckDB with cloud collaboration.
 * 🟢 [Plausible](https://plausible.io/) - Lightweight, privacy-focused web analytics platform without cookies, offering essential metrics in an intuitive dashboard.
 * 🟢 [PostHog](https://posthog.com/) - An open-source product analytics platform that can be deployed on-premises.
+* 🟢 [Rybbit](https://rybbit.com/) - Provides a cookieless, GDPR-compliant web analytics platform with session replay, conversion funnels, and real-time data as a Google Analytics alternative.
 * 🟢 [Snowflake](https://www.snowflake.com/en/) - A cloud data platform offering data warehousing, data lakes, and data sharing capabilities.
 * 🟢 [Teradata](https://www.teradata.com/) - Specializing in providing solutions for data warehousing, analytics, and big data analytics.
 * 🟢 [Tinybird](https://www.tinybird.co/) - Real-time data platform for building instant APIs over streaming and batch data.
