@@ -96,6 +96,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Seeweb](https://www.seeweb.it/) - Italian cloud infrastructure provider offering compute, storage, and CDN.
 * 🟡 [Sent](https://www.sent.dm/) - Cloud service provider.
 * 🟢 [Servers.com](https://www.servers.com/) - Global bare metal and private cloud platform supporting AI/ML compute.
+* 🟢 [Sidero Labs](https://www.siderolabs.com/) - Provides Talos Linux and Omni, an immutable Kubernetes infrastructure platform designed for zero-drift operations, compliance, and secure multi-environment deployments.
 * 🟢 [Spheron Network](https://www.spheron.network/) - Decentralized GPU/CPU network for AI and Web3 with 44,000+ nodes across 170+ locations.
 * 🟡 [Sprites](https://sprites.dev/) - Provides hardware-isolated, stateful Linux sandbox environments with checkpoint and restore capabilities for running arbitrary code with persistent storage and HTTP access.
 * 🟢 [Sustainable Metal Cloud](https://smc.co/) - Green-focused GPU cloud with a sustainability-first infrastructure model.
