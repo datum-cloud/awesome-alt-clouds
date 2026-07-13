@@ -194,6 +194,7 @@ Managed databases, object storage, caching, and search engines — relational, N
 * 🟢 [Hasura](https://hasura.io/) - Instantly generates GraphQL APIs over new or existing PostgresSQL databases.
 * 🟢 [Hydrolix](https://hydrolix.io/) - A streaming data lake that ingests and processes high-volume, high-cardinality log data in real time, providing scalable storage and query capabilities with cost-efficient resource utilization.
 * 🟢 [InfluxData](https://www.influxdata.com/) - Purpose-built time-series database for cloud, on-premises, and edge deployments.
+* 🟢 [LaserData](https://laserdata.com/) - Provides a hyper-efficient data streaming platform built in Rust with sub-millisecond latency, designed for real-time and agentic AI systems.
 * 🟢 [Materialize](https://materialize.com/) - Streaming SQL database for real-time data transformation and analytics.
 * 🟢 [Meilisearch](https://www.meilisearch.com/) - Rust-based open-source search engine with hybrid search capabilities and typo-tolerant fast search.
 * 🟢 [Momento](https://www.gomomento.com/) - Serverless caching with instant scaling, no cluster management, compatible with Redis clients and Memcached protocols.
