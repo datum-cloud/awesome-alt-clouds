@@ -298,6 +298,7 @@ Orchestration, automation, and operations platforms for running reliable workflo
 * 🟢 [n8n](https://n8n.io/) - An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor.
 * 🟢 [PagerDuty](https://www.pagerduty.com/) - A platform for automating critical operations work.
 * 🟢 [Prefect](https://www.prefect.io/) - Workflow orchestration framework for building resilient data pipelines in Python.
+* 🟡 [Resonate](https://www.resonatehq.io/) - Provides durable execution for async/await workflows using any existing database or queue, simplifying failure handling and recovery in distributed systems.
 * 🟢 [Ryvn](https://ryvn.ai/) - BYOC deployment platform for SaaS startups in customer clouds and on-premises.
 * 🟢 [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
 * 🟢 [Temporal](https://temporal.io/) - Durable execution platform for reliable workflows with automatic failure recovery.
