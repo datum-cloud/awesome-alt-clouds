@@ -447,6 +447,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [DevZero](https://www.devzero.io/) - Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.
 * 🟢 [Dosu](https://dosu.dev/) - AI documentation platform that generates, maintains, and shares knowledge from code and conversations.
 * 🟢 [E2B](https://e2b.dev/) - Secure sandboxes for AI code execution with filesystem, networking, and long-running process support for AI agents.
+* 🟢 [Engram SDK](https://www.engram.org/products/sdk) - Provides TypeScript and Python libraries for building agents with memory, reasoning, and orchestration capabilities for enterprise AI applications.
 * 🟢 [Fabrica](https://www.usefabrica.app/) - AI platform that builds internal apps from prompts with database and tooling integrations.
 * 🟢 [Firefly](https://www.firefly.ai/) - A cloud asset management solution powered by Infrastructure-as-Code, assisting DevOps and SRE teams in managing their entire cloud infrastructure efficiently.
 * 🟢 [Flagsmith](https://www.flagsmith.com/) - Open-source feature flag and remote config platform with SaaS, self-hosted, or private cloud deployment options.
