@@ -473,6 +473,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [Ubicloud](https://www.ubicloud.com/) - An open-source cloud platform that can run anywhere, offering IaaS features on bare metal providers with options for self-hosting or managed services.
 * 🟢 [Unleash](https://www.getunleash.io/) - Enterprise open-source feature management platform with strong RBAC and flexible deployment options.
 * 🟢 [Warp](https://www.warp.dev/) - Cloud service provider.
+* 🟡 [Wire](https://usewire.io/) - Provides composable context containers for AI agents, organizing documents and data into AI-optimized environments accessible via MCP protocol.
 
 ## Authorization, Identity & Fraud
 
