@@ -499,6 +499,7 @@ Authentication, authorization, secrets management, identity providers, and fraud
 * 🟡 [Keycard](https://www.keycard.ai/) - Provides identity-based access control and governance for autonomous AI agents, offering policy enforcement, credential management, and audit trails for agent interactions with APIs and data.
 * 🟢 [Keycloak](https://www.keycloak.org/) - An open-source identity and access management solution for modern applications and services.
 * 🟢 [Ory](https://www.ory.sh/) - Offers open-source identity infrastructure for authentication, authorization, and user management.
+* 🟢 [Ory](https://www.ory.com/) - Provides composable, scalable Identity and Access Management (IAM) solutions for customer identity, B2B, and AI agents with support for SSO, passwordless auth, and fine-grained permissions.
 * 🟢 [Oso](https://www.osohq.com/) - Authorization framework with policy-as-code, permissions for agent security.
 * 🟢 [Pangea](https://pangea.cloud/) - Security services API platform for auth, vault, audit, and more.
 * 🟢 [Permit](https://www.permit.io/) - Authorization-as-a-Service platform for baking-in access control in minutes.
