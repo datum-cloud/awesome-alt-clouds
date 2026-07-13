@@ -136,6 +136,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Ornn](https://ornn.com/) - Provides financial infrastructure for GPU compute markets, including reference pricing indices, market data, capacity financing, and compute access platforms.
 * 🟡 [Paperspace](https://www.paperspace.com/) - Cloud computing with GPU support for AI development and deployment. Now owned by DigitalOcean.
 * 🟢 [Parasail](https://parasail.ai/) - Serverless GPU platform to run custom AI models easily.
+* 🟡 [Positron](https://www.positron.ai/) - Delivers purpose-built hardware and API infrastructure for optimized Transformer model inference, supporting HuggingFace models with OpenAI-compatible endpoints.
 * 🟢 [Runpod](https://www.runpod.io/) - Provides customizable GPU containers and secure cloud compute environments.
 * 🟢 [Shadeform](https://shadeform.com/) - GPU compute provider with a focus on low-cost AI infrastructure.
 * 🟢 [TensorDock](https://tensordock.com/) - Affordable, usage-based GPU cloud platform for model training.
