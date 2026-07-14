@@ -4291,6 +4291,16 @@
     "dateAdded": "2026-07-14"
   },
   {
+    "name": "Novu",
+    "url": "https://novu.co/",
+    "description": "Provides open-source notification infrastructure for multi-channel communication across email, SMS, push, chat, and more with workflow orchestration and agent integration.",
+    "score": 3,
+    "categories": [
+      "Communications, IoT & Media"
+    ],
+    "dateAdded": "2026-07-14"
+  },
+  {
     "name": "Onomondo",
     "url": "https://onomondo.com/",
     "description": "A full-stack connectivity platform for IoT with a single global SIM, advanced network control, and transparent pricing.",
