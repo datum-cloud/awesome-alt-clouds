@@ -1221,6 +1221,16 @@
     "dateAdded": "2026-07-14"
   },
   {
+    "name": "LaserData",
+    "url": "https://laserdata.com/",
+    "description": "Provides a hyper-efficient data streaming platform built in Rust with sub-millisecond latency, designed for real-time and agentic AI systems.",
+    "score": 3,
+    "categories": [
+      "Databases & Storage"
+    ],
+    "dateAdded": "2026-07-14"
+  },
+  {
     "name": "Materialize",
     "url": "https://materialize.com/",
     "description": "Streaming SQL database for real-time data transformation and analytics.",
