@@ -572,6 +572,7 @@ Messaging, notifications, email, voice, video, and IoT connectivity platforms fo
 * 🟢 [Hologram](https://www.hologram.io/) - Provides global IoT SIM cards and eUICC technology with a cloud-native dashboard for managing devices and data usage across carriers.
 * 🟢 [Knock](https://knock.app/) - Notification infrastructure with workflows, preferences, and delivery channels.
 * 🟢 [Mux](https://www.mux.com) - Solves the hard problems software teams face when building video, from live-streaming platforms to on-demand video catalogs and anything in between.
+* 🟢 [Novu](https://novu.co/) - Provides open-source notification infrastructure for multi-channel communication across email, SMS, push, chat, and more with workflow orchestration and agent integration.
 * 🟢 [Onomondo](https://onomondo.com/) - A full-stack connectivity platform for IoT with a single global SIM, advanced network control, and transparent pricing.
 * 🟢 [Particle](https://www.particle.io/) - An integrated IoT platform offering hardware, firmware, and cloud connectivity tools for building and scaling connected products.
 * 🟡 [Resend](https://resend.com/) - Email for developers who want to deliver transactional and marketing emails at scale.
