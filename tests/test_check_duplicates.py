@@ -149,6 +149,168 @@ class TestCheckCloudsJson:
         match_type, entry = cd.check_clouds_json('other.io', 'Render', clouds)
         assert match_type == 'fuzzy_name'
 
+    def test_short_exact_name_match_below_token_length_gate(self):
+        # 'Ory' normalises to 'ory' (3 chars) — below the >=4 token-overlap
+        # gate, but an exact match after normalisation should still fire.
+        clouds = [{
+            "name": "Ory",
+            "url": "https://www.ory.sh/",
+            "description": "Open-source identity infrastructure.",
+            "score": 3,
+            "categories": [],
+        }]
+        match_type, entry = cd.check_clouds_json('ory.com', 'Ory', clouds)
+        assert match_type == 'fuzzy_name'
+        assert entry['name'] == 'Ory'
+
+    def test_short_different_names_do_not_match(self):
+        # Two distinct short names should not collide.
+        clouds = [{
+            "name": "Fly",
+            "url": "https://fly.io",
+            "description": "...",
+            "score": 3,
+            "categories": [],
+        }]
+        result = cd.check_clouds_json('other.io', 'Vex', clouds)
+        assert result == (None, None)
+
+
+# ---------------------------------------------------------------------------
+# resolve_final_domain
+# ---------------------------------------------------------------------------
+
+
+class TestResolveFinalDomain:
+
+    def _mock_response(self, final_url):
+        mock = MagicMock()
+        mock.url = final_url
+        mock.close = MagicMock()
+        return mock
+
+    def test_no_redirect_returns_same_domain(self):
+        with patch('requests.get', return_value=self._mock_response('https://ory.com/')):
+            assert cd.resolve_final_domain('https://ory.com/') == 'ory.com'
+
+    def test_redirect_returns_final_domain(self):
+        with patch('requests.get', return_value=self._mock_response('https://www.ory.com/')):
+            assert cd.resolve_final_domain('https://www.ory.sh/') == 'ory.com'
+
+    def test_exception_returns_empty_string(self):
+        with patch('requests.get', side_effect=Exception('connection error')):
+            assert cd.resolve_final_domain('https://unreachable.example/') == ''
+
+    def test_timeout_returns_empty_string(self):
+        import requests as requests_module
+        with patch('requests.get', side_effect=requests_module.exceptions.Timeout('timed out')):
+            assert cd.resolve_final_domain('https://slow.example/') == ''
+
+
+# ---------------------------------------------------------------------------
+# check_clouds_json_with_redirects
+# ---------------------------------------------------------------------------
+
+
+class TestCheckCloudsJsonWithRedirects:
+
+    ORY_CLOUDS = [{
+        "name": "Different Name Entirely",
+        "url": "https://www.ory.sh/",
+        "description": "Open-source identity infrastructure.",
+        "score": 3,
+        "categories": [],
+    }]
+
+    def test_exact_domain_short_circuits_without_network(self):
+        clouds = [{
+            "name": "Fly.io",
+            "url": "https://fly.io",
+            "description": "...",
+            "score": 3,
+            "categories": [],
+        }]
+        with patch('requests.get') as mock_get:
+            match_type, entry = cd.check_clouds_json_with_redirects(
+                'fly.io', 'Fly.io', 'https://fly.io', clouds,
+            )
+        assert match_type == 'exact_domain'
+        mock_get.assert_not_called()
+
+    def test_fuzzy_name_upgraded_to_redirect_domain_when_final_domains_match(self):
+        clouds = [{
+            "name": "Ory",
+            "url": "https://www.ory.sh/",
+            "description": "...",
+            "score": 3,
+            "categories": [],
+        }]
+
+        def fake_get(url, **kwargs):
+            resp = MagicMock()
+            resp.close = MagicMock()
+            # Both the submitted URL and the stored candidate URL resolve to ory.com
+            resp.url = 'https://www.ory.com/'
+            return resp
+
+        with patch('requests.get', side_effect=fake_get):
+            match_type, entry = cd.check_clouds_json_with_redirects(
+                'ory.com', 'Ory', 'https://www.ory.com/', clouds,
+            )
+        assert match_type == 'redirect_domain'
+        assert entry['name'] == 'Ory'
+
+    def test_fuzzy_name_stays_fuzzy_when_redirect_check_fails(self):
+        clouds = [{
+            "name": "Ory",
+            "url": "https://www.ory.sh/",
+            "description": "...",
+            "score": 3,
+            "categories": [],
+        }]
+        with patch('requests.get', side_effect=Exception('network down')):
+            match_type, entry = cd.check_clouds_json_with_redirects(
+                'ory.com', 'Ory', 'https://www.ory.com/', clouds,
+            )
+        assert match_type == 'fuzzy_name'
+        assert entry['name'] == 'Ory'
+
+    def test_no_name_match_upgraded_via_submitted_url_redirect(self):
+        # Submitted under a totally different name, but the URL redirects
+        # to an already-listed entry's domain.
+        def fake_get(url, **kwargs):
+            resp = MagicMock()
+            resp.close = MagicMock()
+            resp.url = 'https://www.ory.sh/'
+            return resp
+
+        with patch('requests.get', side_effect=fake_get):
+            match_type, entry = cd.check_clouds_json_with_redirects(
+                'rebranded-name.com', 'Totally New Brand', 'https://rebranded-name.com', self.ORY_CLOUDS,
+            )
+        assert match_type == 'redirect_domain'
+        assert entry['name'] == 'Different Name Entirely'
+
+    def test_no_match_stays_none_when_redirect_resolution_fails(self):
+        with patch('requests.get', side_effect=Exception('network down')):
+            result = cd.check_clouds_json_with_redirects(
+                'brandnew.io', 'Brand New Service', 'https://brandnew.io', self.ORY_CLOUDS,
+            )
+        assert result == (None, None)
+
+    def test_no_match_stays_none_when_no_redirect_happens(self):
+        def fake_get(url, **kwargs):
+            resp = MagicMock()
+            resp.close = MagicMock()
+            resp.url = url  # no redirect
+            return resp
+
+        with patch('requests.get', side_effect=fake_get):
+            result = cd.check_clouds_json_with_redirects(
+                'brandnew.io', 'Brand New Service', 'https://brandnew.io', self.ORY_CLOUDS,
+            )
+        assert result == (None, None)
+
 
 # ---------------------------------------------------------------------------
 # post_comment / add_label / close_issue
@@ -246,6 +408,15 @@ class TestBuildComment:
         comment = cd.build_comment('fuzzy_name', self.ENTRY)
         assert 'Closing' not in comment
 
+    def test_redirect_domain_comment_mentions_redirect(self):
+        comment = cd.build_comment('redirect_domain', self.ENTRY)
+        assert 'redirect' in comment.lower()
+        assert 'Fly.io' in comment
+
+    def test_redirect_domain_comment_does_not_mention_closing(self):
+        comment = cd.build_comment('redirect_domain', self.ENTRY)
+        assert 'Closing' not in comment
+
     def test_unknown_match_type_raises(self):
         with pytest.raises(ValueError):
             cd.build_comment('unknown_type', self.ENTRY)
@@ -270,8 +441,15 @@ class TestMain:
         }
     ]
 
-    def _run_main(self, env, clouds_json_content=None):
-        """Helper: run main() with patched env and clouds.json."""
+    def _run_main(self, env, clouds_json_content=None, resolve_final_domain=None):
+        """Helper: run main() with patched env and clouds.json.
+
+        By default `resolve_final_domain` is patched to always return '' (as
+        if every live redirect check failed/timed out), so existing tests
+        keep their pre-redirect-detection behaviour without hitting the
+        network. Pass a callable via `resolve_final_domain` to simulate
+        specific redirect outcomes.
+        """
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             json.dump(clouds_json_content or self.CLOUDS, f)
             clouds_path = f.name
@@ -282,6 +460,7 @@ class TestMain:
             output_lines.append(f'{key}={value}')
 
         no_op = MagicMock()
+        fake_resolve = resolve_final_domain or (lambda url, timeout=10: '')
 
         with patch.dict(os.environ, env, clear=True):
             with patch.object(cd, '_CLOUDS_JSON_PATH', clouds_path):
@@ -289,7 +468,8 @@ class TestMain:
                     with patch.object(cd, 'post_comment', no_op):
                         with patch.object(cd, 'add_label', no_op):
                             with patch.object(cd, 'close_issue', no_op):
-                                cd.main()
+                                with patch.object(cd, 'resolve_final_domain', side_effect=fake_resolve):
+                                    cd.main()
 
         os.unlink(clouds_path)
         return output_lines, no_op
@@ -367,9 +547,26 @@ class TestMain:
                     with patch.object(cd, 'post_comment', MagicMock()):
                         with patch.object(cd, 'add_label', MagicMock()):
                             with patch.object(cd, 'close_issue', close_mock):
-                                cd.main()
+                                with patch.object(cd, 'resolve_final_domain', return_value=''):
+                                    cd.main()
         os.unlink(clouds_path)
         close_mock.assert_not_called()
+
+    def test_redirect_domain_match_sets_is_duplicate_true_without_closing(self):
+        # Different name, but the submitted URL redirects to the listed domain.
+        env = {
+            'ISSUE_BODY': '**URL:** https://old-ory-domain.example',
+            'ISSUE_NUMBER': '50',
+            'ISSUE_TITLE': 'Totally Different Name',
+            'GH_TOKEN': 'token',
+            'REPO': 'owner/repo',
+        }
+        output_lines, mocks = self._run_main(
+            env,
+            resolve_final_domain=lambda url, timeout=10: 'fly.io',
+        )
+        assert any('is_duplicate=true' in line for line in output_lines)
+        assert any('duplicate_reason=redirect_domain' in line for line in output_lines)
 
     def test_clouds_json_read_failure_sets_is_duplicate_false(self):
         env = {
