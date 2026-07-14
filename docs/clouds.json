@@ -3521,6 +3521,16 @@
     "dateAdded": "2026-07-14"
   },
   {
+    "name": "Wire",
+    "url": "https://usewire.io/",
+    "description": "Provides composable context containers for AI agents, organizing documents and data into AI-optimized environments accessible via MCP protocol.",
+    "score": 2,
+    "categories": [
+      "Developer Tooling & CI/CD"
+    ],
+    "dateAdded": "2026-07-14"
+  },
+  {
     "name": "Akeyless",
     "url": "https://www.akeyless.io/",
     "description": "SaaS secrets management with zero-knowledge encryption. Distributed Fragments Cryptography eliminates vault overhead. 70% cost savings.",
