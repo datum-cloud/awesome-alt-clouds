@@ -3,7 +3,10 @@
 Duplicate detection for awesome-alt-clouds submissions.
 
 Checks two sources in order:
-  1. clouds.json — blocks re-submission of already-listed services.
+  1. clouds.json — blocks re-submission of already-listed services. Matches
+     on exact domain, fuzzy name (including exact-name equality for short
+     brand names), or a live HTTP redirect proving the submitted URL and an
+     existing entry resolve to the same domain (e.g. 'ory.sh' -> 'ory.com').
   2. watchlist.json — flags re-submissions of watched candidates without
      blocking them; lets the normal evaluation run so they can be promoted.
 
@@ -94,9 +97,18 @@ def check_clouds_json(
         # Fuzzy name check: token-set intersection (not character substring).
         # Character substring matching caused false positives like flagging
         # "Namecheap" as a duplicate of "Heap" because 'heap' ⊆ 'namecheap'.
-        if fuzzy_match is None and len(norm_submitted_name) >= 4:
+        if fuzzy_match is None and norm_submitted_name:
             norm_entry_name = normalize_name(entry.get('name', ''))
-            if norm_entry_name and len(norm_entry_name) >= 4:
+            if not norm_entry_name:
+                continue
+            # Exact match after normalisation, regardless of length. Without
+            # this, short brand names (e.g. "Ory" -> 'ory', 3 chars) never
+            # reach the token-overlap check below and go undetected even
+            # when submitted under the identical name.
+            if norm_submitted_name == norm_entry_name:
+                fuzzy_match = entry
+                continue
+            if len(norm_submitted_name) >= 4 and len(norm_entry_name) >= 4:
                 submitted_tokens = {t for t in norm_submitted_name.split() if len(t) >= 4}
                 entry_tokens = {t for t in norm_entry_name.split() if len(t) >= 4}
                 if submitted_tokens and entry_tokens and submitted_tokens & entry_tokens:
@@ -104,6 +116,69 @@ def check_clouds_json(
 
     if fuzzy_match is not None:
         return ('fuzzy_name', fuzzy_match)
+
+    return (None, None)
+
+
+def resolve_final_domain(url: str, timeout: int = 10) -> str:
+    """Follow redirects for `url` and return the normalised domain it lands on.
+
+    Used to catch cases where two different domains are actually the same
+    site (e.g. 'ory.sh' 301-redirects to 'ory.com'). This is a live HTTP
+    check, not a heuristic — a matched result is verified, not guessed.
+
+    Returns '' on any failure (timeout, connection error, invalid URL, etc.)
+    so callers can fail open and fall back to non-redirect-based matching.
+    """
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0 (compatible; AwesomeAltCloudsBot/1.0)'}
+        resp = requests.get(url, headers=headers, timeout=timeout, allow_redirects=True, stream=True)
+        resp.close()
+        return normalize_domain(resp.url)
+    except Exception as e:
+        logging.warning('Failed to resolve redirects for %s: %s', url, e)
+        return ''
+
+
+def check_clouds_json_with_redirects(
+    submitted_domain: str,
+    submitted_name: str,
+    submitted_url: str,
+    clouds: list[dict],
+) -> tuple[str | None, dict | None]:
+    """Wrap check_clouds_json with a targeted, live redirect check.
+
+    Never scans all entries over the network — at most two live requests:
+    one for the submitted URL, and (only if a fuzzy name candidate was
+    found) one for that candidate's stored URL.
+
+    Adds a third match type:
+        ('redirect_domain', entry) — an HTTP redirect proves the submitted
+        URL and an existing entry resolve to the same domain.
+    """
+    match_type, match = check_clouds_json(submitted_domain, submitted_name, clouds)
+
+    if match_type == 'exact_domain':
+        return (match_type, match)
+
+    submitted_final = resolve_final_domain(submitted_url)
+
+    if match_type == 'fuzzy_name':
+        candidate_final = resolve_final_domain(match.get('url', ''))
+        if submitted_final and candidate_final and submitted_final == candidate_final:
+            return ('redirect_domain', match)
+        return (match_type, match)
+
+    # No name/domain match at all — check whether the submitted URL silently
+    # redirects to an already-listed domain (e.g. a rebrand with a new name
+    # but a forwarding old domain).
+    if submitted_final and submitted_final != submitted_domain:
+        redirect_match = next(
+            (entry for entry in clouds if normalize_domain(entry.get('url', '')) == submitted_final),
+            None,
+        )
+        if redirect_match:
+            return ('redirect_domain', redirect_match)
 
     return (None, None)
 
@@ -172,6 +247,14 @@ def build_comment(match_type: str, match: dict) -> str:
             f'- **[{name}]({url})** — {desc}\n\n'
             'Proceeding with admin review, but flagging as a possible duplicate.'
         )
+    elif match_type == 'redirect_domain':
+        return (
+            '🔁 **Duplicate via Domain Redirect**\n\n'
+            'This URL redirects to a service already listed in Awesome Alt Clouds '
+            '(confirmed via HTTP redirect, not just name similarity):\n'
+            f'- **[{name}]({url})** — {desc}\n\n'
+            'Proceeding with admin review, but flagging as a likely duplicate.'
+        )
     else:
         raise ValueError(f'Unknown match_type: {match_type!r}')
 
@@ -230,7 +313,7 @@ def main() -> None:
     except (OSError, json.JSONDecodeError) as e:
         logging.warning('Could not read clouds.json: %s', e)
 
-    match_type, match = check_clouds_json(submitted_domain, submitted_name, clouds)
+    match_type, match = check_clouds_json_with_redirects(submitted_domain, submitted_name, urls[0], clouds)
 
     if match_type is not None:
         assert match is not None, f"match_type is {match_type!r} but match is None"
