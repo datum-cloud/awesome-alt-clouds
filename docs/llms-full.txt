@@ -1,13 +1,13 @@
 # Awesome Alt Clouds — Full Reference
 
-> Curated directory of 463+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
+> Curated directory of 464+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
 
 ## About This Directory
 
 - [Directory Homepage](https://www.alt-cloud.org/): Interactive searchable directory. Filter by category, search by name or description, sort alphabetically, by score, or by recently added date. All data loaded from /clouds.json.
 - [Submit a Service](https://www.alt-cloud.org/submit/): Web form that creates a GitHub issue, triggers automated AI evaluation (pricing page detection, signup detection, status page detection), and opens a PR on pass.
 - [GitHub Repository](https://github.com/datum-cloud/awesome-alt-clouds): Source of truth. Contains README.md (the awesome list), evaluation scripts in /scripts, and GitHub Actions workflows in .github/workflows.
-- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 463+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
+- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 464+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
 
 ## Evaluation Criteria
 
@@ -93,6 +93,12 @@ Cloud data warehouses, analytics databases, business intelligence platforms, and
 
 Services: Amplitude, ClickHouse, Databricks, Domo, DuckDB, Fathom, Firebolt, FullStory, Heap, Mixpanel, MotherDuck, Plausible, PostHog, Rybbit, Snowflake, and 2 more.
 
+### Workflow & Operations Clouds (17 services)
+
+Workflow orchestration, job queues, event streaming, and operations automation platforms.
+
+Services: Alloy Automation, Dagster, Fastn, Inngest, Kestra, Mabl, Miter, n8n, PagerDuty, Prefect, Resonate, Ryvn, ServiceNow, Temporal, Tines, and 2 more.
+
 ### Communications, IoT & Media (17 services)
 
 Messaging APIs, email delivery, SMS, voice, video, push notifications, and IoT connectivity platforms.
@@ -104,12 +110,6 @@ Services: 1NCE, api.video, Gradium, Hologram, Knock, Mux, Novu, Onomondo, Partic
 Security-focused cloud platforms with compliance certifications, data sovereignty options, air-gapped deployments, and sovereign cloud infrastructure.
 
 Services: CrowdStrike, Fortinet, FPT Vietnam, GMO GPU Cloud, Jottacloud, metalstack.cloud, Netskope, Ola Krutrim, Operant, Reliance, Sakura Internet, T-Systems, TitanU AI, Wiz, Yotta, and 1 more.
-
-### Workflow & Operations Clouds (16 services)
-
-Workflow orchestration, job queues, event streaming, and operations automation platforms.
-
-Services: Alloy Automation, Dagster, Fastn, Inngest, Kestra, Mabl, Miter, n8n, PagerDuty, Prefect, Ryvn, ServiceNow, Temporal, Tines, Windmill, and 1 more.
 
 ### Customer, Marketing & eCommerce (16 services)
 
@@ -171,9 +171,9 @@ Services: Akash Network.
 
 ## Key Facts
 
-- 463+ services as of 2026-07-14
+- 464+ services as of 2026-07-14
 - 23 categories covering the full developer cloud ecosystem
-- 429 services meet all 3 criteria (🟢); 34 meet 2 of 3 (🟡)
+- 429 services meet all 3 criteria (🟢); 35 meet 2 of 3 (🟡)
 - Minimum inclusion score: 2/3 criteria
 - Machine-readable data: https://www.alt-cloud.org/clouds.json
 - Source: https://github.com/datum-cloud/awesome-alt-clouds

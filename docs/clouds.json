@@ -2061,6 +2061,16 @@
     "dateAdded": "2026-07-14"
   },
   {
+    "name": "Resonate",
+    "url": "https://www.resonatehq.io/",
+    "description": "Provides durable execution for async/await workflows using any existing database or queue, simplifying failure handling and recovery in distributed systems.",
+    "score": 2,
+    "categories": [
+      "Workflow & Operations Clouds"
+    ],
+    "dateAdded": "2026-07-14"
+  },
+  {
     "name": "Ryvn",
     "url": "https://ryvn.ai/",
     "description": "BYOC deployment platform for SaaS startups in customer clouds and on-premises.",
