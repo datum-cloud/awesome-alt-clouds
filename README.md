@@ -150,6 +150,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 
 Cloud platforms designed to ensure data residency, regulatory compliance, and national control over infrastructure—often tailored for governments, public sector, or regulated industries.
 
+* 🟡 [ALTCHA](https://altcha.org/) - Provides privacy-first, GDPR-compliant CAPTCHA and bot protection with self-hosted deployment, eliminating tracking and external data sharing.
 * 🟢 [CrowdStrike](https://www.crowdstrike.com/) - A cloud-native cybersecurity platform that provides endpoint protection, threat intelligence, and incident response powered by AI.
 * 🟢 [Fortinet](https://www.fortinet.com/) - Provides integrated cybersecurity solutions including next-gen firewalls, secure SD-WAN, and endpoint protection.
 * 🟢 [FPT Vietnam](https://fptsoftware.com/newsroom/news-and-press-releases/press-release/fpt-to-shape-the-future-of-ai-and-cloud-on-a-global-scale-in-collaboration-with-nvidia) - Investing $200 million to build an AI factory serving as a sovereign cloud, featuring NVIDIA's latest technologies to bolster Vietnam's digital sovereignty.
