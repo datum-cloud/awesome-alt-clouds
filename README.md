@@ -432,6 +432,7 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 * 🟢 [Shuttle](https://www.shuttle.dev/) - Rust-native cloud platform for building and deploying backend services.
 * 🟢 [Skyhook](https://skyhook.io/) - PaaS for deploying and managing Kubernetes clusters and workloads with GitOps support, preview environments, and AI assistance.
 * 🟢 [Upsun](https://upsun.com/) - An application hosting platform from the team at Platform.sh.
+* 🟢 [Zerops](https://zerops.io) - Provides a developer-first cloud platform with full Linux containers, managed services, and private networking supporting multiple programming languages and frameworks.
 
 ## Developer Tooling & CI/CD
 
