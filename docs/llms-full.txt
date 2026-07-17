@@ -1,13 +1,13 @@
 # Awesome Alt Clouds — Full Reference
 
-> Curated directory of 465+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
+> Curated directory of 466+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
 
 ## About This Directory
 
 - [Directory Homepage](https://www.alt-cloud.org/): Interactive searchable directory. Filter by category, search by name or description, sort alphabetically, by score, or by recently added date. All data loaded from /clouds.json.
 - [Submit a Service](https://www.alt-cloud.org/submit/): Web form that creates a GitHub issue, triggers automated AI evaluation (pricing page detection, signup detection, status page detection), and opens a PR on pass.
 - [GitHub Repository](https://github.com/datum-cloud/awesome-alt-clouds): Source of truth. Contains README.md (the awesome list), evaluation scripts in /scripts, and GitHub Actions workflows in .github/workflows.
-- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 465+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
+- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 466+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
 
 ## Evaluation Criteria
 
@@ -87,6 +87,12 @@ AI-assisted code generation, app scaffolding, and developer productivity tools b
 
 Services: 9Router, Base44, Bolt, Codev, CopilotKit, Cursor, Drydock, Git AI, GitHub Copilot, Marblism, Mesa, Niteshift, OB-1, Ona, Softgen, and 3 more.
 
+### Security, Compliance & Sovereignty Clouds (17 services)
+
+Security-focused cloud platforms with compliance certifications, data sovereignty options, air-gapped deployments, and sovereign cloud infrastructure.
+
+Services: ALTCHA, CrowdStrike, Fortinet, FPT Vietnam, GMO GPU Cloud, Jottacloud, metalstack.cloud, Netskope, Ola Krutrim, Operant, Reliance, Sakura Internet, T-Systems, TitanU AI, Wiz, and 2 more.
+
 ### Analytics & Data Warehousing (17 services)
 
 Cloud data warehouses, analytics databases, business intelligence platforms, and data lakehouse services.
@@ -104,12 +110,6 @@ Services: Alloy Automation, Dagster, Fastn, Inngest, Kestra, Mabl, Miter, n8n, P
 Messaging APIs, email delivery, SMS, voice, video, push notifications, and IoT connectivity platforms.
 
 Services: 1NCE, api.video, Gradium, Hologram, Knock, Mux, Novu, Onomondo, Particle, Resend, Samsara, Sendbird, SLNG, Soracom, Telnyx, and 2 more.
-
-### Security, Compliance & Sovereignty Clouds (16 services)
-
-Security-focused cloud platforms with compliance certifications, data sovereignty options, air-gapped deployments, and sovereign cloud infrastructure.
-
-Services: CrowdStrike, Fortinet, FPT Vietnam, GMO GPU Cloud, Jottacloud, metalstack.cloud, Netskope, Ola Krutrim, Operant, Reliance, Sakura Internet, T-Systems, TitanU AI, Wiz, Yotta, and 1 more.
 
 ### Customer, Marketing & eCommerce (16 services)
 
@@ -171,9 +171,9 @@ Services: Akash Network.
 
 ## Key Facts
 
-- 465+ services as of 2026-07-16
+- 466+ services as of 2026-07-17
 - 23 categories covering the full developer cloud ecosystem
-- 430 services meet all 3 criteria (🟢); 35 meet 2 of 3 (🟡)
+- 430 services meet all 3 criteria (🟢); 36 meet 2 of 3 (🟡)
 - Minimum inclusion score: 2/3 criteria
 - Machine-readable data: https://www.alt-cloud.org/clouds.json
 - Source: https://github.com/datum-cloud/awesome-alt-clouds
