@@ -62,6 +62,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Cognee](https://www.cognee.ai/) - Cloud service provider.
 * 🟢 [Cycle.io](https://cycle.io/) - Provides a container orchestration platform for deploying applications.
 * 🟢 [DataPacket](https://www.datapacket.com/) - Offers high-performance infrastructure for bandwidth-intensive applications.
+* 🟢 [Datum](https://www.datum.net/) - Provides modern edge cloud infrastructure with hyperscale-style networking, GPU/CPU capacity, and zero-trust connectivity for AI companies and tech-forward enterprises.
 * 🟢 [Digital Ocean](https://www.digitalocean.com/) - Provides cloud computing services with simplicity and scalability.
 * 🟢 [Driver](https://driver.dev/) - Provides browser automation infrastructure running Chrome instances on real consumer hardware with residential IPs and authentic fingerprints for AI agents and web scraping.
 * 🟢 [DT Cloud](https://dtcloudnow.com/) - Provides comprehensive cloud computing services including VPS, Kubernetes, GPU cloud, storage, networking, security, and industry-specific solutions for Turkish market.
