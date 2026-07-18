@@ -293,6 +293,7 @@ Orchestration, automation, and operations platforms for running reliable workflo
 * 🟢 [Alloy Automation](https://runalloy.com/) - Embedded iPaaS with unified APIs for 400+ apps, enabling native integrations and AI agent connectivity.
 * 🟢 [Dagster](https://dagster.io/) - Unified control plane for building, scaling, and observing AI and data pipelines with orchestration and quality monitoring.
 * 🟢 [Fastn](https://fastn.ai/) - AI-powered embedded integration platform for building unified APIs from multiple data sources.
+* 🟡 [Hatchet](https://hatchet.run/) - Provides a durable execution platform for orchestrating AI agents, scheduling background tasks, and running mission-critical workflows with built-in monitoring and reliability.
 * 🟢 [Inngest](https://www.inngest.com/) - A platform for AI and backend workflows that helps developers build AI-ready step functions without touching infrastructure.
 * 🟢 [Kestra](https://kestra.io/) - Open-source orchestration platform for event-driven workflows.
 * 🟢 [Mabl](https://www.mabl.com/) - AI-native test automation with self-healing tests. Agentic tester handles creation, execution, and maintenance. Enterprise-grade.
