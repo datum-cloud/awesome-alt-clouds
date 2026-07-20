@@ -39,10 +39,7 @@ export function renderFullCompareToggle(state: CompareToggleState): string {
   }
 }
 
-export function compareToggleState(
-  selected: boolean,
-  full: boolean
-): CompareToggleState {
+export function compareToggleState(selected: boolean, full: boolean): CompareToggleState {
   if (selected) return "selected";
   if (full) return "full";
   return "add";

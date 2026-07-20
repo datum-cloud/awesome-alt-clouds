@@ -167,8 +167,7 @@ export function initComparePickers(options: {
     if (!listbox) return;
 
     if (matches.length === 0) {
-      listbox.innerHTML =
-        '<li class="px-4 py-3 text-sm text-warm-stone">No matches</li>';
+      listbox.innerHTML = '<li class="px-4 py-3 text-sm text-warm-stone">No matches</li>';
       openListbox(root);
       states.set(root, { activeIndex: -1, currentMatches: [] });
       return;
