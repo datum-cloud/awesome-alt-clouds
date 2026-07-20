@@ -2,11 +2,10 @@ name: Lint and format
 
 on:
   push:
-    # DEV: feat/astro-migration + version tags — align with deploy-pages.yml
-    branches: [main, feat/astro-migration]
+    branches: [main]
     tags: ['v*']
   pull_request:
-    branches: [main, feat/astro-migration]
+    branches: [main]
   workflow_dispatch:
 
 permissions:

@@ -2,11 +2,10 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    # DEV: feat/astro-migration + version tags — revert to main-only after Phase 6
-    branches: [main, feat/astro-migration]
+    branches: [main]
     tags: ['v*']
   pull_request:
-    branches: [main, feat/astro-migration]
+    branches: [main]
   workflow_dispatch:
 
 # Allow one concurrent deployment; cancel in-progress runs on new push
@@ -61,11 +60,10 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: build
-    # PRs: build only. Deploy on push to main, feat/astro-migration, or v* tag.
+    # PRs: build only. Deploy on push to main or a v* tag.
     if: |
       github.event_name == 'push' && (
         github.ref == 'refs/heads/main' ||
-        github.ref == 'refs/heads/feat/astro-migration' ||
         startsWith(github.ref, 'refs/tags/v')
       )
     runs-on: ubuntu-latest
