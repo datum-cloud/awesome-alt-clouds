@@ -323,11 +323,13 @@ Closes #{issue_number}
 *This PR was automatically created by the submission bot.*
 """
 
-    # Use gh CLI to create PR
+    # Use gh CLI to create PR. check=True (default) so a failure here — e.g. the repo's
+    # "Allow GitHub Actions to create and approve pull requests" setting being off —
+    # raises, prints stderr, and fails the workflow step instead of silently no-opping
+    # after the branch has already been pushed.
     pr_body_escaped = pr_body.replace('"', '\\"').replace('`', '\\`')
     result = run_command(
-        f'gh pr create --title "{pr_title}" --body "{pr_body_escaped}" --base main --head {branch_name}',
-        check=False
+        f'gh pr create --title "{pr_title}" --body "{pr_body_escaped}" --base main --head {branch_name}'
     )
 
     print(f"PR creation result: {result}")
