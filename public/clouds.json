@@ -60,6 +60,26 @@
     "dateAdded": "2025-05-05"
   },
   {
+    "name": "cloudscale.ch",
+    "url": "https://cloudscale.ch/",
+    "description": "Swiss IaaS provider offering VMs, GPU servers, load balancers, and object storage with per-hour pricing and full Swiss data residency.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-06-22"
+  },
+  {
+    "name": "Cognee",
+    "url": "https://www.cognee.ai/",
+    "description": "Cloud service provider.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-06-10"
+  },
+  {
     "name": "Cycle.io",
     "url": "https://cycle.io/",
     "description": "Provides a container orchestration platform for deploying applications.",
@@ -100,6 +120,16 @@
     "dateAdded": "2026-04-13"
   },
   {
+    "name": "DT Cloud",
+    "url": "https://dtcloudnow.com/",
+    "description": "Provides comprehensive cloud computing services including VPS, Kubernetes, GPU cloud, storage, networking, security, and industry-specific solutions for Turkish market.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-05-13"
+  },
+  {
     "name": "E2E Cloud",
     "url": "https://www.e2enetworks.com/",
     "description": "Offers cloud infrastructure with GPU instances for AI and machine learning.",
@@ -130,6 +160,16 @@
     "dateAdded": "2026-01-29"
   },
   {
+    "name": "Exoscale",
+    "url": "https://www.exoscale.com/",
+    "description": "European cloud provider offering compute instances, managed Kubernetes, databases, object storage, block storage, and GPU servers with self-service signup.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-06-22"
+  },
+  {
     "name": "Firmus",
     "url": "https://firmus.co/",
     "description": "Cloud service provider.",
@@ -138,6 +178,16 @@
       "Infrastructure Clouds"
     ],
     "dateAdded": "2026-02-18"
+  },
+  {
+    "name": "Flow Swiss",
+    "url": "https://flow.swiss/",
+    "description": "Swiss cloud provider offering compute, managed Kubernetes, App Engine, Mac Bare Metal hosting, and Apple Silicon CI services with ISO 27001 certification and Swiss data protection compliance.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-06-22"
   },
   {
     "name": "Freestyle",
@@ -230,6 +280,16 @@
     "dateAdded": "2025-05-05"
   },
   {
+    "name": "Loophole Labs",
+    "url": "https://loopholelabs.io/",
+    "description": "Offers Kubernetes scale-to-zero capabilities by hibernating idle pods in-place and waking them in under 50ms, eliminating overprovisioning without code changes.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-06-15"
+  },
+  {
     "name": "Lyceum",
     "url": "https://lyceum.technology/",
     "description": "EU built and operated GPU cloud for developers and AI teams.",
@@ -238,6 +298,16 @@
       "Infrastructure Clouds"
     ],
     "dateAdded": "2026-01-29"
+  },
+  {
+    "name": "Mermaid",
+    "url": "https://mermaid.ai/web/",
+    "description": "Cloud service provider.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-06-10"
   },
   {
     "name": "Namespace",
@@ -278,6 +348,17 @@
       "Infrastructure Clouds"
     ],
     "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Pingcap",
+    "url": "https://www.pingcap.com/",
+    "description": "Cloud service provider.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds",
+      "Databases & Storage"
+    ],
+    "dateAdded": "2026-06-08"
   },
   {
     "name": "QBO",
@@ -358,6 +439,16 @@
       "Infrastructure Clouds"
     ],
     "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Sidero Labs",
+    "url": "https://www.siderolabs.com/",
+    "description": "Provides Talos Linux and Omni, an immutable Kubernetes infrastructure platform designed for zero-drift operations, compliance, and secure multi-environment deployments.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-07-08"
   },
   {
     "name": "Spheron Network",
@@ -480,6 +571,16 @@
     "dateAdded": "2025-05-05"
   },
   {
+    "name": "Dapple",
+    "url": "https://dapple.co/",
+    "description": "Offers an Enterprise OS Cloud that aggregates global GPU supply for regulated enterprises, ensuring strict isolation, residency, and compliance.",
+    "score": 2,
+    "categories": [
+      "GPU & AI Compute Clouds"
+    ],
+    "dateAdded": "2026-06-12"
+  },
+  {
     "name": "Datacrunch.io",
     "url": "https://datacrunch.io/",
     "description": "Provides affordable GPU cloud services for AI training and inference.",
@@ -548,6 +649,16 @@
       "GPU & AI Compute Clouds"
     ],
     "dateAdded": "2026-02-09"
+  },
+  {
+    "name": "Highrise",
+    "url": "https://www.highrise.ai/",
+    "description": "Provides a unified platform for developing, training, and deploying AI models with access to thousands of NVIDIA GPUs at competitive pricing, backed by Hut 8 infrastructure.",
+    "score": 2,
+    "categories": [
+      "GPU & AI Compute Clouds"
+    ],
+    "dateAdded": "2026-06-29"
   },
   {
     "name": "HydraHost",
@@ -650,6 +761,16 @@
     "dateAdded": "2025-05-05"
   },
   {
+    "name": "Ornn",
+    "url": "https://ornn.com/",
+    "description": "Provides financial infrastructure for GPU compute markets, including reference pricing indices, market data, capacity financing, and compute access platforms.",
+    "score": 3,
+    "categories": [
+      "GPU & AI Compute Clouds"
+    ],
+    "dateAdded": "2026-06-29"
+  },
+  {
     "name": "Paperspace",
     "url": "https://www.paperspace.com/",
     "description": "Cloud computing with GPU support for AI development and deployment. Now owned by DigitalOcean.",
@@ -668,6 +789,16 @@
       "GPU & AI Compute Clouds"
     ],
     "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Positron",
+    "url": "https://www.positron.ai/",
+    "description": "Delivers purpose-built hardware and API infrastructure for optimized Transformer model inference, supporting HuggingFace models with OpenAI-compatible endpoints.",
+    "score": 2,
+    "categories": [
+      "GPU & AI Compute Clouds"
+    ],
+    "dateAdded": "2026-07-10"
   },
   {
     "name": "Runpod",
@@ -748,6 +879,16 @@
       "GPU & AI Compute Clouds"
     ],
     "dateAdded": "2026-01-29"
+  },
+  {
+    "name": "ALTCHA",
+    "url": "https://altcha.org/",
+    "description": "Provides privacy-first, GDPR-compliant CAPTCHA and bot protection with self-hosted deployment, eliminating tracking and external data sharing.",
+    "score": 2,
+    "categories": [
+      "Security, Compliance & Sovereignty Clouds"
+    ],
+    "dateAdded": "2026-07-16"
   },
   {
     "name": "CrowdStrike",
@@ -870,6 +1011,16 @@
     "dateAdded": "2025-05-05"
   },
   {
+    "name": "TitanU AI",
+    "url": "https://www.titanuai.com/",
+    "description": "Provides sovereign AI infrastructure with zero cloud dependency, local GGUF inference, cryptographic audit chains, and mesh-native architecture for complete data sovereignty.",
+    "score": 2,
+    "categories": [
+      "Security, Compliance & Sovereignty Clouds"
+    ],
+    "dateAdded": "2026-05-12"
+  },
+  {
     "name": "Wiz",
     "url": "https://www.wiz.io/",
     "description": "A cloud security platform that gives full-stack visibility into cloud infrastructure and prioritizes risk across workloads, containers, and identities.",
@@ -928,6 +1079,16 @@
       "Unikernels & WebAssembly"
     ],
     "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Unikraft",
+    "url": "https://unikraft.com/",
+    "description": "Provides unikernel-based cloud infrastructure platform enabling <10ms cold starts, VM-grade isolation, and 100K+ instances per server with custom Linux distributions.",
+    "score": 3,
+    "categories": [
+      "Unikernels & WebAssembly"
+    ],
+    "dateAdded": "2026-05-29"
   },
   {
     "name": "Wasmer",
@@ -1068,6 +1229,16 @@
       "Databases & Storage"
     ],
     "dateAdded": "2026-01-29"
+  },
+  {
+    "name": "LaserData",
+    "url": "https://laserdata.com/",
+    "description": "Provides a hyper-efficient data streaming platform built in Rust with sub-millisecond latency, designed for real-time and agentic AI systems.",
+    "score": 3,
+    "categories": [
+      "Databases & Storage"
+    ],
+    "dateAdded": "2026-07-13"
   },
   {
     "name": "Materialize",
@@ -1430,6 +1601,16 @@
     "dateAdded": "2025-05-05"
   },
   {
+    "name": "Rybbit",
+    "url": "https://rybbit.com/",
+    "description": "Provides a cookieless, GDPR-compliant web analytics platform with session replay, conversion funnels, and real-time data as a Google Analytics alternative.",
+    "score": 3,
+    "categories": [
+      "Analytics & Data Warehousing"
+    ],
+    "dateAdded": "2026-07-07"
+  },
+  {
     "name": "Snowflake",
     "url": "https://www.snowflake.com/en/",
     "description": "A cloud data platform offering data warehousing, data lakes, and data sharing capabilities.",
@@ -1660,6 +1841,16 @@
     "dateAdded": "2025-05-05"
   },
   {
+    "name": "NOFire",
+    "url": "https://www.nofire.ai/",
+    "description": "Delivers an AI SRE platform that provides production context and runtime control, preventing incidents by scoring changes and enforcing policies before execution.",
+    "score": 3,
+    "categories": [
+      "Observability & Monitoring"
+    ],
+    "dateAdded": "2026-06-12"
+  },
+  {
     "name": "OpenStatus",
     "url": "https://www.openstatus.dev/",
     "description": "Open-source status page and monitoring platform for tracking API and website uptime worldwide.",
@@ -1880,6 +2071,16 @@
     "dateAdded": "2026-01-29"
   },
   {
+    "name": "Resonate",
+    "url": "https://www.resonatehq.io/",
+    "description": "Provides durable execution for async/await workflows using any existing database or queue, simplifying failure handling and recovery in distributed systems.",
+    "score": 2,
+    "categories": [
+      "Workflow & Operations Clouds"
+    ],
+    "dateAdded": "2026-07-13"
+  },
+  {
     "name": "Ryvn",
     "url": "https://ryvn.ai/",
     "description": "BYOC deployment platform for SaaS startups in customer clouds and on-premises.",
@@ -1998,6 +2199,16 @@
       "Network & Connectivity Clouds"
     ],
     "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Core Transit",
+    "url": "https://www.coretransit.net/",
+    "description": "Provides flexible IP routing, static IP addressing, and BGP services to extend deterministic connectivity to hard-to-reach locations for enterprises and MSPs.",
+    "score": 3,
+    "categories": [
+      "Network & Connectivity Clouds"
+    ],
+    "dateAdded": "2026-06-12"
   },
   {
     "name": "CtrlDNS",
@@ -2278,6 +2489,26 @@
       "AI Inference & Model APIs"
     ],
     "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Sail Research",
+    "url": "https://www.sailresearch.com/",
+    "description": "Provides cost-efficient inference infrastructure for running leading open-source AI models on demand, optimized for long-horizon agents with flexible completion windows.",
+    "score": 3,
+    "categories": [
+      "AI Inference & Model APIs"
+    ],
+    "dateAdded": "2026-06-29"
+  },
+  {
+    "name": "Swirls",
+    "url": "https://swirls.ai/",
+    "description": "Provides a deployment platform for agentic systems with declarative configuration, durable execution, human-in-the-loop workflows, and cryptographic policy enforcement.",
+    "score": 3,
+    "categories": [
+      "AI Inference & Model APIs"
+    ],
+    "dateAdded": "2026-05-21"
   },
   {
     "name": "Together.ai",
@@ -2600,6 +2831,16 @@
     "dateAdded": "2025-05-05"
   },
   {
+    "name": "Drydock",
+    "url": "https://drydock.build/",
+    "description": "Provides AI-powered build, deployment, and operations platform that creates production applications from prompts, with global infrastructure across 45+ PoPs and automated DevOps.",
+    "score": 3,
+    "categories": [
+      "AI Coding & App Generation"
+    ],
+    "dateAdded": "2026-05-25"
+  },
+  {
     "name": "Git AI",
     "url": "https://usegitai.com/",
     "description": "Provides open-source Git extension for tracking AI-generated code through the entire software development lifecycle with attribution, context storage, and team analytics.",
@@ -2640,6 +2881,16 @@
     "dateAdded": "2026-01-29"
   },
   {
+    "name": "Niteshift",
+    "url": "https://niteshift.dev/",
+    "description": "Provides a full-stack cloud platform for coding agents to build, test, and deploy applications with isolated environments, service simulation, and integration with existing development tools.",
+    "score": 3,
+    "categories": [
+      "AI Coding & App Generation"
+    ],
+    "dateAdded": "2026-06-11"
+  },
+  {
     "name": "OB-1",
     "url": "https://www.openblocklabs.com/",
     "description": "Provides a self-improving coding agent that handles the full development lifecycle from project management to pull requests, with multi-model AI support and workflow automation.",
@@ -2648,6 +2899,16 @@
       "AI Coding & App Generation"
     ],
     "dateAdded": "2026-03-31"
+  },
+  {
+    "name": "Ona",
+    "url": "https://ona.com/",
+    "description": "Provides a platform to run and govern AI software agents in the cloud, offering standardized execution environments, security controls, and automated remediation for SDLC workflows.",
+    "score": 3,
+    "categories": [
+      "AI Coding & App Generation"
+    ],
+    "dateAdded": "2026-06-12"
   },
   {
     "name": "Softgen",
@@ -2688,6 +2949,16 @@
       "AI Coding & App Generation"
     ],
     "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Alien",
+    "url": "https://www.alien.dev/",
+    "description": "Enables deploying applications directly into customer AWS, GCP, and Azure accounts for secure, agentless multi-cloud distribution with full observability.",
+    "score": 3,
+    "categories": [
+      "PaaS & Application Hosting"
+    ],
+    "dateAdded": "2026-06-16"
   },
   {
     "name": "Deno Deploy",
@@ -2780,6 +3051,16 @@
     "dateAdded": "2025-05-05"
   },
   {
+    "name": "Out Plane",
+    "url": "https://outplane.com/",
+    "description": "Provides a cloud PaaS platform for developers to deploy applications in 60 seconds with managed PostgreSQL, Redis, auto-scaling, and compliance features without Kubernetes or YAML.",
+    "score": 3,
+    "categories": [
+      "PaaS & Application Hosting"
+    ],
+    "dateAdded": "2026-06-03"
+  },
+  {
     "name": "Pantheon",
     "url": "https://pantheon.io/",
     "description": "A platform for running Wordpress, Drupal and Next.js websites.",
@@ -2868,6 +3149,26 @@
       "PaaS & Application Hosting"
     ],
     "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Zerops",
+    "url": "https://zerops.io",
+    "description": "Provides a developer-first cloud platform with full Linux containers, managed services, and private networking supporting multiple programming languages and frameworks.",
+    "score": 3,
+    "categories": [
+      "PaaS & Application Hosting"
+    ],
+    "dateAdded": "2026-07-16"
+  },
+  {
+    "name": "8gears Container Registry",
+    "url": "https://container-registry.com/",
+    "description": "Provides enterprise Harbor-based container registry service for storing, managing and distributing container artifacts securely at scale with multi-tenancy and RBAC.",
+    "score": 3,
+    "categories": [
+      "Developer Tooling & CI/CD"
+    ],
+    "dateAdded": "2026-06-01"
   },
   {
     "name": "Anaconda",
@@ -2978,6 +3279,16 @@
       "Developer Tooling & CI/CD"
     ],
     "dateAdded": "2026-01-29"
+  },
+  {
+    "name": "Engram SDK",
+    "url": "https://www.engram.org/products/sdk",
+    "description": "Provides TypeScript and Python libraries for building agents with memory, reasoning, and orchestration capabilities for enterprise AI applications.",
+    "score": 3,
+    "categories": [
+      "Developer Tooling & CI/CD"
+    ],
+    "dateAdded": "2026-07-13"
   },
   {
     "name": "Fabrica",
@@ -3120,6 +3431,16 @@
     "dateAdded": "2025-05-05"
   },
   {
+    "name": "Paper",
+    "url": "https://paper.design/",
+    "description": "Provides a connected design canvas that integrates with development tools, AI agents, and real data sources, enabling seamless collaboration between design and code workflows.",
+    "score": 3,
+    "categories": [
+      "Developer Tooling & CI/CD"
+    ],
+    "dateAdded": "2026-05-27"
+  },
+  {
     "name": "Prismic",
     "url": "https://prismic.io/",
     "description": "A headless CMS for developers to build and manage dynamic websites using modern frameworks and custom content APIs.",
@@ -3230,6 +3551,16 @@
     "dateAdded": "2026-02-13"
   },
   {
+    "name": "Wire",
+    "url": "https://usewire.io/",
+    "description": "Provides composable context containers for AI agents, organizing documents and data into AI-optimized environments accessible via MCP protocol.",
+    "score": 2,
+    "categories": [
+      "Developer Tooling & CI/CD"
+    ],
+    "dateAdded": "2026-07-13"
+  },
+  {
     "name": "Akeyless",
     "url": "https://www.akeyless.io/",
     "description": "SaaS secrets management with zero-knowledge encryption. Distributed Fragments Cryptography eliminates vault overhead. 70% cost savings.",
@@ -3238,6 +3569,16 @@
       "Authorization, Identity & Fraud"
     ],
     "dateAdded": "2026-01-29"
+  },
+  {
+    "name": "AlpacaX",
+    "url": "https://www.alpacax.com/",
+    "description": "Provides secure, scoped infrastructure access for AI agents with command-level control, privileged operation approval, and comprehensive audit trails for safe production operations.",
+    "score": 3,
+    "categories": [
+      "Authorization, Identity & Fraud"
+    ],
+    "dateAdded": "2026-05-13"
   },
   {
     "name": "Aserto",
@@ -3588,6 +3929,16 @@
       "Monetization & Billing Clouds"
     ],
     "dateAdded": "2026-01-29"
+  },
+  {
+    "name": "Hyperline",
+    "url": "https://www.hyperline.co/",
+    "description": "Provides a unified revenue management platform for quote-to-cash processes, featuring CPQ, Stripe Billing integration, AI-driven billing, and global invoicing.",
+    "score": 2,
+    "categories": [
+      "Monetization & Billing Clouds"
+    ],
+    "dateAdded": "2026-06-14"
   },
   {
     "name": "Lago",
@@ -3980,6 +4331,16 @@
     "dateAdded": "2025-05-05"
   },
   {
+    "name": "Novu",
+    "url": "https://novu.co/",
+    "description": "Provides open-source notification infrastructure for multi-channel communication across email, SMS, push, chat, and more with workflow orchestration and agent integration.",
+    "score": 3,
+    "categories": [
+      "Communications, IoT & Media"
+    ],
+    "dateAdded": "2026-07-13"
+  },
+  {
     "name": "Onomondo",
     "url": "https://onomondo.com/",
     "description": "A full-stack connectivity platform for IoT with a single global SIM, advanced network control, and transparent pricing.",
@@ -4048,6 +4409,16 @@
       "Communications, IoT & Media"
     ],
     "dateAdded": "2025-05-05"
+  },
+  {
+    "name": "Telnyx",
+    "url": "https://telnyx.com/",
+    "description": "Provides a carrier-grade global communications platform combining owned network infrastructure with AI inference capabilities for real-time voice, messaging, and AI agent deployment.",
+    "score": 3,
+    "categories": [
+      "Communications, IoT & Media"
+    ],
+    "dateAdded": "2026-06-29"
   },
   {
     "name": "Twilio",
