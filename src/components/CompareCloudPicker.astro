@@ -1,19 +1,19 @@
 ---
 export interface Props {
-  slot: number;
+  index: number;
   label: string;
   initialSlug?: string;
   initialName?: string;
 }
 
-const { slot, label, initialSlug = "", initialName = "" } = Astro.props;
-const listboxId = `compare-picker-listbox-${slot}`;
+const { index, label, initialSlug = "", initialName = "" } = Astro.props;
+const listboxId = `compare-picker-listbox-${index}`;
 const hasInitial = Boolean(initialSlug);
 ---
 
 <div
   class="compare-picker-root relative flex-1 min-w-[180px]"
-  data-slot={slot}>
+  data-slot={index}>
   <span class="block text-xs font-medium text-warm-stone uppercase tracking-wider mb-1.5">
     {label}
   </span>

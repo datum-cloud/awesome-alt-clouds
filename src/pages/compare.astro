@@ -78,16 +78,18 @@ const comparePayload = JSON.stringify({
               id="compare-pickers"
               aria-label="Select clouds to compare">
               {
-                [0, 1, 2].map((slot) => (
+                [0, 1, 2].map((slotIndex) => (
                   <CompareCloudPicker
-                    slot={slot}
+                    index={slotIndex}
                     label={
-                      slot === 2 ? "Cloud C (optional)" : `Cloud ${String.fromCharCode(65 + slot)}`
+                      slotIndex === 2
+                        ? "Cloud C (optional)"
+                        : `Cloud ${String.fromCharCode(65 + slotIndex)}`
                     }
-                    initialSlug={initialSlotSlugs[slot]}
+                    initialSlug={initialSlotSlugs[slotIndex]}
                     initialName={
-                      initialSlotSlugs[slot]
-                        ? compareBySlug[initialSlotSlugs[slot]!]?.name
+                      initialSlotSlugs[slotIndex]
+                        ? compareBySlug[initialSlotSlugs[slotIndex]!]?.name
                         : undefined
                     }
                   />
@@ -111,6 +113,7 @@ const comparePayload = JSON.stringify({
   </div>
 
   <script
+    is:inline
     id="compare-data"
     type="application/json"
     set:html={comparePayload}
@@ -124,13 +127,35 @@ const comparePayload = JSON.stringify({
     const MAX_COLUMNS = 3;
     const baseUrl = import.meta.env.BASE_URL;
 
-    /** @type {{ clouds: Record<string, { slug: string, name: string, score: number, url: string, hasProfile: boolean, categories?: string[], description?: string, tagline?: string, pricingModel?: string, headquarters?: string, foundedYear?: number, openSource?: boolean, regions?: string[], services?: string[], dateAdded?: string }>, rows: { key: string, label: string }[], names: { slug: string, name: string }[] }} */
-    const payload = JSON.parse(document.getElementById("compare-data")?.textContent || "{}");
+    type CloudEntry = {
+      slug: string;
+      name: string;
+      score: number;
+      url: string;
+      hasProfile: boolean;
+      categories?: string[];
+      description?: string;
+      tagline?: string;
+      pricingModel?: string;
+      headquarters?: string;
+      foundedYear?: number;
+      openSource?: boolean;
+      regions?: string[];
+      services?: string[];
+      dateAdded?: string;
+    };
+    type CompareRow = { key: string; label: string };
+
+    const payload: {
+      clouds: Record<string, CloudEntry>;
+      rows: CompareRow[];
+      names: { slug: string; name: string }[];
+    } = JSON.parse(document.getElementById("compare-data")?.textContent || "{}");
     const { clouds: cloudMap, rows, names } = payload;
 
     const pickerRoots = [...document.querySelectorAll<HTMLElement>(".compare-picker-root")];
 
-    const PRICING_LABELS = {
+    const PRICING_LABELS: Record<string, string> = {
       hourly: "Hourly",
       monthly: "Monthly",
       "usage-based": "Usage-based",
@@ -138,7 +163,7 @@ const comparePayload = JSON.stringify({
       mixed: "Mixed",
     };
 
-    function formatValue(key, cloud) {
+    function formatValue(key: string, cloud: CloudEntry | undefined) {
       if (!cloud) return "—";
       switch (key) {
         case "score":
@@ -170,7 +195,7 @@ const comparePayload = JSON.stringify({
       }
     }
 
-    function scoreBadgeClass(score) {
+    function scoreBadgeClass(score: number) {
       return score === 3 ? "bg-soft-sage text-rich-earth" : "bg-clay-beige text-warm-stone";
     }
 
@@ -178,22 +203,22 @@ const comparePayload = JSON.stringify({
       return getPickerSlugs(pickerRoots);
     }
 
-    function uniqueSlugs(slugs) {
-      const unique = [];
+    function uniqueSlugs(slugs: string[]) {
+      const unique: string[] = [];
       for (const slug of slugs) {
         if (!unique.includes(slug)) unique.push(slug);
       }
       return unique.slice(0, MAX_COLUMNS);
     }
 
-    function syncStoreFromSlugs(slugs) {
+    function syncStoreFromSlugs(slugs: string[]) {
       const items = slugs
         .filter((slug) => cloudMap[slug])
         .map((slug) => ({ slug, name: cloudMap[slug].name }));
       setItems(items);
     }
 
-    function renderTable(slugs) {
+    function renderTable(slugs: string[]) {
       const columns = slugs
         .map((slug) => cloudMap[slug])
         .filter(Boolean)
@@ -267,11 +292,11 @@ const comparePayload = JSON.stringify({
         </div>`;
     }
 
-    function syncPickerValues(slugs) {
+    function syncPickerValues(slugs: string[]) {
       setPickerSlugs(pickerRoots, slugs, cloudMap);
     }
 
-    function updateUrl(slugs) {
+    function updateUrl(slugs: string[]) {
       const params = new URLSearchParams();
       if (slugs[0]) params.set("a", slugs[0]);
       if (slugs[1]) params.set("b", slugs[1]);
@@ -283,7 +308,7 @@ const comparePayload = JSON.stringify({
 
     function slugsFromUrl() {
       const params = new URLSearchParams(window.location.search);
-      const slugs = [];
+      const slugs: string[] = [];
       for (const key of ["a", "b", "c"]) {
         const value = params.get(key);
         if (value && cloudMap[value]) slugs.push(value);
@@ -291,7 +316,7 @@ const comparePayload = JSON.stringify({
       return slugs;
     }
 
-    function applySelection(slugs, syncStore = true) {
+    function applySelection(slugs: string[], syncStore = true) {
       const normalized = uniqueSlugs(slugs);
       if (syncStore) syncStoreFromSlugs(normalized);
       syncPickerValues(normalized);
