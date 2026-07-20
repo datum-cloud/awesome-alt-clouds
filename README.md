@@ -1,15 +1,17 @@
 # 🌥️ Awesome Alt Clouds [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src='altclouds-logo.png' align='right' width='100'>](https://github.com/datum-cloud/awesome-alt-clouds/)
+[<img src='altclouds-logo.png' align='right' width='100'>](https://www.alt-cloud.org/)
 
 A curated list of **Alt Clouds** — non-hyperscale cloud providers delivering specialized infrastructure and services.
 
 Alt Clouds provide value "as a service" directly on top of infrastructure. They cater to specific workloads, compliance requirements, and developer needs, offering transparency, automation, and critical services with public SLAs.
 
+Browse the live directory and use the browser extension at **[alt-cloud.org](https://www.alt-cloud.org/)**.
+
 ## Contents
 
 * [Criteria](#criteria)
-* [Watchlist](WATCHLIST.md) — candidates with real potential that don't yet qualify
+* [Watchlist](WATCHLIST.md) — candidates submitted 2+ times that don't yet qualify
 * [Infrastructure Clouds](#infrastructure-clouds)
 * [GPU & AI Compute Clouds](#gpu--ai-compute-clouds)
 * [Security, Compliance & Sovereignty Clouds](#security-compliance--sovereignty-clouds)
@@ -56,14 +58,19 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Beam](https://www.beam.cloud) - Cloud infrastructure specifically built for high-performance applications and developer happiness.
 * 🟡 [Browser-Use](https://browser-use.com/) - Cloud service provider.
 * 🟢 [Civo](https://www.civo.com) - Provides cloud services with a focus on simplicity and developer experience.
+* 🟢 [cloudscale.ch](https://cloudscale.ch/) - Swiss IaaS provider offering VMs, GPU servers, load balancers, and object storage with per-hour pricing and full Swiss data residency.
+* 🟢 [Cognee](https://www.cognee.ai/) - Cloud service provider.
 * 🟢 [Cycle.io](https://cycle.io/) - Provides a container orchestration platform for deploying applications.
 * 🟢 [DataPacket](https://www.datapacket.com/) - Offers high-performance infrastructure for bandwidth-intensive applications.
 * 🟢 [Digital Ocean](https://www.digitalocean.com/) - Provides cloud computing services with simplicity and scalability.
 * 🟢 [Driver](https://driver.dev/) - Provides browser automation infrastructure running Chrome instances on real consumer hardware with residential IPs and authentic fingerprints for AI agents and web scraping.
+* 🟢 [DT Cloud](https://dtcloudnow.com/) - Provides comprehensive cloud computing services including VPS, Kubernetes, GPU cloud, storage, networking, security, and industry-specific solutions for Turkish market.
 * 🟢 [E2E Cloud](https://www.e2enetworks.com/) - Offers cloud infrastructure with GPU instances for AI and machine learning.
 * 🟢 [Empromptu](https://empromptu.ai) - Cloud service provider.
 * 🟢 [exe.dev](https://exe.dev/) - Modern VM hosting with sub-second starts and persistent disks. Built for AI coding agents with built-in HTTPS/auth and sharing.
+* 🟢 [Exoscale](https://www.exoscale.com/) - European cloud provider offering compute instances, managed Kubernetes, databases, object storage, block storage, and GPU servers with self-service signup.
 * 🟢 [Firmus](https://firmus.co/) - Cloud service provider.
+* 🟢 [Flow Swiss](https://flow.swiss/) - Swiss cloud provider offering compute, managed Kubernetes, App Engine, Mac Bare Metal hosting, and Apple Silicon CI services with ISO 27001 certification and Swiss data protection compliance.
 * 🟡 [Freestyle](https://freestyle.sh) - Infrastructure for managing and executing AI-generated code through sandboxed VMs, Git repositories, and deployment services.
 * 🟢 [Gcore](https://gcore.com/) - Delivers edge and cloud services with global infrastructure.
 * 🟡 [Hetzner](https://www.hetzner.com/) - Provides dedicated servers and cloud services in Europe.
@@ -73,11 +80,14 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Latitude.sh](https://www.latitude.sh/) - Provides global bare metal servers for developers.
 * 🟢 [LeaseWeb](https://www.leaseweb.com/) - Full service hosting provider with a background in dedicated and managed servers.
 * 🟢 [Linode](https://www.linode.com/) - Provides cloud computing services designed for developers with straightforward pricing.
+* 🟢 [Loophole Labs](https://loopholelabs.io/) - Offers Kubernetes scale-to-zero capabilities by hibernating idle pods in-place and waking them in under 50ms, eliminating overprovisioning without code changes.
 * 🟢 [Lyceum](https://lyceum.technology/) - EU built and operated GPU cloud for developers and AI teams.
+* 🟢 [Mermaid](https://mermaid.ai/web/) - Cloud service provider.
 * 🟡 [Namespace](https://namespace.so/) - Cloud service provider.
 * 🟢 [NetActuate](https://netactuate.com/) - Provides hybrid cloud and edge computing solutions with a global network.
 * 🟢 [Openmetal.io](https://openmetal.io/) - Delivers on-demand private cloud infrastructure based on OpenStack.
 * 🟡 [OVH Cloud](https://us.ovhcloud.com/) - Global cloud provider offering compute, storage, and network solutions.
+* 🟢 [Pingcap](https://www.pingcap.com/) - Cloud service provider.
 * 🟢 [QBO](https://qbo.io/) - GPU Cloud at the Edge & Beyond - Delivering high performance, streamlined infrastructure, and flexible AI/ML deployment.
 * 🟢 [Rackdog](https://rackdog.com/) - Cloud service provider.
 * 🟢 [Rackspace](https://www.rackspace.com/) - Provides hybrid cloud and managed hosting services.
@@ -86,6 +96,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Seeweb](https://www.seeweb.it/) - Italian cloud infrastructure provider offering compute, storage, and CDN.
 * 🟡 [Sent](https://www.sent.dm/) - Cloud service provider.
 * 🟢 [Servers.com](https://www.servers.com/) - Global bare metal and private cloud platform supporting AI/ML compute.
+* 🟢 [Sidero Labs](https://www.siderolabs.com/) - Provides Talos Linux and Omni, an immutable Kubernetes infrastructure platform designed for zero-drift operations, compliance, and secure multi-environment deployments.
 * 🟢 [Spheron Network](https://www.spheron.network/) - Decentralized GPU/CPU network for AI and Web3 with 44,000+ nodes across 170+ locations.
 * 🟡 [Sprites](https://sprites.dev/) - Provides hardware-isolated, stateful Linux sandbox environments with checkpoint and restore capabilities for running arbitrary code with persistent storage and HTTP access.
 * 🟢 [Sustainable Metal Cloud](https://smc.co/) - Green-focused GPU cloud with a sustainability-first infrastructure model.
@@ -103,6 +114,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟡 [CoreWeave](https://www.coreweave.com/) - A cloud platform optimized for AI, offering high-performance GPU compute and managed services.
 * 🟢 [Crusoe Energy](https://crusoecloud.com/) - Energy-efficient GPU computing using stranded and renewable energy sources.
 * 🟢 [Cudo Compute](https://www.cudocompute.com/) - Offers decentralized cloud computing with GPU support for AI applications.
+* 🟡 [Dapple](https://dapple.co/) - Offers an Enterprise OS Cloud that aggregates global GPU supply for regulated enterprises, ensuring strict isolation, residency, and compliance.
 * 🟢 [Datacrunch.io](https://datacrunch.io/) - Provides affordable GPU cloud services for AI training and inference.
 * 🟢 [Fal.ai](https://fal.ai/) - Provides serverless GPU inference for AI models with instant deployment.
 * 🟢 [FluidStack](https://www.fluidstack.io/) - Offers decentralized GPU cloud computing for AI and rendering workloads.
@@ -110,6 +122,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Genesis Cloud](https://www.genesiscloud.com/pricing) - Offers sustainable, high-performance GPU cloud computing for AI workloads.
 * 🟢 [GMI Cloud](https://www.gmicloud.ai/) - Provides GPU cloud services optimized for AI and deep learning tasks.
 * 🟡 [GPU CLI](https://gpu-cli.sh) - Provides command-line access to remote cloud GPUs with auto-stop functionality, instant connection, and automatic result syncing for ML training and inference workloads.
+* 🟡 [Highrise](https://www.highrise.ai/) - Provides a unified platform for developing, training, and deploying AI models with access to thousands of NVIDIA GPUs at competitive pricing, backed by Hut 8 infrastructure.
 * 🟢 [HydraHost](https://hydrahost.com/) - Affordable GPU compute focused on researchers and indie developers.
 * 🟢 [Hyperbolic](https://hyperbolic.xyz/) - Offers scalable GPU compute for AI applications with a focus on performance and cost-efficiency.
 * 🟢 [Hyperstack](https://www.hyperstack.cloud/) - Cloud GPU and AI platform for building, training, and deploying custom AI models.
@@ -120,8 +133,10 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Nebius](https://nebius.com/) - Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services.
 * 🟢 [NeevCloud](https://www.neevcloud.com/) - India-based GPU cloud offering secure, scalable AI compute.
 * 🟢 [NextGen Cloud](https://www.nextgencloud.com/) - Delivers sustainable, high-performance cloud infrastructure for AI workloads.
+* 🟢 [Ornn](https://ornn.com/) - Provides financial infrastructure for GPU compute markets, including reference pricing indices, market data, capacity financing, and compute access platforms.
 * 🟡 [Paperspace](https://www.paperspace.com/) - Cloud computing with GPU support for AI development and deployment. Now owned by DigitalOcean.
 * 🟢 [Parasail](https://parasail.ai/) - Serverless GPU platform to run custom AI models easily.
+* 🟡 [Positron](https://www.positron.ai/) - Delivers purpose-built hardware and API infrastructure for optimized Transformer model inference, supporting HuggingFace models with OpenAI-compatible endpoints.
 * 🟢 [Runpod](https://www.runpod.io/) - Provides customizable GPU containers and secure cloud compute environments.
 * 🟢 [Shadeform](https://shadeform.com/) - GPU compute provider with a focus on low-cost AI infrastructure.
 * 🟢 [TensorDock](https://tensordock.com/) - Affordable, usage-based GPU cloud platform for model training.
@@ -135,6 +150,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 
 Cloud platforms designed to ensure data residency, regulatory compliance, and national control over infrastructure—often tailored for governments, public sector, or regulated industries.
 
+* 🟡 [ALTCHA](https://altcha.org/) - Provides privacy-first, GDPR-compliant CAPTCHA and bot protection with self-hosted deployment, eliminating tracking and external data sharing.
 * 🟢 [CrowdStrike](https://www.crowdstrike.com/) - A cloud-native cybersecurity platform that provides endpoint protection, threat intelligence, and incident response powered by AI.
 * 🟢 [Fortinet](https://www.fortinet.com/) - Provides integrated cybersecurity solutions including next-gen firewalls, secure SD-WAN, and endpoint protection.
 * 🟢 [FPT Vietnam](https://fptsoftware.com/newsroom/news-and-press-releases/press-release/fpt-to-shape-the-future-of-ai-and-cloud-on-a-global-scale-in-collaboration-with-nvidia) - Investing $200 million to build an AI factory serving as a sovereign cloud, featuring NVIDIA's latest technologies to bolster Vietnam's digital sovereignty.
@@ -147,6 +163,7 @@ Cloud platforms designed to ensure data residency, regulatory compliance, and na
 * 🟢 [Reliance](https://www.ril.com/) - Indian conglomerate with plans to develop sovereign cloud infrastructure to support the country's digital initiatives and data localization requirements.
 * 🟢 [Sakura Internet](https://www.sakura.ad.jp/corporate/en/information/equinix-and-sakura-internet-launch-strategic-partnership/) - Japanese cloud provider partnering with Equinix to offer GPU-based cloud services, supporting the growing demand for AI and ensuring data sovereignty.
 * 🟢 [T-Systems](https://www.t-systems.com/) - German IT services and consulting company providing sovereign cloud solutions to ensure data protection and compliance with European regulations.
+* 🟡 [TitanU AI](https://www.titanuai.com/) - Provides sovereign AI infrastructure with zero cloud dependency, local GGUF inference, cryptographic audit chains, and mesh-native architecture for complete data sovereignty.
 * 🟢 [Wiz](https://www.wiz.io/) - A cloud security platform that gives full-stack visibility into cloud infrastructure and prioritizes risk across workloads, containers, and identities.
 * 🟢 [Yotta](https://yotta.com/blog-need-of-sovereign-cloud-in-india/) - Indian data center and cloud services provider focusing on security, compliance, and innovation.
 * 🟢 [Zscaler](https://www.zscaler.com/) - Zero trust SASE platform with AI-driven cybersecurity and cloud protection.
@@ -158,6 +175,7 @@ Platforms leveraging unikernel and WebAssembly technologies for lightweight, sec
 * 🟢 [Cosmonic](https://cosmonic.com/) - A distributed compute mesh built on CNCF's wasmCloud, enabling secure, declarative deployments of WebAssembly applications across diverse environments.
 * 🟢 [KraftCloud](https://kraft.cloud/) - A next-generation cloud platform powered by unikernels, offering millisecond-scale operations and high-density deployments for efficient computing.
 * 🟢 [NanoVMs](https://nanovms.com/) - Provides a unikernel platform that allows deploying applications as secure, isolated virtual machines, enhancing performance and security.
+* 🟢 [Unikraft](https://unikraft.com/) - Provides unikernel-based cloud infrastructure platform enabling <10ms cold starts, VM-grade isolation, and 100K+ instances per server with custom Linux distributions.
 * 🟢 [Wasmer](https://wasmer.io/) - Offers a universal WebAssembly runtime that enables running applications safely and efficiently across various platforms, from desktop to cloud and edge.
 
 ## Databases & Storage
@@ -177,6 +195,7 @@ Managed databases, object storage, caching, and search engines — relational, N
 * 🟢 [Hasura](https://hasura.io/) - Instantly generates GraphQL APIs over new or existing PostgresSQL databases.
 * 🟢 [Hydrolix](https://hydrolix.io/) - A streaming data lake that ingests and processes high-volume, high-cardinality log data in real time, providing scalable storage and query capabilities with cost-efficient resource utilization.
 * 🟢 [InfluxData](https://www.influxdata.com/) - Purpose-built time-series database for cloud, on-premises, and edge deployments.
+* 🟢 [LaserData](https://laserdata.com/) - Provides a hyper-efficient data streaming platform built in Rust with sub-millisecond latency, designed for real-time and agentic AI systems.
 * 🟢 [Materialize](https://materialize.com/) - Streaming SQL database for real-time data transformation and analytics.
 * 🟢 [Meilisearch](https://www.meilisearch.com/) - Rust-based open-source search engine with hybrid search capabilities and typo-tolerant fast search.
 * 🟢 [Momento](https://www.gomomento.com/) - Serverless caching with instant scaling, no cluster management, compatible with Redis clients and Memcached protocols.
@@ -193,6 +212,7 @@ Managed databases, object storage, caching, and search engines — relational, N
 * 🟢 [Storadera](https://storadera.com) - European S3 compatible cloud storage with predictable pricing, no egress fees, and multi-region infrastructure for backup, AI, and cloud workloads.
 * 🟢 [Supabase](https://supabase.com/) - An open-source Firebase alternative that provides a backend-as-a-service.
 * 🟢 [SurrealDB](https://surrealdb.com/) - Multi-model database for web, mobile, serverless, and cloud applications.
+* 🟡 [TiDB](https://www.pingcap.com/) - Provides a distributed SQL database optimized for AI agents with elastic scaling, unified vector/transactional queries, and ACID consistency for real-time AI workloads.
 * 🟢 [TigerData](https://www.tigerdata.com/) - PostgreSQL-based time-series database with compression and continuous aggregates.
 * 🟢 [Tigris](https://www.tigrisdata.com/) - A globally distributed S3-compatible object storage service that enables developers to store and access any amount of data.
 * 🟡 [Turso](https://turso.tech/) - Distributed SQLite database with global edge replication.
@@ -218,6 +238,7 @@ Cloud data warehouses, OLAP engines, product analytics, and BI platforms for que
 * 🟢 [MotherDuck](https://motherduck.com/) - Serverless analytics platform powered by DuckDB with cloud collaboration.
 * 🟢 [Plausible](https://plausible.io/) - Lightweight, privacy-focused web analytics platform without cookies, offering essential metrics in an intuitive dashboard.
 * 🟢 [PostHog](https://posthog.com/) - An open-source product analytics platform that can be deployed on-premises.
+* 🟢 [Rybbit](https://rybbit.com/) - Provides a cookieless, GDPR-compliant web analytics platform with session replay, conversion funnels, and real-time data as a Google Analytics alternative.
 * 🟢 [Snowflake](https://www.snowflake.com/en/) - A cloud data platform offering data warehousing, data lakes, and data sharing capabilities.
 * 🟢 [Teradata](https://www.teradata.com/) - Specializing in providing solutions for data warehousing, analytics, and big data analytics.
 * 🟢 [Tinybird](https://www.tinybird.co/) - Real-time data platform for building instant APIs over streaming and batch data.
@@ -246,6 +267,7 @@ Logging, metrics, tracing, error tracking, uptime monitoring, and session replay
 * 🟢 [Logz.io](https://logz.io/) - Offers an open-source observability platform for monitoring, troubleshooting, and securing applications.
 * 🟢 [Mezmo](https://www.mezmo.com/) - Provides a central observability platform to control, enrich, and correlate machine data for faster business decisions.
 * 🟢 [New Relic](https://newrelic.com/) - An observability platform that unifies metrics, events, logs, and traces for full-stack monitoring.
+* 🟢 [NOFire](https://www.nofire.ai/) - Delivers an AI SRE platform that provides production context and runtime control, preventing incidents by scoring changes and enforcing policies before execution.
 * 🟢 [OpenStatus](https://www.openstatus.dev/) - Open-source status page and monitoring platform for tracking API and website uptime worldwide.
 * 🟢 [Sentry](https://sentry.io/) - Application monitoring platform for error tracking, performance monitoring, and session replay to identify and resolve code issues.
 * 🟢 [Splunk](https://www.splunk.com/) - Provides a platform for searching, monitoring, and analyzing machine-generated big data.
@@ -278,6 +300,7 @@ Orchestration, automation, and operations platforms for running reliable workflo
 * 🟢 [n8n](https://n8n.io/) - An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor.
 * 🟢 [PagerDuty](https://www.pagerduty.com/) - A platform for automating critical operations work.
 * 🟢 [Prefect](https://www.prefect.io/) - Workflow orchestration framework for building resilient data pipelines in Python.
+* 🟡 [Resonate](https://www.resonatehq.io/) - Provides durable execution for async/await workflows using any existing database or queue, simplifying failure handling and recovery in distributed systems.
 * 🟢 [Ryvn](https://ryvn.ai/) - BYOC deployment platform for SaaS startups in customer clouds and on-premises.
 * 🟢 [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
 * 🟢 [Temporal](https://temporal.io/) - Durable execution platform for reliable workflows with automatic failure recovery.
@@ -295,6 +318,7 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 * 🟢 [c/Side](https://cside.dev/) - A next generation web security service that monitors, optimizes and secures 3rd party scripts.
 * 🟢 [Cloudbrink](https://cloudbrink.com/) - Delivers hybrid access-as-a-service with high-performance connectivity, zero trust security, and edge-native networking for remote users.
 * 🟢 [Cloudflare](https://www.cloudflare.com/) - Protects and accelerates websites and apps through global CDN, DDoS mitigation, Zero Trust access, and DNS services.
+* 🟢 [Core Transit](https://www.coretransit.net/) - Provides flexible IP routing, static IP addressing, and BGP services to extend deterministic connectivity to hard-to-reach locations for enterprises and MSPs.
 * 🟡 [CtrlDNS](https://www.ctrldns.com/) - Provides DNS management and control services for domain name resolution and network infrastructure management.
 * 🟢 [Fastly](https://www.fastly.com/) - An edge cloud platform designed for performance and security, enabling developers to build faster, more secure digital experiences.
 * 🟢 [IPinfo](https://ipinfo.io/) - Provides accurate IP address intelligence including geolocation, ASN data, privacy detection, and network information through APIs and data downloads for developers and enterprises.
@@ -328,6 +352,8 @@ APIs and platforms for running inference on foundation models and open-source LL
 * 🟢 [Portkey](https://portkey.ai/) - AI Gateway control panel for production apps with unified gateway to 1600+ LLMs, observability, guardrails, and governance. OpenAI-compatible with semantic caching and SOC2/HIPAA/GDPR compliance.
 * 🟢 [Replicate](https://replicate.com/) - Run machine learning models in the cloud with an API.
 * 🟢 [Roboflow](https://roboflow.com/) - Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.
+* 🟢 [Sail Research](https://www.sailresearch.com/) - Provides cost-efficient inference infrastructure for running leading open-source AI models on demand, optimized for long-horizon agents with flexible completion windows.
+* 🟢 [Swirls](https://swirls.ai/) - Provides a deployment platform for agentic systems with declarative configuration, durable execution, human-in-the-loop workflows, and cryptographic policy enforcement.
 * 🟢 [Together.ai](https://www.together.ai/) - Open-source foundation model infrastructure with collaborative fine-tuning.
 
 ## AI Assistants & Copilots
@@ -370,11 +396,14 @@ AI-powered code editors, IDEs, no-code/low-code builders, and full-stack app gen
 * 🟢 [Codev](https://codev.ai/) - A development assistant that uses AI to generate, analyze, and debug software code efficiently.
 * 🟢 [CopilotKit](https://www.copilotkit.ai/) - Open-source framework and infrastructure for building in-app AI copilots and agents.
 * 🟢 [Cursor](https://www.cursor.so/) - An AI-enhanced code editor that integrates directly with your codebase to provide suggestions and automate changes.
+* 🟢 [Drydock](https://drydock.build/) - Provides AI-powered build, deployment, and operations platform that creates production applications from prompts, with global infrastructure across 45+ PoPs and automated DevOps.
 * 🟡 [Git AI](https://usegitai.com/) - Provides open-source Git extension for tracking AI-generated code through the entire software development lifecycle with attribution, context storage, and team analytics.
 * 🟢 [GitHub Copilot](https://github.com/features/copilot) - An AI-powered coding assistant developed by GitHub and OpenAI that suggests code snippets as you type.
 * 🟢 [Marblism](https://www.marblism.com/) - Generate full-stack web apps from a single prompt.
 * 🟢 [Mesa](https://www.mesa.dev) - AI-powered code review platform with custom agents that learn codebase standards and prevent tech debt.
+* 🟢 [Niteshift](https://niteshift.dev/) - Provides a full-stack cloud platform for coding agents to build, test, and deploy applications with isolated environments, service simulation, and integration with existing development tools.
 * 🟢 [OB-1](https://www.openblocklabs.com/) - Provides a self-improving coding agent that handles the full development lifecycle from project management to pull requests, with multi-model AI support and workflow automation.
+* 🟢 [Ona](https://ona.com/) - Provides a platform to run and govern AI software agents in the cloud, offering standardized execution environments, security controls, and automated remediation for SDLC workflows.
 * 🟢 [Softgen](https://softgen.ai/) - Provides tools to automatically generate code, documentation, and tests to speed up software delivery.
 * 🟢 [Tabnine](https://www.tabnine.com/) - AI code assistant with private model options.
 * 🟢 [v0](https://v0.app/) - AI-powered UI generation from text prompts to React code.
@@ -384,6 +413,7 @@ AI-powered code editors, IDEs, no-code/low-code builders, and full-stack app gen
 
 Platform-as-a-service and managed hosting providers for deploying and scaling web applications, APIs, and services.
 
+* 🟢 [Alien](https://www.alien.dev/) - Enables deploying applications directly into customer AWS, GCP, and Azure accounts for secure, agentless multi-cloud distribution with full observability.
 * 🟢 [Deno Deploy](https://deno.com/deploy) - Globally distributed edge platform for JavaScript and TypeScript serverless apps.
 * 🟢 [Flightcontrol](https://www.flightcontrol.dev/) - Automates infrastructure provisioning, CI/CD, and deployments within your own AWS account, offering full visibility and control.
 * 🟢 [Fly](https://fly.io) - Provides a platform to deploy applications globally with low latency.
@@ -393,6 +423,7 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 * 🟢 [Maritime](https://maritime.sh/) - Provides cloud hosting infrastructure specifically designed for AI agents with flat $1/month pricing, sleep/wake architecture, and one-click deployment from GitHub repos.
 * 🟢 [Netlify](https://www.netlify.com/) - Platform for building, deploying, and scaling modern web applications.
 * 🟢 [Northflank](https://northflank.com/) - A platform to build, deploy, and manage full-stack applications.
+* 🟢 [Out Plane](https://outplane.com/) - Provides a cloud PaaS platform for developers to deploy applications in 60 seconds with managed PostgreSQL, Redis, auto-scaling, and compliance features without Kubernetes or YAML.
 * 🟢 [Pantheon](https://pantheon.io/) - A platform for running Wordpress, Drupal and Next.js websites.
 * 🟢 [Platform.sh](https://platform.sh/) - Enterprise PaaS to build, run, and scale web applications and microservices.
 * 🟢 [Porter](https://porter.run/) - A Kubernetes-powered PaaS that runs in your own cloud provider, simplifying the deployment and management of applications on AWS, GCP, or Azure.
@@ -402,11 +433,13 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 * 🟢 [Shuttle](https://www.shuttle.dev/) - Rust-native cloud platform for building and deploying backend services.
 * 🟢 [Skyhook](https://skyhook.io/) - PaaS for deploying and managing Kubernetes clusters and workloads with GitOps support, preview environments, and AI assistance.
 * 🟢 [Upsun](https://upsun.com/) - An application hosting platform from the team at Platform.sh.
+* 🟢 [Zerops](https://zerops.io) - Provides a developer-first cloud platform with full Linux containers, managed services, and private networking supporting multiple programming languages and frameworks.
 
 ## Developer Tooling & CI/CD
 
 Build systems, artifact registries, CI/CD pipelines, cloud dev environments, testing frameworks, feature flags, and developer productivity tools.
 
+* 🟢 [8gears Container Registry](https://container-registry.com/) - Provides enterprise Harbor-based container registry service for storing, managing and distributing container artifacts securely at scale with multi-tenancy and RBAC.
 * 🟢 [Anaconda](https://www.anaconda.com/) - Provides enterprise Python package management and AI development platform with secure open-source libraries, environment management, and AI model deployment capabilities.
 * 🟢 [Browserbase](https://www.browserbase.com/) - A platform for running headless browsers for interact with websites via automation.
 * 🟢 [browserless](https://www.browserless.io/) - Headless browser automation platform providing managed Chrome, Firefox, and WebKit browsers for scraping, testing, and automation with bot detection bypass and CAPTCHA solving.
@@ -418,6 +451,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [DevZero](https://www.devzero.io/) - Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.
 * 🟢 [Dosu](https://dosu.dev/) - AI documentation platform that generates, maintains, and shares knowledge from code and conversations.
 * 🟢 [E2B](https://e2b.dev/) - Secure sandboxes for AI code execution with filesystem, networking, and long-running process support for AI agents.
+* 🟢 [Engram SDK](https://www.engram.org/products/sdk) - Provides TypeScript and Python libraries for building agents with memory, reasoning, and orchestration capabilities for enterprise AI applications.
 * 🟢 [Fabrica](https://www.usefabrica.app/) - AI platform that builds internal apps from prompts with database and tooling integrations.
 * 🟢 [Firefly](https://www.firefly.ai/) - A cloud asset management solution powered by Infrastructure-as-Code, assisting DevOps and SRE teams in managing their entire cloud infrastructure efficiently.
 * 🟢 [Flagsmith](https://www.flagsmith.com/) - Open-source feature flag and remote config platform with SaaS, self-hosted, or private cloud deployment options.
@@ -432,6 +466,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [Mintlify](https://mintlify.com/) - Modern documentation platform with MDX support, API references, interactive components, and built-in search analytics.
 * 🟢 [Notion](https://www.notion.com/) - All-in-one workspace for notes, docs, wikis, and project management.
 * 🟢 [Outerbase](https://www.outerbase.com/) - A platform for safely interacting with data and databases, now part of Cloudflare.
+* 🟢 [Paper](https://paper.design/) - Provides a connected design canvas that integrates with development tools, AI agents, and real data sources, enabling seamless collaboration between design and code workflows.
 * 🟢 [Prismic](https://prismic.io/) - A headless CMS for developers to build and manage dynamic websites using modern frameworks and custom content APIs.
 * 🟢 [Release](https://release.com/) - Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.
 * 🟢 [Replit](https://replit.com/) - Collaborative browser IDE with instant deployment and multiplayer coding.
@@ -443,12 +478,14 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [Ubicloud](https://www.ubicloud.com/) - An open-source cloud platform that can run anywhere, offering IaaS features on bare metal providers with options for self-hosting or managed services.
 * 🟢 [Unleash](https://www.getunleash.io/) - Enterprise open-source feature management platform with strong RBAC and flexible deployment options.
 * 🟢 [Warp](https://www.warp.dev/) - Cloud service provider.
+* 🟡 [Wire](https://usewire.io/) - Provides composable context containers for AI agents, organizing documents and data into AI-optimized environments accessible via MCP protocol.
 
 ## Authorization, Identity & Fraud
 
 Authentication, authorization, secrets management, identity providers, and fraud and abuse prevention services.
 
 * 🟢 [Akeyless](https://www.akeyless.io/) - SaaS secrets management with zero-knowledge encryption. Distributed Fragments Cryptography eliminates vault overhead. 70% cost savings.
+* 🟢 [AlpacaX](https://www.alpacax.com/) - Provides secure, scoped infrastructure access for AI agents with command-level control, privileged operation approval, and comprehensive audit trails for safe production operations.
 * 🟢 [Aserto](https://www.aserto.com/) - Cloud-native authorization built on Open Policy Agent.
 * 🟢 [Auth0](https://auth0.com/) - A flexible, drop-in solution to add authentication and authorization services to applications, now part of Okta.
 * 🟢 [Authzed](https://authzed.com/) - Provides fine-grained, scalable authorization as a service, built on the open-source SpiceDB.
@@ -489,6 +526,7 @@ Usage metering, subscription management, billing infrastructure, and financial o
 * 🟡 [Autumn](https://useautumn.com/) - Provides a billing infrastructure layer between applications and Stripe, handling subscriptions, usage tracking, limits, and complex pricing models for AI products.
 * 🟢 [Bill](https://www.bill.com/) - A comprehensive financial operations platform for bills, invoices, expenses, budgets, and more.
 * 🟢 [Dodo Payments](https://dodopayments.com/) - Merchant of Record platform for global payments with automated tax compliance in 150+ countries.
+* 🟡 [Hyperline](https://www.hyperline.co/) - Provides a unified revenue management platform for quote-to-cash processes, featuring CPQ, Stripe Billing integration, AI-driven billing, and global invoicing.
 * 🟡 [Lago](https://www.getlago.com/) - An open-source metering and usage-based billing platform designed for transparency and developer experience.
 * 🟢 [Lemon Squeezy](https://www.lemonsqueezy.com/) - The all-in-one platform for SaaS that provides payments, tax & subscriptions.
 * 🟢 [m3ter](https://www.m3ter.com/) - Usage data infrastructure for pricing and billing.
@@ -538,6 +576,7 @@ Messaging, notifications, email, voice, video, and IoT connectivity platforms fo
 * 🟢 [Hologram](https://www.hologram.io/) - Provides global IoT SIM cards and eUICC technology with a cloud-native dashboard for managing devices and data usage across carriers.
 * 🟢 [Knock](https://knock.app/) - Notification infrastructure with workflows, preferences, and delivery channels.
 * 🟢 [Mux](https://www.mux.com) - Solves the hard problems software teams face when building video, from live-streaming platforms to on-demand video catalogs and anything in between.
+* 🟢 [Novu](https://novu.co/) - Provides open-source notification infrastructure for multi-channel communication across email, SMS, push, chat, and more with workflow orchestration and agent integration.
 * 🟢 [Onomondo](https://onomondo.com/) - A full-stack connectivity platform for IoT with a single global SIM, advanced network control, and transparent pricing.
 * 🟢 [Particle](https://www.particle.io/) - An integrated IoT platform offering hardware, firmware, and cloud connectivity tools for building and scaling connected products.
 * 🟡 [Resend](https://resend.com/) - Email for developers who want to deliver transactional and marketing emails at scale.
@@ -545,6 +584,7 @@ Messaging, notifications, email, voice, video, and IoT connectivity platforms fo
 * 🟢 [Sendbird](https://sendbird.com/) - Communications API providing chat, voice, video, and AI messaging infrastructure with mobile/web SDKs.
 * 🟢 [SLNG](https://www.slng.ai) - Global speech AI gateway with multi-region support, model routing, and compliance for voice applications.
 * 🟢 [Soracom](https://soracom.io/) - Delivers cellular connectivity and edge services for IoT deployments, with APIs and billing tailored to developers and startups.
+* 🟢 [Telnyx](https://telnyx.com/) - Provides a carrier-grade global communications platform combining owned network infrastructure with AI inference capabilities for real-time voice, messaging, and AI agent deployment.
 * 🟢 [Twilio](https://www.twilio.com/docs/iot) - Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
 * 🟢 [Wistia](https://wistia.com/) - A one-stop video marketing shop to create, host, market and analyze your videos.
 
@@ -594,6 +634,8 @@ Why track these? The cloud landscape changes fast. Today's "contact sales only" 
 
 ## Contributing
 
-Pull requests welcome! Please ensure that submissions meet the Alt Cloud [contributing guide](CONTRIBUTING.md) and are categorized accurately.
+**To submit a new service**, use the form at **[alt-cloud.org/submit](https://www.alt-cloud.org/submit/)** — this triggers the automated validation pipeline that scores your submission against the three criteria and opens a GitHub issue with the results.
+
+Direct pull requests are welcome for corrections, description improvements, or categorization changes. Please follow the [contributing guide](CONTRIBUTING.md).
 
 Submissions that don't yet meet the criteria may be tracked in the [Watchlist](WATCHLIST.md) — a structured list of candidates with a clear path to qualification.
