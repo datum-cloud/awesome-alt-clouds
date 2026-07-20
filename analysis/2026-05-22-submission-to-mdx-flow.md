@@ -61,7 +61,9 @@ Next production deploy builds the full HTML detail page
 
 ## Stage A — User Fills the Submission Form
 
-**URL:** `alt-cloud.org/submit/` (`docs/submit/index.html`)
+**URL:** `alt-cloud.org/submit/` (`src/pages/submit/index.astro` — the Astro form; the
+legacy `docs/submit/index.html` predates the Astro migration and is no longer the live
+page)
 
 1. User enters 1–5 cloud URLs and optional notes.
 2. The form normalises URLs, strips trailing slashes, deduplicates.
@@ -112,18 +114,33 @@ automatically closes the parent tracking issue.
 **Script:** `scripts/check_duplicates.py`  
 **Triggered before evaluation.**
 
-Three checks are performed:
+> Updated 2026-07-20 — the checks below no longer match what was originally documented
+> here. There is no GitHub Issues API lookup; the redirect-based check (added in commit
+> `2fe499a`, "detect duplicates via HTTP redirects and short exact-name matches") was
+> applied to this branch afterwards.
 
-| Check | Source | Action on match |
+`check_clouds_json_with_redirects()` runs, in order, against `public/clouds.json`:
+
+| Check | How it matches | Action |
 |---|---|---|
-| Exact domain match | `public/clouds.json` | Comment + `duplicate` label + **close** |
-| Fuzzy name match (normalised) | `public/clouds.json` | Comment + `duplicate` label (stays open) |
-| Existing open submission with same domain | GitHub Issues API | Comment + `duplicate` label + **close** |
+| `exact_domain` | Normalised domain (strip `www.`) equals an existing entry's domain. Short-circuits, no network call. | Comment ("Duplicate Submission") + `duplicate` label + **close** |
+| `fuzzy_name` | Normalised name (lowercase, punctuation stripped, noise words `cloud/ai/labs/inc/io/the` removed) exactly equals an entry's normalised name (any length — catches short names like "Ory"), **or** both names are ≥4 chars and share an overlapping ≥4-char token. | Comment ("Possible Duplicate") + `duplicate` label, **stays open** for admin review |
+| `redirect_domain` | A live HTTP check via `resolve_final_domain()` (follows redirects, 10s timeout, fails open to `''`). Upgrades a `fuzzy_name` candidate if the submitted URL and the candidate's stored URL resolve to the same final domain, **or** catches a silent rebrand where the submitted URL redirects straight to an existing entry's domain with no name match at all. At most 2 live requests per check. | Comment ("Duplicate via Domain Redirect") + `duplicate` label, stays open |
 
-The script always exits `0` (fail-open) — a check failure never blocks a legitimate
-submission.
+Separately, `public/watchlist.json` is checked (only if there was no `clouds.json` match
+above): if the submitted domain matches a watchlist entry, it's a **`watchlist_resubmission`**
+— comment shows the previously-missing criteria, `watchlist` label is added, but
+`is_duplicate=false` so **evaluation still proceeds** (lets a since-qualified service get
+promoted).
+
+The script always exits `0` (fail-open) — a check failure (e.g. `clouds.json` unreadable)
+never blocks a legitimate submission.
 
 If `is_duplicate == true`, all downstream steps in the workflow are skipped.
+
+> **Gap:** child issues created by `split_submission.py` (Stage C) do **not** go through
+> this duplicate check at all — it only runs inside `evaluate-submission.yml`, which split
+> children bypass by calling `evaluate_submission.py` directly.
 
 ---
 
@@ -153,13 +170,24 @@ Stage 2 — Direct requests
   Cheap fallback; fails on JS-heavy or Cloudflare-protected sites.
   ↓ failed
 
-Stage 3 — Claude web_search tool
-  Last resort; fully agentic; most expensive.
-  Never fails (Claude synthesises from web knowledge).
+Stage 3 — evaluate_with_llm(url)
+  Last resort: a single LLM call judges the 3 criteria + metadata together,
+  with no page content at all. Never fails structurally — if this also
+  errors, score defaults to 2/3 with all criteria `passed: None`
+  ("Could not verify — site protected") and needs_manual_review: True.
 ```
 
 The cascade lives in `scripts/lib/fetcher.py` (`fetch_page_with_fallback`), shared by
 both `evaluate_submission.py` and `generate_cloud_profile.py`.
+
+> **Updated 2026-07-20 — dual LLM provider.** Stage 3 (and metadata generation in
+> Stage E.5 below) is no longer Claude-only. `LLM_PROVIDER = os.environ.get("LLM_PROVIDER",
+> "claude").lower()` — a repo variable — picks between `evaluate_with_claude()` /
+> `generate_metadata_with_claude()` (model `claude-haiku-4-5-20251001`, default) and
+> `evaluate_with_qwen()` / `generate_metadata_with_qwen()` (self-hosted, model
+> `qwen3.6-35b-a3b`). Workflows inject both `ANTHROPIC_API_KEY` and `QWEN_BASE_URL` so
+> flipping the `LLM_PROVIDER` repo variable is the only step needed to switch — no code
+> changes.
 
 ### 3. Three criteria checks
 
@@ -326,6 +354,21 @@ If the score was < 2 (no PR opened), a maintainer can comment:
 The `admin-approve-submission.yml` workflow re-runs evaluation with `ADMIN_APPROVED=true`
 and the override flags, then calls `create_submission_pr.py` directly.
 
+### Other admin commands (added 2026-07-20)
+
+Both require `admin`/`maintain`/`write` permission, checked via a GitHub App token:
+
+- **`/watchlist`** — `.github/workflows/watchlist.yml` runs `scripts/watchlist_add.py`
+  then `scripts/generate_watchlist_json.py`, then commits `WATCHLIST.md` +
+  `public/watchlist.json` directly to `main` with `[skip ci]` (no PR). This is the only
+  way a low-scoring submission gets watchlisted — nothing does it automatically. A 0/3
+  score is treated as an outright decline rather than watchlist-worthy.
+- **`/revalidate`** — `.github/workflows/revalidate-submission.yml` strips the
+  `duplicate`/`needs-review`/`auto-approved`/`approved`/`watchlist` labels, then removes
+  and re-adds `submission` via the App token (forcing a real `labeled` event, since
+  `GITHUB_TOKEN`-applied labels don't reliably re-trigger workflows). Used to re-run the
+  whole pipeline from Stage D onward after fixing an incorrect duplicate flag.
+
 ---
 
 ## Stage H — Merge to Main
@@ -410,14 +453,19 @@ T+?     deploy-pages.yml: detail page HTML built, card link active
 
 | File | Role |
 |---|---|
-| `docs/submit/index.html` | Submission form |
+| `src/pages/submit/index.astro` | Submission form (current — supersedes legacy `docs/submit/index.html`) |
+| `.github/workflows/auto-label-submission.yml` | Stage A — mobile safety net, adds `submission` label if missing |
 | `.github/workflows/evaluate-submission.yml` | Orchestrates stages D–F |
 | `scripts/check_duplicates.py` | Stage D |
-| `scripts/evaluate_submission.py` | Stage E |
+| `scripts/evaluate_submission.py` | Stage E — dual Claude/Qwen provider via `LLM_PROVIDER` |
 | `scripts/lib/fetcher.py` | Shared fetch cascade (Jina → requests) |
 | `scripts/create_submission_pr.py` | Stage F — README edit + PR |
 | `scripts/generate_cloud_profile.py` | Stage F — draft MDX generation |
 | `scripts/lib/slugify.py` | Slug derivation (mirrors TS) |
+| `scripts/watchlist_add.py` | `/watchlist` command — adds an entry to `WATCHLIST.md` |
+| `scripts/generate_watchlist_json.py` | Regenerates `public/watchlist.json` from `WATCHLIST.md` |
+| `.github/workflows/watchlist.yml` | `/watchlist` command handler — commits straight to `main` |
+| `.github/workflows/revalidate-submission.yml` | `/revalidate` command — re-runs the pipeline from Stage D |
 | `src/content/clouds/<slug>.mdx` | Draft detail page (status: draft) |
 | `src/content.config.ts` | MDX schema (`status: "draft" \| "reviewed"`) |
 | `src/lib/profile.ts` | Publish gate (`getPublishableProfiles`, `getFeaturedSlugs`) |
@@ -434,7 +482,7 @@ T+?     deploy-pages.yml: detail page HTML built, card link active
 These commits landed the auto-profile pipeline on `feat/astro-migration`:
 
 | Commit message |
-|---|
+| - |
 | `feat(profiles): add status field to MDX schema, mark 5 seeds as reviewed` |
 | `feat(profiles): gate draft MDX pages to preview builds only` |
 | `feat(profiles): add DraftBanner component for auto-generated profiles` |
