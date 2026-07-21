@@ -1,13 +1,13 @@
 # Awesome Alt Clouds — Full Reference
 
-> Curated directory of 467+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
+> Curated directory of 468+ alternative cloud providers for developers who need specialized infrastructure beyond AWS, GCP, and Azure. Each service is independently evaluated against 3 public criteria: transparent pricing, self-service signup, and a public SLA or status page.
 
 ## About This Directory
 
 - [Directory Homepage](https://www.alt-cloud.org/): Interactive searchable directory. Filter by category, search by name or description, sort alphabetically, by score, or by recently added date. All data loaded from /clouds.json.
 - [Submit a Service](https://www.alt-cloud.org/submit/): Web form that creates a GitHub issue, triggers automated AI evaluation (pricing page detection, signup detection, status page detection), and opens a PR on pass.
 - [GitHub Repository](https://github.com/datum-cloud/awesome-alt-clouds): Source of truth. Contains README.md (the awesome list), evaluation scripts in /scripts, and GitHub Actions workflows in .github/workflows.
-- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 467+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
+- [Machine-Readable Data](https://www.alt-cloud.org/clouds.json): JSON array of all 468+ entries with fields: name, url, description, score (2 or 3), categories (array), dateAdded (ISO date from git history).
 
 ## Evaluation Criteria
 
@@ -27,11 +27,11 @@ General-purpose cloud compute, bare metal, and VPS providers. The original "alt 
 
 Services: Arcade, Atlantic.net, Axiom, Beam, Browser-Use, Civo, cloudscale.ch, Cognee, Cycle.io, DataPacket, Digital Ocean, Driver, DT Cloud, E2E Cloud, Empromptu, and 34 more.
 
-### Developer Tooling & CI/CD (40 services)
+### Developer Tooling & CI/CD (41 services)
 
 CI/CD platforms, code hosting, testing infrastructure, feature flags, error monitoring, and developer workflow automation.
 
-Services: 8gears Container Registry, Anaconda, Browserbase, browserless, Bubble, Cloudsmith, Coder, Cypress, Depot, DevZero, Dosu, E2B, Engram SDK, Fabrica, Firefly, and 25 more.
+Services: 8gears Container Registry, Anaconda, Browserbase, browserless, Bubble, Cloudsmith, Coder, Cypress, Depot, DevZero, Dosu, E2B, Engram SDK, Fabrica, Firefly, and 26 more.
 
 ### GPU & AI Compute Clouds (39 services)
 
@@ -171,9 +171,9 @@ Services: Akash Network.
 
 ## Key Facts
 
-- 467+ services as of 2026-07-21
+- 468+ services as of 2026-07-21
 - 23 categories covering the full developer cloud ecosystem
-- 430 services meet all 3 criteria (🟢); 37 meet 2 of 3 (🟡)
+- 430 services meet all 3 criteria (🟢); 38 meet 2 of 3 (🟡)
 - Minimum inclusion score: 2/3 criteria
 - Machine-readable data: https://www.alt-cloud.org/clouds.json
 - Source: https://github.com/datum-cloud/awesome-alt-clouds

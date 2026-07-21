@@ -3431,6 +3431,16 @@
     "dateAdded": "2026-07-21"
   },
   {
+    "name": "OpenSEO",
+    "url": "https://openseo.so/",
+    "description": "Provides an open source SEO platform with keyword research, competitor analysis, backlinks, and rank tracking, integrated with AI agents via Model Context Protocol.",
+    "score": 2,
+    "categories": [
+      "Developer Tooling & CI/CD"
+    ],
+    "dateAdded": "2026-07-21"
+  },
+  {
     "name": "Outerbase",
     "url": "https://www.outerbase.com/",
     "description": "A platform for safely interacting with data and databases, now part of Cloudflare.",
