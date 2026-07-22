@@ -139,6 +139,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟡 [Positron](https://www.positron.ai/) - Delivers purpose-built hardware and API infrastructure for optimized Transformer model inference, supporting HuggingFace models with OpenAI-compatible endpoints.
 * 🟢 [Runpod](https://www.runpod.io/) - Provides customizable GPU containers and secure cloud compute environments.
 * 🟢 [Shadeform](https://shadeform.com/) - GPU compute provider with a focus on low-cost AI infrastructure.
+* 🟢 [SkyPilot](https://skypilot.ai/) - Provides a unified AI compute platform for managing workloads across Kubernetes, Slurm, and 20+ cloud providers with multi-cloud orchestration capabilities.
 * 🟢 [TensorDock](https://tensordock.com/) - Affordable, usage-based GPU cloud platform for model training.
 * 🟢 [TensorWave](https://tensorwave.com/) - An AI cloud focused on AMD technology including MI325X and MI300X accelerators.
 * 🟢 [Thunder Compute](https://www.thundercompute.com/) - Provides on-demand GPU instances with RTX A6000, A100, and H100 options at competitive pricing, featuring VS Code integration and one-click deployment for ML development.
