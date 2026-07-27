@@ -425,6 +425,7 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 * 🟢 [Heroku](https://www.heroku.com/) - Offers a platform as a service (PaaS) for deploying and managing applications.
 * 🟢 [Koyeb](https://www.koyeb.com/) - Offers a serverless platform to deploy applications globally.
 * 🟢 [Lyrid](https://www.lyrid.io/) - Provides an all-in-one PaaS platform for automated cloud infrastructure provisioning, management, and deployment across multi-cloud environments with built-in security and compliance.
+* 🟡 [Lyrid](https://app.lyrid.io/) - Provides cloud-agnostic serverless platform for building, deploying, and managing web applications, databases, storage, and Kubernetes clusters with ML-based policy management.
 * 🟢 [Maritime](https://maritime.sh/) - Provides cloud hosting infrastructure specifically designed for AI agents with flat $1/month pricing, sleep/wake architecture, and one-click deployment from GitHub repos.
 * 🟢 [Netlify](https://www.netlify.com/) - Platform for building, deploying, and scaling modern web applications.
 * 🟢 [Northflank](https://northflank.com/) - A platform to build, deploy, and manage full-stack applications.
