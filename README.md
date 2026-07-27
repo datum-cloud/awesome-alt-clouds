@@ -83,6 +83,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Linode](https://www.linode.com/) - Provides cloud computing services designed for developers with straightforward pricing.
 * 🟢 [Loophole Labs](https://loopholelabs.io/) - Offers Kubernetes scale-to-zero capabilities by hibernating idle pods in-place and waking them in under 50ms, eliminating overprovisioning without code changes.
 * 🟢 [Lyceum](https://lyceum.technology/) - EU built and operated GPU cloud for developers and AI teams.
+* 🟡 [Lyrid](https://status.lyr.id/status/main) - Provides a cloud-agnostic platform for launching and deploying solutions across multiple cloud providers with authentication, API, and frontend services.
 * 🟢 [Mermaid](https://mermaid.ai/web/) - Cloud service provider.
 * 🟡 [Namespace](https://namespace.so/) - Cloud service provider.
 * 🟢 [NetActuate](https://netactuate.com/) - Provides hybrid cloud and edge computing solutions with a global network.
