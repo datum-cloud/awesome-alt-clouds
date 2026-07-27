@@ -4,101 +4,126 @@ This document summarizes everything that needs to be prepared/changed when the A
 
 > A few items below need direct verification with the org/GitHub App owner (marked ⚠️) since they can't be confirmed from repo contents alone.
 
+## Production domain architecture (locked decision)
+
+`www.alt-cloud.org` is **not** served via GitHub Pages custom-domain settings. Upstream today (verified Jul 2026):
+
+- **GitHub Pages** publishes at `https://datum-cloud.github.io/awesome-alt-clouds/` (branch `/docs`, Custom domain field **empty** in Settings → Pages).
+- **No `CNAME` file** exists in upstream git — never has.
+- **Datum proxy** terminates public traffic: `www.alt-cloud.org` → `*.datumproxy.net` → GitHub Pages origin.
+
+```
+User → www.alt-cloud.org (datumproxy) → datum-cloud.github.io/awesome-alt-clouds/ → site content
+```
+
+**Datum proxy will remain in use after cutover.** Do **not** add `public/CNAME` or fill the Custom domain field in GitHub Settings unless the team explicitly migrates off datumproxy to native GitHub custom domain (would also require DNS changes away from `datumproxy.net`).
+
+Post-cutover verification target: same proxy chain, new Astro-built artifact at the same `github.io` URL.
+
+---
+
 ## Quick checklist
 
-- [ ] Create `public/CNAME` containing `www.alt-cloud.org` (this file **doesn't currently exist** in the working tree)
-- [ ] `site.config.mjs`: `preview: true` → `false`
-- [ ] `site.config.mjs`: `blockSearchBots: true` → `false` (don't let it fall back to following `preview` — set it explicitly)
-- [ ] `.github/workflows/deploy-pages.yml`: remove `feat/astro-migration` from the branch triggers + deploy condition
-- [ ] `.github/workflows/lint.yml`: remove `feat/astro-migration` from the branch triggers
-- [ ] Disable/remove `.github/workflows/update-blog-posts.yml` at the same time `docs/` is deleted
-- [ ] Delete the `docs/` folder (legacy pre-Astro site)
-- [ ] Configure all required secrets & variables in the `datum-cloud/awesome-alt-clouds` repo (see table in section C)
-- [ ] ⚠️ Confirm the GitHub App (used by 5 admin workflows) is/gets installed on the `datum-cloud` org
-- [ ] Switch the GitHub Pages source in Settings from "branch `/docs`" → "GitHub Actions"
-- [ ] Verify the custom domain `www.alt-cloud.org` + "Enforce HTTPS" in Settings → Pages after the switch
-- [ ] ⚠️ Carry over/replicate branch protection rules from the fork's `main` to the upstream repo's `main`
-- [ ] Monitor for 48 hours after cutover (custom domain resolves, Fathom analytics still firing)
+### Code / repo (PR into upstream `main`)
+
+- [x] `site.config.mjs`: `preview: false`
+- [x] `site.config.mjs`: `blockSearchBots: false` (set explicitly — do not rely on default)
+- [x] `.github/workflows/deploy-pages.yml`: triggers limited to `main` + `v*` tags (no `feat/astro-migration`)
+- [x] `.github/workflows/lint.yml`: triggers limited to `main` + `v*` tags
+- [x] `.github/workflows/update-blog-posts.yml` removed
+- [ ] Delete remaining legacy `docs/` folder (upstream still has full `/docs` site; fork has partial leftovers)
+- [ ] ~~Create `public/CNAME`~~ — **skip** (datumproxy handles `www.alt-cloud.org`; see architecture above)
+
+### GitHub / ops (upstream repo)
+
+- [ ] Configure all required secrets & variables in `datum-cloud/awesome-alt-clouds` (see section C)
+- [ ] ⚠️ Confirm the GitHub App (used by admin workflows) is/gets installed on the `datum-cloud` org
+- [ ] Switch GitHub Pages source: **Deploy from a branch** (`/docs`) → **GitHub Actions**
+- [ ] Verify `https://datum-cloud.github.io/awesome-alt-clouds/` serves the Astro build after first Actions deploy
+- [ ] Verify `https://www.alt-cloud.org/` still resolves via datumproxy (no DNS change expected)
+- [ ] **Leave Custom domain field empty** in Settings → Pages (datumproxy stays authoritative)
+- [ ] ⚠️ Carry over/replicate branch protection rules on upstream `main`
+- [ ] Monitor for 48 hours after cutover (datumproxy → github.io chain, Fathom analytics, submission pipeline)
 
 ---
 
 ## A — Config file changes
 
-### 1. `public/CNAME` (needs to be recreated)
+### 1. `public/CNAME` — skip (datumproxy)
 
-This file **does not currently exist** — it was created in the initial Astro migration commit (`e950d3d`) containing `www.alt-cloud.org`, then changed to the fork's personal domain (`alt-cloud.ronggur.com`), then deleted entirely in commit `b6be5dd` ("feat(site): add preview config..."). `actions/deploy-pages@v4` reads a `CNAME` file at the artifact root to set the GitHub Pages custom domain — without it, the site will only be reachable at `datum-cloud.github.io/awesome-alt-clouds/`.
+The fork briefly had `public/CNAME` during early Astro migration (`e950d3d`), then removed it for github.io preview (`b6be5dd`). Upstream has **never** committed a `CNAME` file.
 
-**Action:** create `public/CNAME` containing exactly:
+With datumproxy remaining in front of GitHub Pages:
 
-```text
-www.alt-cloud.org
-```
+- **Do not** add `public/CNAME` to the Astro build artifact.
+- **Do not** configure Custom domain in GitHub Settings unless deliberately moving off datumproxy.
+
+The canonical public URL in SEO/metadata remains `https://www.alt-cloud.org` via `site.config.mjs` → `productionSite`; datumproxy forwards to the `github.io` origin.
 
 ### 2. `site.config.mjs`
 
-Flip `preview: true` → `false`. Effects (verified in `astro.config.mjs`):
+Set (or confirm) production profile:
 
-- `site` switches to `productionSite` (`https://www.alt-cloud.org`)
-- `base` switches to `productionBase` (`undefined` — root path, not `/awesome-alt-clouds/`)
-- `blockSearchBots` **defaults to whatever `preview` is** when not set explicitly — it's currently set explicitly to `true`, so it **must also be explicitly flipped to `false`**, otherwise search engines stay blocked in production. This is wired into both the `<meta name="robots">` tag in `src/layouts/Base.astro` and the build-time `src/pages/robots.txt.ts` endpoint, which emits `Disallow: /` while `blockSearchBots` is true.
+```js
+preview: false,
+blockSearchBots: false,
+```
+
+Effects (via `astro.config.mjs`):
+
+- `site` → `productionSite` (`https://www.alt-cloud.org`) — used for sitemap, OG, canonical URLs
+- `base` → `productionBase` (`undefined` — site root at origin, not `/awesome-alt-clouds/` path prefix in HTML)
+- `robots.txt` + meta robots → allow indexing (`blockSearchBots: false`)
+
+**Note:** GitHub project Pages still live at `datum-cloud.github.io/awesome-alt-clouds/`; datumproxy hides that path from end users. Astro `base: undefined` is correct for artifact content — the `/awesome-alt-clouds/` prefix is a GitHub Pages hosting quirk, not an Astro `base` setting.
 
 ### 3. `previewSite: "https://ronggur.github.io"` in `site.config.mjs`
 
-The only hardcoded personal-fork string found anywhere in the codebase (grepped across all workflows, `package.json`, `astro.config.mjs`, `README.md`, `CONTRIBUTING.md`, `src/`). It becomes dead code once `preview: false`, so it isn't strictly required to change — but if datum-cloud wants its own fork-preview capability later, point it at `datum-cloud.github.io` instead.
+Dead code while `preview: false`. Optional cleanup: point at `https://datum-cloud.github.io` if upstream wants fork-preview capability later.
 
 ### 4. `astro.config.mjs` and `package.json`
 
-No changes needed — `astro.config.mjs` already derives everything from `site.config.mjs` correctly, and `package.json` has no `repository`/`homepage`/`bugs` fields hardcoded to the fork.
+No changes needed.
 
 ### 5. Fathom Analytics (`src/layouts/Base.astro`)
 
-The site ID `ZQEMDUAQ` is hardcoded and unconditional (not gated by `preview`) — this appears to already be the real production Fathom site ID, so no change needed. **Side-effect worth noting:** this means the fork's preview deploys have presumably been sending real traffic into the production Fathom dashboard all along.
+Site ID `ZQEMDUAQ` is hardcoded and unconditional — already the production dashboard. Fork preview deploys have been sending traffic there throughout migration.
 
 ---
 
 ## B — GitHub Actions workflow changes
 
-### 6. `.github/workflows/deploy-pages.yml`
+### 6–7. `deploy-pages.yml` and `lint.yml`
 
-Has an explicit inline TODO: `# DEV: feat/astro-migration + version tags — revert to main-only after Phase 6`. Three spots need updating:
-
-- `on.push.branches: [main, feat/astro-migration]` → `[main]`
-- `on.pull_request.branches: [main, feat/astro-migration]` → `[main]`
-- The `deploy` job's `if:` condition checks `github.ref == 'refs/heads/feat/astro-migration'` as one of three OR'd conditions — remove that clause.
-
-### 7. `.github/workflows/lint.yml`
-
-Same pattern, same comment style (`# DEV: feat/astro-migration + version tags — align with deploy-pages.yml`): both `on.push.branches` and `on.pull_request.branches` are `[main, feat/astro-migration]` → `[main]`.
+On `feat/astro-migration` branch these are already `main`-only. Confirm the merged PR into upstream does not reintroduce `feat/astro-migration` triggers.
 
 ### 8. Other workflows — no trigger changes needed
 
-`evaluate-submission.yml`, `split-submission.yml`, `admin-approve-submission.yml`, `revalidate-submission.yml`, `watchlist.yml`, `close-issue-on-pr-close.yml`, `auto-label-submission.yml`, `backfill-profiles.yml` — all trigger on `issues`/`issue_comment`/`pull_request: closed`/`workflow_dispatch` events, not branch pushes, and none contain fork-specific logic (no `github.repository_owner` or fork conditionals anywhere).
+Submission/admin workflows trigger on `issues` / `issue_comment` / `pull_request: closed` / `workflow_dispatch` — no fork-specific branch logic.
 
-### 9. `update-blog-posts.yml` — must be disabled alongside deleting `docs/`
+### 9. `update-blog-posts.yml`
 
-This workflow patches the Resources modal in `docs/index.html`, and **runs on a live daily cron** (`0 6 * * *`, active — not disabled, contradicting an older RFC note that claimed this cron was off "until Phase 3"; it's since been re-enabled). `CONTRIBUTING.md` itself says: *"both can run in parallel until Phase 6 cutover retires `docs/`."* **This workflow must be disabled/removed in the same cutover step that deletes `docs/`**, otherwise it will fail every day trying to patch a file that no longer exists.
+Already removed on the fork. Confirm absent in upstream after merge (upstream may still have it + live cron patching `docs/index.html`).
 
 ### 10. `auto-label-submission.yml`
 
-Already uses `context.repo.owner`/`context.repo.repo` generically — no hardcoded owner, works correctly in any repo unchanged.
+Uses `context.repo.owner` / `context.repo.repo` generically — no change needed.
 
 ---
 
-## C — Secrets & variables that must be (re)configured in the destination repo
-
-None of these can be assumed to already exist in `datum-cloud/awesome-alt-clouds` unless previously configured for other purposes:
+## C — Secrets & variables (upstream repo)
 
 | Secret/Variable | Type | Used by |
 | - | - | - |
-| `APP_ID` | secret | `admin-approve-submission.yml`, `close-issue-on-pr-close.yml`, `update-blog-posts.yml`, `watchlist.yml`, `revalidate-submission.yml` (5 workflows) |
-| `APP_PRIVATE_KEY` | secret | same 5 workflows |
+| `APP_ID` | secret | `admin-approve-submission.yml`, `close-issue-on-pr-close.yml`, `watchlist.yml`, `revalidate-submission.yml` |
+| `APP_PRIVATE_KEY` | secret | same |
 | `ANTHROPIC_API_KEY` | secret | `admin-approve-submission.yml`, `backfill-profiles.yml`, `evaluate-submission.yml`, `split-submission.yml` |
 | `QWEN_BASE_URL` | secret | same 4 workflows |
-| `LLM_PROVIDER` | repo **variable** (not a secret) | same 4 workflows — optional, defaults to `claude` (falls back to `vars.LLM_PROVIDER`) if unset |
-| `STRAPI_URL` | secret | `update-blog-posts.yml` only |
-| `STRAPI_TOKEN` | secret | `update-blog-posts.yml` only |
+| `LLM_PROVIDER` | repo **variable** (optional) | defaults to `claude` |
 
-`GITHUB_TOKEN` (built-in, no setup needed) is used elsewhere as usual.
+`STRAPI_URL` / `STRAPI_TOKEN` were only for removed `update-blog-posts.yml` — not needed post-cutover.
+
+`GITHUB_TOKEN` (built-in) covers `deploy-pages.yml` (`contents: read`, `pages: write`, `id-token: write`).
 
 ---
 
@@ -106,19 +131,38 @@ None of these can be assumed to already exist in `datum-cloud/awesome-alt-clouds
 
 ### 11. Switch the GitHub Pages source
 
-Per the RFC's own migration-progress table: *"Pages source needs flipping from 'branch /docs' → 'GitHub Actions'"*. A manual step in `datum-cloud/awesome-alt-clouds` → **Settings → Pages**, done once the workflow + CNAME changes above are merged.
+**Settings → Pages → Build and deployment → Source:** change from **Deploy from a branch** (`main` / `/docs`) to **GitHub Actions**. Do this after the migration PR (with `deploy-pages.yml`) is merged.
+
+First Actions deploy publishes to the same `github.io` project URL; datumproxy should continue forwarding without DNS changes.
 
 ### 12. ⚠️ GitHub App installation
 
-The 5 workflows above (section C) assume a GitHub App (via `actions/create-github-app-token@v1`) is installed with write access on whichever repo runs them. **Can't be confirmed from this fork's code alone**: whether this App is already installed org-wide on `datum-cloud` (in which case only the secrets need adding), or only scoped to the personal fork (in which case it needs a fresh installation grant on `datum-cloud/awesome-alt-clouds` plus copying the secrets over). **Confirm directly with whoever administers the GitHub App before cutover.**
+Admin/submission workflows need a GitHub App token (`APP_ID` + `APP_PRIVATE_KEY`). Confirm installed on `datum-cloud` org with access to `awesome-alt-clouds` before cutover.
 
-### 13. Verify custom domain + HTTPS after the switch
+### 13. Verify datumproxy + github.io after the switch
 
-From the RFC's own risk table: *"Add `public/CNAME` with the exact domain string; verify in Pages settings + `dig` post-deploy."* After switching the Pages source, re-verify the custom domain and the "Enforce HTTPS" checkbox in Settings → Pages (GitHub sometimes needs a manual domain re-verification when the deploy mechanism changes).
+**Do not** expect Custom domain or `CNAME` in GitHub Settings — upstream keeps that field empty today.
+
+Post-deploy checks:
+
+```bash
+# Proxy chain still resolves
+dig +short www.alt-cloud.org CNAME   # → *.datumproxy.net
+
+# GitHub origin serves new build
+curl -sI https://datum-cloud.github.io/awesome-alt-clouds/
+
+# Public URL serves same origin (via proxy)
+curl -sI https://www.alt-cloud.org/
+```
+
+Compare `etag` / `last-modified` between github.io and www — should match when proxy is healthy.
+
+Smoke-test key routes on **www.alt-cloud.org**: `/`, `/submit/`, `/watchlist/`, a cloud profile page, `/clouds.json`.
 
 ### 14. ⚠️ Branch protection
 
-No evidence in the workflow files of specific required-status-check names that would need re-adding — this lives in GitHub Settings, not in code, so it's outside what can be determined from repo contents alone. **Make sure whoever runs this merge carries over the `main` branch protection rules from the fork to whatever becomes the primary branch in the destination repo.**
+Replicate upstream `main` protection (required checks, review rules) if migrating from fork conventions.
 
 ---
 
@@ -126,28 +170,34 @@ No evidence in the workflow files of specific required-status-check names that w
 
 ### 15. The `docs/` directory
 
-The RFC explicitly marks it: *"⚠ RETIRED after cutover"*. Its current contents are only 3 files (`index.html`, `og-image.png`, `clouds.json`, 456K total) — already much smaller than a full legacy site, mostly hollowed out. Safe to delete **as long as it's done together with** disabling `update-blog-posts.yml` (section B.9), which patches `docs/index.html`.
+Delete with the migration PR. Upstream still ships the legacy site from `/docs`; the Astro build replaces it entirely. Must coincide with removing/disabling `update-blog-posts.yml` on upstream if still present.
 
 ---
 
-## F — The RFC's own Phase 6 checklist (verbatim)
+## F — RFC Phase 6 acceptance criteria (adapted for datumproxy)
 
-From `analysis/2026-05-19-astro-migration-rfc.md`:
+From `analysis/2026-05-19-astro-migration-rfc.md`, with domain strategy clarified:
 
-- Migration table: *"6 — Production cutover | ⏳ pending | Pages source needs flipping from 'branch /docs' → 'GitHub Actions'"*
-- Acceptance criteria: *"Phase 6 — Cutover. Pages source switched from 'branch main /docs' to 'GitHub Actions'. Custom domain `www.alt-cloud.org` still resolves. Fathom analytics still firing. Monitor for 48 h."*
-- Roadmap: *"**6** | Production cutover: verify CNAME, switch Pages source, monitor | ½ day"*
-- Risk table: *"Lose `alt-cloud.org` custom domain on cutover → Add `public/CNAME` with the exact domain string; verify in Pages settings + `dig` post-deploy"*
-- Decision #2 (locked): *"Commit `clouds.json`/`llms*.txt` back to git? No — artifact-only. They're regenerated by every CI build."* — this is already correctly implemented, no action needed, just worth noting it's intentional/final rather than something "left behind" to fix.
+| RFC criterion | Datumproxy interpretation |
+| - | - |
+| Pages source → GitHub Actions | Required |
+| `www.alt-cloud.org` still resolves | Verify via datumproxy (not GitHub Custom domain field) |
+| Fathom still firing | Check dashboard after deploy |
+| Monitor 48 h | github.io origin + www.alt-cloud.org + submission bots |
+
+RFC risk *"Lose alt-cloud.org custom domain → Add public/CNAME"* applies to **native GitHub custom domain** setups only. With datumproxy, the risk is **proxy misconfiguration or stale origin URL** after switching deploy mechanism — coordinate with whoever administers datumproxy if the first Actions deploy doesn't propagate to www.
+
+Decision #2 (locked): `clouds.json` / `llms*.txt` are artifact-only, regenerated in CI — no action needed.
 
 ---
 
 ## Suggested execution order
 
-1. Open a PR containing: `public/CNAME`, the `site.config.mjs` flips (preview + blockSearchBots), the `deploy-pages.yml` + `lint.yml` trigger updates (removing `feat/astro-migration`), and the removal of `docs/` + `update-blog-posts.yml` together.
-2. ⚠️ Confirm with the GitHub App admin: already installed on the `datum-cloud` org, or needs a fresh install.
-3. Set all secrets/variables from the table in section C in `datum-cloud/awesome-alt-clouds` (Settings → Secrets and variables → Actions).
-4. Merge the PR into `main` on the destination repo.
-5. Switch the Pages source to "GitHub Actions" in Settings → Pages.
-6. Verify: custom domain resolves (`dig www.alt-cloud.org`), HTTPS enforced, Fathom is still receiving traffic, the submission pipeline (`/approve`, `/watchlist`, `/revalidate`) still works with the new App token.
-7. Monitor for 48 hours per the RFC's acceptance criteria.
+1. Open PR into upstream: Astro migration, `site.config.mjs` production profile, `deploy-pages.yml`, removal of `docs/` + `update-blog-posts.yml`. **No `public/CNAME`.**
+2. ⚠️ Confirm GitHub App installed on `datum-cloud` org; copy secrets (section C).
+3. Merge to upstream `main`.
+4. **Settings → Pages → GitHub Actions** (leave Custom domain empty).
+5. Wait for first `deploy-pages.yml` run; verify `datum-cloud.github.io/awesome-alt-clouds/`.
+6. Verify `www.alt-cloud.org` via datumproxy (no DNS change).
+7. Smoke-test submission pipeline (`/approve`, `/watchlist`, `/revalidate`).
+8. Monitor 48 hours.

@@ -9,10 +9,10 @@
  */
 export const siteConfig = {
   /** Fork / staging on github.io — enables base path + default noindex; also publishes draft MDX profiles */
-  preview: true,
+  preview: false,
 
   /** Block all crawlers (robots.txt + meta robots). Defaults to `preview` when omitted */
-  blockSearchBots: true,
+  blockSearchBots: false,
 
   previewSite: "https://ronggur.github.io",
   previewBase: "/awesome-alt-clouds/",
