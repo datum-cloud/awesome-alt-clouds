@@ -4,8 +4,10 @@ node_modules
 package-lock.json
 public/clouds.json
 public/llms-full.txt
+public/watchlist.json
 docs
 /README.md
+/WATCHLIST.md
 /data/**
 /.github/**
 /analysis/**
