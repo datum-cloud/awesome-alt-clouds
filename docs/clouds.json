@@ -2131,6 +2131,16 @@
     "dateAdded": "2026-07-27"
   },
   {
+    "name": "this+that",
+    "url": "https://www.thisandthat.chat/",
+    "description": "Automates inbox triage and task handling by extracting work from messages across email, chat, and messaging platforms using AI workflows and a company knowledge base.",
+    "score": 3,
+    "categories": [
+      "Workflow & Operations Clouds"
+    ],
+    "dateAdded": "2026-07-27"
+  },
+  {
     "name": "Tines",
     "url": "https://www.tines.com/",
     "description": "No-code automation platform for security operations and IT workflows.",
