@@ -306,6 +306,7 @@ Orchestration, automation, and operations platforms for running reliable workflo
 * 🟢 [Ryvn](https://ryvn.ai/) - BYOC deployment platform for SaaS startups in customer clouds and on-premises.
 * 🟢 [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
 * 🟢 [Temporal](https://temporal.io/) - Durable execution platform for reliable workflows with automatic failure recovery.
+* 🟢 [this+that](https://www.thisandthat.chat/) - Automates inbox triage and task handling by extracting work from messages across email, chat, and messaging platforms using AI workflows and a company knowledge base.
 * 🟢 [Tines](https://www.tines.com/) - No-code automation platform for security operations and IT workflows.
 * 🟢 [Windmill](https://www.windmill.dev/) - Open-source developer platform for building internal tools by writing scripts in multiple languages and composing them into workflows.
 * 🟢 [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
