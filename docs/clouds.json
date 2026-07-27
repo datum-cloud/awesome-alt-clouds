@@ -100,6 +100,16 @@
     "dateAdded": "2026-07-27"
   },
   {
+    "name": "Datum",
+    "url": "https://www.datum.net/",
+    "description": "Provides modern edge cloud infrastructure with hyperscale-style networking, GPU/CPU capacity, and zero-trust connectivity for AI companies and tech-forward enterprises.",
+    "score": 3,
+    "categories": [
+      "Infrastructure Clouds"
+    ],
+    "dateAdded": "2026-07-27"
+  },
+  {
     "name": "Digital Ocean",
     "url": "https://www.digitalocean.com/",
     "description": "Provides cloud computing services with simplicity and scalability.",
