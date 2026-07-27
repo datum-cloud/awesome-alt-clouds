@@ -293,6 +293,7 @@ Orchestration, automation, and operations platforms for running reliable workflo
 * 🟢 [Alloy Automation](https://runalloy.com/) - Embedded iPaaS with unified APIs for 400+ apps, enabling native integrations and AI agent connectivity.
 * 🟢 [Dagster](https://dagster.io/) - Unified control plane for building, scaling, and observing AI and data pipelines with orchestration and quality monitoring.
 * 🟢 [Fastn](https://fastn.ai/) - AI-powered embedded integration platform for building unified APIs from multiple data sources.
+* 🟡 [Hatchet](https://hatchet.run/) - Provides a durable execution platform for orchestrating AI agents, scheduling background tasks, and running mission-critical workflows with built-in monitoring and reliability.
 * 🟢 [Inngest](https://www.inngest.com/) - A platform for AI and backend workflows that helps developers build AI-ready step functions without touching infrastructure.
 * 🟢 [Kestra](https://kestra.io/) - Open-source orchestration platform for event-driven workflows.
 * 🟢 [Mabl](https://www.mabl.com/) - AI-native test automation with self-healing tests. Agentic tester handles creation, execution, and maintenance. Enterprise-grade.
@@ -465,6 +466,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [Linear](https://linear.app/) - Purpose-built tool for planning, tracking issues, and managing product roadmaps.
 * 🟢 [Mintlify](https://mintlify.com/) - Modern documentation platform with MDX support, API references, interactive components, and built-in search analytics.
 * 🟢 [Notion](https://www.notion.com/) - All-in-one workspace for notes, docs, wikis, and project management.
+* 🟡 [OpenSEO](https://openseo.so/) - Provides an open source SEO platform with keyword research, competitor analysis, backlinks, and rank tracking, integrated with AI agents via Model Context Protocol.
 * 🟢 [Outerbase](https://www.outerbase.com/) - A platform for safely interacting with data and databases, now part of Cloudflare.
 * 🟢 [Paper](https://paper.design/) - Provides a connected design canvas that integrates with development tools, AI agents, and real data sources, enabling seamless collaboration between design and code workflows.
 * 🟢 [Prismic](https://prismic.io/) - A headless CMS for developers to build and manage dynamic websites using modern frameworks and custom content APIs.
