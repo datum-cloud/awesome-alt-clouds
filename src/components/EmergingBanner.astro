@@ -1,0 +1,33 @@
+---
+import { graduationIssueUrl } from "../lib/github";
+
+export interface Props {
+  cloud: { name: string; url: string };
+}
+
+const { cloud } = Astro.props;
+const requestUrl = graduationIssueUrl(cloud);
+---
+
+<div
+  class="mb-6 flex items-start gap-3 rounded-lg border border-clay-beige bg-cream px-4 py-3 text-sm text-warm-stone"
+  role="note"
+  aria-label="Emerging and unverified provider notice">
+  <span
+    class="mt-0.5 shrink-0 text-base"
+    aria-hidden="true"
+    >🌱</span
+  >
+  <div>
+    <span class="font-medium text-rich-earth">Emerging & Unverified Provider</span>
+    {" — "}listed, but still pending verification of pricing, self-service, or SLA details.
+    Think it now qualifies?{" "}
+    <a
+      href={requestUrl}
+      class="underline hover:text-rich-earth"
+      target="_blank"
+      rel="noopener noreferrer">
+      Request a re-check →
+    </a>
+  </div>
+</div>

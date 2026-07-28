@@ -3,6 +3,8 @@ import Base from "./Base.astro";
 import DetailSidebar from "../components/DetailSidebar.astro";
 import DetailTopBar from "../components/DetailTopBar.astro";
 import DraftBanner from "../components/DraftBanner.astro";
+import EmergingBanner from "../components/EmergingBanner.astro";
+import { EMERGING_CATEGORY } from "../lib/github";
 import { defaultDescription, defaultTitle } from "../lib/site-meta";
 import { absoluteUrl } from "../lib/site-urls";
 import type { MergedCloud } from "../lib/profile";
@@ -13,6 +15,7 @@ export interface Props {
 }
 
 const { cloud, featuredSlugs } = Astro.props;
+const isEmerging = cloud.categories.includes(EMERGING_CATEGORY);
 
 const pageTitle = `${cloud.name} — ${defaultTitle}`;
 const pageDescription = cloud.tagline || cloud.description || defaultDescription;
@@ -87,6 +90,7 @@ const profileJsonLd = {
         </header>
 
         {cloud.status === "draft" && <DraftBanner slug={cloud.slug} />}
+        {isEmerging && <EmergingBanner cloud={cloud} />}
 
         <div class="prose-content">
           <slot />
