@@ -16,7 +16,7 @@ const { title, description, publishDate, updatedDate, author, tags, draft, heroI
   post.data;
 
 const pageTitle = `${title} | Awesome Alt Clouds`;
-const canonical = absoluteUrl(`blog/${post.id}`);
+const canonical = absoluteUrl(`blog/${post.id}`) + "/";
 const blogIndexHref = asset("blog/");
 const ogImage = heroImage ? absoluteUrl(heroImage.replace(/^\//, "")) : undefined;
 const formattedDate = formatPostDate(publishDate);

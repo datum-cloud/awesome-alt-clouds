@@ -23,7 +23,7 @@ try {
   host = "";
 }
 const fallbackLetter = cloud.name.charAt(0).toUpperCase();
-const detailHref = asset(cloud.slug);
+const detailHref = asset(`${cloud.slug}/`);
 ---
 
 <article
