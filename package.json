@@ -20,11 +20,11 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.6",
-    "@astrojs/rss": "^4.0.18",
+    "@astrojs/mdx": "^7.0.4",
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.3.5",
+    "astro": "^7.1.4",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3"
   },
