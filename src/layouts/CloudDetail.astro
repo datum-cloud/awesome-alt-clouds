@@ -16,7 +16,7 @@ const { cloud, featuredSlugs } = Astro.props;
 
 const pageTitle = `${cloud.name} — ${defaultTitle}`;
 const pageDescription = cloud.tagline || cloud.description || defaultDescription;
-const canonical = absoluteUrl(cloud.slug);
+const canonical = `${absoluteUrl(cloud.slug)}/`;
 
 const sameAs = [
   cloud.socials?.website,

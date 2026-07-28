@@ -43,7 +43,7 @@ const filledColumns = columns.filter((c): c is CompareCloud => c !== undefined);
                 <div class="flex flex-col gap-1">
                   {cloud.hasProfile ? (
                     <a
-                      href={asset(cloud.slug)}
+                      href={asset(`${cloud.slug}/`)}
                       class="hover:text-bright-tangerine transition-colors no-underline">
                       {cloud.name}
                     </a>

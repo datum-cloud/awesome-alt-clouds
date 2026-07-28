@@ -165,7 +165,7 @@ const baseNormalized = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
     }
 
     function buildHref(slug: string) {
-      return `${baseUrl}${slug}`;
+      return `${baseUrl}${slug}/`;
     }
 
     function render(matches: Cloud[], loading: boolean) {
