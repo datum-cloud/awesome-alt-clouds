@@ -92,7 +92,7 @@ Strict, since `scripts/parse_readme_to_json.py` parses it:
 * 🟢 [Service Name](https://example.com/) - Short description starting with a verb.
 ```
 
-Bullet is `*` (not `-`); badge is required; separator is exactly ` - `; alphabetical (case-insensitive) within each `## Category` section. `dateAdded` is never written manually — it's reconstructed by walking `git log -p` for each URL's first commit.
+Bullet is `*` (not `-`); badge is required; separator is exactly `-`; alphabetical (case-insensitive) within each `## Category` section. `dateAdded` is never written manually — it's reconstructed by walking `git log -p` for each URL's first commit.
 
 ### Watchlist
 
@@ -100,6 +100,6 @@ Bullet is `*` (not `-`); badge is required; separator is exactly ` - `; alphabet
 
 ## Notes on stale docs
 
-- `.cursor/rules/docs-frontend.mdc` describes a legacy vanilla-JS `docs/` SPA (dependency-free static site, `docs/index.html` + `docs/submit/index.html`). That folder has since been removed from this branch as part of the Astro migration cutover (see `analysis/2026-07-20-phase-6-production-cutover-checklist.md`); the Astro site under `src/` is now the only frontend, and `public/clouds.json`/`public/llms*.txt` replace the old `docs/` equivalents. Ignore that rule file's specifics; its regex/anti-spam/SEO cautions about the *submission form* still apply conceptually to `src/pages/submit/index.astro`.
+- `.cursor/rules/docs-frontend.mdc` describes a legacy vanilla-JS `docs/` SPA (dependency-free static site, `docs/index.html` + `docs/submit/index.html`). That folder has since been removed from this branch as part of the Astro migration cutover (see `analysis/2026-07-20-phase-6-production-cutover-checklist.md`); the Astro site under `src/` is now the only frontend, and `public/clouds.json`/`public/llms*.txt` replace the old `docs/` equivalents. Ignore that rule file's specifics; its regex/anti-spam/SEO cautions about the _submission form_ still apply conceptually to `src/pages/submit/index.astro`.
 - `scripts/update_blog_posts.mjs` + `.github/workflows/update-blog-posts.yml` are a separate legacy system (Datum Strapi blog → resources modal) independent of the in-repo Astro blog at `/blog/`.
 - `analysis/*.md` are dated phase-plan docs written during the Astro migration; treat them as historical design records, not always-current state — cross-check against actual code (e.g. `analysis/PROJECT_ANALYSIS.md` still describes a `docs/` folder that no longer exists).
