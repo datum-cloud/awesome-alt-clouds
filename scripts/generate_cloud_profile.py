@@ -31,7 +31,7 @@ from lib.slugify import slugify
 
 PROFILE_MAX_TOKENS = 2048
 QWEN_MODEL = "qwen3.6-35b-a3b"
-CLAUDE_MODEL = "claude-haiku-4-5-20251001"
+CLAUDE_MODEL = "claude-sonnet-5"
 
 # Set LLM_PROVIDER=qwen to use the self-hosted Qwen endpoint instead of Claude.
 # Defaults to claude. The corresponding secret (ANTHROPIC_API_KEY or
