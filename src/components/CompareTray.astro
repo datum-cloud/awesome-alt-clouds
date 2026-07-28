@@ -105,6 +105,7 @@ const baseUrl = asset("");
     if (items.length === 0) {
       tray.classList.add("hidden");
       tray.classList.remove("flex");
+      updateToggleButtons();
       return;
     }
 

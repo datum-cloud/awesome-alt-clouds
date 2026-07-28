@@ -132,14 +132,18 @@ export function initComparePickers(options: {
     onChange();
   }
 
-  function filterMatches(root: HTMLElement, term: string): ComparePickerName[] {
-    const query = term.trim().toLowerCase();
-    if (!query) return [];
-
+  function getAvailableNames(root: HTMLElement): ComparePickerName[] {
     const taken = getOtherSelectedSlugs(root);
-    return names
+    return names.filter((item) => !taken.has(item.slug));
+  }
+
+  function filterMatches(root: HTMLElement, term: string): ComparePickerName[] {
+    const available = getAvailableNames(root);
+    const query = term.trim().toLowerCase();
+    if (!query) return available;
+
+    return available
       .filter((item) => {
-        if (taken.has(item.slug)) return false;
         const cloud = cloudMap[item.slug];
         const nameMatch = item.name.toLowerCase().includes(query);
         const catMatch = cloud?.categories?.some((cat) => cat.toLowerCase().includes(query));
@@ -192,20 +196,7 @@ export function initComparePickers(options: {
     const input = getTextInput(root);
     if (!input) return;
 
-    const term = input.value;
-    const slugInput = getSlugInput(root);
-    const selectedSlug = slugInput?.value ?? "";
-    if (selectedSlug && term === cloudMap[selectedSlug]?.name) {
-      closeListbox(root);
-      return;
-    }
-
-    if (term.trim().length === 0) {
-      closeListbox(root);
-      return;
-    }
-
-    const matches = filterMatches(root, term);
+    const matches = filterMatches(root, input.value);
     renderListbox(root, matches);
   }
 
@@ -218,7 +209,7 @@ export function initComparePickers(options: {
     states.set(root, { activeIndex: -1, currentMatches: [] });
 
     input.addEventListener("focus", () => {
-      if (input.value.trim().length > 0) runSearch(root);
+      renderListbox(root, getAvailableNames(root));
     });
 
     input.addEventListener("input", () => {
