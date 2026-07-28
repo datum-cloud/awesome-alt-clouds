@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "python3 scripts/rewrite_dist_relative_paths.py dist",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
