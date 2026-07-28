@@ -2,6 +2,7 @@
 import { asset } from "../lib/assets";
 import type { CloudWithSlug } from "../lib/clouds";
 import { compareIconAdd } from "../lib/compare-toggle-icons";
+import { EMERGING_CATEGORY, graduationIssueUrl } from "../lib/github";
 
 export interface Props {
   cloud: CloudWithSlug;
@@ -15,6 +16,8 @@ const score = cloud.score ?? 3;
 const badgeClass =
   score === 3 ? "bg-soft-sage text-rich-earth" : "bg-clay-beige text-warm-stone";
 const badgeText = `${score}/3`;
+const isEmerging = cloud.categories.includes(EMERGING_CATEGORY);
+const graduationHref = isEmerging ? graduationIssueUrl(cloud) : null;
 
 let host = "";
 try {
@@ -95,14 +98,28 @@ const detailHref = asset(`${cloud.slug}/`);
       class="text-sm font-medium text-bright-tangerine hover:underline inline-flex items-center gap-1.5 transition-all">
       Visit →
     </a>
-    {
-      featured && (
-        <a
-          href={detailHref}
-          class="text-xs font-medium text-warm-stone hover:text-rich-earth inline-flex items-center gap-1 transition-colors no-underline">
-          Details →
-        </a>
-      )
-    }
+    <div class="flex items-center gap-3">
+      {
+        graduationHref && (
+          <a
+            href={graduationHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Think this now meets the criteria? Open a re-check request."
+            class="text-xs font-medium text-warm-stone hover:text-rich-earth inline-flex items-center gap-1 transition-colors no-underline">
+            Request re-check
+          </a>
+        )
+      }
+      {
+        featured && (
+          <a
+            href={detailHref}
+            class="text-xs font-medium text-warm-stone hover:text-rich-earth inline-flex items-center gap-1 transition-colors no-underline">
+            Details →
+          </a>
+        )
+      }
+    </div>
   </div>
 </article>
