@@ -1,0 +1,57 @@
+---
+status: reviewed
+tagline: "European cloud provider with GPU clusters, serverless compute, and AI-first infrastructure."
+headquarters: "Paris, France"
+pricingModel: "usage-based"
+regions:
+  - "Paris (PAR)"
+  - "Amsterdam (AMS)"
+  - "Warsaw (WAW)"
+  - "Varsovia"
+services:
+  - "GPU Instances (L40S, L4, H100, B300-SXM)"
+  - "CPU Instances (General Purpose, Compute Optimized, Memory Optimized)"
+  - "Kubernetes (Kapsule, Kosmos)"
+  - "Serverless Functions & Containers"
+  - "Object Storage (S3-compatible)"
+  - "Managed Databases (PostgreSQL, MySQL, MongoDB, Redis)"
+  - "Data Warehouse (ClickHouse)"
+  - "Bare Metal (Dedibox, Elastic Metal)"
+socials:
+  website: "https://www.scaleway.com/"
+  linkedin: "https://www.linkedin.com/company/scaleway/"
+---
+
+## What makes Scaleway different
+
+Scaleway positions itself as a European alternative to hyperscalers, emphasizing data sovereignty and regulatory compliance. All infrastructure runs within Europe across four multi-AZ regions (Paris, Amsterdam, Warsaw, and one additional location), appealing to organizations bound by GDPR and European data residency requirements. Unlike AWS or GCP, Scaleway operates its own data centers rather than relying on third-party facilities, giving it direct control over hardware refresh cycles and infrastructure decisions.
+
+The provider has built a distinctive product mix around bare metal and GPU-accelerated workloads. It offers both managed services (Kubernetes, serverless) and raw infrastructure (Elastic Metal, Dedibox), spanning from entry-level €4.99/month VPS offerings to enterprise-grade 5,000+ GPU capacity for AI training. This vertical integration—from budget hosting to high-performance clusters—differentiates it from narrow-focus competitors.
+
+Scaleway also emphasizes transparency: pricing is listed per service tier with no hidden fees, and the platform publishes a public status page and SLA documentation, meeting all three alt-cloud inclusion criteria.
+
+## Pricing model
+
+Scaleway uses transparent, granular usage-based pricing with per-region rates published upfront. CPU instances start around €3–5/month for entry-level tiers, while GPU instances vary by type: L4 instances command a premium for cost-effective AI inference, whereas H100 and B300-SXM instances target high-throughput workloads at enterprise pricing. Storage pricing is S3-compatible: object storage is priced per GB stored plus bandwidth, with a separate Glacier cold-storage tier for archival.
+
+Managed services (Kubernetes, databases, serverless functions) charge by compute time and resource consumption. The startup program offers up to €36,000 in credits for growth-stage companies, and a founders program provides €1,000/year in credits.
+
+This stands out from hyperscaler "commitment discounts" by avoiding long-term lock-in; you pay only for what you use, with no reserved instance penalties.
+
+## When it fits
+
+- **European compliance**: GDPR-bound enterprises, public sector, healthcare (HDS-certified) requiring data residency within EU borders.
+- **GPU-intensive AI workloads**: Researchers and startups training models or running inference clusters; Hugging Face and Mistral AI publicly use Scaleway infrastructure.
+- **Cost-conscious scaling**: Teams seeking transparent, per-use pricing without enterprise sales overhead.
+- **Bare metal workloads**: Applications needing dedicated CPU or GPU resources without hypervisor overhead.
+- **Multi-cloud strategies**: Kubernetes Kosmos enables orchestration across Scaleway and external providers.
+
+## When it doesn't
+
+Scaleway lacks the geographic breadth of AWS or Azure; workloads requiring global distribution across North America or Asia-Pacific regions will need a primary hyperscaler. Early-stage services in quantum computing and advanced analytics are still in beta and not production-ready for risk-averse organizations.
+
+## Inclusion criteria
+
+✓ **Transparent pricing**: All service pricing is published per region without hidden fees; no RFQ required for standard workloads.  
+✓ **Self-service signup**: Free account creation and instant access to most services via web console or CLI.  
+✓ **Public SLA & status page**: Scaleway publishes SLAs per service and maintains a public status page at status.scaleway.com.

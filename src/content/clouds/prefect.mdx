@@ -1,0 +1,52 @@
+---
+status: reviewed
+tagline: "Python-native workflow orchestration for resilient data pipelines at scale."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Prefect Cloud (managed workflow orchestration)"
+  - "Prefect Horizon (managed AI infrastructure)"
+  - "Prefect Open Source (Apache 2.0 framework)"
+  - "FastMCP (MCP server framework)"
+  - "Workflow scheduling and execution"
+  - "Enterprise SSO and RBAC"
+  - "Autoscaling workers"
+  - "AI agent gateway and registry"
+socials:
+  website: "https://www.prefect.io/"
+  x: "https://twitter.com/prefectio"
+  linkedin: "https://www.linkedin.com/company/prefect/"
+  github: "https://github.com/PrefectHQ"
+---
+
+## What makes Prefect different
+
+Prefect targets Python developers who need production-grade workflow orchestration without operational overhead. Unlike generic orchestration platforms, Prefect is built around Python-first design—you decorate existing Python functions with `@flow` to turn them into resilient workflows without rewriting code. This low-friction approach appeals to data engineers, ML teams, and AI builders who want to scale scripts to production without learning a new DSL.
+
+The platform splits into two managed offerings: **Prefect Cloud** for traditional data workflows, and **Prefect Horizon** for AI infrastructure, addressing the emerging need for MCP (Model Context Protocol) gateway and governance. Both are backed by the open-source Prefect framework (Apache 2.0, 18k+ GitHub stars) and FastMCP library (22k+ stars), giving users a genuine zero-lock-in path—start with open source, migrate to managed cloud when ready. Customers like Cash App, Cisco, NASA, and Meta run production workflows at scale on Prefect.
+
+## Pricing model
+
+Prefect Cloud uses a usage-based model, with transparent tiering on their pricing page. Free tier includes limited task runs and workers; paid tiers scale with task execution volume and infrastructure needs. Prefect Horizon (AI infrastructure) operates separately with its own usage-based model for MCP server deployments and gateway traffic.
+
+The platform emphasizes cost predictability—one case study highlights Endpoint achieving 73% cost reduction after migrating from Airflow. Unlike hyperscalers' per-second compute billing, Prefect charges per workflow execution unit, making costs more predictable for batch and scheduled pipelines.
+
+## When it fits
+
+- **Python data engineering teams** building ETL/ELT pipelines who want to avoid Airflow complexity without vendor lock-in
+- **ML/AI operations** orchestrating training jobs, inference pipelines, and LLM-powered workflows with native Python support
+- **Organizations adopting MCP and AI agents** needing a governance layer (Horizon) for multiple agents accessing internal systems
+- **Rapid prototyping** where teams want to move from Jupyter notebooks to scheduled production workflows with minimal refactoring
+- **Hybrid cloud deployments** requiring self-hosted workers alongside managed control planes
+
+## When it doesn't
+
+Prefect is Python-specific and less suitable for polyglot environments where multiple languages (Go, Rust, Node.js) drive orchestration needs. For teams already deeply invested in Kubernetes-native workflows or those requiring serverless-only infrastructure, alternative orchestrators may offer tighter integration.
+
+## Inclusion criteria
+
+Prefect meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Published on [prefect.io/pricing](https://www.prefect.io/pricing) with clear usage-based tiers and free tier details.
+2. **Self-service signup**: Free tier accessible at [app.prefect.cloud/](https://app.prefect.cloud/) and [horizon.prefect.io/signup](https://horizon.prefect.io/signup) without sales contact required.
+3. **Public SLA and status page**: SOC 2 Type II certified, 99.99% uptime SLA published; status monitoring available at the Cloud Status link in footer navigation.

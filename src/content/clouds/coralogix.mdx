@@ -1,0 +1,53 @@
+---
+status: reviewed
+tagline: "AI-native observability platform with indefinite data retention in your own cloud."
+pricingModel: usage-based
+services:
+  - "Log ingestion and storage"
+  - "Metrics collection and querying"
+  - "Distributed tracing"
+  - "AI-powered investigation (Olly)"
+  - "Cost Optimizer"
+  - "High-cardinality data layer"
+  - "Model Context Protocol integration"
+  - "CLI and API access"
+socials:
+  website: "https://coralogix.com/"
+---
+
+## What makes Coralogix different
+
+Coralogix positions itself as an AI-native observability platform that fundamentally differs from traditional SaaS tools by storing telemetry in **your cloud** using open formats—eliminating vendor lock-in. Rather than forcing data reduction or aggressive retention policies like hyperscalers, Coralogix enables indefinite retention of all dimensions at high cardinality, with costs controlled through intelligent tiering rather than sampling.
+
+The platform emphasizes **agent-ready architecture** from day one, with conversational investigation (Olly), Model Context Protocol integration for Slack/PagerDuty/IDE workflows, and a programmable CLI. This reflects a shift from dashboard-first workflows to AI-first investigation patterns. The unified query language across logs, metrics, traces, and custom data types reduces context-switching and enables cross-signal correlation that hyperscalers typically require custom engineering to achieve.
+
+Cost optimization is structural: Coralogix's Cost Optimizer automatically routes critical logs to hot storage while offloading low-value data to your cloud storage, claiming **50% more data at lower cost**. This architecture benefit—storing in your own cloud rather than a centralized platform—is antithetical to how AWS, GCP, and Azure monetize observability.
+
+## Pricing model
+
+Coralogix uses usage-based pricing tied to data ingestion volume and storage duration. The exact per-GB rates are not published on the website; interested customers are directed to request a quote or contact sales. The platform emphasizes cost predictability through:
+
+- **Tiered ingestion**: Critical logs analyzed in real-time; lower-priority data archived to your cloud storage at lower cost.
+- **Retention flexibility**: Indefinite retention in your cloud storage (S3, GCS, Azure Blob) costs only what your cloud provider charges; query acceleration in Coralogix's hot layer is priced separately.
+- **No forced sampling**: Unlike traditional observability platforms, you retain all dimensions and cardinality without paying exponentially higher rates.
+
+This model undercuts hyperscaler pricing by removing their storage markup—you pay only the cloud provider's base storage cost plus Coralogix's query and indexing fee, typically a fraction of what AWS X-Ray, GCP Cloud Trace, or Azure Monitor charge for equivalent data volume.
+
+## When it fits
+
+- **High-cardinality environments**: Kubernetes clusters, microservices platforms, and multi-tenant SaaS with thousands of unique tag combinations benefit from not dropping dimensions.
+- **Compliance and long-term forensics**: Organizations requiring 1+ year retention at reasonable cost, using your own cloud for audit trails.
+- **AI-driven operations**: Teams adopting autonomous agents or LLM-based incident investigation; Olly and MCP are designed for agent workflows.
+- **Multi-signal correlation**: Engineering teams investigating incidents across logs, metrics, and traces simultaneously without separate UIs.
+- **Cost-sensitive scale**: Organizations ingesting 100GB+/day where traditional SaaS pricing becomes prohibitive.
+
+## When it doesn't
+
+- **Simple, lightweight observability**: Teams with low data volume (< 10GB/day) may find the multi-cloud setup and AI-first UX unnecessary overhead compared to simpler tools.
+- **Fully managed SaaS preference**: Organizations avoiding cloud storage management or preferring single-vendor solutions may prefer Datadog or New Relic's simpler all-in-one model.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Usage-based model described publicly; quote-based for specific rates but methodology is clear.  
+✅ **Self-service signup**: Available at https://coralogix.com/ with immediate trial onboarding.  
+✅ **Public SLA/status page**: Status monitored; SLA terms available to customers.

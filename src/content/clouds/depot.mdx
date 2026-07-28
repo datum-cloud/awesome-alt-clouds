@@ -1,0 +1,52 @@
+---
+status: reviewed
+tagline: "Accelerates Docker builds and CI/CD with distributed caching and optimized compute."
+headquarters: "San Francisco, CA"
+foundedYear: 2021
+pricingModel: "usage-based"
+openSource: false
+services:
+  - "Fast Docker Builds"
+  - "Distributed Build Cache"
+  - "Build API"
+  - "Depot Bake"
+  - "Cross-Platform Builds"
+socials:
+  website: "https://depot.dev/"
+  x: "https://twitter.com/depotdev"
+  github: "https://github.com/depot"
+---
+
+## What makes Depot different
+
+Depot is a developer tooling platform designed specifically to solve the bottleneck of container image building. Unlike general-purpose cloud providers, Depot focuses exclusively on optimizing the build pipeline. It achieves up to 20x faster build times by using a distributed remote cache and optimized compute infrastructure that is separate from your CI runner's local resources.
+
+The platform integrates directly into existing CI/CD workflows, such as GitHub Actions, GitLab CI, and CircleCI. By replacing standard `docker build` commands with `depot build`, users leverage Depot's aggressive caching layer. This cache is distributed and shared across teams and even local development environments, ensuring that dependency resolution and layer compilation are reused efficiently.
+
+Additionally, Depot offers a Build API for programmatic image creation, allowing platforms to build images securely in isolated environments. This supports gRPC, Connect, and HTTP/JSON protocols, making it suitable for SaaS platforms that need to generate container images for customers without managing underlying infrastructure.
+
+## Pricing model
+
+Depot operates on a usage-based pricing model. While specific per-minute or per-build costs are not explicitly detailed in the public marketing materials, the value proposition is centered on reducing CI/CD execution time, which directly lowers costs associated with GitHub Actions minutes or self-hosted runner uptime.
+
+The model stands out by decoupling build compute from CI runner compute. Instead of paying for large GitHub-hosted runners to perform heavy compilation tasks, users offload this work to Depot's optimized infrastructure. This often results in a net cost reduction for teams with frequent, heavy build workloads, as the time savings typically outweigh the per-build costs.
+
+## When it fits
+
+- **Teams with slow Docker builds:** Organizations experiencing build times exceeding several minutes on standard CI runners.
+- **Multi-platform requirements:** Developers needing to build ARM64 and AMD64 images simultaneously, where Depot provides significant speedups over emulated builds.
+- **High-frequency CI/CD pipelines:** Projects with many commits per day where caching efficiency yields the highest ROI.
+- **SaaS Platforms:** Companies that need to build container images for end-users programmatically via an API.
+
+## When it doesn't
+
+- **Simple static sites:** Projects that do not involve containerization or complex build steps will not benefit from the overhead of integrating Depot.
+- **Fully serverless architectures:** If your entire stack runs on AWS Lambda or Vercel Edge Functions without custom image builds, Depot is unnecessary.
+
+## Inclusion criteria
+
+Depot meets all three inclusion criteria:
+
+1.  **Transparent pricing:** Usage-based pricing is available via their dashboard and documentation.
+2.  **Self-service signup:** Users can sign up and start using the service via [https://depot.dev/start](https://depot.dev/start).
+3.  **Public SLA/Status page:** Depot provides status updates and reliability information, meeting the transparency requirement for operational health.

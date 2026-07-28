@@ -1,0 +1,49 @@
+---
+status: reviewed
+tagline: "Distributed NoSQL database platform for mission-critical applications and real-time AI workloads"
+pricingModel: usage-based
+services:
+  - Couchbase Capella (DBaaS)
+  - Couchbase Server (self-managed)
+  - Vector Search
+  - AI Services
+  - Mobile & Edge
+  - Real-time Analytics
+socials:
+  website: "https://www.couchbase.com/"
+  x: "https://twitter.com/couchbase"
+  linkedin: "https://www.linkedin.com/company/couchbase/"
+  github: "https://github.com/couchbase"
+---
+
+## What makes Couchbase different
+
+Couchbase is a distributed NoSQL platform built around JSON documents and an in-memory architecture, designed for operational workloads that demand both flexibility and performance. Unlike traditional relational databases or single-node NoSQL stores, Couchbase's core strength lies in horizontal scalability, multi-node replication, and the ability to query JSON data with SQL++ (a SQL dialect for JSON). This positions it well for applications requiring fast reads/writes at scale without rigid schema constraints.
+
+The platform spans three deployment models—fully managed Capella cloud, self-managed on-premises, and edge servers for resource-constrained environments—allowing organizations to run the same database code across cloud, multicloud, and edge tiers. Recent emphasis on AI Services (agentic workloads, vector search, real-time analytics) reflects Couchbase's evolution toward modern AI-driven use cases, bundling document store, search, and analytics into a single operational platform.
+
+## Pricing model
+
+Couchbase Capella operates on **usage-based pricing** tied to three primary dimensions: compute (cluster size/throughput), storage (GB of data), and backup/replication. The platform offers a free tier for development and testing, with paid clusters starting from small configurations suitable for prototyping through enterprise-grade deployments. Specific per-unit pricing is not published on the homepage; customers typically obtain quotes via the sales team or by spinning up trial deployments in the Capella console.
+
+Self-managed Couchbase Server (open-source community edition and commercial licenses) follows a traditional licensing model. This hybrid approach—cloud consumption billing for Capella and upfront licensing for on-premises—appeals to organizations with hybrid or multi-cloud strategies.
+
+## When it fits
+
+- **Real-time personalization and session management**: Fast, distributed caching with low-latency reads/writes for user profiles, recommendations, and shopping carts
+- **IoT and edge deployments**: Synchronizing data from resource-constrained devices to cloud via Couchbase Mobile and Edge Server
+- **AI/ML feature stores and vector databases**: Storing embeddings, documents, and metadata for retrieval-augmented generation (RAG) and agentic systems
+- **High-traffic, schema-flexible applications**: APIs and web services that need rapid scaling without predefined schema migrations
+- **Financial services and telecommunications**: Multi-region replication and strong consistency options for regulated, mission-critical systems
+
+## When it doesn't
+
+Couchbase is less suitable for purely OLAP/data warehouse workloads (use analytics engines like Snowflake or BigQuery instead) or for applications requiring ACID transactions across unrelated document types at extreme scale. Traditional relational workloads with heavy joins and complex normalized schemas are typically better served by PostgreSQL or cloud-native SQL databases.
+
+## Inclusion criteria
+
+✓ **Transparent pricing**: Capella pricing model and free tier are publicly documented at [couchbase.com/pricing](https://www.couchbase.com/pricing/), with usage-based dimensions clearly stated.
+
+✓ **Self-service signup**: Customers can create free Capella accounts and provision trial clusters immediately via [cloud.couchbase.com](https://cloud.couchbase.com/sign-in) without sales contact.
+
+✓ **Public SLA & status page**: Couchbase publishes SLA and support policies at [couchbase.com/support-policy](https://www.couchbase.com/support-policy/) and maintains a [status/trust center](https://www.couchbase.com/trust-center/) documenting service health and compliance.

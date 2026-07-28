@@ -1,0 +1,54 @@
+---
+status: reviewed
+tagline: Fine-grained authorization as a service, now part of WorkOS FGA.
+headquarters: "San Francisco, California"
+foundedYear: 2021
+pricingModel: usage-based
+openSource: false
+services:
+  - Fine-Grained Authorization (FGA)
+  - Role-Based Access Control (RBAC)
+  - Policy-as-Code
+  - API for Access Decisions
+  - Multi-tenant Identity
+socials:
+  website: "https://warrant.dev/"
+  x: "https://x.com/WorkOS"
+  linkedin: "https://linkedin.com/company/workos"
+  github: "https://github.com/workos"
+---
+
+## What makes Warrant different
+
+**Important Notice:** Warrant has been decommissioned and is now **WorkOS FGA**. The original Warrant brand and SDKs are end-of-life. This profile reflects the service's history and its current iteration under WorkOS.
+
+Warrant pioneered the concept of "Authorization as a Service," offering a dedicated API for managing complex permissions and relationships between users, resources, and roles. Unlike AWS IAM or Azure RBAC, which are designed for infrastructure management, Warrant was built specifically for application-level access control. It utilized a Directed Acyclic Graph (DAG) to model relationships, allowing developers to define permissions like "user X can view document Y if they are the owner" or "team A can access resource B if they have the 'admin' role."
+
+The core differentiator was its ability to handle deeply nested, hierarchical, and multi-tenant permission structures without requiring custom database joins or complex query logic. By offloading authorization decisions to a dedicated service, developers could keep their application logic clean and ensure consistent security policies across all endpoints. The API was designed to be lightweight, returning simple boolean decisions, which made it easy to integrate into any backend framework.
+
+## Pricing model
+
+As Warrant is now deprecated, specific historical pricing tiers are no longer actively updated. However, the service historically operated on a **usage-based** model, typically charging per API call or per active relationship/permission entry.
+
+Under its successor, **WorkOS FGA**, the pricing model remains usage-based. WorkOS generally offers a free tier for development and small-scale applications, with paid tiers scaling based on the number of authorization checks (API calls) and the volume of managed relationships. This model stands out by aligning costs directly with usage intensity, avoiding large upfront commitments for early-stage startups.
+
+## When it fits
+
+- **Complex Permission Models:** Applications requiring intricate, hierarchical, or multi-tenant access controls that are difficult to implement with simple role-based systems.
+- **Rapid Prototyping:** Startups and teams needing to implement robust security without building and maintaining a custom authorization engine.
+- **Multi-tenant SaaS:** Platforms where each tenant has unique permission structures and data isolation requirements.
+- **API-First Architectures:** Backend services that require a centralized, language-agnostic way to enforce access policies across microservices.
+
+## When it doesn't
+
+- **Infrastructure Management:** This tool is not suitable for managing cloud provider resources (e.g., AWS IAM, Azure RBAC).
+- **Simple Use Cases:** For applications with flat, static permissions (e.g., "admin" vs "user"), a database-based solution or simple middleware may be more cost-effective and simpler.
+- **Legacy Systems:** Projects unable to migrate to modern SDKs or APIs, as the original Warrant SDKs are deprecated and unmaintained.
+
+## Inclusion criteria
+
+- **Transparent Pricing:** WorkOS (the successor) provides clear pricing tiers on its website. [WorkOS Pricing](https://workos.com/pricing)
+- **Self-Service Signup:** Users can create a WorkOS account and start using FGA immediately via the dashboard. [WorkOS Sign Up](https://dashboard.workos.com/signup)
+- **Public SLA/Status Page:** WorkOS maintains a public status page and offers SLAs for its paid plans. [WorkOS Status](https://status.workos.com/)
+
+_Note: The original Warrant service is no longer available for new signups. Users are directed to migrate to WorkOS FGA._

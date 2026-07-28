@@ -1,0 +1,59 @@
+---
+status: reviewed
+tagline: "Bare metal GPU infrastructure globally distributed across 40+ data centers for AI workloads."
+pricingModel: "hourly"
+regions:
+  - "Global (40+ data centers)"
+services:
+  - "Dedicated bare metal GPU servers"
+  - "Training clusters with InfiniBand connectivity"
+  - "Inference infrastructure"
+  - "Confidential Metal (encrypted, single-tenant compute)"
+  - "Brokkr AI Factory Operating System"
+  - "Flexible contract options (interruptible, on-demand, reserved)"
+  - "API-driven provisioning and management"
+  - "24/7 hardware support and maintenance"
+socials:
+  website: "https://hydrahost.com/"
+  x: "https://twitter.com/hydrahost"
+  linkedin: "https://linkedin.com/company/hydra-host/"
+---
+
+## What makes HydraHost different
+
+HydraHost strips away virtualization entirely, offering single-tenant bare metal GPU servers rather than shared cloud instances. Every deployment runs on dedicated hardware with no hypervisor, no noisy neighbors, and no resource contention. This architectural choice matters for compute-intensive AI workloads where performance predictability and isolation are non-negotiable.
+
+The platform unifies hardware diversity through **Brokkr**, their "AI Factory Operating System." Instead of managing different OEM hardware (Lenovo, HPE, Dell, PNY) across different data centers separately, customers get one API to provision, terminate, and manage servers globally. This is a sharp contrast to hyperscalers, where regional fragmentation and VM abstractions create operational friction for bare metal teams.
+
+Their **Confidential Metal** security model—combining dedicated bare metal, encrypted-at-rest storage, confidential compute, and remote attestation—addresses a specific pain point: customers who don't want to trust their cloud provider's isolation guarantees. For regulated workloads or sensitive AI training, this trust-minimized approach is a meaningful differentiator.
+
+## Pricing model
+
+HydraHost uses hourly billing with tiered pricing based on hardware and commitment level. Published examples include:
+
+- **NVIDIA B200**: $3.50–$5.00/hour (on-demand to reserved)
+- **NVIDIA H200**: $2.50–$3.20/hour
+- **NVIDIA RTX 4090**: $0.40–$0.65/hour
+- **NVIDIA RTX 5090**: $0.70/hour (starting price listed)
+
+The model emphasizes contract flexibility: interruptible capacity for burst workloads, on-demand for flexible terms, and reserved commitments for predictable demand with better per-hour rates. There's no mention of capex—you rent, not buy—and pricing is described as "wholesale" across their global network. This contrasts with hyperscaler per-instance models by offering true bare metal rates without virtualization markup.
+
+## When it fits
+
+- **AI training at scale**: Multi-node clusters with InfiniBand connectivity for distributed training runs
+- **Production inference serving**: High-throughput, low-latency serving infrastructure built for real workloads, not benchmarks
+- **Regulated/sovereign AI workloads**: Data residency and compliance requirements met by deployment flexibility and trust-minimized architecture
+- **Indie developers and researchers**: Affordable per-GPU pricing with no upfront capex or long-term lock-in required
+- **Infrastructure-as-a-service providers**: Neoclouds and platforms needing an underlying bare metal layer with unified API control
+
+## When it doesn't
+
+HydraHost is not a good fit for workloads that benefit from traditional cloud abstractions—managed databases, serverless functions, object storage, or microservice ecosystems. It's also not ideal for teams that want a single vendor offering both compute and storage; Hydra focuses narrowly on bare metal GPU provision and management. Workloads requiring Windows or non-Linux OS support may face limitations given the bare metal focus.
+
+## Inclusion criteria
+
+HydraHost meets all three inclusion criteria:
+
+1. **Transparent pricing**: Hourly rates publicly listed for specific GPU models on their product pages (e.g., https://hydrahost.com/nvidia/dgx-b200/)
+2. **Self-service signup**: Users can provision servers directly via the Brokkr platform without sales contact (though solution architecture consultation is available)
+3. **Public SLA/status page**: Brokkr platform and status information accessible via their documentation and API endpoints (https://hydrahost.com/api/)

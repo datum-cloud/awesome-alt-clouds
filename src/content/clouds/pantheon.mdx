@@ -1,0 +1,59 @@
+---
+status: reviewed
+tagline: "Serverless WebOps platform for WordPress, Drupal, and Next.js with built-in workflows and CI/CD."
+headquarters: "New York, NY, USA"
+foundedYear: 2011
+pricingModel: subscription
+openSource: false
+services:
+  - WordPress Hosting
+  - Drupal Hosting
+  - Next.js Hosting
+  - Pantheon CLI
+  - Global CDN & WAF
+  - Site Portfolio Management
+  - Automated Updates (Autopilot)
+socials:
+  website: "https://pantheon.io/"
+  x: "https://twitter.com/pantheon"
+  linkedin: "https://linkedin.com/company/pantheon-systems"
+  github: "https://github.com/pantheon-systems"
+---
+
+## What makes Pantheon different
+
+Pantheon operates as a specialized WebOps platform rather than a general-purpose infrastructure provider. Unlike AWS or GCP, where you must provision and configure virtual machines, databases, and load balancers manually, Pantheon offers a fully managed, serverless environment. The platform is built on Google Cloud infrastructure but abstracts the underlying complexity, providing a unified interface for hosting, development workflows, and governance.
+
+The core differentiator is its "Structured Agile Workflows." Pantheon provides isolated environments for every site (Production, Live, and multiple Staging/Dev environments) that are synchronized via Git. Developers can push code to a branch, which automatically triggers CI/CD pipelines to test and deploy to staging, and finally to production. This eliminates the "it works on my machine" problem and ensures that database migrations and code deployments are synchronized.
+
+Additionally, Pantheon includes a global CDN and WAF (Web Application Firewall) by default, along with "Autopilot" for automated security and CMS core updates. This reduces the operational overhead significantly for teams managing large portfolios of websites, allowing them to focus on content and application logic rather than server maintenance.
+
+## Pricing model
+
+Pantheon uses a subscription-based pricing model, typically billed monthly or annually per site or per portfolio seat. While exact tier prices are not publicly listed in the provided text, the model is structured around:
+
+1.  **Site Count:** Prices scale based on the number of websites hosted.
+2.  **Feature Tiers:** Higher tiers unlock more advanced features like higher performance tiers, more storage, increased bandwidth, and advanced security/compliance tools.
+3.  **Team Seats:** Some plans include a limit on the number of team members who can access the platform.
+
+The key distinction is that you pay for the managed service and the workflow tools, not for raw compute hours or egress traffic. This predictable pricing is attractive for agencies and enterprises with many sites, as it avoids the bill-shock potential of usage-based hyperscaler models.
+
+## When it fits
+
+- **Agencies managing multiple client sites:** The portfolio management features and standardized workflows allow agencies to onboard and maintain dozens of sites efficiently.
+- **WordPress and Drupal shops:** Deeply optimized for these CMSs with one-click cloning, sync tools, and specialized caching.
+- **Next.js developers:** Native support for deploying static and server-side rendered Next.js applications with built-in CI/CD.
+- **Teams needing strict compliance:** Built-in SOC 2 compliance, HIPAA (on higher tiers), and automated security patches reduce the burden on internal security teams.
+
+## When it doesn't
+
+- **Custom backend services:** Pantheon is not suitable for hosting custom microservices, databases (like PostgreSQL or MySQL), or containerized applications that don't fit the CMS/Next.js model.
+- **Highly customized infrastructure:** If you require specific network configurations, bare metal access, or custom kernel tuning, the managed nature of Pantheon is too restrictive.
+
+## Inclusion criteria
+
+Pantheon meets all three inclusion criteria:
+
+1.  **Transparent Pricing:** Pricing tiers and features are publicly listed on the [Plans & Pricing](https://pantheon.io/plans/pricing) page (though specific dollar amounts may require contact for enterprise, standard tiers are visible).
+2.  **Self-Service Signup:** Users can create an account and start hosting sites via [self-service signup](https://pantheon.io/get-started).
+3.  **Public SLA/Status Page:** A real-time [Platform Status](https://status.pantheon.io/) page is available to monitor uptime and incidents.

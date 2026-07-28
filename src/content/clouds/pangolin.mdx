@@ -1,0 +1,52 @@
+---
+status: reviewed
+tagline: "Zero-trust remote access via WireGuard tunnels with identity-aware access control."
+pricingModel: subscription
+openSource: true
+services:
+  - Zero-trust remote access
+  - Identity-aware proxy (IAP)
+  - WireGuard-based tunnels
+  - SSH access management
+  - Web app exposure
+  - RDP remote desktop access
+  - Device posture checks
+  - Role-based access control (RBAC)
+socials:
+  website: "https://digpangolin.com/"
+  github: "https://github.com/fosrl/pangolin"
+---
+
+## What makes Pangolin different
+
+Pangolin is an open-source, WireGuard-based alternative to traditional VPNs and commercial zero-trust platforms like Cloudflare One, Twingate, and Tailscale. Rather than granting broad network access, it uses peer-to-peer tunnels and identity-aware rules to expose only specific applications—SSH, web apps, RDP, databases, and APIs—to authenticated users. This reduces attack surface by eliminating implicit network trust.
+
+Built on WireGuard's lightweight cryptography, Pangolin can run as a managed cloud service or self-hosted deployment. It enforces policy at every access point: users authenticate with their existing identity provider (Google, Microsoft, OAuth2/OIDC), devices are evaluated for compliance posture, and access rules are context-aware. The platform is container-native, supporting Docker labels and YAML configuration for GitOps workflows, and includes remote nodes for multi-site and failover scenarios.
+
+The project has amassed 21.1k GitHub stars, signaling strong community adoption. Pangolin is ISO 27001 certified and available in both US and European regions, addressing data residency concerns.
+
+## Pricing model
+
+Pangolin uses a subscription model with tiered plans, though exact pricing tiers are not disclosed on their public website—customers must request a demo or sign up to view rates. The platform offers both a managed cloud option and self-hosted deployment. This approach is common among infrastructure security tools and allows flexible pricing based on team size, number of resources, and deployment model.
+
+What differentiates Pangolin's pricing from hyperscaler VPN services is its focus on per-resource or per-user metering rather than data egress charges, making predictable costs easier for organizations with heavy remote access needs.
+
+## When it fits
+
+- **Zero-trust infrastructure teams** wanting to replace VPNs with identity-based application access, especially those already using Kubernetes or Docker.
+- **MSPs and managed service providers** managing remote access across multiple customer environments with per-customer isolation.
+- **DevOps and platform teams** adopting GitOps; Pangolin's declarative YAML and CI/CD integration simplifies access policy as code.
+- **OT/IoT environments** requiring secure remote access to industrial control systems (SCADA, PLCs, Tridium Niagara) without exposing open ports.
+- **Organizations with EU data residency requirements** leveraging Pangolin's European region.
+
+## When it doesn't
+
+Pangolin is not a full networking layer replacement—it focuses on application-level access, not VPN-style site-to-site connectivity or broad network routing. Teams requiring traditional branch-to-datacenter VPN functionality or legacy IPsec tunnels should evaluate hybrid architectures or dedicated SD-WAN platforms instead.
+
+## Inclusion criteria
+
+Pangolin meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: [Self-service signup available](https://app.pangolin.net/auth/signup) with visible pricing page at [digpangolin.com/pricing](https://digpangolin.com/pricing).
+2. **Self-service signup**: Direct signup link provided; no mandatory sales contact required for trial access.
+3. **Public SLA and status page**: [Service Level Agreement](https://digpangolin.com/trust) and [status page](https://digpangolin.com/status) publicly available; ISO 27001 certification documented.

@@ -1,0 +1,56 @@
+---
+status: reviewed
+tagline: "Open-source data integration platform with 600+ connectors and AI agent context layers."
+pricingModel: "mixed"
+openSource: true
+services:
+  - "Data Integration & ETL"
+  - "AI Agent Context Store"
+  - "Connector SDK (CDK)"
+  - "Agent SDK"
+  - "Automation Builder"
+  - "Model Control Plane (MCP)"
+  - "Real-time Data Sync"
+socials:
+  website: "https://airbyte.com/"
+  github: "https://github.com/airbytehq/airbyte"
+---
+
+## What makes Airbyte different
+
+Airbyte combines two distinct offerings: a mature open-source ETL platform (21,405 GitHub stars) used by 20% of the Fortune 500 for production data pipelines, and a newer AI-focused product called the **Context Store** that unifies data across 600+ connectors for AI agents and language models.
+
+Unlike traditional cloud data warehouses or ETL tools, Airbyte's Context Store is purpose-built for agentic workflows. It creates a queryable, real-time index of customer records, tickets, invoices, and conversations across disconnected systems (Salesforce, Zendesk, Stripe, GitHub, Jira, etc.), so AI agents see unified business context rather than fragmented API responses. The platform handles schema management, deduplication (linking "Sarah Chen" in Salesforce to "sarah@acme.com" in Zendesk), and continuous synchronization—eliminating the need for custom connectors or manual API orchestration.
+
+The infrastructure is battle-tested: Airbyte syncs 1.2M data pipelines daily and has been trusted for production workloads since 2020. Its replication technology now powers both traditional data pipelines and the new agent layer, creating a single platform where teams can build agents alongside existing ETL jobs.
+
+## Pricing model
+
+Airbyte operates on a freemium and mixed model:
+
+- **Open source self-hosted**: Free, with community support
+- **Airbyte Cloud**: Usage-based pricing on connector runs and data volume; specific per-unit costs not disclosed on the public site
+- **Enterprise/Agent products**: Custom pricing for Context Store, MCP integration, and agent connectors
+
+The pricing emphasizes consumption (pipelines synced, connectors used) rather than fixed seats, which aligns with both data integration and agentic workloads. Exact unit pricing is negotiated directly with the sales team.
+
+## When it fits
+
+- **AI teams building agentic systems** that need unified, real-time context across CRM, support, billing, and dev tools without writing custom connectors
+- **Data integration projects** where 600+ pre-built connectors cover your sources and you want to avoid maintaining custom extraction logic
+- **Organizations standardizing on a single ETL backbone** for both batch pipelines and real-time agent feeds
+- **Enterprises with high connector velocity** where new SaaS tools are added frequently and integration timelines must be short (managed authentication, new connectors shipped weekly)
+- **Teams evaluating Model Control Plane (MCP)** as a standard for AI agent data access, particularly with Claude or ChatGPT
+
+## When it doesn't
+
+- **Simple point-to-point integrations** where a lightweight webhook or API client suffices
+- **Data warehouse workloads** focused purely on OLAP analytics; Airbyte is a pipeline and context layer, not a query engine
+
+## Inclusion criteria
+
+Airbyte meets all three inclusion criteria:
+
+1. **Transparent Pricing**: Mixed model (freemium + usage + custom) disclosed on [airbyte.com](https://airbyte.com/); specific Cloud pricing available to users signing up
+2. **Self-Service Signup**: Free tier and Cloud signup available directly without sales gatekeeping
+3. **Public SLA & Status Page**: 99.9% uptime SLA guarantee and 24/7 support stated; SOC 2 Type II certified; enterprise SLA terms available on request

@@ -1,0 +1,46 @@
+---
+status: reviewed
+tagline: "Speech-to-text, voice agents, and conversation intelligence APIs for building voice AI products."
+pricingModel: "usage-based"
+services:
+  - "Pre-recorded Speech-to-Text API"
+  - "Realtime Speech-to-Text API"
+  - "Speech Understanding API"
+  - "Voice Agent API"
+  - "Guardrails (PII redaction & content moderation)"
+  - "LLM Gateway"
+socials:
+  website: "https://www.assemblyai.com/"
+  linkedin: "https://linkedin.com/company/assemblyai"
+---
+
+## What makes AssemblyAI different
+
+AssemblyAI specializes exclusively in voice AI infrastructure, offering a unified platform for speech recognition, understanding, and real-time conversation. Unlike general-purpose cloud providers, AssemblyAI bundles transcription, speaker identification, sentiment analysis, summarization, and PII redaction into a single API—eliminating the need to stitch together multiple vendor services. The platform supports 99 languages and offers multiple models (Universal-3, Universal-2, and Whisper variants) optimized for different accuracy and latency trade-offs.
+
+The Voice Agent API stands out as a production-ready solution for building conversational agents with built-in turn detection and interruption handling, enabling developers to ship voice applications "the same day" without managing complex audio handling logic. The LLM Gateway layer lets developers route requests across Claude, GPT, Gemini, and community models from a single endpoint with fallback support, reducing vendor lock-in for AI orchestration.
+
+## Pricing model
+
+AssemblyAI uses usage-based pricing tied to audio processing minutes and API calls. While exact rates are not published on the public site, the company offers a free tier for getting started and a transparent pricing page at [assemblyai.com/pricing](https://www.assemblyai.com/pricing). Enterprise customers can contact sales for volume discounts and custom SLAs. This approach aligns with competitive API providers and allows pay-as-you-grow scaling without long-term commitments.
+
+## When it fits
+
+- **Voice transcription at scale**: Production systems requiring high-accuracy speech-to-text across 99 languages with real-time or batch processing.
+- **Conversation intelligence platforms**: Contact center analytics, meeting note-taking, and post-call analysis that need transcription + sentiment + speaker ID in one call.
+- **Voice agent deployment**: Building voice chatbots, customer service agents, or interactive voice response (IVR) systems without deep audio infrastructure expertise.
+- **Compliance-heavy workflows**: Healthcare, finance, and legal use cases requiring medical transcription templates and inline PII redaction via Guardrails.
+- **Multi-LLM orchestration**: Teams wanting to experiment with or failover between multiple large language models without code changes.
+
+## When it doesn't
+
+- **General compute or storage**: AssemblyAI is voice-specific; it does not compete with AWS, GCP, or Azure on compute, databases, or block storage.
+- **Low-latency real-time constraints under 100ms**: While streaming APIs are fast, ultra-low-latency requirements may benefit from on-premises or self-hosted alternatives.
+
+## Inclusion criteria
+
+AssemblyAI meets all three inclusion criteria:
+
+1. **Transparent pricing**: Usage-based pricing model published at [assemblyai.com/pricing](https://www.assemblyai.com/pricing).
+2. **Self-service signup**: Free tier and self-service dashboard signup at [assemblyai.com/dashboard/signup](https://www.assemblyai.com/dashboard/signup).
+3. **Public SLA & status page**: Status page available at [status.assemblyai.com](https://status.assemblyai.com/).

@@ -1,0 +1,69 @@
+---
+import Base from "../../layouts/Base.astro";
+import DetailTopBar from "../../components/DetailTopBar.astro";
+import DirectorySidebar from "../../components/DirectorySidebar.astro";
+import { formatPostDate, getPublishablePosts, postUrl, sortedByDate } from "../../lib/blog";
+import { getFeaturedSlugs } from "../../lib/profile";
+import { getPageMeta } from "../../lib/site-meta";
+import { absoluteUrl } from "../../lib/site-urls";
+
+const { title, description } = getPageMeta("blog");
+const blogCanonical = `${absoluteUrl("blog")}/`;
+const posts = sortedByDate(await getPublishablePosts());
+const postCount = posts.length;
+const featuredSlugs = [...(await getFeaturedSlugs())];
+---
+
+<Base
+  title={title}
+  description={description}
+  canonical={blogCanonical}>
+  <div class="flex flex-col md:flex-row min-h-screen">
+    <DirectorySidebar activePage="blog" />
+
+    <main class="flex-1 p-5 md:p-8 min-w-0">
+      <DetailTopBar featuredSlugs={featuredSlugs} />
+
+      <div class="max-w-4xl">
+        <header class="mb-8">
+          <h1 class="font-serif text-3xl md:text-4xl font-semibold text-rich-earth mb-3">Blog</h1>
+          <p class="text-warm-stone leading-relaxed max-w-2xl">
+            Short-form notes on alternative cloud providers — trends, new entrants, and commentary
+            from the Awesome Alt Clouds community.
+          </p>
+        </header>
+
+        {
+          postCount === 0 ? (
+            <div class="py-16 text-warm-stone">
+              <p>No posts published yet. Check back soon.</p>
+            </div>
+          ) : (
+            <div class="divide-y divide-clay-beige">
+              {posts.map((post) => (
+                <a
+                  href={postUrl(post.id)}
+                  class="group flex flex-col gap-1.5 py-6 no-underline first:pt-0">
+                  <div class="text-xs font-medium text-warm-stone uppercase tracking-wider">
+                    {formatPostDate(post.data.publishDate)}
+                    {post.data.tags.length > 0 && (
+                      <span class="ml-2">
+                        {post.data.tags.map((tag) => (
+                          <span class="mr-1.5 text-warm-stone/70">#{tag}</span>
+                        ))}
+                      </span>
+                    )}
+                  </div>
+                  <h2 class="font-serif text-xl font-semibold text-rich-earth group-hover:text-bright-tangerine transition-colors leading-snug">
+                    {post.data.title}
+                  </h2>
+                  <p class="text-sm text-warm-stone leading-relaxed">{post.data.description}</p>
+                </a>
+              ))}
+            </div>
+          )
+        }
+      </div>
+    </main>
+  </div>
+</Base>

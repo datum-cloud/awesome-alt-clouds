@@ -1,0 +1,65 @@
+---
+status: reviewed
+tagline: "The all-in-one commerce platform for building, running, and scaling online and offline businesses."
+headquarters: "Ottawa, Canada"
+foundedYear: 2006
+pricingModel: subscription
+openSource: false
+services:
+  - Online Store Builder
+  - Point of Sale (POS)
+  - Shopify Payments
+  - Shopify Plus (Enterprise)
+  - Hydrogen (Headless Framework)
+  - Shopify Flow
+  - Shopify Markets
+  - Shopify Sidekick
+socials:
+  website: "https://www.shopify.com/"
+  x: "https://twitter.com/Shopify"
+  linkedin: "https://linkedin.com/company/shopify"
+  github: "https://github.com/Shopify"
+---
+
+## What makes Shopify different
+
+Shopify is not a traditional IaaS or PaaS provider like AWS or GCP; it is a vertical SaaS platform specifically engineered for commerce. While hyperscalers provide the raw compute and storage primitives, Shopify provides a fully integrated "commerce operating system." This includes the storefront engine, checkout infrastructure, payment processing, inventory management, and point-of-sale hardware integration, all managed through a unified backend.
+
+A key differentiator is Shopify’s "Universal Commerce Protocol" and its headless capabilities via **Hydrogen** (built on Remix/React) and **Oxygen** (deployment platform). This allows developers to build custom, high-performance storefronts that still leverage Shopify’s robust backend APIs for cart, checkout, and order management. Unlike generic cloud providers where you must stitch together disparate services (e.g., Stripe for payments, AWS for hosting, third-party tools for inventory), Shopify offers a cohesive ecosystem that reduces integration debt.
+
+Additionally, Shopify is heavily investing in AI through **Sidekick**, an AI assistant embedded directly into the merchant workflow for tasks ranging from coding assistance to inventory forecasting. This domain-specific AI integration is far more relevant to e-commerce developers than generic LLM APIs provided by hyperscalers.
+
+## Pricing model
+
+Shopify operates on a straightforward subscription model with transparent monthly pricing for its core plans. As of current public data:
+
+- **Shopify Starter:** $5/month. For selling on social media or messaging apps without a full website.
+- **Basic:** $39/month. Includes a full online store, 24/7 support, and basic reports.
+- **Shopify:** $105/month. Includes professional reports, lower transaction fees, and 24/7 chat support.
+- **Advanced:** $399/month. For scaling businesses requiring advanced report building, custom workflows, and lowest transaction fees.
+
+**Transaction Fees:** If you do not use Shopify Payments, a transaction fee (ranging from 2% to 0.5% depending on the plan) is applied to sales. Shopify Payments is available in select countries and waives these fees.
+
+**Shopify Plus:** Enterprise pricing is custom-quoted based on revenue and requirements, typically starting at $2,000+/month.
+
+The model stands out for its predictability. There are no hidden egress fees or complex compute billing cycles for the core platform. Developers only pay for the subscription and potentially third-party apps from the Shopify App Store.
+
+## When it fits
+
+- **DTC Brands:** Companies whose primary revenue driver is selling physical or digital goods online.
+- **Omnichannel Retailers:** Businesses needing to sync online inventory with brick-and-mortar stores via Shopify POS.
+- **Headless Commerce Teams:** Developers who want to build custom frontend experiences using Hydrogen/React while offloading backend commerce logic to Shopify.
+- **Rapid Launch Requirements:** Entrepreneurs who need a fully functional, PCI-compliant store live in days rather than months.
+
+## When it doesn't
+
+- **General-Purpose Compute:** If you need raw VMs, Kubernetes clusters, or serverless functions for non-commerce workloads (e.g., video processing, data science), Shopify is not the right tool.
+- **Database-Intensive Apps:** While Shopify provides APIs, it does not offer direct access to underlying databases for custom application logic outside of its commerce domain.
+
+## Inclusion criteria
+
+Shopify meets all three inclusion criteria:
+
+1.  **Transparent Pricing:** Detailed pricing for Basic, Shopify, Advanced, and Plus plans is publicly available at [shopify.com/pricing](https://www.shopify.com/pricing).
+2.  **Self-Service Signup:** Users can start a free trial and sign up directly at [shopify.com/signup](https://www.shopify.com/signup).
+3.  **Public SLA/Status Page:** Shopify maintains a public status page at [status.shopify.com](https://status.shopify.com/) to monitor service health and incidents.

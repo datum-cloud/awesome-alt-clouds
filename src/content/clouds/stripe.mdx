@@ -1,0 +1,56 @@
+---
+status: reviewed
+tagline: "Global financial infrastructure platform for payments, billing, and embedded finance."
+headquarters: "San Francisco, CA"
+foundedYear: 2010
+pricingModel: usage-based
+openSource: false
+services:
+  - Payments
+  - Billing & Subscriptions
+  - Connect (Marketplaces)
+  - Terminal (In-person)
+  - Radar (Fraud Prevention)
+  - Issuing
+  - Treasury
+  - Sigma (Analytics)
+socials:
+  website: "https://stripe.com/"
+  x: "https://x.com/stripe"
+  linkedin: "https://www.linkedin.com/company/stripe"
+  github: "https://github.com/stripe"
+---
+
+## What makes Stripe different
+
+Stripe is not a traditional infrastructure cloud provider like AWS or GCP; it is a financial infrastructure platform. While hyperscalers provide compute, storage, and networking, Stripe provides the specialized plumbing for moving money globally. Its core differentiator is the unification of complex financial operations—accepting payments, managing subscriptions, handling fraud, and issuing cards—into a single, coherent API layer.
+
+For developers, Stripe’s value proposition lies in its abstraction of global regulatory complexity. Processing a payment in one country involves distinct local payment methods, currencies, and tax rules. Stripe handles this backend complexity, allowing businesses to launch in 135+ currencies and 45+ countries with a single integration. This "financial PaaS" model reduces the engineering overhead required to build monetization features, which would otherwise require maintaining separate integrations with dozens of local acquirers and payment gateways.
+
+Unlike general-purpose clouds, Stripe’s architecture is optimized for transactional integrity and financial compliance rather than raw compute scaling. It offers 99.999% historical uptime for its services and processes over $1.9 trillion in payments annually. This specialization means that while you cannot host your application on Stripe, you can build the revenue engine of your application on it with significantly less risk and maintenance than building a custom billing system or managing multiple payment processors.
+
+## Pricing model
+
+Stripe operates on a transparent, usage-based pricing model. There are no upfront fees, monthly minimums, or setup costs. The standard pricing for card payments in the United States is 2.9% + 30¢ per successful card charge. International cards and currency conversions incur additional fees (typically 1.5% for international cards and 1% for currency conversion).
+
+For subscription billing (Stripe Billing), the same per-transaction fee applies to recurring payments. Stripe Connect, which allows platforms to pay out to sellers, has a customizable fee structure, often involving a base platform fee plus a pass-through fee to the connected accounts. In-person payments via Stripe Terminal typically cost 2.7% + 5¢ per transaction.
+
+This model stands out against typical cloud pricing because it is directly tied to revenue generation. Instead of paying for idle capacity (like reserved instances) or per-hour compute time, you pay only when a transaction succeeds. This aligns costs directly with business outcomes, making it highly scalable for startups and enterprises alike without the risk of paying for unused infrastructure.
+
+## When it fits
+
+- **SaaS and Subscription Businesses:** Companies needing robust, automated recurring billing, proration, and dunning management.
+- **Marketplaces and Platforms:** Businesses using Stripe Connect to facilitate peer-to-peer payments, split payouts, or manage seller onboarding.
+- **Global Commerce:** E-commerce businesses selling internationally who need to support local payment methods (e.g., Alipay, iDEAL, SEPA) without managing multiple acquirer relationships.
+- **Embedded Finance:** Fintech startups or non-fintech companies looking to issue cards or hold balances via Stripe Issuing and Treasury.
+
+## When it doesn't
+
+- **Compute-Heavy Workloads:** Stripe cannot host applications, databases, or run serverless functions. It is strictly a financial service layer.
+- **Non-Financial Infrastructure:** It does not provide storage, CDN, networking, or security groups.
+
+## Inclusion criteria
+
+- **Transparent Pricing:** Yes. Detailed pricing for all products (Payments, Billing, Connect, Terminal) is publicly available on stripe.com/pricing.
+- **Self-Service Signup:** Yes. Users can sign up and create an account at dashboard.stripe.com/register without speaking to sales.
+- **Public SLA/Status Page:** Yes. Stripe provides a public status page at status.stripe.com and publishes SLAs for its services.

@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@theme {
+  --color-warm-stone: #78716c;
+  --color-soft-sage: #a3b18a;
+  --color-clay-beige: #e9dcc9;
+  --color-rich-earth: #3e362e;
+  --color-bright-tangerine: #ff6b35;
+  --color-cream: #faf7f0;
+  --color-charcoal: #2d2d2a;
+
+  --font-sans: "IBM Plex Sans", -apple-system, system-ui, sans-serif;
+  --font-serif: "Crimson Pro", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --animate-slide-up-card: slide-up-card 0.4s ease-out both;
+  --animate-modal-in: modal-in 0.3s ease;
+
+  @keyframes slide-up-card {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@utility sorter-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2378716C' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+}
+
+@layer base {
+  html {
+    @apply font-sans bg-cream text-rich-earth;
+  }
+
+  body {
+    @apply leading-relaxed;
+  }
+
+  button:not(:disabled) {
+    @apply cursor-pointer;
+  }
+
+  button:disabled {
+    @apply cursor-not-allowed;
+  }
+}
+
+.prose-content {
+  color: var(--color-rich-earth);
+  line-height: 1.7;
+}
+
+.prose-content > * + * {
+  margin-top: 1.25rem;
+}
+
+.prose-content h2 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-rich-earth);
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-clay-beige);
+}
+
+.prose-content h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-rich-earth);
+  margin-top: 1.75rem;
+}
+
+.prose-content h4 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-rich-earth);
+  margin-top: 1.25rem;
+}
+
+.prose-content p {
+  color: var(--color-warm-stone);
+}
+
+.prose-content a {
+  color: var(--color-bright-tangerine);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.prose-content a:hover {
+  border-bottom-color: var(--color-bright-tangerine);
+}
+
+.prose-content ul,
+.prose-content ol {
+  color: var(--color-warm-stone);
+  padding-left: 1.5rem;
+}
+
+.prose-content ul {
+  list-style: disc;
+}
+
+.prose-content ol {
+  list-style: decimal;
+}
+
+.prose-content li + li {
+  margin-top: 0.4rem;
+}
+
+.prose-content code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background-color: var(--color-clay-beige);
+  color: var(--color-rich-earth);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+}
+
+.prose-content pre {
+  background-color: var(--color-charcoal);
+  color: var(--color-cream);
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+}
+
+.prose-content pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.prose-content blockquote {
+  border-left: 3px solid var(--color-soft-sage);
+  padding-left: 1rem;
+  color: var(--color-warm-stone);
+  font-style: italic;
+}
+
+.prose-content strong {
+  color: var(--color-rich-earth);
+  font-weight: 600;
+}

@@ -1,0 +1,55 @@
+---
+status: reviewed
+tagline: "Fast AI inference platform with 2–3× speedup. Deploy 571K+ models instantly with 99.99% SLA."
+pricingModel: usage-based
+regions:
+  - "San Francisco"
+  - "Global multi-cloud"
+services:
+  - "Model APIs (pay-per-token)"
+  - "Dedicated Endpoints"
+  - "Container Deployment"
+  - "571K+ Hugging Face Models"
+  - "Custom Model Hosting"
+  - "Speculative Decoding"
+  - "Multi-cloud Scaling"
+socials:
+  website: "https://friendli.ai/"
+---
+
+## What makes FriendliAI different
+
+FriendliAI is purpose-built for AI inference speed and cost efficiency, competing directly with OpenAI, Anthropic, and vLLM-based deployments rather than traditional cloud providers. The platform combines model-level optimizations—custom GPU kernels, smart KV caching, continuous batching, speculative decoding, and parallel inference—with infrastructure-level improvements like advanced caching and multi-cloud resource orchestration. This architecture delivers claimed 2–3× faster inference latency compared to standard deployments, which directly impacts both user experience and operational margins.
+
+The platform emphasizes instant deployment of frontier models: 571K+ Hugging Face models are available with single-click activation, with same-day support for new open-weight releases (e.g., NVIDIA Nemotron 3 Ultra, DeepSeek V4). Users can also bring proprietary fine-tuned models. Unlike hyperscalers where inference typically requires custom containerization or endpoint tuning, FriendliAI abstracts away GPU kernel selection and model optimization.
+
+Enterprise features include 99.99% uptime SLAs backed by geo-distributed infrastructure, SOC 2 Type II and HIPAA compliance, and Anthropic Messages API compatibility. Recent strategic partnerships with Samsung Cloud Platform signal expansion beyond open-weight models into enterprise custom deployments.
+
+## Pricing model
+
+FriendliAI uses consumption-based pricing per output token for Model APIs (shared inference) and hourly rates for Dedicated Endpoints (reserved GPU capacity). Exact per-token rates were not published on the accessible landing page, but the cost structure is designed to reward high throughput—the 2–3× speed advantage directly reduces per-token costs by decreasing time-to-completion and enabling higher concurrency on the same GPU fleet.
+
+Dedicated Endpoints cater to production workloads requiring SLA guarantees and isolation; no minimum commitment or long-term contracts are mentioned, supporting true pay-as-you-go scaling.
+
+This consumption model contrasts with hyperscaler reserved instances (1–3 year commitments) and makes FriendliAI cost-competitive for variable or burst inference traffic.
+
+## When it fits
+
+- **High-volume LLM inference at scale**: Teams deploying chatbots, agents, or RAG systems where latency and throughput directly impact user satisfaction or per-request margins.
+- **Open-weight model evaluation**: Researchers and startups wanting to compare frontier models (Nemotron, DeepSeek, GLM) without provisioning separate infrastructure.
+- **Frontier model early adoption**: Day-0 access to newly released open-weight models, reducing time-to-market for competitive features.
+- **Cost-sensitive production inference**: Teams with variable traffic that benefit from sub-millisecond latency improvements and higher token throughput per GPU.
+- **Compliance-heavy workloads**: Healthcare, financial services, or regulated industries needing SOC 2 / HIPAA-compliant inference without building in-house infrastructure.
+
+## When it doesn't
+
+- **Batch or offline inference**: Non-real-time workloads (data labeling, content generation at scale) may not justify the latency optimizations; cheaper batch APIs or on-premise hardware may be more cost-effective.
+- **Custom model serving with heavy preprocessing**: If your workload requires complex pre/post-processing pipelines or specialized hardware (TPUs, Trainium), FriendliAI's GPU-centric stack may impose overhead.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Consumption-based model published at [https://friendli.ai/pricing](https://friendli.ai/pricing).
+
+✅ **Self-service signup**: Direct sign-up and model testing available at [https://friendli.ai/get-started](https://friendli.ai/get-started).
+
+✅ **Public SLA**: 99.99% uptime SLA documented in [Service Level Agreement](https://friendli.ai/trust-center); compliance certifications (SOC 2 Type II, HIPAA) published at trust center.

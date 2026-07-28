@@ -1,0 +1,55 @@
+---
+status: reviewed
+tagline: "Open-source, identity-aware proxy for zero trust access to internal apps and Kubernetes clusters."
+headquarters: "San Francisco, CA"
+foundedYear: 2018
+pricingModel: mixed
+openSource: true
+services:
+  - Identity-Aware Proxy (ZTNA)
+  - Kubernetes Ingress & Gateway API
+  - Clientless Remote Access
+  - Context-Aware Authorization
+  - Centralized Auditing & Logging
+socials:
+  website: "https://www.pomerium.com/"
+  x: "https://twitter.com/pomerium_inc"
+  linkedin: "https://linkedin.com/company/pomerium"
+  github: "https://github.com/pomerium"
+---
+
+## What makes Pomerium different
+
+Pomerium is an open-source, zero-trust access proxy that replaces traditional VPNs and complex service meshes with a lightweight, Envoy-based reverse proxy. Unlike hyperscaler-specific identity solutions (such as AWS App Mesh or Azure API Management) that are tightly coupled to their respective ecosystems, Pomerium is cloud-agnostic. It runs anywhere—on-premises, in any public cloud, or in edge locations—while providing a unified security layer.
+
+The core differentiator is its policy-as-code approach. Pomerium uses a simple YAML configuration to define fine-grained access rules based on user identity, device posture, and context. It integrates with any OIDC-compliant identity provider (IdP) like Okta, Azure AD, or Keycloak, enabling "clientless" access. Users access internal applications directly through their browser without installing any VPN clients, while the proxy cryptographically signs JWTs to authenticate requests to upstream services. This architecture significantly reduces the attack surface compared to network-level VPNs.
+
+Pomerium also excels in securing Kubernetes environments. It can secure ingress traffic, kubectl access, and Gateway API routes without requiring sidecars or complex certificate management. By centralizing authorization and auditing, it ensures that every request is verified against a global policy, making it ideal for organizations prioritizing strict zero-trust compliance across hybrid infrastructures.
+
+## Pricing model
+
+Pomerium offers a dual pricing model catering to both open-source enthusiasts and enterprise teams requiring managed support.
+
+1.  **Open Source (Free):** The core Pomerium software is open-source (Apache 2.0) and free to self-host. Users can deploy it on their own infrastructure at no software cost, provided they manage the hosting, updates, and scaling themselves.
+2.  **Pomerium Cloud (SaaS):** For teams that prefer a managed solution, Pomerium offers a hosted cloud service. Pricing is usage-based, typically starting with a free tier for small teams (up to 10 users) and scaling with the number of users and requests. Specific enterprise tiers are not publicly listed with fixed dollar amounts on the main pricing page but require contacting sales for custom quotes based on scale and support needs.
+
+The standout feature is the transparent, free open-source option, which allows developers to prototype and deploy zero-trust architecture without vendor lock-in or upfront licensing fees.
+
+## When it fits
+
+- **Zero Trust Migration:** Organizations moving away from VPNs to implement strict zero-trust principles without replacing their existing IdP (Okta, Azure AD, etc.).
+- **Kubernetes Security:** Teams needing to secure internal Kubernetes services, kubectl access, or API gateways with fine-grained, identity-based policies.
+- **Hybrid/Multi-Cloud Environments:** Companies running workloads across multiple cloud providers or on-premises who need a unified access layer that isn't tied to a single hyperscaler.
+- **Remote Workforce Access:** Distributed teams requiring secure, clientless browser-based access to internal dashboards and applications.
+
+## When it doesn't
+
+Pomerium is not a full-stack cloud provider; it does not offer compute, storage, or database services. It is also not suitable for workloads requiring deep, native integration with a specific cloud provider's proprietary identity or networking features (e.g., AWS PrivateLink integration without additional configuration).
+
+## Inclusion criteria
+
+Pomerium meets all 3 inclusion criteria:
+
+1.  **Transparent Pricing:** Clear distinction between free open-source and paid cloud tiers is provided. ([Pricing Page](https://www.pomerium.com/pricing))
+2.  **Self-Service Signup:** Users can sign up for the free cloud tier or access open-source code directly. ([Get Started](https://console.pomerium.app/create-account))
+3.  **Public SLA/Status Page:** Pomerium Cloud offers an SLA for enterprise customers, and a status page is available for monitoring uptime. ([Status Page](https://status.pomerium.com))

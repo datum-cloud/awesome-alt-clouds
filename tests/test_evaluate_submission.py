@@ -120,6 +120,115 @@ class TestFetchPageWithFallback:
 
 
 # ---------------------------------------------------------------------------
+# evaluate_with_qwen
+# ---------------------------------------------------------------------------
+
+class TestEvaluateWithQwen:
+
+    def _make_qwen_response(self, json_text):
+        """Build a fake openai ChatCompletion with a message."""
+        msg = MagicMock()
+        msg.content = json_text
+        choice = MagicMock()
+        choice.message = msg
+        response = MagicMock()
+        response.choices = [choice]
+        return response
+
+    def _stub_qwen(self, mock_client):
+        """Return an ExitStack that stubs QWEN_BASE_URL and openai.OpenAI."""
+        mock_openai = MagicMock()
+        mock_openai.OpenAI.return_value = mock_client
+        stack = ExitStack()
+        stack.enter_context(patch.dict(os.environ, {'QWEN_BASE_URL': 'http://fake-qwen'}))
+        stack.enter_context(patch.dict(sys.modules, {'openai': mock_openai}))
+        return stack
+
+    def test_returns_structured_result_on_success(self):
+        json_payload = '''{
+            "criteria": [
+                {"name": "Transparent Public Pricing", "passed": true, "evidence": "https://example.com/pricing"},
+                {"name": "Usage-based Self-Service", "passed": true, "evidence": "https://example.com/signup"},
+                {"name": "Production Indicators", "passed": true, "evidence": "https://status.example.com"}
+            ],
+            "name": "Example Cloud",
+            "description": "Provides cloud infrastructure for developers.",
+            "category": "Infrastructure Clouds",
+            "recommendation": "Pricing and status page found — looks legit"
+        }'''
+
+        mock_client = MagicMock()
+        mock_client.chat.completions.create.return_value = self._make_qwen_response(json_payload)
+
+        with self._stub_qwen(mock_client):
+            result = ev.evaluate_with_qwen('https://example.com')
+
+        assert result is not None
+        assert result['score'] == 3
+        assert result['name'] == 'Example Cloud'
+        assert result['fetch_method'] == 'qwen'
+        assert result['recommendation'] == 'Pricing and status page found — looks legit'
+        assert result['criteria'][0]['evidence'] == 'https://example.com/pricing'
+
+    def test_returns_none_when_no_base_url(self):
+        env = {k: v for k, v in os.environ.items() if k != 'QWEN_BASE_URL'}
+        with patch.dict(os.environ, env, clear=True):
+            result = ev.evaluate_with_qwen('https://example.com')
+        assert result is None
+
+    def test_returns_none_on_api_error(self):
+        mock_client = MagicMock()
+        mock_client.chat.completions.create.side_effect = Exception('API error')
+
+        with self._stub_qwen(mock_client):
+            result = ev.evaluate_with_qwen('https://example.com')
+
+        assert result is None
+
+    def test_score_calculated_from_criteria(self):
+        json_payload = '''{
+            "criteria": [
+                {"name": "Transparent Public Pricing", "passed": true, "evidence": "https://example.com/pricing"},
+                {"name": "Usage-based Self-Service", "passed": false, "evidence": "Not found"},
+                {"name": "Production Indicators", "passed": true, "evidence": "https://status.example.com"}
+            ],
+            "name": "Example Cloud",
+            "description": "Provides cloud infrastructure.",
+            "category": "Infrastructure Clouds",
+            "recommendation": "Partial — signup process unclear"
+        }'''
+
+        mock_client = MagicMock()
+        mock_client.chat.completions.create.return_value = self._make_qwen_response(json_payload)
+
+        with self._stub_qwen(mock_client):
+            result = ev.evaluate_with_qwen('https://example.com')
+
+        assert result['score'] == 2
+
+    def test_invalid_category_defaults_to_infrastructure(self):
+        json_payload = '''{
+            "criteria": [
+                {"name": "Transparent Public Pricing", "passed": true, "evidence": "https://example.com/pricing"},
+                {"name": "Usage-based Self-Service", "passed": true, "evidence": "https://example.com/signup"},
+                {"name": "Production Indicators", "passed": true, "evidence": "https://status.example.com"}
+            ],
+            "name": "Example Cloud",
+            "description": "Provides cloud infrastructure.",
+            "category": "Not A Real Category",
+            "recommendation": "Looks good"
+        }'''
+
+        mock_client = MagicMock()
+        mock_client.chat.completions.create.return_value = self._make_qwen_response(json_payload)
+
+        with self._stub_qwen(mock_client):
+            result = ev.evaluate_with_qwen('https://example.com')
+
+        assert result['category'] == 'Infrastructure Clouds'
+
+
+# ---------------------------------------------------------------------------
 # evaluate_with_claude
 # ---------------------------------------------------------------------------
 
@@ -133,8 +242,8 @@ class TestEvaluateWithClaude:
         response.content = [content_block]
         return response
 
-    def _mock_anthropic(self, mock_client):
-        """Return a combined context that stubs ANTHROPIC_API_KEY and anthropic.Anthropic."""
+    def _stub_claude(self, mock_client):
+        """Return an ExitStack that stubs ANTHROPIC_API_KEY and anthropic.Anthropic."""
         fake_anthropic = MagicMock()
         fake_anthropic.Anthropic.return_value = mock_client
         stack = ExitStack()
@@ -155,17 +264,16 @@ class TestEvaluateWithClaude:
             "recommendation": "Pricing and status page found — looks legit"
         }'''
 
-        mock_msg = self._make_claude_response(json_payload)
         mock_client = MagicMock()
-        mock_client.messages.create.return_value = mock_msg
+        mock_client.messages.create.return_value = self._make_claude_response(json_payload)
 
-        with self._mock_anthropic(mock_client):
+        with self._stub_claude(mock_client):
             result = ev.evaluate_with_claude('https://example.com')
 
         assert result is not None
         assert result['score'] == 3
         assert result['name'] == 'Example Cloud'
-        assert result['fetch_method'] == 'claude_websearch'
+        assert result['fetch_method'] == 'claude'
         assert result['recommendation'] == 'Pricing and status page found — looks legit'
         assert result['criteria'][0]['evidence'] == 'https://example.com/pricing'
 
@@ -178,7 +286,7 @@ class TestEvaluateWithClaude:
         mock_client = MagicMock()
         mock_client.messages.create.side_effect = Exception('API error')
 
-        with self._mock_anthropic(mock_client):
+        with self._stub_claude(mock_client):
             result = ev.evaluate_with_claude('https://example.com')
 
         assert result is None
@@ -196,11 +304,10 @@ class TestEvaluateWithClaude:
             "recommendation": "Partial — signup process unclear"
         }'''
 
-        mock_msg = self._make_claude_response(json_payload)
         mock_client = MagicMock()
-        mock_client.messages.create.return_value = mock_msg
+        mock_client.messages.create.return_value = self._make_claude_response(json_payload)
 
-        with self._mock_anthropic(mock_client):
+        with self._stub_claude(mock_client):
             result = ev.evaluate_with_claude('https://example.com')
 
         assert result['score'] == 2
@@ -218,28 +325,70 @@ class TestEvaluateWithClaude:
             "recommendation": "Looks good"
         }'''
 
-        mock_msg = self._make_claude_response(json_payload)
         mock_client = MagicMock()
-        mock_client.messages.create.return_value = mock_msg
+        mock_client.messages.create.return_value = self._make_claude_response(json_payload)
 
-        with self._mock_anthropic(mock_client):
+        with self._stub_claude(mock_client):
             result = ev.evaluate_with_claude('https://example.com')
 
         assert result['category'] == 'Infrastructure Clouds'
 
 
 # ---------------------------------------------------------------------------
+# LLM provider dispatch
+# ---------------------------------------------------------------------------
+
+class TestLlmDispatch:
+
+    def test_evaluate_with_llm_routes_to_qwen(self):
+        with patch.object(ev, 'LLM_PROVIDER', 'qwen'):
+            with patch.object(ev, 'evaluate_with_qwen', return_value='qwen-result') as mock_qwen:
+                with patch.object(ev, 'evaluate_with_claude') as mock_claude:
+                    result = ev.evaluate_with_llm('https://example.com')
+        mock_qwen.assert_called_once_with('https://example.com')
+        mock_claude.assert_not_called()
+        assert result == 'qwen-result'
+
+    def test_evaluate_with_llm_routes_to_claude_by_default(self):
+        with patch.object(ev, 'LLM_PROVIDER', 'claude'):
+            with patch.object(ev, 'evaluate_with_claude', return_value='claude-result') as mock_claude:
+                with patch.object(ev, 'evaluate_with_qwen') as mock_qwen:
+                    result = ev.evaluate_with_llm('https://example.com')
+        mock_claude.assert_called_once_with('https://example.com')
+        mock_qwen.assert_not_called()
+        assert result == 'claude-result'
+
+    def test_generate_metadata_routes_to_qwen(self):
+        with patch.object(ev, 'LLM_PROVIDER', 'qwen'):
+            with patch.object(ev, 'generate_metadata_with_qwen', return_value={'name': 'Q'}) as mock_qwen:
+                with patch.object(ev, 'generate_metadata_with_claude') as mock_claude:
+                    result = ev.generate_metadata('https://example.com', 'content')
+        mock_qwen.assert_called_once_with('https://example.com', 'content')
+        mock_claude.assert_not_called()
+        assert result == {'name': 'Q'}
+
+    def test_generate_metadata_routes_to_claude_by_default(self):
+        with patch.object(ev, 'LLM_PROVIDER', 'claude'):
+            with patch.object(ev, 'generate_metadata_with_claude', return_value={'name': 'C'}) as mock_claude:
+                with patch.object(ev, 'generate_metadata_with_qwen') as mock_qwen:
+                    result = ev.generate_metadata('https://example.com', 'content')
+        mock_claude.assert_called_once_with('https://example.com', 'content')
+        mock_qwen.assert_not_called()
+        assert result == {'name': 'C'}
+
+
+# ---------------------------------------------------------------------------
 # generate_single_result_markdown — web search path
 # ---------------------------------------------------------------------------
 
-class TestGenerateSingleResultMarkdownWebSearch:
+class TestGenerateSingleResultMarkdownQwen:
 
     def _ws_result(self, score=3):
         return {
             'url': 'https://example.com',
             'company_name': 'Example Cloud',
             'score': score,
-            'fetch_method': 'claude_websearch',
+            'fetch_method': 'qwen',
             'needs_manual_review': score < 3,
             'recommendation': 'Pricing and status page found — looks legit',
             'criteria': [
@@ -267,17 +416,17 @@ class TestGenerateSingleResultMarkdownWebSearch:
         md = ev.generate_single_result_markdown(result, self._ws_ai_metadata())
         assert '[https://example.com/pricing](https://example.com/pricing)' in md
 
-    def test_web_search_badge_present(self):
+    def test_llm_badge_present(self):
         result = self._ws_result()
         md = ev.generate_single_result_markdown(result, self._ws_ai_metadata())
-        assert 'web search' in md.lower()
+        assert 'verified via llm' in md.lower()
 
     def test_non_url_evidence_rendered_as_plain_text(self):
         result = self._ws_result(score=1)
         result['criteria'][1]['passed'] = False
-        result['criteria'][1]['evidence'] = 'Not found via web search'
+        result['criteria'][1]['evidence'] = 'Not found'
         md = ev.generate_single_result_markdown(result, self._ws_ai_metadata())
-        assert 'Not found via web search' in md
+        assert 'Not found' in md
         # Should NOT wrap plain text in a Markdown link
         assert '[Not found' not in md
 
@@ -335,7 +484,8 @@ class TestEvaluateServiceCascade:
         assert result['fetch_method'] == 'jina'
         assert result['fetch_failed'] is False
 
-    def test_calls_claude_fallback_when_both_scrapers_fail(self):
+    @pytest.mark.parametrize('provider_method', ['qwen', 'claude'])
+    def test_calls_llm_fallback_when_both_scrapers_fail(self, provider_method):
         ws_result = {
             'criteria': [
                 {'name': 'Transparent Public Pricing', 'passed': True, 'evidence': 'https://example.com/pricing'},
@@ -347,18 +497,18 @@ class TestEvaluateServiceCascade:
             'description': 'Provides cloud infrastructure.',
             'category': 'Infrastructure Clouds',
             'recommendation': 'Pricing and status page found — looks legit',
-            'fetch_method': 'claude_websearch',
+            'fetch_method': provider_method,
         }
 
         def side_effect(url, **kwargs):
             raise requests.exceptions.ConnectionError('blocked')
 
         with patch('requests.get', side_effect=side_effect):
-            with patch.object(ev, 'evaluate_with_claude', return_value=ws_result) as mock_ws:
+            with patch.object(ev, 'evaluate_with_llm', return_value=ws_result) as mock_ws:
                 result = ev.evaluate_service('https://example.com')
 
         mock_ws.assert_called_once_with('https://example.com')
-        assert result['fetch_method'] == 'claude_websearch'
+        assert result['fetch_method'] == provider_method
         assert result['ai_metadata']['name'] == 'Example Cloud'
         assert result['recommendation'] == 'Pricing and status page found — looks legit'
 
@@ -367,7 +517,7 @@ class TestEvaluateServiceCascade:
             raise requests.exceptions.ConnectionError('blocked')
 
         with patch('requests.get', side_effect=side_effect):
-            with patch.object(ev, 'evaluate_with_claude', return_value=None):
+            with patch.object(ev, 'evaluate_with_llm', return_value=None):
                 result = ev.evaluate_service('https://example.com')
 
         assert result['fetch_failed'] is True

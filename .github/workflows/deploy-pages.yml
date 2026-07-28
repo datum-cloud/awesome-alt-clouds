@@ -3,58 +3,76 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-    paths:
-      - 'README.md'
-      - 'WATCHLIST.md'
-      - 'docs/**'
+    tags: ['v*']
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    
-    steps:
-      - name: Generate GitHub App token
-        id: app-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+# Allow one concurrent deployment; cancel in-progress runs on new push
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    name: Build Astro site
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ steps.app-token.outputs.token }}
-        
+          fetch-depth: 0
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          
-      - name: Generate clouds.json from README
-        run: |
-          python scripts/parse_readme_to_json.py README.md docs/clouds.json
 
-      - name: Generate llms.txt and llms-full.txt from clouds.json
-        run: |
-          python scripts/generate_llms.py docs/clouds.json docs/
+      - name: Regenerate clouds.json from README
+        run: python scripts/parse_readme_to_json.py README.md public/clouds.json
 
-      - name: Generate watchlist.json from WATCHLIST.md
-        run: |
-          python scripts/generate_watchlist_json.py
+      - name: Regenerate llms.txt and llms-full.txt
+        run: python scripts/generate_llms.py public/clouds.json public/
 
-      - name: Commit updated files
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/clouds.json docs/llms.txt docs/llms-full.txt docs/watchlist.json
+      - name: Regenerate watchlist.json from WATCHLIST.md
+        run: python scripts/generate_watchlist_json.py
 
-          # Only commit if there are changes
-          if ! git diff --staged --quiet; then
-            git commit -m "Auto-update clouds.json from README [skip ci]"
-            git push
-          else
-            echo "No changes to generated docs files"
-          fi
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro site
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    # PRs: build only. Deploy on push to main or a v* tag.
+    if: |
+      github.event_name == 'push' && (
+        github.ref == 'refs/heads/main' ||
+        startsWith(github.ref, 'refs/tags/v')
+      )
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

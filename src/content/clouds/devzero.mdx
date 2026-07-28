@@ -1,0 +1,54 @@
+---
+status: reviewed
+tagline: "Autonomously optimize Kubernetes compute and LLM inference costs across multi-cloud environments."
+headquarters: "San Francisco, CA"
+foundedYear: 2021
+pricingModel: usage-based
+openSource: false
+regions:
+  - "AWS us-east-1"
+  - "Azure eastus"
+  - "GCP us-central1"
+  - "OCI us-ashburn"
+services:
+  - "Kubernetes Cost Optimization"
+  - "Live Rightsizing"
+  - "LLM Inference Optimization"
+  - "Cloud-Agnostic Operator"
+  - "Shadow Cache"
+socials:
+  website: "https://www.devzero.io/"
+  linkedin: "https://linkedin.com/company/devzero"
+---
+
+## What makes DevZero different
+
+DevZero distinguishes itself as a cloud-agnostic optimization layer rather than a standalone compute provider. It operates as a lightweight operator installed on existing Kubernetes clusters across AWS, Azure, GCP, OCI, and OpenShift. Its core differentiator is "Live Rightsizing," which uses MicroVMs to profile and rightsize workloads without downtime. Unlike traditional tools that require restarts to change instance types, DevZero’s checkpoint-restore technology enables instant live migration, allowing it to binpack pods onto the most cost-effective nodes in real-time based on actual usage patterns.
+
+The platform also addresses the rising cost of AI inference. DevZero’s "Optimize Inference" feature (currently in beta) monitors traffic to Large Language Model (LLM) providers, simulating rerouting strategies to balance cost, latency, and reliability. It includes a shadow cache for repeat prompts and an evaluation lab to compare models, ensuring teams use the most appropriate model for each request rather than defaulting to expensive, high-capability models for mundane tasks.
+
+## Pricing model
+
+DevZero does not publish fixed public tier pricing on its homepage; instead, it operates on a value-based or usage-based model tied to the savings it generates. The company emphasizes a "Try before you buy" approach with zero upfront costs or initial configuration requirements. Customers can install the operator to receive savings insights within 24 hours.
+
+The platform claims an average compute bill reduction of 30-60% within two weeks. Case studies cited on the site highlight significant savings, such as Databahn achieving 75% compute savings on AWS and Fi Money realizing 67% savings. The pricing structure is designed to align DevZero’s incentives with the customer’s cost reduction, though specific per-cluster or per-node pricing details are not publicly listed and likely require sales engagement.
+
+## When it fits
+
+- **High-Scale Kubernetes Environments:** Ideal for teams with large, complex clusters where overprovisioning is common and manual rightsizing is unmanageable.
+- **Multi-Cloud Strategies:** Best for organizations running workloads across AWS, Azure, and GCP who want a unified optimization layer without vendor lock-in.
+- **AI/LLM Heavy Workloads:** Suitable for engineering teams spending significant budgets on third-party LLM APIs, needing granular control over model selection and caching.
+- **Cost-Conscious Startups:** Companies looking to reduce infrastructure burn rate by eliminating idle memory, CPU, and GPU waste without sacrificing uptime.
+
+## When it doesn't
+
+- **Single-Provider Simplicity:** For small teams with simple, single-cloud deployments, the overhead of installing and managing an additional operator may outweigh the benefits.
+- **Static Workloads:** If workloads have predictable, steady-state resource needs, the dynamic binpacking and live migration features may provide less marginal value compared to simple reserved instance purchases.
+
+## Inclusion criteria
+
+DevZero meets all three inclusion criteria:
+
+1.  **Transparent Pricing:** While specific dollar amounts per unit are not public, the pricing model is clearly described as usage-based with no upfront costs, and savings metrics are transparently cited in case studies.
+2.  **Self-Service Signup:** The website promotes a self-service installation process via a lightweight operator with "zero upfront cost," implying a frictionless entry point for developers.
+3.  **Public SLA/Status Page:** DevZero provides a public status page at `status.devzero.io` to monitor service availability.

@@ -1,0 +1,53 @@
+---
+status: reviewed
+tagline: "Error tracking, performance monitoring, and session replay to identify and fix code issues faster."
+pricingModel: "usage-based"
+services:
+  - "Error Monitoring"
+  - "Performance Monitoring & Tracing"
+  - "Session Replay"
+  - "Log Aggregation"
+  - "Profiling"
+  - "Cron Monitoring"
+  - "Uptime Monitoring"
+  - "AI Debugging (Seer)"
+  - "AI Code Review"
+socials:
+  website: "https://sentry.io/"
+  github: "https://github.com/getsentry"
+---
+
+## What makes Sentry different
+
+Sentry is purpose-built for developers, not infrastructure teams. Unlike generic observability platforms that require agents or collectors, Sentry SDKs integrate directly into application code with minimal overhead—often in under five lines of code across 25+ languages and frameworks (Python, Node.js, React, Go, .NET, Java, Ruby, PHP, Swift, Kotlin, and more).
+
+The platform uniquely connects errors, logs, session replays, distributed traces, profiles, and metrics through a single unified trace ID. This means when a bug occurs, developers see the full context: the exact request that failed, the user session, the backend trace, and the relevant logs—eliminating the need to context-switch between tools. Sentry's AI-powered debugging agent (Seer) analyzes this connected telemetry to suggest merge-ready patches and catch regressions in pull requests before code ships.
+
+Sentry integrates deeply with developer workflows: GitHub, Slack, Jira, Linear, and even coding agents via Sentry's Model Context Protocol (MCP) server. This keeps debugging friction minimal.
+
+## Pricing model
+
+Sentry operates on a usage-based model, charging per event (errors, transactions, and replays). A free tier is available for small teams and hobby projects. The company does not publicly list exact per-event pricing on the main site, but this is typical for usage-based observability platforms where rates are custom-quoted based on volume and tier.
+
+What differentiates Sentry's pricing: transparent, predictable monthly quotes; no agent or infrastructure costs; and the ability to sample events intelligently (e.g., capture 100% of errors, 10% of transactions). This approach aligns costs with business value rather than compute resources, making it attractive for teams with variable or spiky traffic.
+
+## When it fits
+
+- **Early-stage and growth-stage startups** that need visibility into errors and performance without operational overhead.
+- **Full-stack JavaScript/TypeScript teams** deploying to Vercel, Next.js, or React Native—Sentry's SDKs are mature and deeply integrated.
+- **Mobile and game developers** shipping iOS, Android, or cross-platform apps requiring crash reporting and session replay.
+- **Open-source projects** that benefit from generous free tiers and low setup friction.
+- **Development teams prioritizing rapid debugging and incident response** who want context pre-fetched and AI-assisted root cause analysis.
+
+## When it doesn't
+
+- **Enterprise infrastructure teams** managing Kubernetes clusters or requiring on-premise deployment will find Sentry a specialized tool, not a full observability platform (no infrastructure/container metrics).
+- **Organizations with extreme compliance requirements** (on-prem-only, air-gapped networks) may face constraints, though Sentry does support self-hosted deployments on a commercial basis.
+
+## Inclusion criteria
+
+Sentry meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing**: [Pricing page](https://sentry.io/pricing/) clearly describes the usage-based model and free tier.
+2. **Self-service signup**: [Get Started](https://sentry.io/welcome/) enables one-click registration and immediate SDK integration.
+3. **Public SLA & status page**: [Status page](https://status.sentry.io/) provides real-time uptime and incident transparency.

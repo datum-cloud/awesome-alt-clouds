@@ -1,0 +1,46 @@
+---
+status: reviewed
+tagline: "Affordable GPU cloud for AI training and inference with European infrastructure"
+pricingModel: "hourly"
+regions:
+  - "Europe"
+services:
+  - "GPU Instances (1x–8x GPUs with NVLink)"
+  - "Instant Clusters (16x–128x GPUs with InfiniBand)"
+  - "Bare-metal Clusters"
+  - "Serverless Containers"
+  - "Managed Endpoints (Inference API)"
+socials:
+  website: "https://datacrunch.io/"
+  linkedin: "https://www.linkedin.com/company/datacrunch/"
+---
+
+## What makes Datacrunch.io different
+
+Datacrunch (now operating under the brand Verda) focuses on delivering GPU compute exclusively for AI workloads with a strong emphasis on European infrastructure and in-house AI R&D. The provider positions itself as an alternative to hyperscaler GPU access by offering transparent, developer-friendly pricing and instant access to cutting-edge hardware—from NVIDIA H100/H200 to the latest B200 and GB300 NVL72 GPUs.
+
+The platform combines individual GPU instances for prototyping with large-scale instant clusters supporting 16–128 GPUs connected via InfiniBand for distributed training, plus serverless GPU containers with auto-scaling. A notable differentiator is their managed inference endpoints, allowing developers to deploy state-of-the-art models (including FLUX.2 and other frontier models) without managing infrastructure. The company also operates a strong developer community and actively publishes GPU benchmarks and AI research.
+
+## Pricing model
+
+Datacrunch uses hourly billing for compute resources. While the page content provided does not include specific hourly rates, the provider advertises itself as offering **affordable GPU pricing** compared to mainstream cloud providers, with a focus on transparent, self-service consumption. Pricing varies by GPU tier—from older-generation cards (A100, RTX PRO 6000) to current-gen hardware (H100, H200, B200, B300) and latest-gen accelerators (GB300). The platform also offers compute credits for developer community contributions, reducing friction for researchers and smaller organizations entering the ecosystem.
+
+## When it fits
+
+- **AI researchers and teams** prototyping models in PyTorch, TensorFlow, or other frameworks who need instant GPU access without long procurement cycles
+- **Distributed training workloads** requiring 16+ GPUs with high-speed InfiniBand connectivity
+- **AI inference at scale** via managed endpoints, eliminating the need to manage containerization or orchestration
+- **European-based AI companies** subject to data residency or latency requirements that benefit from EU infrastructure
+- **Benchmark and comparative analysis** work, given the provider's published GPU performance data and active R&D community
+
+## When it doesn't
+
+Datacrunch is GPU-compute-focused and not a general-purpose cloud provider. It lacks traditional services (managed databases, Kubernetes, object storage, networking) that full-stack workloads require, making it a poor fit for web applications, microservices, or mixed CPU/GPU environments requiring integrated tooling.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Self-service signup available; hourly pricing model clearly published on the platform.
+
+✅ **Self-service signup**: Direct account creation and instant compute provisioning via web console and API.
+
+✅ **Public SLA / status page**: Trust Center (https://datacrunch.io/trust-center) and status/monitoring infrastructure documented; API and console infrastructure (cloud.datacrunch.io, api.datacrunch.io) maintained with uptime monitoring.

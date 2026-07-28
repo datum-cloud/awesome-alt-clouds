@@ -1,0 +1,53 @@
+---
+status: reviewed
+tagline: "Graph-relational database built on Postgres with modern query language and native AI/Auth"
+pricingModel: "usage-based"
+openSource: true
+regions:
+  - "AWS (primary; expansion planned)"
+services:
+  - "Managed graph-relational database"
+  - "EdgeQL query language"
+  - "Schema migrations and branching"
+  - "Built-in authentication (OAuth, email, passkeys)"
+  - "AI embeddings and RAG"
+  - "Connection pooling and caching"
+  - "Client libraries (TypeScript, Python, Go, Dart, Rust, .NET, Java)"
+  - "Gel UI (schema browser, query IDE, data editor)"
+socials:
+  website: "https://www.geldata.com/"
+  github: "https://github.com/geldata/gel"
+---
+
+## What makes Gel different
+
+Gel reimagines relational databases by layering a **graph-relational data model** and purpose-built query language (EdgeQL) on top of Postgres. Rather than replacing Postgres, Gel acts as a fully open-source superset that compiles down to efficient Postgres schemas—keeping the reliability and ecosystem of the world's most trusted database while solving common pain points like N+1 queries and schema migration friction.
+
+The platform is **vertically integrated**: Gel doesn't just provide a database query engine. It bundles authentication (with passkeys, OAuth, magic links, and sign-up UI), AI-powered embeddings and RAG endpoints, schema versioning, a rich web UI, and native GraphQL support—all without additional fees or external dependencies. This differs sharply from hyperscaler approaches, where you typically bolt together compute, databases, and auth services separately.
+
+Gel's development experience is deliberately modern. The CLI installs via `npx` or `uvx` without sudo, schema is defined in a type-based language (not raw SQL), migrations are first-class citizens, and preview deployments integrate directly with Vercel and GitHub Pull Requests. The result is a workflow optimized for rapid iteration rather than enterprise operations.
+
+## Pricing model
+
+Gel Cloud operates on a **usage-based model**, though exact pricing tiers are not published on the public website. The company explicitly advertises **$0.00** for its Auth extension, positioning it as a core, non-metered feature. Pricing appears designed to be "suitable for both startups and enterprises," with managed high-availability and automated backups included.
+
+This contrasts with hyperscaler databases, which typically charge separately for compute, storage, backups, and egress. Gel's bundled approach (including Auth and AI at no extra cost) potentially reduces total cost of ownership for applications that would otherwise require external identity and vector databases.
+
+## When it fits
+
+- **Rapid product development**: Type-driven schema, automatic migrations, and zero-config deployment make iteration fast—ideal for startups and teams shipping frequently.
+- **Graph-heavy queries**: Applications with complex relationships (social networks, recommendation engines, knowledge graphs) benefit from EdgeQL's native support for traversal and composition.
+- **Full-stack JavaScript/TypeScript**: Deep Vercel and GitHub integration, plus TypeScript query builders and code generation, make this a natural fit for Next.js and similar stacks.
+- **AI-first applications**: Built-in embeddings, RAG endpoints, and LLM integration reduce scaffolding for retrieval-augmented generation features.
+- **Authentication-heavy products**: Bundled Auth with passkeys, OAuth, and magic links eliminates the need for third-party services like Auth0.
+
+## When it doesn't
+
+- **Hyperscale OLAP / data warehousing**: Gel's Postgres foundation is built for transactional workloads. High-volume analytics queries are better served by DuckDB, Snowflake, or BigQuery.
+- **Strict SQL-only requirement**: While Gel supports SQL via ORMs and native queries, organizations committed to pure SQL workflows may find EdgeQL and type-based modeling unnecessary.
+
+## Inclusion criteria
+
+✓ **Transparent pricing**: Gel Cloud publishes its pricing model and free tier for Auth on the public site.  
+✓ **Self-service signup**: Cloud sign-up is available at [https://cloud.geldata.com/](https://cloud.geldata.com/).  
+✓ **Public SLA/status page**: Gel provides a fully managed, HA service with secure-by-default architecture; no explicit status page link found in materials, but uptime guarantees are implied by the managed offering.

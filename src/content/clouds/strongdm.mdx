@@ -1,0 +1,56 @@
+---
+status: reviewed
+tagline: "Zero-trust privileged access management (PAM) and database access security platform."
+headquarters: "San Francisco, CA"
+foundedYear: 2014
+pricingModel: subscription
+openSource: false
+services:
+  - Privileged Access Management (PAM)
+  - Database Access Management (DAM)
+  - Just-in-Time (JIT) Access
+  - Session Recording & Analytics
+  - Policy Engine (Access Control)
+  - Kubernetes Access
+  - Network Device Access
+  - Credential Vaulting
+socials:
+  website: "https://www.strongdm.com/"
+  x: "https://twitter.com/strongdm"
+  linkedin: "https://www.linkedin.com/company/strongdm"
+---
+
+## What makes StrongDM different
+
+StrongDM is not a traditional infrastructure provider like AWS or GCP; it is a security layer that sits between users and your existing infrastructure. Unlike legacy PAM solutions that rely on "front-door" gateways or complex proxy configurations, StrongDM uses a lightweight agentless architecture (for many workloads) or a small client to enforce zero-trust policies directly. It eliminates standing privileges by providing just-in-time access to servers, databases, and Kubernetes clusters.
+
+The platform’s core differentiator is its policy engine, which allows for granular, context-aware access controls based on user identity, device posture, and resource sensitivity. It integrates with existing identity providers (IdPs) like Okta, Azure AD, and PingIdentity, ensuring that access decisions are driven by your central IAM strategy rather than a separate siloed system. This "Bring Your Own Stack" approach means StrongDM protects whatever infrastructure you already have, whether it’s on-premises, multi-cloud, or hybrid.
+
+StrongDM also emphasizes "Frustration-Free Access," reducing the friction of secure access for developers and admins while maintaining strict security postures. It provides session recording, command-level auditing, and real-time monitoring, making it easier to meet compliance requirements for HIPAA, PCI DSS, SOC 2, and FedRAMP without overwhelming security teams with alert fatigue.
+
+## Pricing model
+
+StrongDM operates on a subscription-based model, typically priced per user or per endpoint/resource, depending on the specific module (e.g., PAM vs. DAM) and the volume of access required. Exact pricing is not publicly listed on their website and requires contacting sales for a quote. The model is generally considered enterprise-grade, with costs scaling based on the number of administrators, developers, and auditors needing access, as well as the number of target resources.
+
+While specific dollar amounts are not public, the value proposition centers on reducing risk and compliance overhead rather than raw compute costs. It stands out by offering a unified platform for both human and non-human (service account) access management, which can simplify licensing compared to using separate tools for server PAM and database access.
+
+## When it fits
+
+- **Regulated Industries:** Organizations in finance, healthcare, or government that must meet strict compliance requirements (HIPAA, PCI, FedRAMP) for access control and auditing.
+- **Multi-Cloud Environments:** Companies with complex hybrid infrastructures (AWS, Azure, GCP, and on-prem) that need a consistent security policy layer across all environments.
+- **DevOps & Security Teams:** Teams that need to balance developer velocity with security, using just-in-time access to eliminate standing privileges without breaking workflows.
+- **Database Security:** Organizations requiring granular control over database access, including query-level auditing and dynamic masking of sensitive data.
+- **Vendor/Third-Party Access:** Enterprises that need to grant temporary, audited access to external vendors or partners for troubleshooting or maintenance.
+
+## When it doesn't
+
+- **Compute/Storage Needs:** StrongDM does not provide compute, storage, or networking infrastructure; it is a security overlay.
+- **Small Teams with Simple Needs:** For very small organizations with minimal compliance requirements, a full-featured PAM platform may be overkill and cost-prohibitive compared to simpler IAM tools.
+
+## Inclusion criteria
+
+StrongDM meets all three inclusion criteria for alt-cloud.org:
+
+1.  **Transparent Pricing:** While exact figures require a quote, the subscription model and tiered structure are clearly defined, and a "Pricing" page exists with guidance on how costs are calculated (strongdm.com/pricing).
+2.  **Self-Service Signup:** StrongDM offers a free trial or demo that can be initiated without a sales call, allowing users to evaluate the platform directly (strongdm.com/pricing).
+3.  **Public SLA/Status Page:** StrongDM provides a public status page to monitor service availability (status.strongdm.com) and includes SLA details in their enterprise agreements.

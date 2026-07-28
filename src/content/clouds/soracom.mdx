@@ -1,0 +1,58 @@
+---
+status: reviewed
+tagline: "Cellular connectivity and edge services for global IoT deployments, with developer-friendly APIs."
+headquarters: "Tokyo, Japan"
+foundedYear: 2013
+pricingModel: usage-based
+openSource: false
+regions:
+  - "Global (via partner networks)"
+services:
+  - "Soracom Air (Cellular Connectivity)"
+  - "Soracom Harvest (Data Collection)"
+  - "Soracom Beam (Secure Networking)"
+  - "Soracom Fiber (Wi-Fi/Ethernet)"
+  - "Soracom Orbit (Satellite)"
+  - "Soracom Edge Computing"
+  - "IoT SIM/eSIM/iSIM Management"
+socials:
+  website: "https://soracom.io/"
+  x: "https://twitter.com/SoracomInc"
+  linkedin: "https://linkedin.com/company/soracom"
+---
+
+## What makes Soracom different
+
+Soracom operates as a connectivity and edge service provider specifically architected for the Internet of Things (IoT), rather than a general-purpose cloud infrastructure provider. Its core differentiator is the ability to abstract the complexity of cellular network operators, allowing developers to manage global device connectivity through a single API and console. By partnering with multiple mobile network operators (MNOs) worldwide, Soracom provides a unified SIM solution that eliminates the need for managing separate contracts, APNs, and roaming agreements for each region.
+
+The platform integrates tightly with major hyperscalers (AWS, Azure, GCP) and supports direct data routing from devices to cloud storage or compute services without requiring complex gateway configurations. Soracom’s "Beam" service creates secure, private tunnels between devices and cloud endpoints, removing the need for public IP addresses or firewall port openings, which significantly reduces the attack surface for IoT deployments. Additionally, Soracom supports a blended networking approach, allowing devices to switch seamlessly between cellular, satellite, Wi-Fi, and LoRa based on availability and cost, managed entirely through the same interface.
+
+## Pricing model
+
+Soracom utilizes a usage-based pricing model, primarily charging for data consumption (MB/GB) and device management. Pricing structures typically include:
+
+- **Data Rates:** Variable rates depending on the region and volume tier, often ranging from cents per MB for high-volume plans to higher rates for low-volume or pay-as-you-go setups.
+- **Device Fees:** A small monthly or annual fee per active SIM/device for management and connectivity services.
+- **Feature Add-ons:** Additional costs for specific features like satellite connectivity (Orbit) or advanced security options.
+
+The model stands out for its transparency and lack of long-term commitments, allowing startups to scale costs linearly with device deployment. It avoids the complex tiered storage or compute pricing of traditional clouds, focusing instead on the cost of connectivity and data ingress/egress.
+
+## When it fits
+
+- **Global IoT Deployments:** Projects requiring devices to operate across multiple countries without negotiating local carrier contracts.
+- **Remote Asset Tracking:** Logistics and agriculture applications needing reliable connectivity in rural or underserved areas via blended networking (cellular + satellite).
+- **Secure Device-to-Cloud:** Use cases where minimizing security overhead is critical, leveraging private tunnels instead of public internet exposure.
+- **Rapid Prototyping:** Startups needing immediate connectivity for hardware prototypes without waiting for enterprise carrier agreements.
+
+## When it doesn't
+
+- **General Compute/Storage:** Soracom is not a substitute for AWS EC2, S3, or Azure VMs for running applications or storing large datasets.
+- **High-Bandwidth Consumer Apps:** Workloads requiring massive, continuous data streams (e.g., video streaming) are better suited for traditional CDN and cloud infrastructure providers.
+
+## Inclusion criteria
+
+Soracom meets all 3 inclusion criteria:
+
+1.  **Transparent Pricing:** Detailed pricing pages and calculator tools are available on their website.
+2.  **Self-Service Signup:** Developers can create accounts and provision SIMs via the web console.
+3.  **Public SLA/Status Page:** Soracom provides a public status page for monitoring service health and offers SLAs for their connectivity services.

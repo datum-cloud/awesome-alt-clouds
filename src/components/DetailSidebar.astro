@@ -1,0 +1,261 @@
+---
+import { asset } from "../lib/assets";
+import type { MergedCloud } from "../lib/profile";
+import CompareButton from "./CompareButton.astro";
+import ScoreBadge from "./ScoreBadge.astro";
+
+export interface Props {
+  cloud: MergedCloud;
+}
+
+const { cloud } = Astro.props;
+
+let host = "";
+try {
+  host = new URL(cloud.url).hostname;
+} catch {
+  host = "";
+}
+const fallbackLetter = cloud.name.charAt(0).toUpperCase();
+const logoSrc = cloud.logo
+  ? cloud.logo
+  : host
+    ? `https://www.google.com/s2/favicons?domain=${host}&sz=128`
+    : null;
+
+const pricingLabel: Record<string, string> = {
+  hourly: "Hourly",
+  monthly: "Monthly",
+  "usage-based": "Usage-based",
+  subscription: "Subscription",
+  mixed: "Mixed",
+};
+
+const homeHref = asset("");
+---
+
+<aside
+  class="flex flex-col w-full md:w-[300px] md:flex-shrink-0 bg-cream md:border-r border-clay-beige px-5 py-6 md:sticky md:top-0 md:h-screen md:overflow-y-auto">
+  <a
+    href={homeHref}
+    class="hidden md:inline-flex items-center gap-2 text-xs font-medium text-warm-stone hover:text-rich-earth mb-6 no-underline transition-colors">
+    <svg
+      width="14"
+      height="14"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M15 19l-7-7 7-7"
+      ></path>
+    </svg>
+    <span>All clouds</span>
+  </a>
+
+  <div class="flex flex-col items-start gap-4 pb-6 border-b border-clay-beige">
+    <div
+      class="w-16 h-16 rounded-xl flex-shrink-0 overflow-hidden flex items-center justify-center font-serif font-semibold text-2xl text-warm-stone bg-white border border-clay-beige">
+      {
+        logoSrc ? (
+          <img
+            src={logoSrc}
+            alt={`${cloud.name} logo`}
+            class="w-full h-full object-contain"
+            loading="lazy"
+            onerror={`this.style.display='none';this.parentElement.textContent='${fallbackLetter}';`}
+          />
+        ) : (
+          fallbackLetter
+        )
+      }
+    </div>
+    <div class="w-full">
+      <h1 class="font-serif text-2xl font-semibold text-rich-earth leading-tight mb-1">
+        {cloud.name}
+      </h1>
+      {cloud.tagline && <p class="text-sm text-warm-stone leading-snug">{cloud.tagline}</p>}
+    </div>
+    <div class="flex w-full items-center justify-between gap-3">
+      {
+        cloud.url ? (
+          <a
+            href={cloud.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-bright-tangerine hover:underline inline-flex items-center gap-1.5 transition-all">
+            Visit →
+          </a>
+        ) : (
+          <span />
+        )
+      }
+      <ScoreBadge
+        score={cloud.score}
+        size="md"
+      />
+    </div>
+    <CompareButton
+      slug={cloud.slug}
+      name={cloud.name}
+      class="mt-3 w-full"
+    />
+  </div>
+
+  <div class="py-5 border-b border-clay-beige">
+    <div class="font-serif text-xs font-semibold uppercase tracking-wider text-warm-stone mb-2">
+      Categories
+    </div>
+    <div class="flex flex-wrap gap-1.5">
+      {
+        cloud.categories.map((cat) => (
+          <span class="inline-block px-2.5 py-1 bg-white border border-clay-beige rounded-full text-[11px] text-rich-earth font-medium">
+            {cat}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+
+  {
+    (cloud.headquarters ||
+      cloud.foundedYear ||
+      cloud.pricingModel ||
+      cloud.openSource !== undefined) && (
+      <div class="py-5 border-b border-clay-beige">
+        <div class="font-serif text-xs font-semibold uppercase tracking-wider text-warm-stone mb-3">
+          Key facts
+        </div>
+        <dl class="flex flex-col gap-2.5">
+          {cloud.headquarters && (
+            <div class="flex justify-between items-baseline gap-2 text-xs">
+              <dt class="text-warm-stone">Headquarters</dt>
+              <dd class="text-rich-earth font-medium text-right">{cloud.headquarters}</dd>
+            </div>
+          )}
+          {cloud.foundedYear && (
+            <div class="flex justify-between items-baseline gap-2 text-xs">
+              <dt class="text-warm-stone">Founded</dt>
+              <dd class="text-rich-earth font-medium text-right">{cloud.foundedYear}</dd>
+            </div>
+          )}
+          {cloud.pricingModel && (
+            <div class="flex justify-between items-baseline gap-2 text-xs">
+              <dt class="text-warm-stone">Pricing</dt>
+              <dd class="text-rich-earth font-medium text-right">
+                {pricingLabel[cloud.pricingModel] || cloud.pricingModel}
+              </dd>
+            </div>
+          )}
+          {cloud.openSource !== undefined && (
+            <div class="flex justify-between items-baseline gap-2 text-xs">
+              <dt class="text-warm-stone">Open source</dt>
+              <dd class="text-rich-earth font-medium text-right">
+                {cloud.openSource ? "Yes" : "No"}
+              </dd>
+            </div>
+          )}
+          {cloud.dateAdded && (
+            <div class="flex justify-between items-baseline gap-2 text-xs">
+              <dt class="text-warm-stone">Listed</dt>
+              <dd class="text-rich-earth font-medium text-right">{cloud.dateAdded}</dd>
+            </div>
+          )}
+        </dl>
+      </div>
+    )
+  }
+
+  {
+    cloud.regions && cloud.regions.length > 0 && (
+      <div class="py-5 border-b border-clay-beige">
+        <div class="font-serif text-xs font-semibold uppercase tracking-wider text-warm-stone mb-2">
+          Regions
+        </div>
+        <ul class="flex flex-col gap-1">
+          {cloud.regions.map((r) => (
+            <li class="text-xs text-rich-earth">{r}</li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  {
+    cloud.services && cloud.services.length > 0 && (
+      <div class="py-5 border-b border-clay-beige">
+        <div class="font-serif text-xs font-semibold uppercase tracking-wider text-warm-stone mb-2">
+          Services
+        </div>
+        <ul class="flex flex-col gap-1">
+          {cloud.services.map((s) => (
+            <li class="text-xs text-rich-earth">{s}</li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  {
+    cloud.socials &&
+      (cloud.socials.x ||
+        cloud.socials.linkedin ||
+        cloud.socials.github ||
+        cloud.socials.website) && (
+        <div class="py-5 border-b border-clay-beige">
+          <div class="font-serif text-xs font-semibold uppercase tracking-wider text-warm-stone mb-2">
+            Socials
+          </div>
+          <ul class="flex flex-col gap-1.5 text-xs">
+            {cloud.socials.website && (
+              <li>
+                <a
+                  href={cloud.socials.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-warm-stone hover:text-bright-tangerine transition-colors">
+                  Website ↗
+                </a>
+              </li>
+            )}
+            {cloud.socials.x && (
+              <li>
+                <a
+                  href={cloud.socials.x}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-warm-stone hover:text-bright-tangerine transition-colors">
+                  X / Twitter ↗
+                </a>
+              </li>
+            )}
+            {cloud.socials.linkedin && (
+              <li>
+                <a
+                  href={cloud.socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-warm-stone hover:text-bright-tangerine transition-colors">
+                  LinkedIn ↗
+                </a>
+              </li>
+            )}
+            {cloud.socials.github && (
+              <li>
+                <a
+                  href={cloud.socials.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-warm-stone hover:text-bright-tangerine transition-colors">
+                  GitHub ↗
+                </a>
+              </li>
+            )}
+          </ul>
+        </div>
+      )
+  }
+</aside>

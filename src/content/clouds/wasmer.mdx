@@ -1,0 +1,52 @@
+---
+status: reviewed
+tagline: "Universal WebAssembly runtime for secure, portable applications across all platforms."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "WebAssembly Runtime"
+  - "Serverless Deployment"
+  - "Edge Computing"
+  - "WordPress Hosting"
+  - "Django Hosting"
+  - "Static Site Hosting"
+  - "PHP Hosting"
+  - "Wasmer Registry"
+  - "SDK (Python, JavaScript, Go, R, C, Zig)"
+socials:
+  website: "https://wasmer.io/"
+  github: "https://github.com/wasmerio/wasmer"
+  discord: "https://discord.gg/rWkMNStrEW"
+---
+
+## What makes Wasmer different
+
+Wasmer is a WebAssembly-first cloud platform that replaces traditional containerization with Wasm-based sandboxing. Unlike AWS Lambda, GCP Cloud Run, or Azure Functions, Wasmer emphasizes portability and security through WebAssembly's built-in isolation model rather than OS-level virtualization. Applications can run identically across servers, browsers, mobile devices, or embedded contexts—without recompilation or code changes. The platform claims 100x faster startup times and 20x lower costs than traditional serverless offerings by eliminating container overhead.
+
+The runtime supports a universal execution model: developers write code in any language (Python, JavaScript, Go, PHP, Ruby, Rust, C) and compile to Wasm, then deploy once to run everywhere. Wasmer's integration with existing frameworks (Next.js, Django, WordPress, Hugo, Laravel) means developers can migrate existing applications without refactoring.
+
+## Pricing model
+
+Wasmer offers a usage-based pricing model where customers pay only when applications are actively running. The platform emphasizes "no overpaying for unused capacity" and advertises aggressive cost reductions versus traditional cloud providers. Specific per-unit pricing (e.g., cost per GB-second or per million requests) is not published on the landing page; pricing details are available at [wasmer.io/pricing](https://wasmer.io/pricing), which requires visiting the site directly.
+
+A free tier supports experimentation and low-traffic projects. The model directly targets the pain point of always-on container costs in traditional serverless, where users pay for reserved capacity even during idle periods.
+
+## When it fits
+
+- **Polyglot applications**: Teams using multiple programming languages that need a single deployment target.
+- **Portable workloads**: Applications requiring consistent execution across edge, cloud, browser, and mobile environments.
+- **Cost-sensitive startups**: Projects with variable traffic that benefit from millisecond-level billing granularity and no baseline overhead.
+- **WordPress, PHP, and Django sites**: Wasmer provides managed hosting templates for these frameworks, optimized for security and performance.
+- **AI agents and edge compute**: Applications requiring fast cold starts and minimal resource footprint for distributed inference.
+
+## When it doesn't
+
+Stateful, long-running workloads with complex persistence requirements and large data-intensive batch processing are less ideal fits for a WebAssembly-first model. Organizations deeply invested in Kubernetes, Docker, or AWS-specific services may face migration friction.
+
+## Inclusion criteria
+
+Wasmer meets all three inclusion criteria:
+
+1. **Transparent pricing**: Usage-based model is publicly disclosed; free tier available for self-service signup at [wasmer.io/new](https://wasmer.io/new).
+2. **Self-service signup**: Instant onboarding with no sales process or manual approval.
+3. **Public status/SLA**: Supported via the Discord community and GitHub repository (15,000+ stars) with active development and transparency.

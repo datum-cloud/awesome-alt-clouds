@@ -1,0 +1,53 @@
+---
+status: reviewed
+tagline: "Cloud filesystem that unifies S3, GCS, and Azure Blob with sub-millisecond cached reads and serverless compute."
+pricingModel: "usage-based"
+regions:
+  - "AWS US East"
+  - "AWS US West"
+  - "AWS EU West"
+  - "GCP US Central"
+services:
+  - "Cloud filesystem with POSIX compatibility"
+  - "Multi-cloud storage mounting (S3, GCS, Azure Blob)"
+  - "Serverless execution (disk.exec())"
+  - "NVMe caching layer"
+  - "Data replication and consistency"
+  - "IAM role-based access control"
+socials:
+  website: "https://archil.com/"
+---
+
+## What makes Archil different
+
+Archil inverts the cloud storage architecture by treating the filesystem—not compute—as the primary resource. Rather than copying data into new storage systems or requiring direct SDK calls to object storage, Archil mounts S3, GCS, and Azure Blob buckets as a unified POSIX-compatible filesystem. Your data stays in your original bucket; Archil caches hot reads at sub-millisecond latency via NVMe nodes co-located with compute.
+
+The platform targets AI agents and data-heavy workloads that need persistent state across transient runs. Its serverless execution model (`disk.exec()`) lets you run bash directly on the filesystem without provisioning containers or moving data—each execution gets its own isolated container, but all share the same underlying disk. This eliminates the classic tradeoff between object storage economics and filesystem performance; benchmarks show 45× faster single-file reads than S3, 7× faster than EFS for metadata-heavy operations, and 79% lower cost than overprovisioned EBS for 10TB datasets.
+
+Archil raised $11M in Series A funding and emphasizes security and multi-tenancy: encryption at rest (AES-256), TLS 1.3 in transit, IAM role-based access, and scoped API keys per environment. Your bucket remains the source of truth; Archil never stores a persistent copy of your data outside your account.
+
+## Pricing model
+
+Archil offers 10 GB of free storage with no credit card required. Paid tiers use a usage-based model with separate charges for active data and standard object storage. The platform quotes $0.20/GB monthly for active (cached) data and S3 Standard rates for inactive data. A benchmark comparing 10TB storage (20% active) showed Archil at $582/month versus $2,731/month for over-provisioned EBS—a 79% cost reduction.
+
+Specific pricing for compute execution and egress is not published on the public site; custom pricing is available through their sales team.
+
+## When it fits
+
+- **AI agent workspaces** — Agents need persistent memory, checkpoints, and working files across sandbox runs without managing separate storage infrastructure.
+- **Training data pipelines** — Stream multi-GB/s throughput from shared S3 buckets across GPU clusters without network-attached volume overhead.
+- **Map-reduce and data fan-out** — Run `Promise.all(disk.exec())` across an entire bucket; each call spawns its own container without pulling data out of AWS/GCP.
+- **Model serving with shared KV caches** — Share model weights and inference caches across GPUs with sub-millisecond reads; serving layers never block on storage.
+- **Existing cloud storage migration** — Teams with data already in S3, GCS, or Azure Blob can mount it immediately without ETL or replication.
+
+## When it doesn't
+
+Archil is less suitable for workloads that require multi-region active-active replication or non-AWS/GCP cloud providers beyond Azure. Write-heavy transactional databases or applications requiring sub-millisecond write latency with strict consistency guarantees may be better served by dedicated managed databases.
+
+## Inclusion criteria
+
+✅ **Transparent pricing** — Usage-based rates published on the website ($0.20/GB for active data, S3 Standard rates for inactive).
+
+✅ **Self-service signup** — Free tier (10 GB) available without credit card; TypeScript SDK with npm package (30K+ downloads).
+
+✅ **Public SLA and status page** — 99.99% uptime SLA and 99.999% annual durability published on the homepage.

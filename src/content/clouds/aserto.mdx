@@ -1,0 +1,56 @@
+---
+status: reviewed
+tagline: Cloud-native authorization service built on Open Policy Agent, supporting RBAC, ABAC, and ReBAC.
+headquarters: "London, UK"
+foundedYear: 2021
+pricingModel: subscription
+openSource: true
+services:
+  - Authorization as a Service
+  - Topaz (Open Source Authorizer)
+  - Policy Management
+  - Fine-grained Access Control
+  - API Authorization
+  - GenAI Access Control
+socials:
+  website: "https://www.aserto.com/"
+  x: "https://twitter.com/aserto"
+  linkedin: "https://linkedin.com/company/aserto"
+  github: "https://github.com/aserto-dev"
+---
+
+## What makes Aserto different
+
+Aserto provides a centralized, cloud-native authorization layer that allows developers to manage fine-grained access controls across applications, APIs, and microservices. Unlike traditional IAM solutions that often focus on coarse-grained role-based access, Aserto supports complex models including Role-Based Access Control (RBAC), Attribute-Based Access Control (ABAC), and Relationship-Based Access Control (ReBAC). This flexibility is critical for multi-tenant SaaS applications and internal tools where permissions need to be dynamic and context-aware.
+
+The platform is built on Open Policy Agent (OPA), leveraging its powerful Rego policy language to define access rules. Aserto centralizes policy management while offering a decentralized evaluation architecture. It syncs authorization data in real-time to local authorizers or edge nodes, ensuring decisions are made in milliseconds based on the most current data. This architecture eliminates standing permissions and supports zero-trust principles by enforcing least-privilege access dynamically.
+
+Aserto offers a comprehensive set of SDKs for major programming languages including Node.js, Go, Python, Java, .NET, and Ruby. This allows developers to integrate authorization logic directly into their application code or middleware seamlessly. Additionally, the company provides an open-source project called Topaz, which serves as a cloud-native authorizer that can be self-hosted, offering flexibility for organizations with strict data residency or compliance requirements.
+
+## Pricing model
+
+Aserto operates on a subscription-based pricing model. Specific tiered pricing numbers are not publicly listed on their website and require contacting sales for a quote. However, they offer a free tier for small projects or evaluation purposes. The pricing structure is designed to scale with the number of users, policies, and API calls, catering to both startups and enterprise customers.
+
+## When it fits
+
+- **Multi-tenant SaaS applications** requiring complex, tenant-specific permission structures.
+- **API gateways and microservices** needing fast, decentralized authorization checks.
+- **Internal tools** where fine-grained access control based on user attributes or org charts is necessary.
+- **GenAI applications** requiring robust access control over prompts and data sources.
+- **Organizations adopting Zero Trust** architectures that demand dynamic, context-aware permissions.
+
+## When it doesn't
+
+- **Workloads requiring simple, static role-based access** where a full authorization service might be overkill.
+- **Projects with strict budget constraints** that cannot accommodate custom enterprise sales quotes for scaling.
+- **Environments requiring on-premises-only deployment** without using the open-source Topaz component, as the core SaaS is cloud-hosted.
+
+## Inclusion criteria
+
+Aserto previously met all 3 inclusion criteria:
+
+1.  **Transparent pricing:** Offered a free tier and clear pricing tiers (though specific numbers were sales-quoted for enterprise).
+2.  **Self-service signup:** Allowed developers to sign up and start using the service immediately.
+3.  **Public SLA/status page:** Provided a public status page at `status.aserto.com` and detailed SLAs in their terms.
+
+**Note:** Aserto ceased operations on May 31, 2025. While it historically met the criteria, it is no longer an active provider. This profile is maintained for historical reference and migration purposes.

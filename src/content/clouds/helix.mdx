@@ -1,0 +1,58 @@
+---
+status: reviewed
+tagline: "Agent virtualization and fleet orchestration platform with isolated desktop environments for AI agents."
+headquarters: "San Francisco, CA"
+foundedYear: 2024
+pricingModel: subscription
+openSource: false
+services:
+  - Agent Virtualization
+  - Fleet Orchestration
+  - GPU-Accelerated Desktops
+  - Kodit Code Intelligence
+  - Kanban Project Management
+  - Multiplayer Collaboration
+  - Enterprise Security (RBAC/SOC 2)
+socials:
+  website: "https://helix.ml/"
+  x: "https://twitter.com/helix_ml"
+  linkedin: "https://linkedin.com/company/helix-ml"
+---
+
+## What makes Helix different
+
+Helix redefines the developer experience for AI agents by providing full, GPU-accelerated virtual desktop environments rather than simple terminal access. Unlike traditional cloud providers that offer raw compute, Helix provides a specialized stack for "agent virtualization," allowing developers to run multiple isolated agent desktops on a single machine or cluster. Each agent receives a 4K streaming desktop with its own browser, terminal, filesystem, and GUI applications, enabling complex workflows that go beyond code generation to include design, research, and CAD tasks.
+
+The platform is built for high-density isolation, supporting up to 15 agent desktops per node with deduplicated filesystems and strict credential separation. This architecture allows teams to scale agent fleets without the storage explosion or security risks associated with shared environments. Helix’s custom Rust-based IDE and hardware-accelerated video streaming ensure low latency, making it possible for humans to watch, intervene, and pair-program with agents in real-time across time zones.
+
+Security is baked into the design with ephemeral per-task git keys, branch-scoped access, and full audit trails. Helix supports deployment on personal Mac hardware, private Kubernetes clusters, or their managed cloud, ensuring data sovereignty while providing the orchestration tools needed to manage dozens of autonomous agents as a unified fleet.
+
+## Pricing model
+
+Helix operates on a subscription model with distinct tiers for individual developers, teams, and enterprises.
+
+- **Mac App (Individual):** $299/year. Includes up to 15 isolated agent desktops on a single Mac, LAN sharing, and full 4K streaming. Users bring their own API keys or use local models like Ollama.
+- **Linux App:** $199/year. Similar capabilities for Linux environments.
+- **Cloud (Team):** $499/month per user. A managed service providing accelerated Claude access (3x faster), 30 concurrent agent desktops, 5,000 tasks/month, and 10 projects. No infrastructure management required.
+- **Enterprise:** Custom pricing starting from $7 (likely per user/month or similar metric, though the exact unit is ambiguous in the source). Includes dedicated onboarding, 8-week pilot, SSO, and advanced security features.
+
+A 24-hour free trial is available for the Mac app, and a free trial for the Cloud tier.
+
+## When it fits
+
+- **AI-Native Engineering Teams:** Teams looking to transition from single-agent coding assistants to multi-agent workflows requiring orchestration and visibility.
+- **Complex Agent Workloads:** Use cases requiring GUI applications, browsers, or multi-step research tasks that cannot be performed in a terminal-only environment.
+- **Collaborative AI Development:** Teams needing "follow-the-sun" workflows where multiple developers can interact with the same agent session or hand off tasks seamlessly.
+- **Security-Conscious Deployments:** Organizations requiring strict isolation, ephemeral credentials, and audit trails for AI agent actions, deployable on private Kubernetes or on-prem hardware.
+
+## When it doesn't
+
+Helix is not a general-purpose cloud provider for hosting web applications, databases, or standard microservices. It is a specialized tooling layer for AI agent development and orchestration, not a replacement for AWS EC2 or GCP Compute Engine for general infrastructure needs.
+
+## Inclusion criteria
+
+Helix meets all 3 inclusion criteria:
+
+1.  **Transparent Pricing:** Pricing is clearly listed on the website ($299/year for Mac, $499/mo for Cloud Team).
+2.  **Self-Service Signup:** Users can start a 24-hour free trial for the Mac app and a free trial for the Cloud tier directly via the website.
+3.  **Public SLA/Status Page:** The provider highlights SOC 2 Type II and ISO 27001 certifications, and the Cloud tier implies managed SLAs, though a public real-time status page URL was not explicitly found in the provided text. The presence of a managed cloud service with enterprise security standards strongly suggests operational transparency consistent with this criterion.

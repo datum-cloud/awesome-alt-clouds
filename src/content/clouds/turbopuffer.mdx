@@ -1,0 +1,46 @@
+---
+status: reviewed
+tagline: Serverless vector database built on object storage for sub-10ms latency and 10x lower cost.
+headquarters: "San Francisco, CA"
+foundedYear: 2023
+pricingModel: usage-based
+openSource: false
+services:
+  - Vector Search
+  - Full-Text Search
+  - Hybrid Search
+  - Metadata Filtering
+  - Pinned Namespaces
+socials:
+  website: "https://turbopuffer.com/"
+  github: "https://github.com/turbopuffer"
+---
+
+## What makes Turbopuffer different
+
+Turbopuffer distinguishes itself by building a vector database from first principles using object storage rather than traditional disk-based storage engines. This architectural choice allows it to offer significantly lower costs—claiming to be 10x cheaper than alternatives—while maintaining high performance for AI applications. It is designed specifically for semantic search, recommendation systems, and AI agent memory, handling billions of vectors with automatic scaling.
+
+The platform supports both vector similarity search and full-text search, enabling hybrid search capabilities out of the box. It features sub-10ms p50 latency for vector searches and supports metadata filtering, making it suitable for production-scale AI workloads. With a current production limit of 500 million documents per namespace and unlimited global scaling, it targets developers who need to manage massive datasets without the operational overhead of self-hosted solutions like Pinecone or Weaviate.
+
+## Pricing model
+
+Turbopuffer uses a usage-based pricing model charged per GB for storage, writes, and queries. The pricing structure is transparent, with costs calculated based on data volume and throughput. For example, storage is priced per GB, while queries are charged per PB processed. The platform offers 100,000 documents per namespace included in the base tier, and pinned namespaces are available for faster access to frequently queried data. This model stands out by eliminating fixed monthly fees for small to medium workloads, allowing developers to pay only for what they use, which is particularly cost-effective for sporadic or growing AI projects.
+
+## When it fits
+
+- AI applications requiring semantic search with low latency (sub-10ms p50).
+- Projects needing hybrid search capabilities combining vector and full-text search.
+- Workloads with high write throughput requirements (up to 10k writes/s per namespace).
+- Developers seeking a serverless solution with automatic scaling and no infrastructure management.
+- Cost-sensitive projects benefiting from object-storage-based architecture.
+
+## When it doesn't
+
+- Applications requiring strict data residency in specific geographic regions, as Turbopuffer currently operates in a limited number of regions.
+- Use cases needing complex transactional support or ACID compliance beyond basic metadata operations.
+
+## Inclusion criteria
+
+- **Transparent pricing**: Yes, detailed pricing tiers and cost calculators are available on their website.
+- **Self-service signup**: Yes, users can sign up and start using the service via their dashboard.
+- **Public SLA or status page**: Yes, Turbopuffer provides a public status page and SLA details for production services.

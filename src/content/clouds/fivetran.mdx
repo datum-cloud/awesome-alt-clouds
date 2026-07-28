@@ -1,0 +1,46 @@
+---
+status: reviewed
+tagline: "Automated data integration platform with 900+ connectors for zero-maintenance ETL pipelines"
+pricingModel: usage-based
+services:
+  - Data connectors (SaaS, databases, ERPs, files)
+  - Automated ETL pipelines
+  - Data warehouse integration
+  - Data lake support
+  - Business application activation
+  - Real-time data movement
+socials:
+  website: "https://www.fivetran.com/"
+---
+
+## What makes Fivetran different
+
+Fivetran specializes in fully managed, connector-based data integration rather than infrastructure provisioning. Unlike AWS Glue, GCP Dataflow, or Azure Data Factory—which require users to architect pipelines, manage compute, and tune performance—Fivetran abstracts away pipeline operation entirely. The platform handles connection management, schema detection, incremental syncs, and transformation logic, positioning itself as "zero-maintenance ETL."
+
+The breadth of pre-built connectors (900+ sources and destinations) is Fivetran's core moat. Rather than building custom extraction logic or managing APIs, users select a connector (Salesforce, HubSpot, Stripe, SAP, PostgreSQL, etc.) and configure sync schedules. Fivetran handles authentication, API pagination, rate limiting, and transformation. This is fundamentally different from IaaS offerings where you build and operate the pipelines yourself.
+
+## Pricing model
+
+Fivetran uses a usage-based pricing model centered on data moved and transformations executed. Pricing is per-connector-per-month, scaled by data volume and sync frequency. While exact rates are not publicly listed on the homepage, the model is transparent at signup: customers see estimated monthly costs before committing. Pricing typically ranges from tens to thousands of dollars per month depending on data volume and connector complexity.
+
+This approach contrasts sharply with hyperscaler compute pricing (per CPU-hour, per GB-scanned) and emphasizes simplicity: users pay for "connectors activated" and "data moved," not infrastructure tuning. There are no surprise egress charges or idle compute costs—a significant differentiator for cost-conscious data teams.
+
+## When it fits
+
+- **SaaS-heavy data stacks**: Organizations integrating 10+ SaaS tools (CRM, marketing, finance, support) into a warehouse benefit most from Fivetran's connector library and maintenance-free operation.
+- **Rapid time-to-insight**: Teams needing fast data pipeline deployment without hiring data engineers can activate connectors in minutes rather than weeks.
+- **Managed transformation needs**: Fivetran's built-in transformation layer (dbt integration available) handles common ELT patterns without requiring separate transformation tools.
+- **Multi-cloud or hybrid data architecture**: Support for cloud data warehouses (Snowflake, BigQuery, Redshift, Databricks) and on-premises databases makes it suitable for heterogeneous environments.
+- **Compliance-sensitive industries**: Pre-built audit logging, encryption, and SOC 2 Type II certification appeal to regulated sectors.
+
+## When it doesn't
+
+Fivetran is less suitable for highly custom data transformations, real-time streaming at massive scale (millisecond latency), or organizations deeply invested in open-source orchestration (Apache Airflow). Users needing fine-grained compute control or advanced machine learning feature engineering typically pair Fivetran with downstream tools rather than relying on it exclusively.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Fivetran publishes pricing model details and provides per-connector cost estimates during signup at https://www.fivetran.com/pricing.
+
+✅ **Self-service signup**: Free trial and sign-up available at https://www.fivetran.com/ with no sales call required.
+
+✅ **Public SLA / status page**: Fivetran publishes SLA terms and maintains a public status page documenting connector health and platform uptime.

@@ -1,0 +1,50 @@
+---
+status: reviewed
+tagline: "Rust-based search engine with hybrid full-text and semantic search, vector storage, and AI retrieval capabilities"
+pricingModel: usage-based
+openSource: true
+services:
+  - Full-text search
+  - Semantic search
+  - Hybrid search
+  - Vector storage
+  - Multimodal search
+  - Federated search
+  - Faceted search and filtering
+  - RAG and AI agent support
+socials:
+  website: "https://www.meilisearch.com/"
+  github: "https://github.com/meilisearch"
+---
+
+## What makes Meilisearch different
+
+Meilisearch is a purpose-built search engine designed from the ground up for modern AI and content retrieval workflows. Written in Rust, it emphasizes speed and relevance over the general-purpose architecture of traditional databases. Unlike AWS OpenSearch or standalone Elasticsearch, Meilisearch unifies full-text and semantic search in a single platform, making it straightforward to blend keyword matching with vector similarity queries without managing separate indices or complex ETL pipelines.
+
+The platform natively supports vector storage and embedding-powered search, positioning it as a direct alternative to managed Pinecone or Weaviate deployments for teams that want simpler operational overhead. Meilisearch also ships with typo tolerance and phonetic matching out of the box, reducing friction in search relevance tuning. Its federated search capability allows querying across multiple data sources simultaneously—useful for knowledge base and RAG applications where information spans disparate systems.
+
+## Pricing model
+
+Meilisearch Cloud operates on a usage-based pricing model tied to search requests and stored data. Exact per-request pricing is available on their [pricing page](https://www.meilisearch.com/pricing), though specific numbers were not visible in the provided materials. The platform also offers self-hosted deployment via open-source binaries, which carries no cloud costs but requires your own infrastructure management.
+
+Free tier and starter plans are available for development and low-traffic applications. Enterprise customers can negotiate custom pricing and on-premises licensing. This model appeals to teams wanting predictable costs tied directly to search volume rather than fixed monthly compute charges.
+
+## When it fits
+
+- **Search-first applications** – E-commerce, content platforms, and marketplaces where fast, relevant search is core to user experience
+- **Vector and semantic search** – Applications embedding LLMs, RAG systems, or similarity matching without managing separate vector databases
+- **Multimodal discovery** – Products that search across images, video, audio, and text simultaneously
+- **Rapid prototyping** – Developers building proof-of-concept search features who want a search engine that works out of the box with minimal configuration
+- **Self-hosted or hybrid deployments** – Teams needing on-premises search infrastructure or multi-cloud flexibility via the open-source version
+
+## When it doesn't
+
+Meilisearch is specialized for search and retrieval; it is not a general-purpose database and lacks transaction support, complex joins, or OLAP analytics. Teams needing a traditional relational database or data warehouse should look elsewhere. Very large-scale, multi-tenant SaaS platforms may find the per-request pricing model less cost-efficient than fixed infrastructure if traffic is extremely high and predictable.
+
+## Inclusion criteria
+
+Meilisearch meets all three inclusion criteria:
+
+- **Transparent pricing** – Usage-based pricing is published on [meilisearch.com/pricing](https://www.meilisearch.com/pricing)
+- **Self-service signup** – Free cloud account registration available at [cloud.meilisearch.com/register](https://cloud.meilisearch.com/register)
+- **Public SLA and status page** – [SLA](https://www.meilisearch.com/sla) and [status page](https://status.meilisearch.com/) are publicly available

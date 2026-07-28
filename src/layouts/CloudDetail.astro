@@ -1,0 +1,97 @@
+---
+import Base from "./Base.astro";
+import DetailSidebar from "../components/DetailSidebar.astro";
+import DetailTopBar from "../components/DetailTopBar.astro";
+import DraftBanner from "../components/DraftBanner.astro";
+import { defaultDescription, defaultTitle } from "../lib/site-meta";
+import { absoluteUrl } from "../lib/site-urls";
+import type { MergedCloud } from "../lib/profile";
+
+export interface Props {
+  cloud: MergedCloud;
+  featuredSlugs: string[];
+}
+
+const { cloud, featuredSlugs } = Astro.props;
+
+const pageTitle = `${cloud.name} — ${defaultTitle}`;
+const pageDescription = cloud.tagline || cloud.description || defaultDescription;
+const canonical = absoluteUrl(cloud.slug);
+
+const sameAs = [
+  cloud.socials?.website,
+  cloud.socials?.x,
+  cloud.socials?.linkedin,
+  cloud.socials?.github,
+].filter((url): url is string => Boolean(url));
+
+const profileJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${canonical}#organization`,
+      name: cloud.name,
+      url: cloud.url,
+      description: pageDescription,
+      ...(cloud.logo ? { logo: cloud.logo } : {}),
+      ...(sameAs.length > 0 ? { sameAs } : {}),
+      ...(cloud.headquarters
+        ? { address: { "@type": "PostalAddress", addressLocality: cloud.headquarters } }
+        : {}),
+      ...(cloud.foundedYear ? { foundingDate: String(cloud.foundedYear) } : {}),
+      mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+    },
+    {
+      "@type": "WebPage",
+      "@id": canonical,
+      url: canonical,
+      name: pageTitle,
+      description: pageDescription,
+      mainEntity: { "@id": `${canonical}#organization` },
+    },
+  ],
+};
+---
+
+<Base
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonical}>
+  <Fragment slot="head">
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(profileJsonLd)}
+    />
+  </Fragment>
+  <div class="flex flex-col md:flex-row min-h-screen">
+    <DetailSidebar cloud={cloud} />
+
+    <main class="flex-1 p-5 md:p-8 min-w-0">
+      <DetailTopBar featuredSlugs={featuredSlugs} />
+
+      <article class="cloud-detail max-w-4xl">
+        <header class="mb-8">
+          <div class="text-xs font-medium text-warm-stone uppercase tracking-wider mb-2">
+            {cloud.categories.join(" · ")}
+          </div>
+          <h1 class="font-serif text-3xl md:text-4xl font-semibold text-rich-earth leading-tight">
+            {cloud.name}
+          </h1>
+          {
+            cloud.tagline && (
+              <p class="mt-3 text-base text-warm-stone leading-relaxed">{cloud.tagline}</p>
+            )
+          }
+        </header>
+
+        {cloud.status === "draft" && <DraftBanner slug={cloud.slug} />}
+
+        <div class="prose-content">
+          <slot />
+        </div>
+      </article>
+    </main>
+  </div>
+</Base>

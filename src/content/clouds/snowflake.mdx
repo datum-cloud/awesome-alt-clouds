@@ -1,0 +1,53 @@
+---
+status: reviewed
+tagline: "Cloud data platform unifying warehousing, lakes, and data sharing with AI agents"
+pricingModel: "usage-based"
+services:
+  - "Data Warehousing"
+  - "Data Lakes"
+  - "Data Sharing & Marketplace"
+  - "Snowflake Cortex (AI/ML)"
+  - "Snowflake CoCo (AI Coding Agent)"
+  - "Snowflake Postgres"
+  - "Data Governance & Security"
+  - "Cross-cloud Deployment"
+socials:
+  website: "https://www.snowflake.com/en/"
+  x: "https://twitter.com/snowflakedb"
+  linkedin: "https://linkedin.com/company/snowflake-computing/"
+  github: "https://github.com/Snowflake-Labs"
+---
+
+## What makes Snowflake different
+
+Snowflake decouples compute from storage, allowing independent scaling and cost control—a fundamental architectural difference from traditional data warehouses. You pay only for the compute you use (measured in Snowflake credits), and storage costs are separate and transparent. This separation eliminates the need to overprovision infrastructure.
+
+The platform is natively multi-cloud, running on AWS, Azure, and GCP without requiring separate implementations. Data Sharing allows secure, instant access to live datasets across accounts and clouds without copying data, reducing ETL overhead. Snowflake Cortex integrates LLM capabilities directly into SQL, enabling AI workflows without external API calls or data movement.
+
+Recent additions like Snowflake CoCo (an AI coding agent) and Snowflake Postgres (general-purpose relational database on the same platform) expand beyond pure analytics into application workloads, positioning Snowflake as a unified data cloud rather than a point solution.
+
+## Pricing model
+
+Snowflake uses a consumption-based credit system. Standard edition credits cost approximately $2–4 per credit (pricing varies by region and cloud provider), with Business Critical edition at higher rates. One credit equals one compute unit per second; a single query might consume 5–50+ credits depending on warehouse size and query complexity.
+
+Storage is billed separately at roughly $23–40 per terabyte per month depending on edition and region. Data egress and data sharing incur additional charges. The model rewards optimization: pausing warehouses stops compute charges instantly, and query pruning directly reduces costs.
+
+What differentiates this from hyperscaler pricing: you're charged for actual usage with no upfront commitments required, and the separation of compute/storage means you can right-size each independently. On-demand pricing is standard; volume discounts and prepaid credits are available for predictable workloads.
+
+## When it fits
+
+- **Analytics and BI**: Interactive dashboards, reporting, and exploratory analysis on structured data
+- **Data lakes and governance**: Centralized repository for multiple data types with fine-grained access control and compliance features
+- **Data monetization**: Secure sharing of curated datasets with partners, customers, or internal teams via the Data Marketplace
+- **ML pipelines**: Feature engineering, training data preparation, and real-time inference using Cortex or integrated partner models
+- **Cross-organization collaboration**: Sharing live datasets across company boundaries without data duplication
+
+## When it doesn't
+
+Snowflake is less suitable for real-time OLTP workloads (sub-millisecond transactions) and unstructured data at scale without preprocessing. While Snowflake Postgres addresses OLTP, it competes with purpose-built databases on latency. Similarly, if you need tight cost control on small, unpredictable workloads, per-credit billing can surprise—reserved capacity may be more economical.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Credit and storage pricing published at [snowflake.com/pricing](https://www.snowflake.com/en/pricing/); calculator available  
+✅ **Self-service signup**: Free trial available; no sales call required  
+✅ **Public SLA and status page**: SLA available at [trust.snowflake.com](https://trust.snowflake.com); status page at [status.snowflake.com](https://status.snowflake.com)

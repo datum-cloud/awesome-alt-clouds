@@ -1,0 +1,49 @@
+---
+status: reviewed
+tagline: "Authorization framework with policy-as-code, permissions for agent security."
+headquarters: "San Francisco, California"
+foundedYear: 2020
+pricingModel: "subscription"
+openSource: true
+services:
+  - "Oso Cloud"
+  - "Oso for Agents"
+  - "Policy-as-Code Engine"
+  - "RBAC/ABAC Management"
+  - "Audit & Visibility"
+socials:
+  website: "https://www.osohq.com/"
+  x: "https://twitter.com/osohq"
+  linkedin: "https://www.linkedin.com/company/osohq"
+  github: "https://github.com/osohq"
+---
+
+## What makes Oso different
+
+Oso distinguishes itself by treating authorization as a first-class software concern rather than a backend infrastructure dependency. Unlike hyperscalers that offer fragmented, siloed IAM services (AWS IAM, Azure AD, GCP IAM) requiring complex integration across different APIs, Oso provides a unified Policy-as-Code engine. Developers define permissions using the Cedar or OsoQL languages directly within their application code, ensuring that access control logic evolves alongside the product features it protects.
+
+A key differentiator is Oso's specialized focus on modern, dynamic workloads, particularly AI agents. While traditional cloud providers struggle to secure autonomous agents that require granular, context-aware permissions, Oso offers "Oso for Agents." This feature set includes discovery, monitoring, and control mechanisms specifically designed to manage the risks of agentic AI, such as detecting rogue agents, preventing PII leakage, and enforcing least-privilege access for autonomous tools. This allows organizations to secure both human users and AI agents through a single, consistent policy language.
+
+Furthermore, Oso separates the policy decision point from the policy information point, allowing for high-performance, low-latency authorization checks without coupling them tightly to the underlying data store. This architecture supports complex Attribute-Based Access Control (ABAC) scenarios that are notoriously difficult to implement efficiently using native cloud IAM solutions, providing a more developer-friendly and scalable approach to permission management.
+
+## Pricing model
+
+Oso operates on a subscription-based pricing model, typically structured around usage metrics such as the number of active users, API calls, or authorized entities. Specific dollar amounts are not publicly listed and require contacting sales for a quote, which is common for enterprise-grade security infrastructure. The pricing structure generally includes tiers for the core Oso Cloud service and additional add-ons for advanced features like Oso for Agents or enhanced audit logging. This model stands out for its predictability compared to usage-based cloud IAM costs, though it requires negotiation for large-scale deployments.
+
+## When it fits
+
+- **AI-First Applications:** Organizations deploying autonomous AI agents that require granular, dynamic permission controls and visibility into agent behavior.
+- **Complex RBAC/ABAC Needs:** Teams needing sophisticated, context-aware authorization logic that exceeds the capabilities of standard cloud IAM role definitions.
+- **Developer-Driven Security:** Engineering teams that prefer to manage permissions as code within their application repository rather than managing separate console configurations.
+- **Unified Identity Management:** Companies looking to decouple authorization logic from their primary identity provider to reduce vendor lock-in and improve flexibility.
+
+## When it doesn't
+
+- **Simple Static Permissions:** Projects with basic, static role-based access needs may find Oso overly complex compared to built-in cloud IAM features.
+- **Infrastructure-Level IAM:** Oso is an application-level authorization layer; it does not manage cloud infrastructure permissions (e.g., managing AWS S3 bucket policies or Azure VM access).
+
+## Inclusion criteria
+
+- **Transparent Pricing:** Partially met. While specific tiers are hidden behind a sales wall, the subscription model and general pricing structure are acknowledged, though exact numbers are not public.
+- **Self-Service Signup:** Met. Developers can sign up and start using Oso Cloud directly via the web interface without sales intervention for lower tiers.
+- **Public SLA/Status Page:** Met. Oso provides a public status page (status.osohq.com) detailing system uptime and incidents, and offers SLAs for paid tiers.

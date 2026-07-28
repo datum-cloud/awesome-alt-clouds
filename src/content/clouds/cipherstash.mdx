@@ -1,0 +1,53 @@
+---
+status: reviewed
+tagline: "Zero-trust field-level encryption for Postgres with searchable encryption and cryptographic audit trails."
+headquarters: "London, UK"
+foundedYear: 2021
+pricingModel: "usage-based"
+openSource: true
+regions:
+  - "Global (9 regions for ZeroKMS)"
+services:
+  - "Searchable Field-Level Encryption"
+  - "ZeroKMS (Key Management)"
+  - "Data Level Access Control (DLAC)"
+  - "Cryptographic Audit Trails"
+  - "Secrets Management"
+socials:
+  website: "https://cipherstash.com/"
+  x: "https://twitter.com/cipherstash"
+  linkedin: "https://linkedin.com/company/cipherstash"
+  github: "https://github.com/cipherstash"
+---
+
+## What makes CipherStash different
+
+CipherStash redefines database security by moving access control from the application layer into the cryptographic layer. Unlike traditional hyperscaler solutions that rely on perimeter defense or complex Row-Level Security (RLS) configurations, CipherStash implements Data Level Access Control (DLAC). This ensures that every sensitive value is encrypted with a unique key where identity and policy are baked directly into the key material.
+
+The platform’s core differentiator is its ability to perform range queries, exact matches, and fuzzy text search over encrypted fields with less than 1ms overhead. This is achieved without requiring a new database engine or migration, working directly with existing Postgres indexes. Furthermore, their proprietary ZeroKMS engine derives keys on demand rather than storing them, offering 14x faster performance than AWS KMS and eliminating the latency bottlenecks associated with per-value encryption at scale.
+
+## Pricing model
+
+CipherStash employs a usage-based pricing model centered on "Data Keys," which represent the unit of encryption. The company charges for encryption operations (writes) but explicitly states that decryption is always free. This means users are never charged to access their own data, run audits, or leave the platform.
+
+Keysets (cryptographically separated groups of keys for isolation) and Clients (entities interacting with the system) scale with architectural complexity rather than raw storage volume. This model stands out against typical cloud pricing by aligning costs with security enforcement actions rather than passive data storage, incentivizing comprehensive field-level encryption without penalizing read-heavy workloads.
+
+## When it fits
+
+- **AI & Agentic Applications:** Securing data access for AI agents where prompt injection risks require zero-blast-radius containment.
+- **Multi-tenant SaaS:** Implementing cryptographic multitenancy with provable isolation between customers using distinct keysets.
+- **Regulated Industries:** Healthcare and finance requiring HIPAA/GDPR compliance with immutable, cryptographic audit trails for every access event.
+- **Existing Postgres Stacks:** Teams seeking to add field-level encryption without migrating to a new database or managing custom envelope encryption logic.
+
+## When it doesn't
+
+- **Non-Postgres Databases:** The solution is currently built specifically for Postgres and does not support other database engines.
+- **Read-Heavy, Low-Security Workloads:** If data does not require field-level granularity or searchable encryption, the overhead of integration may be unnecessary.
+
+## Inclusion criteria
+
+CipherStash meets all 3 inclusion criteria:
+
+1.  **Transparent Pricing:** The pricing model is clearly defined on their website, detailing charges for Data Keys and Keysets while stating decryption is free.
+2.  **Self-service Signup:** Users can start via SDKs and open-source tools, with a direct path to integration.
+3.  **Public SLA/Status Page:** The provider lists SOC 2 Type II certification and GDPR compliance, indicating robust operational standards and transparency.

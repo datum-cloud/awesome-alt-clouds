@@ -1,0 +1,48 @@
+---
+status: reviewed
+tagline: "PostgreSQL-compatible HTAP database for real-time analytics and transactional AI workloads."
+headquarters: "Munich, Germany"
+pricingModel: "usage-based"
+services:
+  - "Columnar HTAP database"
+  - "Real-time analytics"
+  - "Transactional queries"
+  - "AI agent data layer"
+  - "Time-series analytics"
+  - "JSON and vector support"
+  - "On-premise and cloud deployment"
+socials:
+  website: "https://cedardb.com/"
+---
+
+## What makes CedarDB different
+
+CedarDB is a hybrid transactional/analytical processing (HTAP) database that eliminates the traditional split between operational databases and analytics warehouses. Unlike typical cloud offerings that force you to choose between PostgreSQL for transactions or a data warehouse for analytics, CedarDB unifies both workloads in a single system with a single, always-fresh data source of truth.
+
+Built on decades of database research from Munich, CedarDB uses advanced query optimization and code generation to deliver hand-optimized performance for each query without manual tuning. The system automatically adapts storage and execution strategies on a per-tuple basis, switching between transaction-optimized and analytics-optimized layouts. Its PostgreSQL-compatible SQL interface means it plugs directly into existing application stacks, ORMs, and AI frameworks like LangChain with zero rewrites.
+
+For AI agents specifically, CedarDB ensures fresh data at query time—no ETL lag—while providing snapshot isolation so multiple concurrent agents never block each other. This makes it particularly suited to production AI systems that need both speed and consistency.
+
+## Pricing model
+
+CedarDB operates on a usage-based pricing model, with specific rates published on their [pricing page](https://cedardb.com/pricing/). Exact tier details were not available in the provided content, but the model focuses on consumption rather than fixed subscriptions. The offering includes options for on-premise and cloud deployment, with transparent per-unit pricing to enable cost predictability at scale.
+
+## When it fits
+
+- **Real-time analytics on live transactional data**: Replacing ETL pipelines with instant query access to fresh data, eliminating the analytics lag inherent in traditional data warehouses.
+- **AI and agentic workloads**: Providing a production-grade, consistent data layer for AI agents that need fresh data and concurrent read access without blocking.
+- **Hybrid OLTP/OLAP systems**: Applications that historically required separate PostgreSQL and Snowflake/BigQuery instances can consolidate into CedarDB.
+- **PostgreSQL-heavy stacks**: Teams already committed to PostgreSQL tooling, ORMs, and connectors can adopt CedarDB as a drop-in replacement without code changes.
+- **On-premise and edge deployments**: Organizations that need flexible deployment options across cloud, on-premise, or hybrid environments.
+
+## When it doesn't
+
+CedarDB is relatively new compared to mature cloud data warehouses, so organizations seeking deeply established vendor ecosystems or extensive third-party integrations may find PostgreSQL + Snowflake/BigQuery more battle-tested. It is not positioned as a replacement for specialized services like data lakes (S3/ADLS) or unstructured data platforms.
+
+## Inclusion criteria
+
+CedarDB meets all 3 alt-cloud inclusion criteria:
+
+1. **Transparent pricing**: Published on [cedardb.com/pricing/](https://cedardb.com/pricing/)
+2. **Self-service signup**: Available via [cedardb.com/get-started/](https://cedardb.com/get-started/)
+3. **Public SLA / status page**: Status and documentation available through [cedardb.com/docs/](https://cedardb.com/docs/)

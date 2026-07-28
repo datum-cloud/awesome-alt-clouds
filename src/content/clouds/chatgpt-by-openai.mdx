@@ -1,0 +1,46 @@
+---
+status: reviewed
+tagline: "Conversational AI assistant that generates human-like text and assists with a wide range of tasks."
+pricingModel: usage-based
+socials:
+  website: "https://openai.com/chatgpt"
+  x: "https://twitter.com/OpenAI"
+  linkedin: "https://linkedin.com/company/openai"
+  github: "https://github.com/openai"
+---
+
+## What makes ChatGPT by OpenAI different
+
+ChatGPT is not a traditional cloud infrastructure provider but rather a large language model (LLM) service that operates fundamentally differently from AWS, GCP, or Azure. Where those platforms offer compute, storage, and networking primitives, ChatGPT delivers pre-trained AI reasoning and language understanding as a managed service accessible via API or web interface.
+
+OpenAI's differentiation lies in the underlying model architecture—built on transformer-based deep learning with reinforcement learning from human feedback (RLHF)—which enables natural conversation, reasoning across complex domains, and code generation. Unlike generic compute services, ChatGPT arrives with semantic understanding already embedded, eliminating the need for customers to train or fine-tune their own models from scratch. This makes it a complementary alternative to traditional cloud providers for teams building AI-native applications, content generation tools, and intelligent assistants.
+
+## Pricing model
+
+ChatGPT offers a tiered pricing structure:
+
+- **Free tier**: Limited access to GPT-3.5 and web interface.
+- **ChatGPT Plus**: $20/month subscription for faster responses and priority access to new features (web interface only).
+- **API pricing** (pay-per-use): Varies by model. GPT-4o costs approximately $15 per 1M input tokens and $60 per 1M output tokens; GPT-4 Turbo is $10/$30 per 1M tokens; GPT-3.5 Turbo is $0.50/$1.50 per 1M tokens.
+
+The usage-based API model appeals to developers building applications that consume tokens unpredictably, while the subscription tier suits individual power users. Notably, this is orthogonal to traditional cloud billing—you're paying for AI inference capacity rather than infrastructure hours.
+
+## When it fits
+
+- **Content generation and writing assistance**: Blog posts, marketing copy, technical documentation.
+- **Customer support automation**: Building chatbots that handle FAQ-style queries and multi-turn conversations.
+- **Code development**: Pair programming, code review, debugging, and learning assistance.
+- **Knowledge work**: Summarization, research synthesis, and brainstorming across domains.
+- **Rapid prototyping**: Validating AI-driven product ideas without building or training models in-house.
+
+## When it doesn't
+
+ChatGPT is a poor fit for workloads requiring deterministic, low-latency responses or strict data residency compliance, and for applications needing specialized models trained on proprietary data. It's also unsuitable for high-volume, cost-sensitive inference where marginal per-token savings are critical, or for systems that cannot tolerate dependency on a third-party API.
+
+## Inclusion criteria
+
+ChatGPT meets all three alt-cloud inclusion criteria:
+
+1. **Transparent pricing**: Usage rates published at [openai.com/pricing](https://openai.com/pricing).
+2. **Self-service signup**: Account creation and API access available at [platform.openai.com](https://platform.openai.com).
+3. **Public SLA and status page**: System status and incident reports available at [status.openai.com](https://status.openai.com).

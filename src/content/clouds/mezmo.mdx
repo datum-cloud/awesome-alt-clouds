@@ -1,0 +1,47 @@
+---
+status: reviewed
+tagline: "AI-driven observability platform that curates and correlates machine data for agentic operations"
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Active Telemetry Pipelines"
+  - "AURA Agent Control Plane"
+  - "AI SRE for Root Cause Analysis"
+  - "Context Engineering"
+  - "OpenTelemetry Migration"
+  - "Log Ingestion & Enrichment"
+  - "MCP Server (Model Context Protocol)"
+socials:
+  website: "https://www.mezmo.com/"
+  github: "https://github.com/mezmo"
+---
+
+## What makes Mezmo different
+
+Mezmo addresses a fundamental problem in AI-driven operations: raw telemetry at scale overwhelms LLM agents, inflating token costs and degradation quality of incident response. Rather than streaming millions of raw events to models, Mezmo's **Active Telemetry Pipeline** applies intelligent compression and deduplication, reducing data volume by up to 99.98% before agents consume it. This engineering-first approach means every investigation costs roughly $1 instead of $30+.
+
+The platform ships **AURA**, an open-source (Apache 2.0) agent control plane written in Rust that runs on your infrastructure. AURA is LLM-agnostic (OpenAI, Anthropic, Bedrock, Gemini, Ollama) and uses the Model Context Protocol (MCP) for dynamic tool discovery—agents can wire up to Datadog, PagerDuty, Slack, and internal APIs without code changes. Multi-agent orchestration handles complex incident workflows: a triage agent routes to specialists (metrics analyst, log analyst), then a remediation agent acts on confirmed root cause. Built-in safety controls—turn depth limits, streaming timeouts, human-in-the-loop approval gates—prevent runaway agent behavior.
+
+## Pricing model
+
+Mezmo operates on a **usage-based subscription model** anchored to telemetry ingestion volume. While exact per-GB rates are not published on their pricing page, the platform emphasizes cost efficiency through its data reduction engine. The reference architecture shows investigations running at approximately **$1 per investigation** (vs. $30+ with raw vendor APIs), driven by the 99.98% data compression before LLM inference. This differs fundamentally from hyperscaler compute-hour billing: you pay for what you ingest and send to agents, not instance uptime.
+
+A free tier and self-service trial are available for testing AURA and the Mezmo context layer.
+
+## When it fits
+
+- **Production AI/agentic ops teams** building multi-step incident response workflows that need sub-minute mean time to remediation (MTTR).
+- **Site reliability engineers** at scale who need to correlate logs, metrics, and traces across distributed systems without token-cost explosion.
+- **Platform engineering teams** migrating to OpenTelemetry and seeking a vendor-agnostic, orchestration layer for observability-driven automation.
+- **Organizations running custom LLM agents** (LangChain, CrewAI, Temporal) that need curated, task-scoped telemetry instead of raw API firehoses.
+- **Teams with complex incident playbooks** requiring multi-agent handoffs, safety controls, and full audit trails (OpenInference tracing to Arize, Jaeger, Datadog).
+
+## When it doesn't
+
+Mezmo is not a general-purpose IaaS or compute platform; it cannot host arbitrary workloads. It is not a fit for organizations without significant observability data volume or those not using AI/LLM-based automation yet.
+
+## Inclusion criteria
+
+✓ **Transparent pricing**: Usage-based model documented; free trial self-service signup available.  
+✓ **Self-service signup**: Direct trial access at [https://www.mezmo.com/](https://www.mezmo.com/).  
+✓ **Public SLA / status page**: SLA document linked at [https://www.mezmo.com/](https://www.mezmo.com/) footer; trust documentation includes DPA, BAA, MSA.

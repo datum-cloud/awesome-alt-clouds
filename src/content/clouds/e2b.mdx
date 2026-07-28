@@ -1,0 +1,59 @@
+---
+status: reviewed
+tagline: Secure, ephemeral sandboxes for AI agents, code execution, and LLM tool use.
+headquarters: "Amsterdam, Netherlands"
+foundedYear: 2023
+pricingModel: usage-based
+openSource: true
+regions:
+  - "United States"
+  - "Europe"
+services:
+  - "Ephemeral Sandboxes"
+  - "Code Interpreter SDK"
+  - "Desktop Sandbox"
+  - "Sandbox Templates"
+  - "E2B Cloud CLI"
+socials:
+  website: "https://e2b.dev/"
+  x: "https://twitter.com/e2b_dev"
+  linkedin: "https://linkedin.com/company/e2b-dev"
+  github: "https://github.com/e2b-dev"
+---
+
+## What makes E2B different
+
+E2B replaces traditional server-based code execution with ephemeral, secure sandboxes powered by Firecracker microVMs. Unlike standard cloud instances that require manual provisioning and scaling, E2B sandboxes are designed for AI agents and LLM-driven applications. They spin up in under 200ms (often under 80ms in the same region) and tear down automatically after use, ensuring zero cold-start latency for agentic workflows and perfect isolation for untrusted code.
+
+The platform is LLM-agnostic, providing SDKs for Python, JavaScript, and TypeScript that integrate seamlessly with major AI frameworks like LangChain, LlamaIndex, and the AI SDK. It supports a full Linux environment, allowing agents to install packages, use browsers, and execute complex code chains. This architecture makes E2B ideal for "Code Interpreter" patterns where an LLM generates and executes code dynamically, such as in data analysis, deep research, or automated testing.
+
+## Pricing model
+
+E2B uses a usage-based pricing model centered on sandbox compute seconds.
+
+- **Hobby Tier:** Offers a free tier with limited monthly sandbox seconds, suitable for development and testing.
+- **Production:** Pricing scales with the number of sandbox seconds consumed. Rates vary by region (US vs. Europe) and CPU/RAM configuration. Typical production costs are calculated per second of active sandbox runtime.
+- **Enterprise:** Custom pricing for high-volume agents, including dedicated support and advanced security features.
+
+The model stands out by charging only for active execution time, eliminating idle costs associated with traditional VMs.
+
+## When it fits
+
+- **AI Agents with Tool Use:** When your LLM needs to execute code, run calculations, or browse the web safely.
+- **Code Interpretation:** Building features like ChatGPT’s Code Interpreter or data analysis tools.
+- **Vibe Coding & Fragments:** Hosting ephemeral, AI-generated apps that need to run briefly and then disappear.
+- **Reinforcement Learning:** Running thousands of concurrent, isolated environments for reward function evaluation.
+- **Secure MCP Servers:** Hosting Model Context Protocol servers that require isolated, secure execution environments.
+
+## When it doesn't
+
+- **Long-Running Stateful Services:** Not suitable for persistent backends, databases, or services requiring constant uptime.
+- **Heavy GPU Workloads:** E2B focuses on CPU-based code execution; it is not a GPU cloud for model training.
+
+## Inclusion criteria
+
+E2B meets all 3 inclusion criteria:
+
+1.  **Transparent Pricing:** Pricing details are available on their pricing page.
+2.  **Self-Service Signup:** Developers can sign up and start using sandboxes immediately via the dashboard or CLI.
+3.  **Public SLA/Status Page:** E2B provides a public status page at status.e2b.dev to monitor service health.

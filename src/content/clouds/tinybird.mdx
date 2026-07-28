@@ -1,0 +1,54 @@
+---
+status: reviewed
+tagline: "Real-time data APIs over ClickHouse with zero infrastructure overhead"
+pricingModel: "usage-based"
+regions:
+  - "US East"
+  - "US West"
+  - "EU West"
+services:
+  - "Managed ClickHouse"
+  - "Real-time data ingestion"
+  - "SQL API generation"
+  - "Kafka connector"
+  - "Schema iteration & migrations"
+  - "Git-based workflows"
+  - "Observability & monitoring"
+socials:
+  website: "https://www.tinybird.co/"
+  github: "https://github.com/tinybirdco"
+---
+
+## What makes Tinybird different
+
+Tinybird strips away ClickHouse's operational complexity by providing a fully managed, serverless layer on top. Rather than self-hosting—which requires managing Zookeeper, sharding, replication, and cluster orchestration—Tinybird users define data models in SQL, version control them via Git, and ship APIs instantly. The platform handles scaling, failover, and schema migrations without downtime.
+
+The developer experience is particularly tuned for building real-time analytics features into SaaS products. Features like zero-copy branches let teams spin up production-grade environments with full data replicas instantly, and the TypeScript/Python SDKs enable AI agents to autonomously build and deploy analytics. Query latency is sub-second across large datasets, making it viable for user-facing dashboards and real-time personalization.
+
+Unlike general-purpose data warehouses, Tinybird optimizes specifically for analytical APIs—the pattern where applications query data to power dashboards, recommendations, or event streams. The managed Kafka connector and HTTP ingestion endpoints mean you can start streaming data in minutes without ETL orchestration.
+
+## Pricing model
+
+Tinybird uses consumption-based pricing tied to data ingested, storage, and query compute. Specific tier pricing is available at [tinybird.co/pricing](https://www.tinybird.co/pricing). An Enterprise plan with dedicated clusters and SLAs is available via sales contact.
+
+The model differs from typical warehouse pricing: you pay for what you consume rather than reserved capacity, and there is no separate charge for API calls—only the underlying compute. This makes it cost-efficient for variable traffic patterns common in user-facing analytics.
+
+## When it fits
+
+- **Real-time user-facing dashboards** – sub-second latency suits embedded analytics in SaaS applications
+- **Event streaming & telemetry** – native Kafka integration and high-throughput ingestion designed for continuous data flows
+- **AI agent workflows** – SDKs and agent skills enable autonomous data product development
+- **Content recommendation & personalization** – low-latency queries support real-time ML feature serving
+- **Teams avoiding infrastructure ownership** – Vercel-like managed experience eliminates ClickHouse ops overhead
+
+## When it doesn't
+
+Not suitable for workloads requiring OLTP transactions, graph queries, or multi-tenant isolation via separate database instances. Teams deeply invested in Snowflake or BigQuery ecosystems may find migration friction.
+
+## Inclusion criteria
+
+Tinybird meets all 3 criteria for inclusion in alt-cloud.org:
+
+1. **Transparent pricing** – Usage-based pricing model is clearly published at [tinybird.co/pricing](https://www.tinybird.co/pricing)
+2. **Self-service signup** – Free tier available; instant cloud account creation at [cloud.tinybird.co/signup](https://cloud.tinybird.co/signup)
+3. **Public SLA & status** – SOC 2 Type II certified; status page and compliance documentation available via [tinybird.co/trust-center](https://www.tinybird.co/); dedicated SLAs offered on Enterprise plans

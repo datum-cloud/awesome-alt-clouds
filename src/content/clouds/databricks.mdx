@@ -1,0 +1,59 @@
+---
+status: reviewed
+tagline: "Unified analytics platform for data, AI, and BI built on Apache Spark and Delta Lake"
+pricingModel: "usage-based"
+openSource: true
+regions:
+  - "AWS (us-east-1, us-west-2, eu-west-1, ap-southeast-1)"
+  - "Azure (East US, West Europe, Southeast Asia)"
+  - "GCP (us-central1, europe-west1)"
+services:
+  - "Lakehouse Platform"
+  - "Databricks SQL (Serverless Data Warehouse)"
+  - "Data Engineering (ETL/Streaming)"
+  - "AI/ML Model Training & Deployment"
+  - "Business Intelligence (Genie)"
+  - "Unity Catalog (Governance)"
+  - "Delta Sharing (Data Sharing)"
+  - "Lakebase (PostgreSQL Database)"
+socials:
+  website: "https://www.databricks.com/"
+  linkedin: "https://linkedin.com/company/databricks"
+  github: "https://github.com/databricks"
+---
+
+## What makes Databricks different
+
+Databricks offers a purpose-built **lakehouse platform** that unifies data warehousing and data lakes—eliminating the false choice between raw data flexibility and SQL analytics performance. Built on Delta Lake (an open-source project), Databricks provides ACID transactions, schema enforcement, and time-travel capabilities at scale, all without forcing data into proprietary silos like traditional data warehouses.
+
+Unlike hyperscaler data services that fragment analytics across separate products (Redshift, BigQuery, Synapse), Databricks delivers a single platform where data engineers, analysts, and data scientists share the same governed workspace. This reduces data silos and ETL friction. The platform runs on your choice of AWS, Azure, or GCP, avoiding lock-in—a critical differentiator for enterprises skeptical of hyperscaler dependency.
+
+## Pricing model
+
+Databricks uses **Databricks Units (DBUs)**, a consumption-based model where you pay for compute based on cluster node type and uptime. As of 2025, pricing varies by workload tier:
+
+- **All-Purpose Compute**: for interactive/development work
+- **Jobs Compute**: for automated ETL and production pipelines (typically 30% cheaper)
+- **SQL Compute**: for analytics queries via Databricks SQL
+
+Pricing ranges approximately **$0.15–$1.50+ per DBU/hour** depending on cloud provider and region, with discounts for annual commitments. The **cost calculator** at databricks.com/product/pricing/product-pricing/instance-types lets you estimate spend upfront.
+
+What sets this apart: you only pay when clusters are running, no storage cost within the platform (you manage delta tables in your cloud object store), and job-based pricing incentivizes production automation over interactive exploration.
+
+## When it fits
+
+- **Organizations consolidating data & analytics**: replacing separate data warehouses and lakes with a single governed workspace
+- **ML/AI teams requiring a shared feature store**: collaborative environment for model training, serving, and governance
+- **Cloud-agnostic enterprises**: avoiding hyperscaler lock-in by running the same Databricks workspace across AWS, Azure, or GCP
+- **Data teams wanting open standards**: Delta Lake, Apache Spark, and open APIs reduce vendor capture
+- **Regulated industries requiring audit trails**: Unity Catalog provides column-level governance and lineage tracking
+
+## When it doesn't
+
+Databricks requires operational overhead for cluster management and is overkill for simple, low-latency OLTP applications or small analytics teams with limited budgets—in these cases, a managed data warehouse (BigQuery, Redshift) may be simpler. Not ideal for real-time streaming use cases at sub-second latency.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Pricing published at https://www.databricks.com/product/pricing with DBU rates by workload tier and region  
+✅ **Self-service signup**: Free tier available at https://www.databricks.com/product/pricing; no sales call required to start  
+✅ **Public SLA & status**: Status page at status.databricks.com; SLA details in security/trust center at https://www.databricks.com/security-trust

@@ -1,0 +1,51 @@
+---
+status: reviewed
+tagline: "AI-native cloud for GPU-accelerated fine-tuning and inference workloads"
+pricingModel: "hourly"
+regions:
+  - "US East"
+  - "US West"
+  - "Europe"
+services:
+  - "GPU Compute (A100, H100, L40S)"
+  - "Model Fine-tuning"
+  - "Inference Serving"
+  - "Distributed Training"
+  - "API Access"
+  - "Multi-GPU Orchestration"
+socials:
+  website: "https://www.turboscale.ai/"
+  x: "https://twitter.com/turboscaleai"
+---
+
+## What makes Turboscale different
+
+Turboscale is purpose-built for the modern AI development lifecycle rather than retrofitted for it. Unlike hyperscalers that offer GPUs as one commodity among hundreds of services, Turboscale optimizes the entire stack—from bare-metal GPU availability to pre-configured PyTorch and Hugging Face environments—specifically for fine-tuning and inference workflows.
+
+The platform removes the operational overhead of cluster management. Users can spin up distributed training across multiple GPUs without writing Kubernetes manifests or managing infrastructure. This focus on reducing friction between model code and execution is particularly valuable for ML teams that lack dedicated DevOps resources. Turboscale abstracts away GPU scheduling complexity while keeping costs transparent and predictable.
+
+## Pricing model
+
+Turboscale uses hourly pricing for GPU instances with no long-term commitment requirement. Pricing varies by GPU type and region; for example, A100 GPUs typically cost less per hour than H100s, reflecting their performance tier. The platform charges only for compute hours consumed—no hidden infrastructure fees or minimum spends. This usage-based model aligns costs directly with development iteration cycles, making it attractive for teams prototyping multiple models or running sporadic training jobs.
+
+Compared to hyperscaler GPU pricing, Turboscale emphasizes simplicity: a single hourly rate per GPU type, with discounts available for sustained usage. This transparency contrasts with complex reserved instance ladders or regional pricing multipliers common at AWS and GCP.
+
+## When it fits
+
+- **Fine-tuning open-source LLMs** – Quick iteration on models like Llama or Mistral without managing infrastructure.
+- **Multi-GPU distributed training** – Teams running data-parallel or model-parallel training without DevOps overhead.
+- **Inference API deployment** – Hosting custom models for production serving with automatic scaling.
+- **Research and prototyping** – ML researchers building proof-of-concepts who need instant GPU access.
+- **Cost-sensitive ML teams** – Organizations optimizing per-experiment spend with transparent hourly billing.
+
+## When it doesn't
+
+Turboscale is less suitable for large-scale data processing pipelines (MapReduce, Spark) or general-purpose cloud workloads requiring diverse compute types. It also lacks the breadth of managed services (databases, object storage, networking) that enterprises relying on a single vendor ecosystem may require.
+
+## Inclusion criteria
+
+Turboscale meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing** – Published hourly rates per GPU type, viewable on the pricing page without login.
+2. **Self-service signup** – Public registration and instant account provisioning at https://www.turboscale.ai/.
+3. **Public SLA & status page** – Service status and uptime commitments documented at https://status.turboscale.ai/.

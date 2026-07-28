@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate docs/llms.txt and docs/llms-full.txt from docs/clouds.json.
+Generate public/llms.txt and public/llms-full.txt from public/clouds.json.
 
 Called by deploy-pages.yml after clouds.json is regenerated so that
 AI-readable files always reflect the current state of the directory.
@@ -9,8 +9,8 @@ Usage:
     python scripts/generate_llms.py [clouds.json] [output_dir]
 
 Defaults:
-    clouds.json  → docs/clouds.json
-    output_dir   → docs/
+    clouds.json  → public/clouds.json
+    output_dir   → public/
 """
 
 import json
@@ -326,8 +326,8 @@ def generate_llms_full_txt(clouds: list[dict]) -> str:
 # ---------------------------------------------------------------------------
 
 def main() -> int:
-    clouds_path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("docs/clouds.json")
-    output_dir = Path(sys.argv[2]) if len(sys.argv) > 2 else Path("docs")
+    clouds_path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("public/clouds.json")
+    output_dir = Path(sys.argv[2]) if len(sys.argv) > 2 else Path("public")
 
     if not clouds_path.exists():
         print(f"ERROR: {clouds_path} not found", file=sys.stderr)

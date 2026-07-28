@@ -1,0 +1,53 @@
+---
+status: reviewed
+tagline: "Global voice AI execution layer reducing latency and cost via intelligent model routing and regional compliance."
+headquarters: "N/A"
+pricingModel: "usage-based"
+openSource: false
+regions:
+  - "US"
+  - "EU"
+  - "11 Sovereign Hubs"
+services:
+  - "Voice AI Gateway"
+  - "Intelligent Model Routing"
+  - "Regional Execution"
+  - "STT/TTS Optimization"
+  - "LLM Cost Reduction"
+socials:
+  website: "https://www.slng.ai"
+  x: "https://x.com/slng_ai"
+  linkedin: "https://linkedin.com/company/109116401/"
+---
+
+## What makes SLNG different
+
+SLNG operates as a global execution layer for real-time voice AI, sitting between your application orchestrator (like LiveKit or Pipecat) and your underlying model providers. Unlike direct API calls to LLM or Speech-to-Text providers, SLNG introduces an intelligent routing layer that analyzes each turn of a conversation to determine the most efficient execution path. This allows developers to keep their existing orchestrators and model contracts while significantly reducing costs and latency.
+
+The platform’s core differentiator is its adaptive execution engine. For a typical 16-turn call involving 48 model calls, SLNG routes specific turns through optimized paths rather than using a one-size-fits-all approach. This results in reported reductions of 53% in model costs and 39% in turn latency. The system improves over time, learning from every call to sharpen model selection and further reduce costs without requiring code changes.
+
+Additionally, SLNG emphasizes data sovereignty and compliance. It offers 11 sovereign hubs, allowing developers to select specific regions per request via a simple HTTP header (`X-Region`). This ensures audio and model calls are processed in compliance with local regulations, supported by ISO 27001, HIPAA, and GDPR certifications.
+
+## Pricing model
+
+SLNG utilizes a usage-based pricing model, with a listed price of **US$ 0.0033 per agent minute**. This pricing applies to the execution layer service itself.
+
+Notably, SLNG operates on a "Bring Your Own Model" (BYOM) framework. Users must provide their own API keys for STT, LLM, and TTS providers. SLNG does not charge for the underlying model usage but rather for the routing, optimization, and regional execution services. This allows customers to leverage their existing volume discounts with model providers while benefiting from SLNG’s cost-reduction algorithms.
+
+## When it fits
+
+- **High-Volume Voice Agents:** Applications with thousands of concurrent calls where marginal reductions in latency and cost per minute compound into significant savings.
+- **Compliance-Heavy Industries:** Healthcare or financial voice applications requiring strict data residency (HIPAA/GDPR) without complex infrastructure management.
+- **Multi-Model Stacks:** Teams using diverse combinations of STT, LLM, and TTS providers who want a unified layer to optimize routing across them.
+- **Existing Orchestrators:** Developers using LiveKit, Pipecat, or custom stacks who want to improve performance without rewriting their application logic.
+
+## When it doesn't
+
+- **Single-Model Workloads:** If you only use one provider for all voice components and don't need regional routing or cross-model optimization, the overhead may not justify the integration.
+- **Non-Voice Applications:** SLNG is specialized for real-time voice AI and does not offer general-purpose cloud compute, storage, or database services.
+
+## Inclusion criteria
+
+- **Transparent Pricing:** SLNG lists a specific per-minute cost ($0.0033/agent minute) on their homepage.
+- **Self-Service Signup:** The "Getting Started" section implies a self-serve integration flow (add keys, point endpoints, see results), and the website allows for immediate engagement without sales contact.
+- **Public SLA/Status:** SLNG lists compliance certifications (ISO 27001, HIPAA, GDPR, SOC 2 Type II in progress) and provides a "Status" link in the footer, indicating public monitoring of service health.

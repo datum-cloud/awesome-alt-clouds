@@ -2,16 +2,17 @@
 """Add a declined submission to WATCHLIST.md.
 
 Required env vars:
-  ISSUE_NUMBER              - GitHub issue number
-  GH_TOKEN or GITHUB_TOKEN  - GitHub token for API access
+  ISSUE_NUMBER - GitHub issue number
+  GH_TOKEN or GITHUB_TOKEN - GitHub token for API access
   REPO or GITHUB_REPOSITORY - GitHub repo in owner/name format
 """
 
 import os
 import re
 import sys
-import requests
 from datetime import date
+
+import requests
 
 WATCHLIST_FILE = "WATCHLIST.md"
 TABLE_SEP_PREFIX = "|------|-----|"
@@ -22,6 +23,7 @@ def get_comments(repo, issue_number, token):
     r = requests.get(
         f"https://api.github.com/repos/{repo}/issues/{issue_number}/comments",
         headers=headers,
+        timeout=15,
     )
     r.raise_for_status()
     return r.json()
@@ -59,7 +61,7 @@ def parse_evaluation(comments):
 
 
 def add_to_watchlist(name, url, category, reason, criteria, today):
-    with open(WATCHLIST_FILE) as f:
+    with open(WATCHLIST_FILE, encoding="utf-8") as f:
         content = f.read()
 
     url_base = url.rstrip("/")
@@ -72,12 +74,11 @@ def add_to_watchlist(name, url, category, reason, criteria, today):
         print(f"ERROR: Could not find table separator in {WATCHLIST_FILE}")
         sys.exit(1)
 
-    # Find end of the separator line
     newline_pos = content.index("\n", sep_pos)
     new_row = f"\n| {name} | {url} | {category} | {today} | {reason} | {criteria} | {today} |"
     content = content[:newline_pos] + new_row + content[newline_pos:]
 
-    with open(WATCHLIST_FILE, "w") as f:
+    with open(WATCHLIST_FILE, "w", encoding="utf-8") as f:
         f.write(content)
 
     print(f"  Added {name} ({url}) to watchlist.")
@@ -98,8 +99,10 @@ def main():
     data = parse_evaluation(comments)
 
     if not data.get("url"):
-        print("ERROR: No evaluation comment found or could not parse URL. "
-              "Ensure the bot has evaluated this issue before running /watchlist.")
+        print(
+            "ERROR: No evaluation comment found or could not parse URL. "
+            "Ensure the bot has evaluated this issue before running /watchlist."
+        )
         sys.exit(1)
 
     name = data["name"] or f"Issue #{issue_number}"
@@ -117,12 +120,12 @@ def main():
         score_int = -1
 
     if score_int == 0:
-        print(f"  Score is 0/3 — no qualifying signals found. Not adding to watchlist.")
-        with open("/tmp/watchlist_changed.txt", "w") as f:
+        print("  Score is 0/3 — no qualifying signals found. Not adding to watchlist.")
+        with open("/tmp/watchlist_changed.txt", "w", encoding="utf-8") as f:
             f.write("false")
-        with open("/tmp/watchlist_name.txt", "w") as f:
+        with open("/tmp/watchlist_name.txt", "w", encoding="utf-8") as f:
             f.write(name)
-        with open("/tmp/watchlist_skip_reason.txt", "w") as f:
+        with open("/tmp/watchlist_skip_reason.txt", "w", encoding="utf-8") as f:
             f.write("score_zero")
         return
 
@@ -136,17 +139,11 @@ def main():
     today = date.today().isoformat()
     added = add_to_watchlist(name, url, category, reason, criteria, today)
 
-    # Write name for use in commit message
-    with open("/tmp/watchlist_name.txt", "w") as f:
+    with open("/tmp/watchlist_name.txt", "w", encoding="utf-8") as f:
         f.write(name)
 
-    if not added:
-        # Nothing changed — signal to workflow to skip commit
-        with open("/tmp/watchlist_changed.txt", "w") as f:
-            f.write("false")
-    else:
-        with open("/tmp/watchlist_changed.txt", "w") as f:
-            f.write("true")
+    with open("/tmp/watchlist_changed.txt", "w", encoding="utf-8") as f:
+        f.write("true" if added else "false")
 
 
 if __name__ == "__main__":

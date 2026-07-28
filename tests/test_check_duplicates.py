@@ -72,9 +72,11 @@ class TestNormalizeName:
         # "cloud ai labs" all stripped → empty
         assert cd.normalize_name('Cloud AI Labs') == ''
 
-    def test_two_non_noise_words_concatenated(self):
-        # Both words retained, joined without separator
-        assert cd.normalize_name('Acme Storage') == 'acmestorage'
+    def test_two_non_noise_words_space_joined(self):
+        assert cd.normalize_name('Acme Storage') == 'acme storage'
+
+    def test_namecheap(self):
+        assert cd.normalize_name('Namecheap') == 'namecheap'
 
 
 # ---------------------------------------------------------------------------
@@ -148,6 +150,17 @@ class TestCheckCloudsJson:
         }]
         match_type, entry = cd.check_clouds_json('other.io', 'Render', clouds)
         assert match_type == 'fuzzy_name'
+
+    def test_substring_false_positive_namecheap_vs_heap(self):
+        clouds = [{
+            "name": "Heap",
+            "url": "https://heap.io",
+            "description": "Product analytics.",
+            "score": 3,
+            "categories": [],
+        }]
+        result = cd.check_clouds_json('namecheap.com', 'Namecheap', clouds)
+        assert result == (None, None)
 
     def test_short_exact_name_match_below_token_length_gate(self):
         # 'Ory' normalises to 'ory' (3 chars) — below the >=4 token-overlap
@@ -441,8 +454,8 @@ class TestMain:
         }
     ]
 
-    def _run_main(self, env, clouds_json_content=None, resolve_final_domain=None):
-        """Helper: run main() with patched env and clouds.json.
+    def _run_main(self, env, clouds_json_content=None, watchlist_json_content=None, resolve_final_domain=None):
+        """Helper: run main() with patched env and data files.
 
         By default `resolve_final_domain` is patched to always return '' (as
         if every live redirect check failed/timed out), so existing tests
@@ -454,6 +467,16 @@ class TestMain:
             json.dump(clouds_json_content or self.CLOUDS, f)
             clouds_path = f.name
 
+        watchlist_path = None
+        if watchlist_json_content is not None:
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+                json.dump(watchlist_json_content, f)
+                watchlist_path = f.name
+        else:
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+                json.dump([], f)
+                watchlist_path = f.name
+
         output_lines = []
 
         def fake_write_output(key, value):
@@ -464,14 +487,16 @@ class TestMain:
 
         with patch.dict(os.environ, env, clear=True):
             with patch.object(cd, '_CLOUDS_JSON_PATH', clouds_path):
-                with patch.object(cd, '_write_github_output', side_effect=fake_write_output):
-                    with patch.object(cd, 'post_comment', no_op):
-                        with patch.object(cd, 'add_label', no_op):
-                            with patch.object(cd, 'close_issue', no_op):
-                                with patch.object(cd, 'resolve_final_domain', side_effect=fake_resolve):
-                                    cd.main()
+                with patch.object(cd, '_WATCHLIST_JSON_PATH', watchlist_path):
+                    with patch.object(cd, '_write_github_output', side_effect=fake_write_output):
+                        with patch.object(cd, 'post_comment', no_op):
+                            with patch.object(cd, 'add_label', no_op):
+                                with patch.object(cd, 'close_issue', no_op):
+                                    with patch.object(cd, 'resolve_final_domain', side_effect=fake_resolve):
+                                        cd.main()
 
         os.unlink(clouds_path)
+        os.unlink(watchlist_path)
         return output_lines, no_op
 
     def test_exact_domain_match_sets_is_duplicate_true(self):
@@ -497,14 +522,19 @@ class TestMain:
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             json.dump(self.CLOUDS, f)
             clouds_path = f.name
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+            json.dump([], f)
+            watchlist_path = f.name
         with patch.dict(os.environ, env, clear=True):
             with patch.object(cd, '_CLOUDS_JSON_PATH', clouds_path):
-                with patch.object(cd, '_write_github_output', MagicMock()):
-                    with patch.object(cd, 'post_comment', MagicMock()):
-                        with patch.object(cd, 'add_label', MagicMock()):
-                            with patch.object(cd, 'close_issue', close_mock):
-                                cd.main()
+                with patch.object(cd, '_WATCHLIST_JSON_PATH', watchlist_path):
+                    with patch.object(cd, '_write_github_output', MagicMock()):
+                        with patch.object(cd, 'post_comment', MagicMock()):
+                            with patch.object(cd, 'add_label', MagicMock()):
+                                with patch.object(cd, 'close_issue', close_mock):
+                                    cd.main()
         os.unlink(clouds_path)
+        os.unlink(watchlist_path)
         close_mock.assert_called_once()
 
     def test_no_url_in_body_sets_is_duplicate_false(self):
@@ -541,15 +571,20 @@ class TestMain:
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             json.dump(self.CLOUDS, f)
             clouds_path = f.name
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+            json.dump([], f)
+            watchlist_path = f.name
         with patch.dict(os.environ, env, clear=True):
             with patch.object(cd, '_CLOUDS_JSON_PATH', clouds_path):
-                with patch.object(cd, '_write_github_output', MagicMock()):
-                    with patch.object(cd, 'post_comment', MagicMock()):
-                        with patch.object(cd, 'add_label', MagicMock()):
-                            with patch.object(cd, 'close_issue', close_mock):
-                                with patch.object(cd, 'resolve_final_domain', return_value=''):
-                                    cd.main()
+                with patch.object(cd, '_WATCHLIST_JSON_PATH', watchlist_path):
+                    with patch.object(cd, '_write_github_output', MagicMock()):
+                        with patch.object(cd, 'post_comment', MagicMock()):
+                            with patch.object(cd, 'add_label', MagicMock()):
+                                with patch.object(cd, 'close_issue', close_mock):
+                                    with patch.object(cd, 'resolve_final_domain', return_value=''):
+                                        cd.main()
         os.unlink(clouds_path)
+        os.unlink(watchlist_path)
         close_mock.assert_not_called()
 
     def test_redirect_domain_match_sets_is_duplicate_true_without_closing(self):
@@ -577,8 +612,61 @@ class TestMain:
             'REPO': 'owner/repo',
         }
         output_lines = []
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+            json.dump([], f)
+            watchlist_path = f.name
         with patch.dict(os.environ, env, clear=True):
             with patch.object(cd, '_CLOUDS_JSON_PATH', '/nonexistent/path/clouds.json'):
-                with patch.object(cd, '_write_github_output', side_effect=lambda k, v: output_lines.append(f'{k}={v}')):
-                    cd.main()
+                with patch.object(cd, '_WATCHLIST_JSON_PATH', watchlist_path):
+                    with patch.object(cd, '_write_github_output', side_effect=lambda k, v: output_lines.append(f'{k}={v}')):
+                        cd.main()
+        os.unlink(watchlist_path)
         assert any('is_duplicate=false' in line for line in output_lines)
+
+    def test_watchlist_resubmission_sets_is_duplicate_false(self):
+        env = {
+            'ISSUE_BODY': '**URL:** https://iren.com',
+            'ISSUE_NUMBER': '50',
+            'ISSUE_TITLE': 'Iren',
+            'GH_TOKEN': 'token',
+            'REPO': 'owner/repo',
+        }
+        watchlist = [{
+            'name': 'Iren',
+            'url': 'https://iren.com',
+            'criteriaNeed': 'Public pricing page; self-service signup',
+            'reasonNotQualifying': 'Score 1/3: no transparent pricing',
+        }]
+        output_lines, mocks = self._run_main(env, watchlist_json_content=watchlist)
+        assert any('is_duplicate=false' in line for line in output_lines)
+        assert any('duplicate_reason=watchlist_resubmission' in line for line in output_lines)
+        mocks.assert_called()
+
+    def test_watchlist_resubmission_adds_watchlist_label(self):
+        env = {
+            'ISSUE_BODY': '**URL:** https://iren.com',
+            'ISSUE_NUMBER': '50',
+            'ISSUE_TITLE': 'Iren',
+            'GH_TOKEN': 'token',
+            'REPO': 'owner/repo',
+        }
+        watchlist = [{'name': 'Iren', 'url': 'https://iren.com', 'criteriaNeed': 'pricing'}]
+        label_mock = MagicMock()
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+            json.dump(self.CLOUDS, f)
+            clouds_path = f.name
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+            json.dump(watchlist, f)
+            watchlist_path = f.name
+        with patch.dict(os.environ, env, clear=True):
+            with patch.object(cd, '_CLOUDS_JSON_PATH', clouds_path):
+                with patch.object(cd, '_WATCHLIST_JSON_PATH', watchlist_path):
+                    with patch.object(cd, '_write_github_output', MagicMock()):
+                        with patch.object(cd, 'post_comment', MagicMock()):
+                            with patch.object(cd, 'add_label', label_mock):
+                                with patch.object(cd, 'close_issue', MagicMock()):
+                                    cd.main()
+        os.unlink(clouds_path)
+        os.unlink(watchlist_path)
+        label_mock.assert_called_once()
+        assert label_mock.call_args[0][2] == 'watchlist'

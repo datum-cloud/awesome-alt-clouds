@@ -1,0 +1,68 @@
+---
+status: reviewed
+tagline: "EU-built GPU cloud for AI training and inference with per-second billing and data residency."
+headquarters: "Europe"
+pricingModel: "usage-based"
+regions:
+  - "EU data centres"
+services:
+  - "Serverless Inference API"
+  - "Dedicated Inference Endpoints"
+  - "Serverless Training"
+  - "GPU Virtual Machines"
+  - "Large-Scale GPU Clusters"
+  - "Cloud Notebooks"
+socials:
+  website: "https://lyceum.technology/"
+---
+
+## What makes Lyceum different
+
+Lyceum is purpose-built for European AI teams that need GPU compute without the overhead and lock-in of hyperscalers. The platform operates exclusively from EU data centres with full GDPR compliance and data residency guarantees—a critical differentiator for organizations subject to European data sovereignty regulations.
+
+The platform uniquely combines multiple execution models (serverless, dedicated, and VM-based) on a single infrastructure, allowing teams to optimize cost and latency for each workload. Unlike AWS or GCP's opaque capacity allocation, Lyceum emphasizes transparent per-second billing with no minimum commitments and visible queue times and GPU utilization metrics (e.g., 76% average utilization, under one minute time-to-first-job).
+
+Docker-native execution eliminates vendor lock-in—any container runs unmodified without proprietary SDKs. This design appeals to infrastructure teams managing heterogeneous workloads and enterprises requiring portability across providers.
+
+## Pricing model
+
+**Serverless Inference** (pay-per-token):
+
+- Llama 3.1 8B: $0.10/1M input, $0.10/1M output tokens
+- Llama 3.1 70B: $0.35/1M input, $0.40/1M output tokens
+- Llama 3.1 405B: $1.00/1M input, $1.00/1M output tokens
+- Mixtral 8x22B: $0.50/1M input/output
+
+**On-Demand GPU VMs** (per-second billing):
+
+- H100 (80GB): $2.49/hr
+- H200 (141GB): $3.19/hr
+- B200 (192GB): $4.29/hr
+- L40S (48GB): $1.19/hr
+- T4 (16GB): $0.39/hr
+
+**Long-term Contracts**: Custom pricing from 3-month minimums.
+
+Standout features: per-second (not per-hour) billing means jobs finishing early cost proportionally less; no hidden fees; visible pricing across 7+ competing providers via their GPU Pricing Calculator tool.
+
+## When it fits
+
+- **EU-regulated AI teams**: Organizations requiring GDPR compliance and data residency in Europe.
+- **Cost-conscious ML teams**: Per-second billing and transparent pricing reduce waste vs. hourly hyperscaler models.
+- **Multi-GPU training at scale**: 8–8,000 GPU clusters with InfiniBand for distributed training.
+- **Development-to-production workflow**: Notebooks for prototyping, serverless for quick iteration, dedicated endpoints for production inference.
+- **Workload portability**: Docker-native execution minimizes vendor lock-in for teams managing infrastructure across providers.
+
+## When it doesn't
+
+- **Non-EU data residency requirements**: Lyceum operates exclusively from European data centres; no US or APAC regions available.
+- **Non-GPU workloads**: The platform is GPU-focused; general-purpose compute, databases, or networking services are out of scope.
+
+## Inclusion criteria
+
+✓ **Transparent pricing**: Per-token and per-second rates published publicly with GPU Pricing Calculator comparing costs across competitors.
+([https://lyceum.technology/resources/pricing](https://lyceum.technology/resources/pricing))
+
+✓ **Self-service signup**: Direct account creation and dashboard access available at [https://dashboard.lyceum.technology/](https://dashboard.lyceum.technology/).
+
+✓ **Public SLA/status**: Platform uptime 99.9%, dedicated endpoints uptime 99.99% with visible metrics (latency 12ms, requests/min 2,847, GPU utilization 83%).

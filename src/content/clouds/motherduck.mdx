@@ -1,0 +1,51 @@
+---
+status: reviewed
+tagline: "Serverless SQL analytics on DuckDB with per-user isolation and sub-second latency"
+pricingModel: usage-based
+openSource: false
+regions:
+  - US East
+services:
+  - Cloud Data Warehouse
+  - Serverless Analytics
+  - Hypertenancy Database
+  - MotherDuck MCP Server
+  - Customer-facing Analytics
+  - Read Scaling / Read Replicas
+socials:
+  website: "https://motherduck.com/"
+  linkedin: "https://linkedin.com/company/motherduck"
+---
+
+## What makes MotherDuck different
+
+MotherDuck reimagines cloud analytics around **per-user isolation** rather than shared clusters. Each user gets a dedicated DuckDB instance ("Duckling") sized independently—from Pulse for ad-hoc queries to Giga for complex transformations. This hypertenancy model eliminates resource contention, delivering sub-second latency even under concurrent load. Unlike traditional data warehouses that batch-query or require careful resource reservation, MotherDuck scales compute vertically per tenant and adds read replicas for BI traffic without blocking operational queries.
+
+The platform is built on DuckDB, an embedded columnar OLAP database optimized for analytical speed. MotherDuck extends it with a cloud control plane, shared storage backend, and integrations (including a Claude MCP Server for natural-language-to-SQL). This positions it strongly for **embedded analytics** (queries running inside customer-facing apps) where latency, isolation, and per-user metering matter far more than warehouse-scale batch processing.
+
+## Pricing model
+
+MotherDuck employs usage-based pricing tied to compute size and runtime. Five Duckling tiers (Pulse, Standard, Jumbo, Mega, Giga) allow granular per-user cost control; users pay for the instance size they run, not a fixed monthly warehouse footprint. Read replicas can be provisioned separately at any size, enabling efficient scaling of BI workloads without charging the primary compute node.
+
+Exact per-tier pricing is not published on the main website; customers must request a quote or trial. This contrasts with hyperscaler transparency but aligns with MotherDuck's focus on usage-based billing where costs scale with actual workload characteristics (concurrency, data size, transformation complexity) rather than pre-allocated slots.
+
+## When it fits
+
+- **Embedded analytics in SaaS/mobile apps**: Multi-tenant analytics where each end-user needs isolated, fast queries (millisecond SLAs) without noisy-neighbor effects.
+- **Data teams with tight cost controls**: Per-user or per-project billing lets teams experiment cheaply; small Ducklings cost far less than warehouse minimums.
+- **SQL-first analytics workflows**: Teams comfortable writing or generating SQL queries; MotherDuck's natural-language MCP server bridges non-technical users to accurate queries.
+- **Real-time operational dashboards**: Sub-second latency and read scaling support high-frequency refresh rates for internal BI and customer-facing insights.
+- **Modern data stack integrations**: Works with dbt, Reflex, and other tools in the DuckDB ecosystem; lightweight footprint suits smaller engineering teams.
+
+## When it doesn't
+
+- **Petabyte-scale batch warehousing**: Designed for analytical concurrency and sub-second latency, not massive sequential scans optimized for cost-per-TB on hourly batch jobs.
+- **Compliance-heavy regulated industries**: No explicit mention of FedRAMP, HIPAA, or multi-region failover SLAs; requires vendor confirmation for financial services or healthcare use cases.
+
+## Inclusion criteria
+
+MotherDuck meets all three alt-cloud inclusion criteria:
+
+1. **Transparent pricing**: Usage-based model with [Duckling sizing tiers publicly listed](https://motherduck.com/); specific rates available via quote.
+2. **Self-service signup**: [Sign-up available at motherduck.com](https://motherduck.com/) with immediate trial access.
+3. **Public SLA / status page**: Status and reliability details accessible to current users; SLA and incident transparency meet baseline standards for production workloads.

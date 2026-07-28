@@ -1,0 +1,53 @@
+---
+status: reviewed
+tagline: Open-source cloud platform leveraging bare metal providers to reduce costs and eliminate vendor lock-in.
+headquarters: "San Francisco, CA"
+foundedYear: 2023
+pricingModel: usage-based
+openSource: true
+services:
+  - Elastic Compute (VMs)
+  - Managed PostgreSQL
+  - GitHub Actions Runners
+  - Virtual Networking
+  - Block Storage
+  - Attribute-Based Access Control (ABAC)
+socials:
+  website: "https://www.ubicloud.com/"
+  x: "https://twitter.com/Ubicloud"
+  linkedin: "https://linkedin.com/company/ubicloud"
+  github: "https://github.com/ubicloud"
+---
+
+## What makes Ubicloud different
+
+Ubicloud distinguishes itself by decoupling cloud infrastructure from proprietary hyperscaler hardware. Instead of relying on custom silicon or exclusive data centers, Ubicloud runs its open-source control plane on off-the-shelf bare metal servers from providers like Hetzner, Leaseweb, and AWS Bare Metal. This architecture allows users to avoid the significant premiums associated with major cloud providers while maintaining a familiar, API-driven interface.
+
+The platform is fully open-source, meaning the code powering the orchestration, networking, and storage management is transparent and auditable. This transparency is central to their value proposition: returning control of infrastructure to the user. By abstracting the underlying bare metal hardware, Ubicloud provides the convenience of a managed cloud service without the lock-in, enabling portability across different physical providers.
+
+Key features include dedicated virtual machines with encryption at rest and in transit, flexible virtual networking with IPv4/IPv6 support, and managed PostgreSQL instances that claim to cost three times less than comparable solutions. The platform also offers specialized integrations, such as GitHub Actions runners, which provide isolated, ephemeral VMs for CI/CD pipelines, potentially reducing CI costs by up to 10x compared to standard hosted runners.
+
+## Pricing model
+
+Ubicloud operates on a usage-based pricing model, charging for compute hours, storage volume, and network egress. While exact per-unit pricing varies by region and provider backend, the provider emphasizes significant cost reductions, citing up to 3x lower costs for compute and managed databases compared to AWS or Azure equivalents.
+
+For example, their Managed PostgreSQL service is priced to undercut major cloud RDS offerings, and their GitHub Actions runners are marketed as a cost-saving alternative to GitHub-hosted runners. Users can also opt for the self-hosted version of Ubicloud, where they manage the infrastructure themselves, incurring only the bare metal provider's costs. This flexibility allows teams to balance convenience against raw cost efficiency.
+
+## When it fits
+
+- **Cost-sensitive workloads:** Teams looking to reduce AWS/Azure bills for compute and database services without migrating to unmanaged VPS providers.
+- **CI/CD optimization:** Organizations using GitHub Actions that want faster, isolated runners at a fraction of the hosted cost.
+- **Anti-lock-in strategies:** Companies seeking to avoid vendor lock-in by using open-source infrastructure that can run on multiple bare metal providers.
+- **Compliance and Security:** Workloads requiring encryption at rest and in transit with fine-grained, attribute-based access control (ABAC).
+
+## When it doesn't
+
+Ubicloud may not be suitable for workloads requiring specific hyperscaler-native services (e.g., AWS Lambda, GCP BigQuery) or those needing a massive, global footprint of diverse region types immediately available. It is also less ideal for teams unwilling to handle any aspects of infrastructure management if they choose the self-hosted route.
+
+## Inclusion criteria
+
+Ubicloud meets all three inclusion criteria:
+
+1.  **Transparent pricing:** Pricing details are available on their website, highlighting cost comparisons and usage-based models.
+2.  **Self-service signup:** Users can create accounts and provision resources via the self-service console at console.ubicloud.com.
+3.  **Public SLA/Status page:** The provider maintains a public status page to monitor system health and uptime.

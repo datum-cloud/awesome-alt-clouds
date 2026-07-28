@@ -18,16 +18,15 @@ import requests
 from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
-CLAUDE_MODEL = "claude-haiku-4-5-20251001"
+sys.path.insert(0, os.path.dirname(__file__))
 
-QWEN_BASE_URL = os.environ.get("QWEN_BASE_URL")
-QWEN_MODEL = "qwen3.6-35b-a3b"
-
-# Set LLM_PROVIDER=qwen to use the self-hosted Qwen endpoint instead of Claude.
-# Defaults to claude. Whichever provider is selected, the corresponding secret
-# (ANTHROPIC_API_KEY or QWEN_BASE_URL) must be present.
-LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "claude").lower()
+from lib.fetcher import (  # noqa: E402  re-exported for backward compatibility
+    fetch_page,
+    fetch_page_with_fallback,
+    _jina_markdown_to_soup,
+    _soup_has_meaningful_content,
+    _probe_url,
+)
 
 # Categories available in the awesome list
 CATEGORIES = [
@@ -108,135 +107,6 @@ def extract_urls_from_issue(issue_body):
     return cleaned_urls[:5]  # Max 5 URLs
 
 
-def fetch_page(url, timeout=15, retries=2):
-    """Fetch a page and return soup, handling Cloudflare and other protections"""
-    # Headers that mimic a real browser to bypass basic bot detection
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Connection': 'keep-alive',
-        'Upgrade-Insecure-Requests': '1',
-        'Sec-Fetch-Dest': 'document',
-        'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Site': 'none',
-        'Sec-Fetch-User': '?1',
-        'Cache-Control': 'max-age=0',
-    }
-
-    for attempt in range(retries + 1):
-        try:
-            response = requests.get(url, headers=headers, timeout=timeout, allow_redirects=True)
-            response.raise_for_status()
-
-            # Check if we got a Cloudflare challenge page
-            if 'cloudflare' in response.text.lower() and 'challenge' in response.text.lower():
-                print(f"Cloudflare challenge detected for {url}")
-                if attempt < retries:
-                    print(f"Retrying... ({attempt + 1}/{retries})")
-                    continue
-                return None, None
-
-            return BeautifulSoup(response.text, 'html.parser'), response.url
-
-        except requests.exceptions.HTTPError as e:
-            if e.response.status_code == 403:
-                print(f"Access denied (403) for {url} - likely Cloudflare protected")
-            else:
-                print(f"HTTP error fetching {url}: {e}")
-        except requests.exceptions.Timeout:
-            print(f"Timeout fetching {url}")
-        except Exception as e:
-            print(f"Error fetching {url}: {e}")
-
-        if attempt < retries:
-            print(f"Retrying... ({attempt + 1}/{retries})")
-
-    return None, None
-
-
-def _jina_markdown_to_soup(markdown_text, base_url):
-    """Convert Jina Reader markdown output into a BeautifulSoup object.
-
-    Jina's default (markdown) mode executes JavaScript and returns rendered
-    content, but as markdown — not HTML.  This helper extracts all markdown
-    links and builds a minimal HTML document so that the existing
-    ``find_link_matching`` / ``find_all('a')`` logic keeps working.
-    """
-    # Extract markdown links: [text](url)
-    links = re.findall(r'\[([^\]]*)\]\((https?://[^)]+)\)', markdown_text)
-
-    # Build minimal HTML with the extracted links + full text
-    html_parts = ['<html><body>']
-    for text, href in links:
-        html_parts.append(f'<a href="{href}">{text}</a>')
-    # Preserve full text so that get_text() searches (SLA, pricing indicators) work
-    html_parts.append(f'<div>{markdown_text}</div>')
-    html_parts.append('</body></html>')
-
-    return BeautifulSoup('\n'.join(html_parts), 'html.parser')
-
-
-def _soup_has_meaningful_content(soup):
-    """Return True if the soup contains real rendered content, not just an SPA shell."""
-    text = soup.get_text(strip=True)
-    links = soup.find_all('a', href=True)
-    # An empty SPA shell typically has very little visible text and no links.
-    # A real page has substantial text (>200 chars) and at least one link.
-    return len(text) > 200 and len(links) >= 1
-
-
-def fetch_page_with_fallback(url, timeout=15, retries=2):
-    """Try Jina Reader first (renders JS, bypasses CDN blocks), then requests as fallback.
-    Returns (soup, final_url, fetch_method)."""
-    jina_url = f"https://r.jina.ai/{url}"
-
-    # Stage 1a: Jina Reader in default markdown mode — actually executes JavaScript
-    # and returns rendered content.  HTML mode (X-Return-Format: html) returns the
-    # raw HTML *before* JS execution, which is an empty shell for SPAs.
-    try:
-        md_headers = {
-            'User-Agent': 'Mozilla/5.0 (compatible; awesome-alt-clouds-bot/1.0)',
-            'Accept': 'text/plain',
-        }
-        response = requests.get(jina_url, headers=md_headers, timeout=timeout, allow_redirects=True)
-        response.raise_for_status()
-        if response.text and len(response.text) > 200:
-            soup = _jina_markdown_to_soup(response.text, url)
-            if _soup_has_meaningful_content(soup):
-                return soup, url, "jina"
-            else:
-                print(f"Jina markdown response too thin for {url}, trying HTML mode")
-    except Exception as e:
-        print(f"Jina Reader (markdown) failed for {url}: {e}")
-
-    # Stage 1b: Jina Reader in HTML mode — works well for static / server-rendered sites
-    try:
-        html_headers = {
-            'User-Agent': 'Mozilla/5.0 (compatible; awesome-alt-clouds-bot/1.0)',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'X-Return-Format': 'html',
-        }
-        response = requests.get(jina_url, headers=html_headers, timeout=timeout, allow_redirects=True)
-        response.raise_for_status()
-        if response.text and len(response.text) > 100:
-            soup = BeautifulSoup(response.text, 'html.parser')
-            if _soup_has_meaningful_content(soup):
-                return soup, url, "jina"
-            else:
-                print(f"Jina HTML response is an empty SPA shell for {url}, falling back")
-    except Exception as e:
-        print(f"Jina Reader (HTML) failed for {url}: {e}")
-
-    # Stage 2: direct requests scraper (cheaper but fails on JS-heavy / CDN-blocked sites)
-    soup, final_url = fetch_page(url, timeout=timeout, retries=retries)
-    if soup is not None:
-        return soup, final_url, "requests"
-
-    return None, None, None
-
-
 def find_link_matching(soup, base_url, patterns):
     """Find a link on the page matching any of the given patterns"""
     if not soup:
@@ -251,21 +121,6 @@ def find_link_matching(soup, base_url, patterns):
                 return urljoin(base_url, a['href'])
 
     return None
-
-
-def _probe_url(url, timeout=10):
-    """Try to fetch a URL and return (soup, final_url) if it returns 200."""
-    try:
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        }
-        response = requests.get(url, headers=headers, timeout=timeout, allow_redirects=True)
-        if response.status_code == 200 and len(response.text) > 200:
-            return BeautifulSoup(response.text, 'html.parser'), response.url
-    except Exception:
-        pass
-    return None, None
 
 
 def _check_pricing_indicators(soup):
@@ -442,6 +297,17 @@ def extract_company_name(url, soup):
     return domain.split('.')[0].title()
 
 
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
+CLAUDE_MODEL = "claude-haiku-4-5-20251001"
+
+QWEN_MODEL = "qwen3.6-35b-a3b"
+
+# Set LLM_PROVIDER=qwen to use the self-hosted Qwen endpoint instead of Claude.
+# Defaults to claude. Whichever provider is selected, the corresponding secret
+# (ANTHROPIC_API_KEY or QWEN_BASE_URL) must be present.
+LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "claude").lower()
+
+
 def generate_metadata_with_claude(url, page_content=None):
     """Use Claude API to generate name, description, and category"""
     if not ANTHROPIC_API_KEY:
@@ -456,7 +322,6 @@ def generate_metadata_with_claude(url, page_content=None):
 
         categories_list = "\n".join(f"- {cat}" for cat in CATEGORIES)
 
-        # Build prompt based on whether we have page content
         if page_content and len(page_content.strip()) > 100:
             truncated_content = page_content[:15000]
             prompt = f"""Analyze this cloud service website and provide metadata for an awesome list entry.
@@ -475,7 +340,6 @@ Based on the website content, provide:
 Respond in this exact JSON format only, no other text:
 {{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name"}}"""
         else:
-            # Fallback: Ask Claude to use its knowledge (for Cloudflare-blocked sites)
             prompt = f"""I need metadata for a cloud service submission, but I couldn't fetch the website content (likely Cloudflare protected).
 
 URL: {url}
@@ -494,14 +358,11 @@ Respond in this exact JSON format only, no other text:
         message = client.messages.create(
             model=CLAUDE_MODEL,
             max_tokens=1024,
-            messages=[
-                {"role": "user", "content": prompt}
-            ]
+            messages=[{"role": "user", "content": prompt}],
         )
 
         response_text = message.content[0].text.strip()
 
-        # Parse JSON from response
         # Handle case where response might have markdown code blocks
         if "```" in response_text:
             json_match = re.search(r'\{[^}]+\}', response_text)
@@ -510,12 +371,10 @@ Respond in this exact JSON format only, no other text:
 
         metadata = json.loads(response_text)
 
-        # Validate category
         if metadata.get('category') not in CATEGORIES:
             print(f"Warning: Invalid category '{metadata.get('category')}', defaulting to Infrastructure Clouds")
             metadata['category'] = "Infrastructure Clouds"
 
-        # Truncate description if too long
         if len(metadata.get('description', '')) > 200:
             metadata['description'] = metadata['description'][:197] + "..."
 
@@ -530,8 +389,9 @@ Respond in this exact JSON format only, no other text:
 def evaluate_with_claude(url):
     """Last-resort evaluation using Claude when both scrapers fail.
 
+    Evaluates from training knowledge without web search.
     Returns a dict with criteria, score, name, description, category,
-    recommendation, and fetch_method='claude_websearch', or None on failure.
+    recommendation, and fetch_method='claude', or None on failure.
     """
     if not ANTHROPIC_API_KEY:
         print("ERROR: ANTHROPIC_API_KEY not set, cannot use Claude fallback")
@@ -581,7 +441,7 @@ Respond in this exact JSON format only, no other text:
         message = client.messages.create(
             model=CLAUDE_MODEL,
             max_tokens=1024,
-            messages=[{"role": "user", "content": prompt}]
+            messages=[{"role": "user", "content": prompt}],
         )
 
         response_text = message.content[0].text.strip()
@@ -590,7 +450,6 @@ Respond in this exact JSON format only, no other text:
             print(f"Claude returned no text for {url}")
             return None
 
-        # Strip markdown code fences if present
         if "```" in response_text:
             json_match = re.search(r'\{[\s\S]+\}', response_text)
             if json_match:
@@ -598,7 +457,6 @@ Respond in this exact JSON format only, no other text:
 
         data = json.loads(response_text)
 
-        # Validate and normalise
         score = sum(1 for c in data.get('criteria', []) if c.get('passed'))
         if data.get('category') not in CATEGORIES:
             print(f"Warning: invalid category '{data.get('category')}', defaulting")
@@ -614,7 +472,7 @@ Respond in this exact JSON format only, no other text:
             'description': data['description'],
             'category': data['category'],
             'recommendation': data.get('recommendation', ''),
-            'fetch_method': 'claude_websearch',
+            'fetch_method': 'claude',
         }
 
     except Exception as e:
@@ -623,16 +481,17 @@ Respond in this exact JSON format only, no other text:
 
 
 def generate_metadata_with_qwen(url, page_content=None):
-    """Use Qwen API to generate name, description, and category"""
-    if not QWEN_BASE_URL:
+    """Use self-hosted Qwen API to generate name, description, and category."""
+    base_url = os.environ.get('QWEN_BASE_URL')
+    if not base_url:
         print("ERROR: QWEN_BASE_URL not set, cannot generate AI metadata")
         return None
 
     print(f"Calling Qwen API for {url}...")
 
     try:
-        from openai import OpenAI
-        client = OpenAI(base_url=QWEN_BASE_URL, api_key="none")
+        import openai
+        client = openai.OpenAI(base_url=base_url, api_key="not-needed")
 
         categories_list = "\n".join(f"- {cat}" for cat in CATEGORIES)
 
@@ -673,12 +532,14 @@ Respond in this exact JSON format only, no other text:
             model=QWEN_MODEL,
             max_tokens=1024,
             messages=[{"role": "user", "content": prompt}],
-            extra_body={"chat_template_kwargs": {"enable_thinking": False}}
+            extra_body={"chat_template_kwargs": {"enable_thinking": False}},
         )
 
         response_text = (message.choices[0].message.content or "").strip()
         response_text = re.sub(r'<think>[\s\S]*?</think>', '', response_text).strip()
 
+        # Parse JSON from response
+        # Handle case where response might have markdown code blocks
         if "```" in response_text:
             json_match = re.search(r'\{[^}]+\}', response_text)
             if json_match:
@@ -686,10 +547,12 @@ Respond in this exact JSON format only, no other text:
 
         metadata = json.loads(response_text)
 
+        # Validate category
         if metadata.get('category') not in CATEGORIES:
             print(f"Warning: Invalid category '{metadata.get('category')}', defaulting to Infrastructure Clouds")
             metadata['category'] = "Infrastructure Clouds"
 
+        # Truncate description if too long
         if len(metadata.get('description', '')) > 200:
             metadata['description'] = metadata['description'][:197] + "..."
 
@@ -704,18 +567,20 @@ Respond in this exact JSON format only, no other text:
 def evaluate_with_qwen(url):
     """Last-resort evaluation using Qwen when both scrapers fail.
 
+    Evaluates from training knowledge without web search.
     Returns a dict with criteria, score, name, description, category,
-    recommendation, and fetch_method='claude_websearch', or None on failure.
+    recommendation, and fetch_method='qwen', or None on failure.
     """
-    if not QWEN_BASE_URL:
-        print("ERROR: QWEN_BASE_URL not set, cannot use Qwen fallback")
+    base_url = os.environ.get('QWEN_BASE_URL')
+    if not base_url:
+        print("ERROR: QWEN_BASE_URL not set, cannot use Qwen evaluation")
         return None
 
-    print(f"Falling back to Qwen for {url}...")
+    print(f"Falling back to Qwen evaluation for {url}...")
 
     try:
-        from openai import OpenAI
-        client = OpenAI(base_url=QWEN_BASE_URL, api_key="none")
+        import openai
+        client = openai.OpenAI(base_url=base_url, api_key="not-needed")
 
         domain = urlparse(url).netloc.replace('www.', '')
         categories_list = "\n".join(f"- {cat}" for cat in CATEGORIES)
@@ -725,7 +590,7 @@ def evaluate_with_qwen(url):
 URL: {url}
 Domain: {domain}
 
-Based on what you know about this service, assess these 3 criteria and provide evidence URLs where possible:
+Assess these 3 criteria and provide evidence from your knowledge:
 1. Transparent Public Pricing - public pricing page with actual prices shown
 2. Usage-based Self-Service - can sign up and use without contacting sales
 3. Production Indicators - public SLA or status page exists
@@ -737,7 +602,7 @@ Also provide:
 {categories_list}
 - recommendation: one sentence (e.g. "Pricing and status page found — looks legit" or "No SLA evidence found — review carefully")
 
-If you cannot confirm a criterion, set passed to false and evidence to "Not found".
+If you have no evidence for a criterion, set passed to false and evidence to "Not found".
 
 Respond in this exact JSON format only, no other text:
 {{
@@ -756,7 +621,7 @@ Respond in this exact JSON format only, no other text:
             model=QWEN_MODEL,
             max_tokens=1024,
             messages=[{"role": "user", "content": prompt}],
-            extra_body={"chat_template_kwargs": {"enable_thinking": False}}
+            extra_body={"chat_template_kwargs": {"enable_thinking": False}},
         )
 
         response_text = (message.choices[0].message.content or "").strip()
@@ -766,6 +631,7 @@ Respond in this exact JSON format only, no other text:
             print(f"Qwen returned no text for {url}")
             return None
 
+        # Strip markdown code fences if present
         if "```" in response_text:
             json_match = re.search(r'\{[\s\S]+\}', response_text)
             if json_match:
@@ -773,6 +639,7 @@ Respond in this exact JSON format only, no other text:
 
         data = json.loads(response_text)
 
+        # Validate and normalise
         score = sum(1 for c in data.get('criteria', []) if c.get('passed'))
         if data.get('category') not in CATEGORIES:
             print(f"Warning: invalid category '{data.get('category')}', defaulting")
@@ -780,7 +647,7 @@ Respond in this exact JSON format only, no other text:
         if len(data.get('description', '')) > 200:
             data['description'] = data['description'][:197] + "..."
 
-        print(f"Qwen fallback result: score={score}/3, name={data['name']}")
+        print(f"Qwen result: score={score}/3, name={data['name']}")
         return {
             'criteria': data['criteria'],
             'score': score,
@@ -788,16 +655,16 @@ Respond in this exact JSON format only, no other text:
             'description': data['description'],
             'category': data['category'],
             'recommendation': data.get('recommendation', ''),
-            'fetch_method': 'claude_websearch',
+            'fetch_method': 'qwen',
         }
 
     except Exception as e:
-        print(f"Error in Qwen fallback for {url}: {e}")
+        print(f"Error in Qwen evaluation for {url}: {e}")
         return None
 
 
 def generate_metadata(url, page_content=None):
-    """Dispatch to the provider selected by LLM_PROVIDER."""
+    """Dispatch metadata generation to the provider selected by LLM_PROVIDER."""
     if LLM_PROVIDER == "qwen":
         return generate_metadata_with_qwen(url, page_content)
     return generate_metadata_with_claude(url, page_content)
@@ -817,7 +684,7 @@ def evaluate_service(url):
     soup, final_url, fetch_method = fetch_page_with_fallback(url)
 
     if fetch_method is None:
-        # Both scrapers failed — try LLM fallback as last resort
+        # Both scrapers failed — try the LLM fallback as last resort
         ws_result = evaluate_with_llm(url)
         if ws_result:
             return {
@@ -826,7 +693,7 @@ def evaluate_service(url):
                 'score': ws_result['score'],
                 'criteria': ws_result['criteria'],
                 'fetch_failed': False,
-                'fetch_method': 'claude_websearch',
+                'fetch_method': ws_result['fetch_method'],
                 'needs_manual_review': ws_result['score'] < 3,
                 'ai_metadata': {
                     'name': ws_result['name'],
@@ -892,7 +759,7 @@ def generate_single_result_markdown(result, ai_metadata=None):
         status = "Does Not Meet Criteria"
         emoji = "red_circle"
 
-    web_search_badge = " *(verified via web search)*" if fetch_method == "claude_websearch" else ""
+    web_search_badge = " *(verified via LLM)*" if fetch_method in ("qwen", "claude") else ""
 
     md = f"""### {result['company_name']}
 
@@ -900,7 +767,7 @@ def generate_single_result_markdown(result, ai_metadata=None):
 **Score:** {score}/3 :{emoji}: {status}{web_search_badge}
 """
 
-    if fetch_method == "claude_websearch" and recommendation:
+    if fetch_method in ("qwen", "claude") and recommendation:
         md += f"\n> :mag: {recommendation}\n"
 
     if fetch_failed:
@@ -921,7 +788,7 @@ def generate_single_result_markdown(result, ai_metadata=None):
 
         evidence = c['evidence']
         # Render evidence as a clickable link if it's a URL
-        if fetch_method == "claude_websearch" and evidence.startswith("http"):
+        if fetch_method in ("qwen", "claude") and evidence.startswith("http"):
             evidence = f"[{evidence}]({evidence})"
 
         md += f"| {c['name']} | {status_icon} | {evidence} |\n"
@@ -1068,8 +935,8 @@ def main():
         should_pass = admin_approved or result['score'] >= 2
 
         if should_pass:
-            # Claude web search already generated metadata — use it directly
-            if result.get('fetch_method') == 'claude_websearch' and result.get('ai_metadata'):
+            # LLM fallback already generated metadata — use it directly
+            if result.get('fetch_method') in ('qwen', 'claude') and result.get('ai_metadata'):
                 ai_metadata = result['ai_metadata']
                 result['company_name'] = ai_metadata['name']
                 passing_services.append({
@@ -1082,7 +949,7 @@ def main():
                     'admin_approved': admin_approved,
                 })
             else:
-                # Scraped successfully — call Claude for metadata as before
+                # Scraped successfully — call the selected LLM for metadata
                 page_content = result.get('page_content', '')
                 ai_metadata = generate_metadata(url, page_content)
                 if ai_metadata:
@@ -1099,7 +966,7 @@ def main():
                     })
                 elif admin_approved:
                     fallback_name = result['company_name']
-                    print(f"Warning: Claude metadata call failed, using fallback for {fallback_name}")
+                    print(f"Warning: LLM metadata call failed, using fallback for {fallback_name}")
                     passing_services.append({
                         'name': fallback_name,
                         'url': url,

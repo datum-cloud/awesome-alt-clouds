@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parse WATCHLIST.md and generate docs/watchlist.json."""
+"""Parse WATCHLIST.md and generate public/watchlist.json."""
 
 import json
 import re
@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 WATCHLIST_MD = Path("WATCHLIST.md")
-OUTPUT = Path("docs/watchlist.json")
+OUTPUT = Path("public/watchlist.json")
 
 
 def parse_watchlist(content: str) -> list[dict]:
@@ -33,25 +33,25 @@ def parse_watchlist(content: str) -> list[dict]:
             continue
 
         parts = [p.strip() for p in line.split("|")]
-        # Remove empty strings from leading/trailing pipes
         parts = [p for p in parts if p]
 
         if len(parts) < 7:
             continue
 
-        # Skip header row if we somehow re-encounter it
         if parts[0].lower() == "name":
             continue
 
-        entries.append({
-            "name": parts[0],
-            "url": parts[1],
-            "category": parts[2],
-            "dateAdded": parts[3],
-            "reasonNotQualifying": parts[4],
-            "criteriaNeed": parts[5],
-            "lastReviewed": parts[6],
-        })
+        entries.append(
+            {
+                "name": parts[0],
+                "url": parts[1],
+                "category": parts[2],
+                "dateAdded": parts[3],
+                "reasonNotQualifying": parts[4],
+                "criteriaNeed": parts[5],
+                "lastReviewed": parts[6],
+            }
+        )
 
     return entries
 

@@ -1,0 +1,66 @@
+---
+status: reviewed
+tagline: "The developer-first video infrastructure API for streaming, encoding, and analytics."
+headquarters: "San Francisco, CA"
+foundedYear: 2016
+pricingModel: "usage-based"
+openSource: true
+regions:
+  - "Global (Multi-region CDN)"
+services:
+  - "Mux Video (On-Demand & Live)"
+  - "Mux Data (Analytics)"
+  - "Mux Transcripts"
+  - "Mux Storyboards"
+  - "Mux Robots (AI Workflows)"
+  - "Mux Player"
+socials:
+  website: "https://www.mux.com"
+  x: "https://twitter.com/MuxHQ"
+  linkedin: "https://linkedin.com/company/muxinc"
+  github: "https://github.com/muxinc"
+---
+
+## What makes Mux different
+
+Mux is not a general-purpose cloud provider; it is a specialized vertical infrastructure provider focused exclusively on video. While hyperscalers like AWS (MediaConvert, Elemental) or Azure (Media Services) require significant engineering overhead to stitch together disparate services for video encoding, storage, and delivery, Mux offers a unified, API-first platform. This "video as a service" approach allows developers to integrate high-quality video streaming, live broadcasting, and analytics in minutes rather than months.
+
+The platform is designed for developers, evidenced by its robust SDKs for React, Node, Python, Go, and more, as well as its open-source player components. Mux abstracts away the complexity of CDN management, adaptive bitrate streaming, and DRM integration, providing a single RESTful API and WebSocket-based data layer. This specialization results in higher reliability and better out-of-the-box performance for video-heavy applications compared to configuring generic cloud services.
+
+## Pricing model
+
+Mux uses a transparent, usage-based pricing model, which aligns well with the alt-cloud ethos of paying only for what you use. There are no upfront fees or long-term commitments.
+
+**Mux Video Pricing Highlights:**
+
+- **Encoding:** $0.05 per minute of video encoded.
+- **Storage:** $0.05 per GB per month.
+- **Streaming:** $0.004 per GB streamed.
+- **Live Streaming:** $0.004 per GB streamed.
+
+**Mux Data Pricing:**
+
+- Analytics data collection is included with video usage. Standalone Mux Data for non-video metrics may have separate tiers, but core video analytics are bundled.
+
+**Free Tier:**
+Mux offers a generous free tier that includes a set amount of encoding minutes, storage, and streaming bandwidth per month, making it ideal for startups and side projects. The pricing page explicitly calculates costs for sample workloads (e.g., "Streaming 72,319 times: $16"), demonstrating transparency.
+
+## When it fits
+
+- **Video-Centric Applications:** Building platforms like Patreon, Substack, or fitness apps where video is the core product feature.
+- **Live Streaming:** Implementing live events, webinars, or interactive broadcasts with minimal backend complexity.
+- **Developer-First Teams:** Engineering teams that prefer API-driven infrastructure and want to avoid managing complex media encoding pipelines.
+- **Rapid Prototyping:** Startups needing to launch video features quickly without hiring dedicated media engineers.
+
+## When it doesn't
+
+- **General Cloud Needs:** If you need compute, storage, databases, or networking unrelated to video, Mux is not a substitute for AWS, GCP, or Azure.
+- **Non-Video Media:** For audio-only or image-heavy workloads, other specialized providers or general cloud storage may be more cost-effective.
+
+## Inclusion criteria
+
+Mux meets all three inclusion criteria:
+
+1.  **Transparent Pricing:** Detailed per-unit pricing is published on their [Pricing page](https://www.mux.com/pricing).
+2.  **Self-Service Signup:** Developers can sign up and start using the API immediately via the [Dashboard](https://dashboard.mux.com/signup).
+3.  **Public SLA/Status Page:** Mux maintains a public [Status Page](https://status.mux.com/) showing real-time uptime and incident history.

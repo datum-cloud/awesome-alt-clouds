@@ -1,0 +1,49 @@
+---
+import { render } from "astro:content";
+import { cloudsBySlug } from "../lib/clouds";
+import {
+  getPublishableProfiles,
+  getFeaturedSlugs,
+  mergeCloudWithProfile,
+  type CloudProfile,
+} from "../lib/profile";
+import CloudDetail from "../layouts/CloudDetail.astro";
+
+export async function getStaticPaths() {
+  const profiles = await getPublishableProfiles();
+  return profiles.map((profile) => {
+    const cloud = cloudsBySlug.get(profile.id);
+    if (!cloud) {
+      throw new Error(
+        `[/[slug]] Missing cloud for MDX profile "${profile.id}". This should have been caught by loadProfiles().`
+      );
+    }
+    return {
+      params: { slug: profile.id },
+      props: { profile, cloud },
+    };
+  });
+}
+
+interface PageProps {
+  profile: CloudProfile;
+  cloud: ReturnType<typeof cloudsBySlug.get>;
+}
+
+const { profile, cloud } = Astro.props as PageProps;
+
+if (!cloud) {
+  throw new Error(`[/[slug]] No cloud resolved for params ${Astro.params.slug}`);
+}
+
+const merged = mergeCloudWithProfile(cloud, profile);
+const featuredSlugs = [...(await getFeaturedSlugs())];
+
+const { Content } = await render(profile);
+---
+
+<CloudDetail
+  cloud={merged}
+  featuredSlugs={featuredSlugs}>
+  <Content />
+</CloudDetail>

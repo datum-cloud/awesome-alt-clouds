@@ -1,0 +1,62 @@
+---
+status: reviewed
+tagline: "GPU marketplace aggregating 30+ cloud providers with centralized billing and up to 90% cost savings."
+pricingModel: "hourly"
+regions:
+  - "North America"
+  - "Europe"
+  - "Asia"
+  - "Australia"
+services:
+  - "On-Demand GPU Instances"
+  - "Reserved GPU Commitments"
+  - "On-Demand GPU Clusters"
+  - "Model Inference"
+  - "Model Training"
+  - "Capacity Planning"
+socials:
+  website: "https://shadeform.com/"
+---
+
+## What makes Shadeform different
+
+Shadeform is not a traditional cloud provider but rather a **GPU marketplace aggregator** that abstracts away the complexity of sourcing compute across 30+ independent cloud providers. Rather than building its own data centers, Shadeform acts as a unified interface to access GPUs from providers like Verda, Hyperstack, Massed Compute, Scaleway, Nebius, Lambda Labs, Vultr, and Crusoe Energy.
+
+The core differentiation is **price arbitrage and availability optimization**. By surfacing real-time pricing across 100+ regions and 150+ GPU configurations, Shadeform enables users to find the lowest-cost GPU for their workload without vendor lock-in. Users get centralized billing and support across multiple cloud vendors through a single platform, dramatically reducing procurement friction. The platform claims to deliver **up to 90% savings vs. AWS, GCP, and Azure** for GPU-intensive workloads.
+
+Shadeform targets teams that need GPU capacity quickly and flexibly—particularly AI/ML companies that can tolerate multi-cloud deployments in exchange for cost and availability advantages.
+
+## Pricing model
+
+Shadeform offers hourly billing directly tied to underlying provider costs, plus its own platform fee. Specific pricing examples from the marketplace include:
+
+- **B200** (Verda): $6.52/hour
+- **H200** (Verda): $4.41/hour
+
+Pricing varies significantly by region, provider, and GPU type. The platform supports three commitment models:
+
+1. **On-Demand Instances** – hourly pay-as-you-go
+2. **On-Demand Clusters** – managed multi-GPU deployments
+3. **Reserved Commitments** – pre-booked capacity at discounted rates (available for B300s, B200s, H200s)
+
+Unlike hyperscaler pricing that bundles compute, storage, and egress into opaque blended rates, Shadeform's transparency lets users compare raw GPU costs across providers and choose based on actual infrastructure cost rather than vendor ecosystem lock-in.
+
+## When it fits
+
+- **Cost-sensitive AI/ML teams** that can tolerate multi-cloud orchestration to capture 50–90% savings on GPU compute
+- **Burst capacity needs** – quickly sourcing additional GPUs during training spikes or inference peaks without long-term AWS/GCP commitments
+- **Capacity arbitrage** – applications that can tolerate region failover to access available capacity at lower cost
+- **Model training and fine-tuning** workloads where vendor consistency matters less than raw GPU throughput per dollar
+- **Inference platforms** that need to scale across geographies and providers while minimizing infrastructure spend
+
+## When it doesn't
+
+Shadeform is a poor fit for workloads requiring deep integration with a single cloud ecosystem (e.g., tight coupling to AWS services like SageMaker or managed Kubernetes). It also adds operational complexity—teams must manage multi-cloud deployments, networking, and potential latency variance across providers.
+
+## Inclusion criteria
+
+Shadeform meets all three inclusion criteria:
+
+1. **Transparent pricing** – Real-time pricing listed in the [marketplace directory](https://shadeform.com/directory/instances) with per-hour rates visible for each GPU/provider combination
+2. **Self-service signup** – Direct platform access via [platform.shadeform.ai](https://platform.shadeform.ai/)
+3. **Public SLA/status** – [SOC 2 Type II compliance](https://shadeform.com/) documented; trust center available

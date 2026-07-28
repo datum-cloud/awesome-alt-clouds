@@ -1,0 +1,51 @@
+---
+status: reviewed
+tagline: "API-first security platform providing guardrails, auth, and data protection for AI applications."
+headquarters: "San Francisco, California"
+foundedYear: 2023
+pricingModel: "usage-based"
+openSource: false
+services:
+  - AI Guardrails
+  - AI Detection & Response
+  - Pangea Auth
+  - Pangea Vault
+  - Pangea Audit
+  - Pangea Verify
+  - Pangea Proxy
+  - File Sanitization
+socials:
+  website: "https://pangea.cloud/"
+  x: "https://twitter.com/UsePangea"
+  linkedin: "https://linkedin.com/company/pangea-ai"
+  github: "https://github.com/pangea-cs"
+---
+
+## What makes Pangea different
+
+Pangea addresses a critical gap in the modern cloud landscape: security for Generative AI and LLM-powered applications. While hyperscalers provide the infrastructure to run models, they often leave the application-layer security—specifically prompt injection, data leakage, and hallucination detection—to the developer. Pangea operates as a specialized "Security API Platform" that sits between your application and the AI model, providing pre-built, compliant modules to secure these interactions.
+
+The platform is designed for developers who need to integrate security without building it from scratch. Instead of managing complex IAM policies or custom WAF rules for AI traffic, developers call Pangea APIs for authentication, data redaction (Vault), audit logging, and content moderation (Guardrails). This "API-first" approach allows teams to secure AI agents and RAG architectures rapidly, ensuring that sensitive data is never exposed to backend models and that user inputs are sanitized against injection attacks.
+
+## Pricing model
+
+Pangea utilizes a usage-based pricing model, typically charged per API call or per unit of data processed (e.g., per megabyte for file sanitization or per token for AI guardrails). They offer a free tier for development and testing, which allows developers to integrate and test the APIs without immediate cost. For production use, pricing scales with volume, providing a predictable cost structure for startups and enterprises alike. This contrasts with traditional cloud providers where security services might be bundled into complex enterprise agreements or require separate, opaque licensing.
+
+## When it fits
+
+- **AI-Native Applications:** Teams building LLM-powered chatbots, agents, or RAG systems that require robust prompt injection protection and data redaction.
+- **Compliance-Heavy Environments:** Organizations needing SOC 2 Type II, ISO 27001, and ISO 27701 certified security controls for user data and authentication.
+- **Rapid Prototyping:** Startups or internal teams that need to integrate enterprise-grade identity and security features without hiring dedicated security engineers.
+- **Hybrid AI Deployments:** Companies using a mix of open-source models (like Llama) and proprietary APIs (like GPT-4) that need a unified security layer across all endpoints.
+
+## When it doesn't
+
+Pangea is not a general-purpose cloud provider; it does not offer compute, storage, or networking infrastructure. It is also not suitable for non-AI workloads that do not require specialized API-based security services like prompt injection mitigation.
+
+## Inclusion criteria
+
+Pangea meets all three inclusion criteria:
+
+1.  **Transparent Pricing:** Pricing details and free tier limits are publicly available on their pricing page.
+2.  **Self-Service Signup:** Developers can sign up and start using APIs directly via the console without sales intervention.
+3.  **Public SLA/Status Page:** A public Service Status page is available at `https://status.pangea.cloud/` to monitor uptime and incidents.

@@ -1,0 +1,53 @@
+---
+status: reviewed
+tagline: "In-process SQL OLAP database for fast analytics on local and remote data"
+pricingModel: mixed
+openSource: true
+services:
+  - "SQL OLAP Database Engine"
+  - "Columnar Storage"
+  - "Parquet & JSON Support"
+  - "Cloud Storage Integration (S3, Azure, GCS)"
+  - "Spatial Extensions"
+  - "Python, Java, Node.js, R Bindings"
+  - "Client-Server Mode (Beta)"
+  - "Iceberg & Lance Format Support"
+socials:
+  website: "https://duckdb.org/"
+  github: "https://github.com/duckdb/duckdb"
+  x: "https://twitter.com/duckdb"
+---
+
+## What makes DuckDB different
+
+DuckDB is fundamentally different from traditional cloud data warehouses because it is **in-process and embedded**—not a managed service. You install it locally (or via pip, npm, cargo) and run analytical SQL queries directly in your application or notebook, with zero network latency and no remote server dependency. This embedded architecture enables instant startup, zero operational overhead, and compatibility across macOS, Linux, Windows, and browsers.
+
+Unlike AWS Redshift, Google BigQuery, or Snowflake, DuckDB brings the warehouse to your data rather than moving data to the cloud. It queries Parquet files, CSV, JSON, and cloud object storage (S3, Azure Blob, GCS) directly without requiring ingestion. The columnar storage engine is optimized for OLAP workloads and can spill queries to disk, supporting datasets larger than available RAM.
+
+The project is MIT-licensed open source with a thriving community. It combines familiar SQL semantics with modern extensions (spatial queries, Iceberg support, custom UDFs) and ships idiomatic APIs for Python, Java, Node.js, Go, R, and Rust.
+
+## Pricing model
+
+**DuckDB is completely free.** The entire project—core engine, extensions, and the DuckLake format—is released under the MIT open-source license. There are no subscription tiers, usage charges, or commercial variants. You pay nothing to download, embed, or run DuckDB.
+
+This stands in sharp contrast to hyperscaler data warehouses, which charge per query, per compute hour, or per GB of data scanned. DuckDB's free model makes it ideal for cost-conscious teams, startups, and development workflows where traditional warehouse costs would be prohibitive.
+
+## When it fits
+
+- **Ad-hoc analytics & data exploration**: Query CSV, Parquet, and JSON files directly in Jupyter notebooks or Python scripts without staging infrastructure.
+- **Embedded analytics in applications**: Build analytical features (reporting, dashboards, aggregations) into web apps and CLIs using the Node.js or Python APIs.
+- **Data pipeline orchestration**: Use DuckDB in dbt, Apache Airflow, or custom ETL scripts to transform and query multi-source data on modest hardware.
+- **Local development and testing**: Replicate production data warehouse workloads locally before deploying to Snowflake or BigQuery.
+- **Small-to-medium OLAP workloads**: Datasets up to multi-TB scale that fit on a single machine or cluster, with queries that benefit from columnar execution.
+
+## When it doesn't
+
+DuckDB is not a managed cloud service—it requires your infrastructure and operational oversight. It is not designed for distributed petabyte-scale warehouses requiring fault tolerance, multi-tenancy, and SLA guarantees across global regions. Enterprise teams needing managed backup, disaster recovery, and native audit logging may find hyperscalers a better fit.
+
+## Inclusion criteria
+
+DuckDB meets all 3 inclusion criteria:
+
+1. **Transparent pricing**: Free and open source (MIT license). No hidden costs or tiers. [https://duckdb.org/](https://duckdb.org/)
+2. **Self-service signup**: Download and install instantly via package manager (`pip install duckdb`) or compiled binary. No account creation required.
+3. **Public status & SLA**: Active open-source project with public GitHub repository, regular releases (v1.5.3 as of latest), and community support via GitHub issues and Discord.

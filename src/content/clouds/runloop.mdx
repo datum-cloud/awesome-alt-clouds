@@ -1,0 +1,51 @@
+---
+status: reviewed
+tagline: "Secure, scalable cloud devboxes and infrastructure optimized for building and evaluating AI coding agents."
+headquarters: "San Francisco, CA"
+foundedYear: 2024
+pricingModel: usage-based
+openSource: false
+regions:
+  - "US"
+  - "EU"
+services:
+  - Devboxes (Secure Code Sandboxes)
+  - Agent Benchmarking (SWE-Bench, R2E-Gym)
+  - VPC Deployment (Single Tenant)
+  - Sandbox Management API
+  - CI/CD Integration Tools
+socials:
+  website: "https://runloop.ai/"
+  x: "https://x.com/RunloopAI"
+  linkedin: "https://linkedin.com/company/runloop-ai"
+---
+
+## What makes Runloop different
+
+Runloop is not a general-purpose hyperscaler; it is an infrastructure provider specifically engineered for the unique demands of AI coding agents. While traditional clouds offer generic compute, Runloop provides "Devboxes"—isolated, micro-VM-based environments optimized for agentic workflows. These sandboxes feature 2x faster vCPUs on a custom bare-metal hypervisor, supporting both ARM64 and x86 architectures, with command execution latency as low as 100ms. This architecture allows agents to perform file operations, run tests, and execute code with significantly lower overhead than standard containerized environments.
+
+The platform distinguishes itself through deep integration with the AI development lifecycle. Runloop allows developers to snapshot and branch sandbox disk states using a "Git for Agent State" approach, enabling reproducible development and testing. It supports Docker-in-Docker, SSH, and WebSocket connectivity, making it compatible with existing toolchains while offering enterprise-grade security features like SOC 2, HIPAA, and GDPR compliance. Unlike public clouds where agents share noisy neighbors, Runloop’s isolated micro-VMs ensure strict hardware-level boundaries between tenants, critical for handling sensitive proprietary code.
+
+A key differentiator is its built-in benchmarking suite. Runloop provides one-click access to standard academic benchmarks like SWE-Bench, R2E-Gym, and SWE-Smith, allowing teams to evaluate agent performance against published baselines without setting up complex test infrastructure. This "Build, Ship, Refine" workflow enables teams to iterate quickly, using real-world PRs and synthetic scenarios to fine-tune agents via Reinforcement Fine-Tuning (RFT) or Supervised Fine-Tuning (SFT).
+
+## Pricing model
+
+Runloop operates on a usage-based pricing model, charging for the compute resources consumed by Devboxes and benchmarking tasks. Specific per-hour or per-second rates are not publicly disclosed on the main landing page and require contacting sales or checking the dashboard. The model supports scaling from individual developer sandboxes to clusters of 10,000+ parallel environments. Enterprise customers can opt for single-tenant deployments and VPC integrations, which likely involve custom contractual pricing. This model stands out by aligning costs directly with agentic activity bursts rather than reserved capacity, which is inefficient for many AI workloads.
+
+## When it fits
+
+- **AI Coding Agent Development:** Teams building agents that need to read, write, and execute code in secure, isolated environments.
+- **Benchmarking & Evaluation:** Organizations needing to test agent accuracy against SWE-Bench or custom datasets without managing infrastructure.
+- **Enterprise Security Requirements:** Companies requiring SOC 2, HIPAA, or GDPR-compliant execution environments for proprietary code.
+- **High-Throughput Workflows:** Use cases requiring thousands of parallel sandbox instances for mass code review or test generation.
+
+## When it doesn't
+
+- **General-Purpose Hosting:** If you need to host static websites, standard web apps, or databases without agentic components, a standard cloud provider is more cost-effective.
+- **Heavy GPU Training:** Runloop focuses on CPU-optimized sandboxes for code execution; it is not a primary provider for large-scale LLM pre-training.
+
+## Inclusion criteria
+
+- **Transparent Pricing:** Partially met. While specific numbers are gated, the usage-based model is clearly defined.
+- **Self-Service Signup:** Met. Users can sign up and launch devboxes via the web interface.
+- **Public SLA/Status Page:** Met. Runloop provides public documentation on security standards (SOC 2, HIPAA) and reliability guarantees for parallel sandboxes.

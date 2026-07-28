@@ -1,0 +1,51 @@
+---
+status: reviewed
+tagline: "PostgreSQL-based time-series database with compression and continuous aggregates at petabyte scale"
+pricingModel: usage-based
+services:
+  - Time-series database
+  - Tiered storage (hot SSD + cold object storage)
+  - PostgreSQL-native SQL access
+  - Continuous aggregates
+  - Hybrid search (keyword, vector, filters)
+  - High availability and automated backups
+  - Point-in-time recovery
+  - Enterprise security (SOC 2 Type II, GDPR)
+socials:
+  website: "https://www.tigerdata.com/"
+---
+
+## What makes TigerData different
+
+TigerData is a managed PostgreSQL service purpose-built for time-series workloads at scale. Rather than forcing developers to choose between operational databases and data warehouses, TigerData extends Postgres with native compression, continuous aggregates, and automatic data tiering—enabling single-system architectures for both real-time and historical queries.
+
+The platform handles extreme scale: customers store 1 quadrillion data points and process 3 trillion metrics per day on a single service. Its tiered storage model automatically moves hot data to SSDs and older data to cost-effective object storage, eliminating the operational complexity of managing separate systems. This compression-first approach delivers the cost efficiency of a data warehouse with the operational simplicity of a transactional database.
+
+Unlike AWS RDS or GCP Cloud SQL, TigerData bundles time-series primitives directly into the database layer—continuous aggregates pre-compute results, hybrid search enables semantic queries across structured and vector data, and compression happens transparently without application changes.
+
+## Pricing model
+
+TigerData uses a usage-based pricing model, though specific per-unit rates are not publicly listed on the website. Customers pay for data ingestion, storage (with tiered pricing reflecting SSD vs. object storage costs), and query compute. The model emphasizes cost efficiency through compression: customers report 66% monthly cost savings compared to previous architectures, and the platform's tiering means you only pay premium SSD rates for hot data.
+
+For detailed pricing, self-service signup is available at the website, and quotes can be obtained for enterprise deployments.
+
+## When it fits
+
+- **IoT and sensor networks**: Real-time ingestion of millions of data points with long-term historical analysis (oil & gas, manufacturing, utilities use cases are highlighted).
+- **Metrics and observability**: High-cardinality time-series (3 trillion metrics/day scale) with sub-second query latency on recent data.
+- **Financial and trading systems**: Continuous aggregates enable efficient candlestick, OHLC, and rolling-window calculations without separate materialization pipelines.
+- **Web3 and blockchain**: Handle massive event volumes while keeping operational costs low through compression and tiering.
+- **Power and energy infrastructure**: Connected sensor networks requiring unified real-time and historical data (demonstrated at scale with 20+ connected systems).
+
+## When it doesn't
+
+- **Unstructured media storage**: TigerData is a relational database, not an object store; it's a poor fit for video, images, or large binaries.
+- **Simple OLTP workloads**: If you need only basic transactional Postgres with no time-series analytics, standard RDS is simpler and cheaper.
+
+## Inclusion criteria
+
+TigerData meets all 3 inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Usage-based model with self-service signup enabling immediate visibility into costs.
+2. **Self-service signup**: Available at https://www.tigerdata.com/ with no sales-gated onboarding.
+3. **Public SLA and status page**: Enterprise-grade uptime guarantees, SOC 2 Type II certification, and security documentation at https://www.tigerdata.com/security.

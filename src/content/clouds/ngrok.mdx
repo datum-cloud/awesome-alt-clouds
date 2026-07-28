@@ -1,0 +1,55 @@
+---
+status: reviewed
+tagline: Secure cloud networking platform for tunnels, API gateways, and traffic policy.
+headquarters: San Francisco, CA
+foundedYear: 2017
+pricingModel: subscription
+openSource: true
+services:
+  - Secure Tunnels
+  - AI Gateway
+  - API Gateway (Endpoints)
+  - Traffic Policy
+  - Agent SDKs
+  - Bot Protection
+socials:
+  website: "https://ngrok.com/"
+  x: "https://twitter.com/ngrokHQ"
+  linkedin: "https://linkedin.com/company/ngrok"
+  github: "https://github.com/ngrok"
+---
+
+## What makes ngrok different
+
+While hyperscalers provide the infrastructure to host applications, ngrok specializes in the networking layer that connects them—especially when those applications are in development, edge, or hybrid environments. Its core differentiator is the ability to expose local or private services to the internet securely without complex firewall rules, port forwarding, or open ports. By using lightweight agents or native SDKs (Go, Python, Java, Node.js), ngrok creates mTLS-encrypted tunnels that handle service discovery and DNS resolution within its global infrastructure.
+
+Beyond simple tunnels, ngrok has evolved into a universal traffic gateway. It replaces fragmented toolchains (nginx, NLBs, custom Lua plugins) with a declarative Traffic Policy system based on CEL (Common Expression Language). This allows developers to implement security, rate limiting, and routing logic directly in code or configuration files, offloading processing to ngrok’s cloud gateway. This "code-as-infrastructure" approach significantly reduces the operational overhead associated with traditional reverse proxies and load balancers.
+
+## Pricing model
+
+ngrok operates on a subscription-based model with a generous free tier, avoiding the complex per-hour or per-GB billing structures typical of IaaS providers.
+
+- **Free Tier:** Includes 100,000 requests/month, shared domains, and basic tunneling features. Ideal for individual developers and testing.
+- **Pro ($25/user/month):** Adds private domains, custom domains, increased request limits, and team collaboration features.
+- **Business ($125/user/month):** Adds SSO, SCIM, audit logs, and higher SLA guarantees.
+- **Enterprise:** Custom pricing for advanced security, dedicated support, and volume discounts.
+
+Unlike AWS or GCP, where costs can spiral due to data egress and NAT gateway hours, ngrok’s pricing is predictable and capped per user or seat, making budgeting easier for development and API management workloads.
+
+## When it fits
+
+- **Webhook Testing:** Instantly exposing localhost to external services like GitHub, Stripe, or Slack during development.
+- **Remote Access:** Securely accessing on-premise or edge devices without opening inbound firewall ports or managing VPNs.
+- **API Gateway:** Centralizing traffic management, authentication, and rate limiting for microservices or AI models.
+- **Developer Experience:** Providing a consistent networking layer across local, cloud, and edge environments using native SDKs.
+
+## When it doesn't
+
+- **Heavy Compute Workloads:** ngrok does not provide compute resources (VMs, containers) or storage; it only routes traffic.
+- **Complex Data Processing:** It is not a platform for running data pipelines, ML training, or heavy backend logic.
+
+## Inclusion criteria
+
+- **Transparent Pricing:** Yes, clear per-user subscription tiers are published on [ngrok.com/pricing](https://ngrok.com/pricing).
+- **Self-Service Signup:** Yes, users can create accounts and start using the free tier immediately without sales contact.
+- **Public SLA/Status Page:** Yes, a public status page is available at [status.ngrok.com](https://status.ngrok.com).

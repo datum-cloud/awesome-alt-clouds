@@ -64,8 +64,8 @@ def normalize_name(name: str) -> str:
 
     Examples:
         'ZeroTier Labs' -> 'zerotier'
-        'Namecheap'     -> 'namecheap'
-        'Heap'          -> 'heap'
+        'Namecheap' -> 'namecheap'
+        'Heap' -> 'heap'
     """
     name = name.lower()
     name = re.sub(r'[^a-z0-9\s]', ' ', name)
@@ -259,9 +259,10 @@ def build_comment(match_type: str, match: dict) -> str:
         raise ValueError(f'Unknown match_type: {match_type!r}')
 
 
-# Paths to data files — overridable in tests
-_CLOUDS_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', 'docs', 'clouds.json')
-_WATCHLIST_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', 'docs', 'watchlist.json')
+# Paths to data files — overridable in tests.
+# Live in public/ since the Astro migration (Phase 1, see analysis/2026-05-19-astro-migration-rfc.md).
+_CLOUDS_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', 'public', 'clouds.json')
+_WATCHLIST_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', 'public', 'watchlist.json')
 
 
 def _write_github_output(key: str, value: str) -> None:
@@ -304,8 +305,8 @@ def main() -> None:
     submitted_name = issue_title
 
     # 1. Check clouds.json — the authoritative list derived from README.md.
-    #    Closed GitHub Issues are intentionally NOT checked: a previously-rejected
-    #    submission must be able to re-submit freely.
+    # Closed GitHub Issues are intentionally NOT checked: a previously-rejected
+    # submission must be able to re-submit freely.
     clouds: list[dict] = []
     try:
         with open(_CLOUDS_JSON_PATH, 'r', encoding='utf-8') as f:
@@ -327,8 +328,8 @@ def main() -> None:
         return
 
     # 2. Check watchlist.json — flag re-submissions of watched candidates so
-    #    reviewers know this is a repeat attempt, but do NOT block evaluation.
-    #    The service may have improved; let the evaluator decide.
+    # reviewers know this is a repeat attempt, but do NOT block evaluation.
+    # The service may have improved; let the evaluator decide.
     watchlist: list[dict] = []
     try:
         with open(_WATCHLIST_JSON_PATH, 'r', encoding='utf-8') as f:
@@ -345,7 +346,7 @@ def main() -> None:
         criteria = watchlist_match.get('criteriaNeed', 'see watchlist')
         comment = (
             '📋 **Watchlist Re-submission**\n\n'
-            f'This service is currently on the [Watchlist](https://alt-clouds.org/watchlist.html) '
+            'This service is currently on the [Watchlist](https://www.alt-cloud.org/watchlist/) '
             f'and is being re-evaluated. Previously it did not qualify because: '
             f'_{watchlist_match.get("reasonNotQualifying", "criteria not met")}_\n\n'
             f'**Criteria still needed:** {criteria}\n\n'
@@ -354,7 +355,6 @@ def main() -> None:
         )
         post_comment(repo, issue_number, comment, gh_token)
         add_label(repo, issue_number, 'watchlist', gh_token)
-        # is_duplicate stays false — evaluation must run
         _write_github_output('is_duplicate', 'false')
         _write_github_output('duplicate_reason', 'watchlist_resubmission')
     else:

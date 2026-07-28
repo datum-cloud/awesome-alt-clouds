@@ -1,0 +1,23 @@
+# Safety net when GitHub Pages still uses legacy Jekyll (branch deploy).
+# Astro output is published via deploy-pages.yml + upload-pages-artifact.
+# Exclude non-Jekyll paths so .astro front matter is not parsed as YAML.
+exclude:
+  - src
+  - node_modules
+  - dist
+  - .astro
+  - scripts
+  - tests
+  - analysis
+  - public
+  - .github
+  - .cursor
+  - .vscode
+  - .worktrees
+  - astro.config.mjs
+  - package.json
+  - package-lock.json
+  - eslint.config.js
+  - prettier.config.mjs
+  - tsconfig.json
+  - pyproject.toml

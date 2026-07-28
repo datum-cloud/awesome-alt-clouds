@@ -1,0 +1,59 @@
+---
+status: reviewed
+tagline: Globally distributed edge platform for JavaScript and TypeScript serverless apps.
+headquarters: "San Francisco, US"
+foundedYear: 2019
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Serverless JavaScript/TypeScript Execution"
+  - "Deno KV (Key-Value Store)"
+  - "Managed Postgres & MySQL Integration"
+  - "Static Site Hosting"
+  - "Cron Jobs"
+  - "Edge Telemetry & Observability"
+socials:
+  website: "https://deno.com/deploy"
+  x: "https://twitter.com/denodeploy"
+  linkedin: "https://linkedin.com/company/denoland"
+  github: "https://github.com/denoland"
+---
+
+## What makes Deno Deploy different
+
+Deno Deploy distinguishes itself by running code in lightweight V8 isolates rather than full virtual machines or containers. This architecture enables near-instant cold starts and high-throughput serverless execution globally. Unlike traditional cloud functions that may suffer from latency due to geographic distance, Deno Deploy executes code at the edge, close to end-users, across a globally distributed network.
+
+The platform is built on Deno, offering a secure-by-default runtime with native TypeScript support. It provides full Node.js and npm compatibility, allowing developers to leverage the existing ecosystem without modification. A key differentiator is the seamless integration with database services like Deno KV and managed Postgres, which can be provisioned directly from the dashboard. Additionally, the platform supports "branch database clones," allowing developers to create isolated database environments for every pull request, streamlining testing and collaboration.
+
+Developer experience is central to Deno Deploy's design. It offers first-class OpenTelemetry support for auto-instrumented logs, traces, and metrics. The CLI tooling includes features like `deno task --tunnel dev`, which allows developers to tunnel local development environments to production, pulling down production environment variables and sending telemetry to the dashboard for real-time debugging.
+
+## Pricing model
+
+Deno Deploy operates on a generous usage-based pricing model with a robust free tier. The free tier includes:
+
+- **300,000 requests per month**
+- **100 GB bandwidth per month**
+- **Unlimited deployments**
+
+For higher usage, paid plans start at $10/month for the "Pro" plan, which includes 1 million requests and 1 TB bandwidth. Additional usage is billed per request and per GB of bandwidth. This model stands out for its simplicity and lack of hidden costs for compute time, focusing instead on request volume and data transfer, which aligns well with edge computing workloads.
+
+## When it fits
+
+- **High-latency sensitive applications:** APIs and web apps where global edge distribution reduces latency for international users.
+- **Jamstack and Static Sites:** Perfect for hosting static sites with serverless functions for dynamic interactions.
+- **Serverless APIs:** REST or GraphQL APIs that benefit from fast cold starts and elastic scalability.
+- **Developer-centric workflows:** Teams that value TypeScript-first development, GitHub integration, and built-in observability.
+- **Testing and CI/CD:** Leveraging branch database clones for isolated testing environments.
+
+## When it doesn't
+
+- **Heavy compute workloads:** Applications requiring long-running processes or significant CPU-intensive tasks are not suitable for serverless edge execution.
+- **Custom OS dependencies:** Workloads requiring specific OS-level configurations or kernel modules cannot run in V8 isolates.
+
+## Inclusion criteria
+
+Deno Deploy meets all three inclusion criteria:
+
+1.  **Transparent pricing:** Pricing details, including free tier limits and paid plan rates, are clearly listed on their website.
+2.  **Self-service signup:** Users can sign up and start deploying applications directly via the web dashboard or CLI without sales interaction.
+3.  **Public SLA/status page:** Deno provides a public status page at [status.deno.com](https://status.deno.com) to monitor service health.

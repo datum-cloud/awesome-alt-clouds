@@ -1,0 +1,61 @@
+---
+status: reviewed
+tagline: Low-code platform for building internal tools, dashboards, and workflows with pre-built components and database integrations.
+headquarters: San Francisco, CA
+foundedYear: 2017
+pricingModel: subscription
+openSource: false
+services:
+  - App Builder
+  - Workflows
+  - Mobile Apps
+  - Agents
+  - Database Connectors
+  - Self-Hosting
+  - AppGen
+socials:
+  website: "https://retool.com/"
+  x: "https://twitter.com/RetoolHQ"
+  linkedin: "https://linkedin.com/company/retool"
+---
+
+## What makes Retool different
+
+Retool is not an infrastructure provider; it is a rapid application development platform designed specifically for building internal tools, admin panels, and operational dashboards. Unlike hyperscalers that provide raw compute, storage, and networking primitives requiring significant engineering overhead to orchestrate, Retool provides a visual interface and a library of pre-built components (tables, forms, buttons) that connect directly to existing databases and APIs.
+
+The core differentiator is its ability to drastically reduce the time required to build functional internal software. Instead of writing custom frontend and backend code for every CRUD operation, developers use Retool's drag-and-drop builder and JavaScript-based logic layer to connect UI elements to data sources like PostgreSQL, MySQL, Snowflake, and Salesforce. This "low-code" approach allows engineering teams to focus on business logic rather than UI maintenance, while data teams can build self-service tools without waiting for engineering capacity.
+
+Retool also distinguishes itself through its deployment flexibility. While primarily a SaaS offering, it supports self-hosting for organizations with strict data residency or security requirements, allowing them to run the platform within their own VPCs. This bridges the gap between the ease of SaaS tools and the security controls required by enterprise IT departments.
+
+## Pricing model
+
+Retool operates on a subscription-based model, primarily charging per active user per month. This is distinct from the usage-based pricing common in cloud infrastructure (e.g., AWS EC2 hours or GCP egress).
+
+Key pricing tiers include:
+
+- **Free Plan:** Allows up to 3 users for development and testing purposes.
+- **Standard Plan:** Approximately $10 per user/month (billed annually), providing access to core app building features, standard integrations, and community support.
+- **Enterprise Plan:** Custom pricing, typically starting around $15-$20+ per user/month, including advanced security features (SSO, SCIM, audit logs), dedicated support, and self-hosting capabilities.
+
+The pricing stands out because it is predictable and flat per-seat, avoiding the complex cost allocation models of infrastructure providers. However, for large-scale internal tooling, the per-user cost can accumulate quickly compared to the marginal cost of running a simple internal dashboard on a single EC2 instance.
+
+## When it fits
+
+- **Internal Admin Panels:** Rapidly building dashboards for customer support, sales ops, or HR teams.
+- **Database Management Tools:** Creating safe, governed interfaces for non-engineers to query or update database records.
+- **Operational Workflows:** Automating complex business processes that span multiple systems (e.g., ERP, CRM, and Slack).
+- **MVP Development:** Quickly prototyping internal tools to test workflows before committing to full-scale custom development.
+
+## When it doesn't
+
+- **Public-Facing Customer Apps:** Retool is not designed for building external, customer-facing applications due to licensing and UI customization limitations.
+- **High-Performance Compute:** It does not provide compute resources for heavy lifting like machine learning training, video rendering, or high-frequency trading.
+- **Static Infrastructure:** It is not a replacement for IaaS providers for hosting websites, managing containers, or handling raw data lake storage.
+
+## Inclusion criteria
+
+Retool meets all three inclusion criteria:
+
+1.  **Transparent Pricing:** Pricing tiers and per-user costs are clearly listed on their public pricing page.
+2.  **Self-Service Signup:** Users can create a free account and start building immediately without sales intervention.
+3.  **Public Status Page:** Retool maintains a public status page at status.retool.com to monitor service health.

@@ -1,0 +1,53 @@
+---
+status: reviewed
+tagline: Authorization-as-a-Service platform for baking-in access control in minutes.
+headquarters: "San Francisco, CA"
+foundedYear: 2021
+pricingModel: subscription
+openSource: true
+services:
+  - Policy Engine
+  - MCP Gateway
+  - App and API Permissions
+  - AI Agent Security
+  - Audit Logs
+  - CLI
+socials:
+  website: "https://www.permit.io/"
+  x: "https://x.com/permit_io"
+  linkedin: "https://www.linkedin.com/company/permitio/"
+  github: "https://github.com/permitio"
+---
+
+## What makes Permit different
+
+Permit.io distinguishes itself by decoupling authorization from authentication, offering a dedicated Policy Decision Point (PDP) that operates independently of your Identity Provider. While hyperscalers often bundle IAM with their identity services, Permit provides a unified policy fabric that supports RBAC, ABAC, and ReBAC (Relationship-Based Access Control) out of the box. This allows developers to implement fine-grained, context-aware access control without being locked into a specific IdP or cloud provider's proprietary IAM structure.
+
+The platform is particularly notable for its "agentic" focus, addressing the security gaps left by legacy IAM systems when applied to AI agents. Permit introduces "agentic identity," which binds permissions to intent via dynamic fingerprinting and session-only authorization. This ensures that ephemeral AI agents do not retain standing access, reducing the blast radius of potential prompt injection or rogue agent behavior. By enforcing policies at action-time across MCP gateways, APIs, and databases, Permit provides defense-in-depth that static roles cannot achieve.
+
+Built on open standards like OPA (Open Policy Agent) and OPAL, Permit.io offers both managed and self-hosted PDP deployments. This hybrid flexibility allows organizations to keep decision-making low-latency and within their VPC while maintaining a central control plane for policy management. The inclusion of an MCP Gateway further positions Permit as a critical infrastructure component for securing the growing ecosystem of Model Context Protocol-connected AI tools.
+
+## Pricing model
+
+Permit.io operates on a subscription-based model with a free tier available for individuals or small projects. The free plan includes up to 1,000 monthly active users and 10,000 policy evaluations. Paid tiers, such as the "Team" and "Enterprise" plans, are priced based on the number of monthly active users and additional features like advanced audit logs, dedicated support, and SSO integration.
+
+While specific dollar amounts for higher tiers are not publicly listed and require contacting sales, the pricing structure is transparent regarding usage limits. This stands out from typical cloud pricing, which often charges for compute resources or data egress; Permit charges primarily for the scale of identity and authorization decisions, making costs predictable based on user activity rather than infrastructure consumption.
+
+## When it fits
+
+- **AI-First Applications:** Teams building agentic workflows that require real-time, intent-based authorization for ephemeral AI agents.
+- **Complex Access Models:** Organizations needing ReBAC or ABAC capabilities that are difficult to implement with traditional RBAC-only systems.
+- **Multi-Cloud or Hybrid Environments:** Developers seeking a cloud-agnostic authorization layer that works consistently across AWS, GCP, Azure, and on-premises infrastructure.
+- **Regulated Industries:** Healthcare and fintech companies requiring detailed audit trails and compliance with standards like HIPAA and SOC 2 Type II.
+
+## When it doesn't
+
+Permit.io is not a replacement for Identity Providers (IdP) or network firewalls; it should be used in conjunction with existing authentication and network security tools. It is also ill-suited for simple applications that only require basic, static role-based access control with no need for context or relationships.
+
+## Inclusion criteria
+
+Permit.io meets all three inclusion criteria:
+
+1.  **Transparent Pricing:** A clear free tier and usage-based limits are published on their pricing page.
+2.  **Self-Service Signup:** Users can create accounts and start building policies directly via the app.
+3.  **Public SLA/Status Page:** A public status page is available at [permit-io.instatus.com](https://permit-io.instatus.com/).

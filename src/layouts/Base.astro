@@ -1,0 +1,195 @@
+---
+import "../styles/global.css";
+import CompareTray from "../components/CompareTray.astro";
+import { asset } from "../lib/assets";
+import { blockSearchBots, sitePreview } from "../lib/site";
+import { defaultDescription, defaultTitle, socialDescription, socialTitle } from "../lib/site-meta";
+import { absoluteUrl, defaultCanonical, defaultOgImage, homepageUrl, siteRoot } from "../lib/site-urls";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  /** Inject Dataset / CollectionPage JSON-LD on the homepage only */
+  includeHomeJsonLd?: boolean;
+  /** Cloud count for the homepage metadata blocks */
+  cloudCount?: number;
+  /** Show floating compare tray (disabled on /compare itself) */
+  showCompareTray?: boolean;
+}
+
+const {
+  title = defaultTitle,
+  description = defaultDescription,
+  ogImage = defaultOgImage,
+  canonical = defaultCanonical,
+  includeHomeJsonLd = false,
+  cloudCount = 428,
+  showCompareTray = true,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    {
+      blockSearchBots && (
+        <>
+          <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+          <meta name="googlebot" content="noindex, nofollow" />
+          <meta name="bingbot" content="noindex, nofollow" />
+        </>
+      )
+    }
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={socialTitle} />
+    <meta property="og:description" content={socialDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1206" />
+    <meta property="og:image:height" content="634" />
+    <meta property="og:image:type" content="image/png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={socialTitle} />
+    <meta name="twitter:description" content={socialDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href={asset("altclouds-logo.png")} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Awesome Alt Clouds"
+      href={asset("rss.xml")}
+    />
+
+    <slot name="head" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    {
+      includeHomeJsonLd && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebSite",
+                "@id": `${siteRoot}#website`,
+                url: homepageUrl(),
+                name: "Awesome Alt Clouds",
+                description: `Curated directory of ${cloudCount}+ alternative cloud providers evaluated against transparent pricing, self-service signup, and public SLA criteria.`,
+                inLanguage: "en",
+                publisher: { "@id": `${siteRoot}#organization` },
+              },
+              {
+                "@type": "Organization",
+                "@id": `${siteRoot}#organization`,
+                name: "Datum Cloud",
+                url: siteRoot,
+                logo: {
+                  "@type": "ImageObject",
+                  url: defaultOgImage,
+                  width: 1206,
+                  height: 634,
+                },
+                sameAs: [
+                  "https://github.com/datum-cloud",
+                  "https://github.com/datum-cloud/awesome-alt-clouds",
+                ],
+                knowsAbout: [
+                  "cloud computing",
+                  "alternative cloud providers",
+                  "infrastructure as a service",
+                  "GPU cloud computing",
+                  "developer tools",
+                  "database services",
+                  "AI inference APIs",
+                  "platform as a service",
+                ],
+              },
+              {
+                "@type": "Dataset",
+                "@id": `${siteRoot}#dataset`,
+                name: "Awesome Alt Clouds Directory",
+                description: `A curated, community-maintained dataset of ${cloudCount}+ alternative cloud service providers evaluated against 3 criteria: transparent public pricing, usage-based self-service signup, and public SLA or status page. Covers 23 categories including infrastructure, GPU compute, databases, AI inference, developer tooling, and more.`,
+                url: homepageUrl(),
+                keywords: [
+                  "cloud computing",
+                  "alternative cloud",
+                  "infrastructure as a service",
+                  "GPU cloud",
+                  "databases",
+                  "developer tools",
+                  "PaaS",
+                  "AI inference",
+                  "observability",
+                  "authorization",
+                  "network connectivity",
+                ],
+                creator: { "@id": `${siteRoot}#organization` },
+                license: "https://creativecommons.org/licenses/by/4.0/",
+                isAccessibleForFree: true,
+                distribution: [
+                  {
+                    "@type": "DataDownload",
+                    encodingFormat: "application/json",
+                    contentUrl: absoluteUrl("clouds.json"),
+                    name: "clouds.json — machine-readable cloud services directory",
+                  },
+                  {
+                    "@type": "DataDownload",
+                    encodingFormat: "text/markdown",
+                    contentUrl:
+                      "https://raw.githubusercontent.com/datum-cloud/awesome-alt-clouds/main/README.md",
+                    name: "README.md — human-readable awesome list",
+                  },
+                ],
+              },
+              {
+                "@type": "CollectionPage",
+                "@id": `${siteRoot}#webpage`,
+                url: homepageUrl(),
+                name: "Awesome Alt Clouds | Alternative Cloud Providers for Developers",
+                description:
+                  "Discover specialized cloud infrastructure providers built for developers who have specialized requirements and need alternatives to hyperscalers.",
+                isPartOf: { "@id": `${siteRoot}#website` },
+                about: { "@id": `${siteRoot}#dataset` },
+                speakable: {
+                  "@type": "SpeakableSpecification",
+                  cssSelector: [".hero-title", ".hero-subtitle"],
+                },
+              },
+            ],
+          })}
+        />
+      )
+    }
+
+    {
+      !sitePreview && (
+        <script src="https://cdn.usefathom.com/script.js" data-site="ZQEMDUAQ" defer is:inline />
+      )
+    }
+  </head>
+  <body class="bg-cream text-rich-earth font-sans">
+    <slot />
+    {showCompareTray && <CompareTray />}
+  </body>
+</html>

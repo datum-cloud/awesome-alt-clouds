@@ -1,0 +1,54 @@
+---
+status: reviewed
+tagline: "HashiCorp's open-source, identity-based access management platform for secure remote infrastructure access."
+headquarters: "San Francisco, CA"
+foundedYear: 2021
+pricingModel: "subscription"
+openSource: true
+services:
+  - "HCP Boundary (Managed Service)"
+  - "Boundary Community Edition (Self-hosted)"
+  - "SSH Access Management"
+  - "RDP Access Management"
+  - "Kubernetes Access Management"
+  - "Session Recording & Audit Logs"
+  - "Target-Based Access Control"
+socials:
+  website: "https://www.boundaryproject.io/"
+  x: "https://twitter.com/hashicorp"
+  linkedin: "https://linkedin.com/company/hashicorp"
+  github: "https://github.com/hashicorp/boundary"
+---
+
+## What makes Boundary different
+
+Boundary fundamentally shifts access control from IP-based networking to identity-based authorization. Unlike traditional VPNs that grant broad network access, Boundary enables just-in-time, least-privilege access to specific targets (hosts, databases, Kubernetes clusters) based on user identity and role. This architecture eliminates the need for complex firewall rules or static IP allow-listing, significantly reducing the attack surface.
+
+As an open-source project by HashiCorp, Boundary integrates seamlessly with the broader HashiCorp ecosystem, particularly Terraform for infrastructure-as-code management and Vault for dynamic credential brokering. This allows organizations to automate the provisioning of access policies and inject secure credentials on-the-fly, ensuring that access is always auditable and ephemeral.
+
+The platform supports both a managed cloud offering (HCP Boundary) and a self-hosted Community Edition. HCP Boundary provides a fully managed control plane and worker infrastructure, while the Community Edition allows for complete self-hosting on any cloud provider or on-premises hardware, offering flexibility for organizations with strict data residency or compliance requirements.
+
+## Pricing model
+
+Boundary operates on a dual pricing model. The **Community Edition** is free and open-source (BSL 1.1), allowing unlimited self-hosted usage but requiring users to manage their own infrastructure, scaling, and maintenance.
+
+**HCP Boundary** offers a managed service with a free tier that includes limited worker capacity and session hours, suitable for small teams or testing. Paid tiers scale based on the number of workers and session usage. Specific per-unit pricing is not publicly listed in fixed tables but is generally quoted based on organizational size and required capacity. This model stands out for hyperscalers by decoupling access management costs from compute resources, allowing smaller teams to start with zero cost while enterprise teams pay for managed reliability and security features.
+
+## When it fits
+
+- Organizations seeking to replace legacy VPNs with zero-trust, identity-based access models.
+- Teams already using HashiCorp Terraform and Vault who want tight integration for automated access provisioning.
+- Enterprises requiring detailed session auditing, recording, and visibility into remote access activities.
+- Companies needing secure access to private infrastructure without exposing ports to the public internet.
+- DevOps teams wanting to manage access policies as code using Terraform.
+
+## When it doesn't
+
+- Workloads requiring low-latency, high-throughput data transfer where a VPN might offer simpler integration.
+- Organizations with no interest in adopting the HashiCorp ecosystem or managing their own Boundary workers if using the self-hosted version.
+
+## Inclusion criteria
+
+- **Transparent Pricing**: HCP Boundary offers a free tier with clear limits; paid tiers are available via sales quote, satisfying the transparency requirement for a managed service.
+- **Self-Service Signup**: Users can sign up for HCP Boundary and download the Community Edition directly from the HashiCorp Developer portal without sales intervention.
+- **Public SLA/Status Page**: HCP Boundary provides a public status page (status.hashicorp.com) and terms of service that outline SLA commitments for the managed service.

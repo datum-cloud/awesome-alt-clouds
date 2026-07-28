@@ -1,0 +1,59 @@
+---
+status: reviewed
+tagline: "Distributed GPU cloud leveraging 450K+ consumer nodes at 90% cost savings."
+pricingModel: "usage-based"
+regions:
+  - "191 countries with distributed nodes"
+services:
+  - "GPU inference (RTX/GTX class)"
+  - "Text-to-image generation"
+  - "LLM deployment & inference"
+  - "Speech-to-text transcription"
+  - "Computer vision APIs"
+  - "Batch processing & HPC"
+  - "Container orchestration (Salad Container Engine)"
+socials:
+  website: "https://salad.com/"
+---
+
+## What makes Salad different
+
+Salad inverts the traditional cloud model by tapping latent consumer GPU resources rather than building hyperscale datacenters. The platform aggregates 450,000+ geographically distributed nodes—consumer GPUs shared part-time by individual operators—and orchestrates them via the proprietary Salad Container Engine. This enables GPU pricing starting at **$0.02/hour**, with customers reporting **up to 90% cost savings** compared to AWS, GCP, and Azure.
+
+The trade-off is transparency: nodes are subject to interruption and have longer cold starts than datacenter GPUs, and maximum vRAM is capped at 24 GB. Salad mitigates availability risk through a proprietary trust-rating system and automatic workload reallocation when hosts go offline. Security relies on container isolation, encryption in transit and at rest, and runtime intrusion detection.
+
+This model appeals specifically to workloads tolerant of latency variance and interruption—inference, batch jobs, and training tasks that don't require guaranteed uptime—while offering radical cost efficiency for price-sensitive AI teams.
+
+## Pricing model
+
+Salad charges **$0.02–$0.04 per GPU hour** for entry-level RTX/GTX instances, with pricing varying by GPU type and availability. Published examples include:
+
+- **Text-to-image (Flux.1-Schnell):** ~$0.10 per image
+- **LLM inference:** $0.04–$0.12 per hour to deploy; $0.12 per million tokens average for TGI
+- **Speech-to-text:** From $0.10/hour
+- **Computer vision:** Pricing at 73% less than Azure for comparable tasks
+
+For **high-volume use** (>10 GPUs, long-running jobs, committed contracts), Salad offers custom discounts through sales engagement. There are no pre-paid commitments, no minimum contracts, and usage is transparent and hourly.
+
+This pricing is 3–10× lower than hyperscaler equivalents for equivalent GPU tiers, with customers like Civitai and Blend reporting 60–85% cost reductions.
+
+## When it fits
+
+- **AI inference at scale:** Serving millions of inferences per day across distributed consumer GPUs (Civitai's 600+ GPU inference pipeline)
+- **Model training & fine-tuning:** LoRA training, Dreambooth, and other workloads where interruption is manageable
+- **Batch processing & HPC:** Rendering queues, data processing jobs, and scientific computing insensitive to latency
+- **Cost-driven startups:** Teams prioritizing GPU access over uptime guarantees and willing to architect for interruption
+- **Hybrid/multi-cloud:** Offloading bursty GPU workloads to reduce spend while maintaining primary infrastructure on traditional clouds
+
+## When it doesn't
+
+- **Low-latency, real-time inference:** Salad nodes have longer cold starts and are subject to interruption; workloads requiring less than 100ms response times or guaranteed availability should use hyperscalers.
+- **High-memory workloads:** Maximum vRAM is 24 GB; workloads needing 48+ GB on a single GPU are not supported.
+
+## Inclusion criteria
+
+Salad meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing:** Hourly rates published on homepage ($0.02–$0.04/hr); per-task pricing examples available throughout site
+2. **Self-service signup:** Direct access to SaladCloud via web portal (https://salad.com/)
+3. **Public SLA & status:** Status and reliability information provided in FAQ; proprietary trust-rating system publicly described

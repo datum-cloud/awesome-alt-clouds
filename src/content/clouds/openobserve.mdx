@@ -1,0 +1,51 @@
+---
+status: reviewed
+tagline: "Open-source, petabyte-scale observability platform for logs, metrics, and traces with 140x lower cost claims."
+headquarters: "India"
+foundedYear: 2021
+pricingModel: "mixed"
+openSource: true
+services:
+  - Logs
+  - Metrics
+  - Traces
+  - Dashboards
+  - Alerting
+  - OpenTelemetry Collector
+socials:
+  website: "https://openobserve.ai/"
+  github: "https://github.com/openobserve/openobserve"
+---
+
+## What makes OpenObserve different
+
+OpenObserve is a unified observability platform built in Rust, designed to replace fragmented stacks like Elasticsearch, Prometheus, and Jaeger with a single, high-performance binary. Its core differentiator is a stateless, horizontally scalable architecture that leverages Apache Parquet for columnar storage. This allows it to achieve significant compression ratios (claimed ~40x) and query speeds, enabling petabyte-scale data retention at a fraction of the cost of traditional solutions.
+
+Unlike hyperscaler observability services that lock data into proprietary formats or charge heavily for egress and indexing, OpenObserve embraces open standards. It is fully compatible with OpenTelemetry and supports "Bring Your Own Bucket" (BYOB) storage, allowing users to store data on S3, GCS, or Azure Blob Storage while keeping the compute layer separate. This decoupling provides immense flexibility and cost control, appealing to organizations seeking to avoid vendor lock-in while maintaining enterprise-grade performance.
+
+The platform is AGPL-3.0 licensed, fostering a transparent development model and active community contributions. While it offers a managed cloud service, its self-hosted capability is a primary draw for security-conscious enterprises that require full control over their telemetry data. The Rust-based backend ensures low memory footprint and high throughput, addressing the performance bottlenecks often seen in Java-based observability tools.
+
+## Pricing model
+
+OpenObserve operates on a dual pricing model: a self-hosted option (free, supported by community or enterprise support contracts) and a managed cloud service. The website highlights a "140x lower cost" claim when benchmarked against Elasticsearch, though specific SaaS pricing tiers for the managed cloud are not explicitly detailed in the provided source text.
+
+The cost advantage stems from its efficient storage engine. By using Parquet and high compression, it reduces storage costs dramatically compared to row-based databases. For the managed service, users typically pay based on data ingestion volume and retention period, but exact per-GB pricing figures are not listed in the current public documentation. The standout feature for cost-conscious users is the ability to self-host the open-source version, paying only for the underlying infrastructure (compute and storage) without licensing fees.
+
+## When it fits
+
+- **Cost-Sensitive Observability:** Teams looking to drastically reduce spend compared to Elasticsearch or Datadog, especially for high-volume log data.
+- **Unified Stack Requirements:** Organizations wanting to consolidate logs, metrics, and traces into a single interface without managing multiple disparate tools.
+- **Open Source & Compliance:** Enterprises requiring AGPL-3.0 licensed software for transparency and auditability, or those needing to self-host data for security compliance.
+- **High-Performance Analytics:** Workloads requiring fast queries over large datasets, leveraging the DataFusion engine and Parquet format.
+- **Cloud Agnostic Storage:** Users who want to decouple compute from storage and leverage existing S3/GCS/Azure Blob infrastructure.
+
+## When it doesn't
+
+- **Managed Service Maturity:** Users seeking a fully managed, enterprise-grade SLA with guaranteed uptime and support from a major hyperscaler may find the "Emerging" status and verification needs a caution.
+- **Simple Needs:** For very small teams with minimal data volume, the complexity of setting up a self-hosted instance may outweigh the benefits over simpler, free-tier managed tools.
+
+## Inclusion criteria
+
+- **Transparent Pricing:** The self-hosted model is free (open source), and the managed service uses a usage-based model, though specific SaaS price points are not explicitly listed in the provided text.
+- **Self-Service Signup:** The website allows users to register for the cloud service and access the open-source code directly.
+- **Public SLA/Status Page:** The provider lists "cloud service SLA needs verification" in the inclusion notes, suggesting a public status page or formal SLA document may not be readily available or verified in the source text.

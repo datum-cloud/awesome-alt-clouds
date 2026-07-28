@@ -1,0 +1,58 @@
+---
+status: reviewed
+tagline: Enterprise open-source feature management platform with strong RBAC and flexible deployment options.
+headquarters: "Oslo, Norway"
+foundedYear: 2013
+pricingModel: subscription
+openSource: true
+services:
+  - Feature Flag Management
+  - Feature Experimentation (A/B Testing)
+  - Kill Switches
+  - Progressive Rollouts
+  - Autonomous Feature Management (AI Governance)
+  - FeatureOps Control Plane
+  - SDKs (25+ languages)
+  - Enterprise Edge
+socials:
+  website: "https://www.getunleash.io/"
+  x: "https://twitter.com/Unleash"
+  linkedin: "https://linkedin.com/company/unleash"
+  github: "https://github.com/Unleash"
+---
+
+## What makes Unleash different
+
+Unleash distinguishes itself as a specialized feature management platform rather than a general-purpose cloud infrastructure provider. Its core differentiator is the "FeatureOps" philosophy, which integrates feature flags deeply into the CI/CD and deployment lifecycle. Unlike generic cloud providers that offer disparate tools for monitoring and deployment, Unleash provides a unified control plane for toggling features, conducting A/B tests, and managing AI governance at runtime.
+
+The platform is built on an open-source core (Unleash OSS) available on GitHub with over 13.6k stars, ensuring transparency and allowing for self-hosted deployments. This appeals to enterprises requiring data sovereignty or strict security compliance, as evidenced by certifications like SOC2, ISO27001, and FedRAMP readiness. The architecture supports high-scale environments with features like "Unleash Enterprise Edge" for global performance and "Autonomous Feature Management" to handle AI-generated code safely.
+
+While hyperscalers provide the underlying compute and storage, Unleash sits above the application layer, offering specialized tooling for developers to ship code faster and safer. It integrates with existing CI/CD pipelines and offers 25+ SDKs, making it a complementary tool for engineering teams rather than a replacement for cloud infrastructure.
+
+## Pricing model
+
+Unleash operates on a subscription-based model with a clear tiered structure:
+
+1.  **Unleash OSS**: Free, self-hosted, and open-source. Ideal for small teams or those with strict data privacy requirements who can manage their own infrastructure.
+2.  **Unleash Enterprise**: A paid SaaS or self-hosted enterprise version. Pricing is typically quoted based on the number of users or seats, with discounts for annual commitments. Specific per-user pricing is not publicly listed on the main page and requires contacting sales or booking a demo.
+3.  **Free Trial**: A 14-day free trial is available for the Enterprise version, allowing teams to evaluate features like RBAC, audit logs, and advanced analytics without immediate commitment.
+
+The model stands out for its transparency regarding the open-source core, allowing organizations to start for free and scale up as needed, avoiding vendor lock-in compared to purely proprietary competitors like LaunchDarkly.
+
+## When it fits
+
+- **Enterprise Engineering Teams**: Organizations needing robust RBAC, audit logs, and compliance certifications (SOC2, ISO27001) for feature management.
+- **AI Governance**: Companies deploying AI-driven software that require runtime safety, kill switches, and governance controls for AI-generated code.
+- **High-Volume Release Cycles**: Teams practicing trunk-based development or releasing hundreds of times per day (e.g., Mercadona, Lloyds Banking Group) who need reliable feature toggling.
+- **Data Sovereignty Requirements**: Organizations that require self-hosting capabilities to keep feature flag data within their own VPCs or on-premises infrastructure.
+
+## When it doesn't
+
+- **General Cloud Infrastructure**: Unleash does not provide compute, storage, networking, or database services; it is a specialized application tool.
+- **Simple Use Cases**: Small projects with minimal risk or no need for A/B testing may find the enterprise overhead unnecessary compared to simple code-based toggles.
+
+## Inclusion criteria
+
+- **Transparent Pricing**: Partially met. While the OSS version is free and the Enterprise trial is clear, specific paid tier pricing requires sales contact. However, the value proposition and tier differences are clearly outlined.
+- **Self-Service Signup**: Met. Users can self-service sign up for the 14-day Enterprise trial or download the OSS version directly from GitHub.
+- **Public SLA/Status Page**: Met. Unleash provides a public status page (status.getunleash.io) and details SLA commitments in their Enterprise terms.

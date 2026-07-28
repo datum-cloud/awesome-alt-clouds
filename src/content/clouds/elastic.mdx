@@ -1,0 +1,52 @@
+---
+status: reviewed
+tagline: "Search AI platform for observability, security, and enterprise search."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Elasticsearch"
+  - "Kibana"
+  - "Elastic Cloud Serverless"
+  - "Elastic Cloud Hosted"
+  - "Elastic Security"
+  - "Elastic Observability"
+  - "Elastic Agent Builder"
+  - "Elastic Enterprise Search"
+socials:
+  website: "https://www.elastic.co/"
+  x: "https://twitter.com/elastic"
+  linkedin: "https://linkedin.com/company/elastic"
+  github: "https://github.com/elastic"
+---
+
+## What makes Elastic different
+
+Elastic is fundamentally a search-first platform, not a compute-first cloud provider. Its core strength lies in Elasticsearch—a distributed search and analytics engine that powers observability, security, and search solutions at scale. Unlike AWS, GCP, or Azure, Elastic does not offer general-purpose compute, storage, or networking primitives. Instead, it provides purpose-built abstractions for indexing, querying, and analyzing large volumes of structured and unstructured data through a REST API.
+
+The platform emphasizes operational simplicity through managed deployments (Elastic Cloud) while maintaining the option to run self-managed Elasticsearch on any infrastructure. Recent additions like Elastic Agent Builder and AI-native Workflows reflect a shift toward agentic workloads, allowing developers to build reasoning systems that incorporate real-time data without leaving the platform.
+
+## Pricing model
+
+Elastic Cloud Serverless uses a usage-based model measured in Compute Units (CUs), billed per hour with no upfront commitment. Elastic Cloud Hosted offerings are subscription-based, with pricing tied to deployment size and region. Self-managed Elasticsearch is free to download under the Elastic License or AGPL, though commercial support and features require paid licensing.
+
+Compared to hyperscaler data analytics services (BigQuery, Redshift), Elastic's pricing is transparent and predictable for known query patterns, though costs scale linearly with ingestion volume and query complexity. The free tier and open-source nature make it accessible for small workloads; costs increase sharply for high-volume observability scenarios involving millions of daily events.
+
+## When it fits
+
+- **Observability at scale**: Centralized log aggregation, APM, infrastructure monitoring, and RUM across hybrid/multi-cloud environments.
+- **Security operations**: SIEM, threat detection, and incident response workflows with real-time alerting and automation.
+- **Full-text and semantic search**: E-commerce search, customer support portals, and AI-powered search applications requiring low-latency relevance.
+- **Real-time analytics**: Time-series data analysis, anomaly detection, and operational dashboards with millisecond query latency.
+- **Vector search and RAG**: Embedding storage, similarity search, and retrieval-augmented generation workloads powered by Jina AI models.
+
+## When it doesn't
+
+Elastic is not a general-purpose cloud platform—it lacks compute, object storage, databases, or networking services. Workloads requiring batch processing, machine learning training, or long-running background jobs are better served by AWS Lambda, Vertex AI, or Kubernetes. Organizations heavily committed to a single hyperscaler's ecosystem may find cross-cloud portability a friction point.
+
+## Inclusion criteria
+
+Elastic meets all three inclusion criteria:
+
+1. **Transparent pricing**: Detailed pricing pages for [Elastic Cloud Serverless](https://www.elastic.co/cloud/serverless) and [Elastic Cloud Hosted](https://www.elastic.co/cloud) with per-unit costs published.
+2. **Self-service signup**: Free trial registration available at [cloud.elastic.co](https://cloud.elastic.co/serverless-registration) with no sales process required.
+3. **Public SLA & status**: [Elastic Cloud status page](https://status.elastic.co/) and published SLAs available for hosted deployments.

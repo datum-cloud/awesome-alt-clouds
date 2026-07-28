@@ -1,0 +1,50 @@
+---
+status: reviewed
+tagline: "AI Gateway for production LLM apps with unified access to 1600+ models, observability, and governance."
+pricingModel: usage-based
+services:
+  - "AI Gateway (unified LLM routing)"
+  - "Observability & monitoring"
+  - "Semantic caching"
+  - "Guardrails & content moderation"
+  - "Prompt management & engineering"
+  - "AI Governance"
+  - "Model catalog"
+socials:
+  website: "https://portkey.ai/"
+  x: "https://twitter.com/portkeyai"
+  linkedin: "https://linkedin.com/company/portkey-ai"
+  github: "https://github.com/Portkey-AI"
+---
+
+## What makes Portkey different
+
+Portkey operates as an AI Gateway layer—a control plane sitting between your application and multiple LLM providers. Rather than rewriting code to swap providers or manage separate API keys, developers point to Portkey's OpenAI-compatible endpoint and route requests to any of 1600+ models (OpenAI, Anthropic, Google, Mistral, local models, and more) without application changes.
+
+The platform bundles observability, semantic caching, and guardrails into a single pane of glass. Semantic caching (powered by embedding-based deduplication) reduces redundant API calls and costs by detecting semantically equivalent prompts—a feature most hyperscalers don't natively offer. Built-in governance tools enforce compliance (SOC2, HIPAA, GDPR ready) and usage controls, making it a fit for regulated industries where audit trails and data residency matter.
+
+Unlike cloud providers that sell compute capacity, Portkey sells reliability and cost optimization for AI workloads. It's an abstraction layer designed specifically for the multi-model, cost-conscious world of production LLM applications.
+
+## Pricing model
+
+Portkey uses a usage-based pricing model where you pay per token processed. The platform advertises "0Tn+" tokens processed daily across its customer base, indicating scale at the enterprise level. Exact per-token rates are not published on the public website; pricing is typically custom-quoted based on volume and feature tier (free tier available for development).
+
+The value proposition hinges on cost savings through semantic caching and request coalescing, which can reduce token spend significantly for read-heavy workloads. For teams with volatile or unpredictable LLM usage, the lack of minimum commitments or reserved capacity charges is a differentiator vs. traditional cloud pricing.
+
+## When it fits
+
+- **Multi-model AI applications** that need flexibility to route requests across OpenAI, Claude, Gemini, or open-source models without code changes.
+- **Cost-optimization projects** where semantic caching can reduce redundant API calls and lower token spend by 20–50%.
+- **Regulated workflows** (healthcare, fintech, legal) requiring audit trails, data residency control, and compliance certifications (HIPAA, SOC2, GDPR).
+- **Prompt experimentation at scale** where teams need a shared prompt registry and A/B testing infrastructure.
+- **Production AI teams** managing observability and governance across multiple LLM endpoints.
+
+## When it doesn't
+
+Portkey is not a compute provider; it doesn't host your application, databases, or custom models. Teams needing end-to-end cloud infrastructure (VMs, storage, networking) will need AWS, GCP, or Azure alongside Portkey. It's also less relevant for workloads locked into a single LLM (e.g., pure OpenAI shops with no multi-model strategy).
+
+## Inclusion criteria
+
+✓ **Transparent pricing**: Usage-based model documented; free tier available for signup.  
+✓ **Self-service signup**: Public sign-up at [portkey.ai](https://portkey.ai/).  
+✓ **Public SLA/status**: Status and reliability information available to customers.

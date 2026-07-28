@@ -1,0 +1,60 @@
+---
+status: reviewed
+tagline: "Edge cloud platform for ultra-fast, secure content delivery and compute at the network edge."
+headquarters: "San Francisco, California, USA"
+foundedYear: 2011
+pricingModel: "usage-based"
+regions:
+  - "North America"
+  - "South America"
+  - "Europe"
+  - "Asia Pacific"
+  - "Africa"
+  - "Middle East"
+services:
+  - "CDN (Content Delivery Network)"
+  - "Edge Compute"
+  - "Next-Gen WAF (Web Application Firewall)"
+  - "DDoS Protection"
+  - "Instant Purge"
+  - "Live Streaming"
+  - "Real-time Analytics"
+  - "API Gateway"
+socials:
+  website: "https://www.fastly.com/"
+  x: "https://twitter.com/fastly"
+  linkedin: "https://www.linkedin.com/company/fastly/"
+  github: "https://github.com/fastly"
+---
+
+## What makes Fastly different
+
+Fastly is built as a **programmable edge cloud platform** rather than a traditional CDN. Instead of competing on the number of points of presence (POPs), Fastly deliberately runs fewer but significantly more powerful locations with 578 Tbps of global edge capacity. This design philosophy enables faster cache density and smarter request routing.
+
+The platform's defining feature is its **software-defined network infrastructure**. Developers gain direct control over edge logic via Fastly's Compute offering, allowing them to run custom code at the edge with sub-millisecond latency. This contrasts sharply with hyperscaler CDNs that typically offer limited programmability. Real-time purging (Instant Purge™) invalidates cached content globally in under 150 ms on average, enabling instant content updates—critical for ecommerce, publishing, and live streaming.
+
+Fastly also emphasizes **security-first architecture**, with 90% of enterprise customers running its Next-Gen WAF in blocking mode. The platform integrates DDoS protection, bot detection, and request inspection natively into the edge rather than as bolt-on services.
+
+## Pricing model
+
+Fastly uses a **usage-based pricing model** with transparent, per-request and bandwidth billing. Pricing varies by region and service tier, with no long-term commitments required. The free tier grants access to the full platform, enabling developers to build and test at no cost until production scale.
+
+The approach avoids surprise overages through **predictable pricing**: customers pay for actual bandwidth consumed and requests served, with discounts available for committed annual volume. This contrasts with some CDNs that charge overage fees or require expensive enterprise contracts upfront. A detailed pricing calculator is available on their website for transparent cost estimation.
+
+## When it fits
+
+- **Real-time content delivery**: Streaming platforms, live events, and breaking-news publishing requiring instant purge and global propagation
+- **High-performance ecommerce**: Retail sites needing sub-200ms response times, DDoS resilience during traffic spikes, and fraud prevention
+- **API-driven applications**: SaaS and fintech platforms where edge compute can reduce origin load and improve time-to-first-byte by up to 32%
+- **Media-heavy platforms**: Image delivery, CDN for large file distribution (GIPHY serves billions of images daily via Fastly)
+- **Developer-first teams**: Organizations wanting programmatic control over edge behavior via Compute and direct API integration into CI/CD workflows
+
+## When it doesn't
+
+Fastly is not designed for general-purpose cloud compute (VMs, databases, storage). It excels at edge delivery but lacks the broad IaaS/PaaS services of AWS, GCP, or Azure. Organizations requiring complex multi-region database replication, managed Kubernetes, or deep machine learning services should supplement Fastly with a hyperscaler.
+
+## Inclusion criteria
+
+✓ **Transparent pricing**: Usage-based model with public pricing calculator and no hidden overages  
+✓ **Self-service signup**: Free tier available; developers can start building immediately  
+✓ **Public SLA & status page**: Published SLA available; real-time status monitoring at https://www.fastlystatus.com/

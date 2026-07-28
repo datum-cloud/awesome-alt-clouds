@@ -1,0 +1,64 @@
+---
+status: reviewed
+tagline: "Managed open-source data infrastructure (Kafka, PostgreSQL, ClickHouse) on any cloud"
+headquarters: "Helsinki, Finland"
+pricingModel: "mixed"
+openSource: true
+regions:
+  - "AWS US East"
+  - "AWS US West"
+  - "AWS EU West"
+  - "AWS EU Central"
+  - "AWS Asia Pacific"
+  - "Google Cloud US"
+  - "Google Cloud EU"
+  - "Google Cloud Asia"
+  - "Azure US"
+  - "Azure EU"
+services:
+  - "Apache Kafka"
+  - "PostgreSQL"
+  - "ClickHouse"
+  - "OpenSearch"
+  - "Valkey"
+  - "MySQL"
+  - "Grafana"
+  - "Metrics (Prometheus)"
+socials:
+  website: "https://aiven.io/"
+  x: "https://twitter.com/aiven_io"
+  linkedin: "https://www.linkedin.com/company/aiven/"
+  github: "https://github.com/aiven"
+---
+
+## What makes Aiven different
+
+Aiven operates as a managed-services layer for open-source data infrastructure, decoupling you from the underlying cloud vendor. Rather than locking you into AWS or GCP, Aiven runs Kafka, PostgreSQL, ClickHouse, and other services _on top_ of any major cloud—allowing true multi-cloud portability. This "Bring Your Own Cloud" (BYOC) model is a core differentiator: customers can avoid vendor lock-in while outsourcing all operational burden (patching, scaling, backups, monitoring) to Aiven's platform.
+
+The company positions itself explicitly against the complexity of self-managed infrastructure. According to case studies on their site, teams previously spent up to 90% of their time on maintenance and upgrades; Aiven automates this entirely. For resource-constrained teams, this removes the need to hire specialized Kafka or database operations engineers.
+
+## Pricing model
+
+Aiven charges on a **usage-based subscription model**, with pricing varying by service, cloud provider, and region. Their Developer tier starts at **$5/month** for PostgreSQL or MySQL with 99.99% availability, marketed as "no surprises, no hidden fees." Larger deployments scale with compute (CPU cores), storage, and data transfer.
+
+Notably, case studies highlight substantial cost reductions: Claroty cut their Kafka TCO by 72% (saving millions annually) using BYOC, and WalkMe reduced Kafka storage by 80% using tiered storage. Pricing is transparent on the Aiven website; they publish per-hour and per-month rates by service and region, making it straightforward to estimate costs before committing.
+
+## When it fits
+
+- **Multi-cloud strategies**: Teams needing Kafka or PostgreSQL across AWS, GCP, and Azure without managing infrastructure separately.
+- **Operational overhead reduction**: Organizations wanting to eliminate in-house database and Kafka operations teams.
+- **Real-time data pipelines**: Event-driven architectures and streaming analytics at scale (Kafka as a Service with 99.99% SLA).
+- **Cost optimization for hyperscalers**: Companies already spending heavily on self-managed Kafka or databases looking to reduce operational costs via managed services.
+- **Open-source preference with support**: Teams committed to open-source tools but needing professional SLA, backups, and monitoring.
+
+## When it doesn't
+
+Aiven is not a general-purpose compute or storage platform. If you need VMs, object storage, or serverless compute, hyperscalers remain better fits. Very latency-sensitive workloads requiring control over underlying infrastructure may also be constrained by Aiven's managed-service model.
+
+## Inclusion criteria
+
+Aiven meets all three alt-cloud criteria:
+
+1. **Transparent pricing**: [Pricing page](https://aiven.io/pricing) shows specific rates by service and region.
+2. **Self-service signup**: [Console signup](https://console.aiven.io/signup) available with Developer tier.
+3. **Public SLA and status page**: [99.99% SLA](https://aiven.io/sla) published; [real-time status](https://status.aiven.io/) publicly available.

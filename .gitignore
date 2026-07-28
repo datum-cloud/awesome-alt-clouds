@@ -1,1 +1,31 @@
 .DS_Store
+
+# Local-only scratch space (RFCs, notes, deep-analysis drafts)
+# analysis/
+.worktrees/
+.tmp-*
+
+# Node / Astro
+node_modules/
+dist/
+dist/**
+.astro/
+
+# Env files
+.env
+.env.local
+.env.*.local
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.venv-test/
+
+# Generated (regenerated on deploy / local build)
+docs/llms.txt
+docs/llms-full.txt
+public/llms.txt
+public/llms-full.txt
+backfill_summary.json
+profile_generation_report.json

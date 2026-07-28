@@ -1,0 +1,49 @@
+---
+status: reviewed
+tagline: "AI and backend workflows orchestrated at scale, without infrastructure management."
+pricingModel: "usage-based"
+services:
+  - "Workflow orchestration"
+  - "Step functions"
+  - "Error handling and retry logic"
+  - "Observability and tracing"
+  - "Flow control (concurrency, throttling, batching)"
+  - "Deployment to any cloud"
+  - "Bulk replay and recovery tools"
+  - "AI workflow execution"
+socials:
+  website: "https://www.inngest.com/"
+  github: "https://github.com/inngest"
+---
+
+## What makes Inngest different
+
+Inngest is purpose-built for reliable, stateful workflows without the operational burden of managing queues, workers, or infrastructure. Unlike traditional task queues or orchestration platforms, Inngest treats workflows as first-class functions with built-in fault tolerance: each `step.run()` is a code-level transaction that automatically retries on failure, maintains state across steps, and ensures idempotency without explicit boilerplate.
+
+The platform emphasizes developer experience through local-first debugging (CLI-based traces showing every prompt/response pair) and deployment flexibility—ship the same workflow code to AWS Lambda, Google Cloud Functions, or any other serverless environment. This is particularly powerful for AI workflows, where visibility into LLM calls and intermediate states is critical for debugging and optimization.
+
+Inngest's flow control primitives—concurrency limits by key, throttling, and batching—let teams prevent noisy-neighbor problems and efficiently allocate resources as workloads scale, rather than requiring manual queue tuning.
+
+## Pricing model
+
+Inngest uses a usage-based pricing model tied to workflow executions, though specific tier pricing is not publicly detailed on the homepage. The model is consumption-focused: you pay for what you execute, with built-in features like automatic retries and step deduplication included at no extra cost.
+
+This approach contrasts with hyperscaler offerings that often charge separately for compute, storage, and API calls. Inngest bundles orchestration, observability, and recovery tooling into a single metered cost, reducing bill fragmentation for teams running high-volume workflows.
+
+## When it fits
+
+- **AI agent and LLM applications** – native visibility into prompt/completion pairs and multi-step reasoning with automatic retries and state management.
+- **Background job processing** – video transcription, image processing, or long-running async tasks that need fault tolerance and status tracking without custom queue infrastructure.
+- **Microservice orchestration** – coordinating calls across multiple services with built-in error handling, timeouts, and recovery without writing saga patterns from scratch.
+- **Multi-tenant SaaS workflows** – fair resource allocation across customers using concurrency keys and throttling to prevent any one tenant from starving others.
+- **Event-driven automation** – webhooks, scheduled tasks, and event streams that require reliable execution and replay capabilities for incident recovery.
+
+## When it doesn't
+
+Inngest is not ideal for **stateless, real-time compute** (e.g. API gateways, stream processing with sub-second latency requirements) or **large-scale batch analytics** requiring distributed SQL engines. It is also less suited for teams deeply invested in custom Kubernetes orchestration or those needing to run entirely on-premises.
+
+## Inclusion criteria
+
+✓ **Transparent pricing** – Usage-based model publicly documented.  
+✓ **Self-service signup** – Free tier and one-command CLI onboarding at https://www.inngest.com/.  
+✓ **Public SLA / status page** – SOC 2 compliance, security documentation, and enterprise reliability guarantees at https://www.inngest.com/docs/learn/security.

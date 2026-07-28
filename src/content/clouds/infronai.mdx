@@ -1,0 +1,48 @@
+---
+status: reviewed
+tagline: "Unified API gateway to 400+ AI models from 100+ providers with enterprise security and zero data retention."
+pricingModel: "usage-based"
+services:
+  - "LLM APIs"
+  - "Media APIs"
+  - "Search APIs"
+  - "Model Orchestration"
+  - "BYOK (Bring Your Own Keys)"
+  - "Multi-provider Load Balancing"
+socials:
+  website: "https://infron.ai/"
+---
+
+## What makes InfronAI different
+
+InfronAI operates as a unified gateway rather than a traditional cloud infrastructure provider. Instead of competing with AWS, GCP, or Azure on compute and storage, InfronAI consolidates access to 400+ AI models across 100+ providers into a single API surface. This approach eliminates vendor lock-in by letting developers call OpenAI, Anthropic, Google, Meta, and emerging model providers through standardized endpoints.
+
+The platform emphasizes enterprise-grade reliability and cost optimization through intelligent routing and request batching. Their "research-driven reliability" claim centers on model selection and failover orchestration rather than redundant hardware. A standout feature is **Zero Data Retention**—InfronAI does not store prompts, responses, or request metadata, addressing a core privacy concern for teams handling sensitive data. This is particularly relevant for regulated industries that cannot risk data persistence at third-party infrastructure layers.
+
+BYOK (Bring Your Own Keys) support means users can supply their own API credentials for downstream providers, giving InfronAI itself no access to actual model calls—the platform functions as routing middleware rather than a data intermediary.
+
+## Pricing model
+
+InfronAI uses a usage-based model but does not publish explicit per-token pricing on their public website. Pricing varies by model and provider; the platform enables cost comparison across models before deployment. They advertise "industry's best price-to-performance ratio" through dynamic routing that selects cheaper equivalent models when latency or output quality remain acceptable.
+
+The model is fundamentally transparent: you see costs per request before committing, and the platform optimizes spend across providers automatically. This differs sharply from hyperscaler lock-in pricing, where egress fees and regional rate variations compound.
+
+## When it fits
+
+- **Multi-model AI applications** requiring seamless switching between GPT-4, Claude, Gemini, or open-source alternatives without rewriting integrations.
+- **Cost-sensitive inference workloads** where you want to route requests to the cheapest suitable model per use case.
+- **Privacy-critical deployments** needing zero-retention guarantees and audit trails for regulatory compliance.
+- **Prototype-to-production pipelines** where you experiment with many models early and consolidate later without API rewrites.
+- **Enterprise teams** avoiding single-vendor dependencies and needing fallback providers if a model's API degrades.
+
+## When it doesn't
+
+InfronAI is not suitable for latency-critical real-time systems requiring sub-100ms response times (multi-provider routing adds overhead) or workloads requiring bespoke fine-tuning or long-context in-memory caching across requests.
+
+## Inclusion criteria
+
+InfronAI meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing**: [https://infron.ai/pricing](https://infron.ai/pricing) — usage-based rates visible post-login with per-model cost transparency.
+2. **Self-service signup**: [https://infron.ai/login](https://infron.ai/login) — instant account creation available.
+3. **Public SLA & status page**: [https://infron.ai/service-status](https://infron.ai/service-status) — operational status published; SOC 2 Type II audit in progress.

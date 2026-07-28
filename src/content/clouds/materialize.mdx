@@ -1,0 +1,50 @@
+---
+status: reviewed
+tagline: "Streaming SQL database that transforms raw data into live, real-time analytics and business objects."
+pricingModel: usage-based
+services:
+  - Real-time SQL transformations
+  - Incremental computation engine
+  - Multi-source data integration
+  - Live materialized views
+  - Data ingestion from databases and APIs
+  - Cloud and on-premises deployment
+socials:
+  website: "https://materialize.com/"
+  linkedin: "https://linkedin.com/company/materialize-inc"
+  github: "https://github.com/MaterializeInc"
+---
+
+## What makes Materialize different
+
+Materialize addresses a fundamental gap in modern data infrastructure: the lag between raw data and actionable insights. Traditional architectures force teams to choose between batch pipelines (slow but simple) and complex stream processors (fast but operationally fragile). Materialize's breakthrough is an **incremental computation engine** that maintains live, continuously updated views of your data using SQL—eliminating the need to rebuild datasets from scratch on every change.
+
+Unlike data warehouses that serve historical queries or message brokers that stream raw events, Materialize acts as a "live data layer" that automatically keeps materialized views in sync with source systems in milliseconds. This means your microservices, AI agents, and applications can query canonical, up-to-the-second business objects directly—no custom logic, no stale caches, no complex orchestration.
+
+The company is backed by Kleiner Perkins, Lightspeed, and Redpoint, and counts Mercari, General Mills, Fubo, and Neo Financial among its customers. Its architecture is built on Rust and leverages proven streaming concepts, but abstracts away the operational complexity of traditional stream processing frameworks.
+
+## Pricing model
+
+Materialize uses a **usage-based consumption model** tied to compute resources. The platform charges based on the amount of data processed and the computational work required to maintain your materialized views. While specific per-unit pricing is not publicly detailed in the available materials, the model is designed to scale with your data volume and query complexity—you pay for the incremental computation your views require, not for idle infrastructure.
+
+This differs significantly from traditional cloud data warehouses, which often charge per query or per scanned data; Materialize charges for _keeping data live_, which is more efficient when you have frequent updates or real-time consumption patterns. The company offers self-service signup and transparent pricing documentation on its website.
+
+## When it fits
+
+- **Real-time analytics dashboards** that require sub-second freshness without manual refresh logic
+- **Event-driven microservices** that need to query live aggregations (e.g., inventory, pricing, user state) without separate caching layers
+- **AI agent and LLM backends** that feed real-time context into decision-making, reducing hallucinations from stale data
+- **Operational monitoring** of transactional systems where you need continuous aggregations (e.g., revenue per region, active users, fraud scores)
+- **Multi-system synchronization** where multiple databases or APIs must be unified and kept in sync for query-time consistency
+
+## When it doesn't
+
+Materialize is not a general-purpose data warehouse for ad-hoc historical analysis. It's also not a replacement for message brokers if your primary need is decoupling producers and consumers; it assumes you want computed results, not raw event streaming.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Usage-based model documented; self-service signup and pricing calculator available on [materialize.com](https://materialize.com/)
+
+✅ **Self-service signup**: Free trial and direct sign-up available
+
+✅ **Public SLA / status page**: Status and reliability documentation provided; enterprise SLAs available for production deployments

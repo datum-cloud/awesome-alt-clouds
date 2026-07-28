@@ -1,0 +1,61 @@
+---
+status: reviewed
+tagline: "Sustainable GPU cloud for AI, built on NVIDIA H100/H200/B200 with no egress fees."
+pricingModel: "hourly"
+regions:
+  - "Europe"
+services:
+  - "GPU Compute (H100, H200, B200, GB200)"
+  - "CPU Instances (AMD EPYC)"
+  - "Block Storage"
+  - "High-Speed File Storage (VAST Data)"
+  - "Object Storage (S3-compatible)"
+  - "RDMA Networking"
+  - "Private Networking"
+  - "Disk Snapshots"
+socials:
+  website: "https://www.genesiscloud.com"
+---
+
+## What makes Genesis Cloud different
+
+Genesis Cloud positions itself as a sustainability-focused GPU cloud provider, emphasizing high-performance compute without the egress fees typical of hyperscalers. The platform is built around NVIDIA's latest GPU generations (H100, H200, B200, GB200) and includes premium networking infrastructure—400 Gbps RDMA per GPU and 200 Gbps private networking—both with zero traffic charges. This no-egress model removes a significant cost barrier for AI teams running multi-node training or large-scale inference workloads.
+
+The provider bundles enterprise-grade storage options (block, file, and object) alongside compute, with high-speed file storage powered by VAST Data for seamless multi-node training on large datasets. Genesis Cloud also supports Infrastructure-as-Code tooling (Terraform, Pulumi) and public APIs from day one, reducing friction for DevOps and platform engineers migrating from hyperscalers.
+
+## Pricing model
+
+Genesis Cloud uses an hourly on-demand model with transparent per-resource pricing:
+
+**Compute:** CPU instances range from $0.10/hour (2-vCPU AMD EPYC) to $1.20/hour (24-vCPU). GPU pricing is published per model but not shown in the pricing page excerpt.
+
+**Storage:**
+
+- Block Storage: $0.04/GB/month
+- High-Speed File Storage (VAST): $0.10/GB/month
+- Object Storage: $0.03/GB/month
+- Disk Snapshots: $0.02/GB/month
+
+**Networking:** Public internet, RDMA, and private networking are included—no traffic charges. IPv4 is paid; IPv6 is free.
+
+The standout feature is the zero-egress model, eliminating surprise data transfer costs that plague multi-node training and distributed workloads on AWS/GCP/Azure.
+
+## When it fits
+
+- **AI/ML teams** training large language models or running distributed inference requiring high-bandwidth, low-latency GPU communication
+- **Research institutions** needing sustainable, cost-predictable compute for scientific computing without vendor lock-in
+- **Data-heavy workloads** where egress fees would otherwise become a significant operational cost
+- **Multi-node GPU clusters** relying on RDMA for synchronous training (e.g., distributed deep learning)
+- **Organizations** preferring European data residency and transparent, non-hyperscaler pricing
+
+## When it doesn't
+
+Genesis Cloud is not a good fit for teams requiring global multi-region failover (limited region availability), managed databases, or a broad ecosystem of PaaS services. It is also better suited to GPU-heavy workloads than general-purpose application hosting.
+
+## Inclusion criteria
+
+✅ **Transparent pricing:** Published hourly rates for compute, storage, and networking on https://www.genesiscloud.com/pricing  
+✅ **Self-service signup:** Platform supports immediate account creation and instance provisioning  
+✅ **Public SLA/status page:** Provider maintains public SLA documentation and status transparency
+
+Genesis Cloud meets all three inclusion criteria for alt-cloud.org.

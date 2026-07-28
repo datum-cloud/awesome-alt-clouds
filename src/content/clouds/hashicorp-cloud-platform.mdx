@@ -1,0 +1,63 @@
+---
+status: reviewed
+tagline: Fully-managed HashiCorp products-as-a-service for infrastructure and security automation.
+headquarters: San Francisco, CA
+foundedYear: 2023
+pricingModel: usage-based
+openSource: true
+regions:
+  - us-east-1
+  - us-west-2
+  - eu-west-1
+  - ap-southeast-1
+services:
+  - Consul
+  - Vault
+  - Terraform Cloud
+  - Nomad
+  - Waypoint
+  - Boundary
+  - Sentinel
+socials:
+  website: "https://www.hashicorp.com/cloud"
+  x: "https://twitter.com/hashicorp"
+  linkedin: "https://linkedin.com/company/hashicorp"
+  github: "https://github.com/hashicorp"
+---
+
+## What makes HashiCorp Cloud Platform different
+
+HashiCorp Cloud Platform (HCP) represents a strategic shift from the traditional "lift and shift" of open-source tools to a managed SaaS model. Unlike hyperscalers that offer fragmented, proprietary alternatives for infrastructure automation, HCP provides fully managed versions of the HashiCorp ecosystem. This allows organizations to retain their existing Terraform configurations, Vault policies, and Consul service meshes without rewriting them for AWS, GCP, or Azure specific APIs.
+
+The core differentiator is the unification of infrastructure lifecycle management. By hosting Terraform Cloud, Vault, and Consul as a single platform, HCP eliminates the operational overhead of self-hosting these complex components. Developers get a consistent interface to provision infrastructure, manage secrets, and discover services across multi-cloud environments. This approach supports a "cloud-agnostic" strategy, enabling teams to avoid vendor lock-in while leveraging managed security and networking features.
+
+Architecturally, HCP integrates deeply with public cloud providers. For example, Terraform Cloud can provision resources directly on AWS, Azure, or GCP, while Vault can integrate with cloud-native secret stores. This hybrid capability ensures that HCP acts as the control plane for multi-cloud strategies rather than competing directly with the underlying compute and storage layers of hyperscalers.
+
+## Pricing model
+
+HCP uses a usage-based pricing model that scales with consumption. Pricing varies by product:
+
+- **Terraform Cloud:** Starts with a free tier for small teams. Paid tiers are priced per organization, with additional costs for private module registry and run storage.
+- **Vault:** Pricing is based on the number of active secrets and operations. It offers a free tier for development and small-scale testing.
+- **Consul:** Priced based on the number of nodes and requests. Free tier available for small clusters.
+- **Nomad:** Generally free for self-managed, but HCP Nomad (managed) pricing is usage-based.
+
+The standout feature is the transparent, granular billing that aligns with operational usage rather than reserved capacity. This contrasts with traditional cloud providers that often bundle management tools into complex enterprise agreements.
+
+## When it fits
+
+- Organizations using HashiCorp tools extensively and seeking to reduce operational overhead.
+- Teams managing multi-cloud infrastructure who need a unified control plane.
+- Enterprises requiring centralized secret management and service discovery across hybrid environments.
+- DevOps teams looking to accelerate CI/CD pipelines with managed Terraform runs.
+
+## When it doesn't
+
+- Workloads requiring deep, native integration with specific cloud provider features that HashiCorp tools do not abstract.
+- Projects with minimal infrastructure complexity where the overhead of managing a separate platform is unjustified.
+
+## Inclusion criteria
+
+- **Transparent Pricing:** Yes. HCP publishes detailed pricing pages for each product (Terraform Cloud, Vault, Consul, etc.). [Link](https://www.hashicorp.com/products)
+- **Self-Service Signup:** Yes. Users can sign up for free tiers directly via the web interface.
+- **Public SLA/Status Page:** Yes. HCP provides a public status page and enterprise SLAs. [Status Page](https://status.hashicorp.com)

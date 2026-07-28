@@ -1,0 +1,59 @@
+---
+status: reviewed
+tagline: "Open-source, API-first IAM for customer, B2B, and AI agent identity management."
+headquarters: "Zurich, Switzerland"
+foundedYear: 2015
+pricingModel: usage-based
+openSource: true
+services:
+  - "Ory Kratos (Identities)"
+  - "Ory Hydra (OAuth2/OIDC)"
+  - "Ory Keto (Permissions)"
+  - "Ory Oathkeeper (Access Control)"
+  - "Ory Talos (API Keys)"
+  - "Ory Polis (B2B Federation)"
+  - "Ory Network (Managed SaaS)"
+socials:
+  website: "https://www.ory.sh/"
+  x: "https://twitter.com/orynetwork"
+  linkedin: "https://linkedin.com/company/get-ory"
+  github: "https://github.com/ory"
+---
+
+## What makes Ory different
+
+Ory distinguishes itself by offering a modular, API-first identity infrastructure that avoids the monolithic lock-in typical of hyperscaler IAM solutions. Instead of a single black-box service, Ory decomposes IAM into distinct, composable microservices (Kratos, Hydra, Keto, etc.). This allows developers to build exactly the identity system they need, whether that is simple email/password auth or complex, multi-tenant B2B federation.
+
+The platform is designed for scale and flexibility, supporting three primary identity domains: Customer Identity (CIAM), B2B Enterprise IAM, and the emerging AI Agent Identity. With the rise of autonomous AI agents, Ory provides specialized controls for machine-to-machine authentication and authorization, ensuring that non-human actors have secure, auditable access to resources.
+
+Deployment is equally flexible. Users can run the open-source components on their own infrastructure for full data control, or use Ory Network, a fully managed SaaS offering. This "bring-your-own-infrastructure" or "fully-managed" choice ensures that organizations with strict compliance requirements (HIPAA, GDPR, SOC 2) are not forced into a specific data residency model dictated by a cloud provider's default IAM service.
+
+## Pricing model
+
+Ory uses a usage-based pricing model for its managed Ory Network service, primarily charged per Active User (MAU).
+
+- **Free Tier:** Available for development and testing, typically including a limited number of monthly active users (e.g., up to 1,000 MAUs) and core features.
+- **Pro/Team Tiers:** Scale with the number of active users, unlocking higher rate limits, advanced security features like social logins, and priority support.
+- **Enterprise:** Custom pricing for high-volume workloads, requiring dedicated support, SLAs, and potentially on-premise or private cloud deployment options.
+
+The open-source version is free to use, though commercial support and enterprise features (like SAML/SCIM for B2B) require an Ory Enterprise License. This model stands out because it aligns costs directly with growth, and the open-source nature means you can self-host to cap costs regardless of scale, provided you have the engineering resources to maintain it.
+
+## When it fits
+
+- **Developers seeking flexibility:** Teams that want to avoid vendor lock-in and prefer to compose their own IAM stack from best-of-breed components.
+- **AI/Agentic Applications:** Projects requiring robust identity management for autonomous AI agents and machine-to-machine communication.
+- **Strict Compliance Needs:** Organizations that need to host identity data on-premise or in private clouds to meet regulatory requirements, leveraging the open-source core.
+- **B2B SaaS Products:** Companies needing complex multi-tenant identity features, SSO, and SCIM provisioning out of the box.
+
+## When it doesn't
+
+- **Simple, Low-Traffic Apps:** If you only need basic authentication for a small internal tool, the complexity of Ory's modular architecture may be overkill compared to simpler hosted solutions.
+- **Monolithic Cloud Ecosystems:** If your entire stack is deeply integrated into AWS Cognito or Azure AD B2C and you have no desire to decouple identity, migrating to Ory adds operational overhead.
+
+## Inclusion criteria
+
+Ory meets all three inclusion criteria:
+
+1.  **Transparent Pricing:** Pricing tiers and limits are publicly listed on their website.
+2.  **Self-Service Signup:** Users can sign up for Ory Network directly via `console.ory.com`.
+3.  **Public SLA/Status Page:** Ory provides a public System Status page and detailed Service Level Agreements for enterprise customers.

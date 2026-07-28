@@ -1,0 +1,50 @@
+---
+status: reviewed
+tagline: "Reactive backend platform combining real-time database, serverless functions, and built-in auth in pure TypeScript."
+pricingModel: "usage-based"
+openSource: true
+services:
+  - "Real-time database"
+  - "Serverless functions"
+  - "Authentication (80+ OAuth integrations)"
+  - "Cron jobs"
+  - "AI-powered code generation"
+  - "Type-safe queries"
+  - "Components marketplace"
+socials:
+  website: "https://www.convex.dev/"
+  github: "https://github.com/get-convex/convex-backend"
+---
+
+## What makes Convex different
+
+Convex rethinks the backend by treating everything as code: database schemas, queries, mutations, authentication, and cron jobs are all expressed in pure TypeScript that lives alongside your frontend code. This full-stack type safety eliminates a class of bugs common in traditional REST or GraphQL architectures where frontend and backend types diverge.
+
+The platform's reactive sync layer guarantees your frontend always reflects the current database state without manual cache invalidation, websocket management, or state manager boilerplate. Convex libraries automatically subscribe to relevant data and push updates to clients in real time, reducing the traditional gap between backend changes and UI visibility.
+
+Built-in features like OAuth integration, cron jobs, and AI workflow execution eliminate the need to orchestrate third-party services for common backend patterns. The open-source deployment option allows local development and self-hosting, reducing vendor lock-in for teams with infrastructure requirements.
+
+## Pricing model
+
+Convex uses a usage-based model (specific rates not listed on their public site). Pricing is metered on database operations, function execution, and storage. The platform offers a free tier for development and small projects, with pay-as-you-go scaling for production workloads. This differs from traditional cloud providers by abstracting infrastructure entirely—you don't manage servers, regions, or instance counts; billing scales with actual backend usage.
+
+## When it fits
+
+- **Full-stack TypeScript teams** building web and mobile apps where frontend-backend type safety is a priority
+- **Real-time collaborative applications** (documents, chat, multiplayer) where reactive sync reduces synchronization complexity
+- **Rapid prototyping and MVPs** where time-to-feature matters more than infrastructure control
+- **Startups and small teams** who benefit from managed infrastructure and built-in auth to avoid infrastructure overhead
+- **Projects relying on AI-assisted development** where TypeScript-first design enables LLM code generation
+
+## When it doesn't
+
+- **High-volume analytics or data warehouse workloads** requiring distributed SQL or columnar storage optimization
+- **Teams requiring strict geographic data residency** without published region information
+
+## Inclusion criteria
+
+✓ **Transparent pricing**: Convex publishes a [pricing page](https://www.convex.dev/pricing) with usage-based model details.
+
+✓ **Self-service signup**: Available at [https://www.convex.dev/start](https://www.convex.dev/start) with `npm create convex`.
+
+✓ **Public SLA/status page**: Implied through official documentation and [changelog](https://ship.convex.dev/); community support via [Discord](https://www.convex.dev/community).

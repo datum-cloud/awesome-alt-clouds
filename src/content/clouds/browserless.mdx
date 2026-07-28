@@ -1,0 +1,55 @@
+---
+status: reviewed
+tagline: Managed headless browser infrastructure for Puppeteer and Playwright with built-in anti-bot detection and CAPTCHA solving.
+headquarters: "United States" # Omitted specific city as not explicitly stated in source
+pricingModel: subscription
+openSource: true
+regions:
+  - "Global (Cloud)"
+  - "Self-hosted (Docker/Kubernetes)"
+services:
+  - "Headless Chrome Automation"
+  - "Playwright & Puppeteer API"
+  - "Web Scraping & Data Extraction"
+  - "Automated Testing Infrastructure"
+  - "PDF & Screenshot Generation"
+  - "Enterprise Self-Hosting"
+socials:
+  website: "https://www.browserless.io/"
+  x: "https://x.com/browserless_io"
+  linkedin: "https://linkedin.com/company/browserless"
+  github: "https://github.com/browserless"
+---
+
+## What makes browserless different
+
+Browserless decouples browser management from application logic, solving the "works locally, dies in prod" problem common in web scraping and testing. Instead of managing Chrome processes, memory leaks, or SIGSEGV crashes, developers connect via WebSocket to a managed infrastructure that handles concurrency, auto-scaling, and browser updates. This allows teams to maintain identical Puppeteer or Playwright codebases while offloading the operational burden of headless browser maintenance.
+
+The platform distinguishes itself with built-in anti-bot detection bypasses and CAPTCHA solving, features often required for scraping but rarely offered natively by hyperscalers. By providing stealth fingerprints and session persistence, it reduces the need for expensive proxy networks. Furthermore, its architecture supports a "deploy on your terms" model, allowing users to scale via their cloud of choice or self-host via Docker/Kubernetes with the exact same API, ensuring zero vendor lock-in for infrastructure-sensitive workloads.
+
+## Pricing model
+
+Browserless operates on a freemium subscription model based on "units" (sessions).
+
+- **Free Tier:** 1,000 units/month, 2 concurrent browsers. No credit card required.
+- **Paid Tiers:** Pricing scales with unit volume and concurrency limits. Specific enterprise pricing is not publicly listed but is available upon request.
+
+The model stands out by offering a generous free tier that requires no payment information, lowering the barrier to entry for developers. Unlike typical cloud providers that charge per vCPU/hour, Browserless charges per session unit, aligning costs directly with successful automation tasks rather than idle resource consumption.
+
+## When it fits
+
+- **Web Scraping at Scale:** Teams needing to bypass anti-bot measures and CAPTCHAs without managing complex proxy rotations.
+- **CI/CD Testing:** Running headless browser tests in pipelines where environment consistency and speed are critical.
+- **Document Generation:** Automated PDF or screenshot generation for reporting and archival purposes.
+- **Legacy Puppeteer/Playwright Apps:** Applications that need to migrate to the cloud without rewriting browser launch logic.
+
+## When it doesn't
+
+- **General Compute Workloads:** It is not a substitute for general-purpose VMs or serverless functions for non-browser tasks.
+- **Heavy GPU Workloads:** While some enterprise plans may offer GPU support, it is primarily a CPU-bound browser automation service, not a general AI training platform.
+
+## Inclusion criteria
+
+- **Transparent Pricing:** The free tier limits (1k runs/month) are clearly stated, and paid tiers are accessible via self-service signup.
+- **Self-Service Signup:** Users can create an account and get an API key immediately at [https://www.browserless.io/signup/email](https://www.browserless.io/signup/email?plan=free) without sales intervention.
+- **Public SLA/Status Page:** The provider highlights a 99.9% uptime metric and offers a status page for monitoring service health.

@@ -1,0 +1,56 @@
+---
+status: reviewed
+tagline: "Run and fine-tune ML models via API—from image generation to LLMs to custom models."
+pricingModel: "usage-based"
+services:
+  - "Image generation"
+  - "Text generation (LLMs)"
+  - "Speech generation"
+  - "Music generation"
+  - "Video generation"
+  - "Image restoration"
+  - "Model fine-tuning"
+  - "Custom model deployment"
+socials:
+  website: "https://replicate.com/"
+  github: "https://github.com/replicate"
+---
+
+## What makes Replicate different
+
+Replicate abstracts away infrastructure complexity for ML inference. Instead of managing GPU clusters, container orchestration, or scaling logic, developers call a single API to run state-of-the-art models—from OpenAI's GPT-4o and Anthropic's Claude to open-source alternatives like Flux, Stable Diffusion, and Llama.
+
+The platform shines for teams that want to ship AI features fast without becoming infrastructure experts. You deploy a model in one line of code, Replicate handles versioning, caching, batching, and auto-scaling. The company also curates a public model marketplace where creators can publish and monetize their own fine-tuned or custom models, turning Replicate into a community-driven alternative to closed APIs.
+
+Unlike hyperscalers' black-box AI services, Replicate integrates both proprietary and open-source models side-by-side, giving developers choice and transparency about what's running.
+
+## Pricing model
+
+Replicate uses a **usage-based, pay-per-prediction model**. Pricing varies by model and hardware required:
+
+- **Free tier**: Includes free trial credits to explore the platform and API.
+- **Pay-as-you-go**: Charges per API call based on model complexity and compute requirements. For example, running Flux Pro for image generation or Claude for text generation each has its own per-call rate.
+- **Enterprise**: Custom volume pricing and dedicated infrastructure available for large-scale deployments.
+
+Specific per-call rates are published on the [pricing page](https://replicate.com/pricing), transparently broken down by model. This contrasts with hyperscaler token-counting schemes—you know the cost per inference upfront. Replicate also offers spending controls and API quotas to prevent runaway bills.
+
+## When it fits
+
+- **Rapid AI feature shipping**: Launch image generation, text summarization, or voice synthesis without provisioning GPUs or learning Kubernetes.
+- **Model evaluation and prototyping**: Compare multiple models in the playground before committing to one, or A/B test variants.
+- **Community-driven ML marketplaces**: Build products that leverage or integrate community-created models.
+- **Cost-conscious inference**: Pay only for calls made; no minimum spend or reserved capacity required.
+- **Open-source model experimentation**: Access hundreds of fine-tuned and custom models from the community marketplace.
+
+## When it doesn't
+
+- **Real-time, ultra-low-latency inference** (millisecond SLAs) may require dedicated infrastructure rather than shared API endpoints.
+- **High-volume inference with strict per-request cost optimization** might be cheaper on hyperscalers' bulk discounting or reserved capacity models.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: Per-model, per-call rates published openly on [replicate.com/pricing](https://replicate.com/pricing).
+
+✅ **Self-service signup**: Free account creation and API access available immediately at [replicate.com/signin](https://replicate.com/signin).
+
+✅ **Public SLA / status page**: Status and reliability information available; incident history and uptime commitments documented for enterprise users.

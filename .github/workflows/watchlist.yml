@@ -82,7 +82,7 @@ jobs:
             name=$(cat /tmp/watchlist_name.txt 2>/dev/null || echo "entry")
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add WATCHLIST.md docs/watchlist.json
+            git add WATCHLIST.md public/watchlist.json
             git commit -m "chore: add ${name} to watchlist [skip ci]"
             git push
           else

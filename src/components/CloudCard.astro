@@ -1,0 +1,108 @@
+---
+import { asset } from "../lib/assets";
+import type { CloudWithSlug } from "../lib/clouds";
+import { compareIconAdd } from "../lib/compare-toggle-icons";
+
+export interface Props {
+  cloud: CloudWithSlug;
+  featured: boolean;
+  index?: number;
+}
+
+const { cloud, featured, index = 0 } = Astro.props;
+
+const score = cloud.score ?? 3;
+const badgeClass =
+  score === 3 ? "bg-soft-sage text-rich-earth" : "bg-clay-beige text-warm-stone";
+const badgeText = `${score}/3`;
+
+let host = "";
+try {
+  host = new URL(cloud.url).hostname;
+} catch {
+  host = "";
+}
+const fallbackLetter = cloud.name.charAt(0).toUpperCase();
+const detailHref = asset(cloud.slug);
+---
+
+<article
+  class={`cloud-card animate-slide-up-card bg-white border border-clay-beige rounded-xl p-5 relative ${featured ? "cloud-card--featured" : ""}`}
+  data-name={cloud.name.toLowerCase()}
+  data-description={cloud.description.toLowerCase()}
+  data-categories={cloud.categories.join("|")}
+  data-date-added={cloud.dateAdded ?? ""}
+  style={`animation-delay: ${Math.min(index, 5) * 0.05}s`}>
+  <button
+    type="button"
+    data-compare-toggle
+    data-compare-compact
+    data-compare-slug={cloud.slug}
+    data-compare-name={cloud.name}
+    aria-pressed="false"
+    aria-label={`Add ${cloud.name} to compare`}
+    class="compare-toggle compare-toggle--compact absolute top-3 right-3 z-10 w-7 h-7 flex items-center justify-center rounded-full text-warm-stone bg-cream border border-clay-beige hover:border-soft-sage hover:text-rich-earth transition-colors disabled:opacity-50 disabled:cursor-not-allowed aria-pressed:bg-soft-sage aria-pressed:border-soft-sage aria-pressed:text-rich-earth">
+    <span data-compare-label class="flex items-center justify-center" set:html={compareIconAdd} />
+  </button>
+  <div class="flex items-start gap-3.5 mb-3.5">
+    <div
+      class="w-11 h-11 rounded-[10px] flex-shrink-0 overflow-hidden flex items-center justify-center font-serif font-semibold text-lg text-warm-stone bg-cream">
+      {
+        host ? (
+          <img
+            src={`https://www.google.com/s2/favicons?domain=${host}&sz=64`}
+            alt={fallbackLetter}
+            class="w-full h-full object-contain"
+            loading="lazy"
+            onerror={`this.style.display='none';this.parentElement.textContent='${fallbackLetter}';`}
+          />
+        ) : (
+          fallbackLetter
+        )
+      }
+    </div>
+    <div class="flex-1 min-w-0">
+      {
+        featured ? (
+          <a
+            href={detailHref}
+            class="font-serif text-lg font-semibold text-rich-earth truncate block hover:text-bright-tangerine transition-colors no-underline">
+            {cloud.name}
+          </a>
+        ) : (
+          <div class="font-serif text-lg font-semibold text-rich-earth truncate">{cloud.name}</div>
+        )
+      }
+      <div class="text-xs text-warm-stone">{cloud.categories.join(" · ")}</div>
+    </div>
+  </div>
+
+  <div class="flex gap-2 mb-3.5">
+    <div
+      class={`badge px-2.5 py-1 rounded-full text-[11px] font-medium ${badgeClass} flex items-center gap-1`}
+      title={`Criteria Score: ${score}/3`}>
+      {badgeText}
+    </div>
+  </div>
+
+  <p class="text-sm text-warm-stone leading-relaxed mb-3.5">{cloud.description}</p>
+
+  <div class="flex items-center justify-between gap-3 pt-3.5 border-t border-clay-beige">
+    <a
+      href={cloud.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-sm font-medium text-bright-tangerine hover:underline inline-flex items-center gap-1.5 transition-all">
+      Visit →
+    </a>
+    {
+      featured && (
+        <a
+          href={detailHref}
+          class="text-xs font-medium text-warm-stone hover:text-rich-earth inline-flex items-center gap-1 transition-colors no-underline">
+          Details →
+        </a>
+      )
+    }
+  </div>
+</article>

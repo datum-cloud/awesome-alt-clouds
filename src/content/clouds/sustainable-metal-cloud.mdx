@@ -1,0 +1,58 @@
+---
+status: reviewed
+tagline: "Energy-efficient GPU cloud for AI training and inference, powered by liquid cooling."
+headquarters: "Singapore"
+pricingModel: "usage-based"
+regions:
+  - "Singapore (SIN02)"
+  - "India"
+services:
+  - "Managed Metal GPU clusters"
+  - "H100 & H200 GPU instances"
+  - "A100 GPU instances"
+  - "L40S GPU instances"
+  - "Parallel NVMe file storage (Weka)"
+  - "S3-compatible object storage"
+  - "RDMA InfiniBand networking"
+  - "Global connectivity & VPN"
+socials:
+  website: "https://smc.co/"
+  linkedin: "https://linkedin.com/company/sustainable-metal-cloud"
+---
+
+## What makes Sustainable Metal Cloud different
+
+Sustainable Metal Cloud (SMC) is built on a sustainability-first infrastructure model centered around liquid cooling technology at massive scale. Unlike traditional GPU clouds that rely on air cooling, SMC's data centers achieve up to 48% lower CO₂ emissions when training AI models compared to legacy air-cooled GPU instances in equivalent PUE 1.30 facilities. This is not merely a marketing claim—the efficiency gains translate directly to lower power costs and improved reliability without sacrificing performance.
+
+The provider targets enterprises and AI platforms seeking dedicated bare-metal GPU clusters rather than shared virtualized instances. SMC's offerings range from startup-friendly self-service metal instances to wholesale hyperscale deployments of 32,000+ GPUs in a single cluster, customized for private use or new public availability zones. All clusters are co-designed with NVIDIA and leverage full-rail RDMA-enabled InfiniBand with BlueField-3 DPUs for high-speed GPU-to-GPU communication. This architecture is especially valuable for distributed AI training workloads that demand sub-millisecond latency and high throughput.
+
+SMC is an NVIDIA Preferred CSP Partner and has been ranked alongside AWS and above Google Cloud by SemiAnalysis for GPU cloud performance across real-world AI workloads.
+
+## Pricing model
+
+SMC publishes transparent, itemized pricing:
+
+- **Fast File Storage (Weka):** $0.065/GB per month—optimized for high IOPS and low-latency training I/O
+- **Object Storage (S3-compatible):** $0.025/GB per month—suitable for model checkpoints and archival
+- **GPU instances:** Hourly usage-based pricing (exact per-GPU rates not listed on public pages but available via the self-service console)
+
+The cost advantage stems from SMC's energy efficiency. By reducing data center cooling overhead by up to 48%, the provider can undercut typical cloud GPU pricing without compromising margin, making it particularly competitive for long-running training jobs and large-scale inference clusters.
+
+## When it fits
+
+- **AI model training at scale:** Teams training large language models or vision models on H100/H200 clusters with distributed training frameworks (PyTorch, Megatron-LM, etc.)
+- **High-performance inference:** Applications requiring dedicated GPU clusters with guaranteed SLA (99.50% uptime) and 24/7 critical support
+- **Colocation expansion:** Enterprises adding GPU capacity to existing on-premise infrastructure without the CapEx and lead time of private procurement
+- **Hyperscale deployments:** CSPs and large platforms needing 10,000–32,000 GPU clusters with custom networking and rack-level control
+- **Carbon-conscious organizations:** Teams with sustainability mandates seeking measurably lower-emission cloud infrastructure
+
+## When it doesn't
+
+- **Multi-cloud or region-agnostic workloads:** Currently limited to Singapore and India; not suitable for teams requiring global redundancy across multiple cloud providers.
+- **Small-scale or bursty GPU usage:** SMC focuses on dedicated metal; teams needing fractional GPUs or elastic on-demand capacity may find shared-instance offerings from larger hyperscalers more cost-effective.
+
+## Inclusion criteria
+
+✅ **Transparent pricing:** Published per-GB storage costs and hourly GPU pricing via public console  
+✅ **Self-service signup:** Self-service console login available; GPU instances available for immediate provisioning  
+✅ **Public SLA and status page:** 99.50% uptime SLA published; critical support available 24/7, 365 days per year

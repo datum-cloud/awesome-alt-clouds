@@ -1,0 +1,55 @@
+---
+status: reviewed
+tagline: "IP intelligence API and database for geolocation, ASN, privacy detection, and network data"
+pricingModel: subscription
+services:
+  - IP Geolocation API
+  - ASN Data
+  - Privacy Detection (VPN/Proxy/Tor)
+  - Mobile Carrier Intelligence
+  - Residential Proxy Detection
+  - IP Whois Data
+  - Abuse Contact Information
+  - Hosted Domains Lookup
+socials:
+  website: "https://ipinfo.io/"
+  linkedin: "https://linkedin.com/company/ipinfo"
+---
+
+## What makes IPinfo different
+
+IPinfo specializes exclusively in IP intelligence, whereas hyperscalers treat IP data as a secondary service bolted onto broader infrastructure offerings. The core differentiator is IPinfo's **Probe Network**—over 1,000 points of presence globally that capture real-time internet infrastructure signals rather than relying on historical or derived data. This active measurement approach enables higher accuracy in geolocation, ASN ownership, and privacy detection.
+
+IPinfo's data model is built for developers: the API returns structured, clean JSON with optional flat-file formats (CSV, MMDB, Parquet) and direct integrations into data warehouses like Snowflake. The company publicly commits to 99.99% uptime and 50–200ms response latency, with no vendor lock-in—you can download databases and host them locally if needed. This is fundamentally different from AWS GeoIP or Azure IP Intelligence, which are tightly coupled to their cloud ecosystems.
+
+## Pricing model
+
+IPinfo publishes **five subscription tiers** on its pricing page:
+
+- **IPinfo Lite**: Free tier with limited lookups (designed for evaluation)
+- **IPinfo Core**: Monthly subscription; ASN, geolocation, and privacy detection included
+- **IPinfo Plus**: Adds residential proxy detection and mobile carrier data
+- **IPinfo Max**: Enterprise-grade with higher request volumes
+- **IPinfo Enterprise**: Custom solutions and dedicated support
+
+Exact per-request pricing and request limits are not disclosed on the public site; customers must sign up or contact sales for volumetric details. This is typical for B2B IP data vendors and contrasts with hyperscaler pay-as-you-go models. Billing is monthly subscription-based, not hourly or consumption metered.
+
+## When it fits
+
+- **Fraud detection & risk scoring**: Real-time VPN/proxy/Tor detection to identify high-risk login attempts or transactions
+- **Compliance & abuse prevention**: Accurate geolocation and abuse contact data for content licensing, GDPR regional rules, or spam mitigation
+- **Ad tech & analytics**: Understanding user location and mobile carrier for campaign targeting and attribution
+- **Network operations**: ASN and Whois data for peering decisions, network troubleshooting, or ISP relationship management
+- **Offline-first applications**: Download databases (JSON, MMDB) for self-hosted lookups without external API dependency
+
+## When it doesn't
+
+IPinfo is **not a general-purpose cloud provider**—it offers no compute, storage, or infrastructure services. It is also not suitable for workloads requiring extensive historical IP reputation data or large-scale DDoS/botnet threat feeds (those are better served by security-focused vendors like Akamai or Cloudflare).
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: [https://ipinfo.io/pricing](https://ipinfo.io/pricing) — five tiers listed; volumetric details require signup or sales contact.
+
+✅ **Self-service signup**: [https://ipinfo.io/signup](https://ipinfo.io/signup) — free tier and trial access available immediately.
+
+✅ **Public SLA & status page**: [99.99% uptime SLA published on homepage](https://ipinfo.io/); response time targets (50–200ms) stated; status monitoring via DataDog and other partners documented.

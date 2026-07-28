@@ -1,0 +1,51 @@
+---
+status: reviewed
+tagline: "Unified platform for API gateways, service mesh, and agentic AI on Kubernetes."
+headquarters: "San Francisco, CA"
+foundedYear: 2017
+pricingModel: subscription
+openSource: true
+regions: []
+services:
+  - kgateway (API Gateway)
+  - Istio (Service Mesh)
+  - Ambient Mesh
+  - kagent (Agentic AI)
+  - agentgateway
+  - agentregistry
+socials:
+  website: "https://www.solo.io/"
+  x: "https://twitter.com/sololabs"
+  linkedin: "https://linkedin.com/company/solo-io"
+  github: "https://github.com/solo-io"
+---
+
+## What makes Solo.io different
+
+Solo.io does not provide underlying compute, storage, or networking infrastructure like AWS or GCP. Instead, it operates as a critical layer of **cloud-agnostic infrastructure tooling** that sits on top of Kubernetes. Its core differentiator is the consolidation of API gateway, service mesh, and now agentic AI control planes into a unified platform.
+
+By leveraging its open-source roots in Istio and Envoy, Solo offers enterprise-grade connectivity that works across any cloud provider or on-premises environment. This eliminates vendor lock-in, allowing organizations to build portable, multi-cloud architectures. Recently, Solo has pivoted to become the "Connectivity Engine for Cloud & AI," introducing **kagent** and **agentgateway** to manage secure, observable interactions between AI agents and enterprise systems natively within Kubernetes.
+
+## Pricing model
+
+Solo.io operates on a **subscription-based model** with a tiered structure. They offer an **Open Source** version for community use, which includes core components like Istio and kgateway. For enterprise features, they provide **Solo Enterprise** plans (typically Starter, Business, and Enterprise tiers) and specialized offerings like **Solo for Agentic AI**.
+
+Pricing is not publicly listed in fixed dollar amounts on their website; it requires contacting sales for a quote based on cluster size, number of nodes, and feature requirements. This stands out from hyperscalers by decoupling software costs from infrastructure consumption, allowing for predictable software spend regardless of underlying cloud usage spikes.
+
+## When it fits
+
+- **Multi-Cloud Kubernetes Strategies:** Organizations running workloads across AWS, Azure, and GCP that need consistent networking and security policies.
+- **Agentic AI Deployments:** Teams building autonomous AI agents that require secure, observable, and governed connections to backend enterprise APIs.
+- **Legacy Modernization:** Enterprises needing to secure and expose existing microservices via a modern API gateway without refactoring underlying infrastructure.
+- **High-Security Environments:** Financial or healthcare firms requiring strict service-to-service communication controls and zero-trust networking.
+
+## When it doesn't
+
+- **Infra-First Needs:** Projects requiring raw compute, managed databases, or storage buckets should look to AWS, GCP, or Azure.
+- **Small-Scale Single-Cloud Apps:** Simple applications on a single cloud provider may not justify the complexity and cost of a full service mesh and gateway platform.
+
+## Inclusion criteria
+
+- **Self-Service Signup:** Solo offers a free tier for open-source tools and a self-service portal for some community resources, though enterprise sales are required for full platform access.
+- **Public SLA/Status Page:** Solo provides public status updates and supports SLAs for enterprise customers.
+- **Transparent Pricing:** While specific dollar amounts are not public, the model (Open Source vs. Subscription) is clearly defined, and the open-source nature provides a free entry point.

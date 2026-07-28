@@ -1,0 +1,60 @@
+---
+status: reviewed
+tagline: "Enterprise AI gateway and service mesh platform built on Envoy for Kubernetes environments."
+headquarters: "San Francisco, CA"
+foundedYear: 2018
+pricingModel: mixed
+openSource: true
+regions:
+  - Global (Cloud, On-prem, Edge)
+services:
+  - Envoy Proxy
+  - Tetrate Service Operator (TSO)
+  - Tetrate Service Control (TSC)
+  - Tetrate Access Broker (TAB)
+  - Tetrate Service Broker (TSB)
+  - Tetrate Envoy Gateway
+  - Tetrate Service Mesh
+  - Tetrate API Security
+socials:
+  website: "https://tetrate.io/"
+  x: "https://twitter.com/tetrateio"
+  linkedin: "https://linkedin.com/company/tetrate"
+  github: "https://github.com/tetrateio"
+---
+
+## What makes Tetrate different
+
+Tetrate distinguishes itself by decoupling service mesh and AI gateway functionality from proprietary cloud lock-in, leveraging the open-source Envoy proxy as its core engine. Unlike hyperscalers that bundle networking and security into their proprietary Kubernetes distributions, Tetrate provides a cloud-agnostic platform that runs on any Kubernetes cluster, whether hosted on AWS, GCP, Azure, or on-premises. This "Built on Envoy" philosophy allows engineering teams to standardize onboarding, debugging, and traffic management across hybrid and multi-cloud environments without vendor lock-in.
+
+The platform is particularly notable for its recent expansion into enterprise AI infrastructure. Tetrate’s Agent Router addresses the fragmentation of AI agent deployments by providing a unified gateway for multi-model routing, auto-failover, and cost attribution. By treating AI agent traffic with the same rigor as traditional microservices traffic, Tetrate enables organizations to manage token spend, enforce guardrails, and debug multi-agent chains in minutes rather than days. This approach bridges the gap between traditional DevOps practices and the emerging needs of AI-driven applications.
+
+## Pricing model
+
+Tetrate employs a mixed pricing model that includes open-source software, self-service tiers, and enterprise subscriptions.
+
+- **Tetrate Service Operator (TSO):** Free and open-source. This tool allows users to deploy and manage service mesh components on Kubernetes without a license.
+- **Agent Router Service:** A self-service tier for developers. While specific dollar amounts are not publicly listed on the main landing page, it is positioned as a low-friction entry point for routing agents through the gateway without procurement processes.
+- **Agent Router Enterprise & Tetrate Service Control (TSC):** These enterprise-grade offerings require direct engagement with sales for pricing. They include advanced features like cross-team cost attribution, runtime AI guardrails, and distributed deployment capabilities.
+
+The model stands out by offering immediate value through its open-source tools (like TSO and Envoy extensions) while reserving advanced governance and AI-specific features for paid enterprise tiers. This allows teams to adopt the technology incrementally.
+
+## When it fits
+
+- **Multi-Cloud Kubernetes Strategies:** Organizations running workloads across AWS, GCP, and Azure that need a consistent networking and security layer.
+- **Enterprise AI Operations:** Teams managing multiple AI agents across different providers (e.g., OpenAI, Anthropic) that require unified routing, cost attribution, and failover capabilities.
+- **Strict Compliance Environments:** Enterprises requiring on-premises deployment or specific data residency controls that public cloud proxies cannot satisfy.
+- **Legacy Modernization:** Companies migrating from monolithic architectures to microservices who need robust service mesh capabilities without rewriting their entire infrastructure.
+
+## When it doesn't
+
+- **Simple, Single-Cloud Workloads:** Small teams or startups with all-in-one needs on a single cloud provider may find the complexity of a dedicated service mesh and gateway overkill compared to native cloud services.
+- **Non-Kubernetes Environments:** Tetrate’s core value is tightly coupled with Kubernetes; it is not a general-purpose serverless or bare-metal hosting provider.
+
+## Inclusion criteria
+
+Tetrate meets all three inclusion criteria:
+
+1.  **Transparent Pricing:** While enterprise pricing is custom, the existence of a free open-source tier (TSO) and a clearly defined self-service "Agent Router Service" provides transparency for entry-level users.
+2.  **Self-Service Signup:** Developers can access open-source tools and sign up for the Agent Router Service without immediate procurement conversations.
+3.  **Public SLA/Status Page:** Tetrate maintains a public status page (status.tetrate.io) and offers SLAs for its enterprise services.

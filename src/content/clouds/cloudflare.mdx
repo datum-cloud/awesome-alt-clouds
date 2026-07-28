@@ -1,0 +1,67 @@
+---
+status: reviewed
+tagline: "A global edge network repositioned as a developer platform — Workers, Pages, R2, D1, Durable Objects, and Zero Trust."
+headquarters: "San Francisco, CA, USA"
+foundedYear: 2009
+pricingModel: "usage-based"
+openSource: false
+regions:
+  - "330+ cities across 120+ countries"
+  - "Every PoP runs the same Workers runtime"
+services:
+  - "Workers (V8-isolate serverless runtime)"
+  - "Pages (static + dynamic frontend hosting)"
+  - "R2 (S3-compatible object storage, zero egress fees)"
+  - "D1 (SQLite at the edge)"
+  - "Durable Objects (strongly-consistent edge state)"
+  - "KV (eventually-consistent key-value)"
+  - "Queues, Workers AI, Vectorize, Hyperdrive"
+  - "Zero Trust (Access, Tunnel, Gateway, Browser Isolation)"
+  - "CDN, DDoS protection, DNS, Bot Management"
+socials:
+  website: "https://www.cloudflare.com"
+  x: "https://twitter.com/cloudflare"
+  github: "https://github.com/cloudflare"
+  linkedin: "https://www.linkedin.com/company/cloudflare"
+---
+
+## The reinvention
+
+Cloudflare started as a CDN and DDoS-protection layer. Over the past five years they have aggressively pushed into being a primary cloud — but they did it without building their own equivalent of EC2 or RDS. Instead, every Cloudflare service runs on the same global edge fabric they already operate, using lightweight V8 isolates instead of containers or VMs.
+
+The result is a developer platform with a very different shape than AWS or GCP: stateless functions run within ~30 ms of any user on the planet, storage primitives are designed for edge-first applications, and almost everything bills by request rather than by reserved capacity.
+
+## The R2 announcement that changed pricing
+
+R2 launched in 2022 with a single message that reshaped expectations: **zero egress fees**. For object storage workloads where bandwidth dominates the bill — backup, video, media, AI training data — R2 can be 10× cheaper than S3 once you account for transfer.
+
+## Free tier
+
+Cloudflare's free tier is unusually deep:
+
+- **100,000 Workers requests/day**
+- **10 ms CPU time per request**
+- **5 GB R2 storage and 10 GB Class A operations/month**
+- **5 GB D1 storage, 5 million reads/day**
+- **Unlimited bandwidth on the CDN**
+
+For most personal projects, you may never hit a paid tier.
+
+## Workers paid plan
+
+The **$5/month Workers Paid** unlocks 10 million requests, longer CPU limits, Durable Objects, Cron Triggers, and tail logs. Additional usage is metered per-request and per-GB.
+
+## When it fits
+
+- **Globally distributed applications** that need low p99 from every continent
+- **Static frontends + lightweight APIs** (Pages + Workers)
+- **Media-heavy applications** that benefit from R2's egress economics
+- **Security-first deployments** using Zero Trust to replace VPNs and bastion hosts
+
+## When it doesn't
+
+Workers' 128 MB memory and CPU-time limits make some long-running or memory-intensive workloads awkward. You will not run a transformer model or a kubernetes cluster on Cloudflare directly — pair it with another cloud for that tier of workload.
+
+## Inclusion criteria
+
+Cloudflare meets all three criteria — fully published [pricing](https://www.cloudflare.com/plans/developer-platform/), instant self-serve signup, and [public SLAs](https://www.cloudflare.com/business-sla/) plus a granular [status page](https://www.cloudflarestatus.com/) per service.

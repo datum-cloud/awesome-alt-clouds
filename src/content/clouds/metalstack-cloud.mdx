@@ -1,0 +1,49 @@
+---
+status: reviewed
+tagline: "Open-source managed Kubernetes on bare metal in Germany with physical tenant isolation."
+headquarters: "Germany"
+pricingModel: "usage-based"
+openSource: true
+regions:
+  - "Germany"
+services:
+  - "Managed Kubernetes"
+  - "Bare Metal as a Service"
+  - "S3 Storage"
+  - "Firewall & IDS"
+  - "Container Hosting"
+  - "Private Networking"
+socials:
+  website: "https://www.metalstack.cloud/"
+  github: "https://github.com/metal-stack"
+---
+
+## What makes metalstack.cloud different
+
+metalstack.cloud replaces virtualization with dedicated bare-metal servers, delivering physical tenant isolation instead of the hypervisor-based multi-tenancy model of AWS, GCP, and Azure. Each Kubernetes worker node is a physical server assigned to a single customer, eliminating shared-kernel attack surfaces like Meltdown and Spectre. This architecture trades the flexibility of on-demand VM provisioning for predictable performance, reduced noisy-neighbor risk, and genuine data sovereignty—all hosted and operated exclusively in Germany.
+
+Built on metal-stack, an open-source platform originally developed for regulated financial institutions, the service is transparent by design. Customers gain direct access to firewall and IDS logs, can implement bring-your-own-key encryption, and face no vendor lock-in. The open technology stack means organizations can audit the entire platform, migrate workloads independently, and avoid long-term dependency on proprietary infrastructure.
+
+## Pricing model
+
+metalstack.cloud operates on a usage-based consumption model, though specific hourly or monthly rates are not published on the public website. Customers can self-serve sign up and deploy clusters in under 10 minutes, with straightforward billing and invoicing. The bare-metal model typically involves per-node pricing for dedicated physical servers; prospective customers are directed to contact the team for custom quotes. This contrasts with hyperscaler per-vCPU/GB-RAM granularity, reflecting the fixed-resource nature of dedicated hardware.
+
+## When it fits
+
+- **Regulated industries & compliance-heavy workloads**: Financial services, healthcare, and government organizations requiring GDPR compliance, EU data residency, and ISO 27001 certification.
+- **High-security applications**: Systems handling sensitive data where physical tenant isolation and reduced attack surface justify bare-metal premium over virtualization.
+- **Predictable, stable workloads**: Long-running containerized services with consistent resource requirements that benefit from dedicated physical resources.
+- **European enterprises**: Organizations prioritizing data sovereignty, local operations, and transparency over global multi-region availability.
+- **Teams avoiding vendor lock-in**: Projects built on Kubernetes and open standards where architectural flexibility and exit optionality matter.
+
+## When it doesn't
+
+Bare-metal hosting is a poor fit for workloads requiring rapid elasticity, bursty traffic patterns, or sub-minute spin-up times—hyperscalers' virtual infrastructure excels here. Cost-sensitive development environments and non-critical workloads will likely find per-second VPC pricing more economical than dedicated physical server commitments. Geographic diversity and multi-region failover across continents are out of scope; metalstack.cloud operates only in Germany.
+
+## Inclusion criteria
+
+metalstack.cloud meets all three inclusion criteria:
+
+1. **Transparent pricing**: Self-service signup and cost calculator available; usage-based consumption model is clearly described, though absolute pricing requires contact for custom quotes.
+2. **Self-service signup**: Clusters deploy in under 10 minutes via web console; no sales-cycle gate.
+3. **Public SLA & status page**: [ISO 27001 TÜV Süd certification](https://metalstack.cloud/dl/compliance/68409ms27001_en.pdf) and Kubernetes Certified Service Provider (KCSP) badge published; professional SLA expected (specific link not provided in source material, but compliance certifications serve as trust signals).

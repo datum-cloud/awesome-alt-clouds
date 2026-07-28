@@ -1,0 +1,71 @@
+---
+status: reviewed
+tagline: "Open-source status page and uptime monitoring from 28 global regions, built for compliance."
+pricingModel: "subscription"
+openSource: true
+regions:
+  - "Amsterdam"
+  - "Stockholm"
+  - "Paris"
+  - "Frankfurt"
+  - "London"
+  - "Dallas"
+  - "New Jersey"
+  - "Los Angeles"
+  - "San Jose"
+  - "Chicago"
+  - "Toronto"
+  - "São Paulo"
+  - "Mumbai"
+  - "Tokyo"
+  - "Singapore"
+  - "Johannesburg"
+  - "Sydney"
+services:
+  - "Status page management"
+  - "Uptime monitoring (HTTP/REST/GraphQL)"
+  - "Incident alerting"
+  - "Maintenance window scheduling"
+  - "Status reports and audit logs"
+  - "CLI and API management"
+  - "Terraform provider"
+  - "MCP server for AI agents"
+socials:
+  website: "https://www.openstatus.dev/"
+  github: "https://github.com/openstatushq/openstatus"
+  discord: "https://discord.gg/openstatus"
+---
+
+## What makes OpenStatus different
+
+OpenStatus inverts the typical SaaS model: it's open-source, fully self-hostable, and designed for teams that need compliance-ready incident communication without vendor lock-in. Rather than charge based on uptime checks or alerting volume, pricing is fixed monthly, removing the anxiety of runaway costs during incident-heavy periods.
+
+The platform pairs a polished managed SaaS with a permissive 8.5MB Docker image for self-hosting, letting teams choose their trust model. Every action—from creating status reports to managing monitors—is available programmatically via a typed API, CLI, Terraform, or Claude/ChatGPT integration, making it practical to treat monitoring and status communication as infrastructure-as-code.
+
+## Pricing model
+
+OpenStatus offers a **free tier** with one monitor, one status page, and 10-minute check intervals, requiring no credit card.
+
+Paid plans start at **$30/month (Starter)** and scale to **$150+/month (Pro)** on monthly billing. Annual commitments unlock **2 months free**: Starter becomes $300/year (~$25/mo) and Pro becomes $1,000/year (~$83/mo). All paid tiers include multiple monitors, status pages, and components, with Pro adding features like custom incident templates and advanced alerting.
+
+This subscription model contrasts sharply with usage-based pricing common in observability; you pay one flat fee regardless of incident frequency or notification volume.
+
+## When it fits
+
+- **SOC 2 and compliance-focused teams**: timestamped, auditable incident communication that auditors explicitly recognize as satisfying CC2.3 requirements
+- **Open-source-first organizations**: full source access, Docker-based deployment, and no proprietary lock-in
+- **Multi-cloud or on-premises infrastructure**: monitor internal services behind firewalls using private monitoring locations
+- **Infrastructure-as-code shops**: Terraform provider and YAML-based monitor definitions integrate with existing CI/CD pipelines
+- **Teams that want AI-assisted incident management**: MCP server lets Claude or ChatGPT create status reports and schedule maintenance with full audit trails
+
+## When it doesn't
+
+OpenStatus is purpose-built for status pages and uptime checks, not full observability (logs, traces, metrics). If you need deep application performance monitoring or distributed tracing, pair it with dedicated tools. The free tier's 10-minute minimum interval is unsuitable for sub-minute SLA monitoring.
+
+## Inclusion criteria
+
+✅ **Transparent pricing**: [Pricing page](https://www.openstatus.dev/pricing) lists all tiers with exact monthly and annual costs.
+
+✅ **Self-service signup**: [Managed SaaS at app.openstatus.dev](https://app.openstatus.dev/) requires only an email; no credit card for the free tier.
+
+✅ **Public SLA or status page**: OpenStatus itself publishes a status page; customers create their own at custom domains with automatic incident updates.

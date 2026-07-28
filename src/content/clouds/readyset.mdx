@@ -1,0 +1,52 @@
+---
+status: reviewed
+tagline: "Drop-in SQL caching engine that sits between your app and database to reduce costs 30-70%"
+pricingModel: mixed
+services:
+  - "Readyset Cloud"
+  - "Readyset Private"
+  - "Readyset Community"
+  - "QueryPilot"
+  - "rdst CLI"
+socials:
+  website: "https://readyset.io/"
+---
+
+## What makes ReadySet different
+
+ReadySet is not a database—it's a caching layer that intercepts SQL queries between your application and existing PostgreSQL or MySQL databases. Rather than competing with traditional cloud databases, ReadySet optimizes them by automatically identifying slow queries and caching results at the SQL layer, with live incremental updates as data changes.
+
+The key differentiator is **zero-touch integration**. Unlike application-level caching frameworks or database replication strategies that demand code rewrites, ReadySet deploys as a transparent proxy without schema changes or application modifications. It's wire-compatible with MySQL and PostgreSQL drivers, meaning your existing stack continues to work while ReadySet handles query acceleration silently.
+
+This approach is particularly suited to **AI and agentic workloads**, where dynamically generated SQL queries can overwhelm traditional databases. ReadySet includes safeguards against runaway queries and machine-generated SQL patterns that conventional scaling methods (read replicas, manual query tuning) were never designed to handle.
+
+## Pricing model
+
+ReadySet operates a **freemium model** with tiered offerings:
+
+- **Readyset Community**: Free, open-source version for self-hosted deployments
+- **Readyset Cloud**: Managed SaaS offering; self-service signup available at https://readyset.io/
+- **Readyset Private**: Enterprise option for on-premises or VPC deployments
+
+Specific per-query or per-GB pricing is not published on the public site. Instead, ReadySet emphasizes outcome-based savings: customers report 30–70% infrastructure cost reduction and 40% lower compute spend. The freemium approach lowers the barrier to entry—teams can test the cache layer on production-like workloads before committing to a paid plan.
+
+## When it fits
+
+- **High-read, repetitive query patterns**: Applications with expensive analytical queries run repeatedly benefit most from SQL-layer caching.
+- **AI and agentic systems**: Protecting databases from unpredictable, dynamically generated SQL without schema redesign.
+- **Cost-constrained teams**: Scaling database performance without adding read replicas or expanding infrastructure.
+- **Zero-downtime requirements**: Deploy in hours without application rewrites or database migration.
+- **Existing PostgreSQL/MySQL stacks**: Organizations already committed to open-source databases seeking performance gains without switching.
+
+## When it doesn't
+
+- **Write-heavy workloads**: ReadySet caches reads; applications dominated by writes won't see substantial gains.
+- **Highly transactional systems**: Systems requiring sub-millisecond consistency guarantees across all operations may require different approaches.
+
+## Inclusion criteria
+
+ReadySet meets all three inclusion criteria for alt-cloud.org:
+
+1. **Transparent pricing**: Free tier and self-service signup; paid tiers available without hidden fees. See https://readyset.io/pricing
+2. **Self-service signup**: Readyset Cloud accessible via "Start for free" button at https://readyset.io/
+3. **Public SLA/status page**: Company provides documentation and operational transparency; status updates available through official channels.

@@ -1,0 +1,51 @@
+---
+status: reviewed
+tagline: "Ultra-fast AI inference on custom LPU hardware—3x speed at lower cost than GPU alternatives"
+pricingModel: usage-based
+regions:
+  - "United States"
+services:
+  - "Inference API"
+  - "GroqCloud managed platform"
+  - "LPU (Language Processing Unit) hardware"
+  - "Multiple open model support"
+  - "REST and Python SDK interfaces"
+socials:
+  website: "https://groq.com/"
+  x: "https://x.com/groqinc"
+  linkedin: "https://www.linkedin.com/company/groq"
+  github: "https://github.com/groq"
+---
+
+## What makes Groq different
+
+Groq's core differentiator is its **Language Processing Unit (LPU)** — custom silicon designed specifically for AI inference rather than general-purpose training. Unlike GPUs that excel at parallel matrix operations, the LPU architecture prioritizes sequential inference workloads with a focus on memory bandwidth and deterministic performance. This hardware-software co-design delivers 2–3× faster inference latency than comparable GPU-based alternatives while reducing operational costs.
+
+The platform emphasizes **reliability at scale**. Groq's marketing highlights "doesn't flake when things get real," positioning against inference providers that experience bottlenecks or unpredictable latency during peak demand. The company has raised $750M in funding as of September 2025 and claims ~3 million developers and teams using the platform, with enterprise adoption from companies like McLaren Racing, Dropbox, Vercel, Chevron, and Volkswagen.
+
+## Pricing model
+
+Groq uses a **usage-based pay-as-you-go model** with no disclosed minimum commitments. Pricing is metered by tokens—input and output tokens are charged separately, and rates vary by model. The platform offers a **free tier** with API access to trial models before committing to paid consumption. Specific pricing per token is listed on their pricing page but not detailed in the source material provided. Enterprise customers can negotiate custom volume discounts through direct sales.
+
+The appeal versus typical cloud inference is lower cost-per-token combined with dramatically faster response times, reducing both billing and user-perceived latency in production applications.
+
+## When it fits
+
+- **Real-time AI applications** requiring sub-100ms latency (chatbots, live search, interactive agents)
+- **High-throughput inference** with strict cost constraints (processing millions of requests daily)
+- **Open model deployments** where you want full control—Groq supports Llama, Mixtral, Whisper, and other open-weight models
+- **Video/audio processing pipelines** leveraging Whisper for transcription at scale
+- **Startups and scale-ups** needing cost-effective inference without long-term cloud commitments
+
+## When it doesn't
+
+- **Training workloads**: Groq is inference-only; use traditional ML platforms (Cerebras, Lambda Labs) for training
+- **Proprietary model fine-tuning**: Limited flexibility for custom model optimization compared to full GPU cloud access
+
+## Inclusion criteria
+
+Groq meets **all 3 inclusion criteria**:
+
+1. **Transparent pricing** — [Pricing page](https://groq.com/pricing) publicly lists models and rate cards
+2. **Self-service signup** — [Free API key available](https://console.groq.com/keys) with immediate console access; no sales contact required
+3. **Public SLA/status** — Status visibility and documentation available; uptime commitments documented in [GroqCloud Terms](https://groq.com/) and security details in [Groq Trust Center](https://groq.com/)

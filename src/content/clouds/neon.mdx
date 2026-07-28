@@ -1,0 +1,60 @@
+---
+status: reviewed
+tagline: "Serverless Postgres with branching, point-in-time restore, and bottomless storage."
+headquarters: "San Francisco, CA, USA"
+foundedYear: 2021
+pricingModel: "usage-based"
+openSource: true
+regions:
+  - "AWS us-east-2 (Ohio)"
+  - "AWS us-east-1 (N. Virginia)"
+  - "AWS us-west-2 (Oregon)"
+  - "AWS eu-central-1 (Frankfurt)"
+  - "AWS ap-southeast-1 (Singapore)"
+  - "AWS ap-southeast-2 (Sydney)"
+  - "Azure eastus2 (Virginia)"
+services:
+  - "Serverless Postgres compute (autoscaling, scale-to-zero)"
+  - "Database branching (git-like branches per environment)"
+  - "Point-in-time restore (up to 30 days)"
+  - "Read replicas"
+  - "Connection pooling (PgBouncer)"
+  - "Postgres extensions (pgvector, PostGIS, …)"
+socials:
+  website: "https://neon.tech"
+  x: "https://twitter.com/neondatabase"
+  github: "https://github.com/neondatabase/neon"
+  linkedin: "https://www.linkedin.com/company/neon-inc"
+---
+
+## What makes Neon different
+
+Most "serverless Postgres" offerings are managed Postgres servers with a usage meter strapped on. Neon re-architected the database itself: compute and storage are separated, the Postgres process is stateless, and storage is a custom append-only layer that persists every page version.
+
+That architecture unlocks two properties that change how teams use a database:
+
+1. **Branching.** Every branch is a full, isolated, writable copy of your data with no copy cost. Spin one up per pull request and tear it down on merge.
+2. **Scale-to-zero.** When no queries arrive for a few minutes, your compute shuts off and stops billing. Cold-start is sub-second.
+
+## Pricing model
+
+Free tier includes one project, 0.5 GB storage, and 191 compute-hours per branch per month. Paid plans start at **$19/month** with 10 GB storage and 300 compute-hours included, plus metered overage at predictable per-unit prices.
+
+## When it fits
+
+- **Multi-tenant SaaS** that wants a database per tenant without 10× the bill
+- **Preview environments** in CI — branch the prod database, run integration tests, discard the branch
+- **AI/vector workloads** using pgvector with autoscaling compute
+- **Low-traffic apps** that benefit from scale-to-zero
+
+## When it doesn't
+
+Sub-millisecond p99 latency requirements on a single connection can struggle with the stateless-compute model. Workloads that need extreme write throughput on a single instance still favor traditional managed Postgres.
+
+## Open source
+
+The Neon storage engine ([`github.com/neondatabase/neon`](https://github.com/neondatabase/neon)) is Apache 2.0. You can self-host the entire stack if you want, though the operational complexity is non-trivial.
+
+## Inclusion criteria
+
+Neon meets all three criteria — public per-unit pricing, instant credit-card signup, and a [99.95% uptime SLA](https://neon.tech/docs/introduction/serverless#service-level-agreement-sla) on paid plans with a [public status page](https://neonstatus.com/).

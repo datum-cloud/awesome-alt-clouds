@@ -1,0 +1,67 @@
+---
+status: reviewed
+tagline: "The developer-first platform for instant deployment, auto-config, and full-stack management without infrastructure complexity."
+headquarters: "San Francisco, USA"
+foundedYear: 2020
+pricingModel: usage-based
+openSource: false
+regions:
+  - "United States"
+  - "Europe"
+  - "Asia Pacific"
+services:
+  - "Deployments"
+  - "Managed Databases"
+  - "Redis"
+  - "Postgres"
+  - "Variables & Secrets"
+  - "Static Sites"
+  - "Cron Jobs"
+  - "Private Networking"
+socials:
+  website: "https://railway.com/"
+  x: "https://x.com/railway"
+  linkedin: "https://linkedin.com/company/railway-app"
+  github: "https://github.com/railwayapp"
+---
+
+## What makes Railway different
+
+Railway positions itself as an intelligent, all-in-one cloud provider that abstracts away the complexity of infrastructure management found in traditional PaaS or IaaS offerings. Unlike AWS or GCP, where developers must manually configure VPCs, load balancers, and IAM roles, Railway auto-configures infrastructure based on the code repository. It detects protocols (HTTP, TCP, gRPC) and sets up private, 100 Gbps internal networking by default, allowing services to communicate securely without complex network topology setups.
+
+The platform emphasizes a visual canvas that provides full-stack visibility, enabling developers to edit configurations directly in context rather than managing separate YAML files or CLI commands. This "code-first" approach extends to its development workflow, offering unlimited preview environments for every pull request. This allows teams to spin up ephemeral, identical staging environments instantly, facilitating faster code review and collaboration without the overhead of maintaining persistent staging infrastructure.
+
+Railway also integrates monitoring and observability directly into the deployment lifecycle. Instead of stitching together disparate tools like Datadog or Sentry, Railway provides built-in logs, metrics, and alerts within the same interface. This consolidation reduces context switching and ensures that debugging information is immediately available alongside the deployed code, streamlining the path from commit to production.
+
+## Pricing model
+
+Railway operates on a transparent, usage-based pricing model. Users are charged for the actual resources consumed, including CPU, RAM, and network egress, billed per second. There is no monthly subscription fee for the platform itself, though there is a free tier that provides a limited amount of resources (typically $5 worth of credits) which resets monthly.
+
+Key pricing components include:
+
+- **Compute:** Billed per GB-hour of RAM and vCPU.
+- **Storage:** Billed per GB-month for persistent volumes.
+- **Network:** Billed per GB of egress traffic.
+- **Databases:** Managed databases (Postgres, Redis) have their own specific tiered pricing based on size and IOPS.
+
+This model stands out by eliminating the need for reserved instances or complex commitment discounts for small-to-medium teams. However, costs can scale linearly with traffic, so monitoring usage is essential to avoid unexpected bills during traffic spikes.
+
+## When it fits
+
+- **Startups and Indie Hackers:** Teams that need to move fast without hiring DevOps engineers to manage infrastructure.
+- **Microservices Architectures:** Applications with multiple services that benefit from easy private networking and service discovery.
+- **Development Workflows:** Teams that value preview environments for every PR to improve code quality and collaboration.
+- **Full-Stack Applications:** Projects requiring both backend services and static frontend hosting in a unified platform.
+
+## When it doesn't
+
+- **Heavy Compliance Needs:** Organizations requiring strict data residency controls or specific SOC2/HIPAA certifications that require dedicated, isolated infrastructure may find Railway's shared model insufficient.
+- **Complex Custom Networking:** Use cases requiring intricate VPC peering, custom CIDR blocks, or deep integration with on-premise networks are better suited for IaaS providers.
+
+## Inclusion criteria
+
+Railway meets all three inclusion criteria:
+
+1. **Transparent Pricing:** Detailed pricing calculators and per-second billing rates are publicly available on their pricing page.
+2. **Self-Service Signup:** Users can sign up and start deploying projects immediately without sales interaction.
+3. **Public Status Page:** Railway maintains a public status page at status.railway.app to monitor system uptime and incidents.

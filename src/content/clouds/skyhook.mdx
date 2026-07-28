@@ -1,0 +1,51 @@
+---
+status: reviewed
+tagline: "PaaS for deploying and managing Kubernetes clusters with GitOps, preview environments, and AI assistance."
+headquarters: "San Francisco, CA"
+foundedYear: 2023
+pricingModel: "subscription"
+openSource: false
+services:
+  - Internal Developer Platform (IDP)
+  - Kubernetes Management
+  - GitOps CI/CD
+  - Preview Environments
+  - AI Infrastructure Agent
+  - Monitoring & Observability
+socials:
+  website: "https://skyhook.io/"
+  x: "https://twitter.com/skyhook_io"
+  linkedin: "https://www.linkedin.com/company/skyhook-io/"
+---
+
+## What makes Skyhook different
+
+Skyhook positions itself as a "Vercel for Kubernetes," aiming to abstract the operational complexity of managing containerized workloads while retaining the flexibility of self-hosted infrastructure. Unlike traditional managed Kubernetes services (like EKS or GKE) that provide the control plane but leave the application layer to the user, Skyhook provides a full Internal Developer Platform (IDP). It orchestrates a stack of best-in-class open-source tools—including ArgoCD for GitOps, Kyverno for policy management, and Grafana for monitoring—automatically deploying them onto your existing infrastructure.
+
+The core differentiator is the "No Lock-in" philosophy. Skyhook does not host your workloads in a proprietary black box; instead, it deploys its management plane into your own AWS, GCP, Azure, OCI, or on-premises Kubernetes clusters. This ensures that while developers enjoy the ease of a PaaS with features like one-click preview environments and automated canary deployments, the organization retains full ownership of the underlying data and compute resources. This architecture allows teams to scale their platform capabilities without migrating vendors, as the tools remain standard Kubernetes resources.
+
+Additionally, Skyhook integrates an AI agent that provides context-aware assistance for both developers and DevOps engineers. This agent understands the specific configuration of the stack, golden paths, and standards, allowing users to interact with their infrastructure via natural language to troubleshoot issues or deploy changes. This reduces the cognitive load on platform engineers, who often spend excessive time maintaining the tooling that enables developer productivity.
+
+## Pricing model
+
+Skyhook operates on a subscription-based model tailored for teams looking to implement an IDP. Specific per-node or per-cluster pricing figures are not publicly listed on the main site; interested parties are directed to contact sales or start a trial. The model is designed to replace the need for hiring dedicated platform engineers to build and maintain custom Kubernetes tooling, offering a predictable operational expense rather than variable infrastructure costs alone.
+
+## When it fits
+
+- **Engineering teams struggling with Kubernetes complexity:** Organizations that want the power of K8s but lack the DevOps resources to manage the underlying toolchain (ArgoCD, monitoring, ingress, etc.).
+- **Companies requiring data sovereignty:** Teams that must keep data on-premises or within their own cloud accounts but want PaaS-like developer experience.
+- **Startups scaling rapidly:** Teams that need to "ship like a team twice your size" by automating CI/CD pipelines, preview environments, and deployment strategies out-of-the-box.
+- **DevOps teams seeking standardization:** Organizations looking to enforce best practices (security policies, monitoring standards) via Kyverno and other tools without manual enforcement.
+
+## When it doesn't
+
+- **Simple microservices without K8s needs:** If your applications are simple stateless services that could run on a standard PaaS (like Heroku or Fly.io) or container instances, Skyhook's complexity may be overkill.
+- **Teams with zero Kubernetes interest:** If the organization is not committed to Kubernetes as its runtime, Skyhook is not a suitable alternative.
+
+## Inclusion criteria
+
+Skyhook meets all three inclusion criteria:
+
+1.  **Transparent pricing:** While exact numbers require sales contact, the subscription model is clearly stated, and a free trial is offered without credit card requirements.
+2.  **Self-service signup:** Users can sign up and start a trial immediately via the website.
+3.  **Public SLA/status page:** Skyhook provides a public status page at `status.skyhook.io` to monitor platform health.

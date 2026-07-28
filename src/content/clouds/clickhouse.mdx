@@ -1,0 +1,61 @@
+---
+status: reviewed
+tagline: "Open-source column-oriented OLAP database for real-time analytics at petabyte scale"
+headquarters: "Bay Area, CA and Amsterdam, NL"
+pricingModel: "mixed"
+openSource: true
+regions:
+  - "AWS (us-east-1, us-west-2, eu-west-1, eu-central-1, ap-southeast-1)"
+  - "GCP (us-central1, europe-west1, asia-southeast1)"
+  - "Azure (eastus, westeurope, southeastasia)"
+services:
+  - "ClickHouse Cloud"
+  - "Bring Your Own Cloud"
+  - "Postgres managed by ClickHouse"
+  - "Managed ClickStack (observability)"
+  - "ClickHouse (open-source)"
+  - "ClickStack (open-source observability)"
+  - "chDB (in-process SQL engine)"
+  - "ClickPipes (data ingestion)"
+socials:
+  website: "https://clickhouse.com/"
+  x: "https://twitter.com/ClickHouseDB"
+  linkedin: "https://linkedin.com/company/clickhouse-inc"
+  github: "https://github.com/ClickHouse/ClickHouse"
+---
+
+## What makes ClickHouse different
+
+ClickHouse is a column-oriented OLAP database purpose-built for real-time analytics on massive datasets. Unlike traditional row-oriented databases optimized for transactional workloads, ClickHouse stores data by column, enabling queries to process only the data needed for each analysis. This architectural choice delivers 100x+ faster query performance on analytical workloads while achieving best-in-class compression ratios that reduce storage costs.
+
+The platform runs everywhere—on your local machine, self-managed on any infrastructure, or fully managed via ClickHouse Cloud across AWS, GCP, and Azure. This flexibility distinguishes it from locked-in SaaS analytics platforms. With 47.8k GitHub stars and 2,900+ contributors, ClickHouse benefits from transparent open-source development while offering production-grade managed services for teams that prefer operational simplicity.
+
+ClickHouse powers mission-critical use cases at scale for companies like Tesla, Lyft, Anthropic, and Cisco. Its developer-friendly SQL interface means analysts and engineers can extract insights intuitively without specialized tools, and it integrates with 100+ data ingestion, visualization, and client libraries.
+
+## Pricing model
+
+ClickHouse Cloud starts at **$50/month** for development workloads. Production pricing is usage-based: you pay for compute capacity (reserved or on-demand) and data storage. Reserved capacity offers cost savings for predictable workloads, while on-demand scaling suits variable analytics traffic.
+
+Self-managed ClickHouse is free and open-source. Costs depend entirely on your infrastructure—compute, storage, and operational headcount. For organizations running petabyte-scale deployments, the open-source option combined with cloud infrastructure can be significantly cheaper than traditional data warehouses, though it requires internal expertise.
+
+The $50/month entry point makes ClickHouse Cloud accessible to startups and small teams, while the self-managed option scales to enterprise deployments without per-query or per-GB licensing fees that characterize competitors like BigQuery or Redshift.
+
+## When it fits
+
+- **Real-time analytics dashboards**: Millisecond query latency on billions of rows enables live dashboards for sales, operations, and customer analytics.
+- **Observability and logging**: Store and query logs, metrics, and traces at petabyte scale with ClickStack, the open-source observability stack powered by ClickHouse.
+- **ML and vector search**: Fast aggregations and vectorized execution accelerate feature engineering and similarity search for AI applications.
+- **Cost-sensitive data warehousing**: Compression and query efficiency reduce storage and compute costs vs. traditional warehouses for historical analysis.
+- **Time-series and metrics**: Optimized for high-cardinality time-series data common in IoT, infrastructure monitoring, and financial systems.
+
+## When it doesn't
+
+ClickHouse is not suitable for transactional workloads requiring row-by-row updates or complex ACID semantics. For applications needing a traditional relational database with strong consistency guarantees, PostgreSQL or MySQL remain better choices. Similarly, if your organization lacks SQL expertise or requires a fully managed, no-ops experience without configuration, a fully abstracted analytics platform may be preferable.
+
+## Inclusion criteria
+
+ClickHouse meets all three alt-cloud.org inclusion criteria:
+
+- **Transparent pricing**: Documented on [ClickHouse Cloud pricing page](https://clickhouse.com/pricing) starting at $50/month.
+- **Self-service signup**: Free trial available directly at [ClickHouse Cloud](https://clickhouse.com/).
+- **Public SLA/status page**: Community and enterprise support documented; status available via their cloud console.

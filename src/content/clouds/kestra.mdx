@@ -1,0 +1,50 @@
+---
+status: reviewed
+tagline: "Open-source workflow orchestration for data, AI, and infrastructure at enterprise scale."
+pricingModel: "mixed"
+openSource: true
+services:
+  - "Declarative workflow orchestration"
+  - "Event-driven and batch scheduling"
+  - "1400+ pre-built plugins"
+  - "Multi-language task execution (Python, Bash, Node.js, Go)"
+  - "API-first orchestration"
+  - "Git-driven CI/CD integration"
+  - "Governance and audit logging"
+  - "Self-hosted and cloud deployment options"
+socials:
+  website: "https://kestra.io/"
+  github: "https://github.com/kestra-io"
+---
+
+## What makes Kestra different
+
+Kestra is purpose-built for cross-team orchestration rather than single-team workflows. Unlike traditional orchestrators that lock you into one language or execution model, Kestra uses declarative YAML syntax paired with support for Python, Bash, Node.js, Go, and containerized tasks—eliminating vendor lock-in and refactoring friction.
+
+The platform ships with 1400+ pre-built plugins spanning cloud (AWS, GCP, Azure), data tools (dbt, Airbyte, Databricks, Spark), infrastructure (Terraform, Ansible), and SaaS platforms (Slack, Jira, HubSpot). This breadth means teams orchestrate data pipelines, infrastructure automation, and AI workflows in a single engine without building custom glue code. The combination of open-source self-hosting, managed cloud, and enterprise governance (RBAC, audit logs, SLA enforcement) positions it squarely as an alternative to rigid, hyperscaler-bound orchestration.
+
+## Pricing model
+
+Kestra operates on a **mixed model**: the core platform is open-source and freely self-hosted. For managed cloud, the provider offers a subscription tier (specific per-unit costs not disclosed in available materials) alongside usage-based add-ons. The cloud offering includes features like agentic automation, advanced governance, and hosted observability.
+
+What stands out: no per-execution or per-hour compute charges like traditional cloud providers. You pay for the orchestration service itself, not for the resources your workflows consume—those run on your own infrastructure or chosen cloud provider.
+
+## When it fits
+
+- **Cross-functional data teams** needing to unify ingestion, transformation, and quality checks without fragmenting across multiple orchestration tools.
+- **Infrastructure and DevOps teams** standardizing Terraform, Ansible, and CI/CD workflows across hybrid or air-gapped environments.
+- **AI/ML teams** operationalizing agents, RAG pipelines, and retraining loops with observability and governance built in.
+- **Organizations avoiding vendor lock-in**, requiring multi-language support and the ability to self-host or switch cloud providers.
+- **Enterprises** that need SOC 2 compliance, audit trails, and role-based access control out of the box.
+
+## When it doesn't
+
+Kestra is not a managed data warehouse, compute platform, or storage service—it orchestrates work across those tools. Teams seeking a fully managed, serverless data pipeline product (like Google Cloud Dataflow or AWS Glue) may find the self-hosted operational burden heavier than a pure SaaS alternative.
+
+## Inclusion criteria
+
+Kestra meets all three alt-cloud.org inclusion criteria:
+
+1. **Transparent pricing**: Cloud pricing tiers are published on [kestra.io](https://kestra.io/); self-hosted is open-source (no cost).
+2. **Self-service signup**: Free tier and self-hosted deployment available; cloud sign-up is self-service.
+3. **Public SLA and status page**: Status monitoring and reliability commitments documented for the managed cloud offering.

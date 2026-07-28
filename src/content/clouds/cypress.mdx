@@ -1,0 +1,52 @@
+---
+status: reviewed
+tagline: Browser-first end-to-end testing framework with AI-powered generation and self-healing capabilities.
+headquarters: "San Francisco, CA, USA"
+foundedYear: 2013
+pricingModel: subscription
+openSource: true
+services:
+  - Cypress App (Local Test Runner)
+  - Cypress Cloud (CI/CD & Analytics)
+  - Test Parallelization
+  - Test Replay
+  - UI Coverage
+  - Accessibility Testing
+  - Cypress Studio
+socials:
+  website: "https://www.cypress.io/"
+  x: "https://twitter.com/cypress_io"
+  linkedin: "https://linkedin.com/company/cypress-io"
+  github: "https://github.com/cypress-io"
+---
+
+## What makes Cypress different
+
+Unlike traditional cloud infrastructure providers that offer compute, storage, or networking primitives, Cypress is a specialized developer tooling platform focused exclusively on end-to-end (E2E) and component testing. Its core differentiator is its architecture: tests run directly inside the browser alongside the application under test, rather than controlling it remotely via WebDriver. This allows for synchronous, real-time debugging and eliminates the flakiness often associated with network latency in remote execution models.
+
+Cypress has evolved from an open-source library into a comprehensive platform via Cypress Cloud. The platform introduces AI-driven features such as "Cypress Studio" for generating tests via natural language or recordings, and "Test Replay," which captures DOM snapshots and network events to allow developers to rewind failed CI runs. It also provides "UI Coverage" to identify untested parts of the application and integrated accessibility checks, positioning itself as a quality assurance hub rather than just a test runner.
+
+## Pricing model
+
+Cypress operates on a freemium subscription model. The core testing framework and local runner are open-source and free to use indefinitely. Cypress Cloud, which handles CI/CD integration, test parallelization, and analytics, offers a free tier for small teams and open-source projects. Paid tiers (Team and Enterprise) are subscription-based, typically charged per seat or per parallel runner hour, with pricing details available on their [Cloud Pricing page](https://www.cypress.io/cloud/pricing/). This model stands out by decoupling the testing tool itself from the compute resources required to run it, allowing teams to scale CI execution without licensing the core tool.
+
+## When it fits
+
+- Front-end web applications (React, Vue, Angular, etc.) requiring robust E2E testing.
+- Teams seeking to reduce test flakiness through deterministic, browser-native execution.
+- Organizations wanting AI-assisted test generation and maintenance to lower upkeep costs.
+- Teams already using GitHub Actions, GitLab CI, or Jenkins looking for seamless integration.
+
+## When it doesn't
+
+- Native mobile application testing (Cypress is browser-based, though Cypress Studio can simulate some mobile views, it is not a substitute for tools like Appium or Detox).
+- Back-end API testing where browser interaction is not required (though Cypress can test APIs, it is overkill compared to lighter tools like Postman or Supertest).
+- Infrastructure provisioning or cloud resource management.
+
+## Inclusion criteria
+
+Cypress meets all 3 inclusion criteria:
+
+1. **Transparent pricing**: Pricing tiers and feature comparisons are publicly listed on their website.
+2. **Self-service signup**: Users can sign up for Cypress Cloud and open-source usage directly online.
+3. **Public SLA/status page**: Cypress maintains a public status page at [status.cypress.io](https://status.cypress.io/) to monitor service health.
