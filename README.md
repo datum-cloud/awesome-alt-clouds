@@ -62,6 +62,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Cognee](https://www.cognee.ai/) - Cloud service provider.
 * 🟢 [Cycle.io](https://cycle.io/) - Provides a container orchestration platform for deploying applications.
 * 🟢 [DataPacket](https://www.datapacket.com/) - Offers high-performance infrastructure for bandwidth-intensive applications.
+* 🟢 [Datum](https://www.datum.net/) - Provides modern edge cloud infrastructure with hyperscale-style networking, GPU/CPU capacity, and zero-trust connectivity for AI companies and tech-forward enterprises.
 * 🟢 [Digital Ocean](https://www.digitalocean.com/) - Provides cloud computing services with simplicity and scalability.
 * 🟢 [Driver](https://driver.dev/) - Provides browser automation infrastructure running Chrome instances on real consumer hardware with residential IPs and authentic fingerprints for AI agents and web scraping.
 * 🟢 [DT Cloud](https://dtcloudnow.com/) - Provides comprehensive cloud computing services including VPS, Kubernetes, GPU cloud, storage, networking, security, and industry-specific solutions for Turkish market.
@@ -139,6 +140,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟡 [Positron](https://www.positron.ai/) - Delivers purpose-built hardware and API infrastructure for optimized Transformer model inference, supporting HuggingFace models with OpenAI-compatible endpoints.
 * 🟢 [Runpod](https://www.runpod.io/) - Provides customizable GPU containers and secure cloud compute environments.
 * 🟢 [Shadeform](https://shadeform.com/) - GPU compute provider with a focus on low-cost AI infrastructure.
+* 🟢 [SkyPilot](https://skypilot.ai/) - Provides a unified AI compute platform for managing workloads across Kubernetes, Slurm, and 20+ cloud providers with multi-cloud orchestration capabilities.
 * 🟢 [TensorDock](https://tensordock.com/) - Affordable, usage-based GPU cloud platform for model training.
 * 🟢 [TensorWave](https://tensorwave.com/) - An AI cloud focused on AMD technology including MI325X and MI300X accelerators.
 * 🟢 [Thunder Compute](https://www.thundercompute.com/) - Provides on-demand GPU instances with RTX A6000, A100, and H100 options at competitive pricing, featuring VS Code integration and one-click deployment for ML development.
@@ -305,6 +307,7 @@ Orchestration, automation, and operations platforms for running reliable workflo
 * 🟢 [Ryvn](https://ryvn.ai/) - BYOC deployment platform for SaaS startups in customer clouds and on-premises.
 * 🟢 [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
 * 🟢 [Temporal](https://temporal.io/) - Durable execution platform for reliable workflows with automatic failure recovery.
+* 🟢 [this+that](https://www.thisandthat.chat/) - Automates inbox triage and task handling by extracting work from messages across email, chat, and messaging platforms using AI workflows and a company knowledge base.
 * 🟢 [Tines](https://www.tines.com/) - No-code automation platform for security operations and IT workflows.
 * 🟢 [Windmill](https://www.windmill.dev/) - Open-source developer platform for building internal tools by writing scripts in multiple languages and composing them into workflows.
 * 🟢 [Zapier](https://zapier.com/) - A no-code automation platform that connects thousands of apps to automate repetitive tasks between web services.
