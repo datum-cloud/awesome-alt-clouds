@@ -623,6 +623,8 @@ Services that show promise but don't yet fully meet Alt Cloud criteria (public p
 
 Why track these? The cloud landscape changes fast. Today's "contact sales only" can become tomorrow's self-service leader. This section helps monitor emerging players and hold established vendors accountable to transparency.
 
+Think one of these now qualifies? Open an issue titled `[Graduation] <Name>` (or use the browser extension) — see [CONTRIBUTING.md](CONTRIBUTING.md#graduating-an-emerging--unverified-providers-listing) for how the re-verification works.
+
 * 🟢 [API7](https://api7.ai/) - Commercial distribution of Apache APISIX with cloud offerings, pending pricing transparency verification.
 * 🟢 [Apigee](https://cloud.google.com/apigee) - Google's API management platform with advanced features but enterprise-only pricing model.
 * 🟢 [Chroma](https://www.trychroma.com/) - Open-source vector database, managed cloud service details need verification.

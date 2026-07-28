@@ -1,0 +1,142 @@
+name: Approve Graduation
+
+on:
+  issue_comment:
+    types: [created]
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  approve:
+    # Only run on issues (not PRs) with graduation-request label when a
+    # maintainer comments /approve-graduation (optionally with a category
+    # override: /approve-graduation Databases & Storage)
+    if: |
+      !github.event.issue.pull_request &&
+      contains(github.event.issue.labels.*.name, 'graduation-request') &&
+      startsWith(github.event.comment.body, '/approve-graduation')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Check if user is admin/maintainer
+        id: check-permission
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            const { data: permission } = await github.rest.repos.getCollaboratorPermissionLevel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              username: context.actor
+            });
+
+            const allowed = ['admin', 'maintain', 'write'].includes(permission.permission);
+            console.log(`User ${context.actor} has ${permission.permission} permission. Allowed: ${allowed}`);
+
+            if (!allowed) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `❌ @${context.actor} You don't have permission to approve graduation requests.`
+              });
+              core.setOutput('allowed', 'false');
+            } else {
+              core.setOutput('allowed', 'true');
+            }
+
+      - name: Parse category override
+        if: steps.check-permission.outputs.allowed == 'true'
+        id: parse
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const comment = context.payload.comment.body.trim();
+            const rest = comment.replace(/^\/approve-graduation\s*/i, '').trim();
+            core.setOutput('category_override', rest);
+
+      - name: Checkout
+        if: steps.check-permission.outputs.allowed == 'true'
+        uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Set up Python
+        if: steps.check-permission.outputs.allowed == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        if: steps.check-permission.outputs.allowed == 'true'
+        run: pip install requests beautifulsoup4 anthropic openai
+
+      - name: Re-evaluate with admin override
+        if: steps.check-permission.outputs.allowed == 'true'
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          LLM_PROVIDER: ${{ vars.LLM_PROVIDER || 'claude' }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          QWEN_BASE_URL: ${{ secrets.QWEN_BASE_URL }}
+          GRADUATION_ADMIN_APPROVED: 'true'
+          GRADUATION_CATEGORY_OVERRIDE: ${{ steps.parse.outputs.category_override }}
+        run: python scripts/evaluate_graduation.py
+
+      - name: Create graduation PR
+        if: steps.check-permission.outputs.allowed == 'true'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          if [ -f graduation_data.json ]; then
+            cat graduation_data.json
+            python scripts/create_graduation_pr.py
+          else
+            echo "ERROR: No graduation_data.json found — could not locate the entry to graduate"
+            cat graduation_results.md 2>/dev/null || true
+            exit 1
+          fi
+
+      - name: Update labels and comment
+        if: steps.check-permission.outputs.allowed == 'true'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            try {
+              await github.rest.issues.removeLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                name: 'graduation-ready'
+              });
+            } catch (e) {
+              // Label might not exist
+            }
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['approved']
+            });
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `✅ **Approved by @${context.actor}**\n\nA PR has been created to move this service to its new category.`
+            });

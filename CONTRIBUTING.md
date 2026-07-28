@@ -41,6 +41,12 @@ If your service lands on the watchlist, the "Criteria Needed" column shows exact
 
 The public watchlist page lives at `/watchlist/` and is generated from `WATCHLIST.md` on every deploy.
 
+### Graduating an "Emerging & Unverified Providers" listing
+
+Some services are listed under [Emerging & Unverified Providers](README.md#emerging--unverified-providers) — they're in the directory, but flagged as needing verification (usually pricing or self-service details the bot couldn't confirm). Unlike the Watchlist, these entries are already published.
+
+To request a re-check, open an issue titled `[Graduation] <Service Name>` (the Alt Cloud browser extension does this for you) — the bot re-runs the 3-criteria evaluation against the current listing and comments the result. If it now scores 2/3 or higher and the bot has a better-fitting category, a maintainer confirms with `/approve-graduation` (or `/approve-graduation <Category Name>` to pick the category) to open a PR moving the entry out of Emerging & Unverified Providers.
+
 ## 2. Working on the website
 
 The site is an [Astro](https://astro.build) static site with Tailwind CSS v4, hosted on GitHub Pages.

@@ -1,0 +1,76 @@
+name: Audit Emerging Badges
+
+# Manual maintenance run: re-scores every entry in "Emerging & Unverified
+# Providers" and corrects its badge to match the real score. Not run on a
+# schedule or on push — every entry needs a live fetch + LLM call, so this
+# is triggered by a maintainer on demand.
+
+on:
+  workflow_dispatch: {}
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 anthropic openai
+
+      - name: Run badge audit
+        env:
+          LLM_PROVIDER: ${{ vars.LLM_PROVIDER || 'claude' }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          QWEN_BASE_URL: ${{ secrets.QWEN_BASE_URL }}
+        run: python scripts/audit_emerging_badges.py
+
+      - name: Open PR if badges changed
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "No badge corrections needed."
+            exit 0
+          fi
+
+          branch_name="chore/emerging-badge-audit-$(date -u +%Y%m%d)"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch_name"
+          git add README.md
+          git commit -m "chore: correct Emerging & Unverified Providers badges"
+          git push --force origin "$branch_name"
+
+          existing_pr=$(gh pr list --head "$branch_name" --state open --json number --jq ".[0].number" || true)
+          if [ -n "$existing_pr" ]; then
+            echo "PR #$existing_pr already exists for $branch_name, skipping creation"
+            exit 0
+          fi
+
+          gh pr create \
+            --title "chore: correct Emerging & Unverified Providers badges" \
+            --body-file audit_report.md \
+            --base main \
+            --head "$branch_name"

@@ -1,0 +1,78 @@
+name: Graduation Request
+
+# Trigger: the Alt Cloud browser extension opens a "[Graduation] <Service>"
+# issue asking the bot to re-check a service currently listed under
+# "Emerging & Unverified Providers" and move it into its real category if
+# it now clears the 2/3 bar. This only posts a fresh evaluation comment —
+# the actual README move requires a maintainer to comment
+# /approve-graduation (see approve-graduation.yml).
+
+on:
+  issues:
+    types: [opened]
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  evaluate:
+    if: contains(github.event.issue.title, '[Graduation')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 anthropic openai
+
+      - name: Re-evaluate service
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          LLM_PROVIDER: ${{ vars.LLM_PROVIDER || 'claude' }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          QWEN_BASE_URL: ${{ secrets.QWEN_BASE_URL }}
+        run: python scripts/evaluate_graduation.py
+
+      - name: Post evaluation results
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const results = fs.readFileSync('graduation_results.md', 'utf8');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: results
+            });
+
+      - name: Add labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const score = parseInt(fs.readFileSync('graduation_score.txt', 'utf8').trim());
+
+            const labels = ['graduation-request'];
+            if (score >= 2) {
+              labels.push('graduation-ready');
+            }
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels,
+            });

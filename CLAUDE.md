@@ -98,6 +98,27 @@ Bullet is `*` (not `-`); badge is required; separator is exactly `-`; alphabetic
 
 `WATCHLIST.md` tracks 1-of-3-criteria candidates submitted 2+ times. `scripts/generate_watchlist_json.py` turns it into `public/watchlist.json`, rendered at `/watchlist/`.
 
+### Graduation pipeline (moving out of "Emerging & Unverified Providers")
+
+`"Emerging & Unverified Providers"` is a normal entry in `evaluate_submission.py:CATEGORIES` — its entries are published (unlike Watchlist rows) but flagged as needing verification. The graduation flow re-checks one of these entries and, if it now qualifies, moves it into a real category:
+
+```
+"[Graduation] <Name>" issue (from the browser extension, or opened manually)
+  → graduation-request.yml → evaluate_graduation.py
+     (locates the existing README.md entry by name, re-runs the same
+     evaluate_service()/generate_metadata() cascade against its URL)
+  → comments a fresh score; labels graduation-request (+ graduation-ready if >=2/3)
+  → maintainer comments /approve-graduation [Category Name] on the issue
+  → approve-graduation.yml re-runs evaluate_graduation.py in admin mode
+     → create_graduation_pr.py (removes the old bullet, inserts the
+       corrected one into the target category) → PR for review
+```
+
+- Shares `evaluate_service()`/`generate_metadata()` with the submission pipeline (`scripts/evaluate_submission.py`) — don't duplicate the fetch/scoring logic.
+- README bullet add/remove/lookup helpers live in `scripts/lib/readme_entries.py`, shared by `create_submission_pr.py` and `create_graduation_pr.py`.
+- Nothing writes to README.md without an explicit maintainer command (`/approve-graduation`), matching the submission pipeline's `/approve` gate — the initial issue-open evaluation only comments.
+- `scripts/audit_emerging_badges.py` (via the `Audit Emerging Badges` workflow, `workflow_dispatch` only) is a one-off maintenance job that re-scores every Emerging entry and corrects its badge; it flags but never removes entries scoring below 2/3.
+
 ## Notes on stale docs
 
 - `.cursor/rules/docs-frontend.mdc` describes a legacy vanilla-JS `docs/` SPA (dependency-free static site, `docs/index.html` + `docs/submit/index.html`). That folder has since been removed from this branch as part of the Astro migration cutover (see `analysis/2026-07-20-phase-6-production-cutover-checklist.md`); the Astro site under `src/` is now the only frontend, and `public/clouds.json`/`public/llms*.txt` replace the old `docs/` equivalents. Ignore that rule file's specifics; its regex/anti-spam/SEO cautions about the _submission form_ still apply conceptually to `src/pages/submit/index.astro`.
