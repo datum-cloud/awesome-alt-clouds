@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-    tags: ['v*']
+    tags: ["v*"]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Regenerate clouds.json from README
         run: python scripts/parse_readme_to_json.py README.md public/clouds.json
@@ -45,14 +45,15 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'npm'
+          node-version: "22"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build Astro site
         run: npm run build
+        # postbuild (package.json) rewrites HTML paths for GitHub Pages subpath hosting
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

@@ -47,11 +47,12 @@ const baseUrl = asset("");
     toggle,
     type CompareItem,
   } from "../lib/compare-store";
+  import { clientBasePath } from "../lib/client-base";
 
   const tray = document.getElementById("compare-tray");
   const chipsEl = tray?.querySelector(".compare-tray-chips");
   const goBtn = document.getElementById("compare-tray-go") as HTMLButtonElement | null;
-  const baseUrl = tray?.getAttribute("data-base") ?? "/";
+  const baseUrl = tray?.getAttribute("data-base") ?? clientBasePath();
 
   const LABEL_IN = "In compare";
   const LABEL_FULL = "Full";

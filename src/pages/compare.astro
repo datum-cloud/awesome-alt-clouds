@@ -120,12 +120,13 @@ const comparePayload = JSON.stringify({
   />
 
   <script>
+    import { clientBasePath } from "../lib/client-base";
     import { clear, getItems, setItems } from "../lib/compare-store";
     import { getPickerSlugs, initComparePickers, setPickerSlugs } from "../lib/compare-picker";
     import { renderVisitLink } from "../lib/external-link-icon";
 
     const MAX_COLUMNS = 3;
-    const baseUrl = import.meta.env.BASE_URL;
+    const baseUrl = clientBasePath();
 
     type CloudEntry = {
       slug: string;
