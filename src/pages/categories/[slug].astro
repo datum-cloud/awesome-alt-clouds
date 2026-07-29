@@ -12,7 +12,7 @@ import {
   getCategories,
 } from "../../lib/clouds";
 import { getFeaturedSlugs } from "../../lib/profile";
-import { defaultTitle } from "../../lib/site-meta";
+import { siteName } from "../../lib/site-meta";
 import { absoluteUrl } from "../../lib/site-urls";
 
 export function getStaticPaths() {
@@ -36,7 +36,7 @@ const categoryClouds = [...clouds]
 const featuredSlugs = await getFeaturedSlugs();
 const providerCount = countByCategory(category);
 const description = getCategoryDescription(category);
-const pageTitle = `${category} — ${defaultTitle}`;
+const pageTitle = `${category} | ${siteName}`;
 const canonical = `${absoluteUrl("categories/" + slug)}/`;
 
 const itemListJsonLd = {

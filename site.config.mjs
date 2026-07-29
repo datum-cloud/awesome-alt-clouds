@@ -21,15 +21,17 @@ export const siteConfig = {
   productionBase: undefined,
 
   seo: {
-    title: "Awesome Alt Clouds | Alternative Cloud Providers for Developers",
+    title: "Alternative Cloud Providers Directory - 470+ Options | Neo Cloud Comparison Tool",
     description:
-      "Discover specialized cloud infrastructure providers built for developers who have specialized requirements and need alternatives to hyperscalers.",
+      "Compare 470+ specialized cloud, GPU, and infrastructure providers across pricing, regions, and uptime.",
+    /** Short brand suffix for templated per-page titles (cloud detail, category, compare) — kept separate from `title` above so those don't inherit the long homepage-specific title. */
+    siteName: "Neo Cloud Comparison Tool",
     /** Appended to titles when `preview: true` (browser tab clarity on fork deploys) */
     previewTitleSuffix: " (Preview)",
     submit: {
-      title: "Add a Cloud - Awesome Alt Clouds",
+      title: "Submit your cloud provider for listing | Neo Cloud Comparison Tool",
       description:
-        "Submit a cloud service for evaluation against the 3 inclusion criteria. Auto-evaluated by our bot.",
+        "List your alternative cloud service, auto-evaluated against 3 core criteria: public pricing, self-serve signup, transparent uptime",
     },
     blog: {
       title: "Blog | Awesome Alt Clouds",

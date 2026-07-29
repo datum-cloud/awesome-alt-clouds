@@ -90,6 +90,14 @@ const featuredSlugs = await getFeaturedSlugs();
         class="flex flex-col gap-1"
         id="drawerCategoryList">
       </div>
+
+      <div class="font-serif text-xs font-semibold uppercase tracking-wider text-warm-stone mt-5 mb-3">
+        Tracking
+      </div>
+      <div
+        class="flex flex-col gap-1"
+        id="drawerTrackingList">
+      </div>
     </div>
     <div class="p-4 border-t border-clay-beige flex flex-col gap-1 flex-shrink-0">
       <a
@@ -188,7 +196,16 @@ const featuredSlugs = await getFeaturedSlugs();
         </div>
         <div
           class="flex flex-col gap-1"
-          id="categoryList">
+          id="categoryList"
+          data-watchlist-href={asset("watchlist/")}>
+        </div>
+
+        <div class="font-serif text-xs font-semibold uppercase tracking-wider text-warm-stone mt-5 mb-3">
+          Tracking
+        </div>
+        <div
+          class="flex flex-col gap-1"
+          id="trackingList">
         </div>
       </div>
 
@@ -618,6 +635,8 @@ const featuredSlugs = await getFeaturedSlugs();
   />
 
   <script>
+    import { EMERGING_CATEGORY } from "../lib/github";
+
     type Cloud = {
       name: string;
       url: string;
@@ -750,25 +769,39 @@ const featuredSlugs = await getFeaturedSlugs();
 
     // Categories rendering
     function renderCategories() {
-      const cats = getCategories();
       const counts: Record<string, number> = { All: altClouds.length };
       for (const c of altClouds) {
         for (const cat of c.categories) counts[cat] = (counts[cat] || 0) + 1;
       }
-      const html = cats
-        .map((cat) => {
-          const isActive = cat === currentCategory;
-          return `<button data-category="${cat.replace(/"/g, "&quot;")}" class="gap-2 [&>span]:text-left category-item flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer text-sm transition-all border border-transparent ${
-            isActive
-              ? "bg-rich-earth text-cream font-medium"
-              : "text-warm-stone hover:bg-clay-beige hover:text-rich-earth"
-          }"><span>${cat}</span><span class="font-mono text-xs opacity-70">${counts[cat] || 0}</span></button>`;
-        })
-        .join("");
+
+      const categoryButtonHtml = (cat: string) => {
+        const isActive = cat === currentCategory;
+        return `<button data-category="${cat.replace(/"/g, "&quot;")}" class="gap-2 [&>span]:text-left category-item flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer text-sm transition-all border border-transparent ${
+          isActive
+            ? "bg-rich-earth text-cream font-medium"
+            : "text-warm-stone hover:bg-clay-beige hover:text-rich-earth"
+        }"><span>${cat}</span><span class="font-mono text-xs opacity-70">${counts[cat] || 0}</span></button>`;
+      };
+
+      // "Emerging & Unverified Providers" is grouped with Watchlist in its own
+      // "Tracking" section below, not the main alphabetical category list —
+      // both are candidates that haven't fully cleared the bar yet.
+      const cats = getCategories().filter((cat) => cat !== EMERGING_CATEGORY);
+      const html = cats.map(categoryButtonHtml).join("");
       const list = document.getElementById("categoryList");
       const drawerList = document.getElementById("drawerCategoryList");
       if (list) list.innerHTML = html;
       if (drawerList) drawerList.innerHTML = html;
+
+      const watchlistHref = list?.dataset.watchlistHref || "#";
+      const trackingHtml =
+        `<a href="${watchlistHref}" class="gap-2 [&>span]:text-left category-item flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer text-sm transition-all border border-transparent text-warm-stone hover:bg-clay-beige hover:text-rich-earth no-underline"><span>Watchlist</span></a>` +
+        categoryButtonHtml(EMERGING_CATEGORY);
+      const trackingList = document.getElementById("trackingList");
+      const drawerTrackingList = document.getElementById("drawerTrackingList");
+      if (trackingList) trackingList.innerHTML = trackingHtml;
+      if (drawerTrackingList) drawerTrackingList.innerHTML = trackingHtml;
+
       document.querySelectorAll<HTMLElement>("[data-category]").forEach((btn) => {
         btn.addEventListener("click", () => {
           const cat = btn.getAttribute("data-category");
