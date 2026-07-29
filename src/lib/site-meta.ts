@@ -12,6 +12,9 @@ function withPreviewTitle(title: string): string {
 export const defaultTitle = withPreviewTitle(seo.title);
 export const defaultDescription = seo.description;
 
+/** Short brand suffix for templated per-page titles (cloud detail, category, compare). */
+export const siteName = withPreviewTitle(seo.siteName);
+
 export const submitTitle = withPreviewTitle(seo.submit.title);
 export const submitDescription = seo.submit.description;
 

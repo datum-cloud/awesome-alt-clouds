@@ -7,12 +7,12 @@ import DirectorySidebar from "../components/DirectorySidebar.astro";
 import { COMPARE_ROWS, toCompareCloud, type CompareCloud } from "../lib/compare";
 import { clouds } from "../lib/clouds";
 import { getAllMergedClouds, getFeaturedSlugs } from "../lib/profile";
-import { defaultTitle } from "../lib/site-meta";
 import { absoluteUrl } from "../lib/site-urls";
 
-const pageTitle = `Compare alt clouds — ${defaultTitle}`;
+const pageTitle =
+  "Compare Alternative Cloud Providers - Pricing, Uptime, and Regions | Neo Cloud Comparison Tool";
 const pageDescription =
-  "Side-by-side comparison of alternative cloud providers — criteria scores, pricing models, regions, and more.";
+  "Get side-by-side comparisons of alternative cloud, neo cloud, and specialized cloud providers";
 const canonical = `${absoluteUrl("compare")}/`;
 
 const featuredSlugs = await getFeaturedSlugs();
