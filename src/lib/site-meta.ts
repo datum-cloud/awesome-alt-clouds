@@ -39,7 +39,7 @@ export function getPageMeta(page: PageMetaKey): { title: string; description: st
 }
 
 /** Short title for Open Graph / Twitter (no preview suffix). */
-export const socialTitle = "Awesome Alt Clouds - When you need something specialized";
+export const socialTitle = "Alt Cloud - When you need something specialized";
 
 export const socialDescription =
   "A curated directory of alternative cloud providers to help developers source solutions offering public pricing, self-service signup, and transparent uptime at a glance. Now accepting contributions to the list.";

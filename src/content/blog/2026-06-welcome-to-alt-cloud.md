@@ -1,6 +1,6 @@
 ---
 title: Welcome to the Alt Cloud Blog
-description: A short introduction to editorial content on Awesome Alt Clouds — why we added a blog and what to expect.
+description: A short introduction to editorial content on Alt Cloud — why we added a blog and what to expect.
 publishDate: 2026-06-01
 author: Datum
 tags:
@@ -9,7 +9,7 @@ tags:
 draft: false
 ---
 
-The Awesome Alt Clouds directory has always been about one thing: helping developers find infrastructure providers that are transparent, self-service, and accountable. With more than 400 listings and growing profile pages, the site is becoming a real destination — not just a static list.
+The Alt Cloud directory has always been about one thing: helping developers find infrastructure providers that are transparent, self-service, and accountable. With more than 400 listings and growing profile pages, the site is becoming a real destination — not just a static list.
 
 This blog is where we share context the README cannot carry on its own:
 

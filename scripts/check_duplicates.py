@@ -235,7 +235,7 @@ def build_comment(match_type: str, match: dict) -> str:
     if match_type == 'exact_domain':
         return (
             '⚠️ **Duplicate Submission**\n\n'
-            'This service is already included in the Awesome Alt Clouds list:\n'
+            'This service is already included in the Alt Cloud list:\n'
             f'- **[{name}]({url})** — {desc}\n\n'
             'Closing this issue as a duplicate. If you believe this is a different '
             'service or a significant update, please reopen with additional context.'
@@ -250,7 +250,7 @@ def build_comment(match_type: str, match: dict) -> str:
     elif match_type == 'redirect_domain':
         return (
             '🔁 **Duplicate via Domain Redirect**\n\n'
-            'This URL redirects to a service already listed in Awesome Alt Clouds '
+            'This URL redirects to a service already listed in Alt Cloud '
             '(confirmed via HTTP redirect, not just name similarity):\n'
             f'- **[{name}]({url})** — {desc}\n\n'
             'Proceeding with admin review, but flagging as a likely duplicate.'

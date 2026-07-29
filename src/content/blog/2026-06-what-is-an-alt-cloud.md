@@ -1,6 +1,6 @@
 ---
 title: What Is an Alt Cloud?
-description: A practical definition of alternative cloud providers — and how Awesome Alt Clouds evaluates them against three inclusion criteria.
+description: A practical definition of alternative cloud providers — and how Alt Cloud evaluates them against three inclusion criteria.
 publishDate: 2026-06-10
 author: Datum
 tags:
