@@ -88,7 +88,7 @@ def generate_llms_txt(clouds: list[dict]) -> str:
     top5 = ", ".join(f"{cat} ({n})" for cat, n, _ in stats[:5])
 
     lines = [
-        "# Awesome Alt Clouds",
+        "# Alt Cloud",
         "",
         f"> Curated directory of {total}+ alternative cloud providers for developers — covering {num_cats} categories including infrastructure, GPU compute, databases, AI inference, observability, developer tooling, and more. Each service is evaluated against 3 public criteria.",
         "",
@@ -238,7 +238,7 @@ def generate_llms_full_txt(clouds: list[dict]) -> str:
     sections: list[str] = []
 
     # Header
-    sections.append("# Awesome Alt Clouds — Full Reference")
+    sections.append("# Alt Cloud — Full Reference")
     sections.append("")
     sections.append(
         f"> Curated directory of {total}+ alternative cloud providers for developers who need "

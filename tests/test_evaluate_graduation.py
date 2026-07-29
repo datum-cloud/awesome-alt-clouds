@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 import evaluate_graduation as eg
 
-SAMPLE_README = """# Awesome Alt Clouds
+SAMPLE_README = """# Alt Cloud
 
 ## Databases & Storage
 

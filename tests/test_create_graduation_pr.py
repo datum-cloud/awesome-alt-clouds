@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 import create_graduation_pr as cg
 
-SAMPLE_README = """# Awesome Alt Clouds
+SAMPLE_README = """# Alt Cloud
 
 ## Databases & Storage
 

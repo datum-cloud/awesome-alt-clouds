@@ -4,6 +4,7 @@ import { asset } from "../lib/assets";
 import BlogNavLink from "../components/BlogNavLink.astro";
 import CloudCard from "../components/CloudCard.astro";
 import CompareNavLink from "../components/CompareNavLink.astro";
+import EmergingNavLink from "../components/EmergingNavLink.astro";
 import WatchlistNavLink from "../components/WatchlistNavLink.astro";
 import { clouds } from "../lib/clouds";
 import { getFeaturedSlugs } from "../lib/profile";
@@ -27,7 +28,7 @@ const featuredSlugs = await getFeaturedSlugs();
         height="32"
         class="rounded-md"
       />
-      <span class="font-serif text-lg font-semibold text-rich-earth">Awesome Alt Clouds</span>
+      <span class="font-serif text-lg font-semibold text-rich-earth">Alt Cloud</span>
     </div>
     <button
       id="burgerBtn"
@@ -90,14 +91,6 @@ const featuredSlugs = await getFeaturedSlugs();
         class="flex flex-col gap-1"
         id="drawerCategoryList">
       </div>
-
-      <div class="font-serif text-xs font-semibold uppercase tracking-wider text-warm-stone mt-5 mb-3">
-        Tracking
-      </div>
-      <div
-        class="flex flex-col gap-1"
-        id="drawerTrackingList">
-      </div>
     </div>
     <div class="p-4 border-t border-clay-beige flex flex-col gap-1 flex-shrink-0">
       <a
@@ -106,6 +99,7 @@ const featuredSlugs = await getFeaturedSlugs();
         <span>+</span><span>Submit a Cloud</span>
       </a>
       <WatchlistNavLink />
+      <EmergingNavLink />
       <BlogNavLink />
       <CompareNavLink />
       <button
@@ -179,7 +173,7 @@ const featuredSlugs = await getFeaturedSlugs();
             class="rounded-lg"
           />
           <div>
-            <h1 class="font-serif text-xl font-semibold text-rich-earth">Awesome Alt Clouds</h1>
+            <h1 class="font-serif text-xl font-semibold text-rich-earth">Alt Cloud</h1>
           </div>
         </div>
         <p class="text-[13px] text-bright-tangerine font-medium mb-1">
@@ -196,16 +190,7 @@ const featuredSlugs = await getFeaturedSlugs();
         </div>
         <div
           class="flex flex-col gap-1"
-          id="categoryList"
-          data-watchlist-href={asset("watchlist/")}>
-        </div>
-
-        <div class="font-serif text-xs font-semibold uppercase tracking-wider text-warm-stone mt-5 mb-3">
-          Tracking
-        </div>
-        <div
-          class="flex flex-col gap-1"
-          id="trackingList">
+          id="categoryList">
         </div>
       </div>
 
@@ -218,6 +203,7 @@ const featuredSlugs = await getFeaturedSlugs();
 
         <div class="flex flex-col gap-2 mb-3">
           <WatchlistNavLink />
+          <EmergingNavLink />
           <BlogNavLink />
           <CompareNavLink />
           <button
@@ -783,24 +769,17 @@ const featuredSlugs = await getFeaturedSlugs();
         }"><span>${cat}</span><span class="font-mono text-xs opacity-70">${counts[cat] || 0}</span></button>`;
       };
 
-      // "Emerging & Unverified Providers" is grouped with Watchlist in its own
-      // "Tracking" section below, not the main alphabetical category list —
-      // both are candidates that haven't fully cleared the bar yet.
+      // "Emerging & Unverified Providers" has its own persistent nav link
+      // (EmergingNavLink, next to Watchlist) instead of a spot in this
+      // alphabetical category list — both are candidates that haven't
+      // fully cleared the bar yet, and a pill buried in a long scrollable
+      // list was too easy to miss.
       const cats = getCategories().filter((cat) => cat !== EMERGING_CATEGORY);
       const html = cats.map(categoryButtonHtml).join("");
       const list = document.getElementById("categoryList");
       const drawerList = document.getElementById("drawerCategoryList");
       if (list) list.innerHTML = html;
       if (drawerList) drawerList.innerHTML = html;
-
-      const watchlistHref = list?.dataset.watchlistHref || "#";
-      const trackingHtml =
-        `<a href="${watchlistHref}" class="gap-2 [&>span]:text-left category-item flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer text-sm transition-all border border-transparent text-warm-stone hover:bg-clay-beige hover:text-rich-earth no-underline"><span>Watchlist</span></a>` +
-        categoryButtonHtml(EMERGING_CATEGORY);
-      const trackingList = document.getElementById("trackingList");
-      const drawerTrackingList = document.getElementById("drawerTrackingList");
-      if (trackingList) trackingList.innerHTML = trackingHtml;
-      if (drawerTrackingList) drawerTrackingList.innerHTML = trackingHtml;
 
       document.querySelectorAll<HTMLElement>("[data-category]").forEach((btn) => {
         btn.addEventListener("click", () => {

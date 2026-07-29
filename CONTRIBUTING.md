@@ -1,4 +1,4 @@
-# Contributing to Awesome Alt Clouds
+# Contributing to Alt Cloud
 
 Thanks for your interest in contributing! There are now three different things you can contribute to, each with a different workflow.
 

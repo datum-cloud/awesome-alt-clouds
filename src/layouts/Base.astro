@@ -68,7 +68,7 @@ const {
     <link
       rel="alternate"
       type="application/rss+xml"
-      title="Awesome Alt Clouds"
+      title="Alt Cloud"
       href={asset("rss.xml")}
     />
 
@@ -93,7 +93,7 @@ const {
                 "@type": "WebSite",
                 "@id": `${siteRoot}#website`,
                 url: homepageUrl(),
-                name: "Awesome Alt Clouds",
+                name: "Alt Cloud",
                 description: `Curated directory of ${cloudCount}+ alternative cloud providers evaluated against transparent pricing, self-service signup, and public SLA criteria.`,
                 inLanguage: "en",
                 publisher: { "@id": `${siteRoot}#organization` },
@@ -127,7 +127,7 @@ const {
               {
                 "@type": "Dataset",
                 "@id": `${siteRoot}#dataset`,
-                name: "Awesome Alt Clouds Directory",
+                name: "Alt Cloud Directory",
                 description: `A curated, community-maintained dataset of ${cloudCount}+ alternative cloud service providers evaluated against 3 criteria: transparent public pricing, usage-based self-service signup, and public SLA or status page. Covers 23 categories including infrastructure, GPU compute, databases, AI inference, developer tooling, and more.`,
                 url: homepageUrl(),
                 keywords: [
@@ -166,9 +166,8 @@ const {
                 "@type": "CollectionPage",
                 "@id": `${siteRoot}#webpage`,
                 url: homepageUrl(),
-                name: "Awesome Alt Clouds | Alternative Cloud Providers for Developers",
-                description:
-                  "Discover specialized cloud infrastructure providers built for developers who have specialized requirements and need alternatives to hyperscalers.",
+                name: defaultTitle,
+                description: defaultDescription,
                 isPartOf: { "@id": `${siteRoot}#website` },
                 about: { "@id": `${siteRoot}#dataset` },
                 speakable: {

@@ -1,19 +1,24 @@
 ---
 import { asset } from "../lib/assets";
+import { categoryToSlug } from "../lib/clouds";
+import { EMERGING_CATEGORY } from "../lib/github";
 import SidebarFooterNav from "./SidebarFooterNav.astro";
 
+export type ActivePage = "directory" | "watchlist" | "emerging" | "blog" | "compare";
+
 export interface Props {
-  activePage?: "directory" | "watchlist" | "blog" | "compare";
+  activePage?: ActivePage;
 }
 
 const { activePage = "directory" } = Astro.props;
 
 const homeHref = asset("");
 const watchlistHref = asset("watchlist/");
+const emergingHref = asset(`categories/${categoryToSlug(EMERGING_CATEGORY)}/`);
 const blogHref = asset("blog/");
 const compareHref = asset("compare/");
 
-const navClass = (page: "directory" | "watchlist" | "blog" | "compare") =>
+const navClass = (page: ActivePage) =>
   [
     "flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm no-underline transition-colors",
     activePage === page
@@ -34,7 +39,7 @@ const navClass = (page: "directory" | "watchlist" | "blog" | "compare") =>
         class="rounded-lg"
       />
       <div>
-        <span class="font-serif text-xl font-semibold text-rich-earth">Awesome Alt Clouds</span>
+        <span class="font-serif text-xl font-semibold text-rich-earth">Alt Cloud</span>
       </div>
     </a>
     <p class="text-[13px] text-bright-tangerine font-medium mb-1">
@@ -67,6 +72,17 @@ const navClass = (page: "directory" | "watchlist" | "blog" | "compare") =>
         ></path>
       </svg>
       <span>Watchlist</span>
+    </a>
+    <a href={emergingHref} class={navClass("emerging")}>
+      <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"
+        ></path>
+      </svg>
+      <span>Emerging & Unverified</span>
     </a>
     <a href={blogHref} class={navClass("blog")}>
       <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

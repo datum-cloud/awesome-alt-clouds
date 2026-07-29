@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
 
 from lib import readme_entries as re_lib
 
-SAMPLE_README = """# Awesome Alt Clouds
+SAMPLE_README = """# Alt Cloud
 
 ## Databases & Storage
 

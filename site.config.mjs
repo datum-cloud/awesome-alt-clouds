@@ -34,9 +34,9 @@ export const siteConfig = {
         "List your alternative cloud service, auto-evaluated against 3 core criteria: public pricing, self-serve signup, transparent uptime",
     },
     blog: {
-      title: "Blog | Awesome Alt Clouds",
+      title: "Blog | Alt Cloud",
       description:
-        "Editorial notes on alternative cloud providers — trends, new entrants, and commentary from the Awesome Alt Clouds community.",
+        "Editorial notes on alternative cloud providers — trends, new entrants, and commentary from the Alt Cloud community.",
     },
   },
 };
