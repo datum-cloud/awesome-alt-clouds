@@ -6,24 +6,24 @@ const baseUrl = asset("");
 
 <div
   id="compare-tray"
-  class="compare-tray fixed bottom-6 left-1/2 z-50 hidden w-[calc(100%-2rem)] max-w-lg -translate-x-1/2"
+  class="compare-tray fixed bottom-6 inset-x-0 z-50 mx-auto hidden w-fit max-w-[calc(100%-2rem)]"
   data-base={baseUrl}
   role="region"
   aria-label="Compare selection">
   <div
     class="compare-tray-panel flex flex-col gap-3 rounded-xl border border-clay-beige bg-white px-4 py-3 shadow-lg">
     <div class="compare-tray-chips flex flex-wrap gap-2 min-h-[28px]"></div>
-    <div class="compare-tray-actions flex items-center justify-between gap-3">
+    <div class="compare-tray-actions flex w-full items-center gap-3">
       <button
         type="button"
         id="compare-tray-clear"
-        class="text-xs font-medium text-warm-stone hover:text-rich-earth transition-colors">
+        class="flex-shrink-0 text-xs font-medium text-warm-stone hover:text-rich-earth transition-colors">
         Clear
       </button>
       <button
         type="button"
         id="compare-tray-go"
-        class="compare-tray-go flex-1 py-2.5 px-4 bg-bright-tangerine hover:bg-rich-earth text-white text-sm font-semibold rounded-lg transition-colors">
+        class="compare-tray-go flex-1 min-w-0 py-2.5 px-4 bg-bright-tangerine hover:bg-rich-earth text-white text-sm font-semibold rounded-lg transition-colors">
         Compare
       </button>
     </div>
@@ -104,13 +104,11 @@ const baseUrl = asset("");
 
     if (items.length === 0) {
       tray.classList.add("hidden");
-      tray.classList.remove("flex");
       updateToggleButtons();
       return;
     }
 
     tray.classList.remove("hidden");
-    tray.classList.add("flex");
 
     chipsEl.innerHTML = items
       .map(
