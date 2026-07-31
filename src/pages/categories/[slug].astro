@@ -114,11 +114,10 @@ const homeCategoryHref = `${asset("")}#${slug}`;
             <p class="text-warm-stone py-8">No providers in this category yet.</p>
           ) : (
             <div class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(320px,1fr))]">
-              {categoryClouds.map((cloud, index) => (
+              {categoryClouds.map((cloud) => (
                 <CloudCard
                   cloud={cloud}
                   featured={featuredSlugs.has(cloud.slug)}
-                  index={index}
                 />
               ))}
             </div>

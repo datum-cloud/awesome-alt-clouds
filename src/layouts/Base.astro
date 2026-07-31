@@ -81,8 +81,17 @@ const {
       rel="preload"
       as="style"
       href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
+      id="google-fonts-css"
     />
+    <script is:inline>
+      (function () {
+        const el = document.getElementById("google-fonts-css");
+        if (!el) return;
+        el.addEventListener("load", function () {
+          el.rel = "stylesheet";
+        });
+      })();
+    </script>
     <noscript>
       <link
         rel="stylesheet"
