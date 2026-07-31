@@ -57,6 +57,10 @@ const baseUrl = asset("");
   const LABEL_IN = "In compare";
   const LABEL_FULL = "Full";
 
+  /** Slugs whose toggle buttons were last painted as selected / needing sync. */
+  let lastSelectedSlugs = new Set<string>();
+  let lastWasFull = false;
+
   function buildCompareUrl(slugs: string[]): string {
     const params = new URLSearchParams();
     if (slugs[0]) params.set("a", slugs[0]);
@@ -67,35 +71,77 @@ const baseUrl = asset("");
     return query ? `${path}?${query}` : path;
   }
 
-  function updateToggleButtons(): void {
-    const full = isFull();
-    document.querySelectorAll<HTMLButtonElement>("[data-compare-toggle]").forEach((btn) => {
-      const slug = btn.getAttribute("data-compare-slug") ?? "";
-      const selected = has(slug);
-      const compact = btn.hasAttribute("data-compare-compact");
-      const label = btn.querySelector("[data-compare-label]");
+  function setCompareFullAttr(full: boolean): void {
+    if (full) {
+      document.documentElement.setAttribute("data-compare-full", "");
+    } else {
+      document.documentElement.removeAttribute("data-compare-full");
+    }
+  }
 
-      btn.setAttribute("aria-pressed", selected ? "true" : "false");
-      btn.disabled = !selected && full;
+  function paintToggle(btn: HTMLButtonElement, selected: boolean, full: boolean): void {
+    const compact = btn.hasAttribute("data-compare-compact");
+    const label = btn.querySelector("[data-compare-label]");
 
-      if (label) {
-        const state = compareToggleState(selected, !selected && full);
-        label.innerHTML = compact
-          ? renderCompactCompareToggle(state)
-          : renderFullCompareToggle(state);
+    btn.setAttribute("aria-pressed", selected ? "true" : "false");
+    // Full state is CSS + click guard — avoid writing disabled on hundreds of nodes.
+    btn.removeAttribute("disabled");
+    if (!selected && full) {
+      btn.setAttribute("aria-disabled", "true");
+    } else {
+      btn.removeAttribute("aria-disabled");
+    }
 
-        if (!compact) {
-          if (selected) {
-            btn.setAttribute("aria-label", LABEL_IN);
-          } else if (full) {
-            btn.setAttribute("aria-label", LABEL_FULL);
-          } else {
-            const name = btn.getAttribute("data-compare-name") ?? "provider";
-            btn.setAttribute("aria-label", `Add ${name} to compare`);
-          }
+    if (label) {
+      const state = compareToggleState(selected, !selected && full);
+      label.innerHTML = compact
+        ? renderCompactCompareToggle(state)
+        : renderFullCompareToggle(state);
+
+      if (!compact) {
+        if (selected) {
+          btn.setAttribute("aria-label", LABEL_IN);
+        } else if (full) {
+          btn.setAttribute("aria-label", LABEL_FULL);
+        } else {
+          const name = btn.getAttribute("data-compare-name") ?? "provider";
+          btn.setAttribute("aria-label", `Add ${name} to compare`);
         }
       }
-    });
+    }
+  }
+
+  /** Update only toggles that changed selection, or all when full state flips. */
+  function updateToggleButtons(items: CompareItem[]): void {
+    const selectedSlugs = new Set(items.map((i) => i.slug));
+    const full = items.length >= 3;
+    const fullChanged = full !== lastWasFull;
+
+    setCompareFullAttr(full);
+
+    if (fullChanged) {
+      // Full ↔ not-full: selected icons and unselected labels need a pass.
+      document.querySelectorAll<HTMLButtonElement>("[data-compare-toggle]").forEach((btn) => {
+        const slug = btn.getAttribute("data-compare-slug") ?? "";
+        paintToggle(btn, selectedSlugs.has(slug), full);
+      });
+    } else {
+      const changed = new Set<string>();
+      for (const slug of selectedSlugs) {
+        if (!lastSelectedSlugs.has(slug)) changed.add(slug);
+      }
+      for (const slug of lastSelectedSlugs) {
+        if (!selectedSlugs.has(slug)) changed.add(slug);
+      }
+      for (const slug of changed) {
+        document
+          .querySelectorAll<HTMLButtonElement>(`[data-compare-toggle][data-compare-slug="${CSS.escape(slug)}"]`)
+          .forEach((btn) => paintToggle(btn, selectedSlugs.has(slug), full));
+      }
+    }
+
+    lastSelectedSlugs = selectedSlugs;
+    lastWasFull = full;
   }
 
   function renderTray(): void {
@@ -104,7 +150,12 @@ const baseUrl = asset("");
 
     if (items.length === 0) {
       tray.classList.add("hidden");
-      updateToggleButtons();
+      // Cold load / cleared: SSR toggles are already "add". Only sync if we had selection before.
+      if (lastSelectedSlugs.size > 0 || lastWasFull) {
+        updateToggleButtons(items);
+      } else {
+        setCompareFullAttr(false);
+      }
       return;
     }
 
@@ -123,7 +174,7 @@ const baseUrl = asset("");
       .join("");
 
     goBtn.textContent = `Compare (${items.length})`;
-    updateToggleButtons();
+    updateToggleButtons(items);
   }
 
   function escapeHtml(text: string): string {
@@ -137,11 +188,14 @@ const baseUrl = asset("");
   function handleToggleClick(event: Event): void {
     const target = event.target as HTMLElement;
     const btn = target.closest<HTMLButtonElement>("[data-compare-toggle]");
-    if (!btn || btn.disabled) return;
+    if (!btn) return;
 
     const slug = btn.getAttribute("data-compare-slug");
     const name = btn.getAttribute("data-compare-name");
     if (!slug || !name) return;
+
+    const selected = has(slug);
+    if (!selected && isFull()) return;
 
     event.preventDefault();
     event.stopPropagation();

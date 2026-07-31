@@ -64,6 +64,24 @@
   }
 }
 
+/* Skip layout/paint for off-screen directory cards; cards stay in the DOM. */
+.cloud-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 260px;
+}
+
+/* Hide cards until JS measures the viewport (inline script sets this class). */
+html.card-reveal-pending #cloudsGrid > .cloud-card {
+  opacity: 0;
+}
+
+/* When compare basket is full, dim unselected toggles without touching 471 nodes. */
+html[data-compare-full] [data-compare-toggle]:not([aria-pressed="true"]) {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .prose-content {
   color: var(--color-rich-earth);
   line-height: 1.7;
