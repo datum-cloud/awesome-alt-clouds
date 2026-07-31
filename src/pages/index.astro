@@ -6,12 +6,26 @@ import CloudCard from "../components/CloudCard.astro";
 import CompareNavLink from "../components/CompareNavLink.astro";
 import EmergingNavLink from "../components/EmergingNavLink.astro";
 import WatchlistNavLink from "../components/WatchlistNavLink.astro";
-import { clouds } from "../lib/clouds";
+import { clouds, countByCategory, getCategories } from "../lib/clouds";
+import { EMERGING_CATEGORY } from "../lib/github";
 import { getFeaturedSlugs } from "../lib/profile";
 
 const sortedClouds = [...clouds].sort((a, b) => a.name.localeCompare(b.name));
 const cloudCount = clouds.length;
 const featuredSlugs = await getFeaturedSlugs();
+
+/** Sidebar categories (Emerging has its own nav link). */
+const sidebarCategories = getCategories()
+  .filter((cat) => cat !== EMERGING_CATEGORY)
+  .map((cat) => ({ name: cat, count: countByCategory(cat) }));
+
+const categoryBtnClass = (active: boolean) =>
+  [
+    "gap-2 [&>span]:text-left category-item flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer text-sm transition-all border border-transparent",
+    active
+      ? "bg-rich-earth text-cream font-medium"
+      : "text-warm-stone hover:bg-clay-beige hover:text-rich-earth",
+  ].join(" ");
 ---
 
 <Base
@@ -90,6 +104,17 @@ const featuredSlugs = await getFeaturedSlugs();
       <div
         class="flex flex-col gap-1"
         id="drawerCategoryList">
+        {
+          sidebarCategories.map(({ name, count }) => (
+            <button
+              type="button"
+              data-category={name}
+              class={categoryBtnClass(name === "All")}>
+              <span>{name}</span>
+              <span class="font-mono text-xs opacity-70">{count}</span>
+            </button>
+          ))
+        }
       </div>
     </div>
     <div class="p-4 border-t border-clay-beige flex flex-col gap-1 flex-shrink-0">
@@ -191,6 +216,17 @@ const featuredSlugs = await getFeaturedSlugs();
         <div
           class="flex flex-col gap-1"
           id="categoryList">
+          {
+            sidebarCategories.map(({ name, count }) => (
+              <button
+                type="button"
+                data-category={name}
+                class={categoryBtnClass(name === "All")}>
+                <span>{name}</span>
+                <span class="font-mono text-xs opacity-70">{count}</span>
+              </button>
+            ))
+          }
         </div>
       </div>
 
@@ -320,15 +356,17 @@ const featuredSlugs = await getFeaturedSlugs();
       </div>
 
       <!-- Clouds grid (SSR'd from clouds.json, hydrated by client JS) -->
+      <script is:inline>
+        document.documentElement.classList.add("card-reveal-pending");
+      </script>
       <div
         id="cloudsGrid"
         class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(320px,1fr))]">
         {
-          sortedClouds.map((cloud, index) => (
+          sortedClouds.map((cloud) => (
             <CloudCard
               cloud={cloud}
               featured={featuredSlugs.has(cloud.slug)}
-              index={index}
             />
           ))
         }
@@ -612,32 +650,17 @@ const featuredSlugs = await getFeaturedSlugs();
     </div>
   </div>
 
-  <!-- Hydration data: serialized clouds for client-side filter/search/sort -->
-  <script
-    is:inline
-    id="clouds-data"
-    type="application/json"
-    set:html={JSON.stringify(sortedClouds)}
-  />
-
   <script>
-    import { EMERGING_CATEGORY } from "../lib/github";
-
-    type Cloud = {
-      name: string;
-      url: string;
-      description: string;
-      score: 2 | 3;
-      categories: string[];
-      dateAdded?: string;
-    };
-
-    const dataEl = document.getElementById("clouds-data");
-    const altClouds: Cloud[] = dataEl ? JSON.parse(dataEl.textContent || "[]") : [];
-
     let currentCategory = "All";
     let searchTerm = "";
     let currentSort: "alphabetical" | "recent" = "alphabetical";
+    /** Last sort applied to DOM order — skip reorder when unchanged. */
+    let appliedSort: "alphabetical" | "recent" = "alphabetical";
+
+    const ACTIVE_CAT =
+      "bg-rich-earth text-cream font-medium gap-2 [&>span]:text-left category-item flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer text-sm transition-all border border-transparent";
+    const INACTIVE_CAT =
+      "text-warm-stone hover:bg-clay-beige hover:text-rich-earth gap-2 [&>span]:text-left category-item flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer text-sm transition-all border border-transparent";
 
     const MODAL_HASHES: Record<string, string> = {
       aboutModal: "about",
@@ -655,15 +678,17 @@ const featuredSlugs = await getFeaturedSlugs();
         .replace(/^-|-$/g, "");
     }
 
-    function slugToCategory(slug: string): string {
-      const cats = getCategories();
-      return cats.find((c) => categoryToSlug(c) === slug) || "All";
+    /** Category names from SSR'd sidebar buttons (desktop list is the source of truth). */
+    function getCategoryNames(): string[] {
+      const list = document.getElementById("categoryList");
+      if (!list) return ["All"];
+      return Array.from(list.querySelectorAll<HTMLElement>("[data-category]")).map(
+        (btn) => btn.getAttribute("data-category") || ""
+      );
     }
 
-    function getCategories(): string[] {
-      const set = new Set<string>();
-      for (const c of altClouds) for (const cat of c.categories) set.add(cat);
-      return ["All", ...[...set].sort()];
+    function slugToCategory(slug: string): string {
+      return getCategoryNames().find((c) => categoryToSlug(c) === slug) || "All";
     }
 
     function openModal(id: string) {
@@ -753,51 +778,46 @@ const featuredSlugs = await getFeaturedSlugs();
       document.body.style.overflow = "";
     });
 
-    // Categories rendering
-    function renderCategories() {
-      const counts: Record<string, number> = { All: altClouds.length };
-      for (const c of altClouds) {
-        for (const cat of c.categories) counts[cat] = (counts[cat] || 0) + 1;
-      }
-
-      const categoryButtonHtml = (cat: string) => {
-        const isActive = cat === currentCategory;
-        return `<button data-category="${cat.replace(/"/g, "&quot;")}" class="gap-2 [&>span]:text-left category-item flex justify-between items-center px-3 py-2 rounded-lg cursor-pointer text-sm transition-all border border-transparent ${
-          isActive
-            ? "bg-rich-earth text-cream font-medium"
-            : "text-warm-stone hover:bg-clay-beige hover:text-rich-earth"
-        }"><span>${cat}</span><span class="font-mono text-xs opacity-70">${counts[cat] || 0}</span></button>`;
-      };
-
-      // "Emerging & Unverified Providers" has its own persistent nav link
-      // (EmergingNavLink, next to Watchlist) instead of a spot in this
-      // alphabetical category list — both are candidates that haven't
-      // fully cleared the bar yet, and a pill buried in a long scrollable
-      // list was too easy to miss.
-      const cats = getCategories().filter((cat) => cat !== EMERGING_CATEGORY);
-      const html = cats.map(categoryButtonHtml).join("");
-      const list = document.getElementById("categoryList");
-      const drawerList = document.getElementById("drawerCategoryList");
-      if (list) list.innerHTML = html;
-      if (drawerList) drawerList.innerHTML = html;
-
+    function updateCategoryActiveState() {
       document.querySelectorAll<HTMLElement>("[data-category]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const cat = btn.getAttribute("data-category");
-          if (cat) filterByCategory(cat);
-        });
+        const cat = btn.getAttribute("data-category");
+        btn.className = cat === currentCategory ? ACTIVE_CAT : INACTIVE_CAT;
       });
     }
 
     function filterByCategory(cat: string) {
       currentCategory = cat;
-      renderCategories();
+      updateCategoryActiveState();
       applyFilters();
       updateUrl();
       closeDrawer();
     }
 
-    function applyFilters() {
+    document.querySelectorAll<HTMLElement>("[data-category]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const cat = btn.getAttribute("data-category");
+        if (cat) filterByCategory(cat);
+      });
+    });
+
+    function compareCards(a: HTMLElement, b: HTMLElement): number {
+      if (currentSort === "alphabetical") {
+        return (a.dataset.name || "").localeCompare(b.dataset.name || "");
+      }
+      const da = a.dataset.dateAdded || "";
+      const db = b.dataset.dateAdded || "";
+      if (!da && !db) return 0;
+      if (!da) return 1;
+      if (!db) return -1;
+      return db.localeCompare(da);
+    }
+
+    function clearCardRevealAnimation(card: HTMLElement): void {
+      card.classList.remove("animate-slide-up-card");
+      card.style.removeProperty("animation-delay");
+    }
+
+    function applyFilters(options: { reorder?: boolean } = {}) {
       const grid = document.getElementById("cloudsGrid");
       const empty = document.getElementById("emptyState");
       if (!grid) return;
@@ -806,7 +826,6 @@ const featuredSlugs = await getFeaturedSlugs();
       const term = searchTerm.toLowerCase();
       let visibleCount = 0;
 
-      const matches: HTMLElement[] = [];
       for (const card of cards) {
         const cats = (card.dataset.categories || "").split("|");
         const name = card.dataset.name || "";
@@ -815,27 +834,22 @@ const featuredSlugs = await getFeaturedSlugs();
         const inSearch = term === "" || name.includes(term) || desc.includes(term);
         if (inCat && inSearch) {
           card.classList.remove("hidden");
-          matches.push(card);
           visibleCount++;
         } else {
           card.classList.add("hidden");
         }
+        // Filter toggles hidden/display and can retrigger CSS animations — strip reveal class.
+        clearCardRevealAnimation(card);
       }
 
-      // Apply sort by reordering DOM
-      matches.sort((a, b) => {
-        if (currentSort === "alphabetical") {
-          return (a.dataset.name || "").localeCompare(b.dataset.name || "");
-        }
-        const da = a.dataset.dateAdded || "";
-        const db = b.dataset.dateAdded || "";
-        if (!da && !db) return 0;
-        if (!da) return 1;
-        if (!db) return -1;
-        return db.localeCompare(da);
-      });
-
-      for (const card of matches) grid.appendChild(card);
+      // Reorder only when sort mode changes (SSR order is already alphabetical).
+      if (options.reorder || currentSort !== appliedSort) {
+        cards.sort(compareCards);
+        const fragment = document.createDocumentFragment();
+        for (const card of cards) fragment.appendChild(card);
+        grid.appendChild(fragment);
+        appliedSort = currentSort;
+      }
 
       if (empty) {
         empty.classList.toggle("hidden", visibleCount > 0);
@@ -845,6 +859,7 @@ const featuredSlugs = await getFeaturedSlugs();
     // Search input
     const searchInput = document.getElementById("searchInput") as HTMLInputElement | null;
     const searchClear = document.getElementById("searchClear");
+    let searchDebounce: ReturnType<typeof setTimeout> | undefined;
 
     function updateSearchClear() {
       if (!searchClear) return;
@@ -864,8 +879,11 @@ const featuredSlugs = await getFeaturedSlugs();
     searchInput?.addEventListener("input", (e) => {
       searchTerm = (e.target as HTMLInputElement).value;
       updateSearchClear();
-      applyFilters();
-      updateUrl();
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(() => {
+        applyFilters();
+        updateUrl();
+      }, 120);
     });
     searchClear?.addEventListener("click", clearSearch);
 
@@ -873,7 +891,7 @@ const featuredSlugs = await getFeaturedSlugs();
     const sortSelect = document.getElementById("sortSelect") as HTMLSelectElement | null;
     sortSelect?.addEventListener("change", () => {
       currentSort = (sortSelect.value as "alphabetical" | "recent") || "alphabetical";
-      applyFilters();
+      applyFilters({ reorder: true });
     });
 
     function updateUrl() {
@@ -905,15 +923,66 @@ const featuredSlugs = await getFeaturedSlugs();
       updateSearchClear();
       const slug = location.hash.slice(1);
       currentCategory = slug && !HASH_MODALS[slug] ? slugToCategory(slug) : "All";
-      renderCategories();
+      updateCategoryActiveState();
       applyFilters();
     });
 
-    // Init
+    // Init — skip filter/reorder when URL has no search or category hash
     initFromUrl();
     updateSearchClear();
-    renderCategories();
-    applyFilters();
+    updateCategoryActiveState();
+    if (searchTerm !== "" || currentCategory !== "All") {
+      applyFilters();
+    }
+
+    /** Reveal-animate only cards that intersect the viewport on first paint (once). */
+    let initialRevealDone = false;
+
+    function revealViewportCards() {
+      if (initialRevealDone) return;
+
+      const grid = document.getElementById("cloudsGrid");
+      if (!grid) {
+        document.documentElement.classList.remove("card-reveal-pending");
+        initialRevealDone = true;
+        return;
+      }
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.remove("card-reveal-pending");
+        initialRevealDone = true;
+        return;
+      }
+
+      const cards = Array.from(grid.querySelectorAll<HTMLElement>("article.cloud-card"));
+      const viewportTop = 0;
+      const viewportBottom = window.innerHeight;
+      let delayIndex = 0;
+
+      for (const card of cards) {
+        if (card.classList.contains("hidden")) continue;
+        const rect = card.getBoundingClientRect();
+        const inViewport = rect.top < viewportBottom && rect.bottom > viewportTop;
+        if (!inViewport) continue;
+
+        card.style.animationDelay = `${Math.min(delayIndex, 5) * 50}ms`;
+        card.classList.add("animate-slide-up-card");
+        card.addEventListener(
+          "animationend",
+          () => clearCardRevealAnimation(card),
+          { once: true }
+        );
+        delayIndex++;
+      }
+
+      document.documentElement.classList.remove("card-reveal-pending");
+      initialRevealDone = true;
+    }
+
+    // Wait for layout so getBoundingClientRect reflects the real grid.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(revealViewportCards);
+    });
 
     // Open modal if loaded with hash
     const initModalId = HASH_MODALS[location.hash.slice(1)];

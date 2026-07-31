@@ -7,10 +7,9 @@ import { EMERGING_CATEGORY, graduationIssueUrl } from "../lib/github";
 export interface Props {
   cloud: CloudWithSlug;
   featured: boolean;
-  index?: number;
 }
 
-const { cloud, featured, index = 0 } = Astro.props;
+const { cloud, featured } = Astro.props;
 
 const score = cloud.score ?? 3;
 const badgeClass =
@@ -30,12 +29,14 @@ const detailHref = asset(`${cloud.slug}/`);
 ---
 
 <article
-  class={`cloud-card animate-slide-up-card bg-white border border-clay-beige rounded-xl p-5 relative ${featured ? "cloud-card--featured" : ""}`}
+  class:list={[
+    "cloud-card bg-white border border-clay-beige rounded-xl p-5 relative",
+    featured && "cloud-card--featured",
+  ]}
   data-name={cloud.name.toLowerCase()}
   data-description={cloud.description.toLowerCase()}
   data-categories={cloud.categories.join("|")}
-  data-date-added={cloud.dateAdded ?? ""}
-  style={`animation-delay: ${Math.min(index, 5) * 0.05}s`}>
+  data-date-added={cloud.dateAdded ?? ""}>
   <button
     type="button"
     data-compare-toggle
