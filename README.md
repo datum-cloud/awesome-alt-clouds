@@ -217,6 +217,7 @@ Managed databases, object storage, caching, and search engines — relational, N
 * 🟡 [TiDB](https://www.pingcap.com/) - Provides a distributed SQL database optimized for AI agents with elastic scaling, unified vector/transactional queries, and ACID consistency for real-time AI workloads.
 * 🟢 [TigerData](https://www.tigerdata.com/) - PostgreSQL-based time-series database with compression and continuous aggregates.
 * 🟢 [Tigris](https://www.tigrisdata.com/) - A globally distributed S3-compatible object storage service that enables developers to store and access any amount of data.
+* 🟢 [Turbopuffer](https://turbopuffer.com/) - Provides a vector and full-text search database built on object storage, offering 10x cheaper alternative to traditional vector databases with sub-10ms latency and support for billions of vectors.
 * 🟡 [Turso](https://turso.tech/) - Distributed SQLite database with global edge replication.
 * 🟢 [Typesense](https://typesense.org/) - Open-source typo-tolerant search engine with <50ms speed. Self-hosted or cloud options available.
 * 🟢 [Upstash](https://upstash.com/) - Serverless Redis and Kafka with per-request pricing, global replication, and REST API for edge computing workloads.
@@ -637,7 +638,6 @@ Think one of these now qualifies? Open an issue titled `[Graduation] <Name>` (or
 * 🟢 [Split](https://www.split.io/) - Feature delivery platform with experimentation, enterprise-only pricing.
 * 🟢 [Statsig](https://statsig.com/) - Experimentation and feature flags platform (acquired by OpenAI Sept 2025, service status TBD).
 * 🟢 [Tggl](https://tggl.io/) - Feature flags platform, verification needed.
-* 🟢 [Turbopuffer](https://turbopuffer.com/) - Vector database optimized for speed, service verification needed.
 * 🟢 [Uptrace](https://uptrace.dev/) - Distributed tracing and metrics platform built on OpenTelemetry, verification needed.
 
 ## Contributing
