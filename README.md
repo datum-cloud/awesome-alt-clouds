@@ -318,6 +318,7 @@ Orchestration, automation, and operations platforms for running reliable workflo
 CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneling services — focused on routing, performance, and connectivity.
 
 * 🟢 [Akamai](https://www.akamai.com/) - A global content delivery and cybersecurity platform that helps secure and accelerate digital experiences at the edge.
+* 🟡 [Apoxy](https://apoxy.dev/) - Provides a programmable, tunneled network layer for routing and load-balancing traffic across services, clusters, and agents with hosted Envoy data planes and Gateway API support.
 * 🟢 [Approximated](https://approximated.app/) - Custom domain proxy platform with global edge servers, SSL management, and DDoS protection.
 * 🟢 [Aviatrix](https://aviatrix.com/) - Provides a cloud-native networking platform with advanced multi-cloud transit, security, and observability features.
 * 🟢 [c/Side](https://cside.dev/) - A next generation web security service that monitors, optimizes and secures 3rd party scripts.
