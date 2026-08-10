@@ -561,6 +561,7 @@ CRM, customer engagement, marketing automation, newsletter, and eCommerce platfo
 * 🟢 [Attio](https://attio.com/) - An AI-native CRM where you can design workflows, integrate your data and build detailed reports.
 * 🟢 [Beehiiv](https://www.beehiiv.com/) - Newsletter platform with integrated monetization, website builder, ad network, and referral programs.
 * 🟢 [Clarify](https://www.getclarify.ai/) - An AI-native CRM that unifies customer data, automates tasks, and provides actionable insights to enhance customer relationships.
+* 🟢 [Conecto](https://conecto.chat/) - Provides an all-in-one customer messaging platform combining live chat, AI chatbot, shared inbox, CRM and analytics for support and sales teams.
 * 🟢 [Customer.io](https://www.customer.io/) - A unified view of your audience and a single place where unlimited, real-time data can power more effective engagement.
 * 🟢 [Formbricks](https://formbricks.com/) - Open-source experience management platform. In-app surveys and user feedback collection.
 * 🟢 [Front](https://front.com/) - An AI-powered customer service platform for teams who know great CX drives revenue.
