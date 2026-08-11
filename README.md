@@ -463,6 +463,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [Fabrica](https://www.usefabrica.app/) - AI platform that builds internal apps from prompts with database and tooling integrations.
 * 🟢 [Firefly](https://www.firefly.ai/) - A cloud asset management solution powered by Infrastructure-as-Code, assisting DevOps and SRE teams in managing their entire cloud infrastructure efficiently.
 * 🟢 [Flagsmith](https://www.flagsmith.com/) - Open-source feature flag and remote config platform with SaaS, self-hosted, or private cloud deployment options.
+* 🟡 [Floci](https://floci.io/) - Provides fast, credential-free local cloud emulators for AWS, Azure, GCP, and OCI with real engines and 24ms startup times for development and testing.
 * 🟢 [Gammacode](https://gammacode.dev/) - AI code intelligence platform with CLI/web interface, security scanning, and issue automation.
 * 🟢 [GitBook](https://www.gitbook.com/) - Provides AI-powered documentation platform that connects docs, products, and users with intelligent assistants, Git sync, and enterprise collaboration features.
 * 🟢 [Gitpod](https://www.gitpod.io/) - A platform for automated and standardized development environments, enabling developers to code from anywhere with pre-configured, on-demand workspaces.
