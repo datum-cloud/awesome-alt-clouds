@@ -330,6 +330,7 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 * 🟢 [IPinfo](https://ipinfo.io/) - Provides accurate IP address intelligence including geolocation, ASN data, privacy detection, and network information through APIs and data downloads for developers and enterprises.
 * 🟢 [Kong](https://konghq.com/) - An open-source API gateway and microservices management layer that provides traffic control, security, and observability for APIs.
 * 🟢 [LocalXpose](https://localxpose.io/) - Secure tunneling service supporting HTTP, TLS, TCP, UDP with custom domains and SSL.
+* 🟡 [Lumilens](https://lumilens.com/) - Provides next-generation photonic interconnects and optical networking solutions for scaling AI compute infrastructure in hyperscaler data centers.
 * 🟢 [Macrometa](https://www.macrometa.com/) - An edge delivery network and developer platform built for real-time use cases.
 * 🟢 [Megaport](https://www.megaport.com/) - Offers elastic interconnection services that allow businesses to rapidly connect to cloud providers, data centers, and networks.
 * 🟢 [NetBox Cloud](https://netboxlabs.com/netbox-cloud/) - A managed solution for network infrastructure modeling and documentation, providing a scalable and secure platform for network automation.
