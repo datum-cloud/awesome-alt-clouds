@@ -75,6 +75,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟡 [Freestyle](https://freestyle.sh) - Infrastructure for managing and executing AI-generated code through sandboxed VMs, Git repositories, and deployment services.
 * 🟢 [Gcore](https://gcore.com/) - Delivers edge and cloud services with global infrastructure.
 * 🟡 [Hetzner](https://www.hetzner.com/) - Provides dedicated servers and cloud services in Europe.
+* 🟡 [Hikube](https://hikube.cloud/) - Provides sovereign Swiss cloud infrastructure with VMs, Kubernetes, GPU, managed databases, S3 storage, and messaging services across 3 Swiss datacenters with zero US jurisdiction.
 * 🟢 [Hivelocity](https://www.hivelocity.net/) - Experienced provider of VPS and bare metal solutions.
 * 🟢 [IONOS Cloud](https://cloud.ionos.com/) - Cloud infrastructure with a focus on public, bare metal, and managed Kubernetes solutions.
 * 🟡 [Kernel](https://www.kernel.sh/) - Cloud service provider.

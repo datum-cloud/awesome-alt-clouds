@@ -1,0 +1,49 @@
+---
+status: draft
+tagline: "Swiss-only cloud infrastructure with triple-datacenter replication and zero US jurisdiction exposure."
+pricingModel: usage-based
+regions:
+  - "Gland, Switzerland"
+  - "Lucerne, Switzerland"
+  - "Geneva, Switzerland"
+services:
+  - "Cloud VMs"
+  - "Managed Kubernetes"
+  - "GPU as a Service (L40S, A100, H100, RTX PRO 6000)"
+  - "Managed Databases (PostgreSQL, MariaDB, Redis, MongoDB, ClickHouse)"
+  - "S3 Object Storage"
+  - "Streaming & Messaging (Kafka, RabbitMQ, NATS)"
+socials:
+  website: "https://hikube.cloud/"
+---
+
+## What makes Hikube different
+
+Hikube positions itself as a sovereign alternative to AWS, Azure, and GCP by running exclusively on three independent Swiss datacenters (Gland, Lucerne, Geneva) with synchronous replication across all three. If a site fails, workloads are designed to fail over automatically without manual intervention, and data never leaves Swiss soil — a key differentiator for customers subject to GDPR, Swiss nLPD, or sector-specific rules (finance, healthcare, public sector) who need to prove data locality and avoid exposure to the US CLOUD Act.
+
+Architecturally, Hikube separates compute and storage and exposes everything through open, standard interfaces — Kubernetes API, S3-compatible object storage, Terraform, and kubectl — rather than a proprietary control plane. Its Kubernetes offering is built on Cozystack-style CRDs (e.g. `apps.cozystack.io`), letting customers declare VMs, databases, clusters, and buckets as YAML manifests, which reduces lock-in and eases GitOps-based workflows (FluxCD, ArgoCD).
+
+The platform also ships a built-in observability stack (Grafana, VictoriaMetrics, VictoriaLogs) deployed per-tenant, with a centralized multi-tenant dashboard that aggregates metrics across sub-tenants (prod/staging/dev) without extra configuration — something typically bolted on separately in hyperscaler environments.
+
+## Pricing model
+
+Hikube does not publish a full public price list in the crawled content, but it operates a usage-based model with a dedicated pricing page ("Tarifs") and offers a free trial ("ESSAYER GRATUITEMENT") for self-service evaluation. Resource sizing (e.g., VM instance types up to 256 GB RAM, `v1.large` node groups) suggests a tiered, consumption-based structure similar to other IaaS providers, but exact per-hour or per-GB rates were not found on the pages reviewed.
+
+What stands out is the bundling: compute, Kubernetes, GPU, databases, S3, and messaging are all available under one sovereign umbrella with a published 99.99% SLA, rather than piecing together multiple vendors to achieve Swiss-only data residency.
+
+## When it fits
+
+- Organizations in finance, healthcare, or public sector needing provable Swiss/EU-only data residency and nLPD/GDPR compliance
+- Teams wanting Kubernetes-native infrastructure (kubectl, Helm, FluxCD, Terraform) without proprietary APIs
+- AI/ML workloads needing GPU access (L40S, A100, H100) with data sovereignty guarantees
+- Companies wanting built-in HA across physical sites without building their own multi-region failover
+- Businesses avoiding US CLOUD Act exposure entirely, not just avoiding US regions
+
+## When it doesn't
+
+- Teams needing a global footprint with regions outside Switzerland/Europe
+- Workloads requiring the breadth of managed services (e.g., serverless, extensive AI/ML tooling) found on major hyperscalers
+
+## Inclusion criteria
+
+Hikube meets 2 of 3 criteria: self-service signup (free trial via [hikube.cloud/start/essai-gratuit](https://hikube.cloud/start/essai-gratuit)) and a public status page (linked in site footer). A dedicated pricing page exists ([hikube.cloud/tarifs](https://hikube.cloud/tarifs)) but specific numeric rates were not confirmed in the crawled content.
