@@ -83,6 +83,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Linode](https://www.linode.com/) - Provides cloud computing services designed for developers with straightforward pricing.
 * 🟢 [Loophole Labs](https://loopholelabs.io/) - Offers Kubernetes scale-to-zero capabilities by hibernating idle pods in-place and waking them in under 50ms, eliminating overprovisioning without code changes.
 * 🟢 [Lyceum](https://lyceum.technology/) - EU built and operated GPU cloud for developers and AI teams.
+* 🟡 [Lyrid](https://status.lyr.id/status/main) - Provides a cloud-agnostic platform for launching and deploying solutions across multiple cloud providers with authentication, API, and frontend services.
 * 🟢 [Mermaid](https://mermaid.ai/web/) - Cloud service provider.
 * 🟡 [Namespace](https://namespace.so/) - Cloud service provider.
 * 🟢 [NetActuate](https://netactuate.com/) - Provides hybrid cloud and edge computing solutions with a global network.
@@ -428,6 +429,7 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 * 🟢 [Heroku](https://www.heroku.com/) - Offers a platform as a service (PaaS) for deploying and managing applications.
 * 🟢 [Koyeb](https://www.koyeb.com/) - Offers a serverless platform to deploy applications globally.
 * 🟢 [Lyrid](https://www.lyrid.io/) - Provides an all-in-one PaaS platform for automated cloud infrastructure provisioning, management, and deployment across multi-cloud environments with built-in security and compliance.
+* 🟡 [Lyrid](https://app.lyrid.io/) - Provides cloud-agnostic serverless platform for building, deploying, and managing web applications, databases, storage, and Kubernetes clusters with ML-based policy management.
 * 🟢 [Maritime](https://maritime.sh/) - Provides cloud hosting infrastructure specifically designed for AI agents with flat $1/month pricing, sleep/wake architecture, and one-click deployment from GitHub repos.
 * 🟢 [Netlify](https://www.netlify.com/) - Platform for building, deploying, and scaling modern web applications.
 * 🟢 [Northflank](https://northflank.com/) - A platform to build, deploy, and manage full-stack applications.
