@@ -434,6 +434,7 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 * 🟢 [Out Plane](https://outplane.com/) - Provides a cloud PaaS platform for developers to deploy applications in 60 seconds with managed PostgreSQL, Redis, auto-scaling, and compliance features without Kubernetes or YAML.
 * 🟢 [Pantheon](https://pantheon.io/) - A platform for running Wordpress, Drupal and Next.js websites.
 * 🟢 [Platform.sh](https://platform.sh/) - Enterprise PaaS to build, run, and scale web applications and microservices.
+* 🟢 [Plotly Cloud](https://plotly.com/cloud/) - Provides one-click deployment and hosting for Dash analytics applications with built-in authentication, role-based permissions, AI integration, and enterprise features.
 * 🟢 [Porter](https://porter.run/) - A Kubernetes-powered PaaS that runs in your own cloud provider, simplifying the deployment and management of applications on AWS, GCP, or Azure.
 * 🟢 [Puter](https://puter.com/) - A privacy-first personal cloud that houses all your files, apps, and games in one secure place, accessible from anywhere at any time.
 * 🟢 [Railway](https://railway.com/) - Deploy code instantly and manage environments in the cloud.
