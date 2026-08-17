@@ -1,0 +1,46 @@
+---
+status: draft
+tagline: "Drop-in replacement for GitHub Actions runners that's up to 2x faster and 75% cheaper, running on bare metal."
+pricingModel: usage-based
+services:
+  - "GitHub Actions runners (bare metal)"
+  - "Docker layer caching (NVMe-backed)"
+  - "CI cache acceleration"
+  - "CI observability console"
+  - "Flaky test / log search"
+  - "Inline PR test failure comments"
+  - "Blacksmith Sandboxes (coming soon)"
+socials:
+  website: "https://www.blacksmith.sh/"
+---
+
+## What makes Blacksmith different
+
+Blacksmith replaces GitHub's hosted Actions runners with its own bare-metal infrastructure, aiming to fix two chronic pain points of CI: slow queueing/build times and opaque billing. Instead of shared virtualized runners, jobs execute on dedicated bare-metal gaming CPUs chosen for high single-core performance, with microVMs that provision instantly — eliminating the "waiting for a runner" delay common on GitHub-hosted runners.
+
+A key architectural decision is data locality: cache artifacts and Docker layers are co-located in the same data center as the running jobs and persisted on NVMe drives across runs, which Blacksmith claims yields roughly 4x faster cache downloads and up to 40x faster Docker builds compared to standard GitHub Actions caching.
+
+Beyond raw speed, Blacksmith adds an observability layer GitHub Actions lacks natively — a console for spotting failing/slow jobs, searching logs across all CI runs, and posting inline test failure comments directly on pull requests. The pitch is a near-zero-effort migration (swap `runs-on: ubuntu-latest` for `runs-on: blacksmith`) that immediately cuts both CI time and cost without requiring teams to manage their own runner infrastructure.
+
+## Pricing model
+
+Blacksmith's pricing is usage-based and marketed as roughly 60–75% cheaper than GitHub-hosted runners. Illustrative rate comparisons shown on their site include per-minute compute costs as low as $0.008–$0.024 depending on runner size, versus GitHub's equivalent $0.072–$0.096 rates for comparable job types (e.g., Node.js, Rust, Android, and Docker build workloads). Detailed current tiers and runner sizes are published on their [pricing page](https://www.blacksmith.sh/pricing). No credit card is required to start, and a free trial is available via self-service signup.
+
+What stands out versus typical hyperscaler CI pricing is the transparency of the comparison: rather than abstract compute-hour billing, Blacksmith publishes direct side-by-side cost breakdowns against GitHub Actions for common workloads, making the savings concrete and auditable rather than a vague marketing claim.
+
+## When it fits
+
+- Teams already using GitHub Actions who want a low-friction, drop-in speed and cost upgrade
+- Organizations with Docker-heavy CI pipelines that suffer from slow, uncached image builds
+- Teams frustrated by GitHub Actions runner queue times or lack of CI observability
+- Engineering orgs optimizing PR merge velocity and CI cost at scale (referenced customers include Vercel, Clerk, Supabase, Ashby, VEED)
+- Companies wanting faster feedback loops without standing up and maintaining self-hosted runner infrastructure
+
+## When it doesn't
+
+- Teams not using GitHub Actions (or GitHub at all) as their CI/CD system, since Blacksmith is purpose-built as a GitHub Actions runner replacement
+- Workloads requiring multi-cloud, non-GitHub-native orchestration, custom hardware (e.g., specialized GPUs beyond CI use), or full infrastructure-as-a-service beyond CI/CD
+
+## Inclusion criteria
+
+Blacksmith meets all 3 inclusion criteria: transparent, published per-minute pricing with direct cost comparisons (see [Pricing](https://www.blacksmith.sh/pricing)), self-service signup with no credit card required (via [Try for free](https://app.blacksmith.sh/)), and a public status page ("■ Status" linked in site footer) alongside a SOC 2 security page ([Security](https://www.blacksmith.sh/security-old)).
