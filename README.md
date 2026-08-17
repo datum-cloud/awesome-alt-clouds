@@ -452,6 +452,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 
 * 🟢 [8gears Container Registry](https://container-registry.com/) - Provides enterprise Harbor-based container registry service for storing, managing and distributing container artifacts securely at scale with multi-tenancy and RBAC.
 * 🟢 [Anaconda](https://www.anaconda.com/) - Provides enterprise Python package management and AI development platform with secure open-source libraries, environment management, and AI model deployment capabilities.
+* 🟢 [Blacksmith](https://www.blacksmith.sh/) - Provides a faster, cheaper alternative to GitHub Actions by running CI/CD jobs on high-performance bare metal infrastructure with instant provisioning and advanced observability.
 * 🟢 [Browserbase](https://www.browserbase.com/) - A platform for running headless browsers for interact with websites via automation.
 * 🟢 [browserless](https://www.browserless.io/) - Headless browser automation platform providing managed Chrome, Firefox, and WebKit browsers for scraping, testing, and automation with bot detection bypass and CAPTCHA solving.
 * 🟢 [Bubble](https://bubble.io/) - No-code visual programming platform for building web and mobile apps with drag-and-drop interface and usage-based pricing.
