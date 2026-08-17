@@ -349,6 +349,7 @@ APIs and platforms for running inference on foundation models and open-source LL
 
 * 🟡 [Anchor](https://anchorbrowser.io/) - Provides AI-powered browser automation infrastructure with humanized Chromium instances that can access any website, handle authentication, and perform web tasks reliably.
 * 🟡 [Cloudglue](https://cloudglue.dev/) - Provides a video context engine API that structures, searches, and enables AI reasoning over video content for developers building chatbots, RAG systems, and video analysis applications.
+* 🟢 [Concentrate.ai](https://concentrate.ai/) - Provides a unified LLM gateway enabling teams to access hundreds of AI models across multiple providers through a single API with no platform fees.
 * 🟢 [Fireworks.ai](https://fireworks.ai/) - Delivers high-speed, cost-effective inference APIs with support for open-source models.
 * 🟢 [Groq](https://groq.com/) - Provides ultra-fast inference on custom hardware designed for AI workloads.
 * 🟢 [InfronAI](https://infron.ai/) - Provides unified access to 400+ AI models from 100+ providers with enterprise reliability, cost optimization, and zero data retention security features.
