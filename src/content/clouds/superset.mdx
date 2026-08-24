@@ -1,0 +1,46 @@
+---
+status: draft
+tagline: "Run 100+ parallel coding agents like Claude Code and Codex in isolated Git worktrees on your own machine or remote hosts."
+pricingModel: subscription
+services:
+  - "Isolated agent workspaces (Git worktrees)"
+  - "Parallel agent orchestration"
+  - "Scheduled automations (issue triage, changelog drafts, dependency bumps)"
+  - "Remote/SSH workspace hosting"
+  - "CLI & SDK for scripting agent workflows"
+  - "MCP server integration"
+  - "IDE handoff (VS Code, Cursor, Xcode, JetBrains)"
+  - "Built-in code review and PR workflow"
+socials:
+  website: "https://superset.sh/"
+  github: "https://github.com/superset-sh/superset"
+---
+
+## What makes Superset different
+
+Superset isn't a cloud in the traditional compute/storage sense — it's a developer tool for orchestrating large numbers of AI coding agents (Claude Code, Codex, Cursor Agent, OpenCode, Gemini, and others) without them stepping on each other. Each task spins up its own isolated Git worktree, so dozens or even 100+ agents can work on the same repository simultaneously with no merge conflicts and no shared session bottlenecks.
+
+The core design decision is agent-agnosticism combined with workspace isolation: rather than building a proprietary coding agent, Superset acts as the orchestration and review layer on top of whichever CLI agent you already use. It runs locally as a macOS desktop app but can also connect to remote machines over SSH, letting workspaces keep running when your laptop sleeps — a hybrid local/remote model that differs from hyperscaler-hosted dev environments.
+
+It also bakes in the review loop: diffs, approvals, and PR creation happen inside the app, and recurring engineering chores (triage, changelog drafts, dependency bumps) can be scheduled as automations that run agents unattended and surface PRs for human review.
+
+## Pricing model
+
+Superset is offered as a subscription product with a dedicated Enterprise tier (separate contact/sales page), alongside a public Pricing page. Specific dollar figures were not available in the crawled content — the pricing page exists and is self-serve accessible, but tier amounts weren't rendered in the fetched text. What stands out structurally is that pricing is decoupled from cloud infrastructure consumption (no per-CPU-hour or egress billing); it's priced around agent/workspace usage as a developer productivity tool rather than raw compute.
+
+## When it fits
+
+- Teams running multiple AI coding agents (Claude Code, Codex, Cursor, etc.) who need to parallelize tasks across a backlog instead of one prompt at a time
+- Engineering orgs wanting isolated, conflict-free workspaces per task/branch without manual worktree management
+- Developers who want scheduled, unattended agent automations (triage, dep bumps, changelog generation)
+- Teams needing to offload agent workloads to remote/GPU machines while working from a laptop
+- Organizations standardizing code review/PR workflows across many concurrent AI-generated changes
+
+## When it doesn't
+
+- Not a fit for teams needing traditional cloud infrastructure (compute, storage, networking, regions) — it's a developer tooling layer, not an infrastructure provider.
+- Not suited for single-agent, single-task workflows where orchestration overhead isn't needed.
+
+## Inclusion criteria
+
+Superset meets 2 of 3 criteria: self-service signup (macOS app download and direct sign-up flow) and a public status page (linked in the site footer as "Status"). Transparent, itemized pricing numbers were not found on the crawled Pricing page content, so that criterion is not confirmed here.
