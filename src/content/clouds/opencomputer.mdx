@@ -1,0 +1,52 @@
+---
+status: draft
+tagline: "A platform for deploying AI agents as TypeScript functions on managed Linux microVMs with built-in sessions, streaming, and MCP support."
+pricingModel: usage-based
+services:
+  - "Managed AI agent deployment"
+  - "Bare sandboxes (Linux microVMs)"
+  - "Session management (hibernate/resume)"
+  - "Streaming agent output"
+  - "MCP server support"
+  - "Scheduled agent runs"
+  - "Secret/key isolation from runtime"
+  - "Checkpoint, fork, and live resize for sandboxes"
+socials:
+  website: "https://opencomputer.dev/"
+---
+
+## What makes OpenComputer different
+
+OpenComputer positions itself as "Firebase for agents" — instead of provisioning generic VMs or containers, developers write an agent as a plain TypeScript function and deploy it directly. The platform handles the surrounding infrastructure that agent workloads specifically need: durable sessions that can hibernate and resume, live streaming of output, mid-run steering, and MCP server integration, all without the developer having to build that scaffolding themselves.
+
+A key architectural decision is that agents run on real Linux microVMs (not just sandboxed containers), giving them full shell, filesystem, package manager, and network access — so an agent can genuinely `git clone`, run `ffmpeg`, or drive a headless browser. Secrets are handled with a notable security model: API keys and tokens are bound to a specific origin and injected only after a request leaves the sandbox, meaning the agent's own runtime never has access to raw credentials it uses.
+
+For teams that want more control, OpenComputer exposes the same underlying microVMs as "bare sandboxes" with checkpoint, fork, and live resize — letting developers bring their own agent loop/harness while still using OpenComputer's compute layer.
+
+## Pricing model
+
+Pricing is usage-based with optional prepaid plans that act as a credit multiplier:
+
+- **PAYG**: $10 free credit to start, model calls billed at API rates (no markup), machine time billed per second, scales to zero when idle.
+- **Pro** ($20/mo): credit becomes 10× usage credit; bring-your-own model subscription routes all spend to machine time.
+- **Max** ($200/mo): same 10× multiplier at higher scale, enough to keep 10+ default machines running continuously.
+- **Enterprise**: custom pricing, VPC/self-hosted options, SSO, audit log.
+
+Machine time is metered per second across two meters: token passthrough (model calls at API rates, $0 if bringing your own key) and machine time. The default sandbox (2 GB / 1 vCPU) costs $0.00315/min and bursts automatically to larger sizes (up to $0.05040/min at 32 GB / 16 vCPU peak) as needed. A lightly-used session (~10 min/day) costs roughly $1/month. What stands out is the lack of markup on model calls and per-second billing that automatically bursts and scales to zero — a departure from flat hyperscaler VM pricing.
+
+## When it fits
+
+- Teams building autonomous or scheduled AI agents (e.g., PR bots, cleanup agents, monitoring agents) that need durable, resumable sessions
+- Developers who want agent infrastructure (streaming, MCP, session hibernation) without building it themselves
+- Workloads requiring real Linux environments (shell, filesystem, package installs) rather than restricted sandboxes
+- Use cases with intermittent/bursty compute needs, where scale-to-zero billing saves cost
+- Teams wanting strict credential isolation between agent code and secrets
+
+## When it doesn't
+
+- Not designed for general-purpose web hosting, large-scale stateful databases, or traditional multi-service infrastructure
+- Not a fit for teams needing broad multi-region global infrastructure, as no specific regions are published
+
+## Inclusion criteria
+
+OpenComputer meets the transparent pricing criterion via its detailed [pricing page](https://opencomputer.dev/#pricing), which lists PAYG rates, machine-time tiers, and plan pricing. Self-service signup is available directly through the [app login/signup flow](https://app.opencomputer.dev/). A public SLA/status page was referenced in the inclusion score but was not directly found in the crawled content.
