@@ -364,6 +364,7 @@ APIs and platforms for running inference on foundation models and open-source LL
 * 🟢 [Sail Research](https://www.sailresearch.com/) - Provides cost-efficient inference infrastructure for running leading open-source AI models on demand, optimized for long-horizon agents with flexible completion windows.
 * 🟢 [Swirls](https://swirls.ai/) - Provides a deployment platform for agentic systems with declarative configuration, durable execution, human-in-the-loop workflows, and cryptographic policy enforcement.
 * 🟢 [Together.ai](https://www.together.ai/) - Open-source foundation model infrastructure with collaborative fine-tuning.
+* 🟢 [XiuRouter](https://router.xiu.ai/) - Provides one API for leading AI models with usage-based pricing and support for OpenAI, Anthropic, and Gemini protocols.
 
 ## AI Assistants & Copilots
 
