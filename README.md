@@ -434,6 +434,7 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 * 🟢 [Maritime](https://maritime.sh/) - Provides cloud hosting infrastructure specifically designed for AI agents with flat $1/month pricing, sleep/wake architecture, and one-click deployment from GitHub repos.
 * 🟢 [Netlify](https://www.netlify.com/) - Platform for building, deploying, and scaling modern web applications.
 * 🟢 [Northflank](https://northflank.com/) - A platform to build, deploy, and manage full-stack applications.
+* 🟢 [OpenComputer](https://opencomputer.dev/) - Provides a cloud platform for deploying and running AI agents as TypeScript functions on managed Linux microVMs with built-in session management, streaming, and MCP support.
 * 🟢 [Out Plane](https://outplane.com/) - Provides a cloud PaaS platform for developers to deploy applications in 60 seconds with managed PostgreSQL, Redis, auto-scaling, and compliance features without Kubernetes or YAML.
 * 🟢 [Pantheon](https://pantheon.io/) - A platform for running Wordpress, Drupal and Next.js websites.
 * 🟢 [Platform.sh](https://platform.sh/) - Enterprise PaaS to build, run, and scale web applications and microservices.
