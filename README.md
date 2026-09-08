@@ -483,6 +483,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [Outerbase](https://www.outerbase.com/) - A platform for safely interacting with data and databases, now part of Cloudflare.
 * 🟢 [Paper](https://paper.design/) - Provides a connected design canvas that integrates with development tools, AI agents, and real data sources, enabling seamless collaboration between design and code workflows.
 * 🟢 [Prismic](https://prismic.io/) - A headless CMS for developers to build and manage dynamic websites using modern frameworks and custom content APIs.
+* 🟢 [QA Wolf](https://www.qawolf.com/) - Provides AI-powered end-to-end testing platform that autonomously maps apps, generates test code, and runs tests in parallel for faster software releases.
 * 🟢 [Release](https://release.com/) - Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.
 * 🟢 [Replit](https://replit.com/) - Collaborative browser IDE with instant deployment and multiplayer coding.
 * 🟢 [Retool](https://retool.com/) - A low-code platform to build custom internal tools quickly with pre-built components and database integrations.
