@@ -1,0 +1,41 @@
+---
+status: draft
+tagline: "A pay-as-you-go LLM API gateway offering DeepSeek, GLM, Kimi, Qwen and more at 10-50% below official list prices."
+pricingModel: usage-based
+socials:
+  website: "https://a2agent.me/"
+  github: "<https://discord.gg/mXXKq8NbyA>"
+---
+
+## What makes A2Agent different
+
+A2Agent positions itself as an aggregation layer rather than a foundation model provider — it routes requests across multiple Chinese and open LLM providers (DeepSeek, GLM, Kimi, Qwen, MiniMax) through a single OpenAI/Anthropic-compatible API. This lets developers switch models without rewriting integration code, which is useful for teams hedging against single-vendor pricing or availability risk.
+
+The platform emphasizes privacy and risk controls: it states that request payloads are not persisted, only metering/billing/risk-control metadata is retained, and user data is never used for model training. Combined with claimed 99.9% uptime and "enterprise-grade routes" for low latency, the pitch is reliability and compliance-friendly access to lower-cost Asian LLMs for a global developer audience.
+
+Rather than owning infrastructure, A2Agent's value is in unifying billing, API compatibility, and access — a pattern common to LLM gateway/aggregator products that compete on price and convenience rather than raw compute.
+
+## Pricing model
+
+A2Agent uses a usage-based, pay-as-you-go model with no monthly fee or minimum spend, and balances that never expire. Two tiers are offered:
+
+- **Developer**: pay-as-you-go access to GLM, Kimi, DeepSeek (including deep-thinking mode), Qwen, and MiniMax — aimed at individuals and students.
+- **Enterprise**: volume-based top-up discounts, dedicated concurrency limits, higher requests-per-minute caps, and access to every model/provider channel — aimed at SaaS companies and teams. Enterprise requires contacting sales.
+
+The site states pricing runs "10-50% below official list prices," with better rates at higher volume. Payments are processed via Stripe (credit card), with free trial credits given at signup. This differs from typical hyperscaler pricing by removing fixed infrastructure costs entirely — you pay only per token/request, with no compute reservations or tiers to manage.
+
+## When it fits
+
+- Developers who want a single API key/endpoint to access multiple Chinese/open-weight LLMs (DeepSeek, GLM, Kimi, Qwen, MiniMax).
+- Teams building on OpenAI- or Anthropic-compatible tooling (e.g., Claude Code, Codex) who want to swap in cheaper models with minimal code changes.
+- Startups or individual developers wanting free trial credits and no monthly commitment.
+- Projects sensitive to per-model pricing that want to shop across providers via one billing relationship.
+
+## When it doesn't
+
+- Teams needing guaranteed data residency, compliance certifications, or dedicated infrastructure beyond what a routing gateway can offer.
+- Workloads requiring proprietary Western foundation models (e.g., GPT-4-class OpenAI/Anthropic models) not listed among the supported model set.
+
+## Inclusion criteria
+
+A2Agent meets all three criteria: **transparent pricing** (stated discount range and tier structure on the pricing page), **self-service signup** (free account creation and API key generation at https://a2agent.me/login), and a **public status/SLA reference** (99.9% uptime and public status page mentioned on the site).
