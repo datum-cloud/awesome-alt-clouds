@@ -273,6 +273,7 @@ Logging, metrics, tracing, error tracking, uptime monitoring, and session replay
 * 🟢 [New Relic](https://newrelic.com/) - An observability platform that unifies metrics, events, logs, and traces for full-stack monitoring.
 * 🟢 [NOFire](https://www.nofire.ai/) - Delivers an AI SRE platform that provides production context and runtime control, preventing incidents by scoring changes and enforcing policies before execution.
 * 🟢 [OpenStatus](https://www.openstatus.dev/) - Open-source status page and monitoring platform for tracking API and website uptime worldwide.
+* 🟢 [Raindrop](https://www.raindrop.ai/) - Provides observability and debugging for AI agents in production, detecting silent failures, tracing execution, and enabling safe testing through simulations.
 * 🟢 [Sentry](https://sentry.io/) - Application monitoring platform for error tracking, performance monitoring, and session replay to identify and resolve code issues.
 * 🟢 [Splunk](https://www.splunk.com/) - Provides a platform for searching, monitoring, and analyzing machine-generated big data.
 * 🟢 [Sumo Logic](https://www.sumologic.com/) - Offers cloud-native machine data analytics for real-time insights into operations and security.
@@ -348,12 +349,14 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 
 APIs and platforms for running inference on foundation models and open-source LLMs, with a focus on speed, cost, and scale.
 
+* 🟢 [A2Agent](https://a2agent.me/) - Provides an affordable LLM API gateway supporting multiple models like DeepSeek, GLM, Kimi, and Qwen with enterprise-grade infrastructure, low latency, and OpenAI/Anthropic compatibility.
 * 🟡 [Anchor](https://anchorbrowser.io/) - Provides AI-powered browser automation infrastructure with humanized Chromium instances that can access any website, handle authentication, and perform web tasks reliably.
 * 🟡 [Cloudglue](https://cloudglue.dev/) - Provides a video context engine API that structures, searches, and enables AI reasoning over video content for developers building chatbots, RAG systems, and video analysis applications.
 * 🟢 [Concentrate.ai](https://concentrate.ai/) - Provides a unified LLM gateway enabling teams to access hundreds of AI models across multiple providers through a single API with no platform fees.
 * 🟢 [Fireworks.ai](https://fireworks.ai/) - Delivers high-speed, cost-effective inference APIs with support for open-source models.
 * 🟢 [Groq](https://groq.com/) - Provides ultra-fast inference on custom hardware designed for AI workloads.
 * 🟡 [Heabsy](https://heabsy.com/platform) - Provides sovereign AI inference on European GPUs with OpenAI and Anthropic compatibility, zero data retention, and 2× faster performance than public providers.
+* 🟢 [Hugging Face](https://huggingface.co/) - Provides a platform for hosting, discovering, and collaborating on machine learning models, datasets, and AI applications with inference APIs.
 * 🟢 [InfronAI](https://infron.ai/) - Provides unified access to 400+ AI models from 100+ providers with enterprise reliability, cost optimization, and zero data retention security features.
 * 🟢 [LeptonAI](https://lepton.ai/) - Provides infrastructure and tools to build and deploy AI models at scale.
 * 🟢 [Mistral AI](https://mistral.ai/) - Provides frontier AI large language models, assistants, and agents with customizable enterprise solutions for autonomous work, coding, and application development.
