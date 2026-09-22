@@ -355,6 +355,7 @@ APIs and platforms for running inference on foundation models and open-source LL
 * 🟢 [Concentrate.ai](https://concentrate.ai/) - Provides a unified LLM gateway enabling teams to access hundreds of AI models across multiple providers through a single API with no platform fees.
 * 🟢 [Fireworks.ai](https://fireworks.ai/) - Delivers high-speed, cost-effective inference APIs with support for open-source models.
 * 🟢 [Groq](https://groq.com/) - Provides ultra-fast inference on custom hardware designed for AI workloads.
+* 🟡 [Heabsy](https://heabsy.com/platform) - Provides sovereign AI inference on European GPUs with OpenAI and Anthropic compatibility, zero data retention, and 2× faster performance than public providers.
 * 🟢 [Hugging Face](https://huggingface.co/) - Provides a platform for hosting, discovering, and collaborating on machine learning models, datasets, and AI applications with inference APIs.
 * 🟢 [InfronAI](https://infron.ai/) - Provides unified access to 400+ AI models from 100+ providers with enterprise reliability, cost optimization, and zero data retention security features.
 * 🟢 [LeptonAI](https://lepton.ai/) - Provides infrastructure and tools to build and deploy AI models at scale.
