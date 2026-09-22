@@ -349,6 +349,7 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 
 APIs and platforms for running inference on foundation models and open-source LLMs, with a focus on speed, cost, and scale.
 
+* 🟢 [A2Agent](https://a2agent.me/) - Provides an affordable LLM API gateway supporting multiple models like DeepSeek, GLM, Kimi, and Qwen with enterprise-grade infrastructure, low latency, and OpenAI/Anthropic compatibility.
 * 🟡 [Anchor](https://anchorbrowser.io/) - Provides AI-powered browser automation infrastructure with humanized Chromium instances that can access any website, handle authentication, and perform web tasks reliably.
 * 🟡 [Cloudglue](https://cloudglue.dev/) - Provides a video context engine API that structures, searches, and enables AI reasoning over video content for developers building chatbots, RAG systems, and video analysis applications.
 * 🟢 [Concentrate.ai](https://concentrate.ai/) - Provides a unified LLM gateway enabling teams to access hundreds of AI models across multiple providers through a single API with no platform fees.
