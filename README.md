@@ -109,6 +109,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 Specialized providers offering on-demand GPU clusters, serverless inference, and high-performance compute optimized for AI training and model serving.
 
 * 🟢 [Aethir](https://aethir.com) - Provides secure, cost-effective access to enterprise-grade GPUs worldwide through a distributed cloud compute infrastructure.
+* 🟢 [Andromeda](https://andromeda.ai/) - Connects AI teams with high-performance GPU compute across 100+ global providers, offering real-time sourcing, benchmarking, and standardized deployment at scale.
 * 🟢 [Anyscale](https://www.anyscale.com/) - Distributed computing platform built on Ray for scaling AI and Python apps.
 * 🟢 [Banana.dev](https://www.banana.dev/) - Serverless GPU platform for ML model inference with pay-per-millisecond pricing.
 * 🟢 [Baseten](https://www.baseten.co/) - Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.
