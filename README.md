@@ -147,6 +147,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Thunder Compute](https://www.thundercompute.com/) - Provides on-demand GPU instances with RTX A6000, A100, and H100 options at competitive pricing, featuring VS Code integration and one-click deployment for ML development.
 * 🟢 [Turboscale](https://www.turboscale.ai/) - AI-native cloud infrastructure for fine-tuning and inference.
 * 🟢 [Vast.ai](https://vast.ai/) - Marketplace for buying and selling GPU compute capacity at competitive rates.
+* 🟢 [Verda](https://verda.com/) - Provides full-stack AI cloud infrastructure with GPU instances, serverless containers, and instant clusters for AI workloads and inference.
 * 🟢 [Voltage Park](https://www.voltagepark.com/) - AI cloud with 24,000 NVIDIA H100 GPUs and InfiniBand clusters for large-scale training.
 
 ## Security, Compliance & Sovereignty Clouds
