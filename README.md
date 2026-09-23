@@ -131,6 +131,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Lambda Labs](https://lambda.ai/) - Delivers on-demand access to NVIDIA GPUs for AI training and inference.
 * 🟢 [LeaderGPU](https://www.leadergpu.com/) - Provides high-performance GPU servers for rent, optimized for AI tasks.
 * 🟢 [Lightning.ai](https://lightning.ai/) - Build, train, and deploy AI models with powerful tools and scalable infrastructure.
+* 🟡 [Lium](https://lium.io/?utm_source=awesome-alt-clouds&utm_medium=listing) - Rents whole NVIDIA GPU hosts from independent providers, from RTX 3090 to B300, billed per second with no minimum.
 * 🟢 [Modal](https://modal.com/) - A serverless platform for AI and data teams to run compute-intensive applications without managing infrastructure.
 * 🟢 [Nebius](https://nebius.com/) - Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services.
 * 🟢 [NeevCloud](https://www.neevcloud.com/) - India-based GPU cloud offering secure, scalable AI compute.
