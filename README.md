@@ -85,6 +85,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Loophole Labs](https://loopholelabs.io/) - Offers Kubernetes scale-to-zero capabilities by hibernating idle pods in-place and waking them in under 50ms, eliminating overprovisioning without code changes.
 * 🟢 [Lyceum](https://lyceum.technology/) - EU built and operated GPU cloud for developers and AI teams.
 * 🟢 [Mermaid](https://mermaid.ai/web/) - Cloud service provider.
+* 🟡 [Mulga Spinifex](https://mulgadc.com/) - Provides AWS-compatible cloud infrastructure that runs on any compute—edge, on-premise, or partner clouds—without requiring application rewrites.
 * 🟡 [Namespace](https://namespace.so/) - Cloud service provider.
 * 🟢 [NetActuate](https://netactuate.com/) - Provides hybrid cloud and edge computing solutions with a global network.
 * 🟢 [Openmetal.io](https://openmetal.io/) - Delivers on-demand private cloud infrastructure based on OpenStack.
