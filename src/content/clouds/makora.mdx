@@ -1,0 +1,51 @@
+---
+status: draft
+tagline: "Full-stack automated GPU optimization delivering up to 5x throughput gains for LLM inference without code changes."
+pricingModel: usage-based
+services:
+  - "LLM Inference API"
+  - "Text Generation Models"
+  - "Image/Text-to-Text Models"
+  - "Orchestrator Layer (request routing across models/regions/replicas)"
+  - "Custom kernel engineering for NVIDIA, AMD, Google TPU, AWS Trainium, Qualcomm"
+  - "Private/fine-tuned model serving"
+  - "Custom RL environments"
+  - "Dedicated/on-prem inference deployments"
+socials:
+  website: "https://www.makora.com/"
+---
+
+## What makes Makora different
+
+Makora positions itself as an optimization layer rather than a traditional cloud provider — instead of just renting GPU capacity, it ships specialized automated agents across the entire inference stack (kernel-level, scheduling, orchestration) to extract more performance from the same hardware. The company claims up to 5x throughput improvements and up to 70% reductions in time-to-first-token, achieved without requiring customers to rewrite model code.
+
+A notable architectural piece is the orchestrator layer, which routes requests across models, regions, and replicas in real time, balancing latency, cost, and reliability — described as automating decisions a senior infra engineer would otherwise make manually. This differs from hyperscaler inference offerings, which typically expose fixed instance types and leave optimization work to the customer.
+
+Makora also supports multiple frontier and open models (e.g., Kimi K2.6, GLM 5.1, DeepSeek v4) and offers hardware-agnostic custom kernel engineering across NVIDIA, AMD, Google TPU, AWS Trainium, and Qualcomm silicon, positioning itself against lock-in to any single hardware vendor.
+
+## Pricing model
+
+Makora uses usage-based, per-token pricing for its hosted models, with published rates such as:
+
+- Input: $0.09–$2.55 per million tokens (varies by model)
+- Output: $0.20–$12.75 per million tokens
+- Cached read: $0.02–$0.26 per million tokens
+
+It also offers subscription tiers layered on top of usage: a $20/month Starter plan and a $200/month Developer plan (both listed as sold out at time of writing), which include unlimited access to models under 40B parameters plus quotas for larger models, concurrent request limits, and a 10% pay-as-you-go discount. Enterprise/dedicated inference and on-prem deployments are quoted custom. Overflow beyond subscription quotas rolls into pay-as-you-go billing rather than hard-blocking usage — a departure from rigid hyperscaler quota systems.
+
+## When it fits
+
+- Teams running high-volume LLM inference who want automatic speed/cost gains without re-engineering their serving stack
+- Applications sensitive to time-to-first-token latency (e.g., interactive agents, coding assistants)
+- Organizations wanting to serve fine-tuned or custom models optimized for specific hardware (including non-NVIDIA silicon)
+- Enterprises needing dedicated or on-prem inference deployments with custom kernel tuning
+- Developers who want simple per-token pricing on frontier and open-weight models without managing GPU infrastructure
+
+## When it doesn't
+
+- Workloads needing general-purpose compute, storage, or non-AI cloud infrastructure (Makora is inference-focused only)
+- Teams wanting full training infrastructure rather than inference serving
+
+## Inclusion criteria
+
+Makora meets all three inclusion criteria: transparent usage-based pricing is published per model (input/output/cached-read rates) at makora.com; self-service signup and trial access is available via app.makora.com; and subscription tiers plus a public product/status presence support the self-service and SLA criteria.
