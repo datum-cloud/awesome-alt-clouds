@@ -1,0 +1,42 @@
+---
+status: draft
+tagline: "Autonomous AI agents that write, optimize, and deploy high-performance GPU kernels across any hardware."
+pricingModel: usage-based
+services:
+  - "MakoraGenerate (autonomous GPU kernel generation)"
+  - "MakoraInference (full-stack inference optimization)"
+  - "Continuous, real-time performance tuning"
+  - "Cross-hardware kernel deployment"
+  - "Code translation for GPU workloads"
+socials:
+  website: "https://www.makora.com/about-us"
+  linkedin: "https://www.linkedin.com/in/waleedatallah/"
+---
+
+## What makes Makora different
+
+Makora isn't a traditional GPU cloud — it's a performance engineering layer that sits on top of existing GPU infrastructure. Instead of renting you GPU instances, Makora uses AI agents to autonomously write, optimize, and deploy custom GPU kernels tuned to your specific model and hardware, whether that's NVIDIA, AMD, or other accelerators. This targets one of the biggest hidden costs in AI infrastructure: the gap between theoretical GPU throughput and what most teams actually achieve in production.
+
+The company's two core products, MakoraGenerate and MakoraInference, handle kernel generation and full-stack inference optimization respectively, continuously re-tuning performance as models, batch sizes, and hardware change rather than requiring one-off manual kernel engineering by specialist teams. This "opinionated AI automation" approach is aimed at abstracting away the hardest, most manual parts of low-level GPU programming (kernel authoring, hardware-specific tuning, deployment) that normally require scarce CUDA/kernel engineering talent.
+
+Makora is built by a team with deep roots in ML systems research and production performance engineering, and is backed by advisors from Google, OpenAI, NVIDIA (TensorRT), and Cambridge University — signaling a focus on genuinely hard technical problems in kernel-level optimization rather than reselling GPU capacity.
+
+## Pricing model
+
+Makora's public site lists a dedicated Pricing page, indicating transparent, usage-based pricing tied to its optimization products, though specific dollar figures were not present in the crawled content. Prospective users can try the product for free via self-service signup before committing to paid usage. This positions Makora's pricing around the value delivered (throughput/cost savings on existing GPU spend) rather than raw hourly instance rental, which is the standard model for hyperscaler and GPU-cloud pricing.
+
+## When it fits
+
+- Teams running inference or training workloads who want to extract more performance from GPUs they already have access to, without hiring dedicated kernel engineers.
+- Organizations deploying models across heterogeneous or mixed GPU/hardware environments needing portable, auto-generated kernels.
+- ML infra teams looking to reduce inference cost-per-token or cost-per-request through automated, continuous kernel tuning.
+- Companies performing code translation between hardware targets (e.g., porting CUDA kernels to other accelerators).
+
+## When it doesn't
+
+- Teams needing raw GPU capacity or bare-metal/VM rental — Makora is an optimization layer, not a compute provider itself.
+- Workloads with no performance-sensitive bottlenecks, where standard framework-level optimizations (e.g., built-in PyTorch/XLA compilation) already suffice.
+
+## Inclusion criteria
+
+Makora meets all 3 inclusion criteria: transparent pricing (public Pricing page), self-service signup ("Try for free" at app.makora.com), and a public status page (linked in site footer as "Status").
