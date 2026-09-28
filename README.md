@@ -53,6 +53,7 @@ Services in this list are evaluated against 3 criteria:
 The original "alt clouds" providing everything from virtualized and bare metal compute to GPU's, storage, and inference services.
 
 * 🟢 [Arcade](https://www.arcade.dev/) - Cloud service provider.
+* 🟡 [Argo Compute](https://argocompute.com/) - Provides distributed computing and cloud infrastructure services for high-performance workloads and scalable applications.
 * 🟢 [Atlantic.net](https://www.atlantic.net/) - Experienced hosting company offering a variety of compute and GPU infrastructure services.
 * 🟢 [Axiom](https://axiom.co/) - Cloud service provider.
 * 🟢 [Beam](https://www.beam.cloud) - Cloud infrastructure specifically built for high-performance applications and developer happiness.
