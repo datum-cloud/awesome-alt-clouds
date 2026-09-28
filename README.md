@@ -185,6 +185,7 @@ Platforms leveraging unikernel and WebAssembly technologies for lightweight, sec
 
 Managed databases, object storage, caching, and search engines — relational, NoSQL, vector, time-series, and beyond.
 
+* 🟢 [Accelerated Cloud Storage](https://www.acceleratedcloudstorage.com/) - Provides globally distributed, S3-compatible object storage optimized for AI workloads with high performance and 99.999999999% durability.
 * 🟢 [Aiven](https://aiven.io/) - Offers managed open-source data infrastructure, including databases and messaging systems, on all major clouds.
 * 🟢 [Algolia](https://www.algolia.com/) - AI-powered search and discovery API with NeuralSearch and semantic understanding for <50ms search speed.
 * 🟢 [Archil](https://archil.com/) - Provides a cloud filesystem that mounts S3, GCS, and Azure Blob storage with sub-millisecond cached reads, full POSIX compatibility, and built-in serverless compute execution.
