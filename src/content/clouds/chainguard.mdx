@@ -1,0 +1,48 @@
+---
+status: draft
+tagline: "Hardened, CVE-free container images, libraries, and VMs that eliminate vulnerabilities at the source instead of just scanning for them."
+pricingModel: subscription
+openSource: true
+services:
+  - "Chainguard Containers"
+  - "Chainguard Libraries"
+  - "Chainguard VMs"
+  - "Chainguard OS Packages"
+  - "Chainguard Actions"
+  - "Chainguard Agent Skills"
+  - "Chainguard Factory"
+  - "Chainguard Guardener"
+socials:
+  website: "https://www.chainguard.dev/"
+  github: "https://github.com/chainguard-dev"
+  linkedin: "https://www.linkedin.com/company/chainguard-dev"
+---
+
+## What makes Chainguard different
+
+Chainguard doesn't run compute or storage infrastructure like a traditional cloud — it supplies the software supply chain layer underneath workloads run on AWS, GCP, Azure, or anywhere else. Its flagship product is a catalog of container images built from source with minimal or distroless bases, rebuilt daily, and designed to ship with zero known CVEs at time of publish. Rather than scanning existing images for vulnerabilities after the fact, Chainguard rebuilds the entire base image and dependency chain itself, attaching SLSA provenance and signed attestations (via Sigstore, a project Chainguard helped create) so consumers can verify what's inside.
+
+This extends beyond containers to Chainguard Libraries (hardened language-ecosystem packages), Chainguard VMs (minimal, hardened virtual machine images), and Chainguard OS Packages — effectively treating the entire open-source dependency tree as an attack surface to be systematically rebuilt and maintained rather than merely audited. Chainguard Factory adds tooling for organizations to apply this same hardening pipeline to their own internal or third-party code.
+
+The differentiator versus hyperscalers is focus: AWS/GCP/Azure offer general-purpose compute with security as a bolt-on (scanners, WAFs, IAM), while Chainguard treats the software artifacts themselves as the product, targeting compliance frameworks (FedRAMP, PCI DSS, CMMC 2.0, SOC 2) and newer AI supply-chain threats (malicious model/package injection) as first-class concerns.
+
+## Pricing model
+
+Chainguard uses a subscription model for access to its hardened image and library catalog, tiered by usage/support level, detailed on its [pricing page](https://www.chainguard.dev/pricing). A free tier ("Get started free") is available for individual/self-service use via the console signup, with paid tiers adding SLAs, expanded image catalogs, and enterprise support/compliance features. Exact dollar figures were not published in the crawled content — pricing is largely quote-based for enterprise tiers, though self-service signup and a free entry tier make it accessible without a sales call. What stands out versus typical cloud billing is that this is priced per-artifact/subscription rather than per-compute-hour, since Chainguard isn't selling infrastructure capacity but a continuously rebuilt, verified software supply.
+
+## When it fits
+
+- Teams needing to eliminate known CVEs from base images and dependencies for compliance audits (FedRAMP, PCI DSS, SOC 2, CMMC)
+- Organizations building or securing AI/ML pipelines against model and package supply-chain attacks
+- Public sector, financial services, and telecom teams with strict provenance/attestation requirements
+- Engineering orgs wanting drop-in hardened replacements for common base images (Python, Node, Java, NGINX, Redis, etc.) without maintaining their own hardening pipeline
+- Companies wanting golden-image standardization across many internal teams
+
+## When it doesn't
+
+- Teams looking for full infrastructure (compute, storage, networking) — Chainguard is a software supply layer, not a hosting provider.
+- Projects with no compliance/security mandate and low tolerance for switching base images or rebuilding CI pipelines around new artifact sources.
+
+## Inclusion criteria
+
+Chainguard meets all 3 criteria: transparent pricing via its [pricing page](https://www.chainguard.dev/pricing), self-service signup via [console.chainguard.dev/signup](https://console.chainguard.dev/signup), and a public status/trust page via its [Trust Center](https://security.chainguard.dev/).
