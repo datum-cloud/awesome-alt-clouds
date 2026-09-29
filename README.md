@@ -393,6 +393,7 @@ Conversational AI products, chat interfaces, and AI-powered search engines built
 * 🟢 [Perplexity](https://www.perplexity.ai/) - An AI-native search engine that answers questions with citations and real-time data.
 * 🟢 [Playground](https://playground.com/) - A tool for exploring and experimenting with generative AI across text, code, and image generation.
 * 🟢 [Poe](https://poe.com/) - A multi-AI chat interface by Quora that enables access to models like Claude, GPT-4, and more in one app.
+* 🟢 [Protege](https://withprotege.ai/) - Provides AI-powered cloud services for enterprise applications, offering intelligent solutions for business operations and data management.
 * 🟢 [Resolve.ai](https://resolve.ai/) - An agentic AI SRE from the co-creators of OpenTelemetry.
 * 🟡 [SharonAI](https://sharonai.com/en/) - Provides AI-powered solutions and services for business automation and intelligent decision-making processes.
 * 🟢 [Supertrace AI](https://supertrace.ai/) - AI-powered network engineer platform for automating IT network management and infrastructure operations.
