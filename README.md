@@ -559,6 +559,7 @@ Usage metering, subscription management, billing infrastructure, and financial o
 * 🟢 [N26](https://n26.com/en-us) - A 100% mobile bank that's trusted by millions of customers across Europe.
 * 🟢 [OpenMeter](https://openmeter.io/) - Open-source usage metering for consumption-based billing.
 * 🟢 [Orb](https://www.withorb.com/) - Delivers a usage-based subscription management platform that enables flexible pricing and seamless billing.
+* 🟢 [Ramp](https://ramp.com/) - Provides an all-in-one spend management platform combining corporate cards, expense management, accounts payable, travel, procurement, and accounting automation with AI-driven automation.
 * 🟢 [Recurly](https://recurly.com/) - Provides subscription management software and recurring billing solutions for businesses of all sizes.
 * 🟢 [Salesforce Revenue Cloud](https://www.salesforce.com/products/revenue-cloud/overview/) - A suite of tools for managing the entire revenue lifecycle, including quoting, billing, and revenue recognition.
 * 🟢 [Schematic](https://schematichq.com/) - Feature flags and entitlements for product monetization.
