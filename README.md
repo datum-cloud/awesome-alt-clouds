@@ -394,6 +394,7 @@ Conversational AI products, chat interfaces, and AI-powered search engines built
 * 🟢 [Playground](https://playground.com/) - A tool for exploring and experimenting with generative AI across text, code, and image generation.
 * 🟢 [Poe](https://poe.com/) - A multi-AI chat interface by Quora that enables access to models like Claude, GPT-4, and more in one app.
 * 🟢 [Resolve.ai](https://resolve.ai/) - An agentic AI SRE from the co-creators of OpenTelemetry.
+* 🟡 [Runlayer](https://www.runlayer.com/) - Provides an AI control plane for enterprise agent governance, enabling secure deployment, visibility, and management of AI agents across organizations with centralized controls.
 * 🟡 [SharonAI](https://sharonai.com/en/) - Provides AI-powered solutions and services for business automation and intelligent decision-making processes.
 * 🟢 [Supertrace AI](https://supertrace.ai/) - AI-powered network engineer platform for automating IT network management and infrastructure operations.
 * 🟢 [Surfer AI](https://surferseo.com/ai/) - Uses AI to generate SEO-optimized content and blog articles with built-in search analysis tools.
