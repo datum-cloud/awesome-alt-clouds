@@ -572,6 +572,7 @@ Usage metering, subscription management, billing infrastructure, and financial o
 
 CRM, customer engagement, marketing automation, newsletter, and eCommerce platforms for managing customer relationships.
 
+* 🟢 [Agent From Abundance](https://www.agentfromabundance.com/) - Provides a complete real estate technology platform with systems for client management, transaction tracking, document organization, financial tracking, and business automation tools designed for r...
 * 🟢 [Attio](https://attio.com/) - An AI-native CRM where you can design workflows, integrate your data and build detailed reports.
 * 🟢 [Beehiiv](https://www.beehiiv.com/) - Newsletter platform with integrated monetization, website builder, ad network, and referral programs.
 * 🟢 [Clarify](https://www.getclarify.ai/) - An AI-native CRM that unifies customer data, automates tasks, and provides actionable insights to enhance customer relationships.
