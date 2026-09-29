@@ -1,0 +1,46 @@
+---
+status: draft
+tagline: "Gives AI ops agents a deterministic causal model of your systems so they diagnose incidents in seconds instead of guessing from raw telemetry."
+pricingModel: usage-based
+regions:
+  - "Not published (SaaS platform, deployment via Kubernetes agent)"
+services:
+  - "Causal Reasoning System"
+  - "AI SRE / Ops Agent Integration"
+  - "Root Cause Detection"
+  - "Blast Radius Analysis"
+  - "Observability Cost Reduction"
+  - "AI Workload Observability"
+  - "Business Outcome Correlation"
+  - "Telemetry Mediation Layer (Prometheus, Dynatrace, MySQL, Elasticsearch, etc.)"
+socials:
+  website: "https://www.causely.ai/"
+---
+
+## What makes Causely different
+
+Causely isn't a cloud infrastructure provider in the traditional sense — it's a causal reasoning layer that sits on top of existing telemetry (Prometheus, Dynatrace, logs, traces) and gives AI agents a structured, deterministic model of *why* something broke, not just *that* it broke. Instead of feeding an LLM raw metrics and log dumps and hoping it infers the right root cause, Causely builds a live causal graph of service dependencies, faults, and blast radius, letting agents query it directly (e.g., `causely.triage("checkout")`) and get a precise answer with an owning team, affected services, and confidence level.
+
+This architecture matters because most "AI SRE" tooling today just wraps an LLM around existing dashboards, burning huge context windows and still guessing. Causely's benchmark claims (63% faster triage, 48% fewer tokens per investigation, and 100% fault accuracy in their internal 72-experiment study across four agent frameworks) are aimed squarely at that problem: reducing hallucination and token cost by giving agents a semantic, causally-grounded model instead of unstructured telemetry.
+
+It's designed to be a mediation layer, not a replacement for your existing observability stack — plugging into what you already have (Prometheus, Dynatrace, MySQL, Elasticsearch, etc.) rather than requiring a migration.
+
+## Pricing model
+
+Causely's public pricing page (causely.ai/pricing) is usage-based rather than flat hyperscaler-style compute billing, tied to the scale of the environment being monitored and reasoned over rather than infrastructure consumed. Exact tier numbers were not visible in the crawled content, but the pricing page exists as a self-service reference point distinct from a "contact sales" wall. What stands out versus typical cloud pricing is that the cost model is framed around token/investigation efficiency (fewer tokens burned per incident) rather than compute-hours or storage — a pricing philosophy tied directly to its core value prop of reducing LLM token spend during incident response.
+
+## When it fits
+
+- Teams already running AI agents (SRE copilots, on-call bots) that need grounded, low-hallucination context instead of raw log/metric dumps
+- Organizations with distributed microservice architectures where root-cause diagnosis across many services is slow and manual
+- Platform teams trying to cut LLM token costs associated with agent-driven incident investigation
+- Companies wanting blast-radius and ownership mapping automatically surfaced during incidents
+- Teams with existing observability stacks (Prometheus, Dynatrace, Elasticsearch) looking to add a reasoning layer rather than replace tooling
+
+## When it doesn't
+
+- Teams without any existing telemetry/observability infrastructure to mediate, or without AI agents/LLM-based ops tooling in their workflow, will get limited value since Causely is an intelligence layer, not a standalone monitoring or hosting platform.
+
+## Inclusion criteria
+
+Causely meets the directory's inclusion bar via a public pricing page (causely.ai/pricing), self-service sign-up (auth.causely.app/oauth/account/sign-up), and a public security page (causely.ai/security) that documents its security posture, though a dedicated public status page was not directly confirmed in the crawled content.
