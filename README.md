@@ -379,6 +379,7 @@ Conversational AI products, chat interfaces, and AI-powered search engines built
 * 🟢 [Chatsonic](https://chatsonic.com/) - An AI chatbot built on top of GPT that includes real-time search data and voice interaction capabilities.
 * 🟢 [Claude](https://claude.ai/) - An AI assistant from Anthropic focused on safe, helpful, and honest interactions, suitable for creative and technical workflows.
 * 🟢 [Cohere](https://cohere.com/) - Enterprise AI platform with language models for automation, data insights, and custom solutions.
+* 🟢 [Concourse](https://www.concourse.ai/) - Provides an AI execution layer for enterprise finance with autonomous agents for treasury, FP&A, accounting, and internal audit operations.
 * 🟢 [DeepAI](https://deepai.org/) - Offers a suite of open AI APIs for developers, including text, image, and moderation tools.
 * 🟢 [Deepseek](https://deepseek.com/) - Provides developer tools and research models for AI-powered coding, content generation, and reasoning tasks.
 * 🟢 [ElevenLabs](https://elevenlabs.io/) - AI text-to-speech with ultra-realistic voices in 32+ languages, voice cloning, and conversational agents.
