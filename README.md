@@ -331,6 +331,7 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 * 🟢 [Fastly](https://www.fastly.com/) - An edge cloud platform designed for performance and security, enabling developers to build faster, more secure digital experiences.
 * 🟢 [IPinfo](https://ipinfo.io/) - Provides accurate IP address intelligence including geolocation, ASN data, privacy detection, and network information through APIs and data downloads for developers and enterprises.
 * 🟢 [Kong](https://konghq.com/) - An open-source API gateway and microservices management layer that provides traffic control, security, and observability for APIs.
+* 🟢 [LM Link](https://lmstudio.ai/link) - Enables remote access to local AI models across devices through secure, end-to-end encrypted mesh VPN networking powered by Tailscale.
 * 🟢 [LocalXpose](https://localxpose.io/) - Secure tunneling service supporting HTTP, TLS, TCP, UDP with custom domains and SSL.
 * 🟡 [Lumilens](https://lumilens.com/) - Provides next-generation photonic interconnects and optical networking solutions for scaling AI compute infrastructure in hyperscaler data centers.
 * 🟢 [Macrometa](https://www.macrometa.com/) - An edge delivery network and developer platform built for real-time use cases.
