@@ -1,0 +1,57 @@
+---
+status: draft
+tagline: "A GPU compute marketplace that sources, benchmarks, and standardizes deals across 100+ providers so buyers get one invoice and one SLA."
+pricingModel: hourly
+services:
+  - "GPU compute sourcing & brokerage"
+  - "Real-time GPU pricing benchmarking"
+  - "Standardized SLAs and contracts"
+  - "Capacity certification for compute providers"
+  - "Unified billing and support"
+  - "Observability across sourced clusters"
+socials:
+  website: "https://andromeda.ai/"
+  x: "https://x.com/andromeda_ai"
+---
+
+## What makes Andromeda different
+
+Andromeda isn't a cloud provider in the traditional sense — it's a marketplace layer that sits on top of 100+ GPU compute providers, sourcing and benchmarking capacity in real time so buyers can compare GPU types, regions, and pricing without negotiating with dozens of vendors individually. Instead of building its own data centers, Andromeda aggregates supply from third-party providers and certifies that supply against enterprise-grade performance benchmarks before it's allowed onto the platform.
+
+The core differentiator versus AWS, GCP, or Azure is liquidity and standardization: buyers get one invoice, one support channel, and standardized contracts/SLAs regardless of which underlying provider actually runs the workload. This is closer to a compute exchange than a hyperscaler — it trades the vertical integration of a single cloud for breadth of choice and (in theory) more competitive real-time pricing across a fragmented GPU supply market.
+
+For sellers of compute (data center operators, smaller GPU clouds), Andromeda offers a certification engine that validates hardware performance, then routes "qualified demand" to that capacity — effectively acting as a demand-generation and billing layer for smaller infrastructure providers who lack their own enterprise sales motion.
+
+## Pricing model
+
+Andromeda publishes live, hourly per-GPU pricing pulled from its marketplace, with rates fluctuating based on supply/demand (indicated by up/down arrows on the site). Sample rates observed:
+
+- H100 — $1.90/hr
+- H200 — $2.32/hr
+- B200 — $3.15/hr
+- B300 — $4.01/hr
+- GB300 — $4.44/hr
+- A100 80GB — $0.82/hr
+- L40S — $0.85/hr
+- RTX 4090 — $0.40/hr
+- RTX 6000 — $1.52/hr
+- MI300X — $3.50/hr
+- T4 — $0.28/hr
+
+What stands out versus typical cloud pricing is the transparency and volatility shown up front — prices move like a live market/exchange rather than a static rate card, and buyers see the same real-time numbers used to source capacity across providers.
+
+## When it fits
+
+- Teams needing large-scale or short-notice GPU capacity (H100/H200/B200-class) without negotiating with multiple GPU cloud vendors separately
+- Buyers who want a single contract, invoice, and support channel across compute sourced from many providers
+- Workloads that benefit from access to niche/regional GPU supply not available on the big three hyperscalers
+- Compute providers/data centers looking to monetize idle GPU capacity through a certified marketplace with demand routing
+
+## When it doesn't
+
+- Teams wanting a single, vertically-integrated cloud with deep native service ecosystems (managed databases, serverless, IAM, etc.) beyond raw compute
+- Workloads requiring guaranteed hardware from one specific data center/provider rather than dynamically sourced capacity
+
+## Inclusion criteria
+
+Andromeda meets all three inclusion criteria: transparent, real-time GPU pricing displayed on the homepage; self-service signup flows for both buyers ("Buy Compute") and sellers ("Sell Compute"); and a public Trust Center (https://trust.andromeda.ai/) with SOC 2 and ISO 27001 badges alongside standardized SLA/contract terms referenced in the platform flow.
