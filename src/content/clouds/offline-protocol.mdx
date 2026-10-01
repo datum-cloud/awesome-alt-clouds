@@ -1,0 +1,53 @@
+---
+status: draft
+tagline: "Edge-native identity, encrypted mesh messaging, and service discovery that keep physical systems coordinated with or without connectivity."
+pricingModel: mixed
+openSource: true
+services:
+  - "Dynamic Offline Relay Switch (DORS) mesh networking"
+  - "OfflineID (Ed25519 device identity)"
+  - "Edge sync (CRDT-style offline documents)"
+  - "Service discovery and invocation"
+  - "mesh-sdk (React Native, npm)"
+  - "Python, Rust, and no_std bindings"
+  - "Developer portal & analytics (dev.offlineprotocol.com)"
+socials:
+  website: "https://www.offlineprotocol.com/"
+---
+
+## What makes Offline Protocol different
+
+Offline Protocol isn't a data center or compute provider — it's a coordination layer for physical systems (drones, gateways, IoT fleets, access control) that works whether or not a network link to the cloud exists. Instead of treating connectivity as binary, it routes messages over whichever transport is actually available — BLE, WiFi Direct, internet, Reticulum (radio), or Nostr — through its Dynamic Offline Relay Switch (DORS), with automatic failover and multi-hop relay (up to 8 hops) under one unified contract.
+
+The architecture removes the server from the critical path for identity and messaging: OfflineID uses Ed25519 keypairs that never leave the device, so peers can authenticate each other directly even with zero connectivity. Edge sync documents (maps, lists, text, counters) can be edited offline by any replica and merge deterministically once devices reconnect — state reconciles with your cloud system of record rather than requiring re-entry. Service discovery lets any device advertise a capability and any peer within hop range discover and invoke it request/response style, with no DNS or registry.
+
+This is a fundamentally different bet than hyperscaler edge offerings: rather than extending cloud regions closer to devices, Offline Protocol assumes the cloud may be unreachable entirely and builds identity, messaging, sync, and discovery to function peer-to-peer first, with cloud reconciliation as an opportunistic layer on top.
+
+## Pricing model
+
+The mesh SDK itself is free and open source under AGPL-3.0-only (with a commercial license available for proprietary/App Store distribution); OfflineID and Proof of Location client packages are MIT/ISC. Local mesh traffic is never metered.
+
+Hosted services (portal, analytics, API keys) follow a subscription tier:
+- **Free** — entry tier for developers
+- **Pro** — $99/month
+- **Scale** — $499/month
+- **Enterprise** — custom annual agreement
+
+Each paid tier includes a usage allotment with published overage rates. This "free local mesh, paid cloud convenience layer" split is notably different from typical usage-based cloud billing, since the core transport/identity/discovery functionality carries no metered cost regardless of message volume.
+
+## When it fits
+
+- Fleets of robots, drones, or industrial equipment that must keep operating during network outages or in radio-denied environments
+- Access control, physical security, or field-device identity systems needing offline-capable authentication
+- Apps requiring peer-to-peer data sync across intermittent or mesh networks (disaster response, remote energy sites, events)
+- Teams wanting to add resilient local execution to an existing cloud system of record without re-architecting it
+- Constrained/embedded device deployments (via the no_std leaf profile) alongside gateway and cloud-tier peers
+
+## When it doesn't
+
+- Not a general-purpose compute, storage, or hosting platform — it won't replace AWS/GCP/Azure for traditional workloads.
+- Poor fit for pure cloud-native applications with no offline, mesh, or physical-device coordination requirements.
+
+## Inclusion criteria
+
+Meets all three: **transparent pricing** (published Free/Pro $99/mo/Scale $499/mo/Enterprise tiers), **self-service signup** (free sign-up at dev.offlineprotocol.com with instant SDK/API key access), and a **public live network/status page** (offlineprotocol.com/network).
