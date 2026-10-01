@@ -339,6 +339,7 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 * 🟡 [Inter.link](https://inter.link/) - Provides cloud-like connectivity services including IP Transit, Carrier Ethernet, and DDoS protection across 300+ European data centers with 100G/400G redundant backbone.
 * 🟢 [IPinfo](https://ipinfo.io/) - Provides accurate IP address intelligence including geolocation, ASN data, privacy detection, and network information through APIs and data downloads for developers and enterprises.
 * 🟢 [Kong](https://konghq.com/) - An open-source API gateway and microservices management layer that provides traffic control, security, and observability for APIs.
+* 🟢 [LM Link](https://lmstudio.ai/link) - Enables remote access to local AI models across devices through secure, end-to-end encrypted mesh VPN networking powered by Tailscale.
 * 🟢 [LocalXpose](https://localxpose.io/) - Secure tunneling service supporting HTTP, TLS, TCP, UDP with custom domains and SSL.
 * 🟡 [Lumilens](https://lumilens.com/) - Provides next-generation photonic interconnects and optical networking solutions for scaling AI compute infrastructure in hyperscaler data centers.
 * 🟢 [Macrometa](https://www.macrometa.com/) - An edge delivery network and developer platform built for real-time use cases.
