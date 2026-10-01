@@ -133,6 +133,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [LeaderGPU](https://www.leadergpu.com/) - Provides high-performance GPU servers for rent, optimized for AI tasks.
 * 🟢 [Lightning.ai](https://lightning.ai/) - Build, train, and deploy AI models with powerful tools and scalable infrastructure.
 * 🟢 [Modal](https://modal.com/) - A serverless platform for AI and data teams to run compute-intensive applications without managing infrastructure.
+* 🟡 [Mount Thor](https://mountthor.com/) - Provides managed macOS infrastructure and AI execution environments on Apple silicon for workloads requiring native desktop access and model inference.
 * 🟢 [Nebius](https://nebius.com/) - Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services.
 * 🟢 [NeevCloud](https://www.neevcloud.com/) - India-based GPU cloud offering secure, scalable AI compute.
 * 🟢 [NextGen Cloud](https://www.nextgencloud.com/) - Delivers sustainable, high-performance cloud infrastructure for AI workloads.
