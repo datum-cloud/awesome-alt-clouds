@@ -53,6 +53,7 @@ Services in this list are evaluated against 3 criteria:
 The original "alt clouds" providing everything from virtualized and bare metal compute to GPU's, storage, and inference services.
 
 * 🟢 [Arcade](https://www.arcade.dev/) - Cloud service provider.
+* 🟡 [Argo Compute](https://argocompute.com/) - Provides distributed computing and cloud infrastructure services for high-performance workloads and scalable applications.
 * 🟢 [Atlantic.net](https://www.atlantic.net/) - Experienced hosting company offering a variety of compute and GPU infrastructure services.
 * 🟢 [Axiom](https://axiom.co/) - Cloud service provider.
 * 🟢 [Beam](https://www.beam.cloud) - Cloud infrastructure specifically built for high-performance applications and developer happiness.
@@ -109,6 +110,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 Specialized providers offering on-demand GPU clusters, serverless inference, and high-performance compute optimized for AI training and model serving.
 
 * 🟢 [Aethir](https://aethir.com) - Provides secure, cost-effective access to enterprise-grade GPUs worldwide through a distributed cloud compute infrastructure.
+* 🟢 [Andromeda](https://andromeda.ai/) - Connects AI teams with high-performance GPU compute across 100+ global providers, offering real-time sourcing, benchmarking, and standardized deployment at scale.
 * 🟢 [Anyscale](https://www.anyscale.com/) - Distributed computing platform built on Ray for scaling AI and Python apps.
 * 🟢 [Banana.dev](https://www.banana.dev/) - Serverless GPU platform for ML model inference with pay-per-millisecond pricing.
 * 🟢 [Baseten](https://www.baseten.co/) - Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.
@@ -132,6 +134,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [LeaderGPU](https://www.leadergpu.com/) - Provides high-performance GPU servers for rent, optimized for AI tasks.
 * 🟢 [Lightning.ai](https://lightning.ai/) - Build, train, and deploy AI models with powerful tools and scalable infrastructure.
 * 🟢 [Modal](https://modal.com/) - A serverless platform for AI and data teams to run compute-intensive applications without managing infrastructure.
+* 🟡 [Mount Thor](https://mountthor.com/) - Provides managed macOS infrastructure and AI execution environments on Apple silicon for workloads requiring native desktop access and model inference.
 * 🟢 [Nebius](https://nebius.com/) - Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services.
 * 🟢 [NeevCloud](https://www.neevcloud.com/) - India-based GPU cloud offering secure, scalable AI compute.
 * 🟢 [NextGen Cloud](https://www.nextgencloud.com/) - Delivers sustainable, high-performance cloud infrastructure for AI workloads.
@@ -147,6 +150,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Thunder Compute](https://www.thundercompute.com/) - Provides on-demand GPU instances with RTX A6000, A100, and H100 options at competitive pricing, featuring VS Code integration and one-click deployment for ML development.
 * 🟢 [Turboscale](https://www.turboscale.ai/) - AI-native cloud infrastructure for fine-tuning and inference.
 * 🟢 [Vast.ai](https://vast.ai/) - Marketplace for buying and selling GPU compute capacity at competitive rates.
+* 🟢 [Verda](https://verda.com/) - Provides full-stack AI cloud infrastructure with GPU instances, serverless containers, and instant clusters for AI workloads and inference.
 * 🟢 [Voltage Park](https://www.voltagepark.com/) - AI cloud with 24,000 NVIDIA H100 GPUs and InfiniBand clusters for large-scale training.
 
 ## Security, Compliance & Sovereignty Clouds
@@ -154,6 +158,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 Cloud platforms designed to ensure data residency, regulatory compliance, and national control over infrastructure—often tailored for governments, public sector, or regulated industries.
 
 * 🟡 [ALTCHA](https://altcha.org/) - Provides privacy-first, GDPR-compliant CAPTCHA and bot protection with self-hosted deployment, eliminating tracking and external data sharing.
+* 🟢 [Chainguard](https://www.chainguard.dev/) - Provides secure-by-default open source software with hardened, CVE-free container images, libraries, and VMs for supply chain security and AI threat protection.
 * 🟢 [CrowdStrike](https://www.crowdstrike.com/) - A cloud-native cybersecurity platform that provides endpoint protection, threat intelligence, and incident response powered by AI.
 * 🟢 [Fortinet](https://www.fortinet.com/) - Provides integrated cybersecurity solutions including next-gen firewalls, secure SD-WAN, and endpoint protection.
 * 🟢 [FPT Vietnam](https://fptsoftware.com/newsroom/news-and-press-releases/press-release/fpt-to-shape-the-future-of-ai-and-cloud-on-a-global-scale-in-collaboration-with-nvidia) - Investing $200 million to build an AI factory serving as a sovereign cloud, featuring NVIDIA's latest technologies to bolster Vietnam's digital sovereignty.
@@ -252,6 +257,7 @@ Cloud data warehouses, OLAP engines, product analytics, and BI platforms for que
 Logging, metrics, tracing, error tracking, uptime monitoring, and session replay tools for understanding system and application behavior.
 
 * 🟢 [BetterStack](https://betterstack.com/) - Combines monitoring, logging, and incident management into a single platform for developers.
+* 🟢 [Causely](https://www.causely.ai/) - Provides causal reasoning intelligence for AI agents to detect, diagnose, and resolve incidents in distributed systems with deterministic accuracy and minimal token usage.
 * 🟢 [Checkly](https://www.checklyhq.com/) - Application reliability platform unifying testing, monitoring, observability, and incident management with Playwright-based synthetic monitoring.
 * 🟢 [Chronosphere](https://chronosphere.io/) - Delivers a scalable observability platform designed for cloud-native environments, helping teams control costs and improve reliability.
 * 🟢 [Comet](https://www.comet.com/) - AI observability and evaluation platform with tracing, human annotation, and automated evaluation for LLM applications.
@@ -329,6 +335,7 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 * 🟢 [Core Transit](https://www.coretransit.net/) - Provides flexible IP routing, static IP addressing, and BGP services to extend deterministic connectivity to hard-to-reach locations for enterprises and MSPs.
 * 🟡 [CtrlDNS](https://www.ctrldns.com/) - Provides DNS management and control services for domain name resolution and network infrastructure management.
 * 🟢 [Fastly](https://www.fastly.com/) - An edge cloud platform designed for performance and security, enabling developers to build faster, more secure digital experiences.
+* 🟡 [Inter.link](https://inter.link/) - Provides cloud-like connectivity services including IP Transit, Carrier Ethernet, and DDoS protection across 300+ European data centers with 100G/400G redundant backbone.
 * 🟢 [IPinfo](https://ipinfo.io/) - Provides accurate IP address intelligence including geolocation, ASN data, privacy detection, and network information through APIs and data downloads for developers and enterprises.
 * 🟢 [Kong](https://konghq.com/) - An open-source API gateway and microservices management layer that provides traffic control, security, and observability for APIs.
 * 🟢 [LocalXpose](https://localxpose.io/) - Secure tunneling service supporting HTTP, TLS, TCP, UDP with custom domains and SSL.
@@ -358,6 +365,7 @@ APIs and platforms for running inference on foundation models and open-source LL
 * 🟢 [Hugging Face](https://huggingface.co/) - Provides a platform for hosting, discovering, and collaborating on machine learning models, datasets, and AI applications with inference APIs.
 * 🟢 [InfronAI](https://infron.ai/) - Provides unified access to 400+ AI models from 100+ providers with enterprise reliability, cost optimization, and zero data retention security features.
 * 🟢 [LeptonAI](https://lepton.ai/) - Provides infrastructure and tools to build and deploy AI models at scale.
+* 🟢 [Makora](https://www.makora.com/) - Provides optimized AI inference platform delivering high-speed LLM serving with up to 5x throughput improvements across multiple models and hardware through full-stack automated optimization.
 * 🟢 [Mistral AI](https://mistral.ai/) - Provides frontier AI large language models, assistants, and agents with customizable enterprise solutions for autonomous work, coding, and application development.
 * 🟡 [Nomadic](https://www.nomadicai.com/) - Provides AI-powered video analysis platform that automatically identifies rare events and edge cases in robotic, autonomous vehicle, and construction footage for training physical AI systems.
 * 🟡 [Parallel](https://parallel.ai/) - Provides AI-optimized web search and data extraction APIs with high accuracy for AI agents and applications to access structured web intelligence.
@@ -365,6 +373,7 @@ APIs and platforms for running inference on foundation models and open-source LL
 * 🟢 [Replicate](https://replicate.com/) - Run machine learning models in the cloud with an API.
 * 🟢 [Roboflow](https://roboflow.com/) - Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.
 * 🟢 [Sail Research](https://www.sailresearch.com/) - Provides cost-efficient inference infrastructure for running leading open-source AI models on demand, optimized for long-horizon agents with flexible completion windows.
+* 🟢 [Subconscious](https://www.subconscious.dev/) - Provides inference infrastructure optimized for long-running agent workloads with runtime context compression, supporting open models with 50%+ lower costs and 2x faster task completion.
 * 🟢 [Swirls](https://swirls.ai/) - Provides a deployment platform for agentic systems with declarative configuration, durable execution, human-in-the-loop workflows, and cryptographic policy enforcement.
 * 🟢 [Together.ai](https://www.together.ai/) - Open-source foundation model infrastructure with collaborative fine-tuning.
 
@@ -380,6 +389,7 @@ Conversational AI products, chat interfaces, and AI-powered search engines built
 * 🟢 [Claude](https://claude.ai/) - An AI assistant from Anthropic focused on safe, helpful, and honest interactions, suitable for creative and technical workflows.
 * 🟢 [Cohere](https://cohere.com/) - Enterprise AI platform with language models for automation, data insights, and custom solutions.
 * 🟢 [Concourse](https://www.concourse.ai/) - Provides an AI execution layer for enterprise finance with autonomous agents for treasury, FP&A, accounting, and internal audit operations.
+* 🟡 [Crosby](https://crosby.ai/) - Provides AI-powered contract review and commercial legal services for businesses, combining machine learning with elite attorneys to accelerate deal closure.
 * 🟢 [DeepAI](https://deepai.org/) - Offers a suite of open AI APIs for developers, including text, image, and moderation tools.
 * 🟢 [Deepseek](https://deepseek.com/) - Provides developer tools and research models for AI-powered coding, content generation, and reasoning tasks.
 * 🟢 [ElevenLabs](https://elevenlabs.io/) - AI text-to-speech with ultra-realistic voices in 32+ languages, voice cloning, and conversational agents.
@@ -395,6 +405,7 @@ Conversational AI products, chat interfaces, and AI-powered search engines built
 * 🟢 [Playground](https://playground.com/) - A tool for exploring and experimenting with generative AI across text, code, and image generation.
 * 🟢 [Poe](https://poe.com/) - A multi-AI chat interface by Quora that enables access to models like Claude, GPT-4, and more in one app.
 * 🟢 [Resolve.ai](https://resolve.ai/) - An agentic AI SRE from the co-creators of OpenTelemetry.
+* 🟡 [Runlayer](https://www.runlayer.com/) - Provides an AI control plane for enterprise agent governance, enabling secure deployment, visibility, and management of AI agents across organizations with centralized controls.
 * 🟡 [SharonAI](https://sharonai.com/en/) - Provides AI-powered solutions and services for business automation and intelligent decision-making processes.
 * 🟢 [Supertrace AI](https://supertrace.ai/) - AI-powered network engineer platform for automating IT network management and infrastructure operations.
 * 🟢 [Surfer AI](https://surferseo.com/ai/) - Uses AI to generate SEO-optimized content and blog articles with built-in search analysis tools.
@@ -490,6 +501,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [Paper](https://paper.design/) - Provides a connected design canvas that integrates with development tools, AI agents, and real data sources, enabling seamless collaboration between design and code workflows.
 * 🟢 [Prismic](https://prismic.io/) - A headless CMS for developers to build and manage dynamic websites using modern frameworks and custom content APIs.
 * 🟢 [QA Wolf](https://www.qawolf.com/) - Provides AI-powered end-to-end testing platform that autonomously maps apps, generates test code, and runs tests in parallel for faster software releases.
+* 🟢 [Qodo](https://www.qodo.ai/) - Provides AI-powered code review and governance platform that enforces coding standards, reviews pull requests with full codebase context, and manages AI agents in the software development lifecycle.
 * 🟢 [Release](https://release.com/) - Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.
 * 🟢 [Replit](https://replit.com/) - Collaborative browser IDE with instant deployment and multiplayer coding.
 * 🟢 [Retool](https://retool.com/) - A low-code platform to build custom internal tools quickly with pre-built components and database integrations.
@@ -560,6 +572,7 @@ Usage metering, subscription management, billing infrastructure, and financial o
 * 🟢 [N26](https://n26.com/en-us) - A 100% mobile bank that's trusted by millions of customers across Europe.
 * 🟢 [OpenMeter](https://openmeter.io/) - Open-source usage metering for consumption-based billing.
 * 🟢 [Orb](https://www.withorb.com/) - Delivers a usage-based subscription management platform that enables flexible pricing and seamless billing.
+* 🟢 [Ramp](https://ramp.com/) - Provides an all-in-one spend management platform combining corporate cards, expense management, accounts payable, travel, procurement, and accounting automation with AI-driven automation.
 * 🟢 [Recurly](https://recurly.com/) - Provides subscription management software and recurring billing solutions for businesses of all sizes.
 * 🟢 [Salesforce Revenue Cloud](https://www.salesforce.com/products/revenue-cloud/overview/) - A suite of tools for managing the entire revenue lifecycle, including quoting, billing, and revenue recognition.
 * 🟢 [Schematic](https://schematichq.com/) - Feature flags and entitlements for product monetization.
@@ -573,6 +586,7 @@ Usage metering, subscription management, billing infrastructure, and financial o
 
 CRM, customer engagement, marketing automation, newsletter, and eCommerce platforms for managing customer relationships.
 
+* 🟢 [Agent From Abundance](https://www.agentfromabundance.com/) - Provides a complete real estate technology platform with systems for client management, transaction tracking, document organization, financial tracking, and business automation tools designed for r...
 * 🟢 [Attio](https://attio.com/) - An AI-native CRM where you can design workflows, integrate your data and build detailed reports.
 * 🟢 [Beehiiv](https://www.beehiiv.com/) - Newsletter platform with integrated monetization, website builder, ad network, and referral programs.
 * 🟢 [Clarify](https://www.getclarify.ai/) - An AI-native CRM that unifies customer data, automates tasks, and provides actionable insights to enhance customer relationships.

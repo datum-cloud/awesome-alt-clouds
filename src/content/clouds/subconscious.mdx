@@ -1,0 +1,44 @@
+---
+status: draft
+tagline: "Inference infrastructure purpose-built for long-running AI agents, using runtime context compression to cut costs 50%+ and double task speed."
+pricingModel: usage-based
+services:
+  - "Inference API for open models (GLM, Qwen, Nemotron, DeepSeek, GPT-OSS, Kimi, Gemma, Muse)"
+  - "Runtime context compression"
+  - "Extended context window (5M+ tokens)"
+  - "Coding agent integrations (Claude Code, Cursor, Codex, OpenCode, Pi)"
+  - "Product agent framework support (LangChain, Mastra, n8n, StackAI, CrewAI)"
+  - "Self-hosted deployment in customer cloud (Enterprise)"
+  - "Subconscious CLI"
+socials:
+  website: "https://www.subconscious.dev/"
+---
+
+## What makes Subconscious different
+
+Subconscious is not a general-purpose cloud — it's an inference layer designed specifically for agentic workloads that run far longer than a typical chatbot turn. Rather than serving open models as-is, it wraps them with a custom runtime that performs on-GPU context compression as an agent's context grows, pruning less-relevant steps while preserving accuracy, and freeing GPU memory so long runs don't slow down or degrade mid-task.
+
+The platform pairs this compression with hyper-efficient caching: when context is pruned, prefix and suffix segments are reused rather than recomputed, keeping cost and latency flat even deep into multi-hundred-step agent runs. Models served through Subconscious carry a "Marathon" suffix (e.g., GLM-5.3 Marathon, DeepSeek V4.1 Flash Marathon), signaling they've been tuned to sustain performance across contexts extending past 200k tokens and up to 5M+ tokens — well beyond what standard open-model inference stacks (e.g., vanilla vLLM/SGLang deployments) handle efficiently.
+
+Unlike hyperscaler AI services that optimize for single-shot latency and general workloads, Subconscious explicitly treats long-horizon, multi-step agent execution as the primary workload — a narrower but increasingly important niche as coding agents and autonomous product agents become mainstream.
+
+## Pricing model
+
+Pricing is usage-based (token billing), with the differentiator being *effective* tokens billed after runtime compression rather than raw context size. The company publishes a comparative example: a "long" agent run with a 750K-token effective context costs $174.89 on Opus 5 and $80.69 on standard GLM-5.3, versus $27.56 on GLM-5.3 Marathon via Subconscious — a 6.3x savings over Opus and 2.9x over standard GLM-5.3 inference, achieved by billing ~96.2M tokens instead of ~281.6M. Exact per-token rates by model are listed on the [pricing page](https://www.subconscious.dev/pricing). The standout is that savings scale with context length — the longer and more complex the agent task, the bigger the discount versus standard inference.
+
+## When it fits
+
+- Coding agents (Claude Code, Cursor, Codex, OpenCode) that run extended multi-step sessions
+- Product/workflow agents built on LangChain, Mastra, n8n, CrewAI, or Stack AI needing long context retention
+- Teams already using open models (GLM, Qwen, DeepSeek, Nemotron, GPT-OSS, Kimi) wanting a drop-in faster/cheaper inference backend
+- Workloads exceeding 200k tokens of context where standard inference costs and latency balloon
+- Enterprises wanting to self-host the inference stack in their own cloud
+
+## When it doesn't
+
+- Short, single-turn chatbot or Q&A workloads with minimal context won't see meaningful benefit from compression.
+- Teams requiring proprietary frontier models (e.g., GPT-4/Claude/Gemini directly) rather than open-weight models.
+
+## Inclusion criteria
+
+Subconscious meets all three inclusion criteria: transparent, usage-based pricing with concrete cost comparisons on its [pricing page](https://www.subconscious.dev/pricing); self-service signup via [platform.subconscious.dev/signin](https://platform.subconscious.dev/signin); and public trust documentation including [Security](https://www.subconscious.dev/security) and [Subprocessors](https://www.subconscious.dev/subprocessors) pages.
