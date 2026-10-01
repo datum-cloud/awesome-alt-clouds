@@ -122,6 +122,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Datacrunch.io](https://datacrunch.io/) - Provides affordable GPU cloud services for AI training and inference.
 * 🟢 [Fal.ai](https://fal.ai/) - Provides serverless GPU inference for AI models with instant deployment.
 * 🟢 [FluidStack](https://www.fluidstack.io/) - Offers decentralized GPU cloud computing for AI and rendering workloads.
+* 🟢 [Fractile](https://www.fractile.ai/) - Provides specialized hardware processors for AI model inference, delivering up to 25x faster performance and 1/10th the cost for frontier model deployments.
 * 🟢 [FriendliAI](https://friendli.ai/) - Fast AI inference platform with 2-3x speed boost. Deploy 490K+ models instantly. Serverless & dedicated GPU options. 99.99% SLA.
 * 🟢 [Genesis Cloud](https://www.genesiscloud.com/pricing) - Offers sustainable, high-performance GPU cloud computing for AI workloads.
 * 🟢 [GMI Cloud](https://www.gmicloud.ai/) - Provides GPU cloud services optimized for AI and deep learning tasks.
