@@ -257,6 +257,7 @@ Cloud data warehouses, OLAP engines, product analytics, and BI platforms for que
 Logging, metrics, tracing, error tracking, uptime monitoring, and session replay tools for understanding system and application behavior.
 
 * 🟢 [BetterStack](https://betterstack.com/) - Combines monitoring, logging, and incident management into a single platform for developers.
+* 🟢 [Causely](https://www.causely.ai/) - Provides causal reasoning intelligence for AI agents to detect, diagnose, and resolve incidents in distributed systems with deterministic accuracy and minimal token usage.
 * 🟢 [Checkly](https://www.checklyhq.com/) - Application reliability platform unifying testing, monitoring, observability, and incident management with Playwright-based synthetic monitoring.
 * 🟢 [Chronosphere](https://chronosphere.io/) - Delivers a scalable observability platform designed for cloud-native environments, helping teams control costs and improve reliability.
 * 🟢 [Comet](https://www.comet.com/) - AI observability and evaluation platform with tracing, human annotation, and automated evaluation for LLM applications.
