@@ -371,6 +371,7 @@ APIs and platforms for running inference on foundation models and open-source LL
 * 🟢 [Replicate](https://replicate.com/) - Run machine learning models in the cloud with an API.
 * 🟢 [Roboflow](https://roboflow.com/) - Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.
 * 🟢 [Sail Research](https://www.sailresearch.com/) - Provides cost-efficient inference infrastructure for running leading open-source AI models on demand, optimized for long-horizon agents with flexible completion windows.
+* 🟢 [Subconscious](https://www.subconscious.dev/) - Provides inference infrastructure optimized for long-running agent workloads with runtime context compression, supporting open models with 50%+ lower costs and 2x faster task completion.
 * 🟢 [Swirls](https://swirls.ai/) - Provides a deployment platform for agentic systems with declarative configuration, durable execution, human-in-the-loop workflows, and cryptographic policy enforcement.
 * 🟢 [Together.ai](https://www.together.ai/) - Open-source foundation model infrastructure with collaborative fine-tuning.
 
