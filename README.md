@@ -347,6 +347,7 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 * 🟢 [Megaport](https://www.megaport.com/) - Offers elastic interconnection services that allow businesses to rapidly connect to cloud providers, data centers, and networks.
 * 🟢 [NetBox Cloud](https://netboxlabs.com/netbox-cloud/) - A managed solution for network infrastructure modeling and documentation, providing a scalable and secure platform for network automation.
 * 🟢 [Netmaker](https://netmaker.io/) - A WireGuard-based virtual networking platform that enables fast, secure, and scalable networking for devices and distributed systems.
+* 🟢 [Offline Protocol](https://www.offlineprotocol.com/) - Provides edge-native coordination for physical systems with identity, encrypted messaging, and service discovery across local, mesh, gateway, and cloud networks.
 * 🟢 [Pangolin](https://digpangolin.com/) - Secure app exposure via WireGuard tunnels with identity-aware access control.
 * 🟢 [Subspace](https://subspace.com/) - Dedicated network-as-a-service for real-time applications with global private fiber-optic network. Reduces latency up to 80% and packet loss by 99% for voice, video, gaming, and real-time apps with WebRTC acceleration and SIP proxy.
 * 🟢 [Tailscale](https://tailscale.com/) - A zero-config VPN built on WireGuard that makes secure networking between devices as easy as logging in.
