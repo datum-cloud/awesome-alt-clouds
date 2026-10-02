@@ -451,6 +451,7 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 * 🟢 [Koyeb](https://www.koyeb.com/) - Offers a serverless platform to deploy applications globally.
 * 🟢 [Lyrid](https://www.lyrid.io/) - Provides an all-in-one PaaS platform for automated cloud infrastructure provisioning, management, and deployment across multi-cloud environments with built-in security and compliance.
 * 🟢 [Maritime](https://maritime.sh/) - Provides cloud hosting infrastructure specifically designed for AI agents with flat $1/month pricing, sleep/wake architecture, and one-click deployment from GitHub repos.
+* 🟢 [Namecheap](https://www.namecheap.com/) - Provides domain registration, web hosting, email services, SSL certificates, and website security tools for individuals and businesses.
 * 🟢 [Netlify](https://www.netlify.com/) - Platform for building, deploying, and scaling modern web applications.
 * 🟢 [Northflank](https://northflank.com/) - A platform to build, deploy, and manage full-stack applications.
 * 🟢 [OpenComputer](https://opencomputer.dev/) - Provides a cloud platform for deploying and running AI agents as TypeScript functions on managed Linux microVMs with built-in session management, streaming, and MCP support.
