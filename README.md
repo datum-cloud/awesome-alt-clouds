@@ -466,6 +466,7 @@ Platform-as-a-service and managed hosting providers for deploying and scaling we
 * 🟢 [Puter](https://puter.com/) - A privacy-first personal cloud that houses all your files, apps, and games in one secure place, accessible from anywhere at any time.
 * 🟢 [Railway](https://railway.com/) - Deploy code instantly and manage environments in the cloud.
 * 🟢 [Render](https://render.com/) - Unified cloud platform to build and host apps, websites, and agent workflows.
+* 🟡 [Shipvela](https://shipvela.com/) - Hosts React, Vite and static websites from GitHub or a CLI with custom domains and managed HTTPS; free tier includes 3 projects and 20 publishes per month.
 * 🟢 [Shuttle](https://www.shuttle.dev/) - Rust-native cloud platform for building and deploying backend services.
 * 🟢 [Skyhook](https://skyhook.io/) - PaaS for deploying and managing Kubernetes clusters and workloads with GitOps support, preview environments, and AI assistance.
 * 🟢 [Upsun](https://upsun.com/) - An application hosting platform from the team at Platform.sh.
