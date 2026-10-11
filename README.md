@@ -337,6 +337,7 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 * 🟢 [Cloudflare](https://www.cloudflare.com/) - Protects and accelerates websites and apps through global CDN, DDoS mitigation, Zero Trust access, and DNS services.
 * 🟢 [Core Transit](https://www.coretransit.net/) - Provides flexible IP routing, static IP addressing, and BGP services to extend deterministic connectivity to hard-to-reach locations for enterprises and MSPs.
 * 🟡 [CtrlDNS](https://www.ctrldns.com/) - Provides DNS management and control services for domain name resolution and network infrastructure management.
+* 🟢 [doxx.net](https://www.doxx.net/) - Provides a zero-log Agentic Defined Network with end-to-end encrypted P2P communications, DNS threat protection, and private networking for agents and users.
 * 🟢 [Fastly](https://www.fastly.com/) - An edge cloud platform designed for performance and security, enabling developers to build faster, more secure digital experiences.
 * 🟡 [Inter.link](https://inter.link/) - Provides cloud-like connectivity services including IP Transit, Carrier Ethernet, and DDoS protection across 300+ European data centers with 100G/400G redundant backbone.
 * 🟢 [IPinfo](https://ipinfo.io/) - Provides accurate IP address intelligence including geolocation, ASN data, privacy detection, and network information through APIs and data downloads for developers and enterprises.
