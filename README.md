@@ -619,6 +619,7 @@ Messaging, notifications, email, voice, video, and IoT connectivity platforms fo
 
 * 🟢 [1NCE](https://www.1nce.com/en-us/) - Offers flat-rate global cellular connectivity for IoT devices, including SIM management and low-bandwidth data plans designed for scale.
 * 🟢 [api.video](https://api.video/) - Developer-first video API for encoding, hosting, streaming.
+* 🟡 [day3](https://day3.app/) - Sends newsletters, product updates and transactional email for small software teams, priced by emails sent with unlimited subscribers on paid plans.
 * 🟢 [Gradium](https://gradium.ai/) - Provides audio language models for natural, expressive, ultra-low latency voice interactions with text-to-speech and speech-to-text capabilities in multiple languages.
 * 🟢 [Hologram](https://www.hologram.io/) - Provides global IoT SIM cards and eUICC technology with a cloud-native dashboard for managing devices and data usage across carriers.
 * 🟢 [Knock](https://knock.app/) - Notification infrastructure with workflows, preferences, and delivery channels.
