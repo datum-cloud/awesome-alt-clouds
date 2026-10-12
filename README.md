@@ -441,6 +441,7 @@ AI-powered code editors, IDEs, no-code/low-code builders, and full-stack app gen
 * 🟢 [Softgen](https://softgen.ai/) - Provides tools to automatically generate code, documentation, and tests to speed up software delivery.
 * 🟢 [Tabnine](https://www.tabnine.com/) - AI code assistant with private model options.
 * 🟢 [v0](https://v0.app/) - AI-powered UI generation from text prompts to React code.
+* 🟢 [VibeKit](https://vibekit.bot/) - Provides an AI-powered app builder platform where persistent agents build, deploy, monitor, and fix applications automatically from any device with support for multiple AI models.
 * 🟢 [Windsurf](https://windsurf.com/) - An AI powered coding engine and IDE that is an alternative to GitHub Copilot. Formerly Codeium.
 
 ## PaaS & Application Hosting
