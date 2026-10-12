@@ -115,6 +115,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Anyscale](https://www.anyscale.com/) - Distributed computing platform built on Ray for scaling AI and Python apps.
 * 🟢 [Banana.dev](https://www.banana.dev/) - Serverless GPU platform for ML model inference with pay-per-millisecond pricing.
 * 🟢 [Baseten](https://www.baseten.co/) - Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.
+* 🟡 [Blackfuel](https://www.blackfuel.ai/) - Provides dedicated AI infrastructure and AI-native inference optimization across hardware architectures, delivering efficient token generation per megawatt.
 * 🟢 [Cerebrium](https://www.cerebrium.ai/) - Serverless GPU infrastructure for deploying ML models with auto-scaling.
 * 🟡 [CoreWeave](https://www.coreweave.com/) - A cloud platform optimized for AI, offering high-performance GPU compute and managed services.
 * 🟢 [Crusoe Energy](https://crusoecloud.com/) - Energy-efficient GPU computing using stranded and renewable energy sources.
