@@ -319,6 +319,7 @@ Orchestration, automation, and operations platforms for running reliable workflo
 * 🟡 [Resonate](https://www.resonatehq.io/) - Provides durable execution for async/await workflows using any existing database or queue, simplifying failure handling and recovery in distributed systems.
 * 🟢 [Ryvn](https://ryvn.ai/) - BYOC deployment platform for SaaS startups in customer clouds and on-premises.
 * 🟢 [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations.
+* 🟡 [Tale](https://tale.dev/) - Provides an open-source project workspace for teams and AI agents to collaborate, delegate tasks, and review results with shared context and audit trails.
 * 🟢 [Temporal](https://temporal.io/) - Durable execution platform for reliable workflows with automatic failure recovery.
 * 🟢 [this+that](https://www.thisandthat.chat/) - Automates inbox triage and task handling by extracting work from messages across email, chat, and messaging platforms using AI workflows and a company knowledge base.
 * 🟢 [Tines](https://www.tines.com/) - No-code automation platform for security operations and IT workflows.
