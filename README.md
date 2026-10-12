@@ -377,6 +377,7 @@ APIs and platforms for running inference on foundation models and open-source LL
 * 🟢 [LeptonAI](https://lepton.ai/) - Provides infrastructure and tools to build and deploy AI models at scale.
 * 🟢 [Makora](https://www.makora.com/) - Provides optimized AI inference platform delivering high-speed LLM serving with up to 5x throughput improvements across multiple models and hardware through full-stack automated optimization.
 * 🟢 [Mistral AI](https://mistral.ai/) - Provides frontier AI large language models, assistants, and agents with customizable enterprise solutions for autonomous work, coding, and application development.
+* 🟢 [ModelRush](https://modelrush.ai/) - Provides a unified API layer for accessing text, image, video, and voice AI models with OpenAI-compatible integration, regional routing, and transparent per-model pricing.
 * 🟡 [Nomadic](https://www.nomadicai.com/) - Provides AI-powered video analysis platform that automatically identifies rare events and edge cases in robotic, autonomous vehicle, and construction footage for training physical AI systems.
 * 🟡 [Parallel](https://parallel.ai/) - Provides AI-optimized web search and data extraction APIs with high accuracy for AI agents and applications to access structured web intelligence.
 * 🟢 [Portkey](https://portkey.ai/) - AI Gateway control panel for production apps with unified gateway to 1600+ LLMs, observability, guardrails, and governance. OpenAI-compatible with semantic caching and SOC2/HIPAA/GDPR compliance.
