@@ -151,6 +151,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [TensorDock](https://tensordock.com/) - Affordable, usage-based GPU cloud platform for model training.
 * 🟢 [TensorWave](https://tensorwave.com/) - An AI cloud focused on AMD technology including MI325X and MI300X accelerators.
 * 🟢 [Thunder Compute](https://www.thundercompute.com/) - Provides on-demand GPU instances with RTX A6000, A100, and H100 options at competitive pricing, featuring VS Code integration and one-click deployment for ML development.
+* 🟡 [Turba Labs](https://www.turbalabs.com/) - Provides an AI performance platform that optimizes GPU utilization and compute efficiency across entire AI infrastructure stacks, enabling organizations to maximize output per GPU and reduce infras...
 * 🟢 [Turboscale](https://www.turboscale.ai/) - AI-native cloud infrastructure for fine-tuning and inference.
 * 🟢 [Vast.ai](https://vast.ai/) - Marketplace for buying and selling GPU compute capacity at competitive rates.
 * 🟢 [Verda](https://verda.com/) - Provides full-stack AI cloud infrastructure with GPU instances, serverless containers, and instant clusters for AI workloads and inference.
