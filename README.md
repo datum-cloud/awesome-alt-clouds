@@ -607,6 +607,7 @@ CRM, customer engagement, marketing automation, newsletter, and eCommerce platfo
 * 🟢 [Clarify](https://www.getclarify.ai/) - An AI-native CRM that unifies customer data, automates tasks, and provides actionable insights to enhance customer relationships.
 * 🟢 [Conecto](https://conecto.chat/) - Provides an all-in-one customer messaging platform combining live chat, AI chatbot, shared inbox, CRM and analytics for support and sales teams.
 * 🟢 [Customer.io](https://www.customer.io/) - A unified view of your audience and a single place where unlimited, real-time data can power more effective engagement.
+* 🟡 [day3](https://day3.app/) - Provides email marketing and transactional email service with pay-per-send pricing, unlimited subscribers, and built-in automation, API, and AI composer integration.
 * 🟢 [Formbricks](https://formbricks.com/) - Open-source experience management platform. In-app surveys and user feedback collection.
 * 🟢 [Front](https://front.com/) - An AI-powered customer service platform for teams who know great CX drives revenue.
 * 🟢 [Helpscout](https://www.helpscout.com/) - A customer communication platform for businesses that want to treat customers like people.
