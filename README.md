@@ -491,6 +491,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [Bubble](https://bubble.io/) - No-code visual programming platform for building web and mobile apps with drag-and-drop interface and usage-based pricing.
 * 🟢 [Cloudsmith](https://cloudsmith.com/) - Cloud-native artifact management supporting 30+ formats with security scanning, policy engine, and global CDN delivery.
 * 🟢 [Coder](https://coder.com/) - Offers self-hosted cloud development environments that provision and manage workspaces, enabling developers to code from anywhere with enhanced security and scalability.
+* 🟢 [CurlShot](https://curlshot.com/) - Provides full-page website screenshots and PDF conversions via web interface or API, supporting multiple formats, devices, and content removal features.
 * 🟢 [Cypress](https://www.cypress.io/) - Browser testing framework for modern web applications with AI-powered test generation and self-healing capabilities.
 * 🟢 [Depot](https://depot.dev/) - Accelerates Docker builds and GitHub Actions with up to 20x faster performance through optimized compute and caching.
 * 🟢 [DevZero](https://www.devzero.io/) - Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.
