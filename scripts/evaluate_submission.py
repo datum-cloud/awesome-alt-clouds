@@ -32,6 +32,7 @@ from lib.fetcher import (  # noqa: E402  re-exported for backward compatibility
 CATEGORIES = [
     "Infrastructure Clouds",
     "GPU & AI Compute Clouds",
+    "Workload Clouds",
     "Security, Compliance & Sovereignty Clouds",
     "Unikernels & WebAssembly",
     "Databases & Storage",
