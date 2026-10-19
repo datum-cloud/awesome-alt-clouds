@@ -57,6 +57,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Atlantic.net](https://www.atlantic.net/) - Experienced hosting company offering a variety of compute and GPU infrastructure services.
 * 🟢 [Axiom](https://axiom.co/) - Cloud service provider.
 * 🟢 [Beam](https://www.beam.cloud) - Cloud infrastructure specifically built for high-performance applications and developer happiness.
+* 🟢 [BlackBox Hosting](https://www.blackboxhosting.co.uk/draas/%20https://www.blackboxhosting.co.uk/baas/https://www.blackboxhosting.co.uk/sovereign-cloud-uk/https://www.blackboxhosting.co.uk/remote-desktop-services/https://www.blackboxhosting.co.uk/application-publishing/) - Provides UK-based managed cloud infrastructure, disaster recovery, backup services, remote desktop, and application publishing with sovereign data residency and enterprise-grade security.
 * 🟡 [Browser-Use](https://browser-use.com/) - Cloud service provider.
 * 🟢 [Civo](https://www.civo.com) - Provides cloud services with a focus on simplicity and developer experience.
 * 🟢 [cloudscale.ch](https://cloudscale.ch/) - Swiss IaaS provider offering VMs, GPU servers, load balancers, and object storage with per-hour pricing and full Swiss data residency.
