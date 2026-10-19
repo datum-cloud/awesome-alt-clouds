@@ -195,6 +195,11 @@ _CAT_DESCRIPTIONS: dict[str, str] = {
         "Cloud data warehouses, analytics databases, business intelligence platforms, "
         "and data lakehouse services."
     ),
+    "Workload Clouds": (
+        "Platforms that sell finished work instead of raw capacity: generative media, browser "
+        "and web-data sessions, and agent sandboxes. You pay for the outcome while the GPUs "
+        "and servers stay abstracted away."
+    ),
     "Workflow & Operations Clouds": (
         "Workflow orchestration, job queues, event streaming, and operations "
         "automation platforms."
