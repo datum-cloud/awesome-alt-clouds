@@ -230,7 +230,7 @@ Managed databases, object storage, caching, and search engines — relational, N
 * 🟢 [Neo4j](https://neo4j.com/) - A graph database platform for connected data applications.
 * 🟢 [Neon](https://neon.tech/) - Provides a serverless PostgresSQL with autoscaling, branching, and bottomless storage.
 * 🟢 [Planetscale](https://planetscale.com/) - A serverless database platform built on Vitess, offering scalability and reliability for MySQL databases.
-* 🟢 [Prisma](https://www.prisma.io/) - Provides a next-generation ORM for Node.js and TypeScript.
+* 🟢 [Prisma](https://www.prisma.io/) - Provides a developer platform for TypeScript apps with managed Postgres, app hosting that scales to zero, and an ORM.
 * 🟢 [QuestDB](https://questdb.com/) - Open-source time-series database with ultra-low latency and SQL support.
 * 🟢 [ReadySet](https://readyset.io/) - SQL caching engine that sits between app and database for performance.
 * 🟢 [Redis](https://redis.io/) - An in-memory data structure store used as a database, cache, and message broker.
