@@ -646,6 +646,7 @@ Messaging, notifications, email, voice, video, and IoT connectivity platforms fo
 * 🟢 [Soracom](https://soracom.io/) - Delivers cellular connectivity and edge services for IoT deployments, with APIs and billing tailored to developers and startups.
 * 🟢 [Telnyx](https://telnyx.com/) - Provides a carrier-grade global communications platform combining owned network infrastructure with AI inference capabilities for real-time voice, messaging, and AI agent deployment.
 * 🟢 [Twilio](https://www.twilio.com/docs/iot) - Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
+* 🟢 [VPlayed](https://www.vplayed.com/) - Provides end-to-end OTT video streaming platform with live streaming, VOD, content management, monetization, and AI-powered features for media brands and content creators.
 * 🟢 [Wistia](https://wistia.com/) - A one-stop video marketing shop to create, host, market and analyze your videos.
 
 ## Decentralized & Web3 Compute
