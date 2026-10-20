@@ -299,6 +299,7 @@ Logging, metrics, tracing, error tracking, uptime monitoring, and session replay
 * 🟢 [OpenStatus](https://www.openstatus.dev/) - Open-source status page and monitoring platform for tracking API and website uptime worldwide.
 * 🟢 [Raindrop](https://www.raindrop.ai/) - Provides observability and debugging for AI agents in production, detecting silent failures, tracing execution, and enabling safe testing through simulations.
 * 🟢 [Sentry](https://sentry.io/) - Application monitoring platform for error tracking, performance monitoring, and session replay to identify and resolve code issues.
+* 🟡 [SolidPing](https://www.solidping.io/) - Provides open-source uptime monitoring with 40+ check types, distributed workers, on-call scheduling, and public status pages. Self-hostable or cloud-hosted.
 * 🟢 [Splunk](https://www.splunk.com/) - Provides a platform for searching, monitoring, and analyzing machine-generated big data.
 * 🟢 [Sumo Logic](https://www.sumologic.com/) - Offers cloud-native machine data analytics for real-time insights into operations and security.
 * 🟢 [Weights & Biases](https://wandb.ai/) - AI developer platform for experiment tracking, model management, evaluation, and observability for ML and LLM applications.
