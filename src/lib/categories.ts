@@ -12,6 +12,8 @@ export const categoryDescriptions: Record<string, string> = {
     'General-purpose cloud compute, bare metal, and VPS providers. The original "alt clouds" offering virtualized compute, dedicated servers, GPU instances, storage, and Kubernetes services outside the hyperscaler ecosystem.',
   "GPU & AI Compute Clouds":
     "Specialized GPU compute platforms for AI training, model fine-tuning, and high-performance workloads. Includes serverless GPU inference, GPU clusters, and distributed compute networks.",
+  "Workload Clouds":
+    "Platforms that sell finished work instead of raw capacity: generative media, browser and web-data sessions, and agent sandboxes. You pay for the outcome while the GPUs and servers stay abstracted away.",
   "Databases & Storage":
     "Managed database services, vector databases, distributed SQL, time series, object storage, and data warehousing — all self-service with public pricing.",
   "Developer Tooling & CI/CD":

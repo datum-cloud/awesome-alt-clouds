@@ -47,12 +47,12 @@ python scripts/generate_watchlist_json.py
 
 ### Astro frontend (`src/`)
 
-- `src/pages/index.astro` — homepage card grid; `[slug].astro` — per-cloud detail page; `categories/[slug].astro` — 23 static category pages; `compare.astro` — side-by-side comparison (localStorage basket, max 3); `blog/`, `submit/`, `watchlist/`.
+- `src/pages/index.astro` — homepage card grid; `[slug].astro` — per-cloud detail page; `categories/[slug].astro` — 24 static category pages; `compare.astro` — side-by-side comparison (localStorage basket, max 3); `blog/`, `submit/`, `watchlist/`.
 - `src/content/clouds/<slug>.mdx` — per-provider detail pages, schema in `src/content.config.ts`. Key frontmatter field: `status: "draft" | "reviewed"` (default `"draft"`).
 - `src/content/blog/<slug>.md` — editorial posts, frontmatter includes `draft: boolean` (default `false`).
 - `src/lib/profile.ts` / `src/lib/blog.ts` — the **publish gate**: `getPublishableProfiles()` / `getPublishablePosts()` filter drafts out unless the build is in preview mode. This same filter drives both route generation (`getStaticPaths()`) and homepage/search link visibility, so a route and its links never drift apart. Don't build a new draft-aware feature without going through this gate.
 - `src/lib/clouds.ts` — canonical `slugify()`. Mirrored byte-for-byte in `scripts/lib/slugify.py`; MDX filenames in `src/content/clouds/` must match the slug this produces. Keep both in sync if you touch either.
-- `src/lib/categories.ts` — the 23-category taxonomy + slugs. Must stay in sync with `scripts/evaluate_submission.py:CATEGORIES` and `scripts/generate_llms.py:_CAT_DESCRIPTIONS` (three places, one taxonomy).
+- `src/lib/categories.ts` — the 24-category taxonomy + slugs. Must stay in sync with `scripts/evaluate_submission.py:CATEGORIES` and `scripts/generate_llms.py:_CAT_DESCRIPTIONS` (three places, one taxonomy).
 
 ### Preview vs. production build
 
