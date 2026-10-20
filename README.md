@@ -14,6 +14,7 @@ Browse the live directory and use the browser extension at **[alt-cloud.org](htt
 * [Watchlist](WATCHLIST.md) — candidates submitted 2+ times that don't yet qualify
 * [Infrastructure Clouds](#infrastructure-clouds)
 * [GPU & AI Compute Clouds](#gpu--ai-compute-clouds)
+* [Workload Clouds](#workload-clouds)
 * [Security, Compliance & Sovereignty Clouds](#security-compliance--sovereignty-clouds)
 * [Unikernels & WebAssembly](#unikernels--webassembly)
 * [Databases & Storage](#databases--storage)
@@ -122,7 +123,6 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Cudo Compute](https://www.cudocompute.com/) - Offers decentralized cloud computing with GPU support for AI applications.
 * 🟡 [Dapple](https://dapple.co/) - Offers an Enterprise OS Cloud that aggregates global GPU supply for regulated enterprises, ensuring strict isolation, residency, and compliance.
 * 🟢 [Datacrunch.io](https://datacrunch.io/) - Provides affordable GPU cloud services for AI training and inference.
-* 🟢 [Fal.ai](https://fal.ai/) - Provides serverless GPU inference for AI models with instant deployment.
 * 🟢 [FluidStack](https://www.fluidstack.io/) - Offers decentralized GPU cloud computing for AI and rendering workloads.
 * 🟢 [Fractile](https://www.fractile.ai/) - Provides specialized hardware processors for AI model inference, delivering up to 25x faster performance and 1/10th the cost for frontier model deployments.
 * 🟢 [FriendliAI](https://friendli.ai/) - Fast AI inference platform with 2-3x speed boost. Deploy 490K+ models instantly. Serverless & dedicated GPU options. 99.99% SLA.
@@ -136,7 +136,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Lambda Labs](https://lambda.ai/) - Delivers on-demand access to NVIDIA GPUs for AI training and inference.
 * 🟢 [LeaderGPU](https://www.leadergpu.com/) - Provides high-performance GPU servers for rent, optimized for AI tasks.
 * 🟢 [Lightning.ai](https://lightning.ai/) - Build, train, and deploy AI models with powerful tools and scalable infrastructure.
-* 🟢 [Modal](https://modal.com/) - A serverless platform for AI and data teams to run compute-intensive applications without managing infrastructure.
+* 🟢 [Lium](https://lium.io) - Provides on-demand rental of high-performance GPUs including H100, B200, and RTX 4090 with global infrastructure for AI and compute workloads.
 * 🟡 [Mount Thor](https://mountthor.com/) - Provides managed macOS infrastructure and AI execution environments on Apple silicon for workloads requiring native desktop access and model inference.
 * 🟢 [Nebius](https://nebius.com/) - Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services.
 * 🟢 [NeevCloud](https://www.neevcloud.com/) - India-based GPU cloud offering secure, scalable AI compute.
@@ -156,6 +156,20 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Vast.ai](https://vast.ai/) - Marketplace for buying and selling GPU compute capacity at competitive rates.
 * 🟢 [Verda](https://verda.com/) - Provides full-stack AI cloud infrastructure with GPU instances, serverless containers, and instant clusters for AI workloads and inference.
 * 🟢 [Voltage Park](https://www.voltagepark.com/) - AI cloud with 24,000 NVIDIA H100 GPUs and InfiniBand clusters for large-scale training.
+
+## Workload Clouds
+
+Platforms that sell finished work rather than raw capacity: you submit a job, a prompt, or an agent task and pay for the outcome (generated media, a browser session, a sandboxed run), with the GPUs and servers abstracted away.
+
+* 🟡 [Anchor](https://anchorbrowser.io/) - Provides AI-powered browser automation infrastructure with humanized Chromium instances that can access any website, handle authentication, and perform web tasks reliably.
+* 🟢 [Browserbase](https://www.browserbase.com/) - A platform for running headless browsers for interact with websites via automation.
+* 🟢 [browserless](https://www.browserless.io/) - Headless browser automation platform providing managed Chrome, Firefox, and WebKit browsers for scraping, testing, and automation with bot detection bypass and CAPTCHA solving.
+* 🟢 [E2B](https://e2b.dev/) - Secure sandboxes for AI code execution with filesystem, networking, and long-running process support for AI agents.
+* 🟢 [Fal.ai](https://fal.ai/) - Provides serverless GPU inference for AI models with instant deployment.
+* 🟢 [Modal](https://modal.com/) - A serverless platform for AI and data teams to run compute-intensive applications without managing infrastructure.
+* 🟡 [Parallel](https://parallel.ai/) - Provides AI-optimized web search and data extraction APIs with high accuracy for AI agents and applications to access structured web intelligence.
+* 🟢 [Replicate](https://replicate.com/) - Run machine learning models in the cloud with an API.
+* 🟢 [Runloop](https://runloop.ai/) - Provides secure cloud-based development environments (devboxes) for AI coding agents with enterprise-grade infrastructure, benchmarking tools, and scalable sandbox execution.
 
 ## Security, Compliance & Sovereignty Clouds
 
@@ -286,6 +300,7 @@ Logging, metrics, tracing, error tracking, uptime monitoring, and session replay
 * 🟢 [OpenStatus](https://www.openstatus.dev/) - Open-source status page and monitoring platform for tracking API and website uptime worldwide.
 * 🟢 [Raindrop](https://www.raindrop.ai/) - Provides observability and debugging for AI agents in production, detecting silent failures, tracing execution, and enabling safe testing through simulations.
 * 🟢 [Sentry](https://sentry.io/) - Application monitoring platform for error tracking, performance monitoring, and session replay to identify and resolve code issues.
+* 🟡 [SolidPing](https://www.solidping.io/) - Provides open-source uptime monitoring with 40+ check types, distributed workers, on-call scheduling, and public status pages. Self-hostable or cloud-hosted.
 * 🟢 [Splunk](https://www.splunk.com/) - Provides a platform for searching, monitoring, and analyzing machine-generated big data.
 * 🟢 [Sumo Logic](https://www.sumologic.com/) - Offers cloud-native machine data analytics for real-time insights into operations and security.
 * 🟢 [Weights & Biases](https://wandb.ai/) - AI developer platform for experiment tracking, model management, evaluation, and observability for ML and LLM applications.
@@ -366,7 +381,6 @@ CDN, DNS, private networking, interconnection, SD-WAN, API gateways, and tunneli
 APIs and platforms for running inference on foundation models and open-source LLMs, with a focus on speed, cost, and scale.
 
 * 🟢 [A2Agent](https://a2agent.me/) - Provides an affordable LLM API gateway supporting multiple models like DeepSeek, GLM, Kimi, and Qwen with enterprise-grade infrastructure, low latency, and OpenAI/Anthropic compatibility.
-* 🟡 [Anchor](https://anchorbrowser.io/) - Provides AI-powered browser automation infrastructure with humanized Chromium instances that can access any website, handle authentication, and perform web tasks reliably.
 * 🟡 [Cloudglue](https://cloudglue.dev/) - Provides a video context engine API that structures, searches, and enables AI reasoning over video content for developers building chatbots, RAG systems, and video analysis applications.
 * 🟢 [Concentrate.ai](https://concentrate.ai/) - Provides a unified LLM gateway enabling teams to access hundreds of AI models across multiple providers through a single API with no platform fees.
 * 🟢 [Fireworks.ai](https://fireworks.ai/) - Delivers high-speed, cost-effective inference APIs with support for open-source models.
@@ -378,10 +392,9 @@ APIs and platforms for running inference on foundation models and open-source LL
 * 🟢 [Makora](https://www.makora.com/) - Provides optimized AI inference platform delivering high-speed LLM serving with up to 5x throughput improvements across multiple models and hardware through full-stack automated optimization.
 * 🟢 [Mistral AI](https://mistral.ai/) - Provides frontier AI large language models, assistants, and agents with customizable enterprise solutions for autonomous work, coding, and application development.
 * 🟢 [ModelRush](https://modelrush.ai/) - Provides a unified API layer for accessing text, image, video, and voice AI models with OpenAI-compatible integration, regional routing, and transparent per-model pricing.
+* 🟢 [MUNITO](https://munito.ai/) - Provides open-model API inference with European data sovereignty, zero data retention, and privacy-first approach compatible with major SDKs.
 * 🟡 [Nomadic](https://www.nomadicai.com/) - Provides AI-powered video analysis platform that automatically identifies rare events and edge cases in robotic, autonomous vehicle, and construction footage for training physical AI systems.
-* 🟡 [Parallel](https://parallel.ai/) - Provides AI-optimized web search and data extraction APIs with high accuracy for AI agents and applications to access structured web intelligence.
 * 🟢 [Portkey](https://portkey.ai/) - AI Gateway control panel for production apps with unified gateway to 1600+ LLMs, observability, guardrails, and governance. OpenAI-compatible with semantic caching and SOC2/HIPAA/GDPR compliance.
-* 🟢 [Replicate](https://replicate.com/) - Run machine learning models in the cloud with an API.
 * 🟢 [Roboflow](https://roboflow.com/) - Offers tools for building and deploying computer vision models, simplifying data collection, annotation, and model training for developers.
 * 🟢 [Runway](https://runway.com/) - Provides AI-powered creative tools for generating and editing video, images, and audio, plus developer APIs and robotics simulation platforms built on foundational world models.
 * 🟢 [Sail Research](https://www.sailresearch.com/) - Provides cost-efficient inference infrastructure for running leading open-source AI models on demand, optimized for long-horizon agents with flexible completion windows.
@@ -443,6 +456,7 @@ AI-powered code editors, IDEs, no-code/low-code builders, and full-stack app gen
 * 🟢 [Niteshift](https://niteshift.dev/) - Provides a full-stack cloud platform for coding agents to build, test, and deploy applications with isolated environments, service simulation, and integration with existing development tools.
 * 🟢 [OB-1](https://www.openblocklabs.com/) - Provides a self-improving coding agent that handles the full development lifecycle from project management to pull requests, with multi-model AI support and workflow automation.
 * 🟢 [Ona](https://ona.com/) - Provides a platform to run and govern AI software agents in the cloud, offering standardized execution environments, security controls, and automated remediation for SDLC workflows.
+* 🟡 [OpenHands](https://www.openhands.dev/) - Provides an open source AI agent platform for autonomous software development that executes end-to-end engineering tasks including PR reviews, issue triage, CI fixes, and incident response.
 * 🟢 [Softgen](https://softgen.ai/) - Provides tools to automatically generate code, documentation, and tests to speed up software delivery.
 * 🟢 [Tabnine](https://www.tabnine.com/) - AI code assistant with private model options.
 * 🟢 [v0](https://v0.app/) - AI-powered UI generation from text prompts to React code.
@@ -487,16 +501,15 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟡 [Actuated](https://actuated.com/) - Provides fast and secure CI/CD infrastructure using self-hosted GitHub Actions runners with micro-VMs, enabling 2-3x faster builds and native support for Docker, Kubernetes, and Arm architectures.
 * 🟢 [Anaconda](https://www.anaconda.com/) - Provides enterprise Python package management and AI development platform with secure open-source libraries, environment management, and AI model deployment capabilities.
 * 🟢 [Blacksmith](https://www.blacksmith.sh/) - Provides a faster, cheaper alternative to GitHub Actions by running CI/CD jobs on high-performance bare metal infrastructure with instant provisioning and advanced observability.
-* 🟢 [Browserbase](https://www.browserbase.com/) - A platform for running headless browsers for interact with websites via automation.
-* 🟢 [browserless](https://www.browserless.io/) - Headless browser automation platform providing managed Chrome, Firefox, and WebKit browsers for scraping, testing, and automation with bot detection bypass and CAPTCHA solving.
 * 🟢 [Bubble](https://bubble.io/) - No-code visual programming platform for building web and mobile apps with drag-and-drop interface and usage-based pricing.
+* 🟢 [Caveman](https://caveman.so/) - Reduces AI agent token costs through context compression, shorter replies, and adaptive model selection, with cloud analytics and governance tools.
 * 🟢 [Cloudsmith](https://cloudsmith.com/) - Cloud-native artifact management supporting 30+ formats with security scanning, policy engine, and global CDN delivery.
 * 🟢 [Coder](https://coder.com/) - Offers self-hosted cloud development environments that provision and manage workspaces, enabling developers to code from anywhere with enhanced security and scalability.
+* 🟢 [CurlShot](https://curlshot.com/) - Provides full-page website screenshots and PDF conversions via web interface or API, supporting multiple formats, devices, and content removal features.
 * 🟢 [Cypress](https://www.cypress.io/) - Browser testing framework for modern web applications with AI-powered test generation and self-healing capabilities.
 * 🟢 [Depot](https://depot.dev/) - Accelerates Docker builds and GitHub Actions with up to 20x faster performance through optimized compute and caching.
 * 🟢 [DevZero](https://www.devzero.io/) - Delivers production-like cloud development environments using MicroVMs, combining the performance of containers with the isolation of VMs.
 * 🟢 [Dosu](https://dosu.dev/) - AI documentation platform that generates, maintains, and shares knowledge from code and conversations.
-* 🟢 [E2B](https://e2b.dev/) - Secure sandboxes for AI code execution with filesystem, networking, and long-running process support for AI agents.
 * 🟢 [Engram SDK](https://www.engram.org/products/sdk) - Provides TypeScript and Python libraries for building agents with memory, reasoning, and orchestration capabilities for enterprise AI applications.
 * 🟢 [Fabrica](https://www.usefabrica.app/) - AI platform that builds internal apps from prompts with database and tooling integrations.
 * 🟢 [Firefly](https://www.firefly.ai/) - A cloud asset management solution powered by Infrastructure-as-Code, assisting DevOps and SRE teams in managing their entire cloud infrastructure efficiently.
@@ -521,7 +534,6 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [Release](https://release.com/) - Enables the creation and management of on-demand, ephemeral environments, streamlining development workflows and reducing costs.
 * 🟢 [Replit](https://replit.com/) - Collaborative browser IDE with instant deployment and multiplayer coding.
 * 🟢 [Retool](https://retool.com/) - A low-code platform to build custom internal tools quickly with pre-built components and database integrations.
-* 🟢 [Runloop](https://runloop.ai/) - Provides secure cloud-based development environments (devboxes) for AI coding agents with enterprise-grade infrastructure, benchmarking tools, and scalable sandbox execution.
 * 🟡 [RWX](https://www.rwx.com/) - Provides a modern CI/CD platform designed for agentic development cycles with integrated sandboxes, automatic caching, and OCI container image generation.
 * 🟢 [StackBlitz](https://stackblitz.com/) - Instant full-stack dev environments running entirely in the browser.
 * 🟡 [Superset](https://superset.sh/) - Enables developers to run 100+ parallel coding agents in isolated workspaces, automating tasks and streamlining code review workflows across multiple projects simultaneously.
@@ -608,6 +620,7 @@ CRM, customer engagement, marketing automation, newsletter, and eCommerce platfo
 * 🟢 [Clarify](https://www.getclarify.ai/) - An AI-native CRM that unifies customer data, automates tasks, and provides actionable insights to enhance customer relationships.
 * 🟢 [Conecto](https://conecto.chat/) - Provides an all-in-one customer messaging platform combining live chat, AI chatbot, shared inbox, CRM and analytics for support and sales teams.
 * 🟢 [Customer.io](https://www.customer.io/) - A unified view of your audience and a single place where unlimited, real-time data can power more effective engagement.
+* 🟡 [day3](https://day3.app/) - Provides email marketing and transactional email service with pay-per-send pricing, unlimited subscribers, and built-in automation, API, and AI composer integration.
 * 🟢 [Formbricks](https://formbricks.com/) - Open-source experience management platform. In-app surveys and user feedback collection.
 * 🟢 [Front](https://front.com/) - An AI-powered customer service platform for teams who know great CX drives revenue.
 * 🟢 [Helpscout](https://www.helpscout.com/) - A customer communication platform for businesses that want to treat customers like people.
