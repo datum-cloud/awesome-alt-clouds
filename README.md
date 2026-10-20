@@ -498,6 +498,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [Anaconda](https://www.anaconda.com/) - Provides enterprise Python package management and AI development platform with secure open-source libraries, environment management, and AI model deployment capabilities.
 * 🟢 [Blacksmith](https://www.blacksmith.sh/) - Provides a faster, cheaper alternative to GitHub Actions by running CI/CD jobs on high-performance bare metal infrastructure with instant provisioning and advanced observability.
 * 🟢 [Bubble](https://bubble.io/) - No-code visual programming platform for building web and mobile apps with drag-and-drop interface and usage-based pricing.
+* 🟢 [Caveman](https://caveman.so/) - Reduces AI agent token costs through context compression, shorter replies, and adaptive model selection, with cloud analytics and governance tools.
 * 🟢 [Cloudsmith](https://cloudsmith.com/) - Cloud-native artifact management supporting 30+ formats with security scanning, policy engine, and global CDN delivery.
 * 🟢 [Coder](https://coder.com/) - Offers self-hosted cloud development environments that provision and manage workspaces, enabling developers to code from anywhere with enhanced security and scalability.
 * 🟢 [Cypress](https://www.cypress.io/) - Browser testing framework for modern web applications with AI-powered test generation and self-healing capabilities.
