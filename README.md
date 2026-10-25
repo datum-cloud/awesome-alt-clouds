@@ -118,6 +118,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Baseten](https://www.baseten.co/) - Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.
 * 🟡 [Blackfuel](https://www.blackfuel.ai/) - Provides dedicated AI infrastructure and AI-native inference optimization across hardware architectures, delivering efficient token generation per megawatt.
 * 🟢 [Cerebrium](https://www.cerebrium.ai/) - Serverless GPU infrastructure for deploying ML models with auto-scaling.
+* 🟡 [CloudGPU](https://cloudgpu.app/) - Rents GPUs such as the RTX 5090 by the minute with root SSH, and offers an OpenAI-compatible model API paid from the same prepaid balance.
 * 🟡 [CoreWeave](https://www.coreweave.com/) - A cloud platform optimized for AI, offering high-performance GPU compute and managed services.
 * 🟢 [Crusoe Energy](https://crusoecloud.com/) - Energy-efficient GPU computing using stranded and renewable energy sources.
 * 🟢 [Cudo Compute](https://www.cudocompute.com/) - Offers decentralized cloud computing with GPU support for AI applications.
