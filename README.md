@@ -75,6 +75,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Firmus](https://firmus.co/) - Cloud service provider.
 * 🟢 [Flow Swiss](https://flow.swiss/) - Swiss cloud provider offering compute, managed Kubernetes, App Engine, Mac Bare Metal hosting, and Apple Silicon CI services with ISO 27001 certification and Swiss data protection compliance.
 * 🟡 [Freestyle](https://freestyle.sh) - Infrastructure for managing and executing AI-generated code through sandboxed VMs, Git repositories, and deployment services.
+* 🟡 [FutureInfra](https://futureinfra.ai/) - Provides Korean cloud VMs with snapshots, public IPs, firewall rules and MCP/API access; paid prepaid usage and South Korea-only console access.
 * 🟢 [Gcore](https://gcore.com/) - Delivers edge and cloud services with global infrastructure.
 * 🟡 [Hetzner](https://www.hetzner.com/) - Provides dedicated servers and cloud services in Europe.
 * 🟡 [Hikube](https://hikube.cloud/) - Provides sovereign Swiss cloud infrastructure with VMs, Kubernetes, GPU, managed databases, S3 storage, and messaging services across 3 Swiss datacenters with zero US jurisdiction.
