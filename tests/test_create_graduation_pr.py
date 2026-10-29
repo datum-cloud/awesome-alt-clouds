@@ -87,9 +87,9 @@ class TestCreatePr:
         assert result is True
         assert any(c.startswith("git checkout -b graduation-326-turbopuffer") for c in commands)
         assert any(c == "git add README.md" for c in commands)
-        assert any("git commit" in c and "Graduate Turbopuffer" in c for c in commands)
         assert any(
-            c.startswith("git push --force origin graduation-326-turbopuffer") for c in commands
+            "scripts/sign-commit graduation-326-turbopuffer" in c and "Graduate Turbopuffer" in c
+            for c in commands
         )
         assert any(c.startswith("gh pr create") for c in commands)
 
@@ -124,7 +124,7 @@ class TestCreatePr:
             result = cg.create_pr(data)
 
         assert result is False
-        assert not any("git commit" in c for c in commands)
+        assert not any("sign-commit" in c for c in commands)
 
 
 class TestMain:

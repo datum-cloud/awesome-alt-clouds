@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+# Commit files to a branch through the GitHub API so GitHub signs the commit.
+# Usage: sign-commit BRANCH MESSAGE PATH...
+# A PATH that exists is committed with its current contents; one that does not
+# exist is deleted from the branch. Set BASE_SHA to create BRANCH at that commit
+# (or reset it there) first. Needs GH_TOKEN and GITHUB_REPOSITORY.
+set -euo pipefail
+
+branch=$1
+message=$2
+shift 2
+
+repo=${GITHUB_REPOSITORY:?GITHUB_REPOSITORY is required}
+work=$(mktemp -d)
+trap 'rm -rf "$work"' EXIT
+
+if [ -n "${BASE_SHA:-}" ]; then
+  if ! gh api -X POST "repos/${repo}/git/refs" -f "ref=refs/heads/${branch}" -f "sha=${BASE_SHA}" >/dev/null 2>&1; then
+    gh api -X PATCH "repos/${repo}/git/refs/heads/${branch}" -f "sha=${BASE_SHA}" -F force=true >/dev/null
+  fi
+fi
+
+: > "$work/additions"
+: > "$work/deletions"
+n=0
+for path in "$@"; do
+  if [ -f "$path" ]; then
+    n=$((n + 1))
+    base64 < "$path" | tr -d '\n' > "$work/$n.b64"
+    jq -nc --arg path "$path" --rawfile contents "$work/$n.b64" '{path: $path, contents: $contents}' >> "$work/additions"
+  else
+    jq -nc --arg path "$path" '{path: $path}' >> "$work/deletions"
+  fi
+done
+
+headline=${message%%$'\n'*}
+body=""
+if [ "$headline" != "$message" ]; then
+  body=${message#*$'\n'}
+  body=${body#$'\n'}
+fi
+
+query='mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { url } } }'
+
+for attempt in 1 2 3 4 5; do
+  head=$(gh api "repos/${repo}/git/ref/heads/${branch}" --jq .object.sha)
+  jq -n --arg query "$query" --arg repo "$repo" --arg branch "$branch" --arg head "$head" \
+    --arg headline "$headline" --arg body "$body" \
+    --slurpfile additions "$work/additions" --slurpfile deletions "$work/deletions" '{
+      query: $query,
+      variables: {input: {
+        branch: {repositoryNameWithOwner: $repo, branchName: $branch},
+        expectedHeadOid: $head,
+        message: ({headline: $headline} + (if $body == "" then {} else {body: $body} end)),
+        fileChanges: {additions: $additions, deletions: $deletions}
+      }}
+    }' > "$work/request.json"
+  if gh api graphql --input "$work/request.json" --jq .data.createCommitOnBranch.commit.url; then
+    exit 0
+  fi
+  echo "Attempt ${attempt} failed, retrying." >&2
+  sleep $((attempt * 2))
+done
+echo "Could not commit to ${branch}." >&2
+exit 1

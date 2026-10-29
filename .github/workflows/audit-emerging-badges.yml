@@ -56,12 +56,8 @@ jobs:
           fi
 
           branch_name="chore/emerging-badge-audit-$(date -u +%Y%m%d)"
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$branch_name"
-          git add README.md
-          git commit -m "chore: correct Emerging & Unverified Providers badges"
-          git push --force origin "$branch_name"
+          BASE_SHA="$(git rev-parse HEAD)" scripts/sign-commit "$branch_name" \
+            "chore: correct Emerging & Unverified Providers badges" README.md
 
           existing_pr=$(gh pr list --head "$branch_name" --state open --json number --jq ".[0].number" || true)
           if [ -n "$existing_pr" ]; then

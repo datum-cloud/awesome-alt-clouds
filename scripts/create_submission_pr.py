@@ -150,10 +150,12 @@ def create_pr(data):
         names = ", ".join(s["name"] for s in added_services)
         commit_msg = f"Add {len(added_services)} services: {names}\\n\\nCloses #{issue_number}"
 
-    run_command(f'git commit -m "{commit_msg}"')
-
-    # Push branch (force in case a previous run already pushed this branch)
-    run_command(f"git push --force origin {branch_name}")
+    # Commit through the API so GitHub signs it; this also resets a branch a
+    # previous run already pushed.
+    run_command(
+        "BASE_SHA=$(git rev-parse HEAD) scripts/sign-commit "
+        f'{branch_name} "{commit_msg}" $(git diff --cached --name-only)'
+    )
 
     # Skip PR creation if one already exists for this branch
     existing_pr = run_command(
