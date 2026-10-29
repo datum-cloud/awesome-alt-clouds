@@ -4,12 +4,11 @@ on:
   issue_comment:
     types: [created]
 
-concurrency:
-  group: watchlist
-  cancel-in-progress: false
-
 jobs:
   add-to-watchlist:
+    concurrency:
+      group: watchlist
+      cancel-in-progress: false
     # Trigger: admin comments /watchlist on a submission issue
     if: |
       !github.event.issue.pull_request &&

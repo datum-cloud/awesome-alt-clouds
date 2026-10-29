@@ -5,7 +5,8 @@
 # not exist at all is deleted from the branch. Directories and symlinks are
 # refused. With -z, further PATHs are read from stdin, NUL-separated, so
 # `git diff -z --name-only` output passes through without quoting or splitting.
-# Exits non-zero when there is nothing to commit.
+# Exits 1 when there is nothing to commit, and 3 when the remote branch is not
+# at the expected head, so a caller can refetch and try again.
 # Set EXPECTED_HEAD to the commit the job checked out: the commit fails unless
 # the remote branch is still there. Set BASE_SHA instead to create BRANCH at
 # that commit (or reset it there) first. One of the two is required.
@@ -90,7 +91,7 @@ else
   head=$(remote_head)
   if [ "$head" != "$expected" ]; then
     echo "sign-commit: ${branch} is at ${head}, but this job checked out ${expected}." >&2
-    exit 1
+    exit 3
   fi
 fi
 
@@ -122,7 +123,7 @@ for attempt in 1 2 3 4 5; do
   head=$(remote_head)
   if [ "$head" != "$expected" ]; then
     echo "sign-commit: ${branch} moved to ${head} while committing; not retrying." >&2
-    exit 1
+    exit 3
   fi
   echo "Attempt ${attempt} failed, retrying." >&2
   sleep $((attempt * 2))
