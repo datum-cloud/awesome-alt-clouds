@@ -153,8 +153,9 @@ def create_pr(data):
     # Commit through the API so GitHub signs it; this also resets a branch a
     # previous run already pushed.
     run_command(
-        "BASE_SHA=$(git rev-parse HEAD) scripts/sign-commit "
-        f'{branch_name} "{commit_msg}" $(git diff --cached --name-only)'
+        "git diff --cached --name-only -z | "
+        "BASE_SHA=$(git rev-parse HEAD) scripts/sign-commit -z "
+        f'{branch_name} "{commit_msg}"'
     )
 
     # Skip PR creation if one already exists for this branch

@@ -1,37 +1,98 @@
 #!/usr/bin/env bash
 # Commit files to a branch through the GitHub API so GitHub signs the commit.
-# Usage: sign-commit BRANCH MESSAGE PATH...
-# A PATH that exists is committed with its current contents; one that does not
-# exist is deleted from the branch. Set BASE_SHA to create BRANCH at that commit
-# (or reset it there) first. Needs GH_TOKEN and GITHUB_REPOSITORY.
+# Usage: sign-commit [-z] BRANCH MESSAGE [PATH...]
+# A PATH that is a file is committed with its current contents; one that does
+# not exist at all is deleted from the branch. Directories and symlinks are
+# refused. With -z, further PATHs are read from stdin, NUL-separated, so
+# `git diff -z --name-only` output passes through without quoting or splitting.
+# Exits non-zero when there is nothing to commit.
+# Set EXPECTED_HEAD to the commit the job checked out: the commit fails unless
+# the remote branch is still there. Set BASE_SHA instead to create BRANCH at
+# that commit (or reset it there) first. One of the two is required.
+# Needs GH_TOKEN and GITHUB_REPOSITORY.
 set -euo pipefail
+
+from_stdin=0
+if [ "${1:-}" = "-z" ]; then
+  from_stdin=1
+  shift
+fi
+if [ $# -lt 2 ]; then
+  echo "Usage: sign-commit [-z] BRANCH MESSAGE [PATH...]" >&2
+  exit 2
+fi
 
 branch=$1
 message=$2
 shift 2
 
 repo=${GITHUB_REPOSITORY:?GITHUB_REPOSITORY is required}
+if [ -z "${BASE_SHA:-}" ] && [ -z "${EXPECTED_HEAD:-}" ]; then
+  echo "sign-commit: set EXPECTED_HEAD (or BASE_SHA to create the branch)." >&2
+  exit 2
+fi
 work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
+
+: > "$work/additions"
+: > "$work/deletions"
+n=0
+adds=0
+dels=0
+
+add_path() {
+  local path=$1
+  if [ -L "$path" ]; then
+    echo "sign-commit: ${path} is a symlink; the API cannot commit one." >&2
+    exit 1
+  elif [ -d "$path" ]; then
+    echo "sign-commit: ${path} is a directory; pass the files in it." >&2
+    exit 1
+  elif [ -f "$path" ]; then
+    n=$((n + 1))
+    adds=$((adds + 1))
+    base64 < "$path" | tr -d '\n' > "$work/$n.b64"
+    jq -nc --arg path "$path" --rawfile contents "$work/$n.b64" '{path: $path, contents: $contents}' >> "$work/additions"
+  elif [ ! -e "$path" ]; then
+    dels=$((dels + 1))
+    jq -nc --arg path "$path" '{path: $path}' >> "$work/deletions"
+  else
+    echo "sign-commit: ${path} is not a regular file." >&2
+    exit 1
+  fi
+}
+
+for path in "$@"; do
+  add_path "$path"
+done
+if [ "$from_stdin" = 1 ]; then
+  while IFS= read -r -d '' path; do
+    add_path "$path"
+  done
+fi
+
+if [ $((adds + dels)) -eq 0 ]; then
+  echo "sign-commit: nothing to commit." >&2
+  exit 1
+fi
+
+remote_head() {
+  gh api "repos/${repo}/git/ref/heads/${branch}" --jq .object.sha
+}
 
 if [ -n "${BASE_SHA:-}" ]; then
   if ! gh api -X POST "repos/${repo}/git/refs" -f "ref=refs/heads/${branch}" -f "sha=${BASE_SHA}" >/dev/null 2>&1; then
     gh api -X PATCH "repos/${repo}/git/refs/heads/${branch}" -f "sha=${BASE_SHA}" -F force=true >/dev/null
   fi
-fi
-
-: > "$work/additions"
-: > "$work/deletions"
-n=0
-for path in "$@"; do
-  if [ -f "$path" ]; then
-    n=$((n + 1))
-    base64 < "$path" | tr -d '\n' > "$work/$n.b64"
-    jq -nc --arg path "$path" --rawfile contents "$work/$n.b64" '{path: $path, contents: $contents}' >> "$work/additions"
-  else
-    jq -nc --arg path "$path" '{path: $path}' >> "$work/deletions"
+  expected=$BASE_SHA
+else
+  expected=$EXPECTED_HEAD
+  head=$(remote_head)
+  if [ "$head" != "$expected" ]; then
+    echo "sign-commit: ${branch} is at ${head}, but this job checked out ${expected}." >&2
+    exit 1
   fi
-done
+fi
 
 headline=${message%%$'\n'*}
 body=""
@@ -42,21 +103,26 @@ fi
 
 query='mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { url } } }'
 
+jq -n --arg query "$query" --arg repo "$repo" --arg branch "$branch" --arg head "$expected" \
+  --arg headline "$headline" --arg body "$body" \
+  --slurpfile additions "$work/additions" --slurpfile deletions "$work/deletions" '{
+    query: $query,
+    variables: {input: {
+      branch: {repositoryNameWithOwner: $repo, branchName: $branch},
+      expectedHeadOid: $head,
+      message: ({headline: $headline} + (if $body == "" then {} else {body: $body} end)),
+      fileChanges: {additions: $additions, deletions: $deletions}
+    }}
+  }' > "$work/request.json"
+
 for attempt in 1 2 3 4 5; do
-  head=$(gh api "repos/${repo}/git/ref/heads/${branch}" --jq .object.sha)
-  jq -n --arg query "$query" --arg repo "$repo" --arg branch "$branch" --arg head "$head" \
-    --arg headline "$headline" --arg body "$body" \
-    --slurpfile additions "$work/additions" --slurpfile deletions "$work/deletions" '{
-      query: $query,
-      variables: {input: {
-        branch: {repositoryNameWithOwner: $repo, branchName: $branch},
-        expectedHeadOid: $head,
-        message: ({headline: $headline} + (if $body == "" then {} else {body: $body} end)),
-        fileChanges: {additions: $additions, deletions: $deletions}
-      }}
-    }' > "$work/request.json"
   if gh api graphql --input "$work/request.json" --jq .data.createCommitOnBranch.commit.url; then
     exit 0
+  fi
+  head=$(remote_head)
+  if [ "$head" != "$expected" ]; then
+    echo "sign-commit: ${branch} moved to ${head} while committing; not retrying." >&2
+    exit 1
   fi
   echo "Attempt ${attempt} failed, retrying." >&2
   sleep $((attempt * 2))

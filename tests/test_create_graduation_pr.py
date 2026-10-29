@@ -88,7 +88,7 @@ class TestCreatePr:
         assert any(c.startswith("git checkout -b graduation-326-turbopuffer") for c in commands)
         assert any(c == "git add README.md" for c in commands)
         assert any(
-            "scripts/sign-commit graduation-326-turbopuffer" in c and "Graduate Turbopuffer" in c
+            "scripts/sign-commit -z graduation-326-turbopuffer" in c and "Graduate Turbopuffer" in c
             for c in commands
         )
         assert any(c.startswith("gh pr create") for c in commands)

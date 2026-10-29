@@ -64,10 +64,8 @@ jobs:
           BRANCH="generated-profiles-$(date +%Y%m%d-%H%M%S)"
           git add src/content/clouds/
           COUNT=$(git diff --cached --name-only | grep -c '\.mdx' || echo 0)
-          mapfile -t FILES < <(git diff --cached --name-only)
-          BASE_SHA="$(git rev-parse HEAD)" scripts/sign-commit "$BRANCH" \
-            "feat(profiles): auto-generate ${COUNT} cloud detail profiles [needs-verification]" \
-            "${FILES[@]}"
+          git diff --cached --name-only -z | BASE_SHA="$(git rev-parse HEAD)" scripts/sign-commit -z "$BRANCH" \
+            "feat(profiles): auto-generate ${COUNT} cloud detail profiles [needs-verification]"
 
           # Render the body via a Python helper so we can interpolate from backfill_summary.json safely.
           python3 <<'PY' > pr_body.md

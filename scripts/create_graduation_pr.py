@@ -86,8 +86,9 @@ def create_pr(data):
         f"\\n\\nCloses #{issue_number}"
     )
     run_command(
-        "BASE_SHA=$(git rev-parse HEAD) scripts/sign-commit "
-        f'{branch_name} "{commit_msg}" $(git diff --cached --name-only)'
+        "git diff --cached --name-only -z | "
+        "BASE_SHA=$(git rev-parse HEAD) scripts/sign-commit -z "
+        f'{branch_name} "{commit_msg}"'
     )
 
     existing_pr = run_command(
