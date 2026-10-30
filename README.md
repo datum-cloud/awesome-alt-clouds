@@ -298,6 +298,7 @@ Logging, metrics, tracing, error tracking, uptime monitoring, and session replay
 * 🟢 [New Relic](https://newrelic.com/) - An observability platform that unifies metrics, events, logs, and traces for full-stack monitoring.
 * 🟢 [NOFire](https://www.nofire.ai/) - Delivers an AI SRE platform that provides production context and runtime control, preventing incidents by scoring changes and enforcing policies before execution.
 * 🟢 [OpenStatus](https://www.openstatus.dev/) - Open-source status page and monitoring platform for tracking API and website uptime worldwide.
+* 🟢 [Polylane](https://polylane.com/) - Detects issues in cloud applications using AI-powered analysis of logs, metrics, and traces, then automatically generates fixes and opens pull requests before incidents occur.
 * 🟢 [Raindrop](https://www.raindrop.ai/) - Provides observability and debugging for AI agents in production, detecting silent failures, tracing execution, and enabling safe testing through simulations.
 * 🟢 [Sentry](https://sentry.io/) - Application monitoring platform for error tracking, performance monitoring, and session replay to identify and resolve code issues.
 * 🟡 [SolidPing](https://www.solidping.io/) - Provides open-source uptime monitoring with 40+ check types, distributed workers, on-call scheduling, and public status pages. Self-hostable or cloud-hosted.
