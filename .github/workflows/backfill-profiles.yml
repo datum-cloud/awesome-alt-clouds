@@ -62,13 +62,10 @@ jobs:
         run: |
           set -euo pipefail
           BRANCH="generated-profiles-$(date +%Y%m%d-%H%M%S)"
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$BRANCH"
           git add src/content/clouds/
           COUNT=$(git diff --cached --name-only | grep -c '\.mdx' || echo 0)
-          git commit -m "feat(profiles): auto-generate ${COUNT} cloud detail profiles [needs-verification]"
-          git push origin "$BRANCH"
+          git diff --cached --name-only -z | BASE_SHA="$(git rev-parse HEAD)" scripts/sign-commit -z "$BRANCH" \
+            "feat(profiles): auto-generate ${COUNT} cloud detail profiles [needs-verification]"
 
           # Render the body via a Python helper so we can interpolate from backfill_summary.json safely.
           python3 <<'PY' > pr_body.md

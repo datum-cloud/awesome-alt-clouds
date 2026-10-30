@@ -85,8 +85,11 @@ def create_pr(data):
         f"Graduate {name} from {data['old_category']} to {data['new_category']}"
         f"\\n\\nCloses #{issue_number}"
     )
-    run_command(f'git commit -m "{commit_msg}"')
-    run_command(f"git push --force origin {branch_name}")
+    run_command(
+        "git diff --cached --name-only -z | "
+        "BASE_SHA=$(git rev-parse HEAD) scripts/sign-commit -z "
+        f'{branch_name} "{commit_msg}"'
+    )
 
     existing_pr = run_command(
         f'gh pr list --head {branch_name} --state open --json number --jq ".[0].number"',

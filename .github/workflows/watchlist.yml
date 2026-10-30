@@ -6,6 +6,9 @@ on:
 
 jobs:
   add-to-watchlist:
+    concurrency:
+      group: watchlist
+      cancel-in-progress: false
     # Trigger: admin comments /watchlist on a submission issue
     if: |
       !github.event.issue.pull_request &&
@@ -76,15 +79,15 @@ jobs:
 
       - name: Commit and push
         if: steps.check-permission.outputs.allowed == 'true'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           changed=$(cat /tmp/watchlist_changed.txt 2>/dev/null || echo "false")
           if [ "$changed" = "true" ]; then
             name=$(cat /tmp/watchlist_name.txt 2>/dev/null || echo "entry")
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add WATCHLIST.md public/watchlist.json
-            git commit -m "chore: add ${name} to watchlist [skip ci]"
-            git push
+            EXPECTED_HEAD="$(git rev-parse HEAD)" scripts/sign-commit main "chore: add ${name} to watchlist [skip ci]" \
+              WATCHLIST.md public/watchlist.json
           else
             echo "No changes to commit."
           fi
