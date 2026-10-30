@@ -614,6 +614,7 @@ Usage metering, subscription management, billing infrastructure, and financial o
 * 🟢 [Stripe](https://stripe.com/) - A financial infrastructure platform that enables businesses to accept payments, manage subscriptions, and handle billing operations.
 * 🟢 [Togai](https://www.togai.com/) - Provides billing infrastructure for usage-based pricing, supporting complex billing scenarios with real-time analytics.
 * 🟢 [UniBee](https://unibee.dev/) - Open-source billing and subscription management with usage-based pricing, multi-gateway support, and self-host options.
+* 🟢 [UsageRail](https://usagerail.com/) - Provides API monetization with usage-based billing, rate limiting, and customer portals integrated with Stripe, using an in-process SDK that keeps requests server-side.
 * 🟢 [Wise](https://wise.com/) - A platform for paying and getting paid globally.
 
 ## Customer, Marketing & eCommerce
