@@ -467,6 +467,7 @@ AI-powered code editors, IDEs, no-code/low-code builders, and full-stack app gen
 
 Platform-as-a-service and managed hosting providers for deploying and scaling web applications, APIs, and services.
 
+* 🟡 [AFFiNE](https://affine.pro/) - Provides an open-source, local-first workspace combining docs, whiteboards, databases, and AI for knowledge management, project planning, and visual collaboration.
 * 🟢 [Alien](https://www.alien.dev/) - Enables deploying applications directly into customer AWS, GCP, and Azure accounts for secure, agentless multi-cloud distribution with full observability.
 * 🟢 [Deno Deploy](https://deno.com/deploy) - Globally distributed edge platform for JavaScript and TypeScript serverless apps.
 * 🟢 [Flightcontrol](https://www.flightcontrol.dev/) - Automates infrastructure provisioning, CI/CD, and deployments within your own AWS account, offering full visibility and control.
