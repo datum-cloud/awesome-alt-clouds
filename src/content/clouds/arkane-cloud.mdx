@@ -1,0 +1,50 @@
+---
+status: draft
+tagline: "Sovereign NVIDIA GPU cloud hosted in France, with pay-per-token model APIs and per-second serverless GPU billing."
+headquarters: "France"
+pricingModel: usage-based
+regions:
+  - "Paris, France"
+  - "Lyon, France"
+services:
+  - "Models API (OpenAI-compatible, 30+ open-source models)"
+  - "Serverless GPU"
+  - "Cloud GPU (on-demand instances with SSH)"
+  - "GPU Clusters (reserved multi-node)"
+  - "Fine-tuning"
+  - "Training"
+  - "VS Code extension for coding models"
+socials:
+  website: "https://arkanecloud.com/"
+---
+
+## What makes Arkane Cloud different
+
+Arkane Cloud positions itself as a "sovereign AI cloud" built specifically for European data residency requirements. Unlike hyperscalers that run on globally distributed infrastructure, Arkane Cloud owns and operates its own NVIDIA GPU servers located in Paris and Lyon, France, giving customers a concrete guarantee about where data physically resides rather than a contractual promise layered over shared global infrastructure.
+
+The company explicitly states that customer prompts and outputs are never used to train its models, a policy positioned as a trust differentiator for enterprises wary of hyperscaler data practices. It also offers a notably broad GPU lineup — from the latest NVIDIA B300 (Blackwell Ultra) and RTX PRO 6000 down to older A100 and L40S cards — available both on-demand and as reserved clusters, letting teams match hardware generation to workload cost/performance needs.
+
+Its product line spans three layers of abstraction: a managed Models API for teams that just want inference over open-source models, Serverless GPU for teams that want to deploy custom models with scale-to-zero billing, and raw Cloud GPU/Clusters for teams that need full SSH-level control for training or fine-tuning.
+
+## Pricing model
+
+Arkane Cloud uses usage-based pricing across its product lines: the Models API is billed per token, Serverless GPU is billed per second with scale-to-zero (no charge when idle), and Cloud GPU instances are billed on-demand by the hour/second depending on the instance. GPU Clusters are offered as reserved capacity via direct sales engagement. A dedicated pricing page compares costs across GPU types (B300, RTX PRO 6000, B200, H200, H100, A100, L40S), though exact rate tables weren't captured in this content pull.
+
+What stands out is the granularity: per-second serverless billing with scale-to-zero is closer to a FaaS cost model than typical GPU cloud hourly billing, making it attractive for bursty or unpredictable inference workloads.
+
+## When it fits
+
+- Teams needing GPU compute or AI inference with data that must stay within France/EU borders
+- Startups wanting to call open-source LLMs via an OpenAI-compatible API without managing infrastructure
+- Workloads with spiky or intermittent inference traffic that benefit from per-second, scale-to-zero serverless GPU billing
+- Developers who want open-source coding models integrated directly into their IDE via the VS Code extension
+- ML teams needing reserved multi-GPU clusters for large-scale training without hyperscaler lock-in
+
+## When it doesn't
+
+- Teams needing a broad global footprint of regions outside Europe, or multi-cloud service breadth beyond GPU/AI compute (storage, databases, networking, etc.) should look elsewhere.
+- Workloads requiring the largest possible training clusters (hundreds+ of GPUs) may be better served by hyperscale-specific HPC offerings.
+
+## Inclusion criteria
+
+Arkane Cloud meets all three inclusion criteria: transparent, published pricing (per-token, per-second, and GPU pricing pages at arkanecloud.com/pricing), self-service signup via its online Console (arkanecloud.com Console/Register), and a public Service Level Agreement linked from its footer (arkanecloud.com/service-level-agreement).

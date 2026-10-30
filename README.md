@@ -114,6 +114,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [Aethir](https://aethir.com) - Provides secure, cost-effective access to enterprise-grade GPUs worldwide through a distributed cloud compute infrastructure.
 * 🟢 [Andromeda](https://andromeda.ai/) - Connects AI teams with high-performance GPU compute across 100+ global providers, offering real-time sourcing, benchmarking, and standardized deployment at scale.
 * 🟢 [Anyscale](https://www.anyscale.com/) - Distributed computing platform built on Ray for scaling AI and Python apps.
+* 🟢 [Arkane Cloud](https://arkanecloud.com/) - Provides sovereign AI cloud infrastructure with GPU instances, serverless GPU deployment, and open-source model APIs hosted on proprietary NVIDIA servers in France.
 * 🟢 [Banana.dev](https://www.banana.dev/) - Serverless GPU platform for ML model inference with pay-per-millisecond pricing.
 * 🟢 [Baseten](https://www.baseten.co/) - Enables fast, reliable model inference with flexible deployment options, including self-hosted and hybrid.
 * 🟡 [Blackfuel](https://www.blackfuel.ai/) - Provides dedicated AI infrastructure and AI-native inference optimization across hardware architectures, delivering efficient token generation per megawatt.
