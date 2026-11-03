@@ -145,7 +145,7 @@ jobs:
 
       - name: Upload submission data as artifact
         if: steps.guard.outputs.skip != 'true' && steps.check_duplicate.outputs.is_duplicate != 'true' && steps.read_outputs.outputs.has_data == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: submission-data-${{ github.event.issue.number }}
           path: submission_data.json
