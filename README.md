@@ -404,6 +404,7 @@ APIs and platforms for running inference on foundation models and open-source LL
 * 🟢 [Sail Research](https://www.sailresearch.com/) - Provides cost-efficient inference infrastructure for running leading open-source AI models on demand, optimized for long-horizon agents with flexible completion windows.
 * 🟢 [Subconscious](https://www.subconscious.dev/) - Provides inference infrastructure optimized for long-running agent workloads with runtime context compression, supporting open models with 50%+ lower costs and 2x faster task completion.
 * 🟢 [Swirls](https://swirls.ai/) - Provides a deployment platform for agentic systems with declarative configuration, durable execution, human-in-the-loop workflows, and cryptographic policy enforcement.
+* 🟢 [Tinfoil](https://tinfoil.sh/) - Provides private AI services including chat, API inference, and containerized workloads running in secure hardware enclaves with cryptographic verifiability.
 * 🟢 [Together.ai](https://www.together.ai/) - Open-source foundation model infrastructure with collaborative fine-tuning.
 
 ## AI Assistants & Copilots
