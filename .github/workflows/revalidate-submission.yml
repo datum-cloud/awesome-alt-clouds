@@ -26,7 +26,7 @@ jobs:
 
       - name: Check permissions
         id: check-permission
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           github-token: ${{ steps.app-token.outputs.token }}
           script: |
@@ -48,7 +48,7 @@ jobs:
 
       - name: Reset labels and re-trigger evaluation
         if: steps.check-permission.outputs.allowed == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           github-token: ${{ steps.app-token.outputs.token }}
           script: |

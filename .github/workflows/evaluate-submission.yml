@@ -96,7 +96,7 @@ jobs:
 
       - name: Post evaluation results
         if: steps.guard.outputs.skip != 'true' && steps.check_duplicate.outputs.is_duplicate != 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
@@ -111,7 +111,7 @@ jobs:
 
       - name: Add result label
         if: steps.guard.outputs.skip != 'true' && steps.check_duplicate.outputs.is_duplicate != 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
