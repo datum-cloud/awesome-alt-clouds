@@ -51,7 +51,7 @@ jobs:
 
       - name: Checkout
         if: steps.check-permission.outputs.allowed == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           token: ${{ steps.app-token.outputs.token }}
 
