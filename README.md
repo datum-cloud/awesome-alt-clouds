@@ -135,6 +135,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟢 [HydraHost](https://hydrahost.com/) - Affordable GPU compute focused on researchers and indie developers.
 * 🟢 [Hyperbolic](https://hyperbolic.xyz/) - Offers scalable GPU compute for AI applications with a focus on performance and cost-efficiency.
 * 🟢 [Hyperstack](https://www.hyperstack.cloud/) - Cloud GPU and AI platform for building, training, and deploying custom AI models.
+* 🟡 [Hyperstellar](https://hyperstellar.ai/) - Provides a peer-to-peer marketplace for attested compute, allowing operators to monetize idle accelerators and buyers to access GPU capacity on flexible terms.
 * 🟢 [Lambda Labs](https://lambda.ai/) - Delivers on-demand access to NVIDIA GPUs for AI training and inference.
 * 🟢 [LeaderGPU](https://www.leadergpu.com/) - Provides high-performance GPU servers for rent, optimized for AI tasks.
 * 🟢 [Lightning.ai](https://lightning.ai/) - Build, train, and deploy AI models with powerful tools and scalable infrastructure.
