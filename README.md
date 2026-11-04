@@ -147,6 +147,7 @@ Specialized providers offering on-demand GPU clusters, serverless inference, and
 * 🟡 [Paperspace](https://www.paperspace.com/) - Cloud computing with GPU support for AI development and deployment. Now owned by DigitalOcean.
 * 🟢 [Parasail](https://parasail.ai/) - Serverless GPU platform to run custom AI models easily.
 * 🟡 [Positron](https://www.positron.ai/) - Delivers purpose-built hardware and API infrastructure for optimized Transformer model inference, supporting HuggingFace models with OpenAI-compatible endpoints.
+* 🟡 [QIT](https://qit.energy/) - Provides serverless GPUs (QIT Pods), reserved and bare-metal GPUs from L40s to B300, a Model API with 407 models, and liquid-cooled GPU containers.
 * 🟢 [Runpod](https://www.runpod.io/) - Provides customizable GPU containers and secure cloud compute environments.
 * 🟢 [Shadeform](https://shadeform.com/) - GPU compute provider with a focus on low-cost AI infrastructure.
 * 🟢 [SkyPilot](https://skypilot.ai/) - Provides a unified AI compute platform for managing workloads across Kubernetes, Slurm, and 20+ cloud providers with multi-cloud orchestration capabilities.
