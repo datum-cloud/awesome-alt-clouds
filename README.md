@@ -333,6 +333,7 @@ Orchestration, automation, and operations platforms for running reliable workflo
 * 🟢 [Kestra](https://kestra.io/) - Open-source orchestration platform for event-driven workflows.
 * 🟢 [Mabl](https://www.mabl.com/) - AI-native test automation with self-healing tests. Agentic tester handles creation, execution, and maintenance. Enterprise-grade.
 * 🟢 [Miter](https://www.miter.com/) - All-in-one platform for payroll, HR, expenses, and field operations management.
+* 🟡 [mrin](https://mrin.ai/) - Provides an execution layer for AI agents with microVM sandboxes that commit entire machine state after each command, enabling fork, restore, and replay operations.
 * 🟢 [n8n](https://n8n.io/) - An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor.
 * 🟢 [PagerDuty](https://www.pagerduty.com/) - A platform for automating critical operations work.
 * 🟢 [Prefect](https://www.prefect.io/) - Workflow orchestration framework for building resilient data pipelines in Python.
