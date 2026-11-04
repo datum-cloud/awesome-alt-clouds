@@ -405,6 +405,7 @@ APIs and platforms for running inference on foundation models and open-source LL
 * 🟢 [Subconscious](https://www.subconscious.dev/) - Provides inference infrastructure optimized for long-running agent workloads with runtime context compression, supporting open models with 50%+ lower costs and 2x faster task completion.
 * 🟢 [Swirls](https://swirls.ai/) - Provides a deployment platform for agentic systems with declarative configuration, durable execution, human-in-the-loop workflows, and cryptographic policy enforcement.
 * 🟢 [Together.ai](https://www.together.ai/) - Open-source foundation model infrastructure with collaborative fine-tuning.
+* 🟡 [UberLLM](https://uberllm.dev/) - Provides one OpenAI- and Anthropic-compatible API for GPT, Claude, Gemini, DeepSeek and Qwen text models plus image, video, music and speech models, billed per request.
 
 ## AI Assistants & Copilots
 
