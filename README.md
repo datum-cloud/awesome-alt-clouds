@@ -541,6 +541,7 @@ Build systems, artifact registries, CI/CD pipelines, cloud dev environments, tes
 * 🟢 [Replit](https://replit.com/) - Collaborative browser IDE with instant deployment and multiplayer coding.
 * 🟢 [Retool](https://retool.com/) - A low-code platform to build custom internal tools quickly with pre-built components and database integrations.
 * 🟡 [RWX](https://www.rwx.com/) - Provides a modern CI/CD platform designed for agentic development cycles with integrated sandboxes, automatic caching, and OCI container image generation.
+* 🟢 [Sengi](https://sengi.run/) - Runs GitHub Actions jobs on managed Linux runners from $0.001 per minute at 2 vCPU, with 3,000 free minutes a month and a one-line runs-on switch.
 * 🟢 [StackBlitz](https://stackblitz.com/) - Instant full-stack dev environments running entirely in the browser.
 * 🟡 [Superset](https://superset.sh/) - Enables developers to run 100+ parallel coding agents in isolated workspaces, automating tasks and streamlining code review workflows across multiple projects simultaneously.
 * 🟡 [Tensorlake](https://www.tensorlake.ai/) - Provides a complete platform for deploying production AI agents with durable execution, document ingestion, code sandboxes, and multi-cloud compute infrastructure.
