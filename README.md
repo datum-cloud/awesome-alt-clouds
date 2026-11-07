@@ -58,6 +58,7 @@ The original "alt clouds" providing everything from virtualized and bare metal c
 * 🟢 [Atlantic.net](https://www.atlantic.net/) - Experienced hosting company offering a variety of compute and GPU infrastructure services.
 * 🟢 [Axiom](https://axiom.co/) - Cloud service provider.
 * 🟢 [Beam](https://www.beam.cloud) - Cloud infrastructure specifically built for high-performance applications and developer happiness.
+* 🟡 [boxd](https://boxd.sh/) - Provides persistent, composable Linux virtual machines with forking, snapshots, and checkpoints that preserve running processes, files, and state across sessions.
 * 🟡 [Browser-Use](https://browser-use.com/) - Cloud service provider.
 * 🟢 [Civo](https://www.civo.com) - Provides cloud services with a focus on simplicity and developer experience.
 * 🟢 [cloudscale.ch](https://cloudscale.ch/) - Swiss IaaS provider offering VMs, GPU servers, load balancers, and object storage with per-hour pricing and full Swiss data residency.
