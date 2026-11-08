@@ -114,11 +114,11 @@ def create_pr(data):
         branch_name = f"submission-{issue_number}-{len(services)}-services"
 
     # Configure git
-    run_command('git config user.name "github-actions[bot]"')
-    run_command('git config user.email "github-actions[bot]@users.noreply.github.com"')
+    run_command(["git", "config", "user.name", "github-actions[bot]"])
+    run_command(["git", "config", "user.email", "github-actions[bot]@users.noreply.github.com"])
 
     # Create and checkout new branch
-    run_command(f"git checkout -b {branch_name}")
+    run_command(["git", "checkout", "-b", branch_name])
 
     # Add each entry to README
     added_services = []
@@ -141,7 +141,7 @@ def create_pr(data):
             mdx_reports.append(report)
 
     # Commit changes
-    run_command("git add README.md")
+    run_command(["git", "add", "README.md"])
 
     if len(added_services) == 1:
         s = added_services[0]
@@ -152,15 +152,27 @@ def create_pr(data):
 
     # Commit through the API so GitHub signs it; this also resets a branch a
     # previous run already pushed.
-    run_command(
-        "git diff --cached --name-only -z | "
-        "BASE_SHA=$(git rev-parse HEAD) scripts/sign-commit -z "
-        f'{branch_name} "{commit_msg}"'
-    )
+    # sign-commit reads the staged paths NUL-separated on stdin; pass them as
+    # an argument list so no filename or commit message reaches a shell.
+    staged = run_command(["git", "diff", "--cached", "--name-only", "-z"], strip=False)
+    os.environ["BASE_SHA"] = run_command(["git", "rev-parse", "HEAD"])
+    run_command(["scripts/sign-commit", "-z", branch_name, commit_msg], input=staged)
 
     # Skip PR creation if one already exists for this branch
     existing_pr = run_command(
-        f'gh pr list --head {branch_name} --state open --json number --jq ".[0].number"',
+        [
+            "gh",
+            "pr",
+            "list",
+            "--head",
+            branch_name,
+            "--state",
+            "open",
+            "--json",
+            "number",
+            "--jq",
+            ".[0].number",
+        ],
         check=False,
     )
     if existing_pr.strip():
@@ -242,9 +254,21 @@ Closes #{issue_number}
     # "Allow GitHub Actions to create and approve pull requests" setting being off —
     # raises, prints stderr, and fails the workflow step instead of silently no-opping
     # after the branch has already been pushed.
-    pr_body_escaped = pr_body.replace('"', '\\"').replace("`", "\\`")
+    # Pass the title and body as arguments so submitted values stay data.
     result = run_command(
-        f'gh pr create --title "{pr_title}" --body "{pr_body_escaped}" --base main --head {branch_name}'
+        [
+            "gh",
+            "pr",
+            "create",
+            "--title",
+            pr_title,
+            "--body",
+            pr_body,
+            "--base",
+            "main",
+            "--head",
+            branch_name,
+        ]
     )
 
     print(f"PR creation result: {result}")

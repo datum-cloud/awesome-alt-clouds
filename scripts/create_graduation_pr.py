@@ -72,27 +72,39 @@ def create_pr(data):
     issue_number = data.get("issue_number", "unknown")
     branch_name = f"graduation-{issue_number}-{slugify(name)[:30]}"
 
-    run_command('git config user.name "github-actions[bot]"')
-    run_command('git config user.email "github-actions[bot]@users.noreply.github.com"')
-    run_command(f"git checkout -b {branch_name}")
+    run_command(["git", "config", "user.name", "github-actions[bot]"])
+    run_command(["git", "config", "user.email", "github-actions[bot]@users.noreply.github.com"])
+    run_command(["git", "checkout", "-b", branch_name])
 
     if not move_entry_in_readme(data):
         return False
 
-    run_command("git add README.md")
+    run_command(["git", "add", "README.md"])
 
     commit_msg = (
         f"Graduate {name} from {data['old_category']} to {data['new_category']}"
         f"\\n\\nCloses #{issue_number}"
     )
-    run_command(
-        "git diff --cached --name-only -z | "
-        "BASE_SHA=$(git rev-parse HEAD) scripts/sign-commit -z "
-        f'{branch_name} "{commit_msg}"'
-    )
+    # sign-commit reads the staged paths NUL-separated on stdin; pass them as
+    # an argument list so no filename or commit message reaches a shell.
+    staged = run_command(["git", "diff", "--cached", "--name-only", "-z"], strip=False)
+    os.environ["BASE_SHA"] = run_command(["git", "rev-parse", "HEAD"])
+    run_command(["scripts/sign-commit", "-z", branch_name, commit_msg], input=staged)
 
     existing_pr = run_command(
-        f'gh pr list --head {branch_name} --state open --json number --jq ".[0].number"',
+        [
+            "gh",
+            "pr",
+            "list",
+            "--head",
+            branch_name,
+            "--state",
+            "open",
+            "--json",
+            "number",
+            "--jq",
+            ".[0].number",
+        ],
         check=False,
     )
     if existing_pr.strip():
@@ -127,9 +139,21 @@ Closes #{issue_number}
 *This PR was automatically created by the graduation-request bot.*
 """
 
-    pr_body_escaped = pr_body.replace('"', '\\"').replace("`", "\\`")
+    # Pass the title and body as arguments so submitted values stay data.
     result = run_command(
-        f'gh pr create --title "{pr_title}" --body "{pr_body_escaped}" --base main --head {branch_name}'
+        [
+            "gh",
+            "pr",
+            "create",
+            "--title",
+            pr_title,
+            "--body",
+            pr_body,
+            "--base",
+            "main",
+            "--head",
+            branch_name,
+        ]
     )
     print(f"PR creation result: {result}")
     return True

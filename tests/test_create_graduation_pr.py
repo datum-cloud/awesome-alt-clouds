@@ -75,23 +75,22 @@ class TestCreatePr:
 
         commands = []
 
-        def fake_run_command(cmd, check=True):
+        def fake_run_command(cmd, check=True, input=None, strip=True):
             commands.append(cmd)
-            if cmd.startswith("gh pr list"):
-                return ""
             return ""
 
         with patch.object(cg, "run_command", side_effect=fake_run_command):
             result = cg.create_pr(GRADUATION_DATA)
 
         assert result is True
-        assert any(c.startswith("git checkout -b graduation-326-turbopuffer") for c in commands)
-        assert any(c == "git add README.md" for c in commands)
+        assert any(c == ["git", "checkout", "-b", "graduation-326-turbopuffer"] for c in commands)
+        assert any(c == ["git", "add", "README.md"] for c in commands)
         assert any(
-            "scripts/sign-commit -z graduation-326-turbopuffer" in c and "Graduate Turbopuffer" in c
+            c[:3] == ["scripts/sign-commit", "-z", "graduation-326-turbopuffer"]
+            and any("Graduate Turbopuffer" in str(arg) for arg in c)
             for c in commands
         )
-        assert any(c.startswith("gh pr create") for c in commands)
+        assert any(c[:3] == ["gh", "pr", "create"] for c in commands)
 
     def test_skips_pr_creation_if_branch_already_has_open_pr(self, tmp_path, monkeypatch):
         monkeypatch.chdir(tmp_path)
@@ -99,9 +98,9 @@ class TestCreatePr:
 
         commands = []
 
-        def fake_run_command(cmd, check=True):
+        def fake_run_command(cmd, check=True, input=None, strip=True):
             commands.append(cmd)
-            if cmd.startswith("gh pr list"):
+            if cmd[:3] == ["gh", "pr", "list"]:
                 return "42"
             return ""
 
@@ -109,7 +108,7 @@ class TestCreatePr:
             result = cg.create_pr(GRADUATION_DATA)
 
         assert result is True
-        assert not any(c.startswith("gh pr create") for c in commands)
+        assert not any(c[:3] == ["gh", "pr", "create"] for c in commands)
 
     def test_returns_false_when_readme_move_fails(self, tmp_path, monkeypatch):
         monkeypatch.chdir(tmp_path)
@@ -119,12 +118,14 @@ class TestCreatePr:
         commands = []
 
         with patch.object(
-            cg, "run_command", side_effect=lambda cmd, check=True: commands.append(cmd)
+            cg,
+            "run_command",
+            side_effect=lambda cmd, check=True, **kwargs: commands.append(cmd),
         ):
             result = cg.create_pr(data)
 
         assert result is False
-        assert not any("sign-commit" in c for c in commands)
+        assert not any(any("sign-commit" in str(arg) for arg in c) for c in commands)
 
 
 class TestMain:
