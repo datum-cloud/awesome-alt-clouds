@@ -33,4 +33,11 @@ export default [
       globals: globals.node,
     },
   },
+  {
+    // Datum Compute static server: runs under Bun, not Node.
+    files: ["compute/**/*.js"],
+    languageOptions: {
+      globals: { ...globals.node, Bun: "readonly" },
+    },
+  },
 ];
