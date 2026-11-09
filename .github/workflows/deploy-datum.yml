@@ -1,0 +1,250 @@
+name: Deploy Datum Compute
+
+# Builds the Astro site, packages it as a unikernel image (Dockerfile.datum) and
+# rolls it out to the awesome-alt-clouds-uk workload in the datum-cloud project
+# on Datum Compute, on the unikernel runtime.
+#
+# Runs next to deploy-pages.yml, on the same triggers (a push to main or a v* tag),
+# as a separate workflow: the two builds do not depend on each other, so a failure
+# here never blocks GitHub Pages and the reverse. It also does not manage DNS: the
+# workload answers on its generated *.datumproxy.net URL.
+# It can also be run by hand from the Actions tab.
+# See docs/datum-compute.md.
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      project:
+        description: Datum project ID (falls back to the DATUM_PROJECT repo variable)
+        default: datum-cloud
+      location:
+        description: Datum Compute location
+        default: us-central-1
+
+permissions:
+  contents: read
+
+concurrency:
+  group: datum-compute
+  cancel-in-progress: false
+
+env:
+  # Must be public and give this repository the Write role, so the job token can
+  # push and the workload can pull anonymously (see docs/datum-compute.md).
+  IMAGE_REPO: ghcr.io/datum-cloud/awesome-alt-clouds-compute
+  WORKLOAD: awesome-alt-clouds-uk
+  HTTP_PORT: 3000
+  DATUMCTL_VERSION: 0.23.0
+  COMPUTE_PLUGIN_VERSION: v0.12.10
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # packages: write pushes the image to GHCR with the job token.
+    permissions:
+      contents: read
+      packages: write
+    env:
+      DATUM_PROJECT: ${{ inputs.project || vars.DATUM_PROJECT || 'datum-cloud' }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # parse_readme_to_json.py reconstructs dateAdded from `git log -p`.
+          fetch-depth: 0
+
+      - id: ref
+        name: Name the image
+        run: |
+          # Datum does not replace an instance when the image tag is unchanged,
+          # so every deploy needs a new tag. The commit SHA is unique per commit;
+          # the run number keeps a re-run of the same commit unique as well.
+          tag="sha-${GITHUB_SHA::7}-${GITHUB_RUN_NUMBER}"
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+          echo "image=${IMAGE_REPO}:${tag}" >> "$GITHUB_OUTPUT"
+
+      # ---- Build the site (mirrors deploy-pages.yml) ----------------------
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Regenerate clouds.json, llms*.txt and watchlist.json
+        run: |
+          python scripts/parse_readme_to_json.py README.md public/clouds.json
+          python scripts/generate_llms.py public/clouds.json public/
+          python scripts/generate_watchlist_json.py
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "26.13.0"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build Astro site
+        run: npm run build
+
+      # ---- Package and deploy ---------------------------------------------
+      - name: Install datumctl
+        run: |
+          curl -fsSLo "$RUNNER_TEMP/datumctl.deb" \
+            "https://github.com/datum-cloud/datumctl/releases/download/v${DATUMCTL_VERSION}/datumctl_${DATUMCTL_VERSION}_linux_amd64.deb"
+          sudo dpkg -i "$RUNNER_TEMP/datumctl.deb"
+          # The plugin download is large and has a fixed client timeout.
+          for attempt in 1 2 3; do
+            datumctl plugin install "compute@${COMPUTE_PLUGIN_VERSION}" && break
+            [ "$attempt" = 3 ] && { echo "::error::could not install the compute plugin"; exit 1; }
+            sleep 10
+          done
+
+      - name: Log in to Datum Cloud
+        env:
+          DATUM_SA_CREDENTIALS: ${{ secrets.DATUM_SA_CREDENTIALS }}
+        run: |
+          umask 077
+          printf '%s' "$DATUM_SA_CREDENTIALS" > "$RUNNER_TEMP/datum-sa.json"
+          datumctl login --credentials "$RUNNER_TEMP/datum-sa.json"
+          rm -f "$RUNNER_TEMP/datum-sa.json"
+
+      # The default Docker driver cannot export an OCI image, so
+      # `datumctl compute build` needs a docker-container BuildKit. With this
+      # builder name the container is called buildx_buildkit_dc0.
+      - uses: docker/setup-buildx-action@v4
+        with:
+          name: dc
+          driver: docker-container
+
+      - uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push the unikernel image
+        env:
+          IMAGE: ${{ steps.ref.outputs.image }}
+          VERSION: ${{ steps.ref.outputs.tag }}
+        run: |
+          # Uses Dockerfile.datum (found in the context) and the prebuilt dist/.
+          datumctl compute build --analyze \
+            --buildkit-host docker-container://buildx_buildkit_dc0 \
+            --build-arg "VERSION=${VERSION}" \
+            --push --output "$IMAGE" .
+
+      # The workload pulls the image anonymously. A package that GHCR created
+      # private on the first push must be made public once (see the docs).
+      - name: Check the image is public
+        env:
+          IMAGE: ${{ steps.ref.outputs.image }}
+        run: |
+          docker logout ghcr.io
+          docker buildx imagetools inspect "$IMAGE" >/dev/null 2>&1 || {
+            echo "::error::$IMAGE cannot be pulled anonymously. Make the GHCR package public: https://github.com/orgs/datum-cloud/packages/container/awesome-alt-clouds-compute/settings"
+            exit 1
+          }
+
+      - name: Deploy
+        id: deploy
+        env:
+          IMAGE: ${{ steps.ref.outputs.image }}
+          LOCATION: ${{ inputs.location || 'us-central-1' }}
+          BASIC_AUTH: ${{ secrets.BASIC_AUTH }}
+        run: |
+          # The static server defaults to HOST=:: (Datum networks are IPv6 only)
+          # and PORT=3000. BASIC_AUTH ("user:password", repository secret) turns
+          # on basic auth in the server. The unikernel runtime has no envFrom, so
+          # it goes in as a plain --env; it is not written to the repository.
+          # An empty secret removes the variable (a trailing "-"), because env
+          # carries over between deploys.
+          if [ -n "$BASIC_AUTH" ]; then
+            auth_env=(--env "BASIC_AUTH=${BASIC_AUTH}")
+          else
+            auth_env=(--env "BASIC_AUTH-")
+          fi
+          datumctl compute deploy "$WORKLOAD" \
+            --project "$DATUM_PROJECT" \
+            --image "$IMAGE" \
+            --location "$LOCATION" \
+            --http-port "$HTTP_PORT" \
+            --runtime-class unikernel \
+            "${auth_env[@]}" \
+            --yes | tee "$RUNNER_TEMP/deploy.log"
+          url="$(bin/deploy-url "$RUNNER_TEMP/deploy.log")"
+          echo "url=${url}" >> "$GITHUB_OUTPUT"
+
+      - name: Check the workload
+        env:
+          TAG: ${{ steps.ref.outputs.tag }}
+        run: |
+          # The workload must now run the image this run meant to deploy.
+          datumctl get workload "$WORKLOAD" -n default --project "$DATUM_PROJECT" -o json |
+            jq -e --arg ref ":${TAG}" '[.. | .image? | strings] | any(endswith($ref))' >/dev/null || {
+              echo "::error::workload $WORKLOAD is not running the $TAG image"
+              exit 1
+            }
+          # A new instance can take a few minutes to become available.
+          for i in $(seq 1 20); do
+            datumctl get workload "$WORKLOAD" -n default --project "$DATUM_PROJECT" -o json |
+              jq -e '.status.conditions[] | select(.type == "Available") | .status == "True"' >/dev/null && exit 0
+            echo "attempt $i: $WORKLOAD is not Available yet"
+            sleep 15
+          done
+          echo "::error::workload $WORKLOAD is not Available"
+          exit 1
+
+      - name: Smoke test
+        env:
+          URL: ${{ steps.deploy.outputs.url }}
+          BASIC_AUTH: ${{ secrets.BASIC_AUTH }}
+        run: |
+          [ -n "$URL" ] || { echo "::error::deploy printed no URL"; exit 1; }
+          auth=()
+          [ -n "$BASIC_AUTH" ] && auth=(-u "$BASIC_AUTH")
+          # The URL's DNS can lag the rollout, and the edge may answer 503 for a
+          # few minutes after an instance is replaced, so retry before failing.
+          # Unikernel runs on this platform have answered 503 intermittently
+          # (see docs/datum-compute.md), so count the successes too.
+          ok=0
+          for i in $(seq 1 20); do
+            code="$(curl -s "${auth[@]}" -o /dev/null -m 15 -w '%{http_code}' "$URL/" || true)"
+            echo "attempt $i: GET / -> ${code:-000}"
+            [ "$code" = 200 ] && ok=$((ok + 1))
+            [ "$ok" -ge 3 ] && break
+            sleep 15
+          done
+          if [ "$ok" -lt 3 ]; then
+            echo "::error::$URL returned 200 only $ok times in 20 attempts"
+            exit 1
+          fi
+          for path in /llms.txt /clouds.json /robots.txt /categories/ai-inference-model-apis/; do
+            code="$(curl -s "${auth[@]}" -o /dev/null -m 15 -w '%{http_code}' "$URL$path" || true)"
+            echo "GET $path -> $code"
+            [ "$code" = 200 ] || { echo "::error::$URL$path returned $code"; exit 1; }
+          done
+          # The home page is ~1.5 MB of HTML, so it must be served compressed.
+          enc="$(curl -s "${auth[@]}" -m 30 -H 'Accept-Encoding: br, gzip' -D - -o /dev/null "$URL/" |
+            tr -d '\r' | sed -n 's/^[Cc]ontent-[Ee]ncoding: //p')"
+          echo "GET / content-encoding -> ${enc:-none}"
+          [ -n "$enc" ] || { echo "::error::$URL/ is not compressed"; exit 1; }
+          # Basic auth must reject requests without credentials.
+          if [ -n "$BASIC_AUTH" ]; then
+            code="$(curl -s -o /dev/null -m 15 -w '%{http_code}' "$URL/" || true)"
+            echo "GET / without credentials -> $code"
+            [ "$code" = 401 ] || { echo "::error::expected 401 without credentials, got $code"; exit 1; }
+          fi
+
+      - name: Summary
+        if: always()
+        env:
+          IMAGE: ${{ steps.ref.outputs.image }}
+          URL: ${{ steps.deploy.outputs.url }}
+        run: |
+          {
+            echo "### Datum Compute"
+            echo "- Project: \`$DATUM_PROJECT\`"
+            echo "- Workload: \`$WORKLOAD\` (unikernel)"
+            echo "- Image: \`${IMAGE:-none}\`"
+            echo "- URL: ${URL:-none}"
+          } >> "$GITHUB_STEP_SUMMARY"

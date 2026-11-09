@@ -1,0 +1,5 @@
+# The image only needs the prebuilt site and the static server.
+# Everything else (node_modules alone is hundreds of MB) stays out of the context.
+*
+!dist
+!compute/server.js

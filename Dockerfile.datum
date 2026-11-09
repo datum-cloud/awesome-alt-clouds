@@ -1,0 +1,40 @@
+# syntax = docker/dockerfile:1
+
+# Image for the Datum Compute unikernel runtime.
+# `datumctl compute build` uses this file instead of Dockerfile when it exists.
+#
+# The site is built OUTSIDE Docker (see .github/workflows/deploy-datum.yml):
+# the build needs Python (clouds.json / llms.txt regeneration, postbuild path
+# rewrite), Node 26 and the full git history (dateAdded), none of which belong
+# in a unikernel root filesystem. This image only packages the finished dist/
+# and a small Bun static server.
+#
+# The final stage is the unikernel root filesystem, so it holds the bun binary,
+# its shared libraries and the site, and nothing that needs a shell.
+#
+# Build it locally with:
+#   npm ci && python3 scripts/parse_readme_to_json.py README.md public/clouds.json \
+#     && python3 scripts/generate_llms.py public/clouds.json public/ \
+#     && python3 scripts/generate_watchlist_json.py && npm run build
+#   datumctl compute build --analyze .
+
+FROM oven/bun:1.3.14-slim
+
+WORKDIR /app
+
+ARG VERSION=dev
+
+# Datum networks are IPv6 only, so listen on :: (an IPv4-only socket never
+# answers).
+ENV NODE_ENV=production \
+    PORT=3000 \
+    HOST=:: \
+    VERSION=${VERSION}
+
+COPY dist ./dist
+COPY compute/server.js ./server.js
+
+EXPOSE 3000
+
+# Exec form: the unikernel starts the entrypoint directly, without a shell.
+CMD ["bun", "./server.js"]
