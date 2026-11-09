@@ -11,21 +11,23 @@ import create_graduation_pr as cg
 
 SAMPLE_README = """# Alt Cloud
 
-## Databases & Storage
+## Workload Clouds
 
 * 🟢 [Alpha DB](https://alpha.example.com/) - A database.
+* 🟡🔵 [Turbopuffer](https://turbopuffer.com/) - Vector database. <!-- tags: vector -->
 
-## Emerging & Unverified Providers
+## Service Clouds
 
-* 🟢 [Turbopuffer](https://turbopuffer.com/) - Vector database, needs verification.
+* 🟢 [Zeta Auth](https://zeta.example.com/) - Authentication.
 """
 
 GRADUATION_DATA = {
     "issue_number": "326",
     "name": "Turbopuffer",
     "url": "https://turbopuffer.com/",
-    "old_category": "Emerging & Unverified Providers",
-    "new_category": "Databases & Storage",
+    "old_category": "Workload Clouds",
+    "new_category": "Workload Clouds",
+    "tags": ["vector", "open-source"],
     "score": 3,
     "description": "Fast serverless vector database.",
     "needs_manual_review": False,
@@ -33,18 +35,31 @@ GRADUATION_DATA = {
 
 
 class TestMoveEntryInReadme:
-    def test_moves_entry_between_categories(self, tmp_path, monkeypatch):
+    def test_graduation_removes_badge_and_refreshes_entry(self, tmp_path, monkeypatch):
         monkeypatch.chdir(tmp_path)
         (tmp_path / "README.md").write_text(SAMPLE_README)
 
         assert cg.move_entry_in_readme(GRADUATION_DATA) is True
 
         content = (tmp_path / "README.md").read_text()
-        db_start = content.index("## Databases & Storage")
-        emerging_start = content.index("## Emerging & Unverified Providers")
-        turbopuffer_idx = content.index("Turbopuffer")
-        assert db_start < turbopuffer_idx < emerging_start
-        assert "Fast serverless vector database." in content
+        line = next(line for line in content.split("\n") if "Turbopuffer" in line)
+        assert line == (
+            "* 🟢 [Turbopuffer](https://turbopuffer.com/) - Fast serverless vector database. "
+            "<!-- tags: vector, open-source -->"
+        )
+        assert content.count("Turbopuffer") == 1
+        assert content.index("## Workload Clouds") < content.index("Turbopuffer")
+        assert content.index("Turbopuffer") < content.index("## Service Clouds")
+
+    def test_graduation_can_re_file_into_another_category(self, tmp_path, monkeypatch):
+        monkeypatch.chdir(tmp_path)
+        (tmp_path / "README.md").write_text(SAMPLE_README)
+
+        data = {**GRADUATION_DATA, "new_category": "Service Clouds"}
+        assert cg.move_entry_in_readme(data) is True
+
+        content = (tmp_path / "README.md").read_text()
+        assert content.index("## Service Clouds") < content.index("Turbopuffer")
 
     def test_returns_false_when_entry_missing(self, tmp_path, monkeypatch):
         monkeypatch.chdir(tmp_path)
@@ -57,7 +72,7 @@ class TestMoveEntryInReadme:
         monkeypatch.chdir(tmp_path)
         (tmp_path / "README.md").write_text(SAMPLE_README)
 
-        data = {**GRADUATION_DATA, "old_category": "Cloud Adjacent & Infrastructure Tooling"}
+        data = {**GRADUATION_DATA, "old_category": "Service Clouds"}
         assert cg.move_entry_in_readme(data) is False
 
     def test_returns_false_when_target_category_missing(self, tmp_path, monkeypatch):

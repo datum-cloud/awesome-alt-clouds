@@ -20,6 +20,11 @@ from bs4 import BeautifulSoup
 
 sys.path.insert(0, os.path.dirname(__file__))
 
+from lib.classification import (  # noqa: E402
+    classification_prompt_block,
+    normalize_classification,
+)
+from lib.taxonomy import CATEGORIES as _TAXONOMY_CATEGORIES  # noqa: E402
 from lib.fetcher import (  # noqa: E402  re-exported for backward compatibility
     fetch_page,
     fetch_page_with_fallback,
@@ -28,33 +33,8 @@ from lib.fetcher import (  # noqa: E402  re-exported for backward compatibility
     _probe_url,
 )
 
-# Categories available in the awesome list
-CATEGORIES = [
-    "Infrastructure Clouds",
-    "GPU & AI Compute Clouds",
-    "Workload Clouds",
-    "Security, Compliance & Sovereignty Clouds",
-    "Unikernels & WebAssembly",
-    "Databases & Storage",
-    "Analytics & Data Warehousing",
-    "Observability & Monitoring",
-    "Data Integration & ETL",
-    "Workflow & Operations Clouds",
-    "Network & Connectivity Clouds",
-    "AI Inference & Model APIs",
-    "AI Assistants & Copilots",
-    "AI Coding & App Generation",
-    "PaaS & Application Hosting",
-    "Developer Tooling & CI/CD",
-    "Authorization, Identity & Fraud",
-    "Monetization & Billing Clouds",
-    "Customer, Marketing & eCommerce",
-    "Communications, IoT & Media",
-    "Decentralized & Web3 Compute",
-    "Source Code Control",
-    "Cloud Adjacent & Infrastructure Tooling",
-    "Emerging & Unverified Providers",
-]
+# Categories available in the awesome list (single source of truth: lib/taxonomy.py)
+CATEGORIES = list(_TAXONOMY_CATEGORIES)
 
 
 def extract_field_from_issue(issue_body, field_name):
@@ -321,7 +301,7 @@ def generate_metadata_with_claude(url, page_content=None):
         import anthropic
         client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
-        categories_list = "\n".join(f"- {cat}" for cat in CATEGORIES)
+        categories_list = classification_prompt_block()
 
         if page_content and len(page_content.strip()) > 100:
             truncated_content = page_content[:15000]
@@ -339,7 +319,7 @@ Based on the website content, provide:
 {categories_list}
 
 Respond in this exact JSON format only, no other text:
-{{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name"}}"""
+{{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name", "tags": ["tag-slug"]}}"""
         else:
             prompt = f"""I need metadata for a cloud service submission, but I couldn't fetch the website content (likely Cloudflare protected).
 
@@ -354,7 +334,7 @@ Based on your knowledge of this service (from the URL/domain), provide:
 If you don't recognize this service, make a reasonable guess based on the domain name.
 
 Respond in this exact JSON format only, no other text:
-{{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name"}}"""
+{{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name", "tags": ["tag-slug"]}}"""
 
         message = client.messages.create(
             model=CLAUDE_MODEL,
@@ -372,9 +352,7 @@ Respond in this exact JSON format only, no other text:
 
         metadata = json.loads(response_text)
 
-        if metadata.get('category') not in CATEGORIES:
-            print(f"Warning: Invalid category '{metadata.get('category')}', defaulting to Infrastructure Clouds")
-            metadata['category'] = "Infrastructure Clouds"
+        normalize_classification(metadata)
 
         if len(metadata.get('description', '')) > 200:
             metadata['description'] = metadata['description'][:197] + "..."
@@ -405,7 +383,7 @@ def evaluate_with_claude(url):
         client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
         domain = urlparse(url).netloc.replace('www.', '')
-        categories_list = "\n".join(f"- {cat}" for cat in CATEGORIES)
+        categories_list = classification_prompt_block()
 
         prompt = f"""Evaluate this cloud service for an awesome list based on your knowledge.
 
@@ -436,6 +414,7 @@ Respond in this exact JSON format only, no other text:
   "name": "Service Name",
   "description": "Description under 200 chars.",
   "category": "Category Name",
+  "tags": ["tag-slug"],
   "recommendation": "One sentence recommendation"
 }}"""
 
@@ -459,9 +438,7 @@ Respond in this exact JSON format only, no other text:
         data = json.loads(response_text)
 
         score = sum(1 for c in data.get('criteria', []) if c.get('passed'))
-        if data.get('category') not in CATEGORIES:
-            print(f"Warning: invalid category '{data.get('category')}', defaulting")
-            data['category'] = "Infrastructure Clouds"
+        normalize_classification(data)
         if len(data.get('description', '')) > 200:
             data['description'] = data['description'][:197] + "..."
 
@@ -472,6 +449,7 @@ Respond in this exact JSON format only, no other text:
             'name': data['name'],
             'description': data['description'],
             'category': data['category'],
+            'tags': data.get('tags', []),
             'recommendation': data.get('recommendation', ''),
             'fetch_method': 'claude',
         }
@@ -494,7 +472,7 @@ def generate_metadata_with_qwen(url, page_content=None):
         import openai
         client = openai.OpenAI(base_url=base_url, api_key="not-needed")
 
-        categories_list = "\n".join(f"- {cat}" for cat in CATEGORIES)
+        categories_list = classification_prompt_block()
 
         if page_content and len(page_content.strip()) > 100:
             truncated_content = page_content[:15000]
@@ -512,7 +490,7 @@ Based on the website content, provide:
 {categories_list}
 
 Respond in this exact JSON format only, no other text:
-{{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name"}}"""
+{{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name", "tags": ["tag-slug"]}}"""
         else:
             prompt = f"""I need metadata for a cloud service submission, but I couldn't fetch the website content (likely Cloudflare protected).
 
@@ -527,7 +505,7 @@ Based on your knowledge of this service (from the URL/domain), provide:
 If you don't recognize this service, make a reasonable guess based on the domain name.
 
 Respond in this exact JSON format only, no other text:
-{{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name"}}"""
+{{"name": "Service Name", "description": "Description here under 200 chars.", "category": "Category Name", "tags": ["tag-slug"]}}"""
 
         message = client.chat.completions.create(
             model=QWEN_MODEL,
@@ -549,9 +527,7 @@ Respond in this exact JSON format only, no other text:
         metadata = json.loads(response_text)
 
         # Validate category
-        if metadata.get('category') not in CATEGORIES:
-            print(f"Warning: Invalid category '{metadata.get('category')}', defaulting to Infrastructure Clouds")
-            metadata['category'] = "Infrastructure Clouds"
+        normalize_classification(metadata)
 
         # Truncate description if too long
         if len(metadata.get('description', '')) > 200:
@@ -584,7 +560,7 @@ def evaluate_with_qwen(url):
         client = openai.OpenAI(base_url=base_url, api_key="not-needed")
 
         domain = urlparse(url).netloc.replace('www.', '')
-        categories_list = "\n".join(f"- {cat}" for cat in CATEGORIES)
+        categories_list = classification_prompt_block()
 
         prompt = f"""Evaluate this cloud service for an awesome list based on your knowledge.
 
@@ -615,6 +591,7 @@ Respond in this exact JSON format only, no other text:
   "name": "Service Name",
   "description": "Description under 200 chars.",
   "category": "Category Name",
+  "tags": ["tag-slug"],
   "recommendation": "One sentence recommendation"
 }}"""
 
@@ -642,9 +619,7 @@ Respond in this exact JSON format only, no other text:
 
         # Validate and normalise
         score = sum(1 for c in data.get('criteria', []) if c.get('passed'))
-        if data.get('category') not in CATEGORIES:
-            print(f"Warning: invalid category '{data.get('category')}', defaulting")
-            data['category'] = "Infrastructure Clouds"
+        normalize_classification(data)
         if len(data.get('description', '')) > 200:
             data['description'] = data['description'][:197] + "..."
 
@@ -655,6 +630,7 @@ Respond in this exact JSON format only, no other text:
             'name': data['name'],
             'description': data['description'],
             'category': data['category'],
+            'tags': data.get('tags', []),
             'recommendation': data.get('recommendation', ''),
             'fetch_method': 'qwen',
         }
@@ -700,6 +676,7 @@ def evaluate_service(url):
                     'name': ws_result['name'],
                     'description': ws_result['description'],
                     'category': ws_result['category'],
+                    'tags': ws_result.get('tags', []),
                 },
                 'recommendation': ws_result['recommendation'],
                 'page_content': '',
@@ -800,6 +777,7 @@ def generate_single_result_markdown(result, ai_metadata=None):
 - **Name:** {ai_metadata['name']}
 - **Description:** {ai_metadata['description']}
 - **Category:** {ai_metadata['category']}
+- **Tags:** {', '.join(ai_metadata.get('tags') or []) or 'none'}
 
 """
         if needs_manual:
@@ -945,6 +923,7 @@ def main():
                     'url': url,
                     'description': ai_metadata['description'],
                     'category': ai_metadata['category'],
+                    'tags': ai_metadata.get('tags', []),
                     'score': result['score'],
                     'needs_manual_review': result.get('needs_manual_review', False),
                     'admin_approved': admin_approved,
@@ -961,6 +940,7 @@ def main():
                         'url': url,
                         'description': ai_metadata['description'],
                         'category': ai_metadata['category'],
+                        'tags': ai_metadata.get('tags', []),
                         'score': result['score'],
                         'needs_manual_review': False if admin_approved else result.get('needs_manual_review', False),
                         'admin_approved': admin_approved,
@@ -973,6 +953,7 @@ def main():
                         'url': url,
                         'description': "Cloud service provider.",
                         'category': 'Infrastructure Clouds',
+                        'tags': [],
                         'score': result['score'],
                         'needs_manual_review': True,
                         'admin_approved': admin_approved,

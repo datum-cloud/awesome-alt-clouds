@@ -15,12 +15,14 @@ If you'd rather open the PR yourself:
 3. Edit `README.md` only — entries are alphabetized within each category and must follow this exact shape:
 
    ```
-   * 🟢 [Service Name](https://example.com/) - Short description starting with a verb.
+   * 🟢 [Service Name](https://example.com/) - Short description starting with a verb. <!-- tags: llm-inference, gpu -->
    ```
 
    - Bullet is `*` (not `-`).
-   - Badge `🟢` (3/3 criteria) or `🟡` (2/3 criteria) is required.
+   - Badge `🟢` (3/3 criteria) or `🟡` (2/3 criteria) is required. `🔵` goes right after it (`🟡🔵`) for Emerging & Unverified entries.
    - Description ≤ 200 chars, ends with a period.
+   - Put the entry in one of the five clouds: **Infrastructure** (raw capacity, priced by resource unit), **Workload** (the provider runs the whole workload; one bill per unit of work), **Sovereign** (jurisdiction is the main reason to buy), **Service** (building blocks you embed: identity, billing, comms, source control…), or **Vertical** (industry-specific, usage-priced). The definition is printed under each heading in the README.
+   - Tags are optional, live in the trailing `<!-- tags: … -->` comment, and come from a fixed vocabulary (`scripts/lib/taxonomy.py`). _Workload tags_ (`llm-inference`, `vector`, `app-hosting`, …) are only valid on Workload entries; `agent-native`, `open-source`, `owns-hardware`, `gpu` and `region:<code>` (e.g. `region:ch`) are valid anywhere.
 
 4. Open a pull request. The deploy workflow will regenerate `public/clouds.json` and `public/llms*.txt` on merge — never hand-edit those.
 
@@ -41,11 +43,11 @@ If your service lands on the watchlist, the "Criteria Needed" column shows exact
 
 The public watchlist page lives at `/watchlist/` and is generated from `WATCHLIST.md` on every deploy.
 
-### Graduating an "Emerging & Unverified Providers" listing
+### Graduating an "Emerging & Unverified" listing
 
-Some services are listed under [Emerging & Unverified Providers](README.md#emerging--unverified-providers) — they're in the directory, but flagged as needing verification (usually pricing or self-service details the bot couldn't confirm). Unlike the Watchlist, these entries are already published.
+Some services carry the 🔵 **Emerging & Unverified** badge next to their score — they're in the directory (in their real category), but flagged as needing verification (usually pricing or self-service details the bot couldn't confirm). Unlike the Watchlist, these entries are already published. Browse them with the "Emerging & Unverified" link on the site.
 
-To request a re-check, open an issue titled `[Graduation] <Service Name>` (the Alt Cloud browser extension does this for you) — the bot re-runs the 3-criteria evaluation against the current listing and comments the result. If it now scores 2/3 or higher and the bot has a better-fitting category, a maintainer confirms with `/approve-graduation` (or `/approve-graduation <Category Name>` to pick the category) to open a PR moving the entry out of Emerging & Unverified Providers.
+To request a re-check, open an issue titled `[Graduation] <Service Name>` (the Alt Cloud browser extension does this for you) — the bot re-runs the 3-criteria evaluation against the current listing and comments the result. If it now scores 2/3 or higher, a maintainer confirms with `/approve-graduation` (or `/approve-graduation <Category Name>` to also re-file it under a different category) to open a PR that removes the 🔵 badge.
 
 ## 2. Working on the website
 

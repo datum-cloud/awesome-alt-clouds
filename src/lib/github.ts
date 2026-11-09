@@ -1,11 +1,9 @@
 export const GITHUB_OWNER = "datum-cloud";
 export const GITHUB_REPO = "awesome-alt-clouds";
 
-export const EMERGING_CATEGORY = "Emerging & Unverified Providers";
-
 /**
  * Pre-filled "[Graduation] <Name>" issue link for a cloud currently listed
- * under Emerging & Unverified Providers. Mirrors the shape the Alt Cloud
+ * flagged Unverified (🔵). Mirrors the shape the Alt Cloud
  * browser extension already produces (see scripts/evaluate_graduation.py,
  * which parses the `**Service:**` field back out) so both entry points
  * feed the same bot pipeline.
@@ -16,7 +14,7 @@ export function graduationIssueUrl(cloud: { name: string; url: string }): string
 
 **Service:** [${cloud.name}](${cloud.url})
 
-**Why they should graduate from Emerging & Unverified Providers to full listing:**
+**Why they should graduate from Unverified (🔵) to a verified listing:**
 
 
 **Evidence of criteria now met:**

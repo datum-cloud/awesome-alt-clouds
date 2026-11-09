@@ -8,7 +8,11 @@ format documented in CLAUDE.md.
 
 import re
 
+from lib.entry_format import Entry, format_entry, parse_entry
+
 README_FILE = "README.md"
+
+_SCORE_BADGE_RE = re.compile(r"\*\s*(🟢|🟡)")
 
 
 def find_category_section(readme_content, category):
@@ -40,6 +44,11 @@ def badge_for_score(score):
     return "🟢" if score == 3 else "🟡"
 
 
+def badge_for(score, unverified=False):
+    """Score badge, plus 🔵 when the entry is Emerging & Unverified."""
+    return badge_for_score(score) + ("🔵" if unverified else "")
+
+
 def add_entry_to_readme(submission, content=None):
     """Insert `submission` into its category section, alphabetically by name.
 
@@ -60,9 +69,15 @@ def add_entry_to_readme(submission, content=None):
         return None
 
     lines = content.split("\n")
-    badge = badge_for_score(submission["score"])
-    new_entry = (
-        f"* {badge} [{submission['name']}]({submission['url']}) - {submission['description']}"
+    new_entry = format_entry(
+        Entry(
+            name=submission["name"],
+            url=submission["url"],
+            description=submission["description"],
+            score=submission["score"],
+            unverified=bool(submission.get("unverified", False)),
+            tags=tuple(submission.get("tags") or ()),
+        )
     )
 
     entries = []
@@ -97,15 +112,25 @@ def add_entry_to_readme(submission, content=None):
 
 
 def _parse_bullet_line(line):
-    """Parse `* <badge> [Name](url) - description`, or return None."""
-    match = re.match(r"\*\s*(\S+)\s*\[([^\]]+)\]\(([^)]+)\)\s*-\s*(.+)", line.strip())
-    if not match:
+    """Parse a README bullet, or return None.
+
+    `badge` is the literal badge text on the line (e.g. "🟢🔵"); `description` excludes the
+    trailing tags comment; `unverified`/`tags`/`score` are the parsed values.
+    """
+    stripped = line.strip()
+    if not _SCORE_BADGE_RE.match(stripped):
+        return None  # parse_entry tolerates a missing badge (scoring it 3/3); README edits must not
+    entry = parse_entry(stripped)
+    if not entry:
         return None
     return {
-        "badge": match.group(1),
-        "name": match.group(2).strip(),
-        "url": match.group(3),
-        "description": match.group(4),
+        "badge": badge_for(entry.score, entry.unverified),
+        "name": entry.name.strip(),
+        "url": entry.url,
+        "description": entry.description,
+        "score": entry.score,
+        "unverified": entry.unverified,
+        "tags": list(entry.tags),
     }
 
 
@@ -161,3 +186,20 @@ def remove_entry_from_readme(readme_content, line_idx):
     lines = readme_content.split("\n")
     del lines[line_idx]
     return "\n".join(lines)
+
+
+def list_unverified_entries(readme_content):
+    """Every entry carrying the 🔵 Emerging & Unverified badge, in any category.
+
+    Each item has line_idx/category/badge/name/url/description/score/tags.
+    """
+    entries = []
+    category = None
+    for i, line in enumerate(readme_content.split("\n")):
+        if line.startswith("## "):
+            category = line[3:].strip()
+            continue
+        parsed = _parse_bullet_line(line)
+        if parsed and parsed["unverified"]:
+            entries.append({"line_idx": i, "category": category, **parsed})
+    return entries

@@ -47,12 +47,14 @@ python scripts/generate_watchlist_json.py
 
 ### Astro frontend (`src/`)
 
-- `src/pages/index.astro` — homepage card grid; `[slug].astro` — per-cloud detail page; `categories/[slug].astro` — 24 static category pages; `compare.astro` — side-by-side comparison (localStorage basket, max 3); `blog/`, `submit/`, `watchlist/`.
+- `src/pages/index.astro` — homepage card grid; `[slug].astro` — per-cloud detail page; `categories/[slug].astro` — 5 static category pages (retired slugs redirect via `src/lib/legacy-redirects.ts`); `compare.astro` — side-by-side comparison (localStorage basket, max 3); `blog/`, `submit/`, `watchlist/`.
 - `src/content/clouds/<slug>.mdx` — per-provider detail pages, schema in `src/content.config.ts`. Key frontmatter field: `status: "draft" | "reviewed"` (default `"draft"`).
 - `src/content/blog/<slug>.md` — editorial posts, frontmatter includes `draft: boolean` (default `false`).
 - `src/lib/profile.ts` / `src/lib/blog.ts` — the **publish gate**: `getPublishableProfiles()` / `getPublishablePosts()` filter drafts out unless the build is in preview mode. This same filter drives both route generation (`getStaticPaths()`) and homepage/search link visibility, so a route and its links never drift apart. Don't build a new draft-aware feature without going through this gate.
 - `src/lib/clouds.ts` — canonical `slugify()`. Mirrored byte-for-byte in `scripts/lib/slugify.py`; MDX filenames in `src/content/clouds/` must match the slug this produces. Keep both in sync if you touch either.
-- `src/lib/categories.ts` — the 24-category taxonomy + slugs. Must stay in sync with `scripts/evaluate_submission.py:CATEGORIES` and `scripts/generate_llms.py:_CAT_DESCRIPTIONS` (three places, one taxonomy).
+- `src/lib/taxonomy.ts` — the 5-cloud taxonomy (Infrastructure / Workload / Sovereign / Service / Vertical), the tag vocabulary and tag labels. **Mirrors `scripts/lib/taxonomy.py` (the Python source of truth)**; `tests/test_taxonomy_sync.py` fails if they drift. `scripts/evaluate_submission.py:CATEGORIES` and `scripts/generate_llms.py` read from the Python module, and `src/lib/categories.ts` reads from the TS one, so there is one taxonomy in two languages — don't hard-code category lists anywhere else.
+- Tags: _workload tags_ (5 families: App, Data, AI, Agent, Build & Run) are only valid on Workload entries; _cross-cutting_ tags (`agent-native`, `open-source`, `owns-hardware`, `gpu`), `region:<code>` and the derived `unverified` pseudo-tag apply to every category. `normalize_classification()` in `scripts/lib/classification.py` enforces this for LLM output (fail-open: invalid tags are dropped with a warning).
+- The homepage filters by category **and** tag; counts are faceted (each count = entries matching all _other_ active filters), computed client-side in `index.astro` (`refreshFacets`).
 
 ### Preview vs. production build
 
@@ -70,7 +72,7 @@ Always read `sitePreview` from `src/lib/site.ts`, never re-import `site.config.m
 submit form → GitHub issue (label: submission)
   → check_duplicates.py (fail-open guard against clouds.json + open issues)
   → evaluate_submission.py (3-stage fetch cascade: Jina Reader → requests → Claude web_search)
-     → 3 criteria checks (pricing / self-service / SLA-status) + Claude-generated name/description/category
+     → 3 criteria checks (pricing / self-service / SLA-status) + LLM-generated name/description/category/tags
   → create_submission_pr.py (alphabetical insert into README.md; also drafts an MDX profile via generate_cloud_profile.py in the same commit)
   → admin merge (or /approve override) → deploy-pages.yml regenerates clouds.json + llms*.txt + astro build
 ```
@@ -89,18 +91,19 @@ submit form → GitHub issue (label: submission)
 Strict, since `scripts/parse_readme_to_json.py` parses it:
 
 ```
-* 🟢 [Service Name](https://example.com/) - Short description starting with a verb.
+* 🟢 [Service Name](https://example.com/) - Short description starting with a verb. <!-- tags: llm-inference, gpu -->
+* 🟡🔵 [Early Provider](https://example.org/) - Emerging & Unverified entry.
 ```
 
-Bullet is `*` (not `-`); badge is required; separator is exactly `-`; alphabetical (case-insensitive) within each `## Category` section. `dateAdded` is never written manually — it's reconstructed by walking `git log -p` for each URL's first commit.
+Bullet is `*` (not `-`); badge is required (🟢/🟡, plus an optional `🔵` for Emerging & Unverified — parsed by `scripts/lib/entry_format.py`, the shared parser/formatter); separator is exactly `-`; an optional trailing `<!-- tags: a, b -->` comment holds the tags; alphabetical (case-insensitive) within each `## Category` section. An entry lives in exactly one of the five categories. `dateAdded` is never written manually — it's reconstructed by walking `git log -p` for each URL's first commit.
 
 ### Watchlist
 
 `WATCHLIST.md` tracks 1-of-3-criteria candidates submitted 2+ times. `scripts/generate_watchlist_json.py` turns it into `public/watchlist.json`, rendered at `/watchlist/`.
 
-### Graduation pipeline (moving out of "Emerging & Unverified Providers")
+### Graduation pipeline (clearing the 🔵 Emerging & Unverified badge)
 
-`"Emerging & Unverified Providers"` is a normal entry in `evaluate_submission.py:CATEGORIES` — its entries are published (unlike Watchlist rows) but flagged as needing verification. The graduation flow re-checks one of these entries and, if it now qualifies, moves it into a real category:
+"Emerging & Unverified" is a **badge** (`🔵`, `Entry.unverified`), not a category: those entries are published in their real category (unlike Watchlist rows) but flagged as needing verification. The graduation flow re-checks one of them and, if it now qualifies, removes the badge (re-filing it only if a better category is found or a maintainer overrides it):
 
 ```
 "[Graduation] <Name>" issue (from the browser extension, or opened manually)
@@ -111,13 +114,15 @@ Bullet is `*` (not `-`); badge is required; separator is exactly `-`; alphabetic
   → maintainer comments /approve-graduation [Category Name] on the issue
   → approve-graduation.yml re-runs evaluate_graduation.py in admin mode
      → create_graduation_pr.py (removes the old bullet, inserts the
-       corrected one into the target category) → PR for review
+       corrected one — no 🔵, refreshed score/tags — into the target
+       category, usually the same one) → PR for review
 ```
 
 - Shares `evaluate_service()`/`generate_metadata()` with the submission pipeline (`scripts/evaluate_submission.py`) — don't duplicate the fetch/scoring logic.
 - README bullet add/remove/lookup helpers live in `scripts/lib/readme_entries.py`, shared by `create_submission_pr.py` and `create_graduation_pr.py`.
 - Nothing writes to README.md without an explicit maintainer command (`/approve-graduation`), matching the submission pipeline's `/approve` gate — the initial issue-open evaluation only comments.
-- `scripts/audit_emerging_badges.py` (via the `Audit Emerging Badges` workflow, `workflow_dispatch` only) is a one-off maintenance job that re-scores every Emerging entry and corrects its badge; it flags but never removes entries scoring below 2/3.
+- `scripts/audit_emerging_badges.py` (via the `Audit Emerging Badges` workflow, `workflow_dispatch` only) is a one-off maintenance job that re-scores every 🔵 entry and corrects its score badge (keeping the 🔵); it flags but never removes entries scoring below 2/3.
+- `scripts/migrate_readme.py` is the one-off tool that restructured the README from the legacy 24 categories into the 5-cloud taxonomy (keyword rules in `scripts/lib/tag_rules.py`, plus `CURATED_OVERRIDES` for hand-verified entries). `--review-csv` writes the legacy → new move for every entry. Don't re-run it on the migrated README — it expects legacy section names.
 
 ## Notes on stale docs
 

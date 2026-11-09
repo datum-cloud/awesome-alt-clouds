@@ -19,6 +19,9 @@ from collections import defaultdict
 from datetime import date
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from lib.taxonomy import CATEGORY_DEFINITIONS  # noqa: E402
+
 
 # ---------------------------------------------------------------------------
 # Static content blocks (not derived from clouds.json)
@@ -33,7 +36,8 @@ Services are scored against 3 criteria. A minimum score of 2/3 is required for i
 2. **Usage-Based Self-Service** — ability to sign up and start using the service without sales intervention; includes free trials, free tiers, or pay-as-you-go billing.
 3. **Production Indicators** — a public SLA commitment, status page, or uptime transparency indicator (e.g. statuspage.io, status subdomain).
 
-Score legend: 🟢 = 3/3 criteria met | 🟡 = 2/3 criteria met"""
+Score legend: 🟢 = 3/3 criteria met | 🟡 = 2/3 criteria met
+Badge: 🔵 = Emerging & Unverified (shown next to the score; a criterion still needs verification)"""
 
 _PIPELINE_BLOCK = """\
 ## Submission & Evaluation Pipeline
@@ -114,7 +118,8 @@ def generate_llms_txt(clouds: list[dict]) -> str:
         f"- {total}+ cloud services listed across {num_cats} categories",
         "- Services must meet at least 2 of 3 criteria to be included: "
         "(1) transparent public pricing, (2) usage-based self-service signup, (3) public SLA or status page",
-        "- Score legend: 🟢 = all 3 criteria met, 🟡 = 2 of 3 criteria met",
+        "- Score legend: 🟢 = all 3 criteria met, 🟡 = 2 of 3 criteria met; "
+        "🔵 = Emerging & Unverified (badge shown next to the score)",
         "- Automated submission pipeline: form → GitHub issue → AI evaluation → PR → merge",
         f"- Largest categories: {top5}",
         "- Community-maintained; maintained by Datum Cloud",
@@ -134,102 +139,7 @@ def generate_llms_txt(clouds: list[dict]) -> str:
 # ---------------------------------------------------------------------------
 
 # Category descriptions (static; keyed by exact category name)
-_CAT_DESCRIPTIONS: dict[str, str] = {
-    "Infrastructure Clouds": (
-        "General-purpose cloud compute, bare metal, and VPS providers. "
-        "The original \"alt clouds\" offering virtualized compute, dedicated servers, "
-        "GPU instances, storage, and Kubernetes services outside the hyperscaler ecosystem."
-    ),
-    "GPU & AI Compute Clouds": (
-        "Specialized GPU compute platforms for AI training, model fine-tuning, and "
-        "high-performance workloads. Includes serverless GPU inference, GPU clusters, "
-        "and distributed compute networks."
-    ),
-    "Databases & Storage": (
-        "Managed database services, vector databases, distributed SQL, time series, "
-        "object storage, and data warehousing — all self-service with public pricing."
-    ),
-    "Developer Tooling & CI/CD": (
-        "CI/CD platforms, code hosting, testing infrastructure, feature flags, "
-        "error monitoring, and developer workflow automation."
-    ),
-    "Authorization, Identity & Fraud": (
-        "Authentication, authorization, identity management, secrets management, "
-        "and fraud detection services with self-service onboarding."
-    ),
-    "Observability & Monitoring": (
-        "Logging, metrics, tracing, APM, uptime monitoring, and error tracking "
-        "platforms with pay-as-you-go or free tiers."
-    ),
-    "AI Assistants & Copilots": (
-        "AI assistant platforms, copilot APIs, and conversational AI services for "
-        "building customer-facing or developer-facing intelligent experiences."
-    ),
-    "Network & Connectivity Clouds": (
-        "CDN, edge networking, DNS, DDoS protection, VPN, and private networking platforms."
-    ),
-    "Monetization & Billing Clouds": (
-        "Payment processing, subscription management, usage-based billing, metering, "
-        "and revenue operations platforms."
-    ),
-    "Customer, Marketing & eCommerce": (
-        "CRM, customer support, marketing automation, and e-commerce infrastructure platforms."
-    ),
-    "AI Coding & App Generation": (
-        "AI-assisted code generation, app scaffolding, and developer productivity "
-        "tools built on LLMs."
-    ),
-    "PaaS & Application Hosting": (
-        "Platform-as-a-service offerings for deploying web applications, APIs, and "
-        "backend services with minimal infrastructure management."
-    ),
-    "Security, Compliance & Sovereignty Clouds": (
-        "Security-focused cloud platforms with compliance certifications, data "
-        "sovereignty options, air-gapped deployments, and sovereign cloud infrastructure."
-    ),
-    "Communications, IoT & Media": (
-        "Messaging APIs, email delivery, SMS, voice, video, push notifications, "
-        "and IoT connectivity platforms."
-    ),
-    "Analytics & Data Warehousing": (
-        "Cloud data warehouses, analytics databases, business intelligence platforms, "
-        "and data lakehouse services."
-    ),
-    "Workload Clouds": (
-        "Platforms that sell finished work instead of raw capacity: generative media, browser "
-        "and web-data sessions, and agent sandboxes. You pay for the outcome while the GPUs "
-        "and servers stay abstracted away."
-    ),
-    "Workflow & Operations Clouds": (
-        "Workflow orchestration, job queues, event streaming, and operations "
-        "automation platforms."
-    ),
-    "Data Integration & ETL": (
-        "Data pipeline, ETL, CDC, and integration platforms with self-service onboarding."
-    ),
-    "AI Inference & Model APIs": (
-        "Hosted inference APIs for open-source and proprietary models, optimized "
-        "for speed, cost, and scale."
-    ),
-    "Unikernels & WebAssembly": (
-        "Edge computing, WebAssembly runtimes, and unikernel deployment platforms."
-    ),
-    "Source Code Control": (
-        "Git hosting platforms with CI/CD integration and collaboration features."
-    ),
-    "Cloud Adjacent & Infrastructure Tooling": (
-        "Tools and platforms that extend or manage cloud infrastructure without "
-        "being cloud providers themselves."
-    ),
-    "Decentralized & Web3 Compute": (
-        "Blockchain-based and decentralized compute platforms."
-    ),
-    "Emerging & Unverified Providers": (
-        "Services that passed automated evaluation but have limited track record or "
-        "are early-stage. Scored 🟡 (2/3 criteria). Included for discovery; "
-        "verify independently before production use."
-    ),
-}
+_CAT_DESCRIPTIONS: dict[str, str] = dict(CATEGORY_DEFINITIONS)
 
 _DEFAULT_CAT_DESCRIPTION = "Cloud services in this category."
 

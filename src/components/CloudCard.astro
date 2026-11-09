@@ -2,7 +2,8 @@
 import { asset } from "../lib/assets";
 import type { CloudWithSlug } from "../lib/clouds";
 import { compareIconAdd } from "../lib/compare-toggle-icons";
-import { EMERGING_CATEGORY, graduationIssueUrl } from "../lib/github";
+import { graduationIssueUrl } from "../lib/github";
+import { tagLabel } from "../lib/taxonomy";
 
 export interface Props {
   cloud: CloudWithSlug;
@@ -15,7 +16,10 @@ const score = cloud.score ?? 3;
 const badgeClass =
   score === 3 ? "bg-soft-sage text-rich-earth" : "bg-clay-beige text-warm-stone";
 const badgeText = `${score}/3`;
-const isEmerging = cloud.categories.includes(EMERGING_CATEGORY);
+const tags = cloud.tags ?? [];
+const isEmerging = cloud.unverified === true;
+/** Filterable tags: real tags plus the `unverified` status pseudo-tag. */
+const filterTags = isEmerging ? [...tags, "unverified"] : tags;
 const graduationHref = isEmerging ? graduationIssueUrl(cloud) : null;
 
 let host = "";
@@ -36,6 +40,7 @@ const detailHref = asset(`${cloud.slug}/`);
   data-name={cloud.name.toLowerCase()}
   data-description={cloud.description.toLowerCase()}
   data-categories={cloud.categories.join("|")}
+  data-tags={filterTags.join("|")}
   data-date-added={cloud.dateAdded ?? ""}>
   <button
     type="button"
@@ -87,9 +92,30 @@ const detailHref = asset(`${cloud.slug}/`);
       title={`Criteria Score: ${score}/3`}>
       {badgeText}
     </div>
+    {
+      isEmerging && (
+        <div
+          class="badge px-2.5 py-1 rounded-full text-[11px] font-medium bg-blue-50 text-blue-800 border border-blue-200"
+          title="Emerging & Unverified: a criterion still needs independent verification">
+          🔵 Emerging & Unverified
+        </div>
+      )
+    }
   </div>
 
   <p class="text-sm text-warm-stone leading-relaxed mb-3.5">{cloud.description}</p>
+
+  {
+    tags.length > 0 && (
+      <div class="flex flex-wrap gap-1.5 mb-3.5" aria-label="Tags">
+        {tags.map((tag) => (
+          <span class="px-2 py-0.5 rounded-full text-[11px] bg-cream text-warm-stone border border-clay-beige">
+            {tagLabel(tag)}
+          </span>
+        ))}
+      </div>
+    )
+  }
 
   <div class="flex items-center justify-between gap-3 pt-3.5 border-t border-clay-beige">
     <a

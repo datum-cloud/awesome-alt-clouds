@@ -5,19 +5,17 @@ import BlogNavLink from "../components/BlogNavLink.astro";
 import CloudCard from "../components/CloudCard.astro";
 import CompareNavLink from "../components/CompareNavLink.astro";
 import EmergingNavLink from "../components/EmergingNavLink.astro";
+import TagFilter from "../components/TagFilter.astro";
 import WatchlistNavLink from "../components/WatchlistNavLink.astro";
 import { clouds, countByCategory, getCategories } from "../lib/clouds";
-import { EMERGING_CATEGORY } from "../lib/github";
 import { getFeaturedSlugs } from "../lib/profile";
 
 const sortedClouds = [...clouds].sort((a, b) => a.name.localeCompare(b.name));
 const cloudCount = clouds.length;
 const featuredSlugs = await getFeaturedSlugs();
 
-/** Sidebar categories (Emerging has its own nav link). */
-const sidebarCategories = getCategories()
-  .filter((cat) => cat !== EMERGING_CATEGORY)
-  .map((cat) => ({ name: cat, count: countByCategory(cat) }));
+/** Sidebar categories. */
+const sidebarCategories = getCategories().map((cat) => ({ name: cat, count: countByCategory(cat) }));
 
 const categoryBtnClass = (active: boolean) =>
   [
@@ -111,7 +109,7 @@ const categoryBtnClass = (active: boolean) =>
               data-category={name}
               class={categoryBtnClass(name === "All")}>
               <span>{name}</span>
-              <span class="font-mono text-xs opacity-70">{count}</span>
+              <span data-cat-count class="font-mono text-xs opacity-70">{count}</span>
             </button>
           ))
         }
@@ -223,7 +221,7 @@ const categoryBtnClass = (active: boolean) =>
                 data-category={name}
                 class={categoryBtnClass(name === "All")}>
                 <span>{name}</span>
-                <span class="font-mono text-xs opacity-70">{count}</span>
+                <span data-cat-count class="font-mono text-xs opacity-70">{count}</span>
               </button>
             ))
           }
@@ -303,7 +301,7 @@ const categoryBtnClass = (active: boolean) =>
     <main class="flex-1 p-6">
       <!-- Top bar -->
       <div
-        class="flex items-center justify-between gap-4 mb-6 px-5 py-4 bg-white border border-clay-beige rounded-xl">
+        class="relative flex flex-wrap items-center justify-between gap-3 md:gap-4 mb-6 px-5 py-4 bg-white border border-clay-beige rounded-xl">
         <div class="flex items-center gap-3">
           <span class="hidden md:inline text-sm text-warm-stone font-medium">Sort by:</span>
           <select
@@ -312,8 +310,9 @@ const categoryBtnClass = (active: boolean) =>
             <option value="alphabetical">Alphabetical</option>
             <option value="recent">Recently Added</option>
           </select>
+          <TagFilter />
         </div>
-        <div class="relative flex-[0_1_300px]">
+        <div class="relative flex-[1_1_220px] md:flex-[0_1_300px]">
           <svg
             class="absolute left-3.5 top-1/2 -translate-y-1/2 text-warm-stone pointer-events-none"
             width="16"
@@ -352,6 +351,19 @@ const categoryBtnClass = (active: boolean) =>
               ></path>
             </svg>
           </button>
+        </div>
+      </div>
+
+      <!-- Result summary + active tag pills (the explorer itself is the Tags fly-out in the top bar) -->
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        <p
+          id="resultCount"
+          class="text-sm text-warm-stone mr-1"
+          aria-live="polite">
+        </p>
+        <div
+          id="activeTags"
+          class="flex flex-wrap gap-1.5">
         </div>
       </div>
 
@@ -652,6 +664,7 @@ const categoryBtnClass = (active: boolean) =>
 
   <script>
     let currentCategory = "All";
+    const selectedTags = new Set<string>();
     let searchTerm = "";
     let currentSort: "alphabetical" | "recent" = "alphabetical";
     /** Last sort applied to DOM order — skip reorder when unchanged. */
@@ -800,6 +813,101 @@ const categoryBtnClass = (active: boolean) =>
       });
     });
 
+    function updateTagState() {
+      document.querySelectorAll<HTMLElement>("[data-tag]").forEach((btn) => {
+        const on = selectedTags.has(btn.getAttribute("data-tag") || "");
+        btn.setAttribute("aria-pressed", String(on));
+      });
+      document.querySelectorAll<HTMLElement>("[data-tag-clear]").forEach((btn) => {
+        btn.classList.toggle("hidden", selectedTags.size === 0);
+      });
+      renderSelectedTags();
+    }
+
+    function toggleTag(tag: string) {
+      if (selectedTags.has(tag)) selectedTags.delete(tag);
+      else selectedTags.add(tag);
+      updateTagState();
+      applyFilters();
+      updateUrl();
+    }
+
+    function clearTags() {
+      selectedTags.clear();
+      updateTagState();
+      applyFilters();
+      updateUrl();
+    }
+
+    document.querySelectorAll<HTMLElement>("[data-tag]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const tag = btn.getAttribute("data-tag");
+        if (tag) toggleTag(tag);
+      });
+    });
+    document.querySelectorAll<HTMLElement>("[data-tag-clear]").forEach((btn) => {
+      btn.addEventListener("click", clearTags);
+    });
+
+    const flyout = document.getElementById("tagFlyout");
+    const flyoutBtn = document.getElementById("tagFlyoutBtn");
+
+    function setFlyout(open: boolean) {
+      flyout?.classList.toggle("hidden", !open);
+      flyoutBtn?.setAttribute("aria-expanded", String(open));
+    }
+
+    flyoutBtn?.addEventListener("click", () => {
+      setFlyout(flyout?.classList.contains("hidden") ?? false);
+    });
+    document.querySelector("[data-tag-flyout-close]")?.addEventListener("click", () => {
+      setFlyout(false);
+      flyoutBtn?.focus();
+    });
+    document.addEventListener("click", (e) => {
+      const root = document.getElementById("tagFlyoutRoot");
+      if (root && !root.contains(e.target as Node)) setFlyout(false);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !flyout?.classList.contains("hidden")) {
+        setFlyout(false);
+        flyoutBtn?.focus();
+      }
+    });
+
+    /** Badge on the Tags button + removable pills for the selected tags. */
+    function renderSelectedTags() {
+      const badge = document.getElementById("tagFlyoutBadge");
+      if (badge) {
+        badge.textContent = String(selectedTags.size);
+        badge.classList.toggle("hidden", selectedTags.size === 0);
+      }
+      const holder = document.getElementById("activeTags");
+      if (!holder) return;
+      holder.replaceChildren(
+        ...[...selectedTags].map((tag) => {
+          const pill = document.createElement("button");
+          pill.type = "button";
+          pill.className =
+            "inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-rich-earth text-cream hover:bg-bright-tangerine transition-colors";
+          const label =
+            document.querySelector<HTMLElement>(`[data-tag="${CSS.escape(tag)}"]`)?.dataset.label ??
+            tag;
+          pill.textContent = `${label} ×`;
+          pill.setAttribute("aria-label", `Remove tag filter ${label}`);
+          pill.addEventListener("click", () => toggleTag(tag));
+          return pill;
+        })
+      );
+    }
+
+    function setTagsFromParam(value: string | null) {
+      selectedTags.clear();
+      for (const tag of (value || "").split(",")) {
+        if (tag) selectedTags.add(tag);
+      }
+    }
+
     function compareCards(a: HTMLElement, b: HTMLElement): number {
       if (currentSort === "alphabetical") {
         return (a.dataset.name || "").localeCompare(b.dataset.name || "");
@@ -832,7 +940,9 @@ const categoryBtnClass = (active: boolean) =>
         const desc = card.dataset.description || "";
         const inCat = currentCategory === "All" || cats.includes(currentCategory);
         const inSearch = term === "" || name.includes(term) || desc.includes(term);
-        if (inCat && inSearch) {
+        const cardTags = (card.dataset.tags || "").split("|");
+        const inTags = [...selectedTags].every((t) => cardTags.includes(t));
+        if (inCat && inSearch && inTags) {
           card.classList.remove("hidden");
           visibleCount++;
         } else {
@@ -853,6 +963,69 @@ const categoryBtnClass = (active: boolean) =>
 
       if (empty) {
         empty.classList.toggle("hidden", visibleCount > 0);
+      }
+      refreshFacets(cards, visibleCount);
+    }
+
+    /**
+     * Keep category and tag counts consistent with every active filter.
+     * - Category count = cards matching search + selected tags (the category itself is ignored,
+     *   so each row shows what you'd get by switching to it).
+     * - Tag count = cards in the current result set that carry the tag (what adding it would
+     *   leave). Tags that would leave nothing are hidden unless selected.
+     */
+    function refreshFacets(cards: HTMLElement[], visibleCount: number) {
+      const term = searchTerm.toLowerCase();
+      const catCounts = new Map<string, number>();
+      const tagCounts = new Map<string, number>();
+      let allCount = 0;
+
+      for (const card of cards) {
+        if (term && !(card.dataset.name || "").includes(term) && !(card.dataset.description || "").includes(term)) {
+          continue;
+        }
+        const cardTags = (card.dataset.tags || "").split("|").filter(Boolean);
+        if (![...selectedTags].every((t) => cardTags.includes(t))) continue;
+        const cats = (card.dataset.categories || "").split("|");
+        allCount++;
+        for (const c of cats) catCounts.set(c, (catCounts.get(c) ?? 0) + 1);
+        if (currentCategory === "All" || cats.includes(currentCategory)) {
+          for (const t of cardTags) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+        }
+      }
+
+      document.querySelectorAll<HTMLElement>("[data-category]").forEach((btn) => {
+        const name = btn.getAttribute("data-category") || "";
+        const n = name === "All" ? allCount : (catCounts.get(name) ?? 0);
+        const label = btn.querySelector<HTMLElement>("[data-cat-count]");
+        if (label) label.textContent = String(n);
+        btn.classList.toggle("opacity-40", n === 0 && name !== currentCategory);
+      });
+
+      document.querySelectorAll<HTMLElement>("[data-tag]").forEach((chip) => {
+        const tag = chip.getAttribute("data-tag") || "";
+        const n = tagCounts.get(tag) ?? 0;
+        const label = chip.querySelector<HTMLElement>("[data-tag-count]");
+        if (label) label.textContent = String(n);
+        chip.classList.toggle("hidden", n === 0 && !selectedTags.has(tag));
+      });
+      document.querySelectorAll<HTMLElement>("[data-tag-group]").forEach((group) => {
+        const anyShown = group.querySelector("[data-tag]:not(.hidden)") !== null;
+        group.classList.toggle("hidden", !anyShown);
+      });
+      document.querySelectorAll<HTMLElement>("[data-tag-section]").forEach((section) => {
+        const anyShown = section.querySelector("[data-tag]:not(.hidden)") !== null;
+        section.classList.toggle("hidden", !anyShown);
+      });
+
+      const total = cards.length;
+      const resultCount = document.getElementById("resultCount");
+      if (resultCount) {
+        const scope = currentCategory === "All" ? "" : ` in ${currentCategory}`;
+        resultCount.textContent =
+          visibleCount === total
+            ? `${total} clouds`
+            : `${visibleCount} of ${total} clouds${scope}`;
       }
     }
 
@@ -897,6 +1070,7 @@ const categoryBtnClass = (active: boolean) =>
     function updateUrl() {
       const params = new URLSearchParams();
       if (searchTerm) params.set("search", searchTerm);
+      if (selectedTags.size > 0) params.set("tags", [...selectedTags].join(","));
       const hash = currentCategory === "All" ? "" : "#" + categoryToSlug(currentCategory);
       const qs = params.toString() ? "?" + params.toString() : "";
       history.replaceState(null, "", location.pathname + qs + hash);
@@ -909,6 +1083,7 @@ const categoryBtnClass = (active: boolean) =>
         searchTerm = s;
         if (searchInput) searchInput.value = s;
       }
+      setTagsFromParam(params.get("tags"));
       const slug = location.hash.slice(1);
       if (slug && !HASH_MODALS[slug]) {
         const matched = slugToCategory(slug);
@@ -921,6 +1096,8 @@ const categoryBtnClass = (active: boolean) =>
       searchTerm = params.get("search") || "";
       if (searchInput) searchInput.value = searchTerm;
       updateSearchClear();
+      setTagsFromParam(params.get("tags"));
+      updateTagState();
       const slug = location.hash.slice(1);
       currentCategory = slug && !HASH_MODALS[slug] ? slugToCategory(slug) : "All";
       updateCategoryActiveState();
@@ -931,9 +1108,8 @@ const categoryBtnClass = (active: boolean) =>
     initFromUrl();
     updateSearchClear();
     updateCategoryActiveState();
-    if (searchTerm !== "" || currentCategory !== "All") {
-      applyFilters();
-    }
+    updateTagState();
+    applyFilters();
 
     /** Reveal-animate only cards that intersect the viewport on first paint (once). */
     let initialRevealDone = false;
