@@ -421,7 +421,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Chainguard](https://www.chainguard.dev/) - Provides secure-by-default open source software with hardened, CVE-free container images, libraries, and VMs for supply chain security and AI threat protection. <!-- tags: open-source -->
 * 🟢 [Character.ai](https://character.ai/) - Lets users interact with and create AI-driven characters for entertainment, education, and companionship.
 * 🟢 [ChatGPT by OpenAI](https://openai.com/chatgpt) - OpenAI's conversational AI model that generates human-like text, answers questions, and assists with a wide range of tasks.
-* 🟢 [Chatsonic](https://chatsonic.com/) - An AI chatbot built on top of GPT that includes real-time search data and voice interaction capabilities.
+* 🟢 [Chatsonic](https://writesonic.com/) - An AI chatbot built on top of GPT that includes real-time search data and voice interaction capabilities.
 * 🟢 [Checkly](https://www.checklyhq.com/) - Application reliability platform unifying testing, monitoring, observability, and incident management with Playwright-based synthetic monitoring.
 * 🟢 [CipherStash](https://cipherstash.com/) - Zero-trust encryption platform with searchable encryption, identity-based access control, and real-time audit trails.
 * 🟢 [Clarify](https://www.getclarify.ai/) - An AI-native CRM that unifies customer data, automates tasks, and provides actionable insights to enhance customer relationships.

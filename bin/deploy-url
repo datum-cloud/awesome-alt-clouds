@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Print the public URL that `datumctl compute deploy` reported last.
+#
+# datumctl indents the URL on its own line under "Publishing...". It prints the
+# workload's custom hostname when it has one (https://agents.datum.net) and the
+# generated https://<name>.datumproxy.net URL otherwise, so match either.
+set -euo pipefail
+
+log="${1:?usage: deploy-url <deploy.log>}"
+
+sed -nE 's|^[[:space:]]+(https://[^[:space:]]+)[[:space:]]*$|\1|p' "$log" | tail -n 1
