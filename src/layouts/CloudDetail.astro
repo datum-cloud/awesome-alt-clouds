@@ -4,7 +4,6 @@ import DetailSidebar from "../components/DetailSidebar.astro";
 import DetailTopBar from "../components/DetailTopBar.astro";
 import DraftBanner from "../components/DraftBanner.astro";
 import EmergingBanner from "../components/EmergingBanner.astro";
-import { EMERGING_CATEGORY } from "../lib/github";
 import { defaultDescription, siteName } from "../lib/site-meta";
 import { absoluteUrl } from "../lib/site-urls";
 import type { MergedCloud } from "../lib/profile";
@@ -15,7 +14,7 @@ export interface Props {
 }
 
 const { cloud, featuredSlugs } = Astro.props;
-const isEmerging = cloud.categories.includes(EMERGING_CATEGORY);
+const isEmerging = cloud.unverified === true;
 
 const pageTitle = `${cloud.name} | ${siteName}`;
 const pageDescription = cloud.tagline || cloud.description || defaultDescription;

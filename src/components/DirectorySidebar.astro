@@ -1,7 +1,5 @@
 ---
 import { asset } from "../lib/assets";
-import { categoryToSlug } from "../lib/clouds";
-import { EMERGING_CATEGORY } from "../lib/github";
 import SidebarFooterNav from "./SidebarFooterNav.astro";
 
 export type ActivePage = "directory" | "watchlist" | "emerging" | "blog" | "compare";
@@ -14,7 +12,7 @@ const { activePage = "directory" } = Astro.props;
 
 const homeHref = asset("");
 const watchlistHref = asset("watchlist/");
-const emergingHref = asset(`categories/${categoryToSlug(EMERGING_CATEGORY)}/`);
+const emergingHref = `${asset("")}?tags=unverified`;
 const blogHref = asset("blog/");
 const compareHref = asset("compare/");
 

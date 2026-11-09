@@ -11,13 +11,10 @@ import evaluate_graduation as eg
 
 SAMPLE_README = """# Alt Cloud
 
-## Databases & Storage
+## Workload Clouds
 
 * 🟢 [Alpha DB](https://alpha.example.com/) - A database.
-
-## Emerging & Unverified Providers
-
-* 🟢 [Turbopuffer](https://turbopuffer.com/) - Vector database, needs verification.
+* 🟡🔵 [Turbopuffer](https://turbopuffer.com/) - Vector database. <!-- tags: vector -->
 """
 
 GRADUATION_BODY = """## Graduation Request
@@ -117,8 +114,9 @@ class TestMainFlow:
         eg.main()
 
         result = (tmp_path / "graduation_results.md").read_text()
-        assert "already listed under" in result
-        assert "Databases & Storage" in result
+        assert "isn't flagged" in result
+        assert "Workload Clouds" in result
+        assert not (tmp_path / "graduation_data.json").exists()
 
     def test_ready_to_graduate_writes_data_json(self, tmp_path, monkeypatch):
         monkeypatch.chdir(tmp_path)
@@ -130,7 +128,8 @@ class TestMainFlow:
         ai_metadata = {
             "name": "Turbopuffer",
             "description": "Fast serverless vector database.",
-            "category": "Databases & Storage",
+            "category": "Workload Clouds",
+            "tags": ["vector", "open-source"],
         }
 
         with patch.object(eg, "evaluate_service", return_value=_evaluate_result(3)):
@@ -140,12 +139,14 @@ class TestMainFlow:
         assert (tmp_path / "graduation_score.txt").read_text() == "3"
         data = json.loads((tmp_path / "graduation_data.json").read_text())
         assert data["name"] == "Turbopuffer"
-        assert data["old_category"] == "Emerging & Unverified Providers"
-        assert data["new_category"] == "Databases & Storage"
+        assert data["old_category"] == "Workload Clouds"
+        assert data["new_category"] == "Workload Clouds"
+        assert data["tags"] == ["vector", "open-source"]
         assert data["score"] == 3
 
         comment = (tmp_path / "graduation_results.md").read_text()
         assert "ready to graduate" in comment
+        assert "badge would be removed" in comment
         assert "/approve-graduation" in comment
 
     def test_low_score_does_not_write_data_json(self, tmp_path, monkeypatch):
@@ -171,14 +172,18 @@ class TestMainFlow:
         monkeypatch.setenv("ISSUE_TITLE", "[Graduation] Turbopuffer")
         monkeypatch.setenv("ISSUE_NUMBER", "326")
         monkeypatch.setenv("GRADUATION_ADMIN_APPROVED", "true")
-        monkeypatch.setenv("GRADUATION_CATEGORY_OVERRIDE", "Databases & Storage")
+        monkeypatch.setenv("GRADUATION_CATEGORY_OVERRIDE", "Service Clouds")
 
         with patch.object(eg, "evaluate_service", return_value=_evaluate_result(1)):
             with patch.object(eg, "generate_metadata", return_value=None):
                 eg.main()
 
         data = json.loads((tmp_path / "graduation_data.json").read_text())
-        assert data["new_category"] == "Databases & Storage"
+        assert data["old_category"] == "Workload Clouds"
+        assert data["new_category"] == "Service Clouds"
+        # `vector` is a Workload-only tag, so it is dropped when the maintainer re-files the
+        # entry under Service Clouds (tags must match the FINAL category).
+        assert data["tags"] == []
 
     def test_unknown_category_override_is_ignored(self, tmp_path, monkeypatch):
         monkeypatch.chdir(tmp_path)
@@ -191,7 +196,7 @@ class TestMainFlow:
         ai_metadata = {
             "name": "Turbopuffer",
             "description": "Fast serverless vector database.",
-            "category": "Databases & Storage",
+            "category": "Workload Clouds",
         }
 
         with patch.object(eg, "evaluate_service", return_value=_evaluate_result(3)):
@@ -199,4 +204,54 @@ class TestMainFlow:
                 eg.main()
 
         data = json.loads((tmp_path / "graduation_data.json").read_text())
-        assert data["new_category"] == "Databases & Storage"
+        assert data["new_category"] == "Workload Clouds"
+
+    def test_category_defaults_to_current_when_llm_has_no_suggestion(self, tmp_path, monkeypatch):
+        monkeypatch.chdir(tmp_path)
+        (tmp_path / "README.md").write_text(SAMPLE_README)
+        monkeypatch.setenv("ISSUE_BODY", GRADUATION_BODY)
+        monkeypatch.setenv("ISSUE_TITLE", "[Graduation] Turbopuffer")
+        monkeypatch.setenv("ISSUE_NUMBER", "326")
+
+        with patch.object(eg, "evaluate_service", return_value=_evaluate_result(3)):
+            with patch.object(eg, "generate_metadata", return_value=None):
+                eg.main()
+
+        data = json.loads((tmp_path / "graduation_data.json").read_text())
+        assert data["new_category"] == "Workload Clouds"
+
+
+class TestTagsFollowFinalCategory:
+    def _run(self, tmp_path, monkeypatch, override, ai_metadata):
+        monkeypatch.chdir(tmp_path)
+        (tmp_path / "README.md").write_text(SAMPLE_README)
+        monkeypatch.setenv("ISSUE_BODY", GRADUATION_BODY)
+        monkeypatch.setenv("ISSUE_TITLE", "[Graduation] Turbopuffer")
+        monkeypatch.setenv("ISSUE_NUMBER", "326")
+        if override:
+            monkeypatch.setenv("GRADUATION_CATEGORY_OVERRIDE", override)
+        with patch.object(eg, "evaluate_service", return_value=_evaluate_result(3)):
+            with patch.object(eg, "generate_metadata", return_value=ai_metadata):
+                eg.main()
+        return json.loads((tmp_path / "graduation_data.json").read_text())
+
+    def test_llm_workload_tags_dropped_when_override_is_not_workload(self, tmp_path, monkeypatch):
+        meta = {
+            "name": "Turbopuffer",
+            "description": "Vector DB.",
+            "category": "Workload Clouds",
+            "tags": ["vector", "open-source", "region:eu"],
+        }
+        data = self._run(tmp_path, monkeypatch, "Service Clouds", meta)
+        assert data["new_category"] == "Service Clouds"
+        assert data["tags"] == ["open-source", "region:eu"]
+
+    def test_workload_tags_kept_when_category_stays_workload(self, tmp_path, monkeypatch):
+        meta = {
+            "name": "Turbopuffer",
+            "description": "Vector DB.",
+            "category": "Workload Clouds",
+            "tags": ["vector", "open-source"],
+        }
+        data = self._run(tmp_path, monkeypatch, None, meta)
+        assert data["tags"] == ["vector", "open-source"]

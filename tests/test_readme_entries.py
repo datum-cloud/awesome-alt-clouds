@@ -141,3 +141,81 @@ class TestListEntriesInCategory:
 
     def test_empty_for_missing_category(self):
         assert re_lib.list_entries_in_category(SAMPLE_README, "Nonexistent Category") == []
+
+
+UNVERIFIED_README = """# Alt Cloud
+
+## Workload Clouds
+
+* 🟢 [Alpha](https://alpha.example.com/) - Runs models. <!-- tags: llm-inference, gpu -->
+* 🟡🔵 [Beta](https://beta.example.com/) - Early vector DB. <!-- tags: vector -->
+
+## Service Clouds
+
+* 🟢🔵 [Gamma](https://gamma.example.com/) - Feature flags.
+* 🟢 [Zed](https://zed.example.com/) - Auth.
+"""
+
+
+class TestUnverifiedAndTags:
+    def test_find_entry_exposes_unverified_tags_and_clean_description(self):
+        entry = re_lib.find_entry_by_name(UNVERIFIED_README, "Beta")
+        assert entry["unverified"] is True
+        assert entry["score"] == 2
+        assert entry["tags"] == ["vector"]
+        assert entry["description"] == "Early vector DB."
+        assert entry["category"] == "Workload Clouds"
+        assert entry["badge"] == "🟡🔵"
+
+    def test_verified_entry_has_no_flag(self):
+        entry = re_lib.find_entry_by_name(UNVERIFIED_README, "Alpha")
+        assert entry["unverified"] is False
+        assert entry["tags"] == ["llm-inference", "gpu"]
+
+    def test_list_unverified_entries_spans_categories(self):
+        entries = re_lib.list_unverified_entries(UNVERIFIED_README)
+        assert [(e["name"], e["category"]) for e in entries] == [
+            ("Beta", "Workload Clouds"),
+            ("Gamma", "Service Clouds"),
+        ]
+
+    def test_add_entry_writes_badge_and_tags_alphabetically(self):
+        submission = {
+            "name": "Aardvark",
+            "url": "https://aardvark.example.com/",
+            "category": "Workload Clouds",
+            "score": 2,
+            "description": "Edge runtime.",
+            "tags": ["edge-functions", "region:eu"],
+            "unverified": True,
+        }
+        content = re_lib.add_entry_to_readme(submission, content=UNVERIFIED_README)
+        lines = content.split("\n")
+        added = next(i for i, line in enumerate(lines) if "Aardvark" in line)
+        assert lines[added] == (
+            "* 🟡🔵 [Aardvark](https://aardvark.example.com/) - Edge runtime. "
+            "<!-- tags: edge-functions, region:eu -->"
+        )
+        assert "Alpha" in lines[added + 1]
+
+    def test_add_entry_without_tags_keeps_legacy_format(self):
+        submission = {
+            "name": "Omega",
+            "url": "https://omega.example.com/",
+            "category": "Service Clouds",
+            "score": 3,
+            "description": "Billing.",
+        }
+        content = re_lib.add_entry_to_readme(submission, content=UNVERIFIED_README)
+        assert "* 🟢 [Omega](https://omega.example.com/) - Billing." in content.split("\n")
+
+    def test_badge_for_combines_score_and_unverified(self):
+        assert re_lib.badge_for(3) == "🟢"
+        assert re_lib.badge_for(2, unverified=True) == "🟡🔵"
+
+
+class TestBadgelessBullets:
+    def test_bullet_without_score_badge_is_not_an_entry(self):
+        readme = "## Workload Clouds\n\n* [NoBadge](https://nb.example.com/) - Missing badge.\n"
+        assert re_lib.find_entry_by_name(readme, "NoBadge") is None
+        assert re_lib.list_entries_in_category(readme, "Workload Clouds") == []

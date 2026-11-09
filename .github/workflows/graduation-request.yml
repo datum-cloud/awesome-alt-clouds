@@ -1,10 +1,10 @@
 name: Graduation Request
 
 # Trigger: the Alt Cloud browser extension opens a "[Graduation] <Service>"
-# issue asking the bot to re-check a service currently listed under
-# "Emerging & Unverified Providers" and move it into its real category if
-# it now clears the 2/3 bar. This only posts a fresh evaluation comment —
-# the actual README move requires a maintainer to comment
+# issue asking the bot to re-check a service currently flagged 🔵
+# Emerging & Unverified and remove that badge (re-filing it if its best-fit
+# category changed) if it now clears the 2/3 bar. This only posts a fresh evaluation comment —
+# the actual README change requires a maintainer to comment
 # /approve-graduation (see approve-graduation.yml).
 
 on:

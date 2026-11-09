@@ -2,10 +2,10 @@
 """Re-evaluate a [Graduation] request against its current README.md entry.
 
 A graduation request asks the bot to re-check a service that's currently
-listed under "Emerging & Unverified Providers" and, if it now clears the
-bar, move it into its real category. Unlike a fresh submission, the URL and
-current category come from the existing README.md entry, not the issue
-body — the issue only tells us *which* entry to re-check.
+flagged 🔵 Emerging & Unverified and, if it now clears the bar, remove that
+badge (and re-file it if its best-fit category changed). Unlike a fresh
+submission, the URL and current category come from the existing README.md
+entry, not the issue body — the issue only tells us *which* entry to re-check.
 
 Reads from the environment:
   ISSUE_BODY, ISSUE_TITLE, ISSUE_NUMBER  - required
@@ -14,14 +14,15 @@ Reads from the environment:
   GRADUATION_ADMIN_APPROVED - 'true' when a maintainer ran /approve-graduation;
     bypasses the 2/3 gate so graduation_data.json is always written
   GRADUATION_CATEGORY_OVERRIDE - maintainer-specified target category,
-    overrides whatever category the LLM suggests
+    overrides whatever category the LLM suggests (defaults to the entry's
+    current category when the LLM has no suggestion)
 
 Writes:
   graduation_results.md - markdown comment for the issue
   graduation_score.txt  - fresh score (0-3), or '0' if the entry couldn't
     be located at all
   graduation_data.json  - present only when the request is ready to move
-    (score >= 2, or admin-approved)
+    (score >= 2, or admin-approved); includes refreshed tags
 """
 
 import json
@@ -37,9 +38,8 @@ from evaluate_submission import (  # noqa: E402
     generate_metadata,
     generate_single_result_markdown,
 )
+from lib.classification import normalize_classification  # noqa: E402
 from lib.readme_entries import find_entry_by_name  # noqa: E402
-
-EMERGING_CATEGORY = "Emerging & Unverified Providers"
 
 
 def extract_service_name(title, body):
@@ -70,24 +70,27 @@ def write_error(message):
 
 def build_comment(name, old_category, result, ai_metadata, new_category):
     score = result["score"]
-    header = f"## Graduation Request: {name}\n\nRe-evaluating the current **{old_category}** entry against the 3 criteria.\n\n"
+    header = (
+        f"## Graduation Request: {name}\n\n"
+        f"Re-evaluating this 🔵 **Emerging & Unverified** entry (currently under "
+        f"**{old_category}**) against the 3 criteria.\n\n"
+    )
     body = generate_single_result_markdown(result, ai_metadata)
 
-    if ai_metadata and new_category and new_category != old_category and score >= 2:
-        next_steps = (
-            f"\n:rocket: This looks ready to graduate from **{old_category}** to **{new_category}**. "
-            "A maintainer can comment `/approve-graduation` (or `/approve-graduation <Category Name>` "
-            "to pick a different category) to open the move PR.\n"
+    if score >= 2:
+        move = (
+            f" It would also move from **{old_category}** to **{new_category}**."
+            if new_category and new_category != old_category
+            else ""
         )
-    elif ai_metadata and score >= 2:
         next_steps = (
-            f"\nThis service now scores {score}/3, but **{old_category}** still looks like its best fit — "
-            "there may not be a clearer category yet. A maintainer can force one with "
-            "`/approve-graduation <Category Name>` if appropriate.\n"
+            f"\n:rocket: This looks ready to graduate — the 🔵 badge would be removed.{move} "
+            "A maintainer can comment `/approve-graduation` (or `/approve-graduation <Category Name>` "
+            "to pick a different category) to open the PR.\n"
         )
     else:
         next_steps = (
-            f"\nStill doesn't meet the bar for graduation (needs 2/3). It stays in **{old_category}** "
+            "\nStill doesn't meet the bar for graduation (needs 2/3). It keeps the 🔵 badge "
             "until re-evaluated with new evidence.\n"
         )
 
@@ -124,14 +127,14 @@ def main():
         )
         return
 
-    if entry["category"] != EMERGING_CATEGORY:
+    if not entry["unverified"]:
         write_error(
-            f"**{name}** is already listed under **{entry['category']}**, not {EMERGING_CATEGORY} — "
-            "nothing to graduate."
+            f"**{name}** (listed under **{entry['category']}**) isn't flagged 🔵 Emerging & "
+            "Unverified — nothing to graduate."
         )
         return
 
-    print(f"Re-evaluating {name} ({entry['url']}), currently in {entry['category']}")
+    print(f"Re-evaluating {name} ({entry['url']}), currently in {entry['category']} (🔵)")
     result = evaluate_service(entry["url"])
     score = result["score"]
 
@@ -141,15 +144,19 @@ def main():
         if ai_metadata:
             result["ai_metadata"] = ai_metadata
 
-    new_category = None
-    if category_override:
-        new_category = category_override
-    elif ai_metadata:
-        new_category = ai_metadata.get("category")
-
+    new_category = category_override or (ai_metadata.get("category") if ai_metadata else None)
     if new_category and new_category not in CATEGORIES:
         print(f"Warning: '{new_category}' is not a known category, ignoring override")
         new_category = ai_metadata.get("category") if ai_metadata else None
+    # Graduating removes the badge; the category only changes when there's a better fit.
+    new_category = new_category or entry["category"]
+    # Tags must be valid for the category the entry will actually land in (the maintainer's
+    # override or the current category can differ from the one the LLM tagged against).
+    classified = {
+        "category": new_category,
+        "tags": (ai_metadata.get("tags") if ai_metadata else None) or entry["tags"],
+    }
+    normalize_classification(classified)
 
     comment = build_comment(name, entry["category"], result, ai_metadata, new_category)
     with open("graduation_results.md", "w") as f:
@@ -170,6 +177,7 @@ def main():
             "url": entry["url"],
             "old_category": entry["category"],
             "new_category": new_category,
+            "tags": classified["tags"],
             "score": score if not admin_approved else max(score, 2),
             "description": description,
             "needs_manual_review": result.get("needs_manual_review", False),

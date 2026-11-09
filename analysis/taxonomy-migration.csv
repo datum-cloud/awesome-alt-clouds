@@ -1,0 +1,534 @@
+name,url,legacy_category,new_category,needs_review,unverified,tags
+Arcade,https://www.arcade.dev/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Argo Compute,https://argocompute.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Atlantic.net,https://www.atlantic.net/,Infrastructure Clouds,Infrastructure Clouds,False,False,gpu
+Axiom,https://axiom.co/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Beam,https://www.beam.cloud,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Browser-Use,https://browser-use.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Civo,https://www.civo.com,Infrastructure Clouds,Infrastructure Clouds,False,False,
+cloudscale.ch,https://cloudscale.ch/,Infrastructure Clouds,Sovereign Clouds,False,False,region:ch
+Cognee,https://www.cognee.ai/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Cycle.io,https://cycle.io/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+DataPacket,https://www.datapacket.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Datum,https://www.datum.net/,Infrastructure Clouds,Infrastructure Clouds,False,False,gpu
+Digital Ocean,https://www.digitalocean.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Driver,https://driver.dev/,Infrastructure Clouds,Infrastructure Clouds,False,False,agent-native
+DT Cloud,https://dtcloudnow.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,gpu
+E2E Cloud,https://www.e2enetworks.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,gpu
+Empromptu,https://empromptu.ai,Infrastructure Clouds,Infrastructure Clouds,False,False,
+exe.dev,https://exe.dev/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Exoscale,https://www.exoscale.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,"gpu, region:eu"
+Firmus,https://firmus.co/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Flow Swiss,https://flow.swiss/,Infrastructure Clouds,Infrastructure Clouds,False,False,"owns-hardware, region:ch"
+Freestyle,https://freestyle.sh,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Gcore,https://gcore.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Hetzner,https://www.hetzner.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,"owns-hardware, region:eu"
+Hikube,https://hikube.cloud/,Infrastructure Clouds,Infrastructure Clouds,False,False,"owns-hardware, gpu, region:ch"
+Hivelocity,https://www.hivelocity.net/,Infrastructure Clouds,Infrastructure Clouds,False,False,owns-hardware
+IONOS Cloud,https://cloud.ionos.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,owns-hardware
+Kernel,https://www.kernel.sh/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Latitude.sh,https://www.latitude.sh/,Infrastructure Clouds,Infrastructure Clouds,False,False,owns-hardware
+LeaseWeb,https://www.leaseweb.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Linode,https://www.linode.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Loophole Labs,https://loopholelabs.io/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Lyceum,https://lyceum.technology/,Infrastructure Clouds,Infrastructure Clouds,False,False,"gpu, region:eu"
+Mermaid,https://mermaid.ai/web/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Mulga Spinifex,https://mulgadc.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Namespace,https://namespace.so/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+NetActuate,https://netactuate.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Openmetal.io,https://openmetal.io/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+OVH Cloud,https://us.ovhcloud.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Pingcap,https://www.pingcap.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+QBO,https://qbo.io/,Infrastructure Clouds,Infrastructure Clouds,False,False,gpu
+Rackdog,https://rackdog.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Rackspace,https://www.rackspace.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Salad,https://salad.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Scaleway,https://www.scaleway.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,region:eu
+Seeweb,https://www.seeweb.it/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Sent,https://www.sent.dm/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Servers.com,https://www.servers.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,owns-hardware
+Sidero Labs,https://www.siderolabs.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Spheron Network,https://www.spheron.network/,Infrastructure Clouds,Infrastructure Clouds,False,False,gpu
+Sprites,https://sprites.dev/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Sustainable Metal Cloud,https://smc.co/,Infrastructure Clouds,Infrastructure Clouds,False,False,gpu
+Vultr,https://www.vultr.com/,Infrastructure Clouds,Infrastructure Clouds,False,False,
+Aethir,https://aethir.com,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Andromeda,https://andromeda.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Anyscale,https://www.anyscale.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Arkane Cloud,https://arkanecloud.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,"open-source, gpu, region:fr"
+Banana.dev,https://www.banana.dev/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Baseten,https://www.baseten.co/,GPU & AI Compute Clouds,Workload Clouds,False,False,"llm-inference, open-source, gpu"
+Blackfuel,https://www.blackfuel.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Cerebrium,https://www.cerebrium.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+CoreWeave,https://www.coreweave.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Crusoe Energy,https://crusoecloud.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Cudo Compute,https://www.cudocompute.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Dapple,https://dapple.co/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Datacrunch.io,https://datacrunch.io/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Elice,https://elice.io/en,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+FluidStack,https://www.fluidstack.io/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Fractile,https://www.fractile.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+FriendliAI,https://friendli.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Genesis Cloud,https://www.genesiscloud.com/pricing,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+GMI Cloud,https://www.gmicloud.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+GPU CLI,https://gpu-cli.sh,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Highrise,https://www.highrise.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+HydraHost,https://hydrahost.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Hyperbolic,https://hyperbolic.xyz/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Hyperstack,https://www.hyperstack.cloud/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Lambda Labs,https://lambda.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+LeaderGPU,https://www.leadergpu.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Lightning.ai,https://lightning.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Lium,https://lium.io,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Mount Thor,https://mountthor.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Nebius,https://nebius.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+NeevCloud,https://www.neevcloud.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,"gpu, region:in"
+NextGen Cloud,https://www.nextgencloud.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Ornn,https://ornn.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Paperspace,https://www.paperspace.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Parasail,https://parasail.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Positron,https://www.positron.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Runpod,https://www.runpod.io/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Shadeform,https://shadeform.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+SkyPilot,https://skypilot.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+TensorDock,https://tensordock.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+TensorWave,https://tensorwave.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Thunder Compute,https://www.thundercompute.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Turba Labs,https://www.turbalabs.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Turboscale,https://www.turboscale.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Vast.ai,https://vast.ai/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Verda,https://verda.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Voltage Park,https://www.voltagepark.com/,GPU & AI Compute Clouds,Infrastructure Clouds,False,False,gpu
+Anchor,https://anchorbrowser.io/,Workload Clouds,Workload Clouds,False,False,agent-browser
+Browserbase,https://www.browserbase.com/,Workload Clouds,Workload Clouds,False,False,agent-browser
+browserless,https://www.browserless.io/,Workload Clouds,Workload Clouds,False,False,agent-browser
+E2B,https://e2b.dev/,Workload Clouds,Workload Clouds,False,False,"agent-sandbox, agent-native"
+Fal.ai,https://fal.ai/,Workload Clouds,Workload Clouds,False,False,"generative-media, batch-gpu, gpu"
+Modal,https://modal.com/,Workload Clouds,Workload Clouds,False,False,"llm-inference, serverless-functions, gpu"
+Parallel,https://parallel.ai/,Workload Clouds,Workload Clouds,False,False,"agent-search, agent-native"
+Replicate,https://replicate.com/,Workload Clouds,Workload Clouds,False,False,llm-inference
+Runloop,https://runloop.ai/,Workload Clouds,Workload Clouds,False,False,agent-sandbox
+ALTCHA,https://altcha.org/,"Security, Compliance & Sovereignty Clouds",Service Clouds,True,False,open-source
+Chainguard,https://www.chainguard.dev/,"Security, Compliance & Sovereignty Clouds",Service Clouds,True,False,open-source
+CrowdStrike,https://www.crowdstrike.com/,"Security, Compliance & Sovereignty Clouds",Service Clouds,True,False,
+Fortinet,https://www.fortinet.com/,"Security, Compliance & Sovereignty Clouds",Service Clouds,True,False,
+FPT Vietnam,https://fptsoftware.com/newsroom/news-and-press-releases/press-release/fpt-to-shape-the-future-of-ai-and-cloud-on-a-global-scale-in-collaboration-with-nvidia,"Security, Compliance & Sovereignty Clouds",Sovereign Clouds,True,False,
+GMO GPU Cloud,https://www.gmo.jp/en/news/article/797/,"Security, Compliance & Sovereignty Clouds",Sovereign Clouds,True,False,"gpu, region:jp"
+Jottacloud,https://jottacloud.com/en/,"Security, Compliance & Sovereignty Clouds",Sovereign Clouds,True,False,
+metalstack.cloud,https://www.metalstack.cloud/,"Security, Compliance & Sovereignty Clouds",Service Clouds,True,False,"open-source, region:de"
+Netskope,https://www.netskope.com/,"Security, Compliance & Sovereignty Clouds",Service Clouds,True,False,
+Ola Krutrim,https://www.olakrutrim.com/,"Security, Compliance & Sovereignty Clouds",Sovereign Clouds,True,False,"gpu, region:in"
+Operant,https://operant.ai/,"Security, Compliance & Sovereignty Clouds",Service Clouds,True,False,
+Reliance,https://www.ril.com/,"Security, Compliance & Sovereignty Clouds",Sovereign Clouds,True,False,region:in
+Sakura Internet,https://www.sakura.ad.jp/corporate/en/information/equinix-and-sakura-internet-launch-strategic-partnership/,"Security, Compliance & Sovereignty Clouds",Sovereign Clouds,True,False,"gpu, region:jp"
+T-Systems,https://www.t-systems.com/,"Security, Compliance & Sovereignty Clouds",Sovereign Clouds,True,False,"region:de, region:eu"
+TitanU AI,https://www.titanuai.com/,"Security, Compliance & Sovereignty Clouds",Sovereign Clouds,True,False,
+Valarian,https://www.valarian.com/,"Security, Compliance & Sovereignty Clouds",Sovereign Clouds,True,False,
+Wiz,https://www.wiz.io/,"Security, Compliance & Sovereignty Clouds",Service Clouds,True,False,
+Yotta,https://yotta.com/blog-need-of-sovereign-cloud-in-india/,"Security, Compliance & Sovereignty Clouds",Service Clouds,True,False,region:in
+Zscaler,https://www.zscaler.com/,"Security, Compliance & Sovereignty Clouds",Service Clouds,True,False,
+Cosmonic,https://cosmonic.com/,Unikernels & WebAssembly,Workload Clouds,False,False,wasm-unikernel
+KraftCloud,https://kraft.cloud/,Unikernels & WebAssembly,Workload Clouds,False,False,wasm-unikernel
+NanoVMs,https://nanovms.com/,Unikernels & WebAssembly,Workload Clouds,False,False,"wasm-unikernel, app-hosting"
+Unikraft,https://unikraft.com/,Unikernels & WebAssembly,Workload Clouds,False,False,wasm-unikernel
+Wasmer,https://wasmer.io/,Unikernels & WebAssembly,Workload Clouds,False,False,wasm-unikernel
+Accelerated Cloud Storage,https://www.acceleratedcloudstorage.com/,Databases & Storage,Infrastructure Clouds,True,False,
+Aiven,https://aiven.io/,Databases & Storage,Workload Clouds,True,False,open-source
+Algolia,https://www.algolia.com/,Databases & Storage,Workload Clouds,True,False,
+Archil,https://archil.com/,Databases & Storage,Infrastructure Clouds,True,False,
+CedarDB,https://cedardb.com/,Databases & Storage,Workload Clouds,True,False,realtime-rtc
+Cockroach Labs,https://www.cockroachlabs.com/,Databases & Storage,Workload Clouds,True,False,postgres-sql
+Convex,https://www.convex.dev/,Databases & Storage,Workload Clouds,True,False,"serverless-functions, realtime-rtc"
+Couchbase,https://www.couchbase.com/,Databases & Storage,Workload Clouds,True,False,nosql-timeseries
+Diffbot,https://www.diffbot.com/,Databases & Storage,Workload Clouds,True,False,agent-browser
+Ditto,https://www.ditto.com/,Databases & Storage,Workload Clouds,True,False,
+Gel,https://www.geldata.com/,Databases & Storage,Workload Clouds,True,False,postgres-sql
+Hasura,https://hasura.io/,Databases & Storage,Workload Clouds,True,False,postgres-sql
+Hydrolix,https://hydrolix.io/,Databases & Storage,Workload Clouds,True,False,"warehouse-lakehouse, streaming-etl, observability"
+InfluxData,https://www.influxdata.com/,Databases & Storage,Workload Clouds,True,False,nosql-timeseries
+LaserData,https://laserdata.com/,Databases & Storage,Workload Clouds,True,False,"streaming-etl, realtime-rtc, agent-native"
+Materialize,https://materialize.com/,Databases & Storage,Workload Clouds,True,False,"postgres-sql, streaming-etl, realtime-rtc"
+Meilisearch,https://www.meilisearch.com/,Databases & Storage,Workload Clouds,True,False,open-source
+Momento,https://www.gomomento.com/,Databases & Storage,Workload Clouds,True,False,key-value-cache
+MongoDB,https://www.mongodb.com/,Databases & Storage,Workload Clouds,True,False,nosql-timeseries
+Neo4j,https://neo4j.com/,Databases & Storage,Workload Clouds,True,False,postgres-sql
+Neon,https://neon.tech/,Databases & Storage,Workload Clouds,True,False,postgres-sql
+Planetscale,https://planetscale.com/,Databases & Storage,Workload Clouds,True,False,postgres-sql
+Prisma,https://www.prisma.io/,Databases & Storage,Workload Clouds,True,False,
+QuestDB,https://questdb.com/,Databases & Storage,Workload Clouds,True,False,"nosql-timeseries, open-source"
+ReadySet,https://readyset.io/,Databases & Storage,Workload Clouds,True,False,key-value-cache
+Redis,https://redis.io/,Databases & Storage,Workload Clouds,True,False,key-value-cache
+SingleStore,https://www.singlestore.com/,Databases & Storage,Workload Clouds,True,False,"vector, realtime-rtc"
+Steampipe,https://steampipe.io/,Databases & Storage,Workload Clouds,True,False,postgres-sql
+Storadera,https://storadera.com,Databases & Storage,Infrastructure Clouds,True,False,region:eu
+Supabase,https://supabase.com/,Databases & Storage,Workload Clouds,False,False,"postgres-sql, open-source"
+SurrealDB,https://surrealdb.com/,Databases & Storage,Workload Clouds,True,False,nosql-timeseries
+TigerData,https://www.tigerdata.com/,Databases & Storage,Workload Clouds,True,False,"postgres-sql, nosql-timeseries"
+Tigris,https://www.tigrisdata.com/,Databases & Storage,Infrastructure Clouds,True,False,
+Turbopuffer,https://turbopuffer.com/,Databases & Storage,Infrastructure Clouds,True,False,
+Turso,https://turso.tech/,Databases & Storage,Workload Clouds,True,False,postgres-sql
+Typesense,https://typesense.org/,Databases & Storage,Workload Clouds,True,False,open-source
+Upstash,https://upstash.com/,Databases & Storage,Workload Clouds,True,False,"key-value-cache, streaming-etl"
+Wasabi,https://wasabi.com/,Databases & Storage,Infrastructure Clouds,True,False,
+Xata,https://xata.io/,Databases & Storage,Workload Clouds,True,False,postgres-sql
+Amplitude,https://amplitude.com/,Analytics & Data Warehousing,Workload Clouds,False,False,warehouse-lakehouse
+ClickHouse,https://clickhouse.com/,Analytics & Data Warehousing,Workload Clouds,False,False,"warehouse-lakehouse, postgres-sql, realtime-rtc, open-source"
+Databricks,https://www.databricks.com/,Analytics & Data Warehousing,Workload Clouds,False,False,warehouse-lakehouse
+Domo,https://www.domo.com/,Analytics & Data Warehousing,Workload Clouds,False,False,warehouse-lakehouse
+DuckDB,https://duckdb.org/,Analytics & Data Warehousing,Workload Clouds,False,False,warehouse-lakehouse
+Fathom,https://usefathom.com/,Analytics & Data Warehousing,Workload Clouds,False,False,"warehouse-lakehouse, realtime-rtc"
+Firebolt,https://www.firebolt.io/,Analytics & Data Warehousing,Workload Clouds,False,False,warehouse-lakehouse
+FullStory,https://www.fullstory.com/,Analytics & Data Warehousing,Workload Clouds,False,False,warehouse-lakehouse
+Heap,https://heap.io/,Analytics & Data Warehousing,Workload Clouds,False,False,warehouse-lakehouse
+Mixpanel,https://mixpanel.com/,Analytics & Data Warehousing,Workload Clouds,False,False,warehouse-lakehouse
+MotherDuck,https://motherduck.com/,Analytics & Data Warehousing,Workload Clouds,False,False,warehouse-lakehouse
+Plausible,https://plausible.io/,Analytics & Data Warehousing,Workload Clouds,False,False,"warehouse-lakehouse, observability"
+PostHog,https://posthog.com/,Analytics & Data Warehousing,Workload Clouds,False,False,"warehouse-lakehouse, open-source"
+Rybbit,https://rybbit.com/,Analytics & Data Warehousing,Workload Clouds,False,False,"warehouse-lakehouse, realtime-rtc"
+Snowflake,https://www.snowflake.com/en/,Analytics & Data Warehousing,Workload Clouds,False,False,warehouse-lakehouse
+Teradata,https://www.teradata.com/,Analytics & Data Warehousing,Workload Clouds,False,False,warehouse-lakehouse
+Tinybird,https://www.tinybird.co/,Analytics & Data Warehousing,Workload Clouds,False,False,"warehouse-lakehouse, streaming-etl, realtime-rtc"
+BetterStack,https://betterstack.com/,Observability & Monitoring,Service Clouds,True,False,
+Causely,https://www.causely.ai/,Observability & Monitoring,Service Clouds,True,False,agent-native
+Checkly,https://www.checklyhq.com/,Observability & Monitoring,Service Clouds,True,False,
+Chronosphere,https://chronosphere.io/,Observability & Monitoring,Workload Clouds,True,False,observability
+Comet,https://www.comet.com/,Observability & Monitoring,Workload Clouds,True,False,"observability, llm-inference"
+Coralogix,https://coralogix.com/,Observability & Monitoring,Workload Clouds,True,False,"observability, streaming-etl"
+Datadog,https://www.datadoghq.com/,Observability & Monitoring,Workload Clouds,True,False,observability
+Dynatrace,https://www.dynatrace.com/,Observability & Monitoring,Workload Clouds,True,False,observability
+Elastic,https://www.elastic.co/,Observability & Monitoring,Workload Clouds,True,False,observability
+Gigapipe,https://gigapipe.com/,Observability & Monitoring,Workload Clouds,True,False,observability
+Grafana,https://grafana.com/,Observability & Monitoring,Workload Clouds,True,False,"observability, open-source"
+groundcover,https://www.groundcover.com/,Observability & Monitoring,Workload Clouds,True,False,"observability, open-source"
+Helicone,https://www.helicone.ai/,Observability & Monitoring,Workload Clouds,True,False,"observability, llm-inference, open-source"
+Highlight,https://highlight.io/,Observability & Monitoring,Workload Clouds,True,False,"observability, open-source"
+Honeycomb,https://www.honeycomb.io/,Observability & Monitoring,Workload Clouds,True,False,observability
+Kentik,https://www.kentik.com/,Observability & Monitoring,Workload Clouds,True,False,observability
+Laminar,https://laminar.sh/,Observability & Monitoring,Workload Clouds,True,False,"observability, llm-inference"
+LogRocket,https://logrocket.com/,Observability & Monitoring,Workload Clouds,True,False,observability
+Logz.io,https://logz.io/,Observability & Monitoring,Workload Clouds,True,False,"observability, open-source"
+Mezmo,https://www.mezmo.com/,Observability & Monitoring,Workload Clouds,True,False,observability
+New Relic,https://newrelic.com/,Observability & Monitoring,Workload Clouds,True,False,observability
+NOFire,https://www.nofire.ai/,Observability & Monitoring,Service Clouds,True,False,
+OpenStatus,https://www.openstatus.dev/,Observability & Monitoring,Service Clouds,True,False,open-source
+Polylane,https://polylane.com/,Observability & Monitoring,Service Clouds,True,False,
+Raindrop,https://www.raindrop.ai/,Observability & Monitoring,Workload Clouds,True,False,"observability, agent-native"
+Sentry,https://sentry.io/,Observability & Monitoring,Service Clouds,True,False,
+SolidPing,https://www.solidping.io/,Observability & Monitoring,Service Clouds,True,False,open-source
+Splunk,https://www.splunk.com/,Observability & Monitoring,Workload Clouds,True,False,observability
+Sumo Logic,https://www.sumologic.com/,Observability & Monitoring,Workload Clouds,True,False,"observability, realtime-rtc"
+Weights & Biases,https://wandb.ai/,Observability & Monitoring,Workload Clouds,True,False,"observability, llm-inference"
+Airbyte,https://airbyte.com/,Data Integration & ETL,Workload Clouds,False,False,"streaming-etl, open-source"
+Arroyo,https://arroyo.dev,Data Integration & ETL,Workload Clouds,False,False,"streaming-etl, postgres-sql, realtime-rtc"
+dbt Labs,https://www.getdbt.com/,Data Integration & ETL,Workload Clouds,False,False,"streaming-etl, warehouse-lakehouse"
+Firecrawl,https://www.firecrawl.dev/,Data Integration & ETL,Workload Clouds,False,False,"streaming-etl, llm-inference, agent-browser"
+Fivetran,https://www.fivetran.com/,Data Integration & ETL,Workload Clouds,False,False,streaming-etl
+Redpanda,https://www.redpanda.com/,Data Integration & ETL,Workload Clouds,False,False,streaming-etl
+Rivery,https://rivery.io/,Data Integration & ETL,Workload Clouds,False,False,"streaming-etl, durable-workflow"
+Alloy Automation,https://runalloy.com/,Workflow & Operations Clouds,Workload Clouds,False,False,"durable-workflow, app-hosting"
+Dagster,https://dagster.io/,Workflow & Operations Clouds,Workload Clouds,False,False,"durable-workflow, streaming-etl"
+Fastn,https://fastn.ai/,Workflow & Operations Clouds,Workload Clouds,False,False,durable-workflow
+Hatchet,https://hatchet.run/,Workflow & Operations Clouds,Workload Clouds,False,False,durable-workflow
+Inngest,https://www.inngest.com/,Workflow & Operations Clouds,Workload Clouds,False,False,durable-workflow
+Kestra,https://kestra.io/,Workflow & Operations Clouds,Workload Clouds,False,False,"durable-workflow, open-source"
+Mabl,https://www.mabl.com/,Workflow & Operations Clouds,Workload Clouds,False,False,"durable-workflow, agent-native"
+Miter,https://www.miter.com/,Workflow & Operations Clouds,Workload Clouds,False,False,durable-workflow
+n8n,https://n8n.io/,Workflow & Operations Clouds,Workload Clouds,False,False,"durable-workflow, open-source"
+PagerDuty,https://www.pagerduty.com/,Workflow & Operations Clouds,Workload Clouds,False,False,durable-workflow
+Prefect,https://www.prefect.io/,Workflow & Operations Clouds,Workload Clouds,False,False,"durable-workflow, streaming-etl"
+Resonate,https://www.resonatehq.io/,Workflow & Operations Clouds,Workload Clouds,False,False,durable-workflow
+Ryvn,https://ryvn.ai/,Workflow & Operations Clouds,Workload Clouds,False,False,"durable-workflow, open-source"
+ServiceNow,https://www.servicenow.com/,Workflow & Operations Clouds,Workload Clouds,False,False,durable-workflow
+Tale,https://tale.dev/,Workflow & Operations Clouds,Workload Clouds,False,False,"durable-workflow, open-source"
+Temporal,https://temporal.io/,Workflow & Operations Clouds,Workload Clouds,False,False,durable-workflow
+this+that,https://www.thisandthat.chat/,Workflow & Operations Clouds,Workload Clouds,False,False,durable-workflow
+Tines,https://www.tines.com/,Workflow & Operations Clouds,Workload Clouds,False,False,durable-workflow
+Windmill,https://www.windmill.dev/,Workflow & Operations Clouds,Workload Clouds,False,False,"durable-workflow, open-source"
+Zapier,https://zapier.com/,Workflow & Operations Clouds,Workload Clouds,False,False,durable-workflow
+Akamai,https://www.akamai.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Apoxy,https://apoxy.dev/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Approximated,https://approximated.app/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Aviatrix,https://aviatrix.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+c/Side,https://cside.dev/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Cloudbrink,https://cloudbrink.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Cloudflare,https://www.cloudflare.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Core Transit,https://www.coretransit.net/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+CtrlDNS,https://www.ctrldns.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+doxx.net,https://www.doxx.net/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,agent-native
+Fastly,https://www.fastly.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Inter.link,https://inter.link/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,region:eu
+IPinfo,https://ipinfo.io/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Kong,https://konghq.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,open-source
+LM Link,https://lmstudio.ai/link,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+LocalXpose,https://localxpose.io/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Lumilens,https://lumilens.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Macrometa,https://www.macrometa.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Megaport,https://www.megaport.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+NetBox Cloud,https://netboxlabs.com/netbox-cloud/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Netmaker,https://netmaker.io/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Offline Protocol,https://www.offlineprotocol.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Pangolin,https://digpangolin.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Subspace,https://subspace.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Tailscale,https://tailscale.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Twingate,https://www.twingate.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+Versa Networks,https://www.versa-networks.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+ZeroTier,https://www.zerotier.com/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+zrok,https://zrok.io/,Network & Connectivity Clouds,Infrastructure Clouds,False,False,
+A2Agent,https://a2agent.me/,AI Inference & Model APIs,Workload Clouds,False,False,llm-inference
+Cloudglue,https://cloudglue.dev/,AI Inference & Model APIs,Workload Clouds,False,False,llm-inference
+Concentrate.ai,https://concentrate.ai/,AI Inference & Model APIs,Workload Clouds,False,False,llm-inference
+Fireworks.ai,https://fireworks.ai/,AI Inference & Model APIs,Workload Clouds,False,False,"llm-inference, open-source"
+Groq,https://groq.com/,AI Inference & Model APIs,Workload Clouds,False,False,llm-inference
+Heabsy,https://heabsy.com/platform,AI Inference & Model APIs,Workload Clouds,False,False,"llm-inference, gpu, region:eu"
+Hugging Face,https://huggingface.co/,AI Inference & Model APIs,Workload Clouds,False,False,llm-inference
+InfronAI,https://infron.ai/,AI Inference & Model APIs,Workload Clouds,False,False,llm-inference
+LeptonAI,https://lepton.ai/,AI Inference & Model APIs,Workload Clouds,False,False,llm-inference
+Makora,https://www.makora.com/,AI Inference & Model APIs,Workload Clouds,False,False,llm-inference
+Mistral AI,https://mistral.ai/,AI Inference & Model APIs,Workload Clouds,False,False,llm-inference
+ModelRush,https://modelrush.ai/,AI Inference & Model APIs,Workload Clouds,False,False,"llm-inference, speech-voice"
+MUNITO,https://munito.ai/,AI Inference & Model APIs,Workload Clouds,False,False,"llm-inference, region:eu"
+Nomadic,https://www.nomadicai.com/,AI Inference & Model APIs,Workload Clouds,False,False,llm-inference
+Portkey,https://portkey.ai/,AI Inference & Model APIs,Workload Clouds,False,False,"llm-inference, key-value-cache, observability"
+Roboflow,https://roboflow.com/,AI Inference & Model APIs,Workload Clouds,False,False,"llm-inference, training-finetuning"
+Runway,https://runway.com/,AI Inference & Model APIs,Workload Clouds,False,False,llm-inference
+Sail Research,https://www.sailresearch.com/,AI Inference & Model APIs,Workload Clouds,False,False,"llm-inference, open-source"
+Subconscious,https://www.subconscious.dev/,AI Inference & Model APIs,Workload Clouds,False,False,llm-inference
+Swirls,https://swirls.ai/,AI Inference & Model APIs,Workload Clouds,False,False,"llm-inference, durable-workflow, agent-native"
+Together.ai,https://www.together.ai/,AI Inference & Model APIs,Workload Clouds,False,False,"llm-inference, training-finetuning, open-source"
+AssemblyAI,https://www.assemblyai.com/,AI Assistants & Copilots,Workload Clouds,True,False,speech-voice
+Bluedot,https://www.bluedothq.com/,AI Assistants & Copilots,Service Clouds,True,False,
+Character.ai,https://character.ai/,AI Assistants & Copilots,Service Clouds,True,False,
+ChatGPT by OpenAI,https://openai.com/chatgpt,AI Assistants & Copilots,Service Clouds,True,False,
+Chatsonic,https://chatsonic.com/,AI Assistants & Copilots,Service Clouds,True,False,
+Claude,https://claude.ai/,AI Assistants & Copilots,Service Clouds,True,False,
+Cohere,https://cohere.com/,AI Assistants & Copilots,Service Clouds,True,False,
+Concourse,https://www.concourse.ai/,AI Assistants & Copilots,Service Clouds,True,False,
+Crosby,https://crosby.ai/,AI Assistants & Copilots,Service Clouds,True,False,
+DeepAI,https://deepai.org/,AI Assistants & Copilots,Workload Clouds,True,False,
+Deepseek,https://deepseek.com/,AI Assistants & Copilots,Service Clouds,True,False,
+ElevenLabs,https://elevenlabs.io/,AI Assistants & Copilots,Service Clouds,True,False,
+Elicit,https://elicit.org/,AI Assistants & Copilots,Service Clouds,True,False,
+GetHermes,https://gethermes.cloud/,AI Assistants & Copilots,Workload Clouds,True,False,
+Haize Labs,https://haizelabs.com/,AI Assistants & Copilots,Service Clouds,True,False,
+Hermes Agent,https://hermes-agent.nousresearch.com/,AI Assistants & Copilots,Workload Clouds,True,False,agent-sandbox
+Joggr,https://www.joggr.ai/,AI Assistants & Copilots,Service Clouds,True,False,
+Kimi AI,https://www.kimi.com,AI Assistants & Copilots,Service Clouds,True,False,
+Layer 9,https://layer9.com/,AI Assistants & Copilots,Service Clouds,True,False,
+NeuBird,https://neubird.ai/,AI Assistants & Copilots,Service Clouds,True,False,
+Obvious,https://obvious.ai/,AI Assistants & Copilots,Service Clouds,True,False,
+Parahelp,https://parahelp.com/,AI Assistants & Copilots,Service Clouds,True,False,
+Perplexity,https://www.perplexity.ai/,AI Assistants & Copilots,Service Clouds,True,False,
+Playground,https://playground.com/,AI Assistants & Copilots,Service Clouds,True,False,
+Poe,https://poe.com/,AI Assistants & Copilots,Service Clouds,True,False,
+Protege,https://withprotege.ai/,AI Assistants & Copilots,Service Clouds,True,False,
+Resolve.ai,https://resolve.ai/,AI Assistants & Copilots,Service Clouds,True,False,agent-native
+Runlayer,https://www.runlayer.com/,AI Assistants & Copilots,Service Clouds,True,False,
+SharonAI,https://sharonai.com/en/,AI Assistants & Copilots,Service Clouds,True,False,
+Supertrace AI,https://supertrace.ai/,AI Assistants & Copilots,Workload Clouds,True,False,
+Surfer AI,https://surferseo.com/ai/,AI Assistants & Copilots,Service Clouds,True,False,
+Tavus,https://www.tavus.io/,AI Assistants & Copilots,Service Clouds,True,False,
+9Router,https://9router.com/,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+Base44,https://base44.com/,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+Bolt,https://bolt.new/,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+Codev,https://codev.ai/,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+CopilotKit,https://www.copilotkit.ai/,AI Coding & App Generation,Workload Clouds,False,False,"app-generation, open-source"
+Cursor,https://www.cursor.so/,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+Drydock,https://drydock.build/,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+Git AI,https://usegitai.com/,AI Coding & App Generation,Workload Clouds,False,False,"app-generation, open-source"
+GitHub Copilot,https://github.com/features/copilot,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+Marblism,https://www.marblism.com/,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+Mesa,https://www.mesa.dev,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+Niteshift,https://niteshift.dev/,AI Coding & App Generation,Workload Clouds,False,False,"app-generation, app-hosting"
+OB-1,https://www.openblocklabs.com/,AI Coding & App Generation,Workload Clouds,False,False,"app-generation, nosql-timeseries, durable-workflow"
+Ona,https://ona.com/,AI Coding & App Generation,Workload Clouds,False,False,"app-generation, durable-workflow"
+OpenHands,https://www.openhands.dev/,AI Coding & App Generation,Workload Clouds,False,False,"app-generation, open-source"
+Softgen,https://softgen.ai/,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+Tabnine,https://www.tabnine.com/,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+v0,https://v0.app/,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+VibeKit,https://vibekit.bot/,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+Windsurf,https://windsurf.com/,AI Coding & App Generation,Workload Clouds,False,False,app-generation
+AFFiNE,https://affine.pro/,PaaS & Application Hosting,Workload Clouds,False,False,"app-hosting, open-source"
+Alien,https://www.alien.dev/,PaaS & Application Hosting,Workload Clouds,False,False,"app-hosting, observability"
+Deno Deploy,https://deno.com/deploy,PaaS & Application Hosting,Workload Clouds,False,False,"app-hosting, edge-functions"
+Flightcontrol,https://www.flightcontrol.dev/,PaaS & Application Hosting,Workload Clouds,False,False,"app-hosting, ci-builds"
+Fly,https://fly.io,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+Gadget,https://gadget.dev/,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+Heroku,https://www.heroku.com/,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+Koyeb,https://www.koyeb.com/,PaaS & Application Hosting,Workload Clouds,False,False,"app-hosting, serverless-functions"
+Lyrid,https://www.lyrid.io/,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+Maritime,https://maritime.sh/,PaaS & Application Hosting,Workload Clouds,False,False,"app-hosting, agent-native"
+Namecheap,https://www.namecheap.com/,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+Netlify,https://www.netlify.com/,PaaS & Application Hosting,Workload Clouds,False,False,"app-hosting, web-frontend"
+Northflank,https://northflank.com/,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+OpenComputer,https://opencomputer.dev/,PaaS & Application Hosting,Workload Clouds,False,False,"app-hosting, streaming-etl, agent-sandbox, agent-native"
+Out Plane,https://outplane.com/,PaaS & Application Hosting,Workload Clouds,False,False,"app-hosting, postgres-sql, key-value-cache"
+Pantheon,https://pantheon.io/,PaaS & Application Hosting,Workload Clouds,False,False,"app-hosting, web-frontend"
+Platform.sh,https://platform.sh/,PaaS & Application Hosting,Workload Clouds,False,False,"app-hosting, web-frontend"
+Plotly Cloud,https://plotly.com/cloud/,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+Porter,https://porter.run/,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+Puter,https://puter.com/,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+Railway,https://railway.com/,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+Render,https://render.com/,PaaS & Application Hosting,Workload Clouds,False,False,"app-hosting, web-frontend, durable-workflow"
+Shuttle,https://www.shuttle.dev/,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+Skyhook,https://skyhook.io/,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+Upsun,https://upsun.com/,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+Zerops,https://zerops.io,PaaS & Application Hosting,Workload Clouds,False,False,app-hosting
+8gears Container Registry,https://container-registry.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Actuated,https://actuated.com/,Developer Tooling & CI/CD,Workload Clouds,True,False,"ci-builds, open-source"
+Anaconda,https://www.anaconda.com/,Developer Tooling & CI/CD,Service Clouds,True,False,open-source
+Blacksmith,https://www.blacksmith.sh/,Developer Tooling & CI/CD,Workload Clouds,True,False,"ci-builds, observability"
+Bubble,https://bubble.io/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Caveman,https://caveman.so/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Cloudsmith,https://cloudsmith.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Coder,https://coder.com/,Developer Tooling & CI/CD,Service Clouds,True,False,open-source
+CurlShot,https://curlshot.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Cypress,https://www.cypress.io/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Depot,https://depot.dev/,Developer Tooling & CI/CD,Workload Clouds,True,False,"key-value-cache, ci-builds"
+DevZero,https://www.devzero.io/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Dosu,https://dosu.dev/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Engram SDK,https://www.engram.org/products/sdk,Developer Tooling & CI/CD,Service Clouds,True,False,
+Fabrica,https://www.usefabrica.app/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Firefly,https://www.firefly.ai/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Flagsmith,https://www.flagsmith.com/,Developer Tooling & CI/CD,Service Clouds,True,False,open-source
+Floci,https://floci.io/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Gammacode,https://gammacode.dev/,Developer Tooling & CI/CD,Service Clouds,True,False,
+GitBook,https://www.gitbook.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Gitpod,https://www.gitpod.io/,Developer Tooling & CI/CD,Service Clouds,True,False,
+HashiCorp Cloud Platform,https://www.hashicorp.com/cloud,Developer Tooling & CI/CD,Service Clouds,True,False,
+Helix,https://helix.ml/,Developer Tooling & CI/CD,Service Clouds,True,False,agent-native
+JetBrains,https://www.jetbrains.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Lightrun,https://lightrun.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Linear,https://linear.app/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Mintlify,https://mintlify.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Notion,https://www.notion.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+OpenSEO,https://openseo.so/,Developer Tooling & CI/CD,Service Clouds,True,False,open-source
+Outerbase,https://www.outerbase.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Paper,https://paper.design/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Prismic,https://prismic.io/,Developer Tooling & CI/CD,Service Clouds,True,False,
+QA Wolf,https://www.qawolf.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Qodo,https://www.qodo.ai/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Release,https://release.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Replit,https://replit.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Retool,https://retool.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+RWX,https://www.rwx.com/,Developer Tooling & CI/CD,Workload Clouds,True,False,"key-value-cache, generative-media, agent-sandbox, ci-builds, agent-native"
+StackBlitz,https://stackblitz.com/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Superset,https://superset.sh/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Tensorlake,https://www.tensorlake.ai/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Tiptap,https://tiptap.dev/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Ubicloud,https://www.ubicloud.com/,Developer Tooling & CI/CD,Service Clouds,True,False,open-source
+Unleash,https://www.getunleash.io/,Developer Tooling & CI/CD,Service Clouds,True,False,open-source
+Warp,https://www.warp.dev/,Developer Tooling & CI/CD,Service Clouds,True,False,
+Wire,https://usewire.io/,Developer Tooling & CI/CD,Service Clouds,True,False,agent-native
+Akeyless,https://www.akeyless.io/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+AlpacaX,https://www.alpacax.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,agent-native
+Aserto,https://www.aserto.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Auth0,https://auth0.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Authzed,https://authzed.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,open-source
+Bolster,https://bolster.ai/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Boundary,https://www.boundaryproject.io/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Cerbos,https://cerbos.dev/,"Authorization, Identity & Fraud",Service Clouds,False,False,open-source
+CipherStash,https://cipherstash.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Clerk,https://clerk.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Descope,https://www.descope.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Doppler,https://www.doppler.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Duo,https://duo.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Frontegg,https://frontegg.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+FusionAuth,https://fusionauth.io/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Infisical,https://infisical.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+JumpCloud,https://jumpcloud.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Keet,https://www.trykeet.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,agent-native
+Keycard,https://www.keycard.ai/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Keycloak,https://www.keycloak.org/,"Authorization, Identity & Fraud",Service Clouds,False,False,open-source
+Ory,https://www.ory.sh/,"Authorization, Identity & Fraud",Service Clouds,False,False,open-source
+Oso,https://www.osohq.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Pangea,https://pangea.cloud/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Permit,https://www.permit.io/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Pomerium,https://www.pomerium.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+PropelAuth,https://www.propelauth.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Sift Science,https://sift.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+StrongDM,https://www.strongdm.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Stytch,https://stytch.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Teleport,https://goteleport.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Warrant,https://warrant.dev/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+WorkOS,https://workos.com/,"Authorization, Identity & Fraud",Service Clouds,False,False,
+Xpander.ai,http://xpander.ai/,"Authorization, Identity & Fraud",Service Clouds,False,False,agent-native
+Amberflo,https://www.amberflo.io/,Monetization & Billing Clouds,Service Clouds,False,False,
+Autumn,https://useautumn.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+Bill,https://www.bill.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+Dodo Payments,https://dodopayments.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+Hyperline,https://www.hyperline.co/,Monetization & Billing Clouds,Service Clouds,False,False,
+Lago,https://www.getlago.com/,Monetization & Billing Clouds,Service Clouds,False,False,open-source
+Lemon Squeezy,https://www.lemonsqueezy.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+m3ter,https://www.m3ter.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+Maxio,https://www.maxio.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+Mercury,https://mercury.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+Metronome,https://metronome.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+N26,https://n26.com/en-us,Monetization & Billing Clouds,Service Clouds,False,False,region:eu
+OpenMeter,https://openmeter.io/,Monetization & Billing Clouds,Service Clouds,False,False,open-source
+Orb,https://www.withorb.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+Ramp,https://ramp.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+Recurly,https://recurly.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+Salesforce Revenue Cloud,https://www.salesforce.com/products/revenue-cloud/overview/,Monetization & Billing Clouds,Service Clouds,False,False,
+Schematic,https://schematichq.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+Stigg,https://www.stigg.io/,Monetization & Billing Clouds,Service Clouds,False,False,
+Stripe,https://stripe.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+Togai,https://www.togai.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+UniBee,https://unibee.dev/,Monetization & Billing Clouds,Service Clouds,False,False,open-source
+Wise,https://wise.com/,Monetization & Billing Clouds,Service Clouds,False,False,
+Agent From Abundance,https://www.agentfromabundance.com/,"Customer, Marketing & eCommerce",Vertical Clouds,True,False,
+Attio,https://attio.com/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Beehiiv,https://www.beehiiv.com/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Clarify,https://www.getclarify.ai/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Conecto,https://conecto.chat/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Customer.io,https://www.customer.io/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+day3,https://day3.app/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Formbricks,https://formbricks.com/,"Customer, Marketing & eCommerce",Service Clouds,True,False,open-source
+Front,https://front.com/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Helpscout,https://www.helpscout.com/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Hubspot,https://www.hubspot.com/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Jasper,https://www.jasper.ai/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Klaviyo,https://www.klaviyo.com,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Loops,https://loops.so/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Mirakl,https://www.mirakl.com/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Plain,https://www.plain.com/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Shopify,https://www.shopify.com/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Stonly,https://stonly.com/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+Zendesk,https://www.zendesk.com/,"Customer, Marketing & eCommerce",Service Clouds,True,False,
+1NCE,https://www.1nce.com/en-us/,"Communications, IoT & Media",Service Clouds,True,False,
+api.video,https://api.video/,"Communications, IoT & Media",Workload Clouds,True,False,"streaming-etl, media-processing"
+Gradium,https://gradium.ai/,"Communications, IoT & Media",Workload Clouds,True,False,"llm-inference, speech-voice"
+Hologram,https://www.hologram.io/,"Communications, IoT & Media",Service Clouds,True,False,
+Knock,https://knock.app/,"Communications, IoT & Media",Service Clouds,True,False,
+Mux,https://www.mux.com,"Communications, IoT & Media",Workload Clouds,True,False,streaming-etl
+Novu,https://novu.co/,"Communications, IoT & Media",Service Clouds,True,False,open-source
+Onomondo,https://onomondo.com/,"Communications, IoT & Media",Service Clouds,True,False,
+Particle,https://www.particle.io/,"Communications, IoT & Media",Service Clouds,True,False,
+Resend,https://resend.com/,"Communications, IoT & Media",Service Clouds,True,False,
+Samsara,https://www.samsara.com/,"Communications, IoT & Media",Service Clouds,True,False,
+Sendbird,https://sendbird.com/,"Communications, IoT & Media",Workload Clouds,True,False,speech-voice
+SLNG,https://www.slng.ai,"Communications, IoT & Media",Workload Clouds,True,False,speech-voice
+Soracom,https://soracom.io/,"Communications, IoT & Media",Service Clouds,True,False,
+Telnyx,https://telnyx.com/,"Communications, IoT & Media",Workload Clouds,True,False,"llm-inference, speech-voice, realtime-rtc"
+Twilio,https://www.twilio.com/docs/iot,"Communications, IoT & Media",Service Clouds,True,False,
+Wistia,https://wistia.com/,"Communications, IoT & Media",Workload Clouds,True,False,
+Akash Network,https://akash.network/,Decentralized & Web3 Compute,Infrastructure Clouds,False,False,
+Gitea Cloud,https://about.gitea.com/products/cloud/,Source Code Control,Service Clouds,False,False,
+GitHub,https://github.com/,Source Code Control,Service Clouds,False,False,
+GitLab,https://gitlab.com/,Source Code Control,Service Clouds,False,False,
+Edgeless Systems,https://www.edgeless.systems/,Cloud Adjacent & Infrastructure Tooling,Service Clouds,False,False,
+ngrok,https://ngrok.com/,Cloud Adjacent & Infrastructure Tooling,Service Clouds,False,False,
+Solo.io,https://www.solo.io/,Cloud Adjacent & Infrastructure Tooling,Service Clouds,False,False,agent-native
+Tetrate,https://tetrate.io/,Cloud Adjacent & Infrastructure Tooling,Service Clouds,False,False,
+API7,https://api7.ai/,Emerging & Unverified Providers,Service Clouds,True,True,
+Apigee,https://cloud.google.com/apigee,Emerging & Unverified Providers,Service Clouds,True,True,
+Chroma,https://www.trychroma.com/,Emerging & Unverified Providers,Workload Clouds,True,True,"vector, open-source"
+Eppo,https://www.geteppo.com/,Emerging & Unverified Providers,Service Clouds,True,True,
+FeatBit,https://featbit.co/,Emerging & Unverified Providers,Service Clouds,True,True,open-source
+KrakenD,https://www.krakend.io/,Emerging & Unverified Providers,Service Clouds,True,True,
+LaunchDarkly,https://launchdarkly.com/,Emerging & Unverified Providers,Service Clouds,True,True,
+OpenObserve,https://openobserve.ai/,Emerging & Unverified Providers,Workload Clouds,True,True,"observability, open-source"
+Oxide Computer,https://oxide.computer/,Emerging & Unverified Providers,Infrastructure Clouds,True,True,
+Split,https://www.split.io/,Emerging & Unverified Providers,Service Clouds,True,True,
+Statsig,https://statsig.com/,Emerging & Unverified Providers,Service Clouds,True,True,
+Tggl,https://tggl.io/,Emerging & Unverified Providers,Service Clouds,True,True,
+Uptrace,https://uptrace.dev/,Emerging & Unverified Providers,Workload Clouds,True,True,observability

@@ -1,4 +1,5 @@
 import cloudsData from "../../public/clouds.json";
+import { CATEGORIES } from "./taxonomy";
 
 export interface Cloud {
   name: string;
@@ -6,6 +7,8 @@ export interface Cloud {
   description: string;
   score: 2 | 3;
   categories: string[];
+  tags?: string[];
+  unverified?: boolean;
   dateAdded?: string;
   favorite?: boolean;
 }
@@ -93,7 +96,10 @@ export function getCategories(): string[] {
   for (const cloud of clouds) {
     for (const cat of cloud.categories) set.add(cat);
   }
-  return ["All", ...[...set].sort()];
+  // Taxonomy order first; any category not in the taxonomy (legacy data) follows alphabetically.
+  const known = CATEGORIES.filter((c) => set.has(c));
+  const extra = [...set].filter((c) => !(CATEGORIES as readonly string[]).includes(c)).sort();
+  return ["All", ...known, ...extra];
 }
 
 export function categoryToSlug(cat: string): string {
@@ -106,4 +112,14 @@ export function categoryToSlug(cat: string): string {
 export function countByCategory(category: string): number {
   if (category === "All") return clouds.length;
   return clouds.filter((c) => c.categories.includes(category)).length;
+}
+
+/** Count of clouds per tag, across all clouds. */
+export function getTagCounts(): Map<string, number> {
+  const counts = new Map<string, number>();
+  for (const cloud of clouds) {
+    const tags = cloud.unverified ? [...(cloud.tags ?? []), "unverified"] : (cloud.tags ?? []);
+    for (const tag of tags) counts.set(tag, (counts.get(tag) ?? 0) + 1);
+  }
+  return counts;
 }

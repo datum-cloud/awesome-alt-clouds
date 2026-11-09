@@ -62,6 +62,7 @@ WORKLOAD_TAG_FAMILIES = MappingProxyType(
         ),
         "Data": (
             "postgres-sql",
+            "nosql-timeseries",
             "key-value-cache",
             "vector",
             "warehouse-lakehouse",

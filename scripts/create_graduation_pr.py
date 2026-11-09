@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Create a PR that moves a graduated service to its real category.
+"""Create a PR that graduates a service out of 🔵 Emerging & Unverified.
 
 Reads graduation_data.json (written by evaluate_graduation.py) and opens a
-PR that removes the entry from its current "Emerging & Unverified
-Providers" bullet and re-inserts it, alphabetically, into the category it
-now qualifies for.
+PR that removes the entry's old bullet and re-inserts a verified one (no 🔵,
+refreshed score/tags), alphabetically, into the category it now belongs to —
+which is usually the same category it already sat in.
 """
 
 import json
@@ -55,6 +55,8 @@ def move_entry_in_readme(data):
         "category": data["new_category"],
         "score": data["score"],
         "description": data["description"],
+        "tags": data.get("tags") or [],
+        "unverified": False,
     }
     new_content = add_entry_to_readme(submission, content=content)
     if new_content is None:
@@ -65,6 +67,13 @@ def move_entry_in_readme(data):
         f.write(new_content)
 
     return True
+
+
+def move_note(data):
+    """' (Old -> New)' when the category changes, else ''."""
+    if data["old_category"] == data["new_category"]:
+        return ""
+    return f" ({data['old_category']} -> {data['new_category']})"
 
 
 def create_pr(data):
@@ -81,10 +90,7 @@ def create_pr(data):
 
     run_command(["git", "add", "README.md"])
 
-    commit_msg = (
-        f"Graduate {name} from {data['old_category']} to {data['new_category']}"
-        f"\\n\\nCloses #{issue_number}"
-    )
+    commit_msg = f"Graduate {name}: remove Emerging & Unverified badge{move_note(data)}" f"\\n\\nCloses #{issue_number}"
     # sign-commit reads the staged paths NUL-separated on stdin; pass them as
     # an argument list so no filename or commit message reaches a shell.
     staged = run_command(["git", "diff", "--cached", "--name-only", "-z"], strip=False)
@@ -114,19 +120,18 @@ def create_pr(data):
         return True
 
     badge = badge_for_score(data["score"])
-    pr_title = f"Graduate {badge} {name} from {data['old_category']} to {data['new_category']}"
+    pr_title = f"Graduate {badge} {name}: remove Emerging & Unverified badge{move_note(data)}"
 
     review_note = " ⚠️ needs verification" if data.get("needs_manual_review") else ""
     pr_body = f"""## Graduation Request
 
-This PR moves **{name}** from **{data["old_category"]}** to **{data["new_category"]}**.
+This PR graduates **{name}** out of 🔵 Emerging & Unverified (category: **{data["new_category"]}**).
 
 | Field | Value |
 |-------|-------|
 | Name | {name} |
 | URL | {data["url"]} |
-| From | {data["old_category"]} |
-| To | {data["new_category"]} |
+| Category | {data["old_category"]} → {data["new_category"]} |
 | Score | {data["score"]}/3 {badge}{review_note} |
 | Description | {data["description"]} |
 

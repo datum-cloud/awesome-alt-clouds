@@ -26,15 +26,15 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 
 from evaluate_submission import evaluate_service  # noqa: E402
-from lib.readme_entries import badge_for_score, list_entries_in_category  # noqa: E402
+from lib.readme_entries import badge_for, list_unverified_entries  # noqa: E402
 
-EMERGING_CATEGORY = "Emerging & Unverified Providers"
+EMERGING_LABEL = "🔵 Emerging & Unverified"
 README_FILE = "README.md"
 
 
 def audit(content):
-    """Re-score every entry in EMERGING_CATEGORY. Returns (new_content, changed, flagged)."""
-    entries = list_entries_in_category(content, EMERGING_CATEGORY)
+    """Re-score every 🔵 entry. Returns (new_content, changed, flagged, total)."""
+    entries = list_unverified_entries(content)
     lines = content.split("\n")
     changed = []
     flagged = []
@@ -43,7 +43,7 @@ def audit(content):
         print(f"Evaluating {entry['name']} ({entry['url']})...")
         result = evaluate_service(entry["url"])
         score = result["score"]
-        new_badge = badge_for_score(score)
+        new_badge = badge_for(score, unverified=True)
 
         if score < 2:
             flagged.append({**entry, "score": score})
@@ -58,7 +58,7 @@ def audit(content):
 
 
 def build_report(total, changed, flagged):
-    report = [f"## {EMERGING_CATEGORY} badge audit\n", f"Re-evaluated {total} entries.\n"]
+    report = [f"## {EMERGING_LABEL} badge audit\n", f"Re-evaluated {total} entries.\n"]
 
     if changed:
         report.append("### Badges corrected\n")
@@ -86,9 +86,9 @@ def main():
     new_content, changed, flagged, total = audit(content)
 
     if total == 0:
-        print(f"No entries found in '{EMERGING_CATEGORY}'")
+        print(f"No {EMERGING_LABEL} entries found")
         with open("audit_report.md", "w") as f:
-            f.write(f"No entries found in **{EMERGING_CATEGORY}** — nothing to audit.\n")
+            f.write(f"No **{EMERGING_LABEL}** entries found — nothing to audit.\n")
         return
 
     if changed:

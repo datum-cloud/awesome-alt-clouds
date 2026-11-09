@@ -10,15 +10,18 @@ import audit_emerging_badges as aeb
 
 SAMPLE_README = """# Alt Cloud
 
-## Databases & Storage
+## Workload Clouds
 
 * 🟢 [Alpha DB](https://alpha.example.com/) - A database.
+* 🟢🔵 [Turbopuffer](https://turbopuffer.com/) - Vector database. <!-- tags: vector -->
 
-## Emerging & Unverified Providers
+## Service Clouds
 
-* 🟢 [Turbopuffer](https://turbopuffer.com/) - Vector database, needs verification.
-* 🟢 [LaunchDarkly](https://launchdarkly.com/) - Feature management, enterprise-only pricing.
-* 🟢 [Oxide Computer](https://oxide.computer/) - Rack-scale computer, sold as hardware.
+* 🟢🔵 [LaunchDarkly](https://launchdarkly.com/) - Feature management, enterprise-only pricing.
+
+## Infrastructure Clouds
+
+* 🟢🔵 [Oxide Computer](https://oxide.computer/) - Rack-scale computer, sold as hardware.
 """
 
 
@@ -49,9 +52,10 @@ class TestAudit:
         assert total == 3
         names_changed = {c["name"] for c in changed}
         assert names_changed == {"LaunchDarkly", "Oxide Computer"}
-        assert "🟢 [Turbopuffer]" in new_content
-        assert "🟡 [LaunchDarkly]" in new_content
-        assert "🟡 [Oxide Computer]" in new_content
+        assert "🟢🔵 [Turbopuffer]" in new_content
+        assert "🟡🔵 [LaunchDarkly]" in new_content  # score corrected, 🔵 kept
+        assert "🟡🔵 [Oxide Computer]" in new_content
+        assert "<!-- tags: vector -->" in new_content  # tags untouched
 
     def test_flags_entries_scoring_below_two(self):
         with patch.object(aeb, "evaluate_service", return_value=_result(1)):
@@ -60,7 +64,7 @@ class TestAudit:
         assert len(flagged) == 3
         assert all(f["score"] == 1 for f in flagged)
 
-    def test_leaves_readme_untouched_outside_emerging_section(self):
+    def test_leaves_verified_entries_untouched(self):
         with patch.object(aeb, "evaluate_service", return_value=_result(1)):
             new_content, _, _, _ = aeb.audit(SAMPLE_README)
 
@@ -78,13 +82,13 @@ class TestMain:
         report = (tmp_path / "audit_report.md").read_text()
         assert "Badges corrected" in report
         readme = (tmp_path / "README.md").read_text()
-        assert "🟡 [Turbopuffer]" in readme
+        assert "🟡🔵 [Turbopuffer]" in readme
 
     def test_no_op_when_no_entries_found(self, tmp_path, monkeypatch):
         monkeypatch.chdir(tmp_path)
         no_emerging_section = (
             "# Alt Cloud\n\n"
-            "## Databases & Storage\n\n"
+            "## Workload Clouds\n\n"
             "* 🟢 [Alpha DB](https://alpha.example.com/) - A database.\n"
         )
         (tmp_path / "README.md").write_text(no_emerging_section)

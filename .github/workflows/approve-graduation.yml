@@ -11,7 +11,7 @@ jobs:
   approve:
     # Only run on issues (not PRs) with graduation-request label when a
     # maintainer comments /approve-graduation (optionally with a category
-    # override: /approve-graduation Databases & Storage)
+    # override: /approve-graduation Workload Clouds)
     if: |
       !github.event.issue.pull_request &&
       contains(github.event.issue.labels.*.name, 'graduation-request') &&
@@ -138,5 +138,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `✅ **Approved by @${context.actor}**\n\nA PR has been created to move this service to its new category.`
+              body: `✅ **Approved by @${context.actor}**\n\nA PR has been created to graduate this service (remove the Emerging & Unverified badge).`
             });
