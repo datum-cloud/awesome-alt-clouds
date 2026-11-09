@@ -414,7 +414,7 @@ Conversational AI products, chat interfaces, and AI-powered search engines built
 * 🟢 [Bluedot](https://www.bluedothq.com/) - Bot-free AI meeting assistant that records, transcribes, and generates notes with automatic CRM updates.
 * 🟢 [Character.ai](https://character.ai/) - Lets users interact with and create AI-driven characters for entertainment, education, and companionship.
 * 🟢 [ChatGPT by OpenAI](https://openai.com/chatgpt) - OpenAI's conversational AI model that generates human-like text, answers questions, and assists with a wide range of tasks.
-* 🟢 [Chatsonic](https://chatsonic.com/) - An AI chatbot built on top of GPT that includes real-time search data and voice interaction capabilities.
+* 🟢 [Chatsonic](https://writesonic.com/) - An AI chatbot built on top of GPT that includes real-time search data and voice interaction capabilities.
 * 🟢 [Claude](https://claude.ai/) - An AI assistant from Anthropic focused on safe, helpful, and honest interactions, suitable for creative and technical workflows.
 * 🟢 [Cohere](https://cohere.com/) - Enterprise AI platform with language models for automation, data insights, and custom solutions.
 * 🟢 [Concourse](https://www.concourse.ai/) - Provides an AI execution layer for enterprise finance with autonomous agents for treasury, FP&A, accounting, and internal audit operations.
