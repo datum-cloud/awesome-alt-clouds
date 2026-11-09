@@ -9,12 +9,17 @@ categories array.
 """
 
 import json
-import re
+import os
 import subprocess
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from lib.entry_format import ENTRY_RE, parse_entry  # noqa: E402
 
 
 # Regex shared between the parser and the git history walker
-_ENTRY_RE = re.compile(r'^\+?\s*\*\s*(🟢|🟡)?\s*\[([^\]]+)\]\(([^)]+)\)\s+-\s+(.+)$')
+_ENTRY_RE = ENTRY_RE
 
 
 def _build_date_added_map(readme_path: str) -> dict[str, str]:
@@ -59,7 +64,7 @@ def _build_date_added_map(readme_path: str) -> dict[str, str]:
         m = _ENTRY_RE.match(line)
         if not m:
             continue
-        url = m.group(3)
+        url = m.group('url')
         if url not in date_map and current_date:
             date_map[url] = current_date
 
@@ -88,29 +93,33 @@ def parse_readme(readme_path):
             current_category = None if name in skip_sections else name
             continue
 
-        # Parse service entries: * 🟢 [Name](url) - Description
-        match = re.match(r'^\s*\*\s*(🟢|🟡)?\s*\[([^\]]+)\]\(([^)]+)\)\s+-\s+(.+)$', line)
-        if not match or not current_category:
+        # Parse service entries: * 🟢 [Name](url) - Description <!-- tags: a, b -->
+        parsed = parse_entry(line)
+        if not parsed or not current_category:
             continue
 
-        badge = match.group(1)
-        name = match.group(2)
-        url = match.group(3)
-        description = match.group(4)
-        score = 2 if badge == '🟡' else 3
+        url = parsed.url
+        score = parsed.score
 
         if url in seen:
             # Same entry listed under a second section — merge the category
             if current_category not in seen[url]['categories']:
                 seen[url]['categories'].append(current_category)
+            merged = list(dict.fromkeys([*seen[url].get('tags', []), *parsed.tags]))
+            if merged:
+                seen[url]['tags'] = merged
         else:
             entry = {
-                'name': name,
+                'name': parsed.name,
                 'url': url,
-                'description': description,
+                'description': parsed.description,
                 'score': score,
                 'categories': [current_category],
             }
+            if parsed.unverified:
+                entry['unverified'] = True
+            if parsed.tags:
+                entry['tags'] = list(parsed.tags)
             if url in date_map:
                 entry['dateAdded'] = date_map[url]
             seen[url] = entry
