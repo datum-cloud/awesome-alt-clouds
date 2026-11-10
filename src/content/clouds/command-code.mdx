@@ -1,0 +1,56 @@
+---
+status: draft
+tagline: "An AI coding agent purpose-built for open models, with tool call repairs, high cache-hit efficiency, and a 'taste' system that learns your coding style."
+pricingModel: subscription
+services:
+  - "AI coding agent CLI"
+  - "Tool call repair for open models"
+  - "taste-1 (coding style learning)"
+  - "Headless & sandboxed agent modes"
+  - "Custom /agents and persistent /memory"
+  - "MCP server integrations & plugins"
+  - "Session sharing & collaboration (/share, taste push/pull)"
+  - "/design UI design partner mode"
+socials:
+  website: "https://commandcode.ai/"
+  x: "https://twitter.com/CommandCodeAI"
+  github: "https://github.com/commandcode"
+---
+
+## What makes Command Code different
+
+Most coding agents are built around a single frontier model (e.g., GPT or Claude) and treat other models as an afterthought. Command Code flips that: it's engineered specifically for open-weight models, with tool call repair logic that patches malformed or inconsistent tool calls on every model it supports (~50 models), rather than assuming one model's calling conventions. This lets teams swap in cheaper or self-hosted open models without losing the reliability of a polished agent experience.
+
+The product also emphasizes token efficiency as a first-class metric — the company publishes "TEF" (token efficiency frontier) benchmarks and claims 99%+ cache hit rates on read and shell tools, which matters a lot when running at scale across many open models with varying context costs. On top of this sits `taste-1`, a continuous-learning layer that watches accepts/rejects/edits during coding sessions and converts them into reusable, project-level skills — effectively letting the agent learn an individual developer's or team's coding conventions over time rather than requiring manual prompt engineering.
+
+Unlike hyperscaler AI coding tools bundled into a broader cloud platform, Command Code is a standalone CLI-first product (`npm i -g command-code`) with interactive, headless (`-p`, `--yolo`), and background sandbox execution modes, plus hackable primitives like `/agents`, `/memory`, `/skills`, `/mcp`, and `/commands` for teams that want to customize agent behavior deeply.
+
+## Pricing model
+
+Command Code uses a subscription model with several tiers:
+
+- **Go** — $1/mo
+- **GOAT** — $10/mo, up to $100 in usage credits, access to ~50 models (marketed as the "best low cost coding plan")
+- **Provider** — $15/mo
+- **Pro** — $20/mo
+- **Max 10×** — $100/mo
+- **Max 20×** — $200/mo
+
+The entry tier is unusually cheap ($1/mo) compared to typical AI coding assistant subscriptions, and the GOAT plan's $10/mo-for-up-to-$100-in-credits structure stands out versus flat per-seat pricing common among hyperscaler AI tools — it ties cost more directly to usage credits while still being a predictable subscription.
+
+## When it fits
+
+- Teams that want to use open-weight/open-source models for coding instead of locking into a single proprietary frontier model
+- Developers who want an agent that adapts to their personal coding style over time rather than requiring repeated prompt tuning
+- Cost-sensitive teams or individuals looking for a low entry price ($1–$10/mo) coding agent with credits included
+- CLI-centric workflows needing headless/background sandbox execution for CI or automation
+- Teams wanting deep customization via skills, MCP servers, plugins, and persistent memory/agents
+
+## When it doesn't
+
+- Teams requiring a fully managed, GUI-first IDE experience rather than a CLI-driven agent
+- Organizations needing guaranteed support for only one specific proprietary model with no interest in open-model flexibility
+
+## Inclusion criteria
+
+Command Code meets all 3 inclusion criteria: transparent pricing is published at commandcode.ai/pricing with named tiers and dollar amounts, self-service signup is available at commandcode.ai/signup, and documentation/status information is available via the public docs and changelog at commandcode.ai/docs.

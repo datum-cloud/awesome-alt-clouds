@@ -431,6 +431,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Cloudsmith](https://cloudsmith.com/) - Cloud-native artifact management supporting 30+ formats with security scanning, policy engine, and global CDN delivery.
 * 🟢 [Coder](https://coder.com/) - Offers self-hosted cloud development environments that provision and manage workspaces, enabling developers to code from anywhere with enhanced security and scalability. <!-- tags: open-source -->
 * 🟢 [Cohere](https://cohere.com/) - Enterprise AI platform with language models for automation, data insights, and custom solutions.
+* 🟢 [Command Code](https://commandcode.ai/) - Provides an AI coding agent optimized for open models, with tool call repairs, token efficiency, and continuous learning of developer coding patterns. <!-- tags: agent-native -->
 * 🟢 [Concourse](https://www.concourse.ai/) - Provides an AI execution layer for enterprise finance with autonomous agents for treasury, FP&A, accounting, and internal audit operations.
 * 🟢 [Conecto](https://conecto.chat/) - Provides an all-in-one customer messaging platform combining live chat, AI chatbot, shared inbox, CRM and analytics for support and sales teams.
 * 🟡 [Crosby](https://crosby.ai/) - Provides AI-powered contract review and commercial legal services for businesses, combining machine learning with elite attorneys to accelerate deal closure.
