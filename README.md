@@ -127,6 +127,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [NextGen Cloud](https://www.nextgencloud.com/) - Delivers sustainable, high-performance cloud infrastructure for AI workloads. <!-- tags: gpu -->
 * 🟢 [Offline Protocol](https://www.offlineprotocol.com/) - Provides edge-native coordination for physical systems with identity, encrypted messaging, and service discovery across local, mesh, gateway, and cloud networks.
 * 🟢 [Openmetal.io](https://openmetal.io/) - Delivers on-demand private cloud infrastructure based on OpenStack.
+* 🟡 [OpenRelay](https://openrelay.inc/) - Provides distributed AI inference and GPU compute through an inference delivery network with automatic request routing, supporting model hosting, GPU rental, and provider enrollment. <!-- tags: gpu -->
 * 🟢 [Ornn](https://ornn.com/) - Provides financial infrastructure for GPU compute markets, including reference pricing indices, market data, capacity financing, and compute access platforms. <!-- tags: gpu -->
 * 🟡 [OVH Cloud](https://us.ovhcloud.com/) - Global cloud provider offering compute, storage, and network solutions.
 * 🟢🔵 [Oxide Computer](https://oxide.computer/) - Rack-scale cloud computer for on-premises with unified hardware/software, but sold as CapEx hardware (~$1M/rack) rather than usage-based cloud service.
