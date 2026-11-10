@@ -504,6 +504,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [NeuBird](https://neubird.ai/) - An autonomous AI SRE platform.
 * 🟢 [ngrok](https://ngrok.com/) - Securely tunnels local services to the public internet, ideal for testing webhooks, building with APIs, or sharing local development environments.
 * 🟢 [NOFire](https://www.nofire.ai/) - Delivers an AI SRE platform that provides production context and runtime control, preventing incidents by scoring changes and enforcing policies before execution.
+* 🟡 [North](https://north.cloud/) - Provides AI-powered cloud cost optimization and FinOps automation across AWS, GCP, and Azure with unified visibility and automated savings recommendations.
 * 🟢 [Notion](https://www.notion.com/) - All-in-one workspace for notes, docs, wikis, and project management.
 * 🟢 [Novu](https://novu.co/) - Provides open-source notification infrastructure for multi-channel communication across email, SMS, push, chat, and more with workflow orchestration and agent integration. <!-- tags: open-source -->
 * 🟢 [Obvious](https://obvious.ai/) - Provides an AI agent platform that collaborates with users to build artifacts, automate workflows, and generate content across various professional use cases.
