@@ -356,6 +356,7 @@ The provider owns a compute- or storage-heavy workload end to end. No provisioni
 * 🟢 [this+that](https://www.thisandthat.chat/) - Automates inbox triage and task handling by extracting work from messages across email, chat, and messaging platforms using AI workflows and a company knowledge base. <!-- tags: durable-workflow -->
 * 🟢 [TigerData](https://www.tigerdata.com/) - PostgreSQL-based time-series database with compression and continuous aggregates. <!-- tags: postgres-sql, nosql-timeseries -->
 * 🟢 [Tines](https://www.tines.com/) - No-code automation platform for security operations and IT workflows. <!-- tags: durable-workflow -->
+* 🟢 [Tinfoil](https://tinfoil.sh/) - Provides private AI services including chat, API inference, and containerized workloads running in secure hardware enclaves with cryptographic verifiability. <!-- tags: llm-inference -->
 * 🟢 [Tinybird](https://www.tinybird.co/) - Real-time data platform for building instant APIs over streaming and batch data. <!-- tags: warehouse-lakehouse, streaming-etl, realtime-rtc -->
 * 🟢 [Together.ai](https://www.together.ai/) - Open-source foundation model infrastructure with collaborative fine-tuning. <!-- tags: llm-inference, training-finetuning, open-source -->
 * 🟡 [Turso](https://turso.tech/) - Distributed SQLite database with global edge replication. <!-- tags: postgres-sql -->
