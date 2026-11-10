@@ -365,6 +365,7 @@ The provider owns a compute- or storage-heavy workload end to end. No provisioni
 * 🟢 [Upsun](https://upsun.com/) - An application hosting platform from the team at Platform.sh. <!-- tags: app-hosting -->
 * 🟢🔵 [Uptrace](https://uptrace.dev/) - Distributed tracing and metrics platform built on OpenTelemetry, verification needed. <!-- tags: observability -->
 * 🟢 [v0](https://v0.app/) - AI-powered UI generation from text prompts to React code. <!-- tags: app-generation -->
+* 🟢 [Vercel](https://vercel.com) - Delivers a full-stack platform for deploying web applications, AI agents, and serverless backends with global edge delivery, CI/CD, and observability. <!-- tags: web-frontend, serverless-functions, edge-functions, app-hosting, agent-native -->
 * 🟢 [VibeKit](https://vibekit.bot/) - Provides an AI-powered app builder platform where persistent agents build, deploy, monitor, and fix applications automatically from any device with support for multiple AI models. <!-- tags: app-generation -->
 * 🟢 [Wasmer](https://wasmer.io/) - Offers a universal WebAssembly runtime that enables running applications safely and efficiently across various platforms, from desktop to cloud and edge. <!-- tags: wasm-unikernel -->
 * 🟢 [Weights & Biases](https://wandb.ai/) - AI developer platform for experiment tracking, model management, evaluation, and observability for ML and LLM applications. <!-- tags: observability, llm-inference -->
