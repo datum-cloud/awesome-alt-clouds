@@ -572,6 +572,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Ubicloud](https://www.ubicloud.com/) - An open-source cloud platform that can run anywhere, offering IaaS features on bare metal providers with options for self-hosting or managed services. <!-- tags: open-source -->
 * 🟢 [UniBee](https://unibee.dev/) - Open-source billing and subscription management with usage-based pricing, multi-gateway support, and self-host options. <!-- tags: open-source -->
 * 🟢 [Unleash](https://www.getunleash.io/) - Enterprise open-source feature management platform with strong RBAC and flexible deployment options. <!-- tags: open-source -->
+* 🟢 [UsageRail](https://usagerail.com/) - Provides API monetization with usage-based billing, rate limiting, and customer portals integrated with Stripe, using an in-process SDK that keeps requests server-side.
 * 🟢 [Warp](https://www.warp.dev/) - Cloud service provider.
 * 🟢 [Warrant](https://warrant.dev/) - Authorization and access control as a service.
 * 🟡 [Wire](https://usewire.io/) - Provides composable context containers for AI agents, organizing documents and data into AI-optimized environments accessible via MCP protocol. <!-- tags: agent-native -->
