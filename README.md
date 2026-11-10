@@ -58,6 +58,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [Civo](https://www.civo.com) - Provides cloud services with a focus on simplicity and developer experience.
 * 🟢 [Cloudbrink](https://cloudbrink.com/) - Delivers hybrid access-as-a-service with high-performance connectivity, zero trust security, and edge-native networking for remote users.
 * 🟢 [Cloudflare](https://www.cloudflare.com/) - Protects and accelerates websites and apps through global CDN, DDoS mitigation, Zero Trust access, and DNS services.
+* 🟢 [CloudGPU](https://cloudgpu.app/) - Provides on-demand GPU rental and OpenAI-compatible model APIs billed per-minute, supporting GPUs like RTX 5090 and A100 with a unified prepaid balance. <!-- tags: gpu -->
 * 🟢 [Cognee](https://www.cognee.ai/) - Cloud service provider.
 * 🟢 [Core Transit](https://www.coretransit.net/) - Provides flexible IP routing, static IP addressing, and BGP services to extend deterministic connectivity to hard-to-reach locations for enterprises and MSPs.
 * 🟡 [CoreWeave](https://www.coreweave.com/) - A cloud platform optimized for AI, offering high-performance GPU compute and managed services. <!-- tags: gpu -->
