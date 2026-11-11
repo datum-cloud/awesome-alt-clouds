@@ -89,6 +89,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [Genesis Cloud](https://www.genesiscloud.com/pricing) - Offers sustainable, high-performance GPU cloud computing for AI workloads. <!-- tags: gpu -->
 * 🟢 [GMI Cloud](https://www.gmicloud.ai/) - Provides GPU cloud services optimized for AI and deep learning tasks. <!-- tags: gpu -->
 * 🟡 [GPU CLI](https://gpu-cli.sh) - Provides command-line access to remote cloud GPUs with auto-stop functionality, instant connection, and automatic result syncing for ML training and inference workloads. <!-- tags: gpu -->
+* 🟢 [GPUwerk](https://gpuwerk.com/) - Rents dedicated NVIDIA DGX Spark machines (GB10, 128 GB unified memory) by the minute in Europe, North America and East Asia, from $0.79 per hour. <!-- tags: gpu, owns-hardware -->
 * 🟡 [Hetzner](https://www.hetzner.com/) - Provides dedicated servers and cloud services in Europe. <!-- tags: owns-hardware, region:eu -->
 * 🟡 [Highrise](https://www.highrise.ai/) - Provides a unified platform for developing, training, and deploying AI models with access to thousands of NVIDIA GPUs at competitive pricing, backed by Hut 8 infrastructure. <!-- tags: gpu -->
 * 🟡 [Hikube](https://hikube.cloud/) - Provides sovereign Swiss cloud infrastructure with VMs, Kubernetes, GPU, managed databases, S3 storage, and messaging services across 3 Swiss datacenters with zero US jurisdiction. <!-- tags: owns-hardware, gpu, region:ch -->
