@@ -10,7 +10,7 @@ generated `*.datumproxy.net` URL.
 | Project  | `datum-cloud`                                                      |
 | Workload | `awesome-alt-clouds-uk` (namespace `default`)                      |
 | Runtime  | `unikernel`, instance type `datumcloud-d1-standard-2` (the default) |
-| Location | `us-central-1`, 1 instance                                         |
+| Location | `us-central-1` and `us-east-1`, 1 instance each (2 in total)       |
 | Image    | `ghcr.io/datum-cloud/awesome-alt-clouds-compute:sha-<sha>-<run>`   |
 | Port     | `3000` (HTTP; the edge terminates TLS)                             |
 | URL      | generated `https://<name>.datumproxy.net` (printed by the deploy)  |
@@ -23,7 +23,7 @@ Actions -> Deploy Datum Compute
   regenerate clouds.json / llms*.txt / watchlist.json, npm run build   (-> dist/)
   datumctl compute build  Dockerfile.datum  (dist/ + compute/server.js on bun-slim)
   push ghcr.io/datum-cloud/awesome-alt-clouds-compute:sha-<sha>-<run>
-  datumctl compute deploy --runtime-class unikernel [--env BASIC_AUTH=...]
+  datumctl compute deploy --runtime-class unikernel
   check the workload is Available, then smoke-test the URL
 ```
 
@@ -56,7 +56,8 @@ Pull requests build only on Pages and never deploy here.
   artifact would save that, but it would couple the two workflows, which is what this
   setup avoids.
 - Neither workflow manages DNS. The Datum workload is reachable only on its generated
-  `*.datumproxy.net` URL and, while `BASIC_AUTH` is set, behind basic auth.
+  `*.datumproxy.net` URL. It has no access control of its own; to lock it, set
+  basic auth on the load balancer (`datumctl alb auth set`).
 
 ## The static server (`compute/server.js`)
 
@@ -72,28 +73,22 @@ A small Bun server, because the unikernel root filesystem has no shell and no No
   memory (capped at 64 MiB), because `dist/` never changes while an instance runs.
   The home page is 1.49 MB of HTML; measured locally it becomes **66.6 KB with
   brotli and 86.8 KB with gzip**. Without this the page took 2-4 s to download.
-- **Basic auth.** If the `BASIC_AUTH` environment variable (`user:password`) is set,
-  every request except `/healthz` needs HTTP basic auth, otherwise the server answers
-  `401` with a `WWW-Authenticate` header. The comparison is constant-time, and
-  responses are marked `Cache-Control: private` while auth is on.
+- **CORS.** Every response carries `Access-Control-Allow-Origin: *`, as GitHub Pages
+  does, so `clouds.json` and `llms.txt` can be fetched from other origins.
+- **No access control.** The server does not check credentials. Basic auth is a load
+  balancer setting (`datumctl alb auth set`), checked by Envoy at the edge.
 
 ## One-time setup
 
 1. **Service account** with edit access to the `datum-cloud` project; save its
    credentials JSON as the repository secret `DATUM_SA_CREDENTIALS` (Settings ->
    Secrets and variables -> Actions). No GitHub environment is used.
-2. **Basic auth (optional).** Save `user:password` as the repository secret
-   `BASIC_AUTH`. The deploy passes it to the workload as `--env BASIC_AUTH=...` and
-   the smoke test sends it. It is never written to the repository. With no secret,
-   the site is open, and the deploy removes any `BASIC_AUTH` left from an earlier
-   deploy (`--env BASIC_AUTH-`), because env carries over between deploys.
-   Note that an env value is visible to anyone who can read the workload.
-3. **GHCR package** `awesome-alt-clouds-compute` must be **public** (the workload
+2. **GHCR package** `awesome-alt-clouds-compute` must be **public** (the workload
    pulls anonymously) and this repository needs the **Write** role under "Manage
    Actions access". GHCR creates new packages as private and visibility cannot be
    changed through the API. Set both in
    https://github.com/orgs/datum-cloud/packages/container/awesome-alt-clouds-compute/settings.
-4. Optional: the `DATUM_PROJECT` repository variable.
+3. Optional: the `DATUM_PROJECT` repository variable.
 
 Check that Compute is enabled: `datumctl compute access --project datum-cloud`.
 
@@ -105,7 +100,7 @@ After the rollout the workflow requires, in this order:
    can answer `503` for a few minutes after an instance is replaced.
 2. `/llms.txt`, `/clouds.json`, `/robots.txt` and a category page return `200`.
 3. `GET /` with `Accept-Encoding: br, gzip` returns a `Content-Encoding`.
-4. If `BASIC_AUTH` is set, `GET /` without credentials returns `401`.
+4. `GET /clouds.json` returns `Access-Control-Allow-Origin: *`.
 
 ## Build and test the image locally
 
@@ -128,7 +123,7 @@ datumctl compute build --analyze \
 Regenerating `public/clouds.json` changes a tracked file; run `git checkout
 public/clouds.json` afterwards. To try the server without Docker, copy
 `compute/server.js` next to a `dist/` folder and run
-`PORT=3000 BASIC_AUTH=user:pass bun server.js`.
+`PORT=3000 bun server.js`.
 
 ## Check the workload
 
@@ -166,9 +161,6 @@ the unikernel and the general-purpose control, so that part is the edge, not the
 
 ## Open questions and next steps
 
-- Redeploy with compression and basic auth, then confirm the home page is served
-  compressed through the edge and that `--env BASIC_AUTH=...` reaches a unikernel
-  instance (not yet verified on this runtime).
 - Sample the URL for longer (for example 100+ requests over 30 minutes) to decide
   whether the early `503`s are only a post-rollout warm-up.
 - Compare against a general-purpose workload under a new name (for example
