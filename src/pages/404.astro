@@ -1,0 +1,58 @@
+---
+import Base from "../layouts/Base.astro";
+import DetailTopBar from "../components/DetailTopBar.astro";
+import DirectorySidebar from "../components/DirectorySidebar.astro";
+import { asset } from "../lib/assets";
+import { getFeaturedSlugs } from "../lib/profile";
+
+const featuredSlugs = [...(await getFeaturedSlugs())];
+
+const links = [
+  { href: asset(""), label: "Browse the directory", hint: "400+ alternative cloud providers" },
+  { href: asset("compare/"), label: "Compare providers", hint: "Side by side, up to three" },
+  { href: asset("submit/"), label: "Submit a provider", hint: "Add one that is missing" },
+];
+---
+
+<Base
+  title="Page not found | Alternative Cloud Providers"
+  description="This page does not exist. Browse the directory of alternative cloud providers or search for a provider by name."
+  showCompareTray={false}>
+  <div class="flex flex-col md:flex-row min-h-screen">
+    <DirectorySidebar />
+
+    <main class="flex-1 p-5 md:p-8 min-w-0">
+      <DetailTopBar featuredSlugs={featuredSlugs} />
+
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-wide text-bright-tangerine mb-3">
+          Error 404
+        </p>
+        <h1 class="font-serif text-3xl md:text-4xl font-semibold text-rich-earth mb-3">
+          We couldn't find that page
+        </h1>
+        <p class="text-warm-stone leading-relaxed mb-8">
+          The link may be mistyped, or the provider may have been renamed or removed from the list.
+          Try the search above, or pick up from one of these.
+        </p>
+
+        <ul class="grid grid-cols-1 sm:grid-cols-3 gap-4 list-none p-0 m-0">
+          {
+            links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="block h-full bg-white border border-clay-beige rounded-xl p-4 no-underline hover:border-bright-tangerine transition-colors">
+                  <span class="block font-serif text-lg font-semibold text-rich-earth mb-1">
+                    {link.label}
+                  </span>
+                  <span class="block text-sm text-warm-stone">{link.hint}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </main>
+  </div>
+</Base>
