@@ -11,40 +11,28 @@
 //   whichever the client accepts. The home page is ~1.5 MB of HTML, so this
 //   matters. Compressed bodies are cached in memory: dist/ never changes while
 //   the instance runs, so each file is compressed at most once per encoding.
-// - If BASIC_AUTH ("user:password") is set, every request except /healthz needs
-//   HTTP basic auth. Set it with `datumctl compute deploy --env BASIC_AUTH=...`.
+// - Every response carries `Access-Control-Allow-Origin: *`, like GitHub Pages
+//   does, so clouds.json and llms.txt stay readable from other origins.
+// - No access control here: put basic auth on the load balancer instead
+//   (`datumctl alb auth set`), so Envoy checks it at the edge.
 
-import { createHash, timingSafeEqual } from "node:crypto";
 import { join, normalize, extname, sep } from "node:path";
 import { brotliCompressSync, constants as zlib } from "node:zlib";
 
 const PORT = Number(process.env.PORT ?? 3000);
 const HOST = process.env.HOST ?? "::";
 const ROOT = join(import.meta.dir, "dist");
-const BASIC_AUTH = process.env.BASIC_AUTH || "";
 
-const AUTH_REALM = "alt-cloud preview";
 const COMPRESSIBLE = /^(text\/|application\/(json|javascript|xml|manifest\+json)|image\/svg\+xml)/;
 const MIN_COMPRESS_BYTES = 1024;
 /** Stop caching compressed bodies past this many bytes (the rootfs is in memory). */
 const MAX_CACHE_BYTES = 64 * 1024 * 1024;
 
-// Responses behind basic auth must not be stored by shared caches.
-const SCOPE = BASIC_AUTH ? "private" : "public";
-const CACHE_IMMUTABLE = `${SCOPE}, max-age=31536000, immutable`;
-const CACHE_HTML = `${SCOPE}, max-age=300`;
-const CACHE_OTHER = `${SCOPE}, max-age=3600`;
+const CORS = { "Access-Control-Allow-Origin": "*" };
 
-// --- basic auth ------------------------------------------------------------
-
-const digest = (value) => createHash("sha256").update(value).digest();
-const expectedAuth = digest(`Basic ${Buffer.from(BASIC_AUTH).toString("base64")}`);
-
-function authorized(req) {
-  if (!BASIC_AUTH) return true;
-  // Hash both sides so the comparison is constant-time and length-independent.
-  return timingSafeEqual(digest(req.headers.get("authorization") ?? ""), expectedAuth);
-}
+const CACHE_IMMUTABLE = "public, max-age=31536000, immutable";
+const CACHE_HTML = "public, max-age=300";
+const CACHE_OTHER = "public, max-age=3600";
 
 // --- compression -----------------------------------------------------------
 
@@ -117,20 +105,10 @@ const server = Bun.serve({
 
     if (url.pathname === "/healthz") return new Response("ok\n");
 
-    if (!authorized(req)) {
-      return new Response("Authentication required\n", {
-        status: 401,
-        headers: {
-          "WWW-Authenticate": `Basic realm="${AUTH_REALM}", charset="UTF-8"`,
-          "Cache-Control": "no-store",
-        },
-      });
-    }
-
     if (req.method !== "GET" && req.method !== "HEAD") {
       return new Response("Method Not Allowed", {
         status: 405,
-        headers: { Allow: "GET, HEAD" },
+        headers: { ...CORS, Allow: "GET, HEAD" },
       });
     }
 
@@ -138,9 +116,9 @@ const server = Bun.serve({
     if (!found) {
       const notFound = Bun.file(join(ROOT, "404.html"));
       if (await notFound.exists()) {
-        return new Response(notFound, { status: 404 });
+        return new Response(notFound, { status: 404, headers: CORS });
       }
-      return new Response("Not Found\n", { status: 404 });
+      return new Response("Not Found\n", { status: 404, headers: CORS });
     }
 
     const { file, path } = found;
@@ -148,6 +126,7 @@ const server = Bun.serve({
     const isHtml = type.startsWith("text/html");
     const immutable = url.pathname.startsWith("/_astro/");
     const headers = {
+      ...CORS,
       "Cache-Control": immutable ? CACHE_IMMUTABLE : isHtml ? CACHE_HTML : CACHE_OTHER,
     };
 
@@ -170,6 +149,4 @@ const server = Bun.serve({
   },
 });
 
-console.log(
-  `Started server: http://${server.hostname}:${server.port}${BASIC_AUTH ? " (basic auth on)" : ""}`
-);
+console.log(`Started server: http://${server.hostname}:${server.port}`);

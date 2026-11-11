@@ -20,8 +20,8 @@ on:
         description: Datum project ID (falls back to the DATUM_PROJECT repo variable)
         default: datum-cloud
       location:
-        description: Datum Compute location
-        default: us-central-1
+        description: Datum Compute location(s), comma separated (one instance each)
+        default: us-central-1,us-east-1
 
 permissions:
   contents: read
@@ -149,27 +149,19 @@ jobs:
         id: deploy
         env:
           IMAGE: ${{ steps.ref.outputs.image }}
-          LOCATION: ${{ inputs.location || 'us-central-1' }}
-          BASIC_AUTH: ${{ secrets.BASIC_AUTH }}
+          LOCATION: ${{ inputs.location || 'us-central-1,us-east-1' }}
         run: |
           # The static server defaults to HOST=:: (Datum networks are IPv6 only)
-          # and PORT=3000. BASIC_AUTH ("user:password", repository secret) turns
-          # on basic auth in the server. The unikernel runtime has no envFrom, so
-          # it goes in as a plain --env; it is not written to the repository.
-          # An empty secret removes the variable (a trailing "-"), because env
-          # carries over between deploys.
-          if [ -n "$BASIC_AUTH" ]; then
-            auth_env=(--env "BASIC_AUTH=${BASIC_AUTH}")
-          else
-            auth_env=(--env "BASIC_AUTH-")
-          fi
+          # and PORT=3000. Access control (basic auth) belongs on the load
+          # balancer, not in this workload. --min is per location, so two
+          # locations with --min 1 give two instances in total.
           datumctl compute deploy "$WORKLOAD" \
             --project "$DATUM_PROJECT" \
             --image "$IMAGE" \
             --location "$LOCATION" \
+            --min 1 \
             --http-port "$HTTP_PORT" \
             --runtime-class unikernel \
-            "${auth_env[@]}" \
             --yes | tee "$RUNNER_TEMP/deploy.log"
           url="$(bin/deploy-url "$RUNNER_TEMP/deploy.log")"
           echo "url=${url}" >> "$GITHUB_OUTPUT"
@@ -197,18 +189,15 @@ jobs:
       - name: Smoke test
         env:
           URL: ${{ steps.deploy.outputs.url }}
-          BASIC_AUTH: ${{ secrets.BASIC_AUTH }}
         run: |
           [ -n "$URL" ] || { echo "::error::deploy printed no URL"; exit 1; }
-          auth=()
-          [ -n "$BASIC_AUTH" ] && auth=(-u "$BASIC_AUTH")
           # The URL's DNS can lag the rollout, and the edge may answer 503 for a
           # few minutes after an instance is replaced, so retry before failing.
           # Unikernel runs on this platform have answered 503 intermittently
           # (see docs/datum-compute.md), so count the successes too.
           ok=0
           for i in $(seq 1 20); do
-            code="$(curl -s "${auth[@]}" -o /dev/null -m 15 -w '%{http_code}' "$URL/" || true)"
+            code="$(curl -s -o /dev/null -m 15 -w '%{http_code}' "$URL/" || true)"
             echo "attempt $i: GET / -> ${code:-000}"
             [ "$code" = 200 ] && ok=$((ok + 1))
             [ "$ok" -ge 3 ] && break
@@ -219,21 +208,20 @@ jobs:
             exit 1
           fi
           for path in /llms.txt /clouds.json /robots.txt /categories/ai-inference-model-apis/; do
-            code="$(curl -s "${auth[@]}" -o /dev/null -m 15 -w '%{http_code}' "$URL$path" || true)"
+            code="$(curl -s -o /dev/null -m 15 -w '%{http_code}' "$URL$path" || true)"
             echo "GET $path -> $code"
             [ "$code" = 200 ] || { echo "::error::$URL$path returned $code"; exit 1; }
           done
           # The home page is ~1.5 MB of HTML, so it must be served compressed.
-          enc="$(curl -s "${auth[@]}" -m 30 -H 'Accept-Encoding: br, gzip' -D - -o /dev/null "$URL/" |
+          enc="$(curl -s -m 30 -H 'Accept-Encoding: br, gzip' -D - -o /dev/null "$URL/" |
             tr -d '\r' | sed -n 's/^[Cc]ontent-[Ee]ncoding: //p')"
           echo "GET / content-encoding -> ${enc:-none}"
           [ -n "$enc" ] || { echo "::error::$URL/ is not compressed"; exit 1; }
-          # Basic auth must reject requests without credentials.
-          if [ -n "$BASIC_AUTH" ]; then
-            code="$(curl -s -o /dev/null -m 15 -w '%{http_code}' "$URL/" || true)"
-            echo "GET / without credentials -> $code"
-            [ "$code" = 401 ] || { echo "::error::expected 401 without credentials, got $code"; exit 1; }
-          fi
+          # clouds.json is read from other origins, as it is on GitHub Pages.
+          cors="$(curl -s -m 30 -D - -o /dev/null "$URL/clouds.json" |
+            tr -d '\r' | sed -n 's/^[Aa]ccess-[Cc]ontrol-[Aa]llow-[Oo]rigin: //p')"
+          echo "GET /clouds.json access-control-allow-origin -> ${cors:-none}"
+          [ "$cors" = "*" ] || { echo "::error::$URL/clouds.json has no CORS header"; exit 1; }
 
       - name: Summary
         if: always()
