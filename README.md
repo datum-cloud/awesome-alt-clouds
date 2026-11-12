@@ -98,6 +98,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [HydraHost](https://hydrahost.com/) - Affordable GPU compute focused on researchers and indie developers. <!-- tags: gpu -->
 * 🟢 [Hyperbolic](https://hyperbolic.xyz/) - Offers scalable GPU compute for AI applications with a focus on performance and cost-efficiency. <!-- tags: gpu -->
 * 🟢 [Hyperstack](https://www.hyperstack.cloud/) - Cloud GPU and AI platform for building, training, and deploying custom AI models. <!-- tags: gpu -->
+* 🟡 [Hyperstellar](https://hyperstellar.ai/) - Provides a peer-to-peer marketplace for attested compute, allowing operators to monetize idle accelerators and buyers to access GPU capacity on flexible terms. <!-- tags: gpu -->
 * 🟡 [Inter.link](https://inter.link/) - Provides cloud-like connectivity services including IP Transit, Carrier Ethernet, and DDoS protection across 300+ European data centers with 100G/400G redundant backbone. <!-- tags: region:eu -->
 * 🟢 [IONOS Cloud](https://cloud.ionos.com/) - Cloud infrastructure with a focus on public, bare metal, and managed Kubernetes solutions. <!-- tags: owns-hardware -->
 * 🟢 [IPinfo](https://ipinfo.io/) - Provides accurate IP address intelligence including geolocation, ASN data, privacy detection, and network information through APIs and data downloads for developers and enterprises.
