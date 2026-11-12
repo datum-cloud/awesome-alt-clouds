@@ -462,6 +462,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Frontegg](https://frontegg.com/) - Delivers a comprehensive user management platform, including authentication, authorization, and user self-service capabilities.
 * 🟢 [FusionAuth](https://fusionauth.io/) - Customer Identity and Access Management (CIAM) with a hybrid, single-tenant deployment option.
 * 🟢 [Gammacode](https://gammacode.dev/) - AI code intelligence platform with CLI/web interface, security scanning, and issue automation.
+* 🟢 [General Translation](https://generaltranslation.com/en-US) - Provides full-stack localization infrastructure for software products, handling translations, context management, and multi-locale deployment across 120+ languages. <!-- tags: agent-native, open-source -->
 * 🟢 [GitBook](https://www.gitbook.com/) - Provides AI-powered documentation platform that connects docs, products, and users with intelligent assistants, Git sync, and enterprise collaboration features.
 * 🟢 [Gitea Cloud](https://about.gitea.com/products/cloud/) - Single-tenant managed Git hosting with built-in CI/CD and private isolated environments.
 * 🟢 [GitHub](https://github.com/) - The world's leading platform for version control and collaboration, offering GitHub Codespaces for instant, cloud-based development environments.
