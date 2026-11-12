@@ -42,6 +42,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [Anyscale](https://www.anyscale.com/) - Distributed computing platform built on Ray for scaling AI and Python apps. <!-- tags: gpu -->
 * 🟡 [Apoxy](https://apoxy.dev/) - Provides a programmable, tunneled network layer for routing and load-balancing traffic across services, clusters, and agents with hosted Envoy data planes and Gateway API support.
 * 🟢 [Approximated](https://approximated.app/) - Custom domain proxy platform with global edge servers, SSL management, and DDoS protection.
+* 🟢 [Aquanode](https://www.aquanode.io/) - Manages and optimizes GPU infrastructure across multiple clouds and on-premises hardware, automating job scheduling, checkpointing, and failover with a unified interface. <!-- tags: gpu -->
 * 🟢 [Arcade](https://www.arcade.dev/) - Cloud service provider.
 * 🟢 [Archil](https://archil.com/) - Provides a cloud filesystem that mounts S3, GCS, and Azure Blob storage with sub-millisecond cached reads, full POSIX compatibility, and built-in serverless compute execution.
 * 🟡 [Argo Compute](https://argocompute.com/) - Provides distributed computing and cloud infrastructure services for high-performance workloads and scalable applications.
