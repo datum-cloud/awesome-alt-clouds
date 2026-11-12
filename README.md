@@ -288,6 +288,7 @@ The provider owns a compute- or storage-heavy workload end to end. No provisioni
 * 🟢 [Momento](https://www.gomomento.com/) - Serverless caching with instant scaling, no cluster management, compatible with Redis clients and Memcached protocols. <!-- tags: key-value-cache -->
 * 🟢 [MongoDB](https://www.mongodb.com/) - Offers a general-purpose, document-based database designed for modern application development. <!-- tags: nosql-timeseries -->
 * 🟢 [MotherDuck](https://motherduck.com/) - Serverless analytics platform powered by DuckDB with cloud collaboration. <!-- tags: warehouse-lakehouse -->
+* 🟡 [mrin](https://mrin.ai/) - Provides an execution layer for AI agents with microVM sandboxes that commit entire machine state after each command, enabling fork, restore, and replay operations. <!-- tags: agent-sandbox, agent-native -->
 * 🟢 [MUNITO](https://munito.ai/) - Provides open-model API inference with European data sovereignty, zero data retention, and privacy-first approach compatible with major SDKs. <!-- tags: llm-inference, region:eu -->
 * 🟢 [Mux](https://www.mux.com) - Solves the hard problems software teams face when building video, from live-streaming platforms to on-demand video catalogs and anything in between. <!-- tags: streaming-etl -->
 * 🟢 [n8n](https://n8n.io/) - An open-source workflow automation tool that lets you connect and orchestrate various apps, APIs, and services using a visual editor. <!-- tags: durable-workflow, open-source -->
