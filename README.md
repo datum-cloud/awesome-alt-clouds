@@ -569,6 +569,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Stigg](https://www.stigg.io/) - Pricing and packaging infrastructure for SaaS monetization.
 * 🟢 [Stonly](https://stonly.com/) - Provides a knowledge management platform for customer service with interactive guides, AI-powered chatbots, and process automation to help support agents and enable customer self-service.
 * 🟢 [Stripe](https://stripe.com/) - A financial infrastructure platform that enables businesses to accept payments, manage subscriptions, and handle billing operations.
+* 🟡 [Strix](https://www.strix.ai/) - Provides autonomous penetration testing and continuous security scanning for code, APIs, web apps, infrastructure, and cloud environments with automated vulnerability discovery and remediation.
 * 🟢 [StrongDM](https://www.strongdm.com/) - Zero-trust access platform for infrastructure and databases.
 * 🟡 [Stytch](https://stytch.com/) - Provides APIs and SDKs for passwordless authentication, including email magic links, SMS passcodes, and biometrics.
 * 🟡 [Superset](https://superset.sh/) - Enables developers to run 100+ parallel coding agents in isolated workspaces, automating tasks and streamlining code review workflows across multiple projects simultaneously.
