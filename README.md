@@ -515,6 +515,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Netskope](https://www.netskope.com/) - A cloud-native security platform that protects users, apps, and data with visibility and control across SaaS, IaaS, and the web.
 * 🟢 [NeuBird](https://neubird.ai/) - An autonomous AI SRE platform.
 * 🟢 [ngrok](https://ngrok.com/) - Securely tunnels local services to the public internet, ideal for testing webhooks, building with APIs, or sharing local development environments.
+* 🟢 [Nife](https://nife.io/) - Delivers unified application deployment and management across cloud, edge, and private infrastructure with cost optimization and AI-powered incident detection.
 * 🟢 [NOFire](https://www.nofire.ai/) - Delivers an AI SRE platform that provides production context and runtime control, preventing incidents by scoring changes and enforcing policies before execution.
 * 🟡 [North](https://north.cloud/) - Provides AI-powered cloud cost optimization and FinOps automation across AWS, GCP, and Azure with unified visibility and automated savings recommendations.
 * 🟢 [Notion](https://www.notion.com/) - All-in-one workspace for notes, docs, wikis, and project management.
