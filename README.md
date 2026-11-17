@@ -127,6 +127,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [NetActuate](https://netactuate.com/) - Provides hybrid cloud and edge computing solutions with a global network.
 * 🟢 [NetBox Cloud](https://netboxlabs.com/netbox-cloud/) - A managed solution for network infrastructure modeling and documentation, providing a scalable and secure platform for network automation.
 * 🟢 [Netmaker](https://netmaker.io/) - A WireGuard-based virtual networking platform that enables fast, secure, and scalable networking for devices and distributed systems.
+* 🟡 [Nevia](https://nevia.cloud/) - Provides cloud infrastructure purpose-built for AI agents, with microVMs, databases, and inference optimized for agentic workloads with millisecond startup and scale-to-zero capabilities. <!-- tags: agent-native, owns-hardware -->
 * 🟢 [NextGen Cloud](https://www.nextgencloud.com/) - Delivers sustainable, high-performance cloud infrastructure for AI workloads. <!-- tags: gpu -->
 * 🟢 [Offline Protocol](https://www.offlineprotocol.com/) - Provides edge-native coordination for physical systems with identity, encrypted messaging, and service discovery across local, mesh, gateway, and cloud networks.
 * 🟢 [Openmetal.io](https://openmetal.io/) - Delivers on-demand private cloud infrastructure based on OpenStack.
