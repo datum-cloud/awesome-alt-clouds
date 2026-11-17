@@ -584,6 +584,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢🔵 [Tggl](https://tggl.io/) - Feature flags platform, verification needed.
 * 🟢 [Tiptap](https://tiptap.dev/) - Headless rich text editor with real-time collaboration, AI content generation, and 100+ extensions.
 * 🟢 [Togai](https://www.togai.com/) - Provides billing infrastructure for usage-based pricing, supporting complex billing scenarios with real-time analytics.
+* 🟡 [Trace](https://www.tracecomputing.ai/) - Provides AI security and threat detection for cloud environments by tracing every AI workload, mapping behavior patterns, and identifying anomalies through kernel sensors and triage agents. <!-- tags: agent-native -->
 * 🟢 [Twilio](https://www.twilio.com/docs/iot) - Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
 * 🟢 [Ubicloud](https://www.ubicloud.com/) - An open-source cloud platform that can run anywhere, offering IaaS features on bare metal providers with options for self-hosting or managed services. <!-- tags: open-source -->
 * 🟢 [UniBee](https://unibee.dev/) - Open-source billing and subscription management with usage-based pricing, multi-gateway support, and self-host options. <!-- tags: open-source -->
