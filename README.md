@@ -147,6 +147,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [Salad](https://salad.com/) - A platform for leveraging latent consumer compute resources to power workloads.
 * 🟢 [Scaleway](https://www.scaleway.com/) - European cloud provider with a wide range of services including servers, storage, and AI tools. <!-- tags: region:eu -->
 * 🟢 [Seeweb](https://www.seeweb.it/) - Italian cloud infrastructure provider offering compute, storage, and CDN.
+* 🟢 [Sengi](https://sengi.run/) - Provides GitHub Actions runners as a drop-in replacement for GitHub-hosted runners, priced at $0.001 per minute for Basic tier with up to 2× faster builds on Premium. <!-- tags: owns-hardware -->
 * 🟡 [Sent](https://www.sent.dm/) - Cloud service provider.
 * 🟢 [Servers.com](https://www.servers.com/) - Global bare metal and private cloud platform supporting AI/ML compute. <!-- tags: owns-hardware -->
 * 🟢 [Shadeform](https://shadeform.com/) - GPU compute provider with a focus on low-cost AI infrastructure. <!-- tags: gpu -->
