@@ -75,8 +75,8 @@ const profileJsonLd = {
   <SidebarShell railLabel={`${cloud.name} facts`}>
     <DetailSidebar slot="rail" cloud={cloud} />
 
-    <article class="max-w-[880px] px-[58px] pt-9 pb-[60px] max-md:px-4 max-md:pt-8 max-md:pb-12">
-      <a class="mb-10 inline-block font-mono text-[12px] uppercase" href={asset("list/")}>&lt; <span class="underline">Back to list</span></a>
+    <article class="max-w-[960px] px-[60px] pt-7 pb-[60px] max-md:px-4 max-md:pt-8 max-md:pb-12">
+      <a class="mb-10 inline-block font-mono text-[12px] leading-7 uppercase" href={asset("list/")}>&lt; <span class="underline">Back to list</span></a>
 
       {cloud.status === "draft" && <DraftBanner slug={cloud.slug} />}
       {isEmerging && <EmergingBanner cloud={cloud} />}

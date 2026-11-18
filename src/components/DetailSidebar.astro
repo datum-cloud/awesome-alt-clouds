@@ -42,18 +42,18 @@ const socials = [
 ].filter((s): s is [string, string] => Boolean(s[1]));
 ---
 
-<div class="rail-block flex flex-col items-center gap-4 text-center">
-  {logoSrc && <img src={logoSrc} alt="" width="64" height="64" class="size-16 object-contain" />}
-  <h1 class="font-mono text-[32px] leading-9 font-extrabold wrap-anywhere">{cloud.name}</h1>
+<div class="rail-block flex flex-col items-center gap-3 pr-10 pb-[60px] text-center">
+  {logoSrc && <img src={logoSrc} alt="" width="80" height="80" class="size-20 object-contain" />}
+  <h1 class="font-mono text-[30px] leading-[38px] font-bold wrap-anywhere">{cloud.name}</h1>
   {(cloud.tagline || cloud.description) && <p class="text-sm">{cloud.tagline || cloud.description}</p>}
 </div>
 
-<a class="btn btn--dark btn--block min-h-[78px] border-t-2 border-midnight" href={website} target="_blank" rel="noopener noreferrer">
+<a class="btn btn--dark btn--block min-h-[82px] border-t-2 border-midnight" href={website} target="_blank" rel="noopener noreferrer">
   <span class="btn__label">Website</span><span aria-hidden="true">↗</span>
 </a>
 {
   github && (
-    <a class="btn btn--outline btn--block min-h-[78px] border-t-2 border-midnight" href={github} target="_blank" rel="noopener noreferrer">
+    <a class="btn btn--outline btn--block min-h-[82px] border-t-2 border-midnight" href={github} target="_blank" rel="noopener noreferrer">
       <span class="btn__label">GitHub</span>
       <span aria-hidden="true">↗</span>
     </a>
@@ -61,14 +61,14 @@ const socials = [
 }
 
 <div class="rail-block border-t-2 border-midnight py-10">
-  <p class="field-label">Category:</p>
+  <p class="field-label mb-2">Category:</p>
   <p class="text-sm">{cloud.categories.join(", ")}</p>
 </div>
 
 {
   (cloud.tags?.length || cloud.unverified) && (
     <div class="rail-block border-t-2 border-midnight py-10">
-      <p class="field-label">Tags:</p>
+      <p class="field-label mb-2">Tags:</p>
       <ul class="flex flex-wrap gap-2">
         {cloud.tags?.map((t) => (
           <li class="tag">{tagLabel(t)}</li>
@@ -80,12 +80,12 @@ const socials = [
 }
 
 <div class="rail-block border-t-2 border-midnight py-10">
-  <p class="field-label">Key facts:</p>
+  <p class="field-label mb-0">Key facts:</p>
   <dl>
     {
       facts.map(([k, v]) => (
-        <div class="flex justify-between gap-4 border-b border-midnight py-3 text-[12px] leading-[18px]">
-          <dt class="text-midnight/70">{k}</dt>
+        <div class="flex h-12 items-center justify-between gap-4 border-b border-midnight text-[12px] leading-4">
+          <dt class="text-midnight/60">{k}</dt>
           <dd class="text-right">{v}</dd>
         </div>
       ))

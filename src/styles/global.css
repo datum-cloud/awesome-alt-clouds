@@ -50,7 +50,8 @@
   }
 
   body {
-    @apply leading-relaxed;
+    /* Figma text-base 16/24; the 1.5 ratio also gives text-sm 14/21. */
+    line-height: 1.5;
   }
 
   button:not(:disabled) {
@@ -79,14 +80,16 @@ html[data-compare-full] [data-compare-toggle]:not([aria-pressed="true"]) {
   }
 
   .prose-content > * + * {
-    margin-top: 16px;
+    /* Figma paragraph spacing (text-lg/paragraph-spacing). */
+    margin-top: 10px;
   }
 
   .prose-content h2 {
-    margin-top: 48px;
+    /* Figma: sections 40px apart, heading is Alliance Regular text-xl 20/28. */
+    margin-top: 40px;
     font-size: 20px;
     line-height: 28px;
-    font-weight: 600;
+    font-weight: 400;
   }
 
   .prose-content > h2:first-child,
@@ -135,7 +138,7 @@ html[data-compare-full] [data-compare-toggle]:not([aria-pressed="true"]) {
   }
 
   .prose-content li + li {
-    margin-top: 8px;
+    margin-top: 10px;
   }
 
   .prose-content li::marker {
@@ -439,14 +442,16 @@ html[data-compare-full] [data-compare-toggle]:not([aria-pressed="true"]) {
   }
 
   /* ---------- Tags / form controls ---------- */
+  /* Figma "Datum App UI/Customer Status" pill. */
   .tag {
     display: inline-flex;
     align-items: center;
-    padding: 2px 6px;
+    padding: 2px 5px;
+    border-radius: 3px;
     background: var(--color-paper);
-    font-size: 10px;
+    font-size: 8px;
     line-height: 16px;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.3px;
     text-transform: uppercase;
     white-space: nowrap;
     color: var(--color-midnight);
@@ -456,7 +461,7 @@ html[data-compare-full] [data-compare-toggle]:not([aria-pressed="true"]) {
     margin-bottom: 12px;
     font-size: 14px;
     line-height: 21px;
-    color: rgb(12 29 49 / 0.7);
+    color: rgb(12 29 49 / 0.6);
   }
   .select-field,
   .input-field {
