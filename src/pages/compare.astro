@@ -2,8 +2,6 @@
 import Base from "../layouts/Base.astro";
 import CompareCloudPicker from "../components/CompareCloudPicker.astro";
 import CompareTable from "../components/CompareTable.astro";
-import DetailTopBar from "../components/DetailTopBar.astro";
-import DirectorySidebar from "../components/DirectorySidebar.astro";
 import { COMPARE_ROWS, toCompareCloud, type CompareCloud } from "../lib/compare";
 import { clouds } from "../lib/clouds";
 import { getAllMergedClouds, getFeaturedSlugs } from "../lib/profile";
@@ -53,12 +51,9 @@ const comparePayload = JSON.stringify({
   title={pageTitle}
   description={pageDescription}
   canonical={canonical}
+  nav="list"
   showCompareTray={false}>
-  <div class="flex flex-col md:flex-row min-h-screen">
-    <DirectorySidebar activePage="compare" />
-
-    <main class="flex-1 p-5 md:p-8 min-w-0">
-      <DetailTopBar featuredSlugs={[...featuredSlugs]} />
+  <div class="legacy-page">
 
       <div class="max-w-7xl">
         <header class="mb-8">
@@ -109,7 +104,6 @@ const comparePayload = JSON.stringify({
           <CompareTable columns={initialColumns} />
         </div>
       </div>
-    </main>
   </div>
 
   <script

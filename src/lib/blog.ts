@@ -29,3 +29,13 @@ export function formatPostDate(date: Date): string {
     timeZone: "UTC",
   });
 }
+
+/** "Nov 12, 2026" (blog index rows). */
+export function formatShortDate(date: Date): string {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}

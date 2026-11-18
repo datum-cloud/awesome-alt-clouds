@@ -18,7 +18,7 @@ const { slug, name, class: className = "" } = Astro.props;
   aria-pressed="false"
   aria-label={`Add ${name} to compare`}
   class:list={[
-    "compare-toggle inline-flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-medium text-rich-earth bg-white border border-clay-beige rounded-lg hover:border-soft-sage hover:text-bright-tangerine transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-clay-beige disabled:hover:text-rich-earth aria-pressed:bg-soft-sage aria-pressed:border-soft-sage aria-pressed:text-rich-earth aria-pressed:hover:text-rich-earth",
+    "compare-toggle btn btn--outline min-h-0 w-full border border-midnight py-1 text-xs aria-pressed:bg-mint",
     className,
   ]}>
   <span data-compare-label class="inline-flex items-center gap-1.5">

@@ -25,3 +25,19 @@ export function getAllCategorySlugs(): string[] {
     .filter((cat) => cat !== "All")
     .map((cat) => categoryToSlug(cat));
 }
+
+/**
+ * Short, builder-facing blurbs for the homepage "Browse by what you're building" row.
+ * UI copy only: the canonical definitions stay in taxonomy.ts (mirrored in Python).
+ */
+export const CATEGORY_BLURBS: Record<string, string> = {
+  "Infrastructure Clouds":
+    "Rent GPUs, bare metal, storage, or networking. Bring your own workload.",
+  "Workload Clouds":
+    "Deploy an app, run a database, serve a model, or spin up an agent sandbox. The provider handles provisioning and scaling.",
+  "Sovereign Clouds":
+    "Find providers based on where they’re owned and operated, where your data lives, and which laws apply.",
+  "Service Clouds":
+    "Add building blocks like auth, billing, feature flags, or API gateways to your product.",
+  "Vertical Clouds": "Find specialist services for industries like banking, healthcare, and legal.",
+};

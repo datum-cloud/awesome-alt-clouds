@@ -1,0 +1,50 @@
+---
+/** One row of the List view table (Figma node 1:1304). */
+import { linkAttrs, type ListItem } from "../../lib/list-items";
+
+export interface Props {
+  item: ListItem;
+}
+const { item } = Astro.props;
+/* "Datum App UI/Customer Status" pill (Figma 1:1304). */
+const pill = "tag flex-none rounded-[3px] px-[5px] py-0 text-[8px] leading-4 tracking-[0.3px]";
+---
+
+<tr
+  class="cloud-row"
+  data-item
+  data-name={item.name.toLowerCase()}
+  data-description={item.description.toLowerCase()}
+  data-categories={item.categories.join("|")}
+  data-tags={item.filterTags.join("|")}
+  data-date-added={item.dateAdded}>
+  <th scope="row" class="cloud-row__name">
+    <a {...linkAttrs(item)} class="group flex min-w-0 items-center gap-2">
+      <img src={item.logo} alt="" width="18" height="18" class="size-[18px] flex-none object-contain" loading="lazy" decoding="async" />
+      <span class="min-w-0">
+        <span class="block truncate group-hover:underline">{item.name}</span>
+        {item.external && <span class="sr-only"> (opens provider site)</span>}
+        {item.unverified && <span class="block text-[8px] leading-3 tracking-[0.3px] uppercase">(Emerging &amp; Unverified)</span>}
+      </span>
+    </a>
+  </th>
+  <td class="cloud-row__desc" title={item.description}>{item.description}</td>
+  <td class="cloud-row__cat">{item.category}</td>
+  <td class="cloud-row__tags">
+    {
+      item.displayTags.length ? (
+        <span class="flex gap-2 overflow-hidden" title={item.displayTags.join(", ")}>
+          {item.displayTags.map((t) => (
+            <span class={pill}>{t}</span>
+          ))}
+          {item.extraTagCount > 0 && <span class={pill}>+{item.extraTagCount}</span>}
+        </span>
+      ) : (
+        <span class={pill} aria-label="No tags">
+          -
+        </span>
+      )
+    }
+  </td>
+  <td class="cloud-row__pricing"><span class:list={[pill, "w-[75px] justify-center truncate"]}>{item.pricing ?? "Not listed"}</span></td>
+</tr>

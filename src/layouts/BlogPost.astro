@@ -1,18 +1,18 @@
 ---
 import Base from "./Base.astro";
-import DetailTopBar from "../components/DetailTopBar.astro";
-import DirectorySidebar from "../components/DirectorySidebar.astro";
+import PixelIcon from "../components/blog/PixelIcon.astro";
+import SidebarShell from "../components/site/SidebarShell.astro";
+import { iconForSlug } from "../lib/pixel-icons";
 import { formatPostDate, type BlogPost } from "../lib/blog";
 import { asset } from "../lib/assets";
 import { absoluteUrl, siteRoot } from "../lib/site-urls";
 
 export interface Props {
   post: BlogPost;
-  featuredSlugs: string[];
 }
 
-const { post, featuredSlugs } = Astro.props;
-const { title, description, publishDate, updatedDate, author, tags, draft, heroImage } =
+const { post } = Astro.props;
+const { title, description, publishDate, updatedDate, author, tags, draft, heroImage, icon } =
   post.data;
 
 const pageTitle = `${title} | Alt Cloud`;
@@ -23,7 +23,7 @@ const formattedDate = formatPostDate(publishDate);
 const formattedUpdated = updatedDate ? formatPostDate(updatedDate) : undefined;
 ---
 
-<Base title={pageTitle} description={description} canonical={canonical} ogImage={ogImage}>
+<Base title={pageTitle} description={description} canonical={canonical} ogImage={ogImage} nav="blog">
   <Fragment slot="head">
     <meta property="og:type" content="article" />
     <script
@@ -54,55 +54,43 @@ const formattedUpdated = updatedDate ? formatPostDate(updatedDate) : undefined;
     />
   </Fragment>
 
-  <div class="flex flex-col md:flex-row min-h-screen">
-    <DirectorySidebar activePage="blog" />
-
-    <main class="flex-1 p-5 md:p-8 min-w-0">
-      <DetailTopBar
-        featuredSlugs={featuredSlugs}
-        backHref={blogIndexHref}
-        backLabel="Back to blog"
-      />
-
-      <article class="blog-post max-w-4xl">
+  <SidebarShell railLabel="Post details">
+    <Fragment slot="rail">
+      <div class="rail-block">
+        <PixelIcon name={icon ?? iconForSlug(post.id)} class="-ml-3" />
+        <p class="mt-4 text-sm">
+          {formattedDate}
+          {formattedUpdated && formattedUpdated !== formattedDate && <span> · Updated {formattedUpdated}</span>}
+        </p>
+        <p class="text-sm">By {author}</p>
         {
-          draft && (
-            <div class="mb-6 px-4 py-3 bg-orange-50 border border-orange-100 rounded-lg text-sm text-warm-stone">
-              <span class="font-semibold text-bright-tangerine">Draft preview</span> — this post is
-              not published in production builds.
-            </div>
+          tags.length > 0 && (
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <li class="tag">#{tag}</li>
+              ))}
+            </ul>
           )
         }
+      </div>
+    </Fragment>
 
-        <header class="mb-8">
-          <div class="text-xs font-medium text-warm-stone uppercase tracking-wider mb-2">
-            {formattedDate}
-            {formattedUpdated && formattedUpdated !== formattedDate && (
-              <span> · Updated {formattedUpdated}</span>
-            )}
-            <span> · {author}</span>
+    <article class="max-w-[880px] px-[58px] pt-9 pb-[60px] max-md:px-4 max-md:pt-8 max-md:pb-12">
+      <a class="mb-10 inline-block font-mono text-[12px] uppercase" href={blogIndexHref}>&lt; <span class="underline">Back to blog</span></a>
+      {
+        draft && (
+          <div class="notice">
+            <strong>Draft preview</strong> — this post is not published in production builds.
           </div>
-          <h1 class="font-serif text-3xl md:text-4xl font-semibold text-rich-earth leading-tight">
-            {title}
-          </h1>
-          <p class="mt-3 text-base text-warm-stone leading-relaxed">{description}</p>
-          {
-            tags.length > 0 && (
-              <div class="mt-4 flex flex-wrap gap-2">
-                {tags.map((tag) => (
-                  <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-clay-beige text-rich-earth">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )
-          }
-        </header>
-
-        <div class="prose-content">
-          <slot />
-        </div>
-      </article>
-    </main>
-  </div>
+        )
+      }
+      <header class="mb-10">
+        <h1 class="display-40">{title}</h1>
+        <p class="mt-4 text-lg">{description}</p>
+      </header>
+      <div class="prose-content">
+        <slot />
+      </div>
+    </article>
+  </SidebarShell>
 </Base>

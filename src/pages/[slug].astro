@@ -3,7 +3,6 @@ import { render } from "astro:content";
 import { cloudsBySlug } from "../lib/clouds";
 import {
   getPublishableProfiles,
-  getFeaturedSlugs,
   mergeCloudWithProfile,
   type CloudProfile,
 } from "../lib/profile";
@@ -37,13 +36,10 @@ if (!cloud) {
 }
 
 const merged = mergeCloudWithProfile(cloud, profile);
-const featuredSlugs = [...(await getFeaturedSlugs())];
 
 const { Content } = await render(profile);
 ---
 
-<CloudDetail
-  cloud={merged}
-  featuredSlugs={featuredSlugs}>
+<CloudDetail cloud={merged} updates={profile.data.updates}>
   <Content />
 </CloudDetail>

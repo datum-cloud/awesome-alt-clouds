@@ -1,0 +1,206 @@
+---
+/**
+ * Hero cloud backdrop (Figma node 1:1936).
+ *
+ * In Figma this is a "Halftone" ShaderEffect (Blended / BW light, dot size 4,
+ * dot scale 1.74, softness 0, layer opacity 40%) over a cloud photo. Figma's runtime
+ * needs WebGPU + HTML-in-Canvas, so we port the same math to WebGL2 and animate it:
+ * the photo drifts slowly under a fixed dot grid, so the clouds "flow" through the
+ * halftone.
+ *
+ * The static Figma render (`hero-poster.png`) shows first and stays visible when
+ * WebGL2 is unavailable. With prefers-reduced-motion we draw a single still frame.
+ * The animation also pauses while the hero is off-screen or the tab is hidden.
+ */
+import { asset } from "../../lib/assets";
+---
+
+<div class="absolute inset-0 overflow-hidden bg-white" aria-hidden="true">
+  <img
+    class="absolute inset-0 size-full object-cover object-top"
+    src={asset("hero-poster.png")}
+    alt=""
+    width="1596"
+    height="500"
+    decoding="async"
+    fetchpriority="high"
+  />
+  <canvas
+    class="hero-clouds__canvas absolute inset-0 size-full opacity-0 transition-opacity duration-[600ms] ease-[ease] [&.is-ready]:opacity-100" data-src={asset("hero-clouds.jpg")}></canvas>
+</div>
+
+<script>
+  // Figma frame geometry (design px): the effect is 1596x584, the photo box sits at
+  // left -1.62%, top -82.02%, size 136.6% x 248.8% of that frame.
+  const FRAME_W = 1596;
+  const FRAME_H = 584;
+  const IMG = { x: -0.0162 * FRAME_W, y: -0.8202 * FRAME_H, w: 1.366 * FRAME_W, h: 2.488 * FRAME_H };
+  const DOT_SIZE = 4; // CSS px, kept constant across viewport sizes
+  const DOT_SCALE = 1.74;
+  const LAYER_OPACITY = 0.4;
+  const DRIFT_PX = 480; // design px of horizontal travel (photo has ~550px slack)
+  const DRIFT_PERIOD_S = 120;
+
+  const VERT = `#version 300 es
+  in vec2 aPos;
+  out vec2 vUv;
+  void main() {
+    vUv = vec2(aPos.x * 0.5 + 0.5, 0.5 - aPos.y * 0.5); // top-left origin
+    gl_Position = vec4(aPos, 0.0, 1.0);
+  }`;
+
+  // Port of Figma's Halftone effect, EUCLIDEAN + BW_LIGHT branch.
+  const FRAG = `#version 300 es
+  precision highp float;
+  in vec2 vUv;
+  out vec4 outColor;
+  uniform sampler2D uTex;
+  uniform vec2 uSize;       // canvas size, CSS px
+  uniform float uScale;     // CSS px per design px (cover fit, top-anchored)
+  uniform float uDrift;     // design px
+  uniform float uLod;       // mip level standing in for Figma's gaussian pre-blur
+  uniform vec4 uImg;        // photo box in design px: x, y, w, h
+  uniform vec3 uParams;     // dotSize, dotScale, layerOpacity
+  const float TAU = 6.28318530718;
+
+  float srgbToLinear(float v) {
+    return v > 0.04045 ? pow((v + 0.055) / 1.055, 2.4) : v / 12.92;
+  }
+
+  void main() {
+    vec2 p = vUv * uSize;
+    // CSS px -> design px: centre horizontally, anchor top.
+    vec2 d = vec2((p.x - uSize.x * 0.5) / uScale + ${FRAME_W.toFixed(1)} * 0.5, p.y / uScale);
+    vec2 imgUv = (d - vec2(uImg.x - uDrift, uImg.y)) / uImg.zw;
+    vec3 rgb = textureLod(uTex, clamp(imgUv, 0.0, 1.0), uLod).rgb;
+
+    // The photo is opaque inside the effect; the layer's 40% opacity applies to the
+    // halftone *output* (composited over white), which is what makes the dots grey.
+    float luma = srgbToLinear(dot(rgb, vec3(0.299, 0.587, 0.114)));
+    luma = clamp(luma * uParams.y, 0.0, 1.0);
+    float ink = 1.0 - luma;
+
+    // Fixed 45deg dot grid centred on the canvas, in CSS px.
+    float c = cos(radians(45.0)), s = sin(radians(45.0));
+    vec2 g = mat2(c, -s, s, c) * (p - uSize * 0.5) / uParams.x;
+    float grid = 0.5 - 0.25 * (cos(g.x * TAU) + cos(g.y * TAU));
+    float aa = fwidth(grid);
+    float dotFill = 1.0 - smoothstep(ink - aa, ink + aa, grid);
+    outColor = vec4(vec3(1.0 - dotFill * uParams.z), 1.0);
+  }`;
+
+  function compile(gl: WebGL2RenderingContext, type: number, src: string) {
+    const sh = gl.createShader(type)!;
+    gl.shaderSource(sh, src);
+    gl.compileShader(sh);
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(sh) ?? "shader");
+    return sh;
+  }
+
+  function init(canvas: HTMLCanvasElement) {
+    const gl = canvas.getContext("webgl2", { antialias: false, premultipliedAlpha: false });
+    if (!gl) return; // poster stays
+
+    const prog = gl.createProgram()!;
+    gl.attachShader(prog, compile(gl, gl.VERTEX_SHADER, VERT));
+    gl.attachShader(prog, compile(gl, gl.FRAGMENT_SHADER, FRAG));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+    gl.useProgram(prog);
+
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
+    const aPos = gl.getAttribLocation(prog, "aPos");
+    gl.enableVertexAttribArray(aPos);
+    gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+    const u = (n: string) => gl.getUniformLocation(prog, n);
+    const uSize = u("uSize"), uScale = u("uScale"), uDrift = u("uDrift"), uLod = u("uLod");
+    gl.uniform4f(u("uImg"), IMG.x, IMG.y, IMG.w, IMG.h);
+    gl.uniform3f(u("uParams"), DOT_SIZE, DOT_SCALE, LAYER_OPACITY);
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let texW = 1;
+    let cssW = 0, cssH = 0, scale = 1;
+    let running = false, visible = true, raf = 0, start = performance.now();
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cssW = rect.width;
+      cssH = rect.height;
+      canvas.width = Math.round(cssW * dpr);
+      canvas.height = Math.round(cssH * dpr);
+      gl!.viewport(0, 0, canvas.width, canvas.height);
+      scale = Math.max(cssW / FRAME_W, cssH / 500);
+      // Figma blurs with radius = dotSize before sampling; approximate with a mip level.
+      const texelsPerCss = texW / (IMG.w * scale);
+      gl!.uniform1f(uLod, Math.max(0, Math.log2(DOT_SIZE * texelsPerCss)));
+      gl!.uniform2f(uSize, cssW, cssH);
+      gl!.uniform1f(uScale, scale);
+    }
+
+    function draw(now: number) {
+      const t = (now - start) / 1000;
+      // Ease back and forth so the photo never runs out of slack.
+      const drift = reduceMotion ? 0 : (0.5 - 0.5 * Math.cos((t / DRIFT_PERIOD_S) * Math.PI * 2)) * DRIFT_PX;
+      gl!.uniform1f(uDrift, drift);
+      gl!.drawArrays(gl!.TRIANGLES, 0, 6);
+    }
+
+    function loop(now: number) {
+      draw(now);
+      raf = running ? requestAnimationFrame(loop) : 0;
+    }
+
+    function setRunning(next: boolean) {
+      if (reduceMotion) return;
+      if (next && !running) {
+        running = true;
+        raf = requestAnimationFrame(loop);
+      } else if (!next && running) {
+        running = false;
+        cancelAnimationFrame(raf);
+      }
+    }
+
+    const img = new Image();
+    img.decoding = "async";
+    img.src = canvas.dataset.src ?? "";
+    img.onload = () => {
+      texW = img.naturalWidth;
+      const tex = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, tex);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+      gl.generateMipmap(gl.TEXTURE_2D);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+
+      resize();
+      draw(performance.now());
+      canvas.classList.add("is-ready");
+      start = performance.now();
+
+      new ResizeObserver(() => {
+        resize();
+        draw(performance.now());
+      }).observe(canvas);
+      new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        setRunning(visible && !document.hidden);
+      }).observe(canvas);
+      document.addEventListener("visibilitychange", () => setRunning(visible && !document.hidden));
+    };
+  }
+
+  document.querySelectorAll<HTMLCanvasElement>(".hero-clouds__canvas").forEach((canvas) => {
+    try {
+      init(canvas);
+    } catch (err) {
+      console.warn("[hero] WebGL halftone unavailable, keeping poster", err);
+    }
+  });
+</script>

@@ -1,69 +1,101 @@
 ---
+/** Blog index (Figma node 1:3561). Date + category filters run client-side. */
+import PixelIcon from "../../components/blog/PixelIcon.astro";
+import SidebarShell from "../../components/site/SidebarShell.astro";
 import Base from "../../layouts/Base.astro";
-import DetailTopBar from "../../components/DetailTopBar.astro";
-import DirectorySidebar from "../../components/DirectorySidebar.astro";
-import { formatPostDate, getPublishablePosts, postUrl, sortedByDate } from "../../lib/blog";
-import { getFeaturedSlugs } from "../../lib/profile";
+import { formatShortDate, getPublishablePosts, postUrl, sortedByDate } from "../../lib/blog";
+import { iconForSlug } from "../../lib/pixel-icons";
 import { getPageMeta } from "../../lib/site-meta";
 import { absoluteUrl } from "../../lib/site-urls";
 
 const { title, description } = getPageMeta("blog");
 const blogCanonical = `${absoluteUrl("blog")}/`;
 const posts = sortedByDate(await getPublishablePosts());
-const postCount = posts.length;
-const featuredSlugs = [...(await getFeaturedSlugs())];
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
 ---
 
-<Base
-  title={title}
-  description={description}
-  canonical={blogCanonical}>
-  <div class="flex flex-col md:flex-row min-h-screen">
-    <DirectorySidebar activePage="blog" />
-
-    <main class="flex-1 p-5 md:p-8 min-w-0">
-      <DetailTopBar featuredSlugs={featuredSlugs} />
-
-      <div class="max-w-4xl">
-        <header class="mb-8">
-          <h1 class="font-serif text-3xl md:text-4xl font-semibold text-rich-earth mb-3">Blog</h1>
-          <p class="text-warm-stone leading-relaxed max-w-2xl">
-            Short-form notes on alternative cloud providers — trends, new entrants, and commentary
-            from the Alt Cloud community.
-          </p>
-        </header>
-
-        {
-          postCount === 0 ? (
-            <div class="py-16 text-warm-stone">
-              <p>No posts published yet. Check back soon.</p>
-            </div>
-          ) : (
-            <div class="divide-y divide-clay-beige">
-              {posts.map((post) => (
-                <a
-                  href={postUrl(post.id)}
-                  class="group flex flex-col gap-1.5 py-6 no-underline first:pt-0">
-                  <div class="text-xs font-medium text-warm-stone uppercase tracking-wider">
-                    {formatPostDate(post.data.publishDate)}
-                    {post.data.tags.length > 0 && (
-                      <span class="ml-2">
-                        {post.data.tags.map((tag) => (
-                          <span class="mr-1.5 text-warm-stone/70">#{tag}</span>
-                        ))}
-                      </span>
-                    )}
-                  </div>
-                  <h2 class="font-serif text-xl font-semibold text-rich-earth group-hover:text-bright-tangerine transition-colors leading-snug">
-                    {post.data.title}
-                  </h2>
-                  <p class="text-sm text-warm-stone leading-relaxed">{post.data.description}</p>
-                </a>
-              ))}
-            </div>
-          )
-        }
+<Base title={title} description={description} canonical={blogCanonical} nav="blog">
+  <SidebarShell railLabel="Blog filters">
+    <Fragment slot="rail">
+      <div class="rail-block">
+        <h1 class="text-[32px] leading-[38px] font-mono font-extrabold">Blog</h1>
+        <p class="mt-3">
+          Short-form notes on alternative cloud providers — trends, new entrants, and commentary from
+          the Alt Cloud community.
+        </p>
       </div>
-    </main>
-  </div>
+      {
+        posts.length > 1 && (
+          <form class="rail-block flex flex-col gap-2" onsubmit="return false">
+            <p class="field-label">Filter by</p>
+            <label class="sr-only" for="postSort">Sort by date</label>
+            <select id="postSort" class="select-field">
+              <option value="newest">Date: Newest</option>
+              <option value="oldest">Date: Oldest</option>
+            </select>
+            <label class="sr-only" for="postTag">Category</label>
+            <select id="postTag" class="select-field">
+              <option value="">Category: All</option>
+              {allTags.map((t) => <option value={t}>Category: #{t}</option>)}
+            </select>
+          </form>
+        )
+      }
+    </Fragment>
+
+    {
+      posts.length === 0 ? (
+        <p class="p-10">No posts published yet. Check back soon.</p>
+      ) : (
+        <ol id="postList">
+          {posts.map((post) => (
+            <li
+              class="relative flex items-center gap-5 border-b-2 border-midnight p-10 hover:bg-paper max-md:items-start max-md:px-4 max-md:py-6"
+              data-date={post.data.publishDate.toISOString()}
+              data-tags={post.data.tags.join("|")}>
+              <PixelIcon
+                name={post.data.icon ?? iconForSlug(post.id)}
+                class="max-md:size-16 max-md:[&_svg]:scale-[.64]"
+              />
+              <div class="min-w-0">
+                <p class="flex flex-wrap gap-x-3 gap-y-1 text-sm uppercase">
+                  <time datetime={post.data.publishDate.toISOString()}>
+                    {formatShortDate(post.data.publishDate)}
+                  </time>
+                  {post.data.tags.map((tag) => (
+                    <span class="text-muted">#{tag}</span>
+                  ))}
+                </p>
+                <h2 class="mt-3 text-[20px] leading-7 font-semibold">
+                  <a
+                    href={postUrl(post.id)}
+                    class="underline underline-offset-4 after:absolute after:inset-0 hover:bg-mint">{post.data.title}</a>
+                </h2>
+                <p class="mt-3 text-midnight/60">{post.data.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      )
+    }
+  </SidebarShell>
 </Base>
+
+<script>
+  const list = document.getElementById("postList");
+  const sortEl = document.getElementById("postSort") as HTMLSelectElement | null;
+  const tagEl = document.getElementById("postTag") as HTMLSelectElement | null;
+  function apply() {
+    if (!list) return;
+    const rows = Array.from(list.children) as HTMLElement[];
+    const dir = sortEl?.value === "oldest" ? 1 : -1;
+    rows.sort((a, b) => dir * (a.dataset.date ?? "").localeCompare(b.dataset.date ?? ""));
+    for (const row of rows) {
+      const tags = (row.dataset.tags ?? "").split("|");
+      row.hidden = Boolean(tagEl?.value) && !tags.includes(tagEl!.value);
+      list.appendChild(row);
+    }
+  }
+  sortEl?.addEventListener("change", apply);
+  tagEl?.addEventListener("change", apply);
+</script>

@@ -1,0 +1,39 @@
+---
+/** Rail footer on the List frames: Datum credit, Contribute on GitHub, + Add a cloud. */
+import { asset } from "../../lib/assets";
+import { DATUM_URL, REPO_URL } from "../../lib/site-links";
+import InlineSvg from "../ui/InlineSvg.astro";
+
+const row = "min-h-[78px] border-t-2 border-midnight short:min-h-[60px]";
+---
+
+<div class="border-t-2 border-midnight">
+  <div
+    class="datum-promo__credit relative isolate flex flex-col items-center gap-5 px-7 pt-9 pb-10 text-center short:gap-3 short:pt-5 short:pb-6"
+    style={`--promo-art:url("${asset("hero-poster.png")}")`}>
+    <InlineSvg name="datumMark" class="flip-y text-midnight" label="Datum" />
+    <p class="text-base">Brought to you by <a href={DATUM_URL} class="underline">Datum</a></p>
+    <p class="text-base leading-5 opacity-80 short:hidden">
+      A directory of alternative cloud providers. Help us keep it growing by suggesting a provider
+      or updating a listing.
+    </p>
+  </div>
+  <a class={`btn btn--outline btn--block ${row}`} href={REPO_URL} target="_blank" rel="noopener noreferrer">
+    <span class="btn__label">Contribute on GitHub</span><span aria-hidden="true">↗</span>
+  </a>
+  <a class={`btn btn--dark btn--block ${row}`} href={asset("submit/")}>
+    <span aria-hidden="true">+</span><span class="btn__label">Add a cloud</span>
+  </a>
+</div>
+
+<style>
+  /* Halftone art behind the lower part of the credit (needs the --promo-art URL). */
+  .datum-promo__credit::after {
+    content: "";
+    position: absolute;
+    inset: 40% 0 0;
+    z-index: -1;
+    background: var(--promo-art) right bottom / auto 260% no-repeat;
+    opacity: 0.6;
+  }
+</style>

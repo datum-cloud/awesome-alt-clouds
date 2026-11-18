@@ -1,0 +1,60 @@
+---
+/**
+ * Multi-select tag filter (Figma 1:2124 "Tags picker — grouped workload, capabilities,
+ * region & verification"). A select-styled toggle opens an in-flow panel of grouped
+ * checkboxes; selected tags combine with AND (a cloud must carry every checked tag).
+ * The panel renders in flow (not as an overlay) because the sticky rail scrolls and
+ * would clip an absolutely positioned popover.
+ * Behaviour lives in src/scripts/list-filters.ts.
+ */
+import { tagLabel, type TagGroup } from "../../lib/taxonomy";
+
+export interface Props {
+  groups: TagGroup[];
+}
+const { groups } = Astro.props;
+
+const groupLabel = (g: TagGroup) => (g.scope === "workload" ? `Workload · ${g.label}` : g.label);
+---
+
+<div id="tagPicker">
+  <button
+    type="button"
+    class="select-field truncate text-left aria-expanded:bg-paper"
+    id="tagToggle"
+    aria-expanded="false"
+    aria-controls="tagPanel">
+    <span class="sr-only">Filter by tags: </span><span id="tagSummary">Tags: All</span>
+  </button>
+
+  <div
+    class="mt-1 max-h-[min(55vh,420px)] overflow-y-auto border border-midnight bg-white text-xs"
+    id="tagPanel"
+    hidden>
+    <div class="sticky top-0 z-[1] flex items-center justify-between gap-2 border-b border-midnight bg-white px-3 py-2">
+      <span class="text-muted">Match all selected</span>
+      <button type="button" class="font-mono font-extrabold uppercase underline disabled:no-underline disabled:opacity-35" id="tagClear" disabled>Clear</button>
+    </div>
+    {
+      groups.map((group, i) => (
+        <fieldset class:list={["py-1", i > 0 && "border-t border-paper"]}>
+          <legend class="px-3 pt-3 pb-1 font-mono text-[11px] text-muted uppercase">{groupLabel(group)}</legend>
+          {group.tags.map(({ tag, count }) => (
+            <label class="flex min-h-7 cursor-pointer items-center gap-2 px-3 py-1 hover:bg-paper" data-tag-option={tag}>
+              <input
+                type="checkbox"
+                class="m-0 size-3 flex-none accent-midnight"
+                value={tag}
+                data-label={tagLabel(tag)}
+              />
+              <span class="min-w-0 flex-1">{tagLabel(tag)}</span>
+              <span class="text-muted tabular-nums" data-tag-count>
+                {count}
+              </span>
+            </label>
+          ))}
+        </fieldset>
+      ))
+    }
+  </div>
+</div>

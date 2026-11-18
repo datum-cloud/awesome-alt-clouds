@@ -1,6 +1,10 @@
 ---
 import "../styles/global.css";
 import CompareTray from "../components/CompareTray.astro";
+import NewsletterBand from "../components/site/NewsletterBand.astro";
+import SiteFooter from "../components/site/SiteFooter.astro";
+import SiteHeader from "../components/site/SiteHeader.astro";
+import type { NavKey } from "../lib/site-links";
 import { asset } from "../lib/assets";
 import { blockSearchBots, sitePreview } from "../lib/site";
 import { defaultDescription, defaultTitle, socialDescription, socialTitle } from "../lib/site-meta";
@@ -17,6 +21,10 @@ export interface Props {
   cloudCount?: number;
   /** Show floating compare tray (disabled on /compare itself) */
   showCompareTray?: boolean;
+  /** Active top-nav item */
+  nav?: NavKey;
+  /** Render site header / newsletter band / footer (default true) */
+  chrome?: boolean;
 }
 
 const {
@@ -27,7 +35,20 @@ const {
   includeHomeJsonLd = false,
   cloudCount = 428,
   showCompareTray = true,
+  nav,
+  chrome = true,
 } = Astro.props;
+
+/* Alliance No.1 is licensed; files live in public/fonts (self-hosted, base-path aware). */
+const fontFaces = [
+  ["Regular", 400],
+  ["SemiBold", 600],
+]
+  .map(
+    ([style, weight]) =>
+      `@font-face{font-family:"Alliance No.1";src:url("${asset(`fonts/AllianceNo1-${style}.woff2`)}") format("woff2");font-weight:${weight};font-style:normal;font-display:swap}`
+  )
+  .join("");
 ---
 
 <!DOCTYPE html>
@@ -77,12 +98,9 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://www.google.com" />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-      id="google-fonts-css"
-    />
+    <link rel="preload" as="font" type="font/woff2" href={asset("fonts/AllianceNo1-Regular.woff2")} crossorigin />
+    <style is:inline set:html={fontFaces} />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;800&display=swap" id="google-fonts-css" />
     <script is:inline>
       (function () {
         const el = document.getElementById("google-fonts-css");
@@ -93,10 +111,7 @@ const {
       })();
     </script>
     <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-      />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;800&display=swap" />
     </noscript>
 
     {
@@ -205,8 +220,22 @@ const {
       )
     }
   </head>
-  <body class="bg-cream text-rich-earth font-sans">
-    <slot />
+  <body class="bg-white text-midnight font-sans antialiased">
+    <a href="#main" class="skip-link">Skip to content</a>
+    <div class="site-frame">
+      {chrome && <SiteHeader active={nav} />}
+      <main id="main">
+        <slot />
+      </main>
+      {
+        chrome && (
+          <>
+            <NewsletterBand />
+            <SiteFooter />
+          </>
+        )
+      }
+    </div>
     {showCompareTray && <CompareTray />}
   </body>
 </html>
