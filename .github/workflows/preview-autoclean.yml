@@ -1,0 +1,75 @@
+name: Preview Datum Compute autoclean
+
+# Removes the preview of a branch when the branch is deleted (for example after
+# a merged PR). Deploying a preview stays manual (preview-datum.yml). Cleanup is
+# safe to run for a branch that never had a preview. `delete` runs the workflow
+# from the default branch, so this file has to be on main before it triggers.
+# See docs/datum-compute-previews.md.
+on:
+  delete:
+
+permissions:
+  contents: read
+
+# Same queue as preview-datum.yml and preview-cleanup.yml for the branch.
+concurrency:
+  group: alt-cloud-preview-${{ github.event.ref }}
+  cancel-in-progress: false
+
+env:
+  # Keep in line with deploy-datum.yml.
+  DATUMCTL_VERSION: 0.23.0
+  COMPUTE_PLUGIN_VERSION: v0.12.10
+
+jobs:
+  cleanup:
+    # Only in the origin repository, only for branches (not tags), and not for
+    # bot branches, which never get a preview. Submission branches
+    # (submission-<n>-<slug>) are created and deleted by the pipeline for every
+    # merged entry and never get a preview either.
+    if: >-
+      github.repository == 'datum-cloud/awesome-alt-clouds' &&
+      github.event.ref_type == 'branch' &&
+      !startsWith(github.event.ref, 'dependabot/') &&
+      !startsWith(github.event.ref, 'renovate/') &&
+      !startsWith(github.event.ref, 'submission-') &&
+      !startsWith(github.event.ref, 'graduation-')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: datum-compute-preview
+    env:
+      DATUM_PROJECT: ${{ vars.DATUM_PROJECT || 'datum-cloud' }}
+      PREVIEW_BRANCH: ${{ github.event.ref }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Check preview names
+        run: bash .github/scripts/preview.sh self-test
+
+      - name: Install datumctl
+        run: |
+          curl -fsSLo "$RUNNER_TEMP/datumctl.deb" \
+            "https://github.com/datum-cloud/datumctl/releases/download/v${DATUMCTL_VERSION}/datumctl_${DATUMCTL_VERSION}_linux_amd64.deb"
+          sudo dpkg -i "$RUNNER_TEMP/datumctl.deb"
+          for attempt in 1 2 3; do
+            datumctl plugin install "compute@${COMPUTE_PLUGIN_VERSION}" && break
+            [ "$attempt" = 3 ] && { echo "::error::could not install the compute plugin"; exit 1; }
+            sleep 10
+          done
+
+      - name: Log in to Datum Cloud
+        env:
+          DATUM_SA_CREDENTIALS: ${{ secrets.DATUM_SA_CREDENTIALS }}
+        run: |
+          umask 077
+          printf '%s' "$DATUM_SA_CREDENTIALS" > "$RUNNER_TEMP/datum-sa.json"
+          datumctl login --credentials "$RUNNER_TEMP/datum-sa.json"
+          rm -f "$RUNNER_TEMP/datum-sa.json"
+
+      - name: Destroy the preview
+        run: |
+          bash .github/scripts/preview.sh cleanup
+          echo "Preview of \`${PREVIEW_BRANCH}\` removed (or there was none)." >> "$GITHUB_STEP_SUMMARY"
