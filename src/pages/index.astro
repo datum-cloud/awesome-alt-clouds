@@ -95,7 +95,7 @@ const criteria = [
           class="flex flex-[1_1_480px] items-center justify-between gap-6 self-stretch border-y border-white px-40 text-center max-xl:px-10 max-md:grid max-md:basis-auto max-md:grid-cols-3 max-md:gap-2 max-md:px-0">
           {
             stats.map(({ label, value, lead }) => (
-              <div class="flex flex-col-reverse py-10 max-md:py-6">
+              <div class="flex flex-col-reverse py-10 max-md:py-6" data-stat>
                 <dt
                   class:list={[
                     "max-md:text-[12px] max-md:leading-4",
@@ -108,12 +108,71 @@ const criteria = [
                     "font-mono font-extrabold max-md:text-[36px] max-md:leading-10",
                     lead ? "text-[80px] leading-[80px]" : "text-[60px] leading-[60px]",
                   ]}>
-                  {value}
+                  {/* Animated copy for sighted users; the final value stays in the a11y tree. */}
+                  <span
+                    class="inline-block text-center tabular-nums"
+                    style={`min-width:${String(value).length}ch`}
+                    aria-hidden="true"
+                    data-count={value}>
+                    {value}
+                  </span>
+                  <span class="sr-only">{value}</span>
                 </dd>
               </div>
             ))
           }
         </dl>
+        <script is:inline>
+          (function () {
+            // Stats band: count each number up from 0 (with a short staggered fade-in) the
+            // first time the band scrolls into view. The server-rendered final values are
+            // what no-JS visitors, crawlers and reduced-motion users see. Inline (runs while
+            // parsing) so a band that is already on screen never flashes the final numbers.
+            const DURATION_MS = 1600;
+            const STAGGER_MS = 150;
+            const easeOutExpo = (t) => (t >= 1 ? 1 : 1 - Math.pow(2, -10 * t));
+
+            const stats = Array.from(document.querySelectorAll("[data-stat]"));
+            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            if (stats.length && !reduceMotion && "IntersectionObserver" in window) {
+              const items = stats.map((el) => {
+                const num = el.querySelector("[data-count]");
+                el.style.opacity = "0";
+                el.style.transform = "translateY(12px)";
+                num.textContent = "0";
+                return { el, num, target: Number(num.dataset.count) || 0 };
+              });
+
+              const run = () => {
+                items.forEach(({ el, num, target }, i) => {
+                  const delay = i * STAGGER_MS;
+                  el.style.transition = `opacity 0.5s ease ${delay}ms, transform 0.5s ease ${delay}ms`;
+                  el.style.opacity = "1";
+                  el.style.transform = "none";
+                  const start = performance.now() + delay;
+                  const tick = (now) => {
+                    const t = Math.max(0, (now - start) / DURATION_MS);
+                    num.textContent = String(Math.round(easeOutExpo(t) * target));
+                    if (t < 1) requestAnimationFrame(tick);
+                  };
+                  requestAnimationFrame(tick);
+                });
+              };
+
+              const io = new IntersectionObserver(
+                (entries) => {
+                  if (entries.some((e) => e.isIntersecting)) {
+                    io.disconnect();
+                    run();
+                  }
+                },
+                { threshold: 0.4 }
+              );
+              io.observe(stats[0].parentElement);
+            }
+          })();
+        </script>
       </div>
     </section>
 
