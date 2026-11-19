@@ -14,11 +14,8 @@ export const REPO_URL = "https://github.com/datum-cloud/awesome-alt-clouds";
 export const REPO_ISSUES_URL = `${REPO_URL}/issues/new/choose`;
 export const DATUM_URL = "https://www.datum.net";
 
-/**
- * TODO(redesign): confirm the CTRL: AltCloud subscribe URL on The Stack.
- * The Figma only labels the button "Subscribe on The Stack".
- */
-export const NEWSLETTER_URL = "https://www.thestack.technology/";
+/** The Stack's newsletter picker (CTRL: AltCloud is one of the options). */
+export const NEWSLETTER_URL = "https://www.thestack.technology/newsletters";
 
 export const EXTENSION_LINKS = {
   chrome:

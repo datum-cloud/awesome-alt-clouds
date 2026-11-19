@@ -40,6 +40,7 @@ const submitCanonical = `${absoluteUrl("submit")}/`;
       <div id="form-section">
         <a
           href={homeUrl}
+          data-history-back
           class="back-link inline-flex items-center gap-1.5 text-warm-stone hover:text-rich-earth text-sm mb-5 no-underline transition-colors"
         >
           <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,7 +50,7 @@ const submitCanonical = `${absoluteUrl("submit")}/`;
               stroke-width="2"
               d="M15 19l-7-7 7-7"></path>
           </svg>
-          Back to directory
+          Back
         </a>
         <h1
           class="font-serif text-3xl font-semibold text-rich-earth mb-2 tracking-tight"
@@ -166,6 +167,7 @@ const submitCanonical = `${absoluteUrl("submit")}/`;
       <div id="step2-section" class="hidden">
         <a
           href={homeUrl}
+          data-history-back
           class="back-link inline-flex items-center gap-1.5 text-warm-stone hover:text-rich-earth text-sm mb-5 no-underline transition-colors"
         >
           <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -175,7 +177,7 @@ const submitCanonical = `${absoluteUrl("submit")}/`;
               stroke-width="2"
               d="M15 19l-7-7 7-7"></path>
           </svg>
-          Back to directory
+          Back
         </a>
         <div class="mb-5">
           <h2 class="font-serif text-2xl font-semibold text-rich-earth mb-1.5">
@@ -232,6 +234,24 @@ const submitCanonical = `${absoluteUrl("submit")}/`;
   </div>
 
   <script>
+    // "Back" returns to wherever the visitor came from on this site (the list,
+    // a detail page, ...). Direct visits / external referrers keep the href
+    // fallback to the homepage.
+    document.querySelectorAll<HTMLAnchorElement>("a[data-history-back]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        let sameOrigin = false;
+        try {
+          sameOrigin = !!document.referrer && new URL(document.referrer).origin === location.origin;
+        } catch {
+          sameOrigin = false;
+        }
+        if (sameOrigin && history.length > 1) {
+          event.preventDefault();
+          history.back();
+        }
+      });
+    });
+
     const pageLoadTime = Date.now();
     const MIN_SUBMIT_TIME = 3000;
     const MAX_URLS = 5;
