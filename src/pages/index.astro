@@ -72,8 +72,8 @@ const criteria = [
         <div
           class="relative z-[1] flex flex-col items-center gap-[18px] px-4 pt-[66px] text-center text-midnight max-md:pt-10 max-md:pb-12">
           <InlineSvg name="logoHandHero" class="mirror-x h-auto w-[184px]" />
-          <h1 id="home-title" class="display-80 mt-3.5">Make more (awesome) clouds!</h1>
-          <p class="text-2xl font-semibold max-md:text-lg max-md:leading-6">
+          <h1 id="home-title" class="display-80 text-halo mt-3.5 [--halo:10px] max-md:[--halo:8px]">Make more (awesome) clouds!</h1>
+          <p class="text-halo text-2xl font-semibold max-md:text-lg max-md:leading-6">
             A curated directory to help builders find specialized clouds fit for their needs
           </p>
         </div>
@@ -201,7 +201,7 @@ const criteria = [
       <div class:list={[rowTitle, "flex flex-col gap-4"]}>
         <h2 id="criteria-title" class="display-40">Easy as 1,2,3.</h2>
         <p>To be included, every provider here has to meet at least 2 of 3 criteria</p>
-        <a class="arrow-link self-start" href={asset("definitions/#criteria")}>Learn more →</a>
+        <p><a class="arrow-link" href={asset("definitions/#criteria")}>Learn more →</a></p>
       </div>
       <ul class="flex flex-col gap-7">
         {
@@ -227,21 +227,24 @@ const criteria = [
       <div class:list={[rowTitle, "flex flex-col gap-4"]}>
         <h2 id="new-title" class="display-40">Who's new here?</h2>
         <p>Recently added in our alt-cloud universe</p>
-        <a class="arrow-link self-start" href={asset("list/?sort=recent")}>Browse all →</a>
+        <p><a class="arrow-link" href={asset("list/?sort=recent")}>Browse all →</a></p>
       </div>
       <ul class="grid grid-cols-8 gap-px border border-midnight bg-midnight max-md:grid-cols-4">
         {
           newest.map(({ cloud, href, external }) => (
             <li>
+              {/* Same hover as the List grid tiles (CloudTile): paper bg + name strip. */}
               <a
-                class="grid h-[120px] place-items-center bg-white transition-colors duration-150 ease-[ease] hover:bg-mint max-md:h-[88px]"
+                class="group relative grid h-[120px] place-items-center overflow-hidden bg-white hover:bg-paper focus-visible:bg-paper max-md:h-[88px]"
                 href={href}
                 title={cloud.name}
                 {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
-                <img src={logoUrl(cloud.url, 128)} alt={cloud.name}
+                <img src={logoUrl(cloud.url, 128)} alt=""
                   width="40"
                   height="40"
                   class="size-10 object-contain" loading="lazy" decoding="async" />
+                <span
+                  class="absolute inset-x-0 bottom-0 translate-y-full truncate bg-midnight px-1.5 py-1 text-center font-mono text-[10px] leading-[14px] text-white uppercase transition-transform duration-150 ease-[ease] group-hover:translate-y-0 group-focus-visible:translate-y-0">{cloud.name}</span>
               </a>
             </li>
           ))

@@ -62,6 +62,23 @@ const toggleBtn = "grid h-6 w-8 place-items-center aria-pressed:bg-mint";
     </form>
     <DatumPromo slot="rail-footer" />
 
+    <script is:inline>
+      // No list → grid flash: pick the view (?view=, else the remembered one) before the
+      // panels are parsed. The html flag hides the list panel via CSS straight away; the
+      // script after the panels swaps their `hidden` attributes and clears the flag, and
+      // list-filters.ts then owns the view as usual. Keep VIEW_KEY in sync with it.
+      (function () {
+        let v = new URLSearchParams(location.search).get("view");
+        if (v !== "grid" && v !== "list") {
+          try {
+            v = localStorage.getItem("altcloud:list-view");
+          } catch {
+            v = null;
+          }
+        }
+        if (v === "grid") document.documentElement.dataset.listView = "grid";
+      })();
+    </script>
     <div class="relative p-10 max-lg:px-4" id="listRoot" data-view="list" data-base={asset("")}>
       <h1 class="sr-only">The List</h1>
       <div class="absolute top-0 right-0 flex border-b border-l border-midnight" role="group" aria-label="View">
@@ -84,14 +101,30 @@ const toggleBtn = "grid h-6 w-8 place-items-center aria-pressed:bg-mint";
       </div>
 
       <!-- Figma 1:2077: 130.5 x 124 tiles on a 1px midnight grid (131.5 / 125 pitch). Each tile
-           draws its own right/bottom edge; the sheet draws the top/left one. Phones keep 3 columns. -->
+           draws all four edges as a 1px outline into the 1px gaps (shared with its neighbours),
+           so a short last row doesn't leave a sheet border running past it. Phones keep 3 columns. -->
       <ul
-        class="mt-0.5 grid auto-rows-[125px] grid-cols-[repeat(auto-fill,minmax(131.5px,1fr))] border-t border-l border-midnight max-[479px]:auto-rows-[105px] max-[479px]:grid-cols-[repeat(auto-fill,minmax(110px,1fr))]"
+        class="mt-0.5 grid auto-rows-[124px] grid-cols-[repeat(auto-fill,minmax(130.5px,1fr))] gap-px p-px max-[479px]:auto-rows-[104px] max-[479px]:grid-cols-[repeat(auto-fill,minmax(109px,1fr))]"
         id="tiles"
         data-view-panel="grid"
         hidden>
         {items.map((item) => <CloudTile item={item} />)}
       </ul>
+      <script is:inline>
+        (function () {
+          const html = document.documentElement;
+          if (html.dataset.listView !== "grid") return;
+          const root = document.getElementById("listRoot");
+          root.dataset.view = "grid";
+          root.querySelectorAll("[data-view-panel]").forEach(function (panel) {
+            panel.hidden = panel.dataset.viewPanel !== "grid";
+          });
+          root.querySelectorAll("[data-view-btn]").forEach(function (btn) {
+            btn.setAttribute("aria-pressed", String(btn.dataset.viewBtn === "grid"));
+          });
+          delete html.dataset.listView;
+        })();
+      </script>
 
       <div id="emptyState" class="py-20 text-center" hidden>
         <p class="display text-xl">No clouds match.</p>

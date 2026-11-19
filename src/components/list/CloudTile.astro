@@ -8,7 +8,7 @@ export interface Props {
 const { item } = Astro.props;
 ---
 
-<li class="border-r border-b border-midnight" data-item>
+<li class="outline outline-midnight" data-item>
   <a {...linkAttrs(item)} class="group relative grid h-full place-items-center overflow-hidden hover:bg-paper focus-visible:bg-paper"
     title={item.name}>
     <img src={item.logo} alt="" width="40" height="40" class="size-10 object-contain" loading="lazy" decoding="async" />

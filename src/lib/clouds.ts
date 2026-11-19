@@ -39,6 +39,10 @@ const RESERVED_SLUGS = new Set<string>([
   "watchlist.json",
   "og-image.png",
   "altclouds-logo.png",
+  "favicon.svg",
+  "favicon-32.png",
+  "apple-touch-icon.png",
+  "logos",
   "robots.txt",
   "cname",
   "rss.xml",
@@ -127,10 +131,20 @@ export function getTagCounts(): Map<string, number> {
   return counts;
 }
 
+/**
+ * Hand-picked logos (in `public/logos/`) for providers whose favicon the Google service
+ * can't resolve (e.g. an inline `data:` favicon), keyed by hostname without `www.`.
+ */
+const LOGO_OVERRIDES: Record<string, string> = {
+  "9router.com": "logos/9router.svg",
+};
+
 /** Favicon-based logo for a provider URL (Google s2 service; 64px renders crisp at 40px). */
 export function logoUrl(url: string, size = 64): string {
   try {
     const host = new URL(url).hostname;
+    const override = LOGO_OVERRIDES[host.replace(/^www\./, "")];
+    if (override) return `${import.meta.env.BASE_URL}${override}`;
     return `https://www.google.com/s2/favicons?domain=${host}&sz=${size}`;
   } catch {
     return "";

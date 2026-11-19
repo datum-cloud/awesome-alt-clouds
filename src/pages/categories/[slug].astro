@@ -79,7 +79,7 @@ const listHref = asset(`list/?category=${slug}`);
       <p class="mt-4 text-sm">{CATEGORY_BLURBS[category] ?? description}</p>
       <p class="mt-4 text-sm opacity-80">{description}</p>
       <p class="mt-6 text-sm">{providerCount} provider{providerCount === 1 ? "" : "s"}</p>
-      <a class="arrow-link mt-4 inline-block" href={listHref}>View in list →</a>
+      <p class="mt-4"><a class="arrow-link" href={listHref}>View in list →</a></p>
     </div>
 
     <div class="px-10 pb-10 pt-9 max-lg:px-4">

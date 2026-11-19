@@ -440,6 +440,23 @@ html[data-compare-full] [data-compare-toggle]:not([aria-pressed="true"]) {
   .arrow-link:hover {
     background: var(--color-mint);
   }
+  /* The highlight only covers the text box while the link is inline: as a flex/grid
+     item (blockified) it would fill the whole 30px line. Keep it inline; wrap it in a
+     block (e.g. <p>) when it sits in a flex column. */
+
+  /* List page: hides the table while an early inline script switches to the grid view
+     (see src/pages/list/index.astro). */
+  html[data-list-view="grid"] [data-view-panel="list"] {
+    display: none;
+  }
+
+  /* White outline for text laid over the halftone art (hero, Datum promo) so it stays
+     readable on the dots. The stroke is painted under the fill, so only half of
+     --halo shows outside the glyph. */
+  .text-halo {
+    -webkit-text-stroke: var(--halo, 6px) #fff;
+    paint-order: stroke fill;
+  }
 
   /* ---------- Tags / form controls ---------- */
   /* Figma "Datum App UI/Customer Status" pill. */
@@ -503,15 +520,14 @@ html[data-compare-full] [data-compare-toggle]:not([aria-pressed="true"]) {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 16px 48px;
+    gap: 16px 40px;
     flex: 1 1 520px;
   }
   .newsletter__title {
     font-family: var(--font-mono);
-    font-weight: 800;
-    font-size: 40px;
-    line-height: 40px;
-    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 38px;
     white-space: nowrap;
   }
   .newsletter__text {
@@ -576,9 +592,6 @@ html[data-compare-full] [data-compare-toggle]:not([aria-pressed="true"]) {
     .site-footer {
       padding-left: 16px;
       padding-right: 16px;
-    }
-    .newsletter__title {
-      font-size: 32px;
     }
   }
 
