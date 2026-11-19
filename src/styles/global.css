@@ -320,14 +320,14 @@ html[data-compare-full] [data-compare-toggle]:not([aria-pressed="true"]) {
   .nav-link:hover {
     text-decoration: underline;
   }
+  /* Figma 1:1314: mint band from 15px to the bottom of the 28px line, 3px wider than the
+     word on each side, so it wraps the underline. Padding + negative margin keep the
+     nav spacing unchanged. */
   .nav-link[aria-current="page"] {
+    margin: 0 -3px;
+    padding: 0 3px;
     text-decoration: underline;
-    background: linear-gradient(
-      transparent 15px,
-      var(--color-mint) 15px,
-      var(--color-mint) 21px,
-      transparent 21px
-    );
+    background: linear-gradient(transparent 15px, var(--color-mint) 15px);
   }
   .mode-switch {
     display: flex;
