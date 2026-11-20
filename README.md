@@ -146,6 +146,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [QBO](https://qbo.io/) - GPU Cloud at the Edge & Beyond - Delivering high performance, streamlined infrastructure, and flexible AI/ML deployment. <!-- tags: gpu -->
 * 🟢 [Rackdog](https://rackdog.com/) - Cloud service provider.
 * 🟢 [Rackspace](https://www.rackspace.com/) - Provides hybrid cloud and managed hosting services.
+* 🟡 [Raff](https://rafftechnologies.com/) - Provides integrated cloud infrastructure with servers, databases, Kubernetes, storage, and networking under one control plane, bill, and support team. <!-- tags: owns-hardware, region:us, region:eu -->
 * 🟢 [Runcrate](https://www.runcrate.ai/) - Provides GPU instances and OpenAI-compatible model inference on a unified platform, billed by the second for compute and per-token for API calls. <!-- tags: gpu, agent-native, owns-hardware -->
 * 🟢 [Runpod](https://www.runpod.io/) - Provides customizable GPU containers and secure cloud compute environments. <!-- tags: gpu -->
 * 🟢 [Salad](https://salad.com/) - A platform for leveraging latent consumer compute resources to power workloads.
