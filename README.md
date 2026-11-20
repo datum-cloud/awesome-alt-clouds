@@ -582,6 +582,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟡 [Stytch](https://stytch.com/) - Provides APIs and SDKs for passwordless authentication, including email magic links, SMS passcodes, and biometrics.
 * 🟡 [Superset](https://superset.sh/) - Enables developers to run 100+ parallel coding agents in isolated workspaces, automating tasks and streamlining code review workflows across multiple projects simultaneously.
 * 🟢 [Surfer AI](https://surferseo.com/ai/) - Uses AI to generate SEO-optimized content and blog articles with built-in search analysis tools.
+* 🟢 [Swamp](https://swamp-club.com/) - Provides an automation framework for building deterministic AI agent workflows with reusable behaviors, secure credential management, and enterprise-scale orchestration. <!-- tags: agent-native -->
 * 🟢 [Tavus](https://www.tavus.io/) - AI-powered conversational video platform with real-time face-to-face AI humans.
 * 🟢 [Teleport](https://goteleport.com/) - Zero trust infrastructure access platform with cryptographic identity and least privileged access.
 * 🟡 [Tensorlake](https://www.tensorlake.ai/) - Provides a complete platform for deploying production AI agents with durable execution, document ingestion, code sandboxes, and multi-cloud compute infrastructure.
