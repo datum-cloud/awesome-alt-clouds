@@ -68,7 +68,7 @@ jobs:
       # ---- Build the site (mirrors deploy-pages.yml) ----------------------
       - uses: actions/setup-python@v7
         with:
-          python-version: "3.11"
+          python-version: "3.15"
 
       - name: Regenerate clouds.json, llms*.txt and watchlist.json
         run: |

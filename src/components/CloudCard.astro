@@ -22,7 +22,7 @@ const isEmerging = cloud.unverified === true;
 const filterTags = isEmerging ? [...tags, "unverified"] : tags;
 const graduationHref = isEmerging ? graduationIssueUrl(cloud) : null;
 
-let host = "";
+let host: string;
 try {
   host = new URL(cloud.url).hostname;
 } catch {
