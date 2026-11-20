@@ -1,6 +1,6 @@
 ---
 status: draft
-tagline: "An integrated cloud platform for servers, databases, Kubernetes, and storage — under one bill, one login, and one SLA."
+tagline: "An integrated cloud platform for servers, databases, Kubernetes, and storage — under one bill, one login, and one private network."
 pricingModel: mixed
 regions:
   - "US East"
@@ -12,24 +12,27 @@ services:
   - "Managed Databases"
   - "Kubernetes"
   - "Raff Apps"
+  - "Raff Keep"
   - "Functions"
-  - "Object Storage (Raff Keep)"
-  - "Networking / VPC"
+  - "Object Storage"
+  - "Networking (VPC, load balancers, VPN, DNS)"
 socials:
+  x: "https://x.com/Raff_Cloud"
+  linkedin: "https://www.linkedin.com/company/rafftechnologies"
   website: "https://rafftechnologies.com/"
 ---
 
 ## What makes Raff different
 
-Raff positions itself as a smaller, more cohesive alternative to hyperscalers: instead of stitching together dozens of separately billed services, it bundles compute, databases, Kubernetes, object storage, functions, and networking under a single control plane, a single bill, and one private network. The pitch is explicitly "the small AWS you can hold in your head" — fewer moving parts, less vendor glue code, and no surprise cross-service integration costs.
+Raff positions itself as a smaller, more cohesive alternative to hyperscalers: instead of stitching together dozens of separately billed services, it bundles compute, databases, Kubernetes, object storage, functions, and networking under a single control plane, a single bill, and one private network. The pitch is explicitly "a whole cloud you can actually hold in your head" — fewer moving parts, less vendor glue code, and no surprise cross-service integration costs.
 
-The platform also leans on human support as a differentiator rather than purely infrastructure specs. Raff advertises 24/7 access to real engineers (not tiered support paywalls or bots), with a stated typical first-reply time of minutes. This is paired with concrete reliability commitments — a written 99.9% uptime SLA, redundant power/network per region, and a public live status page — aimed at teams that want hyperscaler-grade guarantees without hyperscaler complexity or pricing.
+The platform also leans on human support as a differentiator rather than purely infrastructure specs. Raff advertises 24/7 access to real engineers (not tiered support paywalls or bots), with a stated typical first-reply time of minutes. This is paired with concrete reliability commitments — a written 99.9% uptime SLA (on General Purpose, CPU-Optimized and Windows servers, with service credits), redundant power/network per region, and a public live status page — aimed at teams that want hyperscaler-grade guarantees without hyperscaler complexity or pricing.
 
 Infrastructure specifics mentioned include AMD EPYC servers with NVMe SSD storage, DDR5 hardware options, and boot times around 55 seconds for Linux VMs, suggesting a modern, relatively lean hardware stack rather than legacy infrastructure.
 
 ## Pricing model
 
-Raff uses flat, predictable monthly pricing starting at $4.99/mo (with a discounted $3.49 first month on entry-level General Purpose / Cost-Optimized AMD EPYC instances — 1 vCPU, 1–2 GB RAM, 25 GB storage). Windows Servers start at $7.99 for the first month, then $19.99/mo, including OS licensing and Remote Desktop access. Notable inclusions: unmetered bandwidth on servers, 1 TB of free egress on object storage, and a free standard Kubernetes control plane. The site also claims a comparative "Big Cloud" cost of $212/mo for an equivalent VM/storage/bandwidth setup, framing Raff as substantially cheaper. Billing is monthly with no lock-in, backed by a 14-day money-back guarantee — a straightforward structure compared to the usage-based, line-item billing typical of hyperscalers.
+Raff uses flat, predictable monthly pricing starting at $4.99/mo for entry-level Linux servers (General Purpose: 1 vCPU, 1 GB RAM, 25 GB, with a discounted $3.49 first month; Cost-Optimized: 1 vCPU, 2 GB RAM, 25 GB). Windows Servers start at $7.99 for the first month, then $19.99/mo, including OS licensing and Remote Desktop access. Notable inclusions: unmetered bandwidth on servers, 1 TB of free egress on object storage, and a free standard Kubernetes control plane. The site also claims a comparative "Big Cloud" cost of $212 versus $68 on Raff for the same workload (~3× cheaper). Billing is monthly with no lock-in, backed by a 14-day money-back guarantee — a straightforward structure compared to the usage-based, line-item billing typical of hyperscalers.
 
 ## When it fits
 
@@ -41,7 +44,7 @@ Raff uses flat, predictable monthly pricing starting at $4.99/mo (with a discoun
 
 ## When it doesn't
 
-- Workloads requiring a large global region footprint, extensive managed-service breadth, or deep hyperscaler-specific ecosystem integrations (e.g., advanced AI/ML managed services) are a poor fit, since Raff currently offers only two live regions and a comparatively small service catalog.
+- Workloads requiring a large global region footprint, extensive managed-service breadth, or deep hyperscaler-specific ecosystem integrations (e.g., advanced AI/ML managed services) are a poor fit, since Raff currently offers only two live regions (and EU Central carries only part of the catalog) and a comparatively small service catalog.
 
 ## Inclusion criteria
 
