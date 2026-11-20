@@ -237,15 +237,16 @@ const submitCanonical = `${absoluteUrl("submit")}/`;
     // "Back" returns to wherever the visitor came from on this site (the list,
     // a detail page, ...). Direct visits / external referrers keep the href
     // fallback to the homepage.
+    const cameFromThisSite = () => {
+      try {
+        return !!document.referrer && new URL(document.referrer).origin === location.origin;
+      } catch {
+        return false;
+      }
+    };
     document.querySelectorAll<HTMLAnchorElement>("a[data-history-back]").forEach((link) => {
       link.addEventListener("click", (event) => {
-        let sameOrigin = false;
-        try {
-          sameOrigin = !!document.referrer && new URL(document.referrer).origin === location.origin;
-        } catch {
-          sameOrigin = false;
-        }
-        if (sameOrigin && history.length > 1) {
+        if (cameFromThisSite() && history.length > 1) {
           event.preventDefault();
           history.back();
         }
