@@ -53,6 +53,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [Banana.dev](https://www.banana.dev/) - Serverless GPU platform for ML model inference with pay-per-millisecond pricing. <!-- tags: gpu -->
 * 🟢 [Beam](https://www.beam.cloud) - Cloud infrastructure specifically built for high-performance applications and developer happiness.
 * 🟡 [Blackfuel](https://www.blackfuel.ai/) - Provides dedicated AI infrastructure and AI-native inference optimization across hardware architectures, delivering efficient token generation per megawatt. <!-- tags: gpu -->
+* 🟡 [boxd](https://boxd.sh/) - Provides persistent, composable Linux virtual machines with forking, snapshots, and checkpoints that preserve running processes, files, and state across sessions.
 * 🟡 [Browser-Use](https://browser-use.com/) - Cloud service provider.
 * 🟢 [c/Side](https://cside.dev/) - A next generation web security service that monitors, optimizes and secures 3rd party scripts.
 * 🟢 [Cerebrium](https://www.cerebrium.ai/) - Serverless GPU infrastructure for deploying ML models with auto-scaling. <!-- tags: gpu -->
