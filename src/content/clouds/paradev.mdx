@@ -1,0 +1,58 @@
+---
+status: reviewed
+tagline: "The open-source workspace for running Claude Code, Codex and any CLI coding agent in parallel, locally or in cloud workspaces."
+headquarters: "San Francisco, California, USA"
+openSource: true
+pricingModel: subscription
+services:
+  - "Parallel agent workspaces (one Git worktree and branch per task)"
+  - "Cloud workspaces"
+  - "Automations on events or a schedule"
+  - "Diff review and pull requests"
+  - "Pages (publish and share agent-made pages)"
+  - "CLI, TypeScript SDK and MCP server"
+  - "IDE deep-linking (e.g. Cursor)"
+  - "iPhone and iPad app"
+socials:
+  website: "https://paradev.com/"
+  x: "https://x.com/paradevai"
+  linkedin: "https://www.linkedin.com/company/paradevai"
+  github: "https://github.com/paradevai/paradev"
+---
+
+## What makes Paradev different
+
+Paradev (formerly Superset) is an orchestration workspace for AI coding agents, not an agent itself. Claude Code, Codex, OpenCode or any other CLI agent does the work; Paradev gives each task its own Git worktree and branch, so many agents can work on the same repository at once while you watch, review the diffs and merge from one window. Sessions persist, so closing a laptop doesn't kill them, and workspaces can be opened in an IDE such as Cursor via deep links.
+
+The product is local-first: in local workspaces your repositories, worktrees, terminal output and agent sessions stay on your machine, and Paradev doesn't proxy model calls, so you use your existing agent subscriptions or API keys directly. Paid team plans add cloud workspaces that run in a sandbox, and automations can start agents on events or a schedule to triage issues, draft changelogs or bump dependencies. Everything can also be driven from the CLI, a TypeScript SDK or an MCP server.
+
+The code is MIT-licensed on GitHub. The desktop app runs on macOS, with Linux builds offered on the download page (the site's FAQ describes Linux support as experimental) and no Windows version yet; an iPhone and iPad app lets you check on agents and review diffs away from the desk. Superset renamed to Paradev alongside an $11.5M seed round led by Union Square Ventures; superset.sh links redirect to paradev.com, and the `superset` CLI command keeps working.
+
+## Pricing model
+
+Paradev publishes its plans on its [pricing page](https://paradev.com/pricing):
+
+- **Free**: $0 for 1 user with local workspaces, the desktop app and the CLI; no credit card.
+- **Pro**: $20 per user/month ($16 billed yearly), adding remote access, automations, Linear and Slack integrations and mobile.
+- **Team**: $60 per user/month ($54 billed yearly), adding cloud workspaces with 150 hours (1,200 GB-hours) per seat each month.
+- **Ultra**: $200 per user/month, with 500 hours (4,000 GB-hours) of cloud workspaces per seat.
+- **Enterprise**: custom, annual billing, adding SAML SSO and SCIM, audit logs, a SOC 2 Type II report, an uptime SLA and dedicated support.
+
+Cloud hours are pooled across the team and metered in GB-hours (machine memory times running time, with hours quoted for a standard 4 vCPU / 8 GB workspace). Extra GB-hours cost $0.06 each, never expire and can be topped up automatically. Model usage isn't included on any plan: you bring your own Claude Code, Codex or other agent accounts.
+
+## When it fits
+
+- Developers and teams running several CLI coding agents at once who need isolated branches per task and one place to review and merge
+- Teams that want to keep code and agent sessions on their own machines by default, with the option of cloud workspaces when needed
+- Engineering orgs that want scheduled or event-triggered agent automations for chores such as triage and dependency bumps
+- Organizations that want an MIT-licensed tool they can inspect, modify and self-host
+
+## When it doesn't
+
+- Windows-only teams, since there is no Windows desktop app yet
+- Users who want a single bundled agent with model access included; Paradev requires your own agent subscriptions or API keys
+- Buyers looking for general-purpose cloud infrastructure rather than a developer workspace
+
+## Inclusion criteria
+
+Paradev meets all 3 inclusion criteria: transparent per-seat and GB-hour pricing on its [pricing page](https://paradev.com/pricing), self-service signup (a free [desktop download](https://paradev.com/download) with no credit card, and account sign-up at [app.paradev.com](https://app.paradev.com/)), and a public [status page](https://status.paradev.com/) linked in the site footer, with security documentation at [trust.paradev.com](https://trust.paradev.com/).

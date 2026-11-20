@@ -312,7 +312,7 @@ The provider owns a compute- or storage-heavy workload end to end. No provisioni
 * 🟢 [OB-1](https://www.openblocklabs.com/) - Provides a self-improving coding agent that handles the full development lifecycle from project management to pull requests, with multi-model AI support and workflow automation. <!-- tags: app-generation, nosql-timeseries, durable-workflow -->
 * 🟢 [Ona](https://ona.com/) - Provides a platform to run and govern AI software agents in the cloud, offering standardized execution environments, security controls, and automated remediation for SDLC workflows. <!-- tags: app-generation, durable-workflow -->
 * 🟢 [OpenCode](https://opencode.ai/console) - Provides unified access to frontier and open-weight AI models through a single interface, with team management, spending controls, and subscription packages. <!-- tags: llm-inference, agent-native -->
-* 🟢 [OpenComputer](https://opencomputer.dev/) - Provides a cloud platform for deploying and running AI agents as TypeScript functions on managed Linux microVMs with built-in session management, streaming, and MCP support. <!-- tags: app-hosting, streaming-etl, agent-sandbox, agent-native -->
+* 🟡 [OpenComputer](https://opencomputer.dev/) - Provides an open source, self-hostable cloud coding agent that takes tasks in Slack and opens pull requests, running Claude Code, Codex or OpenCode on a VM in your own AWS, Azure or Google Cloud account. <!-- tags: agent-sandbox, open-source -->
 * 🟡 [OpenHands](https://www.openhands.dev/) - Provides an open source AI agent platform for autonomous software development that executes end-to-end engineering tasks including PR reviews, issue triage, CI fixes, and incident response. <!-- tags: app-generation, open-source -->
 * 🟢🔵 [OpenObserve](https://openobserve.ai/) - Open-source observability platform, cloud service SLA needs verification. <!-- tags: observability, open-source -->
 * 🟢 [Out Plane](https://outplane.com/) - Provides a cloud PaaS platform for developers to deploy applications in 60 seconds with managed PostgreSQL, Redis, auto-scaling, and compliance features without Kubernetes or YAML. <!-- tags: app-hosting, postgres-sql, key-value-cache -->
@@ -449,7 +449,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Cohere](https://cohere.com/) - Enterprise AI platform with language models for automation, data insights, and custom solutions.
 * 🟢 [Command Code](https://commandcode.ai/) - Provides an AI coding agent optimized for open models, with tool call repairs, token efficiency, and continuous learning of developer coding patterns. <!-- tags: agent-native -->
 * 🟢 [Concourse](https://www.concourse.ai/) - Provides an AI execution layer for enterprise finance with autonomous agents for treasury, FP&A, accounting, and internal audit operations.
-* 🟢 [Conecto](https://conecto.chat/) - Provides an all-in-one customer messaging platform combining live chat, AI chatbot, shared inbox, CRM and analytics for support and sales teams.
+* 🟢 [Conecto](https://conecto.chat/) - Provides 582 hosted business tools (CRM, inbox, phone, invoicing, bookkeeping, help desk, HR and more) that AI agents call over MCP, a REST API or a SKILL.md, paid per call from a prepaid balance. <!-- tags: agent-native, region:eu -->
 * 🟡 [Crosby](https://crosby.ai/) - Provides AI-powered contract review and commercial legal services for businesses, combining machine learning with elite attorneys to accelerate deal closure.
 * 🟢 [CrowdStrike](https://www.crowdstrike.com/) - A cloud-native cybersecurity platform that provides endpoint protection, threat intelligence, and incident response powered by AI.
 * 🟢 [CurlShot](https://curlshot.com/) - Provides full-page website screenshots and PDF conversions via web interface or API, supporting multiple formats, devices, and content removal features.
@@ -539,6 +539,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Outerbase](https://www.outerbase.com/) - A platform for safely interacting with data and databases, now part of Cloudflare.
 * 🟢 [Pangea](https://pangea.cloud/) - Security services API platform for auth, vault, audit, and more.
 * 🟢 [Paper](https://paper.design/) - Provides a connected design canvas that integrates with development tools, AI agents, and real data sources, enabling seamless collaboration between design and code workflows.
+* 🟢 [Paradev](https://paradev.com/) - Enables developers to run Claude Code, Codex and other CLI coding agents in parallel, each in its own Git worktree, with diff review, scheduled automations and optional cloud workspaces. <!-- tags: open-source -->
 * 🟢 [Parahelp](https://parahelp.com/) - AI support agent that automates complex customer support tickets end-to-end for software companies.
 * 🟢 [Particle](https://www.particle.io/) - An integrated IoT platform offering hardware, firmware, and cloud connectivity tools for building and scaling connected products.
 * 🟢 [Permit](https://www.permit.io/) - Authorization-as-a-Service platform for baking-in access control in minutes.
@@ -580,7 +581,6 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟡 [Strix](https://www.strix.ai/) - Provides autonomous penetration testing and continuous security scanning for code, APIs, web apps, infrastructure, and cloud environments with automated vulnerability discovery and remediation.
 * 🟢 [StrongDM](https://www.strongdm.com/) - Zero-trust access platform for infrastructure and databases.
 * 🟡 [Stytch](https://stytch.com/) - Provides APIs and SDKs for passwordless authentication, including email magic links, SMS passcodes, and biometrics.
-* 🟡 [Superset](https://superset.sh/) - Enables developers to run 100+ parallel coding agents in isolated workspaces, automating tasks and streamlining code review workflows across multiple projects simultaneously.
 * 🟢 [Surfer AI](https://surferseo.com/ai/) - Uses AI to generate SEO-optimized content and blog articles with built-in search analysis tools.
 * 🟢 [Tavus](https://www.tavus.io/) - AI-powered conversational video platform with real-time face-to-face AI humans.
 * 🟢 [Teleport](https://goteleport.com/) - Zero trust infrastructure access platform with cryptographic identity and least privileged access.

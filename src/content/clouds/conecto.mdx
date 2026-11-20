@@ -1,51 +1,59 @@
 ---
-status: draft
-tagline: "All-in-one customer messaging platform combining live chat, AI chatbot, shared inbox, CRM, and analytics for support and sales teams."
-pricingModel: subscription
+status: reviewed
+tagline: "Business tools for your AI agent: 582 tools across 52 business areas, used over MCP, a REST API or a SKILL.md and paid per call."
+pricingModel: usage-based
+regions:
+  - "EU (records in Frankfurt, Germany; calls run in Belgium)"
 services:
-  - "Live chat"
-  - "AI chatbot / AI support agent"
-  - "Shared inbox"
-  - "CRM (contact management)"
-  - "Ticketing"
-  - "Analytics & reporting"
-  - "Help center / knowledge base"
-  - "Voice (in-widget)"
+  - "CRM (contacts, companies, deals)"
+  - "Email inboxes and help desk tickets"
+  - "Phone numbers and AI call answering"
+  - "Booking pages and calendar"
+  - "Quotes and invoices with online payment"
+  - "Bookkeeping and bank-line matching"
+  - "HR, hiring and e-signature"
+  - "Website chat, forms, newsletters and social posts"
+  - "MCP servers, REST API (OpenAPI) and SKILL.md"
 socials:
   website: "https://conecto.chat/"
+  x: "https://x.com/conecto_app"
+  linkedin: "https://www.linkedin.com/company/conecto-chat"
+  github: "https://github.com/Conecto-Market"
 ---
 
 ## What makes Conecto different
 
-Conecto is not an infrastructure cloud provider — it's a customer messaging platform built on top of Google Cloud that bundles live chat, an AI chatbot, shared inbox, CRM, ticketing, and analytics into a single product. Rather than competing with hyperscalers on compute or storage, it targets the fragmentation problem support and sales teams face when stitching together separate chat, helpdesk, CRM, and bot tools.
+Conecto is a back office built to be operated by an AI agent rather than by people clicking through SaaS screens. It exposes 582 tools across 52 business areas, including CRM, email, phone, calendar booking, invoicing, bookkeeping, help desk, HR, e-signature, forms, newsletters, social posting and hiring, and any agent that can read a link or use a connector (Claude, ChatGPT, Grok and others) can call them. An agent connects in one of three ways: by reading `conecto.chat/SKILL.md` and signing itself up with a single API call, by adding Conecto as an MCP server, or through a REST API with an OpenAPI spec for your own code, Copilot Studio or Power Automate.
 
-A key architectural choice is that its AI agent only answers from content teams explicitly crawl and approve from their own website and docs — it does not generate free-form answers, and it hands off to a human agent with full conversation history when uncertain. Voice is built directly into the same chat widget (not a separate product or add-on), falling back to text automatically when microphone access isn't available, and answers come from the same knowledge base used by the text chatbot so responses stay consistent across channels.
+Conecto hosts the stack behind those tools (servers, database, phone lines, mail, file store, PDF service and MCP servers), so the business installs nothing. Where a business already runs HubSpot, Salesforce, Microsoft 365 or Google Workspace, the agent can work in those systems through Conecto and the records stay there; other REST systems can be added on an allow-list, and Okta or Entra ID can manage people.
+
+Guardrails are part of the product: every call is logged with the key that made it and what it cost, each key has a daily spending budget, the account has a monthly ceiling, and risky calls such as refunds or deletions can be set to wait for a person's approval. Its terms say records are kept in a database in Frankfurt, Germany, and calls run on servers in Belgium, with some areas using providers elsewhere, including the United States. Conecto is run by CherryWave LLC.
 
 ## Pricing model
 
-Conecto uses flat, published USD subscription pricing per workspace, with AI usage metered via credits:
+There is no subscription. The agent tops up one prepaid USD balance and each tool call is paid from it; the per-call price is shown for every tool, and the homepage [pricing section](https://conecto.chat/#pricing) summarises the model:
 
-- **Free** — $0/mo forever: 2 seats, 1 chat widget, 100 CRM contacts, no AI credits.
-- **Lite** — $25/mo (14 days free trial): 4 seats, 3 widgets, 500 CRM contacts, 5 AI credits/mo then pay-as-you-go; unlocks AI agent, bots, ticketing, routing.
-- **Scale** — $65/mo: 10 seats, 10 widgets, 1,000 CRM contacts, 15 AI credits/mo.
-- **Max** — $215/mo: 20+ seats (additional seats $10/mo each), 50 widgets, 7,000 CRM contacts, 50 AI credits/mo.
-- **Enterprise** — custom seats/credits, SSO, dedicated success manager (contact sales).
+- **Free start**: $1 of credit on signup.
+- **Top-ups**: from $5.
+- **Record changes**: $0.01 per change to a record.
+- **Reads**: free up to 1,000,000 a month.
+- **Failed calls**: cost nothing.
 
-What stands out versus typical cloud pricing: no per-seat metering on lower tiers, no per-resolution charges, and AI overage priced in plain USD credits rather than opaque token math — pricing tables and feature comparisons are published openly on the site.
+Some areas carry fixed charges, such as $0.25 to send an invoice or $5.00 a month to keep a help center public. The homepage works through a sample month for one person, putting CRM, help desk, scheduling, e-signature and accounting work at $38.00 on Conecto against $98.00 for five separate SaaS subscriptions. Paying per action instead of per seat is the main departure from conventional business software pricing.
 
 ## When it fits
 
-- Support teams wanting to consolidate live chat, ticketing, and a shared inbox into one tool instead of multiple point solutions.
-- Teams that want an AI chatbot strictly grounded in their own approved content (docs/website), with human handoff for anything it can't answer.
-- Small-to-midsize sales/support orgs (roughly 2–20+ seats) that need built-in CRM and analytics without integrating separate systems.
-- Businesses needing multilingual (50+ languages) self-service via chat, voice, and a help center.
-- Teams wanting predictable, transparent monthly pricing rather than usage-based infrastructure billing.
+- Small businesses that want Claude, ChatGPT or another agent to handle invoicing, bookings, support email and CRM updates
+- Developers building agents that need hosted business primitives (CRM, inbox, phone, invoices) behind one key and one balance
+- Teams that want their agent to work inside existing HubSpot, Salesforce, Microsoft 365 or Google Workspace data with approval gates on risky actions
+- Businesses with light or uneven usage that would rather pay per call than per seat
 
 ## When it doesn't
 
-- Not suitable as general-purpose cloud infrastructure (compute, storage, networking) — it's a vertical SaaS product for customer messaging only.
-- Enterprises needing very high seat counts, custom compliance, or deep on-prem/self-hosted deployment may need the Enterprise tier or a different platform entirely.
+- Teams that want staff to work in a traditional point-and-click CRM or help desk rather than through an AI agent
+- Buyers looking for general cloud infrastructure (compute, storage, networking); Conecto is a set of hosted business tools
+- Organizations that need every area's data kept strictly inside the EU, since some areas use providers elsewhere, including the United States
 
 ## Inclusion criteria
 
-Conecto meets all 3 inclusion criteria: transparent, published pricing tiers at conecto.chat/pricing; self-service signup via a free plan and 14-day trial (no card required) at conecto.chat/get-started; and infrastructure/security trust indicators (Google Cloud hosting, Stripe-secured billing, encryption in transit) referenced on the homepage.
+Conecto meets all 3 inclusion criteria: transparent pay-per-call pricing in the homepage [pricing section](https://conecto.chat/#pricing), with prices listed per tool; self-service signup with $1 of free credit at [conecto.chat/account/signup](https://conecto.chat/account/signup) (or by an agent through the API); and a public status page at [status.conecto.chat](https://status.conecto.chat/) reporting uptime for conecto.chat and api.conecto.chat, although it is not linked from the main site.

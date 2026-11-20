@@ -1,19 +1,49 @@
-I cannot generate this profile because the page content provided is corrupted/unreadable (binary or encoding error). The text appears to be garbled characters rather than valid HTML or markdown content.
+---
+status: reviewed
+tagline: "The AI cloud PyTorch developers love: build, train and deploy your own specialized models on on-demand GPUs."
+pricingModel: mixed
+services:
+  - "Lightning AI Studio (browser-based cloud dev environments)"
+  - "On-demand GPUs (T4, L4, L40S, A100, H100, H200, B200) and TPUs"
+  - "Reserved GPU clusters (bare metal, SLURM or Kubernetes)"
+  - "Deployments and inference"
+  - "Jobs and Pipelines"
+  - "Drive (persistent storage) and S3/GCS/R2 bucket connections"
+  - "Bring your own AWS or GCP account (Enterprise)"
+socials:
+  website: "https://lightning.ai/"
+  x: "https://x.com/LightningAI"
+  linkedin: "https://www.linkedin.com/company/pytorch-lightning/"
+  github: "https://github.com/Lightning-AI"
+---
 
-To create an accurate Lightning.ai profile for alt-cloud.org, I would need:
+## What makes Lightning AI different
 
-1. **Readable page content** from https://lightning.ai/ (or a corrected version of the provided content)
-2. **Specific pricing data** (hourly rates, GPU costs, subscription tiers)
-3. **Region/datacenter information** (geographic availability)
-4. **Service offerings** (training platforms, deployment tools, etc.)
-5. **Social media links** (Twitter/X, LinkedIn, GitHub)
-6. **SLA and status page URLs** (to verify inclusion criteria)
+Lightning AI comes from the team behind PyTorch Lightning, the training framework William Falcon began developing at Columbia University in 2015 and open sourced in 2019. The company has since built a full AI cloud around that developer base: Lightning AI Studio, launched in 2023, is a browser-based environment where you prototype, train, fine-tune, evaluate and serve models without stitching together notebooks, VMs and storage yourself. The homepage pitches it as the place to "build, train and deploy your own specialized models" and claims 500,000+ developers and AI teams.
 
-**Next steps:**
+Its main distinction from a plain GPU marketplace is that the platform layer (Studios, Jobs, Pipelines, Deployments, Drive) and the hardware are sold together. According to its [about page](https://lightning.ai/about), Lightning AI and Voltage Park became one company in 2026. Voltage Park, founded in 2023, owns its hardware outright and runs more than 36,000 NVIDIA GPUs across seven US data centers. Studios themselves run on AWS and GCP, and Enterprise customers can point the platform at their own AWS or GCP account and use their existing cloud credits.
 
-Please provide either:
+The site lists SOC 2, HIPAA and GDPR compliance. One caveat: in October 2026 Lightning disclosed a [security incident](https://lightning.ai/security-incident) in which customer credentials were compromised and all user access to the Studio platform was temporarily revoked. GPU cluster rentals and managed Kubernetes/SLURM were not affected, and Studio access on AWS and GCP was being restored in mid-November 2026.
 
-- A fresh copy of the Lightning.ai website content (properly encoded), or
-- A direct link to their pricing page, documentation, or about page
+## Pricing model
 
-Once I have readable source material, I can write a comprehensive, fact-based profile that meets your standards for the directory.
+Pricing is a mix of plan subscriptions and pay-as-you-go compute billed by the second, all listed on the [pricing page](https://lightning.ai/pricing). At time of review (November 2026) the plans were Free ($0, up to 30 credits to start, 1 free CPU Studio with 4-hour restarts), Pro ($50/mo, or $20/mo billed annually), Teams ($140/user/mo, or $119/user/mo billed annually) and a custom-quoted Enterprise tier that adds a 99.95% uptime SLA, SAML/SSO, your own VPC and SOC 2 Type 2. On-demand GPU rates at time of review included T4 at $0.55/hr, L4 at $0.79/hr, A100 (40 GB) at $2.19/hr, H200 at $4.50/hr and H100 at $5.45/hr, with up to 80% off on interruptible machines. The page notes that prices may vary.
+
+Credits work like prepaid cloud spend: you get 5 free credits on registration and 25 more for adding a card, and credits expire after 12 months. They can be spent on compute, storage and tokens. Reserved A100, H100, H200 and B200 clusters are quoted on request.
+
+## When it fits
+
+- PyTorch and PyTorch Lightning teams that want a managed path from prototype to training to serving
+- Researchers and small teams who want browser-based GPU Studios with a usable free tier and per-second billing
+- Teams that want to use existing AWS or GCP credits or accounts, but with a higher-level ML platform on top (Enterprise)
+- Groups that need to scale from a single GPU to reserved multi-node clusters on bare metal, SLURM or Kubernetes with the same vendor
+
+## When it doesn't
+
+- Teams that only want raw, cheap GPU VMs and none of the platform. The Studio layer and plan limits (concurrent GPUs, session limits on the Free tier) add structure you may not need
+- Organizations that need Azure, or compute outside the US-centric footprint described on the site (the pricing FAQ says Azure support is "coming soon")
+- Security-sensitive workloads that cannot accept a platform with a recent credential-compromise incident until its post-incident remediation is complete
+
+## Inclusion criteria
+
+Lightning AI meets all 3 inclusion criteria, with caveats. (1) Transparent pricing: plans and per-hour GPU, CPU and TPU rates are published on the [pricing page](https://lightning.ai/pricing). (2) Self-service signup: [lightning.ai/sign-up](https://lightning.ai/sign-up) leads to the platform's own sign-up flow, and the pricing FAQ describes a no-credit-card free tier with credits granted on registration and phone verification to prevent abuse. At time of review, though, the "Get started" buttons on the marketing pages linked to a sales email rather than the sign-up form. (3) Status page: [status.lightning.ai](https://status.lightning.ai/) is a public Statuspage instance with incident history, but it lists no per-component uptime and is not linked from the main site. Enterprise plans include a 99.95% uptime SLA.
