@@ -1,0 +1,53 @@
+---
+status: draft
+tagline: "GPU instances and OpenAI-compatible model inference on one balance, billed by the second for compute and per-token for API calls."
+pricingModel: mixed
+regions:
+  - "Montreal, Canada"
+  - "Wichita, USA"
+services:
+  - "GPU Instances"
+  - "Model Inference API"
+  - "Storage Volumes"
+  - "Reserved Clusters"
+  - "Fine-tuning"
+  - "Model Training"
+  - "RAG Pipelines"
+socials:
+  website: "https://www.runcrate.ai/"
+---
+
+## What makes Runcrate different
+
+Runcrate combines two things hyperscalers usually split across separate products: raw GPU rental and hosted model inference, under a single account balance. Instead of choosing between a compute provider and an inference API provider, developers can launch a named GPU instance (with SSH, Jupyter, or VS Code in the browser) and call 120+ models through one OpenAI-compatible endpoint, with usage from both draining the same balance.
+
+The platform is built around speed and transparency of provisioning: instances report a measured launch-to-running time of about four minutes across real launches, and billing only starts once the instance is actually running — not during the boot/deploy phase. Pricing is published per GPU model and per model-token rate rather than hidden behind quotes, and a "Crates" system (Devbox, Finetune, Inference images) lets users boot a pre-configured environment without extra charge beyond the instance cost.
+
+For larger workloads, Runcrate also brokers reserved multi-node clusters via sealed bids from GPU-owning partners, positioning itself as a marketplace layer on top of distributed GPU capacity rather than owning all infrastructure itself — a notable architectural difference from vertically integrated hyperscalers.
+
+## Pricing model
+
+- **Compute**: 25 GPU models starting at $0.22/hr, billed by the second on most instances (example: RTX A6000 from $0.65/hr depending on region/config).
+- **Inference**: Per-token API pricing, e.g. DeepSeek V3.2 at $0.273 per 1M input tokens / $0.399 per 1M output tokens.
+- **Reserved clusters**: GB300 NVL72 racks available at $14.30 per GPU-hour on a 3-month prepaid term; other clusters priced via sealed bids from capacity providers.
+- **Storage**: Billed per GB-month for the life of the volume, independent of instance state.
+- **Prepaid instances**: 1–12 month terms available at a discount for paying ahead.
+
+This stands out from typical hyperscaler pricing by combining second-level compute billing, per-token inference billing, and transparent published rate cards (GPU comparison tables, model price lists) in one place, rather than requiring separate contracts or opaque enterprise quotes.
+
+## When it fits
+
+- Teams that want to prototype or fine-tune on raw GPUs (LoRA/QLoRA, Axolotl, DeepSpeed/FSDP) without managing their own cluster.
+- Developers who want an OpenAI-compatible endpoint for open and frontier models without standing up their own inference server.
+- Workloads needing persistent storage volumes that follow a GPU instance across regions.
+- Agentic/automated workflows that need to programmatically launch GPUs or call models via CLI/SDK/MCP.
+- Buyers needing short-term reserved capacity (months, not years) without long-term hyperscaler commitments.
+
+## When it doesn't
+
+- Enterprises requiring a large global region footprint, deep compliance certifications, or a broad managed-services catalog (databases, networking, IAM) beyond GPU compute and inference.
+- Workloads needing guaranteed long-term capacity without going through the sealed-bid cluster marketplace.
+
+## Inclusion criteria
+
+Runcrate meets all three inclusion criteria: transparent, published pricing for GPUs and inference ([pricing page](https://www.runcrate.ai/pricing), [GPU comparison](https://www.runcrate.ai/gpu-compare), [model pricing](https://www.runcrate.ai/inference/pricing)), self-service signup ([Get started](https://www.runcrate.ai/auth/signup)), and a documented platform with public docs covering instance and billing behavior ([Docs](https://www.runcrate.ai/docs)).
