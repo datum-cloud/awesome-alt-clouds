@@ -10,7 +10,7 @@ export interface Props {
 
 const { cloud } = Astro.props;
 
-let host = "";
+let host: string;
 try {
   host = new URL(cloud.url).hostname;
 } catch {
