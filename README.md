@@ -611,6 +611,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 An industry-specific service that runs a regulated or specialized workload, priced on usage: payments and banking infrastructure, HIPAA-grade health data, legal document processing at scale.
 
 * 🟢 [Agent From Abundance](https://www.agentfromabundance.com/) - Provides a complete real estate technology platform with systems for client management, transaction tracking, document organization, financial tracking, and business automation tools designed for r...
+* 🟡 [Radical Numerics](https://www.radicalnumerics.ai/) - Provides Omnii-1, a multimodal AI model for biological intelligence spanning genome regulation, biomolecule design, therapeutics, and biodefense applications.
 
 ## Contributing
 
