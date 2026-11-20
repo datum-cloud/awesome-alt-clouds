@@ -121,10 +121,7 @@ export function initListFilters() {
 
     if (emptyState) emptyState.hidden = visible > 0;
     if (resultCount) {
-      resultCount.textContent =
-        visible === pairs.length
-          ? `${pairs.length} clouds`
-          : `${visible} of ${pairs.length} clouds`;
+      resultCount.textContent = `Showing ${visible} ${visible === 1 ? "provider" : "providers"}:`;
     }
     refreshFacets(term);
   }

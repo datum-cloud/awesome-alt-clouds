@@ -92,7 +92,10 @@ const toggleBtn = "grid h-6 w-8 place-items-center aria-pressed:bg-mint";
         </button>
       </div>
 
-      <p class="sr-only" id="resultCount" aria-live="polite">{items.length} clouds</p>
+      <!-- Result size for the current search + filters; list-filters.ts keeps it in sync. -->
+      <p class="mb-5 font-mono text-base leading-6 font-bold" id="resultCount" aria-live="polite">
+        Showing {items.length} providers:
+      </p>
 
       <div data-view-panel="list">
         <CloudTable sortable>
