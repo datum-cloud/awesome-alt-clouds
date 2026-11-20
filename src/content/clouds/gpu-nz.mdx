@@ -1,10 +1,10 @@
 ---
-status: draft
-tagline: "GPU rental by the minute with RTX and H100 cards across 72 countries, priced live and billed to the second."
+status: reviewed
+tagline: "GPU rental by the minute with RTX and H100 cards across 70 countries, priced live and billed to the second."
+headquarters: "Bishkek, Kyrgyzstan"
 pricingModel: usage-based
 regions:
-  - "United States"
-  - "72 countries (full list shown in-catalog)"
+  - "70 countries (full list shown in-catalog)"
 services:
   - "RTX 3090 / 4090 / 5090 GPU rental"
   - "A100 and H100 GPU rental"
@@ -15,11 +15,12 @@ services:
   - "Interruptible (spot-style) servers"
 socials:
   website: "https://gpu.nz/en"
+  github: "https://github.com/gpunz"
 ---
 
 ## What makes gpu.nz different
 
-gpu.nz is a GPU-rental marketplace focused purely on raw compute access rather than a full cloud stack. Instead of bundling GPUs into broader IaaS/PaaS offerings like the hyperscalers do, it exposes a live catalog of over 8,000 GPUs across 112 models in 72 countries, with prices that refresh every minute and are shown before launch. This transparency and granularity — picking a specific card, country, and price point in real time — is a sharp contrast to AWS/GCP/Azure's opaque, instance-type-based GPU pricing.
+gpu.nz is a GPU-rental marketplace focused purely on raw compute access rather than a full cloud stack. Instead of bundling GPUs into broader IaaS/PaaS offerings like the hyperscalers do, it exposes a live catalog of over 8,000 GPUs across more than 100 models in 70 countries, with prices that refresh every minute and are shown before launch. This transparency and granularity — picking a specific card, country, and price point in real time — is a sharp contrast to AWS/GCP/Azure's opaque, instance-type-based GPU pricing.
 
 The platform also leans into AI/ML and rendering workflows specifically, with one-click templates (ComfyUI, Stable Diffusion Forge, vLLM, Kohya SS, Unsloth, Open WebUI/Ollama) that come with drivers and CUDA preinstalled, cutting setup time compared to provisioning raw VMs on a hyperscaler and configuring the ML stack manually.
 
@@ -27,13 +28,13 @@ Billing is strictly by the minute, calculated as the hourly rate divided by 60 a
 
 ## Pricing model
 
-Pricing is usage-based and billed per minute, with live rates published directly on the pricing page:
+Pricing is usage-based and billed per minute, with live rates published directly on the pricing page (starting prices at time of review, November 2026; rates refresh every minute):
 
-- RTX 3090 (24 GB) — from $0.254/h
-- RTX 4090 (24 GB) — from $0.551/h
-- RTX 5090 — from $0.788/h
-- A100 — from $1.32/h
-- H100 — from $3.08/h
+- RTX 3090 (24 GB) — from $0.281/h
+- RTX 4090 (24 GB) — from $0.573/h
+- RTX 5090 — from $0.549/h
+- A100 — from $0.982/h
+- H100 — from $3.09/h
 
 Top-ups start at $2, paid via SBP (Russian bank transfer) or crypto (USDT, TON, BTC, and others via CryptoBot). Low-balance warnings are sent at 24h, 3h, 1h, and 15 minutes before shutdown; if the balance hits zero the server and its disks are deleted, so users are expected to maintain a buffer. Interruptible servers are available at a discount for workloads tolerant of preemption. This granular, card-by-card live pricing stands out against hyperscaler GPU instances, which are typically bundled, region-locked, and billed hourly at a premium.
 
@@ -52,4 +53,4 @@ Top-ups start at $2, paid via SBP (Russian bank transfer) or crypto (USDT, TON, 
 
 ## Inclusion criteria
 
-gpu.nz meets all three inclusion criteria: transparent, live per-GPU pricing shown before launch ([Pricing and top-up](https://gpu.nz/en/pricing)), self-service signup via email, Google, or Telegram ([Sign up](https://gpu.nz/en/signup)), and billing/status transparency through its live catalog of GPU availability and balance-warning system.
+gpu.nz meets 2 of 3 criteria: transparent, live per-GPU pricing shown before launch ([pricing and top-up](https://gpu.nz/en/pricing)) and self-service signup via email, Google, or Telegram ([sign up](https://gpu.nz/en/signup)). No public status or SLA page was found during review.

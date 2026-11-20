@@ -1,5 +1,5 @@
 ---
-status: draft
+status: reviewed
 tagline: "A peer-to-peer GPU marketplace that matches renters with verified suppliers, with EverXCloud as merchant of record on every rental."
 pricingModel: hourly
 regions:
@@ -25,15 +25,15 @@ socials:
 
 EverXCloud isn't a hyperscaler that owns its own data centers — it's a marketplace layer that sits on top of independent GPU suppliers, from individual machine owners to data centers, and unifies them under a single invoicing and verification system. Instead of buying capacity from one vendor, customers tap into a pool of reviewed hardware across six regions, with EverXCloud Inc. acting as merchant of record so buyers get one bill regardless of which supplier actually fulfilled the rental.
 
-The marketplace model is paired with a verification pipeline: every machine is enrolled with a single-use, time-limited token and can be re-checked at any time via probes, benchmarks, agent reports, test rentals, or documents. Machines that misreport hardware or fail checks are quarantined, and a separate "EverXCloud Premium" tier runs only on EverXCloud-owned machines or verified partner data centers — giving buyers a choice between marketplace-wide inventory and a more curated, higher-trust pool.
+The marketplace model is paired with a verification pipeline: every machine is enrolled with a single-use, time-limited token, reviewed before buyers see it, and can be re-verified at any time. Machines that misreport hardware or fail checks are quarantined, and a separate "EverXCloud Premium" tier runs only on EverXCloud machines or verified partner data centers — giving buyers a choice between marketplace-wide inventory and a more curated, higher-trust pool.
 
-Unlike typical hyperscaler billing, there's no subscription — customers run on a prepaid USD balance, billed hourly, with unused funds refundable on request. Suppliers, meanwhile, earn per rented hour rather than through a fixed resale arrangement, turning idle GPU capacity (owned by companies or individuals) into a liquid, sellable resource.
+Unlike typical hyperscaler billing, there's no subscription — customers run on a prepaid USD balance, billed hourly, with unused funds refundable on request. Suppliers, meanwhile, set their own listed price and earn from the hours they sell, turning idle GPU capacity (owned by companies or individuals) into a liquid, sellable resource.
 
 ## Pricing model
 
-Customers prepay into a USD balance and are billed hourly for running instances; billing stops immediately when an instance is stopped. Four rental models are available — On-Demand, Time-Sliced, Pay per task, and Reserved — each offered in Dedicated or Interruptible mode, giving buyers a spectrum from flexible spot-like pricing to reserved capacity.
+Customers prepay into a USD balance and are billed hourly for running instances; billing stops immediately when an instance is stopped. Four rental models are available — On-Demand, Time-Sliced, Pay per task, and Reserved — each offered in Dedicated or Interruptible mode, giving buyers a spectrum from flexible spot-like pricing to reserved capacity. The public [GPU catalog](https://everxcloud.ai/en/market) shows indicative starting prices per GPU-hour (tax included); suppliers set the final price.
 
-On the supply side, EverXCloud's default commission is 25% (suppliers keep 75%), with Time-Sliced "EverXCloud Share" units carrying a 30% commission (70% kept by suppliers). As a promotional term (effective as of November 20, 2026), rentals started before January 12, 2027 remain commission-free for their entire duration, and buyers are never charged a marketplace fee. What stands out versus typical cloud pricing is the two-sided, hour-by-hour marketplace mechanics — pricing is driven by matched supply and demand rather than a fixed rate card, but is still fully transparent and invoiced by a single US entity.
+On the supply side, EverXCloud's default commission is 25% (suppliers keep 75%), with Time-Sliced "EverXCloud Share" units carrying a 30% commission (70% kept by suppliers). As a promotional term, rentals started before January 12, 2027 remain commission-free for their entire duration, and buyers are never charged a marketplace fee. What stands out versus typical cloud pricing is the two-sided, hour-by-hour marketplace mechanics — pricing is set by individual suppliers rather than a single fixed rate card, but is still fully transparent and invoiced by a single US entity.
 
 ## When it fits
 
@@ -50,4 +50,4 @@ On the supply side, EverXCloud's default commission is 25% (suppliers keep 75%),
 
 ## Inclusion criteria
 
-EverXCloud meets all three inclusion criteria: transparent pricing (hourly rates, commission percentages, and promotional terms are published on the site), self-service signup (account creation, balance funding, and instance launch described as a ~1-minute self-serve flow), and a public how-it-works page detailing marketplace mechanics (https://everxcloud.ai/en/how-it-works).
+EverXCloud meets all three inclusion criteria: transparent pricing (indicative hourly rates in the public [GPU catalog](https://everxcloud.ai/en/market), plus published commission percentages and promotional terms), self-service signup ([app.everxcloud.ai/en/sign-up](https://app.everxcloud.ai/en/sign-up), described as taking about a minute), and a public [service status page](https://everxcloud.ai/en/support/status).

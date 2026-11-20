@@ -1,5 +1,5 @@
 ---
-status: draft
+status: reviewed
 tagline: "Sovereign NVIDIA GPU cloud hosted in France, with pay-per-token model APIs and per-second serverless GPU billing."
 headquarters: "France"
 pricingModel: usage-based
@@ -16,11 +16,12 @@ services:
   - "VS Code extension for coding models"
 socials:
   website: "https://arkanecloud.com/"
+  linkedin: "https://www.linkedin.com/company/arkane-cloud"
 ---
 
 ## What makes Arkane Cloud different
 
-Arkane Cloud positions itself as a "sovereign AI cloud" built specifically for European data residency requirements. Unlike hyperscalers that run on globally distributed infrastructure, Arkane Cloud owns and operates its own NVIDIA GPU servers located in Paris and Lyon, France, giving customers a concrete guarantee about where data physically resides rather than a contractual promise layered over shared global infrastructure.
+Arkane Cloud positions itself as a "sovereign AI cloud" built specifically for European data residency requirements. Unlike hyperscalers that run on globally distributed infrastructure, Arkane Cloud owns and operates its own NVIDIA GPU servers in colocation datacenters in Paris and Lyon, France, giving customers a concrete guarantee about where data physically resides rather than a contractual promise layered over shared global infrastructure.
 
 The company explicitly states that customer prompts and outputs are never used to train its models, a policy positioned as a trust differentiator for enterprises wary of hyperscaler data practices. It also offers a notably broad GPU lineup — from the latest NVIDIA B300 (Blackwell Ultra) and RTX PRO 6000 down to older A100 and L40S cards — available both on-demand and as reserved clusters, letting teams match hardware generation to workload cost/performance needs.
 
@@ -28,7 +29,7 @@ Its product line spans three layers of abstraction: a managed Models API for tea
 
 ## Pricing model
 
-Arkane Cloud uses usage-based pricing across its product lines: the Models API is billed per token, Serverless GPU is billed per second with scale-to-zero (no charge when idle), and Cloud GPU instances are billed on-demand by the hour/second depending on the instance. GPU Clusters are offered as reserved capacity via direct sales engagement. A dedicated pricing page compares costs across GPU types (B300, RTX PRO 6000, B200, H200, H100, A100, L40S), though exact rate tables weren't captured in this content pull.
+Arkane Cloud uses usage-based pricing across its product lines: the Models API is billed per token, Serverless GPU is billed per second with scale-to-zero (no charge when idle), and Cloud GPU instances are billed per second from start to stop. GPU Clusters are offered as reserved capacity (commitments from 3 months to 5 years) via a quote. The pricing page publishes per-GPU hourly rates, with on-demand Cloud GPU ranging from $0.99/hr (RTX A6000) and $3.99/hr (H100) up to $8.99/hr (B300), and per-million-token rates for each model in the Models API.
 
 What stands out is the granularity: per-second serverless billing with scale-to-zero is closer to a FaaS cost model than typical GPU cloud hourly billing, making it attractive for bursty or unpredictable inference workloads.
 
@@ -47,4 +48,4 @@ What stands out is the granularity: per-second serverless billing with scale-to-
 
 ## Inclusion criteria
 
-Arkane Cloud meets all three inclusion criteria: transparent, published pricing (per-token, per-second, and GPU pricing pages at arkanecloud.com/pricing), self-service signup via its online Console (arkanecloud.com Console/Register), and a public Service Level Agreement linked from its footer (arkanecloud.com/service-level-agreement).
+Arkane Cloud meets all three inclusion criteria: transparent, published pricing (per-token, per-second, and GPU pricing pages at arkanecloud.com/pricing), self-service signup via its online Console (console.arkanecloud.com), and a public Service Level Agreement linked from its footer (arkanecloud.com/service-level-agreement), which commits to 99.5% monthly availability for compute instances and serverless and 99% for the shared inference API.
