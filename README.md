@@ -79,6 +79,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [E2E Cloud](https://www.e2enetworks.com/) - Offers cloud infrastructure with GPU instances for AI and machine learning. <!-- tags: gpu -->
 * 🟢 [Elice](https://elice.io/en) - Provides an AI full-stack platform for education, training, and enterprise AI transformation with GPU cloud infrastructure, LXP, assessment tools, and generative AI solutions. <!-- tags: gpu -->
 * 🟢 [Empromptu](https://empromptu.ai) - Cloud service provider.
+* 🟢 [EverXCloud](https://everxcloud.ai/) - Offers GPU rental by the hour from a peer-to-peer marketplace, matching customers with verified suppliers across six global regions. <!-- tags: gpu, owns-hardware, region:us, region:eu, region:ap -->
 * 🟢 [exe.dev](https://exe.dev/) - Modern VM hosting with sub-second starts and persistent disks. Built for AI coding agents with built-in HTTPS/auth and sharing.
 * 🟢 [Exoscale](https://www.exoscale.com/) - European cloud provider offering compute instances, managed Kubernetes, databases, object storage, block storage, and GPU servers with self-service signup. <!-- tags: gpu, region:eu -->
 * 🟢 [Fastly](https://www.fastly.com/) - An edge cloud platform designed for performance and security, enabling developers to build faster, more secure digital experiences.
@@ -146,6 +147,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [Rackdog](https://rackdog.com/) - Cloud service provider.
 * 🟢 [Rackspace](https://www.rackspace.com/) - Provides hybrid cloud and managed hosting services.
 * 🟡 [Raff](https://rafftechnologies.com/) - Provides integrated cloud infrastructure with servers, databases, Kubernetes, storage, and networking under one control plane, bill, and support team. <!-- tags: owns-hardware, region:us, region:eu -->
+* 🟢 [Runcrate](https://www.runcrate.ai/) - Provides GPU instances and OpenAI-compatible model inference on a unified platform, billed by the second for compute and per-token for API calls. <!-- tags: gpu, agent-native, owns-hardware -->
 * 🟢 [Runpod](https://www.runpod.io/) - Provides customizable GPU containers and secure cloud compute environments. <!-- tags: gpu -->
 * 🟢 [Salad](https://salad.com/) - A platform for leveraging latent consumer compute resources to power workloads.
 * 🟢 [Scaleway](https://www.scaleway.com/) - European cloud provider with a wide range of services including servers, storage, and AI tools. <!-- tags: region:eu -->
