@@ -395,6 +395,7 @@ The provider owns a compute- or storage-heavy workload end to end. No provisioni
 
 Jurisdiction is the primary reason to buy: owned, operated, and data-resident in a specific country or region under its laws.
 
+* 🟢 [BlackBox Hosting](https://www.blackboxhosting.co.uk/) - Provides UK-based sovereign cloud infrastructure, disaster recovery, backup, and co-location services with data residency and compliance certifications. <!-- tags: region:gb, owns-hardware -->
 * 🟢 [cloudscale.ch](https://cloudscale.ch/) - Swiss IaaS provider offering VMs, GPU servers, load balancers, and object storage with per-hour pricing and full Swiss data residency. <!-- tags: region:ch -->
 * 🟢 [FPT Vietnam](https://fptsoftware.com/newsroom/news-and-press-releases/press-release/fpt-to-shape-the-future-of-ai-and-cloud-on-a-global-scale-in-collaboration-with-nvidia) - Investing $200 million to build an AI factory serving as a sovereign cloud, featuring NVIDIA's latest technologies to bolster Vietnam's digital sovereignty.
 * 🟢 [GMO GPU Cloud](https://www.gmo.jp/en/news/article/797/) - Offers GPU cloud services in Japan, providing scalable AI computing with NVIDIA's latest GPUs, ensuring data residency and compliance. <!-- tags: gpu, region:jp -->
