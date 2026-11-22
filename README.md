@@ -63,6 +63,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [CloudGPU](https://cloudgpu.app/) - Provides on-demand GPU rental and OpenAI-compatible model APIs billed per-minute, supporting GPUs like RTX 5090 and A100 with a unified prepaid balance. <!-- tags: gpu -->
 * 🟢 [Cognee](https://www.cognee.ai/) - Cloud service provider.
 * 🟢 [Core Transit](https://www.coretransit.net/) - Provides flexible IP routing, static IP addressing, and BGP services to extend deterministic connectivity to hard-to-reach locations for enterprises and MSPs.
+* 🟢 [CoreHu](https://corehu.com/) - Rents NVIDIA GPUs from RTX 4090 to H100, H200 and B200, billed per second in USD, with public live prices and a status page. <!-- tags: gpu -->
 * 🟡 [CoreWeave](https://www.coreweave.com/) - A cloud platform optimized for AI, offering high-performance GPU compute and managed services. <!-- tags: gpu -->
 * 🟢 [Crusoe Energy](https://crusoecloud.com/) - Energy-efficient GPU computing using stranded and renewable energy sources. <!-- tags: gpu -->
 * 🟡 [CtrlDNS](https://www.ctrldns.com/) - Provides DNS management and control services for domain name resolution and network infrastructure management.
