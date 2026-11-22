@@ -229,6 +229,7 @@ The provider owns a compute- or storage-heavy workload end to end. No provisioni
 * 🟢 [Depot](https://depot.dev/) - Accelerates Docker builds and GitHub Actions with up to 20x faster performance through optimized compute and caching. <!-- tags: key-value-cache, ci-builds -->
 * 🟢 [Diffbot](https://www.diffbot.com/) - Uses AI to build a knowledge graph of the web, enabling businesses to extract and understand web data. <!-- tags: agent-browser -->
 * 🟢 [Ditto](https://www.ditto.com/) - An edge-native, mobile database that thrives on mobile and edge devices.
+* 🟡 [Dockhold](https://dockhold.eu/?ref=forum-github) - Hosts always-on apps from local folders or GitHub with managed Postgres and a fixed monthly capacity pool shared across apps. <!-- tags: app-hosting, postgres-sql -->
 * 🟢 [Domo](https://www.domo.com/) - Provides a cloud-based platform for business intelligence and data visualization. <!-- tags: warehouse-lakehouse -->
 * 🟢 [Drydock](https://drydock.build/) - Provides AI-powered build, deployment, and operations platform that creates production applications from prompts, with global infrastructure across 45+ PoPs and automated DevOps. <!-- tags: app-generation -->
 * 🟢 [DuckDB](https://duckdb.org/) - An in-process SQL OLAP database management system designed for fast analytical queries. <!-- tags: warehouse-lakehouse -->
