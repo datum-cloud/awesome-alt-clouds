@@ -40,6 +40,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [Akash Network](https://akash.network/) - Providing access to compute at prices up to 85% lower than hyperscale cloud providers.
 * 🟢 [Andromeda](https://andromeda.ai/) - Connects AI teams with high-performance GPU compute across 100+ global providers, offering real-time sourcing, benchmarking, and standardized deployment at scale. <!-- tags: gpu -->
 * 🟢 [Anyscale](https://www.anyscale.com/) - Distributed computing platform built on Ray for scaling AI and Python apps. <!-- tags: gpu -->
+* 🟢 [Apidly Cloud](https://apidly.com/) - Provides managed GPU servers billed by the second from prepaid credit, with ready-made AI templates, spending limits, and serverless endpoints. <!-- tags: gpu -->
 * 🟡 [Apoxy](https://apoxy.dev/) - Provides a programmable, tunneled network layer for routing and load-balancing traffic across services, clusters, and agents with hosted Envoy data planes and Gateway API support.
 * 🟢 [Approximated](https://approximated.app/) - Custom domain proxy platform with global edge servers, SSL management, and DDoS protection.
 * 🟢 [Aquanode](https://www.aquanode.io/) - Manages and optimizes GPU infrastructure across multiple clouds and on-premises hardware, automating job scheduling, checkpointing, and failover with a unified interface. <!-- tags: gpu -->
