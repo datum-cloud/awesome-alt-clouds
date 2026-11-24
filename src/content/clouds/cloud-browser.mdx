@@ -1,0 +1,50 @@
+---
+status: draft
+tagline: "Persistent, isolated Chrome cloud browsers built for AI agents, with saved login state and CDP automation."
+pricingModel: usage-based
+services:
+  - "Persistent Chrome cloud browsers"
+  - "CDP automation endpoints"
+  - "Live view (read-only or control)"
+  - "Browser forking"
+  - "Pause/resume compute billing"
+  - "REST API"
+  - "Go CLI"
+socials:
+  website: "https://cloudbrowser.tv/"
+---
+
+## What makes Cloud Browser different
+
+Cloud Browser is a narrow, agent-focused service cloud rather than a general-purpose compute provider. Instead of offering raw VMs or containers, it gives each AI agent (or human) an isolated, persistent Chrome instance with a saved profile—cookies, local storage, and downloads carried across sessions. This solves a specific pain point for AI agent builders: re-authenticating to websites on every run, or losing browser state between tasks.
+
+The architecture centers on pause/resume and forking rather than always-on compute. A browser can be paused to stop billing while retaining its profile, then resumed later, or forked into independent copies that share a starting state but run in isolation—useful for fanning out parallel agent tasks without repeating login flows. Automation tools connect via a scoped Chrome DevTools Protocol (CDP) URL, making it compatible with existing tools like Playwright, Claude Code, Cursor, and other CDP-capable agents, rather than requiring a proprietary SDK.
+
+Unlike hyperscaler browser/automation offerings bundled into larger platforms, Cloud Browser is a single-purpose product with simple, hour-based billing and a free tier—lowering the barrier for agent developers to experiment without provisioning broader cloud infrastructure.
+
+## Pricing model
+
+Pricing is usage-based around "browser-hours" and concurrency limits:
+
+- **Free** – 1 browser-hour/month, 1 concurrent running browser (verified email required)
+- **Basic** – $20/month for 250 browser-hours, up to 10 concurrent browsers; additional usage at $0.08/hour
+- **Pro** – $99/month for 1,250 browser-hours, up to 100 concurrent browsers; additional usage at $0.06/hour
+
+Free browsers automatically pause at the monthly limit. Upgrades are prorated; downgrades apply at the next billing period. What stands out versus typical cloud pricing is the direct mapping of cost to "browser-hours" rather than instance types, memory, or storage tiers—pricing scales with agent concurrency and runtime, which is the resource that actually matters for this workload.
+
+## When it fits
+
+- Running AI agents (Claude Code, Cursor, OpenClaw, custom Playwright scripts) that need a real, persistent Chrome session
+- Workflows requiring saved login/auth state across multiple agent runs without re-authenticating
+- Parallelizing agent tasks via forked, isolated browser copies
+- Teams that want a human to log in once and hand the session to an agent
+- Low-volume experimentation via the free tier before committing to paid concurrency
+
+## When it doesn't
+
+- General-purpose compute, storage, or hosting workloads outside of browser automation
+- High-concurrency, large-scale headless scraping where self-hosted headless Chrome fleets would be cheaper at scale
+
+## Inclusion criteria
+
+Cloud Browser meets all three inclusion criteria: transparent pricing ([pricing page](https://cloudbrowser.tv/pricing), [billing docs](https://cloudbrowser.tv/docs/billing)), self-service signup via free-plan verified-email workspace creation ([start free](https://cloudbrowser.tv/browsers)), and documented service behavior/status expectations via its docs ([docs](https://cloudbrowser.tv/docs)).
