@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   ci:
-    uses: datum-cloud/actions/.github/workflows/ci-basic.yaml@v1.26.0
+    uses: datum-cloud/actions/.github/workflows/ci-basic.yaml@v1.30.0
     with:
       node-version: "26.13.0"
       skip: build

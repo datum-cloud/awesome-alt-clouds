@@ -1,11 +1,11 @@
 ---
-status: draft
+status: reviewed
 tagline: "A single OpenAI-compatible API for text, image, video, and voice models, with transparent per-model pricing and regional routing."
 pricingModel: usage-based
 services:
   - "Unified chat/text completions API (OpenAI-compatible)"
   - "Image generation and editing"
-  - "Video generation (e.g. Wan 3 Spicy, Cherry LTX)"
+  - "Video generation (e.g. Wan 3, Seedance 2.5)"
   - "Speech transcription"
   - "Text-to-speech"
   - "Unified request tracing and dashboard"
@@ -24,7 +24,7 @@ ModelRush also leans into agent-driven integration — it provides a copy-paste 
 
 ## Pricing model
 
-ModelRush uses prepaid, usage-based credits rather than hourly or subscription billing. Users top up accounts with $10, $50, or $100 credit packs and are charged per request from that balance, with current model prices and account quotes visible before generating. As an example, the Wan 3 Spicy video model is publicly listed at $0.045 per second (480P). Pricing is per-model and published openly rather than bundled into opaque compute units, which stands out against typical cloud pricing structures that obscure per-call cost behind instance-hours or committed-use discounts.
+ModelRush uses prepaid, usage-based credits rather than hourly or subscription billing. Users top up accounts with $10, $50, or $100 credit packs and are charged per request from that balance, with current model prices and account quotes visible before generating. As an example, the Wan 3 video model is publicly listed at $0.045 per second (480P). Pricing is per-model and published openly rather than bundled into opaque compute units, which stands out against typical cloud pricing structures that obscure per-call cost behind instance-hours or committed-use discounts.
 
 ## When it fits
 
@@ -41,4 +41,4 @@ ModelRush uses prepaid, usage-based credits rather than hourly or subscription b
 
 ## Inclusion criteria
 
-ModelRush meets all three criteria: transparent pricing (public per-model rates, e.g. $0.045/sec for Wan 3 Spicy, and visible account quotes before generation), self-service signup (prepaid credit purchase via $10/$50/$100 tiers with no sales gate), and documented API behavior with request-level status/tracing suitable for monitoring (via https://modelrush.ai/docs).
+ModelRush meets 2 of 3 criteria: transparent pricing (public per-model rates on its [pricing page](https://modelrush.ai/pricing), e.g. $0.045/sec for Wan 3 at 480P) and self-service signup ([sign up](https://modelrush.ai/sign-up), prepaid $10/$50/$100 credit packs with no sales gate). No standalone public status page was found at time of review; the site footer shows a system-status indicator only.

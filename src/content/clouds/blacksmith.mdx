@@ -1,5 +1,5 @@
 ---
-status: draft
+status: reviewed
 tagline: "Drop-in replacement for GitHub Actions runners that's up to 2x faster and 75% cheaper, running on bare metal."
 pricingModel: usage-based
 services:
@@ -9,9 +9,10 @@ services:
   - "CI observability console"
   - "Flaky test / log search"
   - "Inline PR test failure comments"
-  - "Blacksmith Sandboxes (coming soon)"
 socials:
   website: "https://www.blacksmith.sh/"
+  x: "https://x.com/useblacksmith"
+  linkedin: "https://www.linkedin.com/company/blacksmithrun"
 ---
 
 ## What makes Blacksmith different
@@ -24,7 +25,7 @@ Beyond raw speed, Blacksmith adds an observability layer GitHub Actions lacks na
 
 ## Pricing model
 
-Blacksmith's pricing is usage-based and marketed as roughly 60–75% cheaper than GitHub-hosted runners. Illustrative rate comparisons shown on their site include per-minute compute costs as low as $0.008–$0.024 depending on runner size, versus GitHub's equivalent $0.072–$0.096 rates for comparable job types (e.g., Node.js, Rust, Android, and Docker build workloads). Detailed current tiers and runner sizes are published on their [pricing page](https://www.blacksmith.sh/pricing). No credit card is required to start, and a free trial is available via self-service signup.
+Blacksmith's pricing is usage-based and marketed as roughly 60–75% cheaper than GitHub-hosted runners. Published per-minute rates start at $0.004/min for Ubuntu x64, $0.0025/min for Ubuntu ARM, $0.008/min for Windows x64 and $0.08/min for macOS M4, with 3,000 free minutes per month on each runner type and add-ons such as Docker layer caching and sticky disks at $0.50/GB/month; the homepage also shows example cost comparisons against GitHub Actions for Node.js, Rust, Android and Docker build workloads. Detailed current tiers and runner sizes are published on their [pricing page](https://www.blacksmith.sh/pricing); Enterprise plans add a 99.9% SLA. No credit card is required to start.
 
 What stands out versus typical hyperscaler CI pricing is the transparency of the comparison: rather than abstract compute-hour billing, Blacksmith publishes direct side-by-side cost breakdowns against GitHub Actions for common workloads, making the savings concrete and auditable rather than a vague marketing claim.
 
@@ -43,4 +44,4 @@ What stands out versus typical hyperscaler CI pricing is the transparency of the
 
 ## Inclusion criteria
 
-Blacksmith meets all 3 inclusion criteria: transparent, published per-minute pricing with direct cost comparisons (see [Pricing](https://www.blacksmith.sh/pricing)), self-service signup with no credit card required (via [Try for free](https://app.blacksmith.sh/)), and a public status page ("■ Status" linked in site footer) alongside a SOC 2 security page ([Security](https://www.blacksmith.sh/security-old)).
+Blacksmith meets all 3 inclusion criteria: transparent, published per-minute pricing with direct cost comparisons (see [Pricing](https://www.blacksmith.sh/pricing)), self-service signup with no credit card required (via [Try for free](https://app.blacksmith.sh/)), and a public status page ([status.blacksmith.sh](https://status.blacksmith.sh/), linked in the site footer) alongside a security page stating SOC 2 Type 2 compliance ([Security](https://www.blacksmith.sh/security)).

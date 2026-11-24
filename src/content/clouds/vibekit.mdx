@@ -1,5 +1,5 @@
 ---
-status: draft
+status: reviewed
 tagline: "AI app builder where every app gets its own persistent agent to build, deploy, monitor, and auto-heal it — using your own AI API key."
 pricingModel: subscription
 services:
@@ -8,30 +8,33 @@ services:
   - "Managed hosting with custom domains"
   - "AI-powered QA testing"
   - "Automated health monitoring & auto-healing"
-  - "Multi-model support (Claude, GPT, Gemini, DeepSeek)"
-  - "OAuth integrations (122+ services)"
+  - "Multi-model support (Claude, GPT, Gemini, Grok, DeepSeek)"
+  - "OAuth integrations (120+ apps)"
   - "Env var & database provisioning"
 socials:
   website: "https://vibekit.bot/"
-  x: "https://twitter.com/VibeKitBot"
+  x: "https://x.com/VibeKitBot"
+  linkedin: "https://www.linkedin.com/company/vibekit/"
+  github: "https://github.com/VibeKit-Bot"
 ---
 
 ## What makes VibeKit different
 
 VibeKit is not a hyperscaler but an AI-native app platform built around the idea that every application should have its own persistent AI agent — one that doesn't disappear after the initial build. The agent retains memory of the codebase, past bugs, and architecture decisions, and runs health checks every 60 seconds, automatically diagnosing crashes, applying fixes, and redeploying without human intervention.
 
-The core architectural decision that sets VibeKit apart from competitors like Lovable, Bolt, Replit, and Base44 is its BYOK (Bring Your Own Key) model: instead of bundling AI usage into inflated subscription tiers, VibeKit charges only for the platform and infrastructure, while users bring their own Anthropic, OpenAI, or ChatGPT Plus (OAuth) credentials and pay model providers directly at standard rates.
+The core architectural decision that sets VibeKit apart from competitors like Lovable, Bolt, Replit, and Base44 is its BYOK (Bring Your Own Key) model: instead of bundling AI usage into inflated subscription tiers, VibeKit charges only for the platform and infrastructure, while users bring their own Claude (Pro/Max plan or API key) or ChatGPT (Plus/Pro plan or API key) credentials and pay model providers directly at standard rates.
 
 It's also built for multi-interface access — web IDE, iOS app, REST API, and CLI/MCP (for tools like Cursor and Claude Code) — so apps can be built, deployed, and fixed from a phone as easily as from a terminal.
 
 ## Pricing model
 
-VibeKit offers a free tier (10 AI sessions/month, 2 hosted apps) plus two paid subscription tiers:
+VibeKit offers a free tier (10 AI sessions/month, 2 workspaces) plus three paid subscription tiers:
 
-- **Builder — $24.99/mo**: $20/mo AI credit included, 3 hosted apps (1 always-on), AI auto-healing + monitoring, custom domain, 24h logs, unlimited AI sessions.
-- **Pro — $49.99/mo**: $25/mo AI credit + unlimited sessions, 10 apps (3 always-on, 1GB each), unlimited custom domains, 7-day logs, API access.
+- **Starter — $9.99/mo**: $3/mo AI credit, unlimited sessions, 3 workspaces (1 always-on app), database and custom domains included.
+- **Builder — $24.99/mo**: $20/mo AI credit, unlimited sessions, 5 workspaces (2 always-on apps), database and unlimited custom domains, 7-day logs.
+- **Pro — $49.99/mo**: $25/mo AI credit, unlimited sessions, 10 workspaces (3 always-on apps, 1 GB RAM + 0.5 vCPU), unlimited custom domains, 7-day logs, phone line included.
 
-Users can also skip subscriptions entirely via pay-as-you-go balance top-ups starting at $10. Because of BYOK, AI token costs are separate from the platform fee — if you already pay for an AI subscription, that cost is "$0 extra" on VibeKit's side. This stands in contrast to typical cloud/SaaS pricing where AI credits are bundled and bought up incrementally as they run out.
+Users can also skip subscriptions entirely via pay-as-you-go credit top-ups starting at $10. Because of BYOK, AI token costs are separate from the platform fee — if you already pay for an AI subscription, that cost is "$0 extra" on VibeKit's side. This stands in contrast to typical cloud/SaaS pricing where AI credits are bundled and bought up incrementally as they run out.
 
 ## When it fits
 
@@ -48,4 +51,4 @@ Users can also skip subscriptions entirely via pay-as-you-go balance top-ups sta
 
 ## Inclusion criteria
 
-VibeKit meets all three inclusion criteria: transparent pricing (published tiers at https://vibekit.bot/ pricing section with specific dollar amounts), self-service signup (instant "Start Building" / "Go Pro" sign-up flow at https://app.vibekit.bot/), and public documentation/API reference at https://docs.vibekit.bot/.
+VibeKit meets all three inclusion criteria: transparent pricing (published tiers with specific dollar amounts at https://vibekit.bot/pricing), self-service signup ("Start free", no card required, at https://app.vibekit.bot/), and a public status page at https://vibekit.bot/status.

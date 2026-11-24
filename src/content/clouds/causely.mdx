@@ -1,9 +1,7 @@
 ---
-status: draft
+status: reviewed
 tagline: "Gives AI ops agents a deterministic causal model of your systems so they diagnose incidents in seconds instead of guessing from raw telemetry."
-pricingModel: usage-based
-regions:
-  - "Not published (SaaS platform, deployment via Kubernetes agent)"
+pricingModel: subscription
 services:
   - "Causal Reasoning System"
   - "AI SRE / Ops Agent Integration"
@@ -27,7 +25,7 @@ It's designed to be a mediation layer, not a replacement for your existing obser
 
 ## Pricing model
 
-Causely's public pricing page (causely.ai/pricing) is usage-based rather than flat hyperscaler-style compute billing, tied to the scale of the environment being monitored and reasoned over rather than infrastructure consumed. Exact tier numbers were not visible in the crawled content, but the pricing page exists as a self-service reference point distinct from a "contact sales" wall. What stands out versus typical cloud pricing is that the cost model is framed around token/investigation efficiency (fewer tokens burned per incident) rather than compute-hours or storage — a pricing philosophy tied directly to its core value prop of reducing LLM token spend during incident response.
+Causely's public pricing page (causely.ai/pricing) lists two subscription tiers sized by the number of services under management: the Professional Edition at $2,000/month (up to 500 services, all published integrations, 30-day data retention, standard hybrid deployment) and a custom-priced Enterprise Edition (unlimited services, custom integrations and SLAs, on-prem or air-gapped deployment). A free 30-day trial is available through self-service signup. What stands out versus typical cloud pricing is that the bill scales with the number of services Causely reasons over rather than with compute-hours, storage or telemetry volume.
 
 ## When it fits
 
@@ -43,4 +41,4 @@ Causely's public pricing page (causely.ai/pricing) is usage-based rather than fl
 
 ## Inclusion criteria
 
-Causely meets the directory's inclusion bar via a public pricing page (causely.ai/pricing), self-service sign-up (auth.causely.app/oauth/account/sign-up), and a public security page (causely.ai/security) that documents its security posture, though a dedicated public status page was not directly confirmed in the crawled content.
+Causely meets 2 of 3 criteria: transparent pricing on its [pricing page](https://www.causely.ai/pricing) and self-service sign-up ([sign up](https://auth.causely.app/oauth/account/sign-up)). No public status or SLA page is linked from the site, so the third criterion is not met; its [security page](https://www.causely.ai/security) documents its security posture instead.

@@ -1,25 +1,49 @@
-I cannot generate this profile because the page content provided is corrupted/binary data that does not contain usable information about Cohere's services, pricing, regions, or features.
+---
+status: reviewed
+tagline: "Your AI. Your rules. Enterprise AI platform and models you can deploy on your terms, from the API to on-prem."
+foundedYear: 2019
+pricingModel: mixed
+services:
+  - "North (agentic enterprise AI platform)"
+  - "Compass"
+  - "Model Vault (dedicated, isolated model inference)"
+  - "Command generative models"
+  - "Embed and Rerank models"
+  - "Transcribe and Parse"
+  - "Private deployments (on-prem or isolated VPC)"
+socials:
+  website: "https://cohere.com/"
+  x: "https://x.com/cohere"
+  linkedin: "https://www.linkedin.com/company/cohere-ai/"
+---
 
-To create an accurate profile for alt-cloud.org, I would need:
+## What makes Cohere different
 
-1. **Accessible page content** — The provided text is garbled and unreadable
-2. **Specific pricing data** — Exact cost per API call, token pricing, or subscription tiers
-3. **Service offerings** — Concrete list of models/APIs (e.g., Command, Embed, Rerank)
-4. **Region/infrastructure data** — Where Cohere's inference runs
-5. **SLA/status page URLs** — To verify the inclusion criteria claim
+Cohere is an enterprise-focused AI model and platform company, founded in Toronto in 2019 by Aidan Gomez, Nick Frosst and Ivan Zhang, with offices in Toronto, New York, London, San Francisco, Montreal, Paris, Seoul and Berlin. Rather than chasing consumer chat, it builds models for business workloads: the Command family for generation and agents, Embed and Rerank for search and retrieval-augmented generation, plus Transcribe, Parse and translation models.
 
-**What I can infer from context:**
+What sets it apart from hyperscaler model APIs is deployment control. The homepage tagline is "Your AI. Your rules." Cohere offers the same models through a public API, through Model Vault (dedicated inference with what it describes as "fully-isolated performance inference with end-to-end encryption"), or as private deployments "on-prem or isolated VPCs." On top of the models sits North, which it describes as "a complete agentic enterprise AI platform that you control and deploy on your terms," with agents, automations, skills and libraries. Several models, including Command A+, also have downloadable weights on Hugging Face via Cohere Labs.
 
-- Cohere offers language models via API (enterprise AI platform)
-- They claim transparent pricing + self-service signup + public SLA
-- Categories: AI Assistants & Copilots
-- Website: https://cohere.com/
+The homepage lists SOC 2, GDPR, CCPA, ISO 27001 and Cyber Essentials compliance.
 
-**To proceed, please provide:**
+## Pricing model
 
-- Clean, readable HTML or markdown from Cohere's pricing page
-- Link to their public SLA/status page
-- List of available models and their costs
-- Geographic regions where they operate
+Cohere mixes usage-based API pricing, GPU-hourly dedicated capacity and custom enterprise contracts, all described on its [pricing page](https://cohere.com/pricing). Every new account automatically gets a free Trial API key. Trial keys are rate limited (for example, 20 Chat requests per minute and 1,000 API calls a month, per the [rate limits docs](https://docs.cohere.com/docs/rate-limits)) and may not be used for production or commercial purposes. Production keys are pay-as-you-go, billed monthly or whenever the outstanding balance reaches $250. At time of review (November 2026) the pricing page's model catalog listed Command A+ at $2.50 input / $10.00 output per 1M tokens, while legacy models such as Command R (03-2024) were listed at $0.50 / $1.50. Rerank is billed per search unit (one query with up to 100 documents).
 
-Once you supply readable source material, I'll generate a complete, factual profile.
+Model Vault is billed per GPU-hour by GPU type and replica count, with Fixed or Flex plans. At time of review, on-demand rates ran from $3.00/hr for an L4 to $6.25/hr for an H100 80GB and $12.50/hr for a GB200, with lower promotional rates valid through March 31, 2027 and Confidential Compute "encrypted" variants for H100 and B200. North, Compass and private deployments are custom-quoted.
+
+## When it fits
+
+- Enterprises building RAG and search systems that want strong embedding and reranking models from a single vendor
+- Regulated or security-sensitive organizations that need models deployed in their own VPC or on-prem, or on isolated, encrypted dedicated inference
+- Teams that want a non-hyperscaler model provider with multilingual models and a published compliance posture
+- Developers who want to prototype for free on a trial key before moving to pay-as-you-go production usage
+
+## When it doesn't
+
+- Teams looking for general-purpose cloud infrastructure (VMs, storage, networking). Cohere sells models and an AI platform, not compute you control directly
+- Hobby or commercial side projects that need production use without applying for a production key: trial keys are explicitly non-commercial
+- Buyers who want every price on a public page: per-token prices for some current models are not shown, and North, Compass and private deployments require talking to sales
+
+## Inclusion criteria
+
+Cohere meets all 3 inclusion criteria. (1) Transparent pricing: the [pricing page](https://cohere.com/pricing) publishes per-token prices for listed models, Model Vault per-GPU-hour rates, and how trial and production keys are billed, though not every current model has a listed price. (2) Self-service signup: anyone can [create an account](https://dashboard.cohere.com/welcome/register) with email, Google or GitHub and gets a free trial API key immediately. Production access requires an application from the dashboard's Billing and Usage page. (3) Status page: [status.cohere.com](https://status.cohere.com/) shows live status and uptime history per endpoint and per model.

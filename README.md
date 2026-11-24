@@ -53,6 +53,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [Banana.dev](https://www.banana.dev/) - Serverless GPU platform for ML model inference with pay-per-millisecond pricing. <!-- tags: gpu -->
 * 🟢 [Beam](https://www.beam.cloud) - Cloud infrastructure specifically built for high-performance applications and developer happiness.
 * 🟡 [Blackfuel](https://www.blackfuel.ai/) - Provides dedicated AI infrastructure and AI-native inference optimization across hardware architectures, delivering efficient token generation per megawatt. <!-- tags: gpu -->
+* 🟡 [boxd](https://boxd.sh/) - Provides persistent, composable Linux virtual machines with forking, snapshots, and checkpoints that preserve running processes, files, and state across sessions.
 * 🟡 [Browser-Use](https://browser-use.com/) - Cloud service provider.
 * 🟢 [c/Side](https://cside.dev/) - A next generation web security service that monitors, optimizes and secures 3rd party scripts.
 * 🟢 [Cerebrium](https://www.cerebrium.ai/) - Serverless GPU infrastructure for deploying ML models with auto-scaling. <!-- tags: gpu -->
@@ -78,6 +79,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [E2E Cloud](https://www.e2enetworks.com/) - Offers cloud infrastructure with GPU instances for AI and machine learning. <!-- tags: gpu -->
 * 🟢 [Elice](https://elice.io/en) - Provides an AI full-stack platform for education, training, and enterprise AI transformation with GPU cloud infrastructure, LXP, assessment tools, and generative AI solutions. <!-- tags: gpu -->
 * 🟢 [Empromptu](https://empromptu.ai) - Cloud service provider.
+* 🟢 [EverXCloud](https://everxcloud.ai/) - Offers GPU rental by the hour from a peer-to-peer marketplace, matching customers with verified suppliers across six global regions. <!-- tags: gpu, owns-hardware, region:us, region:eu, region:ap -->
 * 🟢 [exe.dev](https://exe.dev/) - Modern VM hosting with sub-second starts and persistent disks. Built for AI coding agents with built-in HTTPS/auth and sharing.
 * 🟢 [Exoscale](https://www.exoscale.com/) - European cloud provider offering compute instances, managed Kubernetes, databases, object storage, block storage, and GPU servers with self-service signup. <!-- tags: gpu, region:eu -->
 * 🟢 [Fastly](https://www.fastly.com/) - An edge cloud platform designed for performance and security, enabling developers to build faster, more secure digital experiences.
@@ -91,9 +93,10 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [Genesis Cloud](https://www.genesiscloud.com/pricing) - Offers sustainable, high-performance GPU cloud computing for AI workloads. <!-- tags: gpu -->
 * 🟢 [GMI Cloud](https://www.gmicloud.ai/) - Provides GPU cloud services optimized for AI and deep learning tasks. <!-- tags: gpu -->
 * 🟡 [GPU CLI](https://gpu-cli.sh) - Provides command-line access to remote cloud GPUs with auto-stop functionality, instant connection, and automatic result syncing for ML training and inference workloads. <!-- tags: gpu -->
+* 🟡 [gpu.nz](https://gpu.nz/en) - Provides GPU server rental by the minute with RTX and H100 cards across 70 countries, supporting AI, training, and rendering workloads. <!-- tags: gpu, region:nz -->
 * 🟡 [Hetzner](https://www.hetzner.com/) - Provides dedicated servers and cloud services in Europe. <!-- tags: owns-hardware, region:eu -->
 * 🟡 [Highrise](https://www.highrise.ai/) - Provides a unified platform for developing, training, and deploying AI models with access to thousands of NVIDIA GPUs at competitive pricing, backed by Hut 8 infrastructure. <!-- tags: gpu -->
-* 🟡 [Hikube](https://hikube.cloud/) - Provides sovereign Swiss cloud infrastructure with VMs, Kubernetes, GPU, managed databases, S3 storage, and messaging services across 3 Swiss datacenters with zero US jurisdiction. <!-- tags: owns-hardware, gpu, region:ch -->
+* 🟢 [Hikube](https://hikube.cloud/) - Provides sovereign Swiss cloud infrastructure with VMs, Kubernetes, GPU, managed databases, S3 storage, and messaging services across 3 Swiss datacenters with zero US jurisdiction. <!-- tags: owns-hardware, gpu, region:ch -->
 * 🟢 [Hivelocity](https://www.hivelocity.net/) - Experienced provider of VPS and bare metal solutions. <!-- tags: owns-hardware -->
 * 🟢 [HydraHost](https://hydrahost.com/) - Affordable GPU compute focused on researchers and indie developers. <!-- tags: gpu -->
 * 🟢 [Hyperbolic](https://hyperbolic.xyz/) - Offers scalable GPU compute for AI applications with a focus on performance and cost-efficiency. <!-- tags: gpu -->
@@ -127,6 +130,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [NetActuate](https://netactuate.com/) - Provides hybrid cloud and edge computing solutions with a global network.
 * 🟢 [NetBox Cloud](https://netboxlabs.com/netbox-cloud/) - A managed solution for network infrastructure modeling and documentation, providing a scalable and secure platform for network automation.
 * 🟢 [Netmaker](https://netmaker.io/) - A WireGuard-based virtual networking platform that enables fast, secure, and scalable networking for devices and distributed systems.
+* 🟡 [Nevia](https://nevia.cloud/) - Provides cloud infrastructure purpose-built for AI agents, with microVMs, databases, and inference optimized for agentic workloads with millisecond startup and scale-to-zero capabilities. <!-- tags: agent-native, owns-hardware -->
 * 🟢 [NextGen Cloud](https://www.nextgencloud.com/) - Delivers sustainable, high-performance cloud infrastructure for AI workloads. <!-- tags: gpu -->
 * 🟢 [Offline Protocol](https://www.offlineprotocol.com/) - Provides edge-native coordination for physical systems with identity, encrypted messaging, and service discovery across local, mesh, gateway, and cloud networks.
 * 🟢 [Openmetal.io](https://openmetal.io/) - Delivers on-demand private cloud infrastructure based on OpenStack.
@@ -142,10 +146,13 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [QBO](https://qbo.io/) - GPU Cloud at the Edge & Beyond - Delivering high performance, streamlined infrastructure, and flexible AI/ML deployment. <!-- tags: gpu -->
 * 🟢 [Rackdog](https://rackdog.com/) - Cloud service provider.
 * 🟢 [Rackspace](https://www.rackspace.com/) - Provides hybrid cloud and managed hosting services.
+* 🟢 [Raff](https://rafftechnologies.com/) - Provides integrated cloud infrastructure with servers, databases, Kubernetes, storage, and networking under one control plane, bill, and support team. <!-- tags: owns-hardware, region:us, region:eu -->
+* 🟡 [Runcrate](https://www.runcrate.ai/) - Provides GPU instances and OpenAI-compatible model inference on a unified platform, billed by the second for compute and per-token for API calls. <!-- tags: gpu, agent-native, owns-hardware -->
 * 🟢 [Runpod](https://www.runpod.io/) - Provides customizable GPU containers and secure cloud compute environments. <!-- tags: gpu -->
 * 🟢 [Salad](https://salad.com/) - A platform for leveraging latent consumer compute resources to power workloads.
 * 🟢 [Scaleway](https://www.scaleway.com/) - European cloud provider with a wide range of services including servers, storage, and AI tools. <!-- tags: region:eu -->
 * 🟢 [Seeweb](https://www.seeweb.it/) - Italian cloud infrastructure provider offering compute, storage, and CDN.
+* 🟢 [Sengi](https://sengi.run/) - Provides GitHub Actions runners as a drop-in replacement for GitHub-hosted runners, priced at $0.001 per minute for Basic tier with up to 2× faster builds on Premium. <!-- tags: owns-hardware -->
 * 🟡 [Sent](https://www.sent.dm/) - Cloud service provider.
 * 🟢 [Servers.com](https://www.servers.com/) - Global bare metal and private cloud platform supporting AI/ML compute. <!-- tags: owns-hardware -->
 * 🟢 [Shadeform](https://shadeform.com/) - GPU compute provider with a focus on low-cost AI infrastructure. <!-- tags: gpu -->
@@ -285,7 +292,7 @@ The provider owns a compute- or storage-heavy workload end to end. No provisioni
 * 🟢 [Miter](https://www.miter.com/) - All-in-one platform for payroll, HR, expenses, and field operations management. <!-- tags: durable-workflow -->
 * 🟢 [Mixpanel](https://mixpanel.com/) - Delivers product analytics to help teams build better products through data-driven decisions. <!-- tags: warehouse-lakehouse -->
 * 🟢 [Modal](https://modal.com/) - A serverless platform for AI and data teams to run compute-intensive applications without managing infrastructure. <!-- tags: llm-inference, serverless-functions, gpu -->
-* 🟢 [ModelRush](https://modelrush.ai/) - Provides a unified API layer for accessing text, image, video, and voice AI models with OpenAI-compatible integration, regional routing, and transparent per-model pricing. <!-- tags: llm-inference, speech-voice -->
+* 🟡 [ModelRush](https://modelrush.ai/) - Provides a unified API layer for accessing text, image, video, and voice AI models with OpenAI-compatible integration, regional routing, and transparent per-model pricing. <!-- tags: llm-inference, speech-voice -->
 * 🟢 [Momento](https://www.gomomento.com/) - Serverless caching with instant scaling, no cluster management, compatible with Redis clients and Memcached protocols. <!-- tags: key-value-cache -->
 * 🟢 [MongoDB](https://www.mongodb.com/) - Offers a general-purpose, document-based database designed for modern application development. <!-- tags: nosql-timeseries -->
 * 🟢 [MotherDuck](https://motherduck.com/) - Serverless analytics platform powered by DuckDB with cloud collaboration. <!-- tags: warehouse-lakehouse -->
@@ -305,7 +312,7 @@ The provider owns a compute- or storage-heavy workload end to end. No provisioni
 * 🟢 [OB-1](https://www.openblocklabs.com/) - Provides a self-improving coding agent that handles the full development lifecycle from project management to pull requests, with multi-model AI support and workflow automation. <!-- tags: app-generation, nosql-timeseries, durable-workflow -->
 * 🟢 [Ona](https://ona.com/) - Provides a platform to run and govern AI software agents in the cloud, offering standardized execution environments, security controls, and automated remediation for SDLC workflows. <!-- tags: app-generation, durable-workflow -->
 * 🟢 [OpenCode](https://opencode.ai/console) - Provides unified access to frontier and open-weight AI models through a single interface, with team management, spending controls, and subscription packages. <!-- tags: llm-inference, agent-native -->
-* 🟢 [OpenComputer](https://opencomputer.dev/) - Provides a cloud platform for deploying and running AI agents as TypeScript functions on managed Linux microVMs with built-in session management, streaming, and MCP support. <!-- tags: app-hosting, streaming-etl, agent-sandbox, agent-native -->
+* 🟡 [OpenComputer](https://opencomputer.dev/) - Provides an open source, self-hostable cloud coding agent that takes tasks in Slack and opens pull requests, running Claude Code, Codex or OpenCode on a VM in your own AWS, Azure or Google Cloud account. <!-- tags: agent-sandbox, open-source -->
 * 🟡 [OpenHands](https://www.openhands.dev/) - Provides an open source AI agent platform for autonomous software development that executes end-to-end engineering tasks including PR reviews, issue triage, CI fixes, and incident response. <!-- tags: app-generation, open-source -->
 * 🟢🔵 [OpenObserve](https://openobserve.ai/) - Open-source observability platform, cloud service SLA needs verification. <!-- tags: observability, open-source -->
 * 🟢 [Out Plane](https://outplane.com/) - Provides a cloud PaaS platform for developers to deploy applications in 60 seconds with managed PostgreSQL, Redis, auto-scaling, and compliance features without Kubernetes or YAML. <!-- tags: app-hosting, postgres-sql, key-value-cache -->
@@ -388,6 +395,7 @@ The provider owns a compute- or storage-heavy workload end to end. No provisioni
 
 Jurisdiction is the primary reason to buy: owned, operated, and data-resident in a specific country or region under its laws.
 
+* 🟢 [BlackBox Hosting](https://www.blackboxhosting.co.uk/) - Provides UK-based sovereign cloud infrastructure, disaster recovery, backup, and co-location services with data residency and compliance certifications. <!-- tags: region:gb, owns-hardware -->
 * 🟢 [cloudscale.ch](https://cloudscale.ch/) - Swiss IaaS provider offering VMs, GPU servers, load balancers, and object storage with per-hour pricing and full Swiss data residency. <!-- tags: region:ch -->
 * 🟢 [FPT Vietnam](https://fptsoftware.com/newsroom/news-and-press-releases/press-release/fpt-to-shape-the-future-of-ai-and-cloud-on-a-global-scale-in-collaboration-with-nvidia) - Investing $200 million to build an AI factory serving as a sovereign cloud, featuring NVIDIA's latest technologies to bolster Vietnam's digital sovereignty.
 * 🟢 [GMO GPU Cloud](https://www.gmo.jp/en/news/article/797/) - Offers GPU cloud services in Japan, providing scalable AI computing with NVIDIA's latest GPUs, ensuring data residency and compliance. <!-- tags: gpu, region:jp -->
@@ -425,7 +433,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Bolster](https://bolster.ai/) - A platform for preventing and mitigrating phishing and impersonation scams.
 * 🟢 [Boundary](https://www.boundaryproject.io/) - HashiCorp's secure remote access to systems and services.
 * 🟢 [Bubble](https://bubble.io/) - No-code visual programming platform for building web and mobile apps with drag-and-drop interface and usage-based pricing.
-* 🟢 [Causely](https://www.causely.ai/) - Provides causal reasoning intelligence for AI agents to detect, diagnose, and resolve incidents in distributed systems with deterministic accuracy and minimal token usage. <!-- tags: agent-native -->
+* 🟡 [Causely](https://www.causely.ai/) - Provides causal reasoning intelligence for AI agents to detect, diagnose, and resolve incidents in distributed systems with deterministic accuracy and minimal token usage. <!-- tags: agent-native -->
 * 🟢 [Caveman](https://caveman.so/) - Reduces AI agent token costs through context compression, shorter replies, and adaptive model selection, with cloud analytics and governance tools.
 * 🟢 [Cerbos](https://cerbos.dev/) - Open-source authorization with policy-as-code for access control. <!-- tags: open-source -->
 * 🟢 [Chainguard](https://www.chainguard.dev/) - Provides secure-by-default open source software with hardened, CVE-free container images, libraries, and VMs for supply chain security and AI threat protection. <!-- tags: open-source -->
@@ -442,7 +450,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Cohere](https://cohere.com/) - Enterprise AI platform with language models for automation, data insights, and custom solutions.
 * 🟢 [Command Code](https://commandcode.ai/) - Provides an AI coding agent optimized for open models, with tool call repairs, token efficiency, and continuous learning of developer coding patterns. <!-- tags: agent-native -->
 * 🟢 [Concourse](https://www.concourse.ai/) - Provides an AI execution layer for enterprise finance with autonomous agents for treasury, FP&A, accounting, and internal audit operations.
-* 🟢 [Conecto](https://conecto.chat/) - Provides an all-in-one customer messaging platform combining live chat, AI chatbot, shared inbox, CRM and analytics for support and sales teams.
+* 🟢 [Conecto](https://conecto.chat/) - Provides 582 hosted business tools (CRM, inbox, phone, invoicing, bookkeeping, help desk, HR and more) that AI agents call over MCP, a REST API or a SKILL.md, paid per call from a prepaid balance. <!-- tags: agent-native, region:eu -->
 * 🟡 [Crosby](https://crosby.ai/) - Provides AI-powered contract review and commercial legal services for businesses, combining machine learning with elite attorneys to accelerate deal closure.
 * 🟢 [CrowdStrike](https://www.crowdstrike.com/) - A cloud-native cybersecurity platform that provides endpoint protection, threat intelligence, and incident response powered by AI.
 * 🟢 [CurlShot](https://curlshot.com/) - Provides full-page website screenshots and PDF conversions via web interface or API, supporting multiple formats, devices, and content removal features.
@@ -532,6 +540,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Outerbase](https://www.outerbase.com/) - A platform for safely interacting with data and databases, now part of Cloudflare.
 * 🟢 [Pangea](https://pangea.cloud/) - Security services API platform for auth, vault, audit, and more.
 * 🟢 [Paper](https://paper.design/) - Provides a connected design canvas that integrates with development tools, AI agents, and real data sources, enabling seamless collaboration between design and code workflows.
+* 🟢 [Paradev](https://paradev.com/) - Enables developers to run Claude Code, Codex and other CLI coding agents in parallel, each in its own Git worktree, with diff review, scheduled automations and optional cloud workspaces. <!-- tags: open-source -->
 * 🟢 [Parahelp](https://parahelp.com/) - AI support agent that automates complex customer support tickets end-to-end for software companies.
 * 🟢 [Particle](https://www.particle.io/) - An integrated IoT platform offering hardware, firmware, and cloud connectivity tools for building and scaling connected products.
 * 🟢 [Permit](https://www.permit.io/) - Authorization-as-a-Service platform for baking-in access control in minutes.
@@ -573,8 +582,8 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟡 [Strix](https://www.strix.ai/) - Provides autonomous penetration testing and continuous security scanning for code, APIs, web apps, infrastructure, and cloud environments with automated vulnerability discovery and remediation.
 * 🟢 [StrongDM](https://www.strongdm.com/) - Zero-trust access platform for infrastructure and databases.
 * 🟡 [Stytch](https://stytch.com/) - Provides APIs and SDKs for passwordless authentication, including email magic links, SMS passcodes, and biometrics.
-* 🟡 [Superset](https://superset.sh/) - Enables developers to run 100+ parallel coding agents in isolated workspaces, automating tasks and streamlining code review workflows across multiple projects simultaneously.
 * 🟢 [Surfer AI](https://surferseo.com/ai/) - Uses AI to generate SEO-optimized content and blog articles with built-in search analysis tools.
+* 🟢 [Swamp](https://swamp-club.com/) - Provides an automation framework for building deterministic AI agent workflows with reusable behaviors, secure credential management, and enterprise-scale orchestration. <!-- tags: agent-native -->
 * 🟢 [Tavus](https://www.tavus.io/) - AI-powered conversational video platform with real-time face-to-face AI humans.
 * 🟢 [Teleport](https://goteleport.com/) - Zero trust infrastructure access platform with cryptographic identity and least privileged access.
 * 🟡 [Tensorlake](https://www.tensorlake.ai/) - Provides a complete platform for deploying production AI agents with durable execution, document ingestion, code sandboxes, and multi-cloud compute infrastructure.
@@ -582,6 +591,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢🔵 [Tggl](https://tggl.io/) - Feature flags platform, verification needed.
 * 🟢 [Tiptap](https://tiptap.dev/) - Headless rich text editor with real-time collaboration, AI content generation, and 100+ extensions.
 * 🟢 [Togai](https://www.togai.com/) - Provides billing infrastructure for usage-based pricing, supporting complex billing scenarios with real-time analytics.
+* 🟡 [Trace](https://www.tracecomputing.ai/) - Provides AI security and threat detection for cloud environments by tracing every AI workload, mapping behavior patterns, and identifying anomalies through kernel sensors and triage agents. <!-- tags: agent-native -->
 * 🟢 [Twilio](https://www.twilio.com/docs/iot) - Offers global IoT SIM connectivity via Super SIM and secure device communication through Programmable Wireless APIs.
 * 🟢 [Ubicloud](https://www.ubicloud.com/) - An open-source cloud platform that can run anywhere, offering IaaS features on bare metal providers with options for self-hosting or managed services. <!-- tags: open-source -->
 * 🟢 [UniBee](https://unibee.dev/) - Open-source billing and subscription management with usage-based pricing, multi-gateway support, and self-host options. <!-- tags: open-source -->
@@ -603,6 +613,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 An industry-specific service that runs a regulated or specialized workload, priced on usage: payments and banking infrastructure, HIPAA-grade health data, legal document processing at scale.
 
 * 🟢 [Agent From Abundance](https://www.agentfromabundance.com/) - Provides a complete real estate technology platform with systems for client management, transaction tracking, document organization, financial tracking, and business automation tools designed for r...
+* 🟡 [Radical Numerics](https://www.radicalnumerics.ai/) - Provides Omnii-1, a multimodal AI model for biological intelligence spanning genome regulation, biomolecule design, therapeutics, and biodefense applications.
 
 ## Contributing
 

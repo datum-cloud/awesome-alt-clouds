@@ -1,0 +1,50 @@
+---
+status: reviewed
+tagline: "GitHub Actions runners priced per minute, with Basic runners giving up to 6× more minutes per dollar than GitHub-hosted runners and a faster Premium tier."
+pricingModel: usage-based
+services:
+  - "Basic runners (2/4/8 vCPU Ubuntu 24.04)"
+  - "Premium runners (Ryzen 9 7950X3D, NVMe)"
+  - "GitHub Actions cache"
+  - "Docker layer caching"
+  - "GitHub App integration"
+socials:
+  website: "https://sengi.run/"
+---
+
+## What makes Sengi different
+
+Sengi is a drop-in replacement for GitHub-hosted Actions runners: instead of running CI jobs on GitHub's own infrastructure, teams point `runs-on` at a Sengi label and jobs execute on Sengi's virtual machines while all orchestration, logs, checks, and secrets remain in GitHub Actions. Migration is a one-line change per workflow, installed via a GitHub App, with no new config files or tokens to manage.
+
+The core differentiator is price-per-minute paired with a faster hardware tier. Basic runners match GitHub's standard 2/4/8 vCPU sizes at a fraction of the cost, while Premium runners use AMD Ryzen 9 7950X3D-class hosts with local NVMe storage; Sengi's public benchmark has Premium 4 vCPU beating GitHub's 4 vCPU runner on 11 of 12 open-source projects (up to 1.59× faster). Both classes can be mixed within the same repository by swapping labels job by job, so teams can keep cheap Basic runners for lightweight jobs and use Premium only where build speed matters.
+
+Unlike hyperscaler CI offerings bundled into broader platforms, Sengi is narrowly focused on being a runner substitution layer — no subscriptions, no base fees, and boot and teardown time is never billed.
+
+## Pricing model
+
+Usage-based, billed per minute with no subscription or base fee:
+
+- **Basic 2** (2 vCPU / 8 GB): $0.001/min ($0.06/hr)
+- **Basic 4** (4 vCPU / 16 GB): $0.002/min ($0.12/hr)
+- **Basic 8** (8 vCPU / 32 GB): $0.004/min ($0.24/hr)
+- **Premium 2** (2 vCPU / 8 GB): $0.003/min ($0.18/hr)
+- **Premium 4** (4 vCPU / 16 GB): $0.006/min ($0.36/hr)
+- **Premium 8** (8 vCPU / 32 GB): $0.012/min ($0.72/hr)
+
+A free allowance of 3,000 credits per month is included (3,000 Basic minutes at 2 vCPU, 1,500 at 4 vCPU, 750 at 8 vCPU; a Premium minute costs 3× the credits), and no credit card is required to start. By comparison, GitHub's standard 2 vCPU runner lists at $0.006/min — Sengi advertises up to 6× more CI minutes per dollar on Basic runners, with boot and teardown time never billed.
+
+## When it fits
+
+- Teams on GitHub Actions looking to cut CI spend without changing their workflow files beyond a `runs-on` label swap
+- CPU- and I/O-heavy jobs (Docker builds, test suites) that benefit from Premium's NVMe and faster clocks
+- Projects wanting to mix cheap and fast runners within the same repo depending on job type
+- Orgs wanting a reversible, low-risk CI migration (switching back is a one-line revert)
+
+## When it doesn't
+
+- Teams needing non-Ubuntu or non-x64 (e.g., ARM, Windows, macOS) runners: Sengi runs Ubuntu 24.04 on Linux x64 only
+- Workloads already on CI systems outside GitHub Actions, since Sengi is purpose-built as a GitHub Actions runner substitute
+
+## Inclusion criteria
+
+Sengi meets all three inclusion criteria: **transparent pricing** (published per-minute rates at https://sengi.run/), **self-service signup** (instant GitHub App connection and account creation at https://app.sengi.run/create-account with no card required), and a **public status page** (https://status.sengi.run/).

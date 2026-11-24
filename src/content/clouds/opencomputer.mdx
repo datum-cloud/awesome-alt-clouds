@@ -1,52 +1,54 @@
 ---
-status: draft
-tagline: "A platform for deploying AI agents as TypeScript functions on managed Linux microVMs with built-in sessions, streaming, and MCP support."
-pricingModel: usage-based
+status: reviewed
+tagline: "Open source, self-hostable alternative to Devin: cloud coding agents you mention as @Computer in Slack."
+openSource: true
+pricingModel: subscription
 services:
-  - "Managed AI agent deployment"
-  - "Bare sandboxes (Linux microVMs)"
-  - "Session management (hibernate/resume)"
-  - "Streaming agent output"
-  - "MCP server support"
-  - "Scheduled agent runs"
-  - "Secret/key isolation from runtime"
-  - "Checkpoint, fork, and live resize for sandboxes"
+  - "@Computer coding agent in Slack"
+  - "Web dashboard, API and CLI access"
+  - "Claude Code, Codex and OpenCode sessions"
+  - "Pull requests with lint, typecheck and test checks"
+  - "UI screenshots and preview links"
+  - "Self-hosting on AWS, Azure or Google Cloud"
+  - "Serverless agents (TypeScript agents run in the OpenComputer cloud)"
 socials:
   website: "https://opencomputer.dev/"
+  github: "https://github.com/diggerhq/opencomputer"
 ---
 
 ## What makes OpenComputer different
 
-OpenComputer positions itself as "Firebase for agents" — instead of provisioning generic VMs or containers, developers write an agent as a plain TypeScript function and deploy it directly. The platform handles the surrounding infrastructure that agent workloads specifically need: durable sessions that can hibernate and resume, live streaming of output, mid-run steering, and MCP server integration, all without the developer having to build that scaffolding themselves.
+OpenComputer describes itself as "the open source alternative to Devin": a cloud coding agent that a team works with in Slack by mentioning `@Computer` in a channel. The agent reads the code, runs commands, builds and tests, and opens a pull request, posting its progress in the thread; UI changes come with a screenshot and a preview link. The product is built for multiplayer use: anyone in the thread can steer the work, conventions one person explains apply to later requests, and the thread records who asked for each change. Slack is the first-class interface, with a web dashboard, API and CLI also available.
 
-A key architectural decision is that agents run on real Linux microVMs (not just sandboxed containers), giving them full shell, filesystem, package manager, and network access — so an agent can genuinely `git clone`, run `ffmpeg`, or drive a headless browser. Secrets are handled with a notable security model: API keys and tokens are bound to a specific origin and injected only after a request leaves the sandbox, meaning the agent's own runtime never has access to raw credentials it uses.
+The code is Apache-2.0 on GitHub, and the whole stack can be self-hosted on one VM per organization in your own AWS, Azure or Google Cloud account. The VM connects out to a gateway and needs no open inbound ports. Each Slack thread gets its own session and copy of the repositories, so one VM can often run hundreds of sessions; state is written to the VM's local disk first and persisted to a git-backed store, so another VM can pick up a session and you scale out by adding VMs. Heavy builds and preview environments can be delegated to an external sandbox rather than giving every session its own.
 
-For teams that want more control, OpenComputer exposes the same underlying microVMs as "bare sandboxes" with checkpoint, fork, and live resize — letting developers bring their own agent loop/harness while still using OpenComputer's compute layer.
+Under the hood each session runs an existing agent (Claude Code, Codex or OpenCode), and teams can bring their own Claude or ChatGPT subscription or an API key instead of paying for model tokens. OpenComputer's own benchmark puts its time from Slack message to first push at 24 seconds, against 53–72 seconds for the other cloud coding agents it tested, including Devin.
 
 ## Pricing model
 
-Pricing is usage-based with optional prepaid plans that act as a credit multiplier:
+Hosted plans are published on the homepage [pricing section](https://opencomputer.dev/#pricing) and cover a whole Slack workspace, billed by "work minutes": the time the agent is actively working, metered by the second, with idle and waiting time free.
 
-- **PAYG**: $10 free credit to start, model calls billed at API rates (no markup), machine time billed per second, scales to zero when idle.
-- **Pro** ($20/mo): credit becomes 10× usage credit; bring-your-own model subscription routes all spend to machine time.
-- **Max** ($200/mo): same 10× multiplier at higher scale, enough to keep 10+ default machines running continuously.
-- **Enterprise**: custom pricing, VPC/self-hosted options, SSO, audit log.
+- **Trial**: free for 3 days or 600 work minutes, whichever comes first; no card, includes $10 of OpenComputer's model tokens.
+- **Pro**: $20/month for 2,000 work minutes.
+- **Max**: $200/month for 25,000 work minutes.
+- **Enterprise**: custom volume pricing for over 60,000 work minutes a month.
+- **Self-hosted**: free under Apache-2.0; you pay your cloud and model provider.
 
-Machine time is metered per second across two meters: token passthrough (model calls at API rates, $0 if bringing your own key) and machine time. The default sandbox (2 GB / 1 vCPU) costs $0.00315/min and bursts automatically to larger sizes (up to $0.05040/min at 32 GB / 16 vCPU peak) as needed. A lightly-used session (~10 min/day) costs roughly $1/month. What stands out is the lack of markup on model calls and per-second billing that automatically bursts and scales to zero — a departure from flat hyperscaler VM pricing.
+Minutes past a plan's allowance cost $0.01 each, paid from prepaid credit packs of $10, $50 or $200 with optional auto top-up. Models are either your own subscription or key at no charge, or OpenComputer's tokens at API prices with no markup. Billing for the agent's working time, rather than per seat or per sandbox hour, is the notable difference from most hosted dev environments.
 
 ## When it fits
 
-- Teams building autonomous or scheduled AI agents (e.g., PR bots, cleanup agents, monitoring agents) that need durable, resumable sessions
-- Developers who want agent infrastructure (streaming, MCP, session hibernation) without building it themselves
-- Workloads requiring real Linux environments (shell, filesystem, package installs) rather than restricted sandboxes
-- Use cases with intermittent/bursty compute needs, where scale-to-zero billing saves cost
-- Teams wanting strict credential isolation between agent code and secrets
+- Teams that want to hand off bug fixes and small features from Slack threads and get pull requests back
+- Organizations that want a Devin-style cloud agent but need to run it inside their own AWS, Azure or Google Cloud account
+- Teams that already pay for Claude or ChatGPT subscriptions and want to reuse them for cloud agents
+- Mixed technical and non-technical teams that want to request and steer changes in a shared thread
 
 ## When it doesn't
 
-- Not designed for general-purpose web hosting, large-scale stateful databases, or traditional multi-service infrastructure
-- Not a fit for teams needing broad multi-region global infrastructure, as no specific regions are published
+- Teams that don't use Slack as their main collaboration tool, since Slack is the first-class interface
+- Buyers looking for general-purpose compute, hosting or sandboxes rather than a coding agent product
+- Organizations that need a public status page or published uptime SLA for the hosted service
 
 ## Inclusion criteria
 
-OpenComputer meets the transparent pricing criterion via its detailed [pricing page](https://opencomputer.dev/#pricing), which lists PAYG rates, machine-time tiers, and plan pricing. Self-service signup is available directly through the [app login/signup flow](https://app.opencomputer.dev/). A public SLA/status page was referenced in the inclusion score but was not directly found in the crawled content.
+OpenComputer meets 2 of 3 criteria: transparent pricing in the homepage [pricing section](https://opencomputer.dev/#pricing) and self-service signup with a no-card trial at [app.opencomputer.dev](https://app.opencomputer.dev/?plan=trial). No public status page or SLA is linked from the site, so the third criterion is not met.

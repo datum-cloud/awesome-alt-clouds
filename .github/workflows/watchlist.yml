@@ -59,7 +59,7 @@ jobs:
         if: steps.check-permission.outputs.allowed == 'true'
         uses: actions/setup-python@v7
         with:
-          python-version: '3.11'
+          python-version: '3.15'
 
       - name: Install dependencies
         if: steps.check-permission.outputs.allowed == 'true'
