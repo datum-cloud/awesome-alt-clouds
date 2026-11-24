@@ -638,6 +638,11 @@ html[data-compare-full] [data-compare-toggle]:not([aria-pressed="true"]) {
       bottom: 0;
       background: #fff;
     }
+    /* While the tag picker is open, un-pin the footer so the full tag list shows and
+       the promo + CTAs are pushed below it (the rail scrolls to reach them). */
+    .shell--sticky:has(#tagPanel:not([hidden])) .shell__rail-footer {
+      position: relative;
+    }
     /* Redraw the rail/main divider that this opaque footer (and its filled
        buttons) would otherwise cover. Painted above the children. */
     .shell--sticky .shell__rail-footer::after {

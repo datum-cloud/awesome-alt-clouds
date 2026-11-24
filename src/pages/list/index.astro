@@ -28,21 +28,6 @@ const toggleBtn = "grid h-6 w-8 place-items-center aria-pressed:bg-mint";
 <Base title={title} description={description} canonical={absoluteUrl("list/")} nav="list">
   <SidebarShell railLabel="Filters" sticky>
     <form slot="rail" class="rail-block flex flex-col gap-10" id="listFilters" role="search" onsubmit="return false">
-      <fieldset class="flex flex-col gap-2">
-        <legend class="field-label">Filter by</legend>
-        <label class="sr-only" for="categorySelect">Category</label>
-        <select id="categorySelect" class="select-field">
-          <option value="" data-label="Category: All">Category: All ({items.length})</option>
-          {
-            CATEGORIES.map((cat) => (
-              <option value={categoryToSlug(cat)} data-category={cat} data-label={`Category: ${cat}`}>
-                Category: {cat} ({countByCategory(cat)})
-              </option>
-            ))
-          }
-        </select>
-        <TagPicker groups={tagGroups} />
-      </fieldset>
       <div>
         <label class="field-label" for="searchInput">Search</label>
         <div class="relative">
@@ -59,6 +44,21 @@ const toggleBtn = "grid h-6 w-8 place-items-center aria-pressed:bg-mint";
           </svg>
         </div>
       </div>
+      <fieldset class="flex flex-col gap-2">
+        <legend class="field-label">Filter by</legend>
+        <label class="sr-only" for="categorySelect">Category</label>
+        <select id="categorySelect" class="select-field">
+          <option value="" data-label="Category: All">Category: All ({items.length})</option>
+          {
+            CATEGORIES.map((cat) => (
+              <option value={categoryToSlug(cat)} data-category={cat} data-label={`Category: ${cat}`}>
+                Category: {cat} ({countByCategory(cat)})
+              </option>
+            ))
+          }
+        </select>
+        <TagPicker groups={tagGroups} />
+      </fieldset>
     </form>
     <DatumPromo slot="rail-footer" />
 

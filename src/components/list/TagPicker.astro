@@ -3,8 +3,10 @@
  * Multi-select tag filter (Figma 1:2124 "Tags picker — grouped workload, capabilities,
  * region & verification"). A select-styled toggle opens an in-flow panel of grouped
  * checkboxes; selected tags combine with AND (a cloud must carry every checked tag).
- * The panel renders in flow (not as an overlay) because the sticky rail scrolls and
- * would clip an absolutely positioned popover.
+ * The panel renders in flow at full height (not as an overlay, and not as an inner
+ * scroll box): the sticky rail scrolls and would clip a popover, and while the panel
+ * is open the rail footer un-pins so the whole list shows (see `.shell--sticky` in
+ * global.css).
  * Behaviour lives in src/scripts/list-filters.ts.
  */
 import { tagLabel, type TagGroup } from "../../lib/taxonomy";
@@ -28,7 +30,7 @@ const groupLabel = (g: TagGroup) => (g.scope === "workload" ? `Workload · ${g.l
   </button>
 
   <div
-    class="mt-1 max-h-[min(55vh,420px)] overflow-y-auto border border-midnight bg-white text-xs"
+    class="mt-1 border border-midnight bg-white text-xs"
     id="tagPanel"
     hidden>
     <div class="sticky top-0 z-[1] flex items-center justify-between gap-2 border-b border-midnight bg-white px-3 py-2">
