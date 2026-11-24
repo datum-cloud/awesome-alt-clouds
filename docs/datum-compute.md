@@ -16,6 +16,10 @@ generated `*.datumproxy.net` URL.
 | URL      | generated `https://<name>.datumproxy.net` (printed by the deploy)  |
 | Workflow | `.github/workflows/deploy-datum.yml`                               |
 
+Per-branch previews behind Basic Authentication (`preview-datum.yml`,
+`preview-cleanup.yml`, `preview-autoclean.yml`) are described in
+[datum-compute-previews.md](./datum-compute-previews.md).
+
 ## How it fits together
 
 ```text

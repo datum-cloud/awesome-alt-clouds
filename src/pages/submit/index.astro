@@ -12,12 +12,11 @@ const submitCanonical = `${absoluteUrl("submit")}/`;
   title={submitTitle}
   description={submitDescription}
   canonical={submitCanonical}
+  nav="contribute"
 >
-  <main
-    class="min-h-screen flex items-center justify-center bg-cream p-8 text-warm-stone"
-  >
+  <div class="legacy-page flex items-center justify-center bg-paper text-midnight">
     <div
-      class="container relative bg-white border border-soft-sage rounded-2xl shadow-[0_4px_24px_rgba(62,54,46,0.08),0_1px_3px_rgba(62,54,46,0.04)] max-w-xl w-full p-10 overflow-hidden"
+      class="container relative bg-white border-2 border-midnight max-w-xl w-full p-10 overflow-hidden"
     >
       <!-- Constellation decoration -->
       <svg
@@ -41,6 +40,7 @@ const submitCanonical = `${absoluteUrl("submit")}/`;
       <div id="form-section">
         <a
           href={homeUrl}
+          data-history-back
           class="back-link inline-flex items-center gap-1.5 text-warm-stone hover:text-rich-earth text-sm mb-5 no-underline transition-colors"
         >
           <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -50,7 +50,7 @@ const submitCanonical = `${absoluteUrl("submit")}/`;
               stroke-width="2"
               d="M15 19l-7-7 7-7"></path>
           </svg>
-          Back to directory
+          Back
         </a>
         <h1
           class="font-serif text-3xl font-semibold text-rich-earth mb-2 tracking-tight"
@@ -167,6 +167,7 @@ const submitCanonical = `${absoluteUrl("submit")}/`;
       <div id="step2-section" class="hidden">
         <a
           href={homeUrl}
+          data-history-back
           class="back-link inline-flex items-center gap-1.5 text-warm-stone hover:text-rich-earth text-sm mb-5 no-underline transition-colors"
         >
           <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -176,7 +177,7 @@ const submitCanonical = `${absoluteUrl("submit")}/`;
               stroke-width="2"
               d="M15 19l-7-7 7-7"></path>
           </svg>
-          Back to directory
+          Back
         </a>
         <div class="mb-5">
           <h2 class="font-serif text-2xl font-semibold text-rich-earth mb-1.5">
@@ -230,9 +231,28 @@ const submitCanonical = `${absoluteUrl("submit")}/`;
         <p class="text-warm-stone">Your submission has been received.</p>
       </div>
     </div>
-  </main>
+  </div>
 
   <script>
+    // "Back" returns to wherever the visitor came from on this site (the list,
+    // a detail page, ...). Direct visits / external referrers keep the href
+    // fallback to the homepage.
+    const cameFromThisSite = () => {
+      try {
+        return !!document.referrer && new URL(document.referrer).origin === location.origin;
+      } catch {
+        return false;
+      }
+    };
+    document.querySelectorAll<HTMLAnchorElement>("a[data-history-back]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        if (cameFromThisSite() && history.length > 1) {
+          event.preventDefault();
+          history.back();
+        }
+      });
+    });
+
     const pageLoadTime = Date.now();
     const MIN_SUBMIT_TIME = 3000;
     const MAX_URLS = 5;

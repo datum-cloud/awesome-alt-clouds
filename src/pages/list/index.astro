@@ -1,0 +1,145 @@
+---
+/**
+ * The List (Figma nodes 1:1304 list view, 1:2077 grid view).
+ * Rows and tiles are rendered once each at build time; `list-filters.ts` filters,
+ * sorts and switches between them on the client.
+ */
+import CloudRow from "../../components/list/CloudRow.astro";
+import CloudTable from "../../components/list/CloudTable.astro";
+import CloudTile from "../../components/list/CloudTile.astro";
+import TagPicker from "../../components/list/TagPicker.astro";
+import DatumPromo from "../../components/site/DatumPromo.astro";
+import SidebarShell from "../../components/site/SidebarShell.astro";
+import Base from "../../layouts/Base.astro";
+import { asset } from "../../lib/assets";
+import { categoryToSlug, countByCategory, getTagCounts } from "../../lib/clouds";
+import { getListItems } from "../../lib/list-items";
+import { absoluteUrl } from "../../lib/site-urls";
+import { CATEGORIES, groupTagCounts } from "../../lib/taxonomy";
+
+const items = await getListItems();
+const tagGroups = groupTagCounts(getTagCounts());
+const title = `The List: ${items.length} alternative cloud providers | Alt Cloud`;
+const description =
+  "Browse and filter every alternative cloud provider in the directory by category, tag and name.";
+const toggleBtn = "grid h-6 w-8 place-items-center aria-pressed:bg-mint";
+---
+
+<Base title={title} description={description} canonical={absoluteUrl("list/")} nav="list">
+  <SidebarShell railLabel="Filters" sticky>
+    <form slot="rail" class="rail-block flex flex-col gap-10" id="listFilters" role="search" onsubmit="return false">
+      <div>
+        <label class="field-label" for="searchInput">Search</label>
+        <div class="relative">
+          <input
+            id="searchInput"
+            type="search"
+            class="input-field pr-9"
+            placeholder="e.g. Compute"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path>
+          </svg>
+        </div>
+      </div>
+      <fieldset class="flex flex-col gap-2">
+        <legend class="field-label">Filter by</legend>
+        <label class="sr-only" for="categorySelect">Category</label>
+        <select id="categorySelect" class="select-field">
+          <option value="" data-label="Category: All">Category: All ({items.length})</option>
+          {
+            CATEGORIES.map((cat) => (
+              <option value={categoryToSlug(cat)} data-category={cat} data-label={`Category: ${cat}`}>
+                Category: {cat} ({countByCategory(cat)})
+              </option>
+            ))
+          }
+        </select>
+        <TagPicker groups={tagGroups} />
+      </fieldset>
+    </form>
+    <DatumPromo slot="rail-footer" />
+
+    <script is:inline>
+      // No list → grid flash: pick the view (?view=, else the remembered one) before the
+      // panels are parsed. The html flag hides the list panel via CSS straight away; the
+      // script after the panels swaps their `hidden` attributes and clears the flag, and
+      // list-filters.ts then owns the view as usual. Keep VIEW_KEY in sync with it.
+      (function () {
+        let v = new URLSearchParams(location.search).get("view");
+        if (v !== "grid" && v !== "list") {
+          try {
+            v = localStorage.getItem("altcloud:list-view");
+          } catch {
+            v = null;
+          }
+        }
+        if (v === "grid") document.documentElement.dataset.listView = "grid";
+      })();
+    </script>
+    <div class="relative p-10 max-lg:px-4" id="listRoot" data-view="list" data-base={asset("")}>
+      <h1 class="sr-only">The List</h1>
+      <div class="absolute top-0 right-0 flex border-b border-l border-midnight" role="group" aria-label="View">
+        <button type="button" class={toggleBtn} data-view-btn="list" aria-pressed="true" title="List view">
+          <span class="sr-only">List view</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg>
+        </button>
+        <button type="button" class={toggleBtn} data-view-btn="grid" aria-pressed="false" title="Grid view">
+          <span class="sr-only">Grid view</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18M15 3v18"></path></svg>
+        </button>
+      </div>
+
+      <!-- Result size for the current search + filters; list-filters.ts keeps it in sync. -->
+      <p class="mb-5 font-mono text-base leading-6 font-bold" id="resultCount" aria-live="polite">
+        Showing {items.length} providers:
+      </p>
+
+      <div data-view-panel="list">
+        <CloudTable sortable>
+          {items.map((item) => <CloudRow item={item} />)}
+        </CloudTable>
+      </div>
+
+      <!-- Figma 1:2077: 130.5 x 124 tiles on a 1px midnight grid (131.5 / 125 pitch). Each tile
+           draws all four edges as a 1px outline into the 1px gaps (shared with its neighbours),
+           so a short last row doesn't leave a sheet border running past it. Phones keep 3 columns. -->
+      <ul
+        class="mt-0.5 grid auto-rows-[124px] grid-cols-[repeat(auto-fill,minmax(130.5px,1fr))] gap-px p-px max-[479px]:auto-rows-[104px] max-[479px]:grid-cols-[repeat(auto-fill,minmax(109px,1fr))]"
+        id="tiles"
+        data-view-panel="grid"
+        hidden>
+        {items.map((item) => <CloudTile item={item} />)}
+      </ul>
+      <script is:inline>
+        (function () {
+          const html = document.documentElement;
+          if (html.dataset.listView !== "grid") return;
+          const root = document.getElementById("listRoot");
+          root.dataset.view = "grid";
+          root.querySelectorAll("[data-view-panel]").forEach(function (panel) {
+            panel.hidden = panel.dataset.viewPanel !== "grid";
+          });
+          root.querySelectorAll("[data-view-btn]").forEach(function (btn) {
+            btn.setAttribute("aria-pressed", String(btn.dataset.viewBtn === "grid"));
+          });
+          delete html.dataset.listView;
+        })();
+      </script>
+
+      <div id="emptyState" class="py-20 text-center" hidden>
+        <p class="display text-xl">No clouds match.</p>
+        <p class="mt-2">
+          Know one we're missing? <a class="underline" href={asset("submit/")}>Submit it</a>.
+        </p>
+      </div>
+    </div>
+  </SidebarShell>
+</Base>
+
+<script>
+  import { initListFilters } from "../../scripts/list-filters";
+  initListFilters();
+</script>

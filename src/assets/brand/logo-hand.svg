@@ -1,0 +1,24 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="31" height="38" viewBox="0 0 31 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="noun_devilgesture_4398319 1">
+<mask id="stroke0_0_20" maskUnits="userSpaceOnUse" x="16.6562" y="10.1124" width="8" height="10" fill="black">
+<rect fill="white" x="16.6562" y="10.1124" width="8" height="10"/>
+<path d="M22.9687 13.6217V18.1498H18.6562V12.1124H22.9687V13.6217Z"/>
+</mask>
+<path id="Vector" d="M22.9687 13.6217V18.1498H18.6562V12.1124H22.9687V13.6217Z" stroke-width="2.24999" stroke="black" mask="url(#stroke0_0_20)"/>
+<mask id="stroke1_0_20" maskUnits="userSpaceOnUse" x="10.1875" y="10.1124" width="8" height="10" fill="black">
+<rect fill="white" x="10.1875" y="10.1124" width="8" height="10"/>
+<path d="M16.5 13.6217V18.1498H14.3437V16.6405H12.1875V12.1124H16.5V13.6217Z"/>
+</mask>
+<path id="Vector_2" d="M16.5 13.6217V18.1498H14.3437V16.6405H12.1875V12.1124H16.5V13.6217Z" stroke-width="2.24999" stroke="black" mask="url(#stroke1_0_20)"/>
+<mask id="stroke2_0_20" maskUnits="userSpaceOnUse" x="3.71875" y="-0.453133" width="8" height="17" fill="black">
+<rect fill="white" x="3.71875" y="-0.453133" width="8" height="17"/>
+<path d="M10.0312 13.6218V15.1312H5.71875V1.54687H10.0312V13.6218Z"/>
+</mask>
+<path id="Vector_3" d="M10.0312 13.6218V15.1312H5.71875V1.54687H10.0312V13.6218Z" stroke-width="2.24999" stroke="black" mask="url(#stroke2_0_20)"/>
+<mask id="stroke3_0_20" maskUnits="userSpaceOnUse" x="-0.59375" y="2.5656" width="32" height="35" fill="black">
+<rect fill="white" x="-0.59375" y="2.5656" width="32" height="35"/>
+<path d="M29.4373 28.7154V34.7529H27.2811V36.2623H7.02756V34.7529H5.71872V28.7154H7.87496V30.2248H12.1874V28.7154H7.87496V27.2061H3.56249V25.6967H1.40625V18.1499H3.56249V16.6405H12.1874V19.6593H7.87496V21.1686H5.71872V22.678H7.87496V21.1686H12.1874V19.6593H16.4999V18.1499H18.6561V19.6593H22.9686V18.1499H25.1249V4.5656H29.4373V27.2061H27.2811V28.7154H18.6561V30.2248H27.2811V28.7154H29.4373Z"/>
+</mask>
+<path id="Vector_4" d="M7.87496 28.7154H5.71872V34.7529H7.02756V36.2623H27.2811V34.7529H29.4373V28.7154H27.2811M7.87496 28.7154V30.2248H12.1874V28.7154H7.87496ZM7.87496 28.7154V27.2061H3.56249V25.6967H1.40625V18.1499H3.56249V16.6405H12.1874V19.6593M12.1874 19.6593H7.87496V21.1686M12.1874 19.6593V21.1686H7.87496M12.1874 19.6593H16.4999V18.1499H18.6561V19.6593H22.9686V18.1499H25.1249V4.5656H29.4373V27.2061H27.2811V28.7154M7.87496 21.1686H5.71872V22.678H7.87496V21.1686ZM27.2811 28.7154H18.6561V30.2248H27.2811V28.7154Z" stroke-width="2.24999" stroke="black" mask="url(#stroke3_0_20)"/>
+</g>
+</svg>

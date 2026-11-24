@@ -1,0 +1,23 @@
+---
+/** Renders one Figma pixel icon centred in a 100x100 slot (keeps the SVG's own size). */
+import computer from "../../assets/pixel/computer.svg?raw";
+import frog from "../../assets/pixel/frog.svg?raw";
+import peace from "../../assets/pixel/peace.svg?raw";
+import pumpkin from "../../assets/pixel/pumpkin.svg?raw";
+import question from "../../assets/pixel/question.svg?raw";
+import type { PixelIconName } from "../../lib/pixel-icons";
+
+const SOURCES: Record<PixelIconName, string> = { computer, frog, peace, pumpkin, question };
+
+export interface Props {
+  name: PixelIconName;
+  class?: string;
+}
+const { name, class: className = "" } = Astro.props;
+const svg = SOURCES[name]
+  .replace(/style="display: block;"/, "")
+  .replace(/preserveAspectRatio="none"/, "")
+  .replace("<svg", '<svg aria-hidden="true" focusable="false"');
+---
+
+<span class:list={["grid size-[100px] flex-none place-items-center text-midnight", className]} set:html={svg} />

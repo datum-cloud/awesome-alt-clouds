@@ -1,0 +1,39 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="184" height="138.191" viewBox="0 0 184 138.191" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="noun_devilgesture_4398319 1">
+<g id="Vector">
+<path d="M109.25 52.3249V64.3998H97.7499V48.2999H109.25V52.3249Z" fill="white"/>
+<mask id="stroke0_0_14" maskUnits="userSpaceOnUse" x="94.7499" y="45.2999" width="18" height="23" fill="black">
+<rect fill="white" x="94.7499" y="45.2999" width="18" height="23"/>
+<path d="M109.25 52.3249V64.3998H97.7499V48.2999H109.25V52.3249Z"/>
+</mask>
+<path d="M109.25 52.3249V64.3998H97.7499V48.2999H109.25V52.3249Z" stroke-width="6" stroke="black" mask="url(#stroke0_0_14)"/>
+</g>
+<g id="Vector_2">
+<path d="M91.9999 52.3249V64.3998H86.2499V60.3749H80.5V48.2999H91.9999V52.3249Z" fill="white"/>
+<mask id="stroke1_0_14" maskUnits="userSpaceOnUse" x="77.5" y="45.2999" width="18" height="23" fill="black">
+<rect fill="white" x="77.5" y="45.2999" width="18" height="23"/>
+<path d="M91.9999 52.3249V64.3998H86.2499V60.3749H80.5V48.2999H91.9999V52.3249Z"/>
+</mask>
+<path d="M91.9999 52.3249V64.3998H86.2499V60.3749H80.5V48.2999H91.9999V52.3249Z" stroke-width="6" stroke="black" mask="url(#stroke1_0_14)"/>
+</g>
+<g id="Vector_3">
+<path d="M74.7499 52.3249V56.3499H63.25V20.125H74.7499V52.3249Z" fill="white"/>
+<mask id="stroke2_0_14" maskUnits="userSpaceOnUse" x="60.25" y="17.125" width="18" height="43" fill="black">
+<rect fill="white" x="60.25" y="17.125" width="18" height="43"/>
+<path d="M74.7499 52.3249V56.3499H63.25V20.125H74.7499V52.3249Z"/>
+</mask>
+<path d="M74.7499 52.3249V56.3499H63.25V20.125H74.7499V52.3249Z" stroke-width="6" stroke="black" mask="url(#stroke2_0_14)"/>
+</g>
+<g id="Vector_4">
+<use xlink:href="#stroke3_0_14" fill="white"/>
+<mask id="stroke4_0_14" maskUnits="userSpaceOnUse" x="48.75" y="25.1749" width="81" height="91" fill="black">
+<rect fill="white" x="48.75" y="25.1749" width="81" height="91"/>
+<use xlink:href="#stroke3_0_14"/>
+</mask>
+<path d="M68.9999 92.5748H63.2499V108.675H66.7402V112.7H120.75V108.675H126.5V92.5748H120.75M68.9999 92.5748V96.5998H80.4999V92.5748H68.9999ZM68.9999 92.5748V88.5498H57.5V84.5248H51.75V64.3999H57.5V60.3749H80.4999V68.4248M80.4999 68.4248H68.9999V72.4498M80.4999 68.4248V72.4498H68.9999M80.4999 68.4248H91.9999V64.3999H97.7499V68.4248H109.25V64.3999H115V28.1749H126.5V88.5498H120.75V92.5748M68.9999 72.4498H63.2499V76.4748H68.9999V72.4498ZM120.75 92.5748H97.7499V96.5998H120.75V92.5748Z" stroke-width="6" stroke="black" mask="url(#stroke4_0_14)"/>
+</g>
+</g>
+<defs>
+<path id="stroke3_0_14" d="M126.5 92.5748V108.675H120.75V112.7H66.7402V108.675H63.2499V92.5748H68.9999V96.5998H80.4999V92.5748H68.9999V88.5498H57.5V84.5248H51.75V64.3999H57.5V60.3749H80.4999V68.4249H68.9999V72.4498H63.2499V76.4748H68.9999V72.4498H80.4999V68.4249H91.9999V64.3999H97.7499V68.4249H109.25V64.3999H115V28.1749H126.5V88.5498H120.75V92.5748H97.7499V96.5998H120.75V92.5748H126.5Z"/>
+</defs>
+</svg>

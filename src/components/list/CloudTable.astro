@@ -1,0 +1,134 @@
+---
+/** List-view table shell: header row + <tbody id="rows"> for CloudRow children. */
+export interface Props {
+  /** Render the Provider header as the sort toggle (List page only). */
+  sortable?: boolean;
+}
+const { sortable = false } = Astro.props;
+---
+
+<table class="cloud-table">
+  <!-- Figma 1:1462 column widths on a 1314px table: 220 / 552 / 180 / 255 / 107 -->
+  <colgroup>
+    <col style="width: 16.74%" />
+    <col style="width: 42.01%" />
+    <col style="width: 13.7%" />
+    <col style="width: 19.41%" />
+    <col style="width: 8.14%" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th scope="col" aria-sort="ascending" id={sortable ? "sortHeader" : undefined}>
+        {
+          sortable ? (
+            <button type="button" id="sortBtn" class="inline-flex items-center gap-2">
+              Provider
+              <svg width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                <path d="M2 4l3-3 3 3M2 8l3 3 3-3" />
+              </svg>
+            </button>
+          ) : (
+            "Provider"
+          )
+        }
+      </th>
+      <th scope="col">What it does</th>
+      <th scope="col">Category</th>
+      <th scope="col">Tags</th>
+      <th scope="col">Pricing</th>
+    </tr>
+  </thead>
+  <tbody id="rows">
+    <slot />
+  </tbody>
+</table>
+
+<style>
+  /*
+   * Figma 1:1304 ("Datum App UI/Tables"): 35px header, 64px rows, 1px midnight rules,
+   * 16px horizontal cell padding (Provider has none on the left), 12/16 text,
+   * single-line cells that truncate with an ellipsis.
+   * Table/cell rules stay here (child selectors + the phone reflow from table to
+   * wrapped rows); everything inside a cell is styled with utilities in CloudRow.
+   */
+  .cloud-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .cloud-table thead th {
+    height: 35px;
+    padding: 0 16px 19px;
+    vertical-align: top;
+    text-align: left;
+    font-weight: 400;
+    color: rgb(12 29 49 / 0.6);
+    border-bottom: 1px solid var(--color-midnight);
+    white-space: nowrap;
+  }
+  .cloud-table thead th:first-child {
+    padding-left: 0;
+  }
+  .cloud-table :global(.cloud-row) {
+    border-bottom: 1px solid var(--color-midnight);
+  }
+  .cloud-table :global(.cloud-row:hover) {
+    background: var(--color-paper);
+  }
+  .cloud-table :global(.cloud-row > *) {
+    height: 64px;
+    padding: 0 16px;
+    vertical-align: middle;
+    text-align: left;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cloud-table :global(.cloud-row > .cloud-row__name) {
+    padding-left: 0;
+    color: rgb(12 29 49 / 0.8);
+  }
+  .cloud-table :global(.cloud-row__desc) {
+    color: rgb(12 29 49 / 0.6);
+  }
+  .cloud-table :global(.cloud-row__cat) {
+    color: rgb(12 29 49 / 0.8);
+  }
+
+  @media (max-width: 1023px) {
+    .cloud-table thead {
+      display: none;
+    }
+    .cloud-table,
+    .cloud-table tbody {
+      display: block;
+    }
+    .cloud-table :global(.cloud-row) {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      padding: 16px 0;
+    }
+    .cloud-table :global(.cloud-row > *) {
+      height: auto;
+      padding: 0;
+      width: auto;
+    }
+    .cloud-table :global(.cloud-row__name),
+    .cloud-table :global(.cloud-row__desc) {
+      flex: 1 0 100%;
+    }
+    /* No fixed columns on phones: let the description wrap instead of truncating. */
+    .cloud-table :global(.cloud-row > .cloud-row__desc) {
+      white-space: normal;
+    }
+    .cloud-table :global(.cloud-row__pricing) {
+      margin-left: auto;
+      text-align: right;
+    }
+  }
+</style>

@@ -29,6 +29,9 @@ const RESERVED_SLUGS = new Set<string>([
   "watchlist",
   "compare",
   "categories",
+  "list",
+  "definitions",
+  "extension",
   "404",
   "clouds.json",
   "llms.txt",
@@ -36,6 +39,10 @@ const RESERVED_SLUGS = new Set<string>([
   "watchlist.json",
   "og-image.png",
   "altclouds-logo.png",
+  "favicon.svg",
+  "favicon-32.png",
+  "apple-touch-icon.png",
+  "logos",
   "robots.txt",
   "cname",
   "rss.xml",
@@ -122,4 +129,42 @@ export function getTagCounts(): Map<string, number> {
     for (const tag of tags) counts.set(tag, (counts.get(tag) ?? 0) + 1);
   }
   return counts;
+}
+
+/**
+ * Hand-picked logos (in `public/logos/`) for providers whose favicon the Google service
+ * can't resolve (e.g. an inline `data:` favicon), keyed by hostname without `www.`.
+ */
+const LOGO_OVERRIDES: Record<string, string> = {
+  "9router.com": "logos/9router.svg",
+};
+
+/** Favicon-based logo for a provider URL (Google s2 service; 64px renders crisp at 40px). */
+export function logoUrl(url: string, size = 64): string {
+  try {
+    const host = new URL(url).hostname;
+    const override = LOGO_OVERRIDES[host.replace(/^www\./, "")];
+    if (override) return `${import.meta.env.BASE_URL}${override}`;
+    return `https://www.google.com/s2/favicons?domain=${host}&sz=${size}`;
+  } catch {
+    return "";
+  }
+}
+
+/** Where a list/grid item points: its published profile, else the provider site. */
+export function cloudLink(
+  cloud: CloudWithSlug,
+  publishedSlugs: ReadonlySet<string>,
+  base: string
+): { href: string; external: boolean } {
+  return publishedSlugs.has(cloud.slug)
+    ? { href: `${base}${cloud.slug}/`, external: false }
+    : { href: cloud.url, external: true };
+}
+
+/** Newest first by `dateAdded` (entries without a date sort last). */
+export function newestClouds(limit: number): CloudWithSlug[] {
+  return [...clouds]
+    .sort((a, b) => (b.dateAdded ?? "").localeCompare(a.dateAdded ?? ""))
+    .slice(0, limit);
 }

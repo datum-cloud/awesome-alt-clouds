@@ -1,0 +1,57 @@
+---
+/** Figma node 1:1911: logo cell, mono nav, Browser extension link, HUMAN|AGENT switch. */
+import { asset } from "../../lib/assets";
+import { LLMS_TXT, NAV_ITEMS, type NavKey } from "../../lib/site-links";
+import InlineSvg from "../ui/InlineSvg.astro";
+
+export interface Props {
+  active?: NavKey;
+}
+
+const { active } = Astro.props;
+---
+
+<header class="site-header">
+  <a href={asset("")} class="site-header__logo" aria-label="Alt Cloud home">
+    <InlineSvg name="logoHand" class="mirror-x" />
+  </a>
+
+  <nav class="site-header__nav" aria-label="Primary">
+    {
+      NAV_ITEMS.map((item) => (
+        <a
+          href={item.href}
+          class="nav-link"
+          aria-current={item.key === active ? "page" : undefined}>
+          {item.label}
+        </a>
+      ))
+    }
+  </nav>
+
+  <div class="site-header__aside">
+    <a href={asset("extension/")} class="mono-label hidden md:inline">Browser extension</a>
+    <div class="mode-switch" role="group" aria-label="View as">
+      <span class="mode-switch__item is-active" aria-current="true">
+        <span class="highlight">Human</span>
+      </span>
+      <a class="mode-switch__item" href={LLMS_TXT} title="Machine-readable index (llms.txt)">Agent</a>
+    </div>
+
+    <details class="site-header__menu md:hidden">
+      <summary aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+      </summary>
+      <div class="site-header__menu-panel">
+        {
+          NAV_ITEMS.map((item) => (
+            <a href={item.href} class="nav-link" aria-current={item.key === active ? "page" : undefined}>
+              {item.label}
+            </a>
+          ))
+        }
+        <a href={asset("extension/")} class="nav-link">Browser extension</a>
+      </div>
+    </details>
+  </div>
+</header>

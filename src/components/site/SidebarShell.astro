@@ -1,0 +1,30 @@
+---
+/**
+ * Two-column frame from the List / Detail / Blog / Definitions frames:
+ * a 270px hard-bordered rail on the left, content on the right.
+ * Below `lg` the rail stacks above the content.
+ */
+export interface Props {
+  railLabel?: string;
+  class?: string;
+  /** Pin the rail to the viewport on desktop (List page: promo stays at the bottom). */
+  sticky?: boolean;
+}
+const { railLabel = "Sidebar", class: className = "", sticky = false } = Astro.props;
+---
+
+<div class:list={["shell", sticky && "shell--sticky", className]}>
+  <aside class="shell__rail" aria-label={railLabel}>
+    <slot name="rail" />
+    {
+      Astro.slots.has("rail-footer") && (
+        <div class="shell__rail-footer mt-auto max-lg:hidden">
+          <slot name="rail-footer" />
+        </div>
+      )
+    }
+  </aside>
+  <div class="shell__main">
+    <slot />
+  </div>
+</div>

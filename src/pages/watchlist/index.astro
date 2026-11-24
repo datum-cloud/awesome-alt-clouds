@@ -1,26 +1,19 @@
 ---
 import Base from "../../layouts/Base.astro";
-import DetailTopBar from "../../components/DetailTopBar.astro";
-import DirectorySidebar from "../../components/DirectorySidebar.astro";
-import { getFeaturedSlugs } from "../../lib/profile";
 import { faviconUrl, watchlist } from "../../lib/watchlist";
 import { absoluteUrl } from "../../lib/site-urls";
 
 const watchlistCanonical = `${absoluteUrl("watchlist")}/`;
 const entryCount = watchlist.length;
 const entryLabel = entryCount === 1 ? "candidate" : "candidates";
-const featuredSlugs = [...(await getFeaturedSlugs())];
 ---
 
 <Base
   title="Emerging Cloud Providers to Watch | Neo Cloud Comparison Tool"
   description="Alternative & Neo Cloud Providers with potential that haven't cleared the criteria yet, tracked with a clear path to listing."
-  canonical={watchlistCanonical}>
-  <div class="flex flex-col md:flex-row min-h-screen">
-    <DirectorySidebar activePage="watchlist" />
-
-    <main class="flex-1 p-5 md:p-8 min-w-0">
-      <DetailTopBar featuredSlugs={featuredSlugs} />
+  canonical={watchlistCanonical}
+  nav="list">
+  <div class="legacy-page">
 
       <div class="max-w-5xl">
         <header class="mb-8">
@@ -178,6 +171,5 @@ const featuredSlugs = [...(await getFeaturedSlugs())];
           </div>
         </section>
       </div>
-    </main>
   </div>
 </Base>

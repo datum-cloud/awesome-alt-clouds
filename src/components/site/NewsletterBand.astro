@@ -1,0 +1,21 @@
+---
+/** Figma node 1:2038: mint "Newsletter:" band above the footer. */
+import { NEWSLETTER_URL } from "../../lib/site-links";
+import InlineSvg from "../ui/InlineSvg.astro";
+---
+
+<section class="newsletter" aria-label="Newsletter">
+  <div class="newsletter__copy">
+    <p class="newsletter__title">Newsletter:</p>
+    <p class="newsletter__text">
+      <strong>CTRL: AltCloud</strong> is a weekly newsletter from The Stack covering who’s building
+      what beyond the big three.<br class="hidden lg:inline" /> Sponsored by Datum, it's independently
+      written by The Stack.
+    </p>
+  </div>
+  <a class="btn btn--dark newsletter__cta" href={NEWSLETTER_URL} target="_blank" rel="noopener noreferrer">
+    <InlineSvg name="mail" class="size-5 shrink-0" />
+    <span class="btn__label">Subscribe on The Stack</span>
+    <span aria-hidden="true">↗</span>
+  </a>
+</section>

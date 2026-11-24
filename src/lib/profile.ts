@@ -4,6 +4,7 @@ import { sitePreview } from "./site";
 
 export type CloudProfile = CollectionEntry<"clouds">;
 export type ProfileStatus = "draft" | "reviewed";
+export type CloudUpdate = NonNullable<CloudProfile["data"]["updates"]>[number];
 
 /**
  * Loads MDX entries and validates each entry's id (file basename) matches

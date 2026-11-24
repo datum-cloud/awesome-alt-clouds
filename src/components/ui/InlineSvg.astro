@@ -1,0 +1,41 @@
+---
+/**
+ * Inlines a Figma-exported SVG so it can inherit `currentColor` and CSS transforms.
+ * Figma exports hard-code white/black fills and a `style="display:block"` root;
+ * `recolor` swaps stroke/path paint for currentColor while keeping the root width/height intact.
+ */
+import datumMark from "../../assets/brand/datum-mark.svg?raw";
+import logoHand from "../../assets/brand/logo-hand.svg?raw";
+import logoHandHero from "../../assets/brand/logo-hand-hero.svg?raw";
+import mail from "../../assets/brand/icon-mail.svg?raw";
+
+const SOURCES = { datumMark, logoHand, logoHandHero, mail } as const;
+
+export interface Props {
+  name: keyof typeof SOURCES;
+  class?: string;
+  /** Replace hard-coded white/black paint with currentColor (default true). */
+  recolor?: boolean;
+  label?: string;
+}
+
+const { name, class: className = "", recolor = true, label } = Astro.props;
+
+// Keep ids: the hand logos use <mask id> references (ids differ per file, so no collisions).
+let svg = SOURCES[name]
+  .replace(/style="display: block;"/, "")
+  .replace(/preserveAspectRatio="none"/, "");
+if (recolor) {
+  // Strokes carry the ink. Mask <rect fill="white"> and the hero hand's white-filled
+  // paths (opaque interior over the halftone) must keep their paint; only the Datum
+  // mark is a solid filled glyph.
+  svg = svg.replace(/stroke="(white|black)"/g, 'stroke="currentColor"');
+  if (name === "datumMark") svg = svg.replace(/(<path\b[^>]*?)fill="white"/g, '$1fill="currentColor"');
+}
+svg = svg.replace(
+  "<svg",
+  `<svg class="${className}" ${label ? `role="img" aria-label="${label}"` : 'aria-hidden="true"'} focusable="false"`
+);
+---
+
+<Fragment set:html={svg} />

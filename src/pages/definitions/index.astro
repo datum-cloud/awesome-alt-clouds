@@ -1,0 +1,111 @@
+---
+/**
+ * Definitions (Figma node 1:3277). Replaces the old About modal.
+ * Category definitions come from the taxonomy (single source of truth, mirrored in
+ * Python); the tag families list their labels from the same module so this page
+ * can't drift from what the filters offer.
+ */
+import questionMint from "../../assets/pixel/question-mint.svg?raw";
+import SidebarShell from "../../components/site/SidebarShell.astro";
+import Base from "../../layouts/Base.astro";
+import { REPO_URL } from "../../lib/site-links";
+import { absoluteUrl } from "../../lib/site-urls";
+import { CATEGORIES, CATEGORY_DEFINITIONS, WORKLOAD_TAG_FAMILIES, tagLabel } from "../../lib/taxonomy";
+
+const icon = questionMint
+  .replace(/style="display: block;"/, "")
+  .replace(/preserveAspectRatio="none"/, "")
+  .replace("<svg", '<svg aria-hidden="true" focusable="false"');
+
+/** Example providers per workload family (editorial, from the Figma copy). */
+const FAMILY_EXAMPLES: Record<string, Record<string, string>> = {
+  App: { "web-frontend": "Vercel", "app-hosting": "Railway" },
+  Data: { "postgres-sql": "Supabase, Neon", "warehouse-lakehouse": "Snowflake, Databricks" },
+  AI: { "llm-inference": "Baseten, Fireworks, Together, Modal", "generative-media": "fal" },
+  Agent: { "agent-browser": "Browserbase", "agent-sandbox": "E2B, Runloop", "agent-search": "Parallel" },
+  "Build & Run": { "ci-builds": "Blacksmith", "durable-workflow": "Inngest, Temporal" },
+};
+
+const families = Object.entries(WORKLOAD_TAG_FAMILIES).map(([family, tags]) => ({
+  family,
+  items: (tags as readonly string[]).map((t) => {
+    const ex = FAMILY_EXAMPLES[family]?.[t];
+    return ex ? `${tagLabel(t)} (${ex})` : tagLabel(t);
+  }),
+}));
+---
+
+<Base
+  title="Definitions: criteria, categories and tags | Alt Cloud"
+  description="How Alt Cloud decides what's listed: the three inclusion criteria, the five cloud categories, and the tag vocabulary."
+  canonical={absoluteUrl("definitions/")}
+  nav="definitions">
+  <SidebarShell railLabel="Definitions">
+    <div slot="rail" class="rail-block flex justify-center">
+      <span class="block drop-shadow-[4px_4px_0_var(--color-mint)]" set:html={icon} />
+    </div>
+
+    <article
+      class="prose-content max-w-[960px] p-[60px] max-md:px-4 max-md:py-8">
+      <h1 class="sr-only">Definitions</h1>
+
+      <h2>Why Alternative Clouds Matter</h2>
+      <p>
+        The cloud landscape has long been dominated by a few hyperscalers. While they offer incredible
+        breadth, many developers find themselves paying for complexity they don't need, or missing
+        specialized capabilities that could transform their applications.
+      </p>
+      <p>
+        Alternative cloud providers fill these gaps. They offer focused expertise, transparent pricing,
+        and often better economics for specific workloads.
+      </p>
+      <p>
+        We believe in a diverse cloud ecosystem where the best tool for the job isn't always the
+        biggest. This directory exists to help you discover these alternatives and make informed
+        choices.
+      </p>
+
+      <h2 id="criteria">Inclusion Criteria Explained</h2>
+      <p>Every service in our directory must meet at least 2 of 3 criteria:</p>
+      <ul>
+        <li><strong>Public Pricing:</strong> You can see what you'll pay before signing up.</li>
+        <li><strong>Self-Service Signup:</strong> You can start using the service today.</li>
+        <li><strong>Status Page / SLA:</strong> Public commitment to uptime and transparency.</li>
+      </ul>
+
+      <h2 id="categories">Category definitions</h2>
+      {
+        CATEGORIES.map((cat) => (
+          <p>
+            <strong>{cat}</strong> - {CATEGORY_DEFINITIONS[cat]}
+          </p>
+        ))
+      }
+
+      <h2 id="tags">Tag definitions</h2>
+      <p>Tags are an important way to add detail to any listing. Here are the current global tags:</p>
+      <ul>
+        <li><strong>Agent-native</strong> (agents can sign up, provision, and pay via API or MCP)</li>
+        <li><strong>Portability:</strong> Open source, on-prem, BYOC</li>
+        <li><strong>Sovereign:</strong> country or region codes.</li>
+        <li><strong>Status badges:</strong> emerging, unverified</li>
+      </ul>
+      <p>Since the workload category has the most listings, it also benefits from some distinct tags:</p>
+      <ul>
+        {
+          families.map((f) => (
+            <li>
+              <strong>{f.family}:</strong> {f.items.join(", ")}.
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="mt-10">
+        <a class="btn btn--dark btn--lg text-white no-underline hover:bg-[#1d3352]" href={REPO_URL} target="_blank" rel="noopener noreferrer">
+          <span class="btn__label">Contribute on GitHub</span><span aria-hidden="true">↗</span>
+        </a>
+      </p>
+    </article>
+  </SidebarShell>
+</Base>

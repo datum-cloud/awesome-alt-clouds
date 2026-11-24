@@ -1,0 +1,96 @@
+name: Preview Datum Compute cleanup
+
+# Manual only. Lists the previews in the project, or destroys the preview of one
+# branch with its basic-auth Secret and SecurityPolicy. Refuses
+# awesome-alt-clouds-uk and any name outside the alt-cloud-pv- preview prefix.
+# See docs/datum-compute-previews.md.
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: list shows the previews; destroy removes the preview of one branch
+        type: choice
+        options:
+          - list
+          - destroy
+        default: list
+      branch:
+        description: Branch whose preview to destroy (ignored for list)
+        type: string
+        default: ''
+      project:
+        description: Datum project ID (empty = the DATUM_PROJECT repo variable, then datum-cloud)
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+# Shares the queue of preview-datum.yml for the same branch, so a cleanup never
+# races a deploy.
+concurrency:
+  group: alt-cloud-preview-${{ inputs.action == 'destroy' && inputs.branch || 'list' }}
+  cancel-in-progress: false
+
+env:
+  # Keep in line with deploy-datum.yml.
+  DATUMCTL_VERSION: 0.23.0
+  COMPUTE_PLUGIN_VERSION: v0.12.10
+
+jobs:
+  cleanup:
+    # Only in the origin repository, never in a fork.
+    if: github.repository == 'datum-cloud/awesome-alt-clouds'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: datum-compute-preview
+    env:
+      DATUM_PROJECT: ${{ inputs.project || vars.DATUM_PROJECT || 'datum-cloud' }}
+      PREVIEW_BRANCH: ${{ inputs.branch }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Check inputs
+        env:
+          ACTION: ${{ inputs.action }}
+        run: |
+          bash .github/scripts/preview.sh self-test
+          if [ "$ACTION" = destroy ] && [ -z "$PREVIEW_BRANCH" ]; then
+            echo "::error::destroy needs a branch"
+            exit 1
+          fi
+
+      - name: Install datumctl
+        run: |
+          curl -fsSLo "$RUNNER_TEMP/datumctl.deb" \
+            "https://github.com/datum-cloud/datumctl/releases/download/v${DATUMCTL_VERSION}/datumctl_${DATUMCTL_VERSION}_linux_amd64.deb"
+          sudo dpkg -i "$RUNNER_TEMP/datumctl.deb"
+          for attempt in 1 2 3; do
+            datumctl plugin install "compute@${COMPUTE_PLUGIN_VERSION}" && break
+            [ "$attempt" = 3 ] && { echo "::error::could not install the compute plugin"; exit 1; }
+            sleep 10
+          done
+
+      - name: Log in to Datum Cloud
+        env:
+          DATUM_SA_CREDENTIALS: ${{ secrets.DATUM_SA_CREDENTIALS }}
+        run: |
+          umask 077
+          printf '%s' "$DATUM_SA_CREDENTIALS" > "$RUNNER_TEMP/datum-sa.json"
+          datumctl login --credentials "$RUNNER_TEMP/datum-sa.json"
+          rm -f "$RUNNER_TEMP/datum-sa.json"
+
+      - name: Destroy the preview
+        if: inputs.action == 'destroy'
+        run: bash .github/scripts/preview.sh cleanup
+
+      - name: List the previews
+        run: |
+          set -o pipefail
+          {
+            echo "### Datum Compute previews in \`${DATUM_PROJECT}\`"
+            bash .github/scripts/preview.sh list
+          } | tee -a "$GITHUB_STEP_SUMMARY"

@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
 import { glob } from "astro/loaders";
+import { PIXEL_ICONS } from "./lib/pixel-icons";
 
 const clouds = defineCollection({
   loader: glob({ pattern: "**/*.mdx", base: "./src/content/clouds" }),
@@ -22,6 +23,18 @@ const clouds = defineCollection({
       .optional(),
     logo: z.string().optional(),
     tagline: z.string().optional(),
+    /** Hand-curated "Provider updates" (launches, pricing changes). Newest first. */
+    updates: z
+      .array(
+        z.object({
+          date: z.coerce.date(),
+          kind: z.string(),
+          title: z.string(),
+          body: z.string(),
+          url: z.url().optional(),
+        })
+      )
+      .optional(),
   }),
 });
 
@@ -36,6 +49,8 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     heroImage: z.string().optional(),
+    /** Pixel icon shown on the blog index (see src/lib/pixel-icons.ts). */
+    icon: z.enum(PIXEL_ICONS).optional(),
   }),
 });
 

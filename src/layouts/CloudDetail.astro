@@ -1,19 +1,23 @@
 ---
 import Base from "./Base.astro";
 import DetailSidebar from "../components/DetailSidebar.astro";
-import DetailTopBar from "../components/DetailTopBar.astro";
+import SidebarShell from "../components/site/SidebarShell.astro";
 import DraftBanner from "../components/DraftBanner.astro";
 import EmergingBanner from "../components/EmergingBanner.astro";
 import { defaultDescription, siteName } from "../lib/site-meta";
 import { absoluteUrl } from "../lib/site-urls";
-import type { MergedCloud } from "../lib/profile";
+import { asset } from "../lib/assets";
+import type { CloudUpdate, MergedCloud } from "../lib/profile";
 
 export interface Props {
   cloud: MergedCloud;
-  featuredSlugs: string[];
+  /** Optional "Provider updates" entries from the profile frontmatter. */
+  updates?: CloudUpdate[];
 }
 
-const { cloud, featuredSlugs } = Astro.props;
+const { cloud, updates = [] } = Astro.props;
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 const isEmerging = cloud.unverified === true;
 
 const pageTitle = `${cloud.name} | ${siteName}`;
@@ -59,7 +63,8 @@ const profileJsonLd = {
 <Base
   title={pageTitle}
   description={pageDescription}
-  canonical={canonical}>
+  canonical={canonical}
+  nav="list">
   <Fragment slot="head">
     <script
       is:inline
@@ -67,34 +72,43 @@ const profileJsonLd = {
       set:html={JSON.stringify(profileJsonLd)}
     />
   </Fragment>
-  <div class="flex flex-col md:flex-row min-h-screen">
-    <DetailSidebar cloud={cloud} />
+  <SidebarShell railLabel={`${cloud.name} facts`}>
+    <DetailSidebar slot="rail" cloud={cloud} />
 
-    <main class="flex-1 p-5 md:p-8 min-w-0">
-      <DetailTopBar featuredSlugs={featuredSlugs} />
+    <article class="max-w-[960px] px-[60px] pt-7 pb-[60px] max-md:px-4 max-md:pt-8 max-md:pb-12">
+      <a class="mb-10 inline-block font-mono text-[12px] leading-7 uppercase" href={asset("list/")}>&lt; <span class="underline">Back to list</span></a>
 
-      <article class="cloud-detail max-w-4xl">
-        <header class="mb-8">
-          <div class="text-xs font-medium text-warm-stone uppercase tracking-wider mb-2">
-            {cloud.categories.join(" · ")}
-          </div>
-          <h1 class="font-serif text-3xl md:text-4xl font-semibold text-rich-earth leading-tight">
-            {cloud.name}
-          </h1>
-          {
-            cloud.tagline && (
-              <p class="mt-3 text-base text-warm-stone leading-relaxed">{cloud.tagline}</p>
-            )
-          }
-        </header>
+      {cloud.status === "draft" && <DraftBanner slug={cloud.slug} />}
+      {isEmerging && <EmergingBanner cloud={cloud} />}
 
-        {cloud.status === "draft" && <DraftBanner slug={cloud.slug} />}
-        {isEmerging && <EmergingBanner cloud={cloud} />}
+      <div class="prose-content">
+        <slot />
+      </div>
 
-        <div class="prose-content">
-          <slot />
-        </div>
-      </article>
-    </main>
-  </div>
+      {
+        updates.length > 0 && (
+          <section class="prose-content mt-10 border-t-2 border-midnight pt-3" aria-labelledby="updates-title">
+            <h2 id="updates-title">Provider updates</h2>
+            {updates.map((u, i) => (
+              <div class={i > 0 ? "mt-6" : undefined}>
+                <p class="text-sm">
+                  {fmtDate(u.date)} · {u.kind}
+                </p>
+                <p>
+                  <strong>{u.title}</strong>
+                  {" — "}
+                  {u.body}{" "}
+                  {u.url && (
+                    <a href={u.url} target="_blank" rel="noopener noreferrer">
+                      Read the announcement ↗
+                    </a>
+                  )}
+                </p>
+              </div>
+            ))}
+          </section>
+        )
+      }
+    </article>
+  </SidebarShell>
 </Base>

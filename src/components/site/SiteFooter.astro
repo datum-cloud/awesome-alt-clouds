@@ -1,0 +1,56 @@
+---
+/** Figma node 1:2046: midnight footer with three link columns and the Datum credit. */
+import { asset } from "../../lib/assets";
+import { CLOUDS_JSON, DATUM_URL, LLMS_TXT, REPO_ISSUES_URL, REPO_URL } from "../../lib/site-links";
+import InlineSvg from "../ui/InlineSvg.astro";
+
+const columns = [
+  {
+    title: "Explore",
+    links: [
+      { label: "The list", href: asset("list/") },
+      { label: "Definitions", href: asset("definitions/") },
+      { label: "Blog", href: asset("blog/") },
+      { label: "Browser extension", href: asset("extension/") },
+    ],
+  },
+  {
+    title: "Contribute",
+    links: [
+      { label: "Submit a provider", href: asset("submit/") },
+      { label: "Report an issue", href: REPO_ISSUES_URL },
+      { label: "Source on GitHub", href: REPO_URL },
+    ],
+  },
+  {
+    title: "For scripts & agents",
+    links: [
+      { label: "clouds.json", href: CLOUDS_JSON },
+      { label: "llms.txt", href: LLMS_TXT },
+    ],
+  },
+];
+---
+
+<footer class="site-footer">
+  <div class="site-footer__cols">
+    {
+      columns.map((col) => (
+        <div class="site-footer__col">
+          <p class="site-footer__heading">{col.title}</p>
+          <ul>
+            {col.links.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+  <p class="site-footer__credit">
+    <span>Maintained by <a href={DATUM_URL} class="underline">Datum</a></span>
+    <InlineSvg name="datumMark" class="flip-y" label="Datum" />
+  </p>
+</footer>

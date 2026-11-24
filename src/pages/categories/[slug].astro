@@ -1,17 +1,17 @@
 ---
 import Base from "../../layouts/Base.astro";
-import CloudCard from "../../components/CloudCard.astro";
-import DetailTopBar from "../../components/DetailTopBar.astro";
-import DirectorySidebar from "../../components/DirectorySidebar.astro";
+import CloudRow from "../../components/list/CloudRow.astro";
+import CloudTable from "../../components/list/CloudTable.astro";
+import SidebarShell from "../../components/site/SidebarShell.astro";
 import { asset } from "../../lib/assets";
-import { getCategoryDescription } from "../../lib/categories";
+import { CATEGORY_BLURBS, getCategoryDescription } from "../../lib/categories";
 import {
   categoryToSlug,
   clouds,
   countByCategory,
   getCategories,
 } from "../../lib/clouds";
-import { getFeaturedSlugs } from "../../lib/profile";
+import { getListItems } from "../../lib/list-items";
 import { siteName } from "../../lib/site-meta";
 import { absoluteUrl } from "../../lib/site-urls";
 
@@ -33,12 +33,11 @@ const slug = categoryToSlug(category);
 const categoryClouds = [...clouds]
   .filter((c) => c.categories.includes(category))
   .sort((a, b) => a.name.localeCompare(b.name));
-const featuredSlugs = await getFeaturedSlugs();
+const items = await getListItems(categoryClouds);
 const providerCount = countByCategory(category);
 const description = getCategoryDescription(category);
 const pageTitle = `${category} | ${siteName}`;
 const canonical = `${absoluteUrl("categories/" + slug)}/`;
-const sidebarActivePage = "directory";
 
 const itemListJsonLd = {
   "@context": "https://schema.org",
@@ -63,66 +62,38 @@ const itemListJsonLd = {
   },
 };
 
-const compareHref = asset("compare/");
-const homeCategoryHref = `${asset("")}#${slug}`;
+const listHref = asset(`list/?category=${slug}`);
 ---
 
-<Base title={pageTitle} description={description} canonical={canonical}>
+<Base title={pageTitle} description={description} canonical={canonical} nav="list">
   <Fragment slot="head">
     <script is:inline type="application/ld+json" set:html={JSON.stringify(itemListJsonLd)} />
   </Fragment>
 
-  <div class="flex flex-col md:flex-row min-h-screen">
-    <DirectorySidebar activePage={sidebarActivePage} />
+  <SidebarShell railLabel={category}>
+    <div slot="rail" class="rail-block">
+      <nav class="eyebrow mb-4" aria-label="Breadcrumb">
+        <a href={asset("list/")} class="underline">The list</a> / {category}
+      </nav>
+      <h1 class="display text-[28px] leading-[32px]">{category}</h1>
+      <p class="mt-4 text-sm">{CATEGORY_BLURBS[category] ?? description}</p>
+      <p class="mt-4 text-sm opacity-80">{description}</p>
+      <p class="mt-6 text-sm">{providerCount} provider{providerCount === 1 ? "" : "s"}</p>
+      <p class="mt-4"><a class="arrow-link" href={listHref}>View in list →</a></p>
+    </div>
 
-    <main class="flex-1 p-5 md:p-8 min-w-0">
-      <DetailTopBar featuredSlugs={[...featuredSlugs]} />
-
-      <div class="max-w-6xl">
-        <header class="mb-8">
-          <nav class="text-xs text-warm-stone mb-3" aria-label="Breadcrumb">
-            <a href={asset("")} class="hover:text-rich-earth transition-colors no-underline">
-              Directory
-            </a>
-            <span class="mx-1.5">/</span>
-            <span class="text-rich-earth">{category}</span>
-          </nav>
-          <h1 class="font-serif text-3xl md:text-4xl font-semibold text-rich-earth mb-3">
-            {category}
-          </h1>
-          <p class="text-warm-stone leading-relaxed max-w-3xl mb-4">{description}</p>
-          <div class="flex flex-wrap items-center gap-4 text-sm">
-            <span class="text-warm-stone">
-              {providerCount} provider{providerCount === 1 ? "" : "s"}
-            </span>
-            <a
-              href={compareHref}
-              class="font-medium text-bright-tangerine hover:underline no-underline">
-              Compare providers →
-            </a>
-            <a
-              href={homeCategoryHref}
-              class="font-medium text-warm-stone hover:text-rich-earth transition-colors no-underline">
-              Filter on homepage
-            </a>
-          </div>
-        </header>
-
-        {
-          categoryClouds.length === 0 ? (
-            <p class="text-warm-stone py-8">No providers in this category yet.</p>
-          ) : (
-            <div class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(320px,1fr))]">
-              {categoryClouds.map((cloud) => (
-                <CloudCard
-                  cloud={cloud}
-                  featured={featuredSlugs.has(cloud.slug)}
-                />
-              ))}
-            </div>
-          )
-        }
-      </div>
-    </main>
-  </div>
+    <div class="px-10 pb-10 pt-9 max-lg:px-4">
+      {
+        items.length === 0 ? (
+          <p class="py-8">No providers in this category yet.</p>
+        ) : (
+          <CloudTable>
+            {items.map((item) => (
+              <CloudRow item={item} />
+            ))}
+          </CloudTable>
+        )
+      }
+    </div>
+  </SidebarShell>
 </Base>

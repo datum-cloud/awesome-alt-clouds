@@ -1,58 +1,57 @@
 @import "tailwindcss";
 
 @theme {
-  --color-warm-stone: #78716c;
-  --color-soft-sage: #a3b18a;
-  --color-clay-beige: #e9dcc9;
-  --color-rich-earth: #3e362e;
-  --color-bright-tangerine: #ff6b35;
-  --color-cream: #faf7f0;
-  --color-charcoal: #2d2d2a;
+  /*
+   * Legacy token names (pre-redesign) remapped onto the new palette so pages that
+   * were only re-chromed (Compare, Watchlist, Submit) and script-rendered markup
+   * pick up the new look. New code should use midnight / mint / muted / paper.
+   */
+  --color-warm-stone: #4b5664;
+  --color-soft-sage: #6effb9;
+  --color-clay-beige: #d6d9dd;
+  --color-rich-earth: #0c1d31;
+  --color-bright-tangerine: #0c1d31;
+  --color-cream: #f6f6f5;
+  --color-charcoal: #0c1d31;
 
-  --font-sans: "IBM Plex Sans", -apple-system, system-ui, sans-serif;
-  --font-serif: "Crimson Pro", Georgia, serif;
-  --font-mono: "JetBrains Mono", monospace;
+  /* Square corners everywhere (rounded-full is unaffected). */
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
 
-  --animate-slide-up-card: slide-up-card 0.4s ease-out both;
-  --animate-modal-in: modal-in 0.3s ease;
+  /* Redesign tokens (Figma "Alt-Cloud.org" variables). */
+  --color-midnight: #0c1d31;
+  --color-mint: #6effb9;
+  --color-muted: #90969c;
+  --color-paper: #f6f6f5;
 
-  @keyframes slide-up-card {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  --font-sans: "Alliance No.1", "Helvetica Neue", Arial, system-ui, sans-serif;
+  /* Legacy serif headings render in the new mono display face. */
+  --font-serif: "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  @keyframes modal-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-@utility sorter-select {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2378716C' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
+  --text-sm: 14px;
+  --text-sm--line-height: 21px;
+  --text-base: 16px;
+  --text-base--line-height: 24px;
+  --text-lg: 18px;
+  --text-lg--line-height: 26px;
+  --text-2xl: 24px;
+  --text-2xl--line-height: 30px;
 }
 
 @layer base {
   html {
-    @apply font-sans bg-cream text-rich-earth;
+    @apply font-sans bg-white text-midnight;
   }
 
   body {
-    @apply leading-relaxed;
+    /* Figma text-base 16/24; the 1.5 ratio also gives text-sm 14/21. */
+    line-height: 1.5;
   }
 
   button:not(:disabled) {
@@ -64,17 +63,6 @@
   }
 }
 
-/* Skip layout/paint for off-screen directory cards; cards stay in the DOM. */
-.cloud-card {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 260px;
-}
-
-/* Hide cards until JS measures the viewport (inline script sets this class). */
-html.card-reveal-pending #cloudsGrid > .cloud-card {
-  opacity: 0;
-}
-
 /* When compare basket is full, dim unselected toggles without touching 471 nodes. */
 html[data-compare-full] [data-compare-toggle]:not([aria-pressed="true"]) {
   opacity: 0.5;
@@ -82,106 +70,628 @@ html[data-compare-full] [data-compare-toggle]:not([aria-pressed="true"]) {
   pointer-events: none;
 }
 
-.prose-content {
-  color: var(--color-rich-earth);
-  line-height: 1.7;
+/* Long-form copy (MDX profiles, blog posts, Definitions). In the components layer so
+   utilities on a prose container can override it. */
+@layer components {
+  .prose-content {
+    color: var(--color-midnight);
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .prose-content > * + * {
+    /* Figma paragraph spacing (text-lg/paragraph-spacing). */
+    margin-top: 10px;
+  }
+
+  .prose-content h2 {
+    /* Figma: sections 40px apart, heading is Alliance Regular text-xl 20/28. */
+    margin-top: 40px;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+
+  .prose-content > h2:first-child,
+  .prose-content > .sr-only:first-child + h2 {
+    margin-top: 0;
+  }
+
+  .prose-content h3,
+  .prose-content h4 {
+    margin-top: 32px;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+  }
+
+  .prose-content h2 + *,
+  .prose-content h3 + * {
+    margin-top: 12px;
+  }
+
+  .prose-content p,
+  .prose-content li {
+    color: rgb(12 29 49 / 0.8);
+  }
+
+  .prose-content a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose-content a:hover {
+    background: var(--color-mint);
+  }
+
+  .prose-content ul,
+  .prose-content ol {
+    padding-left: 26px;
+  }
+
+  .prose-content ul {
+    list-style: disc;
+  }
+
+  .prose-content ol {
+    list-style: decimal;
+  }
+
+  .prose-content li + li {
+    margin-top: 10px;
+  }
+
+  .prose-content li::marker {
+    color: var(--color-midnight);
+  }
+
+  .prose-content code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background-color: var(--color-paper);
+    padding: 0.1em 0.35em;
+  }
+
+  .prose-content pre {
+    background-color: var(--color-midnight);
+    color: #fff;
+    padding: 16px 20px;
+    overflow-x: auto;
+    font-size: 14px;
+  }
+
+  .prose-content pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  .prose-content blockquote {
+    border-left: 6px solid var(--color-mint);
+    padding-left: 16px;
+  }
+
+  .prose-content strong {
+    color: var(--color-midnight);
+    font-weight: 600;
+  }
+
+  .prose-content hr {
+    margin: 40px 0;
+    border: 0;
+    border-top: 2px solid var(--color-midnight);
+  }
 }
 
-.prose-content > * + * {
-  margin-top: 1.25rem;
+/* ------------------------------------------------------------------ */
+/* Redesign (Figma "Alt-Cloud.org"): square, hard-bordered, mono heads */
+/* ------------------------------------------------------------------ */
+
+/* Short laptop screens (List rail footer compacts). */
+@custom-variant short (@media (max-height: 900px));
+
+@utility mirror-x {
+  transform: scaleX(-1);
+}
+@utility flip-y {
+  transform: scaleY(-1);
 }
 
-.prose-content h2 {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--color-rich-earth);
-  margin-top: 2rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--color-clay-beige);
-}
+@layer components {
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background: var(--color-mint);
+    color: var(--color-midnight);
+    padding: 8px 12px;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+  .skip-link:focus {
+    left: 8px;
+    top: 8px;
+  }
 
-.prose-content h3 {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-rich-earth);
-  margin-top: 1.75rem;
-}
+  :where(a, button, summary, select, input):focus-visible {
+    outline: 2px solid var(--color-midnight);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--color-mint);
+  }
 
-.prose-content h4 {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--color-rich-earth);
-  margin-top: 1.25rem;
-}
+  /* Display heading: JetBrains Mono ExtraBold, uppercase. */
+  .display,
+  .display-80,
+  .display-40 {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0;
+  }
+  .display-80 {
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 1;
+  }
+  .display-40 {
+    font-size: clamp(28px, 3.2vw, 40px);
+    line-height: 1;
+  }
 
-.prose-content p {
-  color: var(--color-warm-stone);
-}
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 28px;
+    text-transform: uppercase;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
 
-.prose-content a {
-  color: var(--color-bright-tangerine);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.15s ease;
-}
+  /* Mint highlighter that sits behind the lower half of a 28px line. */
+  .highlight {
+    background: linear-gradient(
+      transparent 15px,
+      var(--color-mint) 15px,
+      var(--color-mint) 21px,
+      transparent 21px
+    );
+  }
 
-.prose-content a:hover {
-  border-bottom-color: var(--color-bright-tangerine);
-}
+  /* ---------- Header ---------- */
+  .site-header {
+    display: flex;
+    align-items: stretch;
+    height: 80px;
+    background: #fff;
+    border-bottom: 2px solid var(--color-midnight);
+    position: relative;
+  }
+  .site-header__logo {
+    display: flex;
+    align-items: center;
+    padding: 0 30px 0 40px;
+    color: var(--color-midnight);
+  }
+  .site-header__nav {
+    display: none;
+    align-items: center;
+    gap: 40px;
+    padding: 0 40px 0 30px;
+    flex: 1;
+  }
+  .site-header__aside {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 40px;
+    padding: 0 40px;
+    margin-left: auto;
+  }
+  @media (min-width: 768px) {
+    .site-header__nav {
+      display: flex;
+    }
+  }
+  @media (max-width: 767px) {
+    .site-header__logo {
+      padding: 0 16px;
+    }
+    .site-header__aside {
+      gap: 16px;
+      padding: 0 16px;
+    }
+  }
+  .nav-link {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 28px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--color-midnight);
+    text-underline-offset: 3px;
+  }
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  /* Figma 1:1314: mint band from 15px to the bottom of the 28px line, 3px wider than the
+     word on each side, so it wraps the underline. Padding + negative margin keep the
+     nav spacing unchanged. */
+  .nav-link[aria-current="page"] {
+    margin: 0 -3px;
+    padding: 0 3px;
+    text-decoration: underline;
+    background: linear-gradient(transparent 15px, var(--color-mint) 15px);
+  }
+  .mode-switch {
+    display: flex;
+    gap: 2px;
+    padding: 2px;
+    border: 1px solid var(--color-midnight);
+  }
+  .mode-switch__item {
+    display: flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 28px;
+    text-transform: uppercase;
+  }
+  .mode-switch__item.is-active {
+    background: var(--color-paper);
+    border-radius: 3px;
+  }
+  a.mode-switch__item:hover {
+    text-decoration: underline;
+  }
+  .site-header__menu > summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    padding: 4px;
+  }
+  .site-header__menu > summary::-webkit-details-marker {
+    display: none;
+  }
+  .site-header__menu-panel {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 16px;
+    background: #fff;
+    border-bottom: 2px solid var(--color-midnight);
+  }
 
-.prose-content ul,
-.prose-content ol {
-  color: var(--color-warm-stone);
-  padding-left: 1.5rem;
-}
+  /* ---------- Buttons & links ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 28px;
+    min-height: 48px;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 30px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
+  }
+  .btn .btn__label {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 3px;
+  }
+  .btn--lg {
+    min-height: 80px;
+    padding: 0 40px;
+  }
+  .btn--block {
+    display: flex;
+    width: 100%;
+  }
+  .btn--dark {
+    background: var(--color-midnight);
+    color: #fff;
+  }
+  .btn--dark:hover {
+    background: #1d3352;
+  }
+  .btn--mint {
+    background: var(--color-mint);
+    color: var(--color-midnight);
+  }
+  .btn--mint:hover {
+    background: #fff;
+  }
+  .btn--outline {
+    background: #fff;
+    color: var(--color-midnight);
+  }
+  .btn--outline:hover {
+    background: var(--color-paper);
+  }
+  .arrow-link {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 30px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+  }
+  .arrow-link:hover {
+    background: var(--color-mint);
+  }
+  /* The highlight only covers the text box while the link is inline: as a flex/grid
+     item (blockified) it would fill the whole 30px line. Keep it inline; wrap it in a
+     block (e.g. <p>) when it sits in a flex column. */
 
-.prose-content ul {
-  list-style: disc;
-}
+  /* List page: hides the table while an early inline script switches to the grid view
+     (see src/pages/list/index.astro). */
+  html[data-list-view="grid"] [data-view-panel="list"] {
+    display: none;
+  }
 
-.prose-content ol {
-  list-style: decimal;
-}
+  /* White outline for text laid over the halftone art (hero, Datum promo) so it stays
+     readable on the dots. The stroke is painted under the fill, so only half of
+     --halo shows outside the glyph. */
+  .text-halo {
+    -webkit-text-stroke: var(--halo, 6px) #fff;
+    paint-order: stroke fill;
+  }
 
-.prose-content li + li {
-  margin-top: 0.4rem;
-}
+  /* ---------- Tags / form controls ---------- */
+  /* Figma "Datum App UI/Customer Status" pill. */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: var(--color-paper);
+    font-size: 8px;
+    line-height: 16px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--color-midnight);
+  }
+  .field-label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgb(12 29 49 / 0.6);
+  }
+  .select-field,
+  .input-field {
+    display: block;
+    width: 100%;
+    height: 28px;
+    padding: 0 12px;
+    border: 1px solid var(--color-midnight);
+    border-radius: 0;
+    background-color: #fff;
+    font-size: 12px;
+    line-height: 26px;
+    color: var(--color-midnight);
+  }
+  .select-field {
+    appearance: none;
+    padding-right: 32px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230c1d31' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    cursor: pointer;
+  }
+  .input-field::placeholder {
+    color: var(--color-muted);
+  }
 
-.prose-content code {
-  font-family: var(--font-mono);
-  font-size: 0.875em;
-  background-color: var(--color-clay-beige);
-  color: var(--color-rich-earth);
-  padding: 0.15em 0.4em;
-  border-radius: 0.25rem;
-}
+  /* ---------- Newsletter + footer ---------- */
+  .newsletter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px 40px;
+    padding: 40px;
+    background: var(--color-mint);
+    color: var(--color-midnight);
+    border-top: 2px solid var(--color-midnight);
+  }
+  .newsletter__copy {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 40px;
+    flex: 1 1 520px;
+  }
+  .newsletter__title {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 38px;
+    white-space: nowrap;
+  }
+  .newsletter__text {
+    opacity: 0.8;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .newsletter__text strong {
+    font-weight: 600;
+  }
+  .site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 60px 40px 40px;
+    background: var(--color-midnight);
+    color: #fff;
+  }
+  .site-footer__cols {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 80px;
+  }
+  .site-footer__col {
+    width: 200px;
+  }
+  .site-footer__heading {
+    margin-bottom: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  .site-footer__col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .site-footer__col a {
+    opacity: 0.8;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .site-footer__col a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+  .site-footer__credit {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 14px;
+    line-height: 21px;
+  }
+  .site-footer__credit > span {
+    opacity: 0.8;
+  }
+  @media (max-width: 767px) {
+    .newsletter,
+    .site-footer {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
 
-.prose-content pre {
-  background-color: var(--color-charcoal);
-  color: var(--color-cream);
-  padding: 1rem 1.25rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  font-size: 0.875rem;
-}
-
-.prose-content pre code {
-  background: transparent;
-  color: inherit;
-  padding: 0;
-}
-
-.prose-content blockquote {
-  border-left: 3px solid var(--color-soft-sage);
-  padding-left: 1rem;
-  color: var(--color-warm-stone);
-  font-style: italic;
-}
-
-.prose-content strong {
-  color: var(--color-rich-earth);
-  font-weight: 600;
+  /* ---------- Rail + main shell (List / Detail / Blog / Definitions) ---------- */
+  .shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .shell__rail {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid var(--color-midnight);
+  }
+  .shell__main {
+    min-width: 0;
+  }
+  @media (min-width: 1024px) {
+    .shell {
+      grid-template-columns: 270px minmax(0, 1fr);
+    }
+    .shell__rail {
+      border-bottom: 0;
+      border-right: 2px solid var(--color-midnight);
+    }
+    /* Sticky-rail pages (List): pin the header too, and size the rail to the space
+       below it, so the rail footer (+ Add a cloud) is visible without scrolling. */
+    .site-frame:has(.shell--sticky) .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+    .shell--sticky .shell__rail {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      height: calc(100dvh - 80px);
+      overflow-y: auto;
+      border-right: 0;
+    }
+    /* If the rail is taller than the viewport, keep its footer pinned to the
+       bottom while the filters scroll underneath. */
+    .shell--sticky .shell__rail-footer {
+      position: sticky;
+      bottom: 0;
+      background: #fff;
+    }
+    /* While the tag picker is open, un-pin the footer so the full tag list shows and
+       the promo + CTAs are pushed below it (the rail scrolls to reach them). */
+    .shell--sticky:has(#tagPanel:not([hidden])) .shell__rail-footer {
+      position: relative;
+    }
+    /* Redraw the rail/main divider that this opaque footer (and its filled
+       buttons) would otherwise cover. Painted above the children. */
+    .shell--sticky .shell__rail-footer::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--color-midnight);
+      pointer-events: none;
+    }
+    .shell--sticky .shell__main {
+      margin-left: -2px;
+      border-left: 2px solid var(--color-midnight);
+    }
+  }
+  .rail-block {
+    padding: 40px 28px;
+  }
+  /* Re-chromed pages without a Figma frame (Compare, Watchlist, Submit). */
+  .legacy-page {
+    padding: 48px 40px 64px;
+  }
+  .legacy-page h1.font-serif {
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  @media (max-width: 767px) {
+    .legacy-page {
+      padding: 32px 16px 48px;
+    }
+  }
+  .notice {
+    margin-bottom: 32px;
+    padding: 14px 18px;
+    border: 1px solid var(--color-midnight);
+    border-left: 6px solid var(--color-mint);
+    font-size: 14px;
+    line-height: 21px;
+  }
+  .notice strong {
+    font-weight: 600;
+  }
+  .notice a {
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+  .rail-block + .rail-block {
+    border-top: 2px solid var(--color-midnight);
+  }
 }
