@@ -193,9 +193,6 @@ html[data-compare-full] [data-compare-toggle]:not([aria-pressed="true"]) {
 @utility mirror-x {
   transform: scaleX(-1);
 }
-@utility flip-y {
-  transform: scaleY(-1);
-}
 
 @layer components {
   .skip-link {

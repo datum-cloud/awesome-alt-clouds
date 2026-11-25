@@ -7,53 +7,54 @@ export interface Props {
 const { sortable = false } = Astro.props;
 ---
 
-<table class="cloud-table">
-  <!-- Figma 1:1462 column widths on a 1314px table: 220 / 552 / 180 / 255 / 107 -->
-  <colgroup>
-    <col style="width: 16.74%" />
-    <col style="width: 42.01%" />
-    <col style="width: 13.7%" />
-    <col style="width: 19.41%" />
-    <col style="width: 8.14%" />
-  </colgroup>
-  <thead>
-    <tr>
-      <th scope="col" aria-sort="ascending" id={sortable ? "sortHeader" : undefined}>
-        {
-          sortable ? (
-            <button type="button" id="sortBtn" class="inline-flex items-center gap-2">
-              Provider
-              <svg width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-                <path d="M2 4l3-3 3 3M2 8l3 3 3-3" />
-              </svg>
-            </button>
-          ) : (
-            "Provider"
-          )
-        }
-      </th>
-      <th scope="col">What it does</th>
-      <th scope="col">Category</th>
-      <th scope="col">Tags</th>
-      <th scope="col">Pricing</th>
-    </tr>
-  </thead>
-  <tbody id="rows">
-    <slot />
-  </tbody>
-</table>
+<div class="cloud-table-wrap">
+  <table class="cloud-table">
+    <thead>
+      <tr>
+        <th scope="col" aria-sort="ascending" id={sortable ? "sortHeader" : undefined}>
+          {
+            sortable ? (
+              <button type="button" id="sortBtn" class="inline-flex items-center gap-2">
+                Provider
+                <svg width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                  <path d="M2 4l3-3 3 3M2 8l3 3 3-3" />
+                </svg>
+              </button>
+            ) : (
+              "Provider"
+            )
+          }
+        </th>
+        <th scope="col">What it does</th>
+        <th scope="col">Category</th>
+        <th scope="col">Tags</th>
+        <th scope="col">Pricing</th>
+      </tr>
+    </thead>
+    <tbody id="rows">
+      <slot />
+    </tbody>
+  </table>
+</div>
 
 <style>
   /*
    * Figma 1:1304 ("Datum App UI/Tables"): 35px header, 64px rows, 1px midnight rules,
    * 16px horizontal cell padding (Provider has none on the left), 12/16 text,
    * single-line cells that truncate with an ellipsis.
+   * Columns size to their content (Provider and Tags are capped in CloudRow) and
+   * "What it does" takes the rest, so nothing is clipped on narrower windows. When
+   * the table's own container gets too narrow for that, rows reflow into wrapped
+   * flex rows (container query, so it follows the column width, not the viewport).
    * Table/cell rules stay here (child selectors + the phone reflow from table to
    * wrapped rows); everything inside a cell is styled with utilities in CloudRow.
    */
+  .cloud-table-wrap {
+    container-type: inline-size;
+  }
   .cloud-table {
     width: 100%;
-    table-layout: fixed;
+    table-layout: auto;
     border-collapse: collapse;
     font-size: 12px;
     line-height: 16px;
@@ -91,14 +92,17 @@ const { sortable = false } = Astro.props;
     padding-left: 0;
     color: rgb(12 29 49 / 0.8);
   }
-  .cloud-table :global(.cloud-row__desc) {
+  /* width 100% + max-width 0: take the leftover width and truncate inside it. */
+  .cloud-table :global(.cloud-row > .cloud-row__desc) {
+    width: 100%;
+    max-width: 0;
     color: rgb(12 29 49 / 0.6);
   }
   .cloud-table :global(.cloud-row__cat) {
     color: rgb(12 29 49 / 0.8);
   }
 
-  @media (max-width: 1023px) {
+  @container (max-width: 899px) {
     .cloud-table thead {
       display: none;
     }
@@ -124,6 +128,7 @@ const { sortable = false } = Astro.props;
     }
     /* No fixed columns on phones: let the description wrap instead of truncating. */
     .cloud-table :global(.cloud-row > .cloud-row__desc) {
+      max-width: none;
       white-space: normal;
     }
     .cloud-table :global(.cloud-row__pricing) {
