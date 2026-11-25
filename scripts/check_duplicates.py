@@ -73,6 +73,21 @@ def normalize_name(name: str) -> str:
     return ' '.join(parts)
 
 
+def submission_name(issue_title: str, domain: str) -> str:
+    """Derive a matchable service name from an issue title.
+
+    Titles look like '[Submission] https://www.example.com/compute'. Matching
+    on that raw string tokenises URL parts ('compute', 'https', ...) and flags
+    unrelated services. Strip the prefix and any URLs; if nothing is left,
+    fall back to the domain's first label (e.g. 'fuseenergy').
+    """
+    title = re.sub(r'^\s*\[submission\]\s*', '', issue_title, flags=re.IGNORECASE)
+    title = re.sub(r'https?://\S+', ' ', title).strip()
+    if title:
+        return title
+    return domain.split('.')[0] if domain else ''
+
+
 def check_clouds_json(
     submitted_domain: str,
     submitted_name: str,
@@ -302,7 +317,7 @@ def main() -> None:
         return
 
     submitted_domain = normalize_domain(urls[0])
-    submitted_name = issue_title
+    submitted_name = submission_name(issue_title, submitted_domain)
 
     # 1. Check clouds.json — the authoritative list derived from README.md.
     # Closed GitHub Issues are intentionally NOT checked: a previously-rejected

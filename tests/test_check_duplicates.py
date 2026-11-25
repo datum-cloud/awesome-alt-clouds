@@ -125,6 +125,18 @@ class TestCheckCloudsJson:
         assert match_type == 'fuzzy_name'
         assert entry['name'] == 'ZeroTier'
 
+    def test_url_title_path_word_does_not_fuzzy_match(self):
+        # Regression (#501): title '[Submission] https://www.fuseenergy.com/compute'
+        # must not match 'Cudo Compute' just because of the '/compute' path.
+        clouds = [{"name": "Cudo Compute", "url": "https://www.cudocompute.com/"}]
+        name = cd.submission_name('[Submission] https://www.fuseenergy.com/compute', 'fuseenergy.com')
+        assert name == 'fuseenergy'
+        assert cd.check_clouds_json('fuseenergy.com', name, clouds) == (None, None)
+
+    def test_submission_name_keeps_real_name(self):
+        assert cd.submission_name('[Submission] Fly.io Platform', 'x.com') == 'Fly.io Platform'
+        assert cd.submission_name('Fly.io Platform', 'x.com') == 'Fly.io Platform'
+
     def test_exact_domain_takes_priority_over_fuzzy_name(self):
         # Both domain and name match Fly.io — should return exact_domain
         match_type, entry = cd.check_clouds_json('fly.io', 'Fly.io Platform', self.CLOUDS)
