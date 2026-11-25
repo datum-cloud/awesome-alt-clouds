@@ -3,7 +3,7 @@ export const GITHUB_REPO = "awesome-alt-clouds";
 
 /**
  * Pre-filled "[Graduation] <Name>" issue link for a cloud currently listed
- * flagged Unverified (🔵). Mirrors the shape the Alt Cloud
+ * flagged Unverified (🔵). Mirrors the shape the Alt Clouds
  * browser extension already produces (see scripts/evaluate_graduation.py,
  * which parses the `**Service:**` field back out) so both entry points
  * feed the same bot pipeline.
@@ -21,7 +21,7 @@ export function graduationIssueUrl(cloud: { name: string; url: string }): string
 
 
 ---
-*Reported via the Alt Cloud website.*`;
+*Reported via the Alt Clouds website.*`;
 
   const params = new URLSearchParams({ title, body });
   return `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/issues/new?${params.toString()}`;

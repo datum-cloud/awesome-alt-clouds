@@ -15,7 +15,7 @@ const { post } = Astro.props;
 const { title, description, publishDate, updatedDate, author, tags, draft, heroImage, icon } =
   post.data;
 
-const pageTitle = `${title} | Alt Cloud`;
+const pageTitle = `${title} | Alt Clouds`;
 const canonical = absoluteUrl(`blog/${post.id}`) + "/";
 const blogIndexHref = asset("blog/");
 const ogImage = heroImage ? absoluteUrl(heroImage.replace(/^\//, "")) : undefined;
