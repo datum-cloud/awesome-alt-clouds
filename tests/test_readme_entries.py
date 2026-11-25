@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
 
 from lib import readme_entries as re_lib
 
-SAMPLE_README = """# Alt Cloud
+SAMPLE_README = """# Alt Clouds
 
 ## Databases & Storage
 
@@ -143,7 +143,7 @@ class TestListEntriesInCategory:
         assert re_lib.list_entries_in_category(SAMPLE_README, "Nonexistent Category") == []
 
 
-UNVERIFIED_README = """# Alt Cloud
+UNVERIFIED_README = """# Alt Clouds
 
 ## Workload Clouds
 

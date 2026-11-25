@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 import evaluate_graduation as eg
 
-SAMPLE_README = """# Alt Cloud
+SAMPLE_README = """# Alt Clouds
 
 ## Workload Clouds
 
@@ -25,7 +25,7 @@ GRADUATION_BODY = """## Graduation Request
 Pricing is transparent now.
 
 ---
-*Reported via the Alt Cloud browser extension.*
+*Reported via the Alt Clouds browser extension.*
 """
 
 

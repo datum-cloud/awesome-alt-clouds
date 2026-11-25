@@ -30,7 +30,7 @@ SUBMISSION_DATA = {
 class TestCreatePrUsesArgumentLists:
     def test_submitted_url_reaches_gh_pr_create_as_one_argument(self, tmp_path, monkeypatch):
         monkeypatch.chdir(tmp_path)
-        (tmp_path / "README.md").write_text("# Alt Cloud\n")
+        (tmp_path / "README.md").write_text("# Alt Clouds\n")
         commands = []
 
         def fake_run_command(cmd, check=True, input=None, strip=True):

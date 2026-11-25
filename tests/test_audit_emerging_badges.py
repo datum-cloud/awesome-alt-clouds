@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 import audit_emerging_badges as aeb
 
-SAMPLE_README = """# Alt Cloud
+SAMPLE_README = """# Alt Clouds
 
 ## Workload Clouds
 
@@ -87,7 +87,7 @@ class TestMain:
     def test_no_op_when_no_entries_found(self, tmp_path, monkeypatch):
         monkeypatch.chdir(tmp_path)
         no_emerging_section = (
-            "# Alt Cloud\n\n"
+            "# Alt Clouds\n\n"
             "## Workload Clouds\n\n"
             "* 🟢 [Alpha DB](https://alpha.example.com/) - A database.\n"
         )

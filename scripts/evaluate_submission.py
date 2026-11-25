@@ -825,7 +825,7 @@ def generate_markdown_results(results_list):
 No services passed the evaluation criteria. Please review and resubmit.
 """
 
-    md += "\n*Evaluated automatically by the Alt Cloud bot*"
+    md += "\n*Evaluated automatically by the Alt Clouds bot*"
 
     return md
 

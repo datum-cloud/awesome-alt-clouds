@@ -7,7 +7,7 @@ import migrate_readme as mr
 from lib.entry_format import parse_entry
 from lib.taxonomy import CATEGORIES
 
-LEGACY = """# Alt Cloud
+LEGACY = """# Alt Clouds
 
 Intro text.
 

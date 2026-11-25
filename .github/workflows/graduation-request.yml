@@ -1,6 +1,6 @@
 name: Graduation Request
 
-# Trigger: the Alt Cloud browser extension opens a "[Graduation] <Service>"
+# Trigger: the Alt Clouds browser extension opens a "[Graduation] <Service>"
 # issue asking the bot to re-check a service currently flagged 🔵
 # Emerging & Unverified and remove that badge (re-filing it if its best-fit
 # category changed) if it now clears the 2/3 bar. This only posts a fresh evaluation comment —
