@@ -1,4 +1,4 @@
-# 🌥️ Alt Clouds
+# 🌥️ Alt Cloud
 
 [<img src='altclouds-logo.svg' align='right' width='100'>](https://www.alt-cloud.org/)
 
