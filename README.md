@@ -1,4 +1,4 @@
-# 🌥️ Alt Cloud [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# 🌥️ Alt Clouds
 
 [<img src='altclouds-logo.svg' align='right' width='100'>](https://www.alt-cloud.org/)
 
