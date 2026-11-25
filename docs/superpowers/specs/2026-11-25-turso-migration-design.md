@@ -34,7 +34,7 @@ maintainer /approve ─▶ approve_submission.py ─▶ clouds + cloud_tags + pr
                                          ▼
                  sync-readme.yml: render_readme.py + render_watchlist.py ─▶ commit to main (App token)
 
-Browser ─▶ Datum Compute (Bun + Astro SSR, @astrojs/node middleware) ─▶ Turso (HTTP, read-only token)
+Browser ─▶ Datum Compute (Bun + Astro SSR, @astrojs/node middleware) ─▶ Turso (HTTP; prod DB, or the preview's own DB)
 ```
 
 - **Review gate moves:** writes to the README no longer go through a merged PR. The gate is the maintainer's `/approve` (or `/approve-graduation`, `/watchlist`) comment. That comment writes to the DB directly. The README commit that follows is just a mirror.
@@ -109,11 +109,20 @@ One category per cloud, as `CLAUDE.md` says. The current `clouds.json` has one l
 
 ## Access & credentials
 
-| Consumer | Env | Token |
-| --- | --- | --- |
-| Datum Compute (prod + previews) | `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN` | read-only |
-| GitHub Actions pipeline | secrets `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN_RW` | read-write |
-| Local dev / tests | `TURSO_DATABASE_URL=file:./local.db` | none |
+| Consumer | Database | Env | Token |
+| --- | --- | --- | --- |
+| Datum Compute, production | `alt-clouds` | `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`, `DATA_ENV=production` | read-only (phase 1), read-write (phase 2) |
+| Datum Compute, preview of branch `<slug>` | `alt-clouds-pv-<slug>` (its own DB) | same vars, `DATA_ENV=preview` | read-write, minted per deploy |
+| GitHub Actions pipeline | `alt-clouds` | secrets `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN_RW` | read-write |
+| Preview workflows (create/destroy DBs) | — | secrets `TURSO_API_TOKEN` (platform API), var `TURSO_ORG` | platform |
+| Local dev / tests | `file:./local.db` | `TURSO_DATABASE_URL=file:./local.db` | none |
+
+### Preview databases
+
+- **Lifecycle follows the preview workload.** `preview-datum.yml` creates `alt-clouds-pv-<slug>` with `turso db create alt-clouds-pv-<slug> --from-db alt-clouds` (a copy of prod at that moment) on the first deploy of a branch and reuses it on re-deploys. It then applies the **branch's** `db/migrations` (`db_migrate.py`), and mints a read-write token (`turso db tokens create … --expiration 30d`) that it passes to the workload. `preview-cleanup.yml` and `preview-autoclean.yml` run `turso db destroy alt-clouds-pv-<slug> --yes` next to the workload.
+- **Refresh:** `workflow_dispatch` input `reset_db: true` destroys the preview DB and re-copies it from prod.
+- **Schema PRs become testable:** a branch that adds a migration runs it on its own copy, never on prod.
+- **No cross-wiring:** Turso hosts look like `<db>-<org>.turso.io`. `src/lib/db.ts` and `scripts/lib/db.py` refuse to connect when `DATA_ENV=production` and the host does not start with `alt-clouds-<TURSO_ORG>.`, and when `DATA_ENV=preview` and the host does not start with `alt-clouds-pv-`. `file:` URLs are allowed only when `DATA_ENV` is unset or `local`. The bot README sync (`sync-readme.yml`) only ever reads prod.
 
 - Python talks to Turso over the Hrana HTTP API (`POST {url}/v2/pipeline`) with `requests`, so there is no new native dependency. `file:` URLs use stdlib `sqlite3` (dev/tests).
 - TS uses `@libsql/client/web` for http(s)/libsql URLs, which has no native module and so is safe inside the unikernel. It dynamic-imports `@libsql/client` only for `file:` URLs.
@@ -126,7 +135,6 @@ Replacing GitHub issues as the intake channel (submit, approve, graduation, watc
 
 - Admin web UI (maintainers use the CLI + issue commands).
 - Blog posts stay in `src/content/blog` (prerendered).
-- Per-PR preview databases (previews read prod with the read-only token; schema-changing PRs must ship the migration first).
 
 ## Risks
 

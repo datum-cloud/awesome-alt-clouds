@@ -12,7 +12,8 @@
 
 ## Global Constraints
 
-- New runtime env: `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET`, `IP_HASH_SALT`, `GITHUB_OAUTH_CLIENT_ID`, `GITHUB_OAUTH_CLIENT_SECRET`, `SESSION_SECRET`, `ADMIN_GITHUB_LOGINS`, `GITHUB_DISPATCH_TOKEN`, `EXTENSION_ORIGINS`. Production uses the **read-write** Turso token. In previews, write endpoints return `503`.
+- New runtime env: `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET`, `IP_HASH_SALT`, `GITHUB_OAUTH_CLIENT_ID`, `GITHUB_OAUTH_CLIENT_SECRET`, `SESSION_SECRET`, `ADMIN_GITHUB_LOGINS`, `GITHUB_DISPATCH_TOKEN`, `EXTENSION_ORIGINS`. Production uses the **read-write** Turso token for `alt-clouds`. Previews write to their own DB `alt-clouds-pv-<slug>` (phase 1). Preview-only env: `ADMIN_AUTH_MODE=preview`, Turnstile test keys. See the spec's "Previews" table.
+- Every dispatch payload carries `target: "production" | "preview"` (+ `db` for preview). Python jobs get their DB only via `scripts/lib/db_target.py:resolve_target(payload)`. Preview runs never send `data-changed`.
 - Limits (spec): 5 submission batches/IP/hour, ≤10 URLs/batch, 5 graduation requests/IP/hour, 10 evidence/IP/hour, ≤3 open graduation requests per cloud.
 - Status values and transitions are exactly the spec's state machine. TS `src/lib/intake/status.ts` and Python `scripts/lib/intake_status.py` must match (sync test).
 - Every admin or bot transition writes one `audit_log` row in the same `batch` as the state change.
@@ -26,7 +27,7 @@
 2. **Double-click / concurrent approve:** a second approve on the same row must not insert twice. Transitions are compare-and-set (`UPDATE … WHERE id=? AND status=?`, rowcount 1). → Task 2 test `transition is compare-and-set`, Task 6 test `test_approve_twice_inserts_once`.
 3. **SSRF via submitted URL** (`http://169.254.169.254`, `http://localhost:3000`, IDN/decimal-IP tricks): rejected at the API, and the resolved IP is re-checked in the fetcher. → Task 3 tests, Task 4 test `test_fetcher_rejects_private_resolved_ip`.
 4. **Non-admin hitting admin APIs** (no cookie, tampered cookie, login not on the allowlist, cross-origin POST): all 401/403. → Task 5 tests.
-5. **Preview deploy with the read-only token:** forms show "submissions disabled on preview" instead of a 500. → Task 3 test `returns 503 on preview`.
+5. **Preview job touching prod:** a dispatch from a preview (or a forged payload) must never resolve to the prod DB, and must never trigger `sync-readme`. → Task 4 tests `test_resolve_target_preview_never_prod`, `test_preview_run_skips_data_changed`.
 
 ---
 
@@ -63,9 +64,10 @@
   - `createBatch({ urls, notes, source, ipHash }): Promise<{ batchId: number; token: string; submissionIds: number[] }>` (one `batch`; URLs are de-duplicated after normalization).
   - `getBatchByToken(token)`, `getGraduationByToken(token)`, `createGraduationRequest({ cloudId, reason, evidence, source, ipHash }): Promise<{ id; token }>`, `addEvidence({ watchlistId, evidenceUrl, note, ipHash })`
   - `newToken(): string` (32 random bytes, base64url), `hashIp(ip: string): string` (sha256 with `IP_HASH_SALT`)
-  - `dispatch(eventType: EventType, payload: Record<string, unknown>): Promise<boolean>`. It POSTs `https://api.github.com/repos/datum-cloud/awesome-alt-clouds/dispatches` with `GITHUB_DISPATCH_TOKEN`, returns false on any error or non-204 (logged), and never throws.
+  - `dispatchTarget(): { target: "production" } | { target: "preview"; db: string }` is derived from `DATA_ENV` and the DB host (`alt-clouds-pv-<slug>`). `dispatch()` merges it into every payload, so callers never set it.
+  - `dispatch(eventType: EventType, payload: Record<string, unknown>): Promise<boolean>`. On preview it drops `data-changed` events (returns true without calling GitHub). It POSTs `https://api.github.com/repos/datum-cloud/awesome-alt-clouds/dispatches` with `GITHUB_DISPATCH_TOKEN`, returns false on any error or non-204 (logged), and never throws.
 
-- [ ] **Step 1: Write failing tests:** `transition is compare-and-set` (two concurrent `transition(…,'evaluated','approving')` → exactly one true), `createBatch dedupes normalized urls`, `dispatch returns false and does not throw on 500` (mocked `fetch`), `dispatch sends event_type and client_payload`.
+- [ ] **Step 1: Write failing tests:** `transition is compare-and-set` (two concurrent `transition(…,'evaluated','approving')` → exactly one true), `createBatch dedupes normalized urls`, `dispatch returns false and does not throw on 500` (mocked `fetch`), `dispatch sends event_type and client_payload`, `dispatch adds preview target and db on preview`, `dispatch drops data-changed on preview`.
 - [ ] **Step 2: Run** `npm test`. Expected: FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4: Run** `npm test && pytest tests/test_intake_status_sync.py`. Expected: PASS.
@@ -89,12 +91,11 @@
     - `400 { error, field? }`
     - `409 { error: "duplicate", url, cloud }`
     - `429`
-    - `503` on preview
     
     After the insert it calls `dispatch("evaluate-submission", { batch_id })`.
   - `/submit/status/[token]`: SSR, `noindex`. Per URL it shows status, score, the 3 criteria, the rendered `report_md`, and the reject reason. It auto-refreshes every 30 s while any row is `queued`/`evaluating`. An unknown token gives a 404.
 
-- [ ] **Step 1: Write failing tests:** `checkPublicUrl rejects` each of `http://localhost`, `http://127.0.0.1`, `http://[::1]`, `http://2130706433`, `http://169.254.169.254`, `ftp://x.com`, `https://user@x.com`, `https://x.internal`, `https://x.com:8443`, and accepts `https://www.example.com/path`. `normalizeDomain parity`: a shared fixture `tests/fixtures/intake/domains.json` (input → expected), also asserted from Python in `tests/test_check_duplicates.py`. `rateLimit allows 5 then blocks`. API: `honeypot filled → 201 but nothing stored`, `11 urls → 400`, `listed url → 409`, `returns 503 on preview`, `happy path stores queued rows and dispatches`.
+- [ ] **Step 1: Write failing tests:** `checkPublicUrl rejects` each of `http://localhost`, `http://127.0.0.1`, `http://[::1]`, `http://2130706433`, `http://169.254.169.254`, `ftp://x.com`, `https://user@x.com`, `https://x.internal`, `https://x.com:8443`, and accepts `https://www.example.com/path`. `normalizeDomain parity`: a shared fixture `tests/fixtures/intake/domains.json` (input → expected), also asserted from Python in `tests/test_check_duplicates.py`. `rateLimit allows 5 then blocks`. API: `honeypot filled → 201 but nothing stored`, `11 urls → 400`, `listed url → 409`, `happy path stores queued rows and dispatches`.
 - [ ] **Step 2: Run** `npm test`. Expected: FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4: Run** `npm test && npm run check`. Then on `npm run dev` with `file:./local.db` and Turnstile test keys (`1x00000000000000000000AA` / `1x0000000000000000000000000000000AA`), submit 2 URLs. Expected: the status page shows 2 `queued` rows.
@@ -105,15 +106,22 @@
 **Files:**
 - Modify: `scripts/evaluate_submission.py` (new `main()`: `--batch <id>` or `--id <id>`. For each row it does CAS `queued→evaluating`, runs the full `check_duplicates` (→ `duplicate`) then `evaluate_service()` + `generate_metadata()`, and writes score/criteria/report/suggested → `evaluated`. Any exception → `failed` + `last_error`, exit 0. Drop the `ISSUE_BODY` parsing.), `scripts/check_duplicates.py` (no GitHub comment/label/close; returns a match), `scripts/lib/fetcher.py` (resolve the host and refuse private/loopback/link-local IPs before fetching)
 - Rewrite: `.github/workflows/evaluate-submission.yml` (`on: repository_dispatch: types: [evaluate-submission]` + `workflow_dispatch: inputs.batch_id`)
-- Create: `scripts/sweep.py`, `.github/workflows/sweep.yml` (`schedule: "*/15 * * * *"` + `workflow_dispatch`)
+- Create: `scripts/sweep.py`, `.github/workflows/sweep.yml` (`schedule: "*/15 * * * *"` + `workflow_dispatch`; prod only)
+- Create: `scripts/lib/db_target.py`. Every dispatched workflow (`evaluate-*`, `approve-*`) starts with one shared step that calls it and exports `TURSO_DATABASE_URL`/`TURSO_AUTH_TOKEN`/`DATA_ENV` for the job. For preview it mints a 1h token with the Turso CLI.
 - Delete: `split-submission.yml`, `auto-label-submission.yml`, `revalidate-submission.yml`, `scripts/split_submission.py`, `tests/test_split_submission*.py` (if any)
 - Test: update `tests/test_evaluate_submission.py`, `tests/test_check_duplicates.py`; create `tests/test_sweep.py`
 
 **Interfaces:**
 - Consumes: `transition`, `stale_rows` (Task 1).
+- Produces: `resolve_target(payload: dict) -> Target`, where `@dataclass Target(env: Literal["production","preview"], db_name: str)`.
+  - `target: "production"` → `alt-clouds`; any `db` field is ignored.
+  - `target: "preview"` → `db` must match `^alt-clouds-pv-[a-z0-9-]{1,40}$`.
+  - Anything else → `ValueError`.
+
+  Also `emits_data_changed(target) -> bool` (True only for production).
 - Produces: `sweep(db, *, dispatch_fn) -> dict[str, int]`. It re-dispatches `queued` and `approving` submissions/graduations older than 10 min, and `evaluating` rows older than 30 min go back to `queued` (crashed job). It returns counts per event.
 
-- [ ] **Step 1: Write failing tests:** `test_evaluate_batch_sets_evaluated_with_suggestions` (mocked `evaluate_service`), `test_evaluate_marks_duplicate`, `test_evaluate_exception_marks_failed_exit_0`, `test_evaluate_skips_row_not_queued` (CAS false → no work), `test_sweep_picks_stale_rows`, `test_sweep_requeues_stuck_evaluating`, `test_fetcher_rejects_private_resolved_ip` (monkeypatched `socket.getaddrinfo` → `10.0.0.5`).
+- [ ] **Step 1: Write failing tests:** `test_evaluate_batch_sets_evaluated_with_suggestions` (mocked `evaluate_service`), `test_evaluate_marks_duplicate`, `test_evaluate_exception_marks_failed_exit_0`, `test_evaluate_skips_row_not_queued` (CAS false → no work), `test_sweep_picks_stale_rows`, `test_sweep_requeues_stuck_evaluating`, `test_resolve_target_preview_never_prod` (`{target:"preview", db:"alt-clouds"}`, `{target:"preview"}`, `{target:"preview", db:"alt-clouds-pv-x; rm"}` → ValueError), `test_resolve_target_production_ignores_db`, `test_preview_run_skips_data_changed`, `test_fetcher_rejects_private_resolved_ip` (monkeypatched `socket.getaddrinfo` → `10.0.0.5`).
 - [ ] **Step 2: Run** `pytest tests/test_evaluate_submission.py tests/test_sweep.py tests/test_check_duplicates.py -v`. Expected: FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4: Run** `pytest tests/ -v`. Expected: PASS.
@@ -129,9 +137,10 @@
 - Produces:
   - `signSession({ login, exp }): string` and `readSession(cookie: string | undefined): { login: string } | null` (HMAC-SHA256 with `SESSION_SECRET`, constant-time compare, expiry checked)
   - `requireAdmin(context): { login: string } | Response` returns 302 to `/admin/login` for pages, 401 for `/api/admin/*`, and 403 when the login is not in `ADMIN_GITHUB_LOGINS` or when `Origin` ≠ site origin on POST.
+  - `ADMIN_AUTH_MODE=preview` (allowed only when `DATA_ENV=preview`; otherwise startup throws) skips OAuth. The actor is `preview:<user>` from the `Authorization: Basic` header that the load balancer already verified. No header → 401. The Origin check still applies.
   - OAuth: `login` sets a `state` cookie (random) → GitHub authorize (`read:user`). `callback` verifies `state`, exchanges the code, fetches `/user`, checks the allowlist, sets the `admin_session` cookie, and redirects to `/admin/`.
 
-- [ ] **Step 1: Write failing tests:** `readSession rejects tampered signature`, `readSession rejects expired`, `requireAdmin 401 without cookie on api`, `requireAdmin 403 for non-allowlisted login`, `requireAdmin 403 on cross-origin POST`, `callback rejects state mismatch` (mocked GitHub fetch).
+- [ ] **Step 1: Write failing tests:** `readSession rejects tampered signature`, `readSession rejects expired`, `requireAdmin 401 without cookie on api`, `requireAdmin 403 for non-allowlisted login`, `requireAdmin 403 on cross-origin POST`, `callback rejects state mismatch` (mocked GitHub fetch), `preview mode uses basic-auth user as actor`, `preview mode refused when DATA_ENV=production`.
 - [ ] **Step 2: Run** `npm test`. Expected: FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4: Run** `npm test`. Expected: PASS.
@@ -167,7 +176,7 @@
 - Test: `src/pages/api/graduation-requests.test.ts`, update `tests/test_evaluate_graduation.py`, `tests/test_approve_graduation.py`; create `tests/test_graduation_bridge.py`
 
 **Interfaces:**
-- Produces: `POST /api/graduation-requests` body `{ slug, reason?, evidence?, turnstileToken? }`. Turnstile is required unless `Origin` ∈ `EXTENSION_ORIGINS` (then CORS allows that origin). Responses: `201 {token, statusUrl}`, `404` when the slug is unknown or not unverified, `409` when there are already 3 open requests, `429`, `503` on preview. Admin actions: `approve {category}`, `reject {reason}`, `reevaluate`.
+- Produces: `POST /api/graduation-requests` body `{ slug, reason?, evidence?, turnstileToken? }`. Turnstile is required unless `Origin` ∈ `EXTENSION_ORIGINS` (then CORS allows that origin). Responses: `201 {token, statusUrl}`, `404` when the slug is unknown or not unverified, `409` when there are already 3 open requests, `429`. Admin actions: `approve {category}`, `reject {reason}`, `reevaluate`.
 
 - [ ] **Step 1: Write failing tests:** `rejects verified cloud with 404`, `extension origin skips turnstile and gets CORS header`, `4th open request → 409`, `test_bridge_creates_row_and_closes_issue` (mocked GitHub API), `test_evaluate_graduation_by_id`, `test_approve_graduation_by_id_uses_target_category`.
 - [ ] **Step 2: Run** `npm test && pytest tests/test_evaluate_graduation.py tests/test_approve_graduation.py tests/test_graduation_bridge.py -v`. Expected: FAIL.
@@ -183,7 +192,7 @@
 - Test: `src/pages/api/watchlist/evidence.test.ts`, `src/pages/api/admin/profiles.test.ts`
 
 **Interfaces:**
-- Produces: `POST /api/watchlist/[id]/evidence` `{ note, evidenceUrl?, turnstileToken }` → `201 | 400 | 404 | 429 | 503`. Admin evidence actions write `audit_log`. `POST /api/admin/profiles/[slug] {status}` writes the profile status + audit. The cache for that slug is invalidated (`cached` key `profile:<slug>` deleted).
+- Produces: `POST /api/watchlist/[id]/evidence` `{ note, evidenceUrl?, turnstileToken }` → `201 | 400 | 404 | 429`. Admin evidence actions write `audit_log`. `POST /api/admin/profiles/[slug] {status}` writes the profile status + audit. The cache for that slug is invalidated (`cached` key `profile:<slug>` deleted).
 
 - [ ] **Step 1: Write failing tests:** `evidence requires note`, `evidence unknown watchlist id 404`, `evidence rate-limited after 10`, `profile toggle writes audit and invalidates cache`.
 - [ ] **Step 2: Run** `npm test`. Expected: FAIL.

@@ -12,7 +12,9 @@
 
 ## Global Constraints
 
-- Env vars: `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN` (runtime, read-only). Actions secrets: `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN_RW`. A `file:` URL means local SQLite (dev/tests), with no token.
+- Env vars: `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`, `DATA_ENV` (`production` | `preview` | `local`/unset), `TURSO_ORG`. Actions secrets: `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN_RW`, `TURSO_API_TOKEN` (platform token, preview DB create/destroy). A `file:` URL means local SQLite (dev/tests), with no token.
+- DB names: prod `alt-clouds`. Each preview gets its own read-write DB `alt-clouds-pv-<slug>`, where `<slug>` is the preview slug from `preview.sh names`. It is copied from prod (`--from-db`) on the first deploy and destroyed with the preview.
+- Env/DB guard (spec "No cross-wiring") is enforced in both `connect()` (Python) and `getDb()` (TS).
 - Migrations live in `db/migrations/NNNN_<name>.sql` and are applied in filename order. `0001_init.sql` is the spec's schema verbatim.
 - One category per cloud. It must be one of `scripts/lib/taxonomy.py:CATEGORIES`. Tags must pass `lib.entry_format.invalid_tags()`.
 - Slug = `scripts/lib/slugify.py:slugify(name)`, identical to `src/lib/clouds.ts:slugify`. A slug may not be in `RESERVED_SLUGS`.
@@ -28,6 +30,7 @@
 3. **A duplicate or invalid submission reaching `/approve`:** same URL, a slug that collides or is reserved, an unknown tag. Expect a clear issue comment and a non-zero exit, with no partial rows. → Task 7 tests `test_approve_rejects_duplicate_url`, `test_approve_is_atomic`.
 4. **Profile skip-if-exists:** a re-run of the profile generator must never overwrite a `reviewed` profile. → Task 3 test `test_upsert_profile_does_not_overwrite_by_default`.
 5. **Multi-category / legacy-category rows on import** (Pingcap): the import aborts and names the entry. → Task 5 test `test_import_rejects_multi_category`.
+6. **A preview wired to the prod DB, or prod wired to a preview DB** (copy-pasted env, a wrong secret): the connection is refused at startup, so a preview never writes to prod. → Task 1 test `test_connect_refuses_env_db_mismatch`, Task 9 test `getDb refuses env/db mismatch`.
 
 ---
 
@@ -41,6 +44,7 @@
 **Interfaces:**
 - Produces:
   - `class Db(Protocol)`: `execute(sql: str, params: Sequence | Mapping = ()) -> list[dict]`, `batch(stmts: list[tuple[str, Sequence]]) -> None` (atomic, all or nothing).
+  - `assert_db_matches_env(url: str, data_env: str | None, org: str | None) -> None` raises `DbError` per the spec's "No cross-wiring" rules. `connect()` calls it first.
   - `connect(url: str | None = None, token: str | None = None) -> Db`. It defaults to the env vars. `file:`/bare path → `SqliteDb` (stdlib, `PRAGMA foreign_keys=ON`, rows as dict). `libsql://` is rewritten to `https://`, and http(s) → `HttpDb` (POST `{url}/v2/pipeline`, Hrana `execute` requests; `batch` = Hrana `batch` wrapped in BEGIN/COMMIT with each step conditioned on the previous step being ok, ROLLBACK on failure). It raises `DbError(message)` on any SQL/HTTP error.
   - `apply_migrations(db: Db, migrations_dir: Path = Path("db/migrations")) -> list[str]`, which returns the versions applied now.
 
@@ -48,6 +52,12 @@
   - `test_connect_file_executes_and_returns_dicts`: `db = connect(f"file:{tmp_path}/t.db")`; `db.execute("select 1 as x") == [{"x": 1}]`.
   - `test_batch_is_atomic`: create a table with a UNIQUE column; `batch([insert a, insert a])` raises `DbError`; `select count(*)` == 0.
   - `test_apply_migrations_idempotent`: first call returns `["0001_init"]`, second returns `[]`; tables `clouds, cloud_tags, profiles, profile_updates, watchlist, submissions` exist.
+  - `test_connect_refuses_env_db_mismatch` (parametrized, org `datum`):
+    - `production` + `libsql://alt-clouds-pv-x-datum.turso.io` → `DbError`
+    - `preview` + `libsql://alt-clouds-datum.turso.io` → `DbError`
+    - `production` + `file:x.db` → `DbError`
+    - `preview` + `libsql://alt-clouds-pv-x-datum.turso.io` → ok
+    - `production` + `libsql://alt-clouds-datum.turso.io` → ok
   - `test_http_db_encodes_hrana_args` (monkeypatch `requests.post`): `execute("select ?", [5, "a", None])` posts args `[{"type":"integer","value":"5"},{"type":"text","value":"a"},{"type":"null"}]` with header `Authorization: Bearer <token>`, and decodes the response rows to dicts.
 - [ ] **Step 2: Run** `pytest tests/test_db.py -v`. Expected: FAIL (ImportError).
 - [ ] **Step 3: Implement** `db.py`, `db_migrate.py` (CLI: `python scripts/db_migrate.py`, prints the applied versions) and `0001_init.sql` (the spec schema). `.env.example` lists the three env vars with `TURSO_DATABASE_URL=file:./local.db`.
@@ -206,13 +216,13 @@
 
 **Interfaces:**
 - Produces:
-  - `getDb(): Promise<Client>` (singleton). http(s)/libsql URLs → `@libsql/client/web`; `file:` → dynamic `import("@libsql/client")`. It throws if `TURSO_DATABASE_URL` is unset. Env is read via `process.env` at runtime, never inlined by Vite.
+  - `getDb(): Promise<Client>` (singleton). http(s)/libsql URLs → `@libsql/client/web`; `file:` → dynamic `import("@libsql/client")`. It throws if `TURSO_DATABASE_URL` is unset. Env is read via `process.env` at runtime, never inlined by Vite. Before connecting it calls `assertDbMatchesEnv(url, process.env.DATA_ENV, process.env.TURSO_ORG)`, which has the same rules as the Python version.
   - `cached<T>(key: string, ttlMs: number, load: () => Promise<T>): Promise<T>` returns a fresh value within the TTL. After the TTL it reloads. If the reload throws and a stale value exists, it returns the stale value and `console.error`s. With no stale value it rethrows.
   - `CACHE_TTL_MS = 60_000`
   - `getClouds(): Promise<CloudWithSlug[]>` has the same `Cloud` shape as today (`categories: [category]`, `tags`, `unverified`, `dateAdded`) so components don't change. `getCloudBySlug(slug): Promise<CloudWithSlug | undefined>`.
   - `getWatchlist(): Promise<WatchlistEntry[]>` (same interface as today).
 
-- [ ] **Step 1: Write failing tests**: `getClouds maps rows to Cloud shape` (seed 2 clouds + tags; assert `categories`, tag order, `unverified` only when true, `dateAdded`), `serves stale cache when query fails` (prime the cache, advance fake timers past the TTL, make the loader throw → the old value is returned), `rethrows when no cached value`.
+- [ ] **Step 1: Write failing tests**: `getDb refuses env/db mismatch` (same cases as the Python `test_connect_refuses_env_db_mismatch`), `getClouds maps rows to Cloud shape` (seed 2 clouds + tags; assert `categories`, tag order, `unverified` only when true, `dateAdded`), `serves stale cache when query fails` (prime the cache, advance fake timers past the TTL, make the loader throw → the old value is returned), `rethrows when no cached value`.
 - [ ] **Step 2: Run** `npm test`. Expected: FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4: Run** `npm test`. Expected: PASS.
@@ -259,12 +269,30 @@
 
 **Files:**
 - Modify: `compute/server.js`. Keep the static-file + brotli/gzip + cache logic, but serve from `dist/client`. Requests that aren't static files go to `handler` from `./dist/server/entry.mjs` (Node `http` via Bun's `node:http`). Compress dynamic HTML/JSON/txt as a stream when the client accepts it. Keep the `HOST=::` default and the CORS header.
-- Modify: `Dockerfile.datum` (`COPY dist ./dist`, also `COPY node_modules` needed by the server bundle if any are external, `CMD ["bun", "./server.js"]`; document `TURSO_DATABASE_URL`/`TURSO_AUTH_TOKEN` as runtime env), `deploy-datum.yml` + `preview-datum.yml` (remove the clouds.json/llms/watchlist regeneration steps; drop `fetch-depth: 0`; pass the Turso env/secret to the workload; prod uses the read-only token), `ci.yaml` (add `pytest tests/` and `npm test`)
+- Modify: `Dockerfile.datum` (`COPY dist ./dist`, also `COPY node_modules` needed by the server bundle if any are external, `CMD ["bun", "./server.js"]`; document `TURSO_DATABASE_URL`/`TURSO_AUTH_TOKEN` as runtime env), `deploy-datum.yml` (remove the clouds.json/llms/watchlist regeneration steps; drop `fetch-depth: 0`; pass `TURSO_DATABASE_URL`, the read-only `TURSO_AUTH_TOKEN`, `DATA_ENV=production` and `TURSO_ORG` to the workload), `ci.yaml` (add `pytest tests/` and `npm test`)
+- Modify: `preview-datum.yml`. Remove the regeneration steps and add a "Preview database" step before deploy:
+  - install the Turso CLI and authenticate with `TURSO_API_TOKEN`
+  - `DB=alt-clouds-pv-<slug>` (same `<slug>` as the workload name)
+  - if `inputs.reset_db` is true, run `turso db destroy "$DB" --yes || true`
+  - `turso db show "$DB" || turso db create "$DB" --from-db alt-clouds`
+  - `TURSO_DATABASE_URL=$(turso db show "$DB" --url) python scripts/db_migrate.py` with a short-lived token (the branch's migrations)
+  - mint the workload token: `turso db tokens create "$DB" --expiration 30d`, masked with `::add-mask::`
+  - pass `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`, `DATA_ENV=preview`, `TURSO_ORG` to the workload
+  
+  Add the `workflow_dispatch` input `reset_db` (boolean, default false).
+- Modify: `preview-cleanup.yml`, `preview-autoclean.yml`. After destroying the workload, run `turso db destroy alt-clouds-pv-<slug> --yes || true`. The DB name is built by the same `preview.sh names` helper, so the three workflows can't drift.
+- Modify: `docs/datum-compute-previews.md` (preview DB lifecycle, `reset_db`).
 - Delete: `.github/workflows/deploy-pages.yml`, `public/CNAME` (only after the DNS cutover in Task 13)
 
 - [ ] **Step 1: Verify the local image:** run `npm ci && npm run build && datumctl compute build --analyze .`, then run the image with `TURSO_DATABASE_URL=<read-only prod or local sqld>`. `curl -H 'Accept-Encoding: br' -sI localhost:3000/` gives `200` + `content-encoding: br`; `/_astro/*` gives an immutable cache header; `/<reviewed-slug>/` gives 200; `/no-such-slug/` gives 404.
 - [ ] **Step 2: Kill Turso access** (bad token) after warming `/`. `/` still returns 200 from the stale cache.
-- [ ] **Step 3: Commit** `feat(deploy): SSR server on Datum Compute with Turso env`.
+- [ ] **Step 3: Verify the preview DB lifecycle:** run `preview-datum.yml` for a test branch whose commit adds a dummy migration `9999_preview_probe.sql`.
+  - `turso db list` shows `alt-clouds-pv-<slug>`, and that DB has the probe table. Prod (`alt-clouds`) does **not** have it.
+  - The preview site loads with the same cloud count as prod.
+  - `python scripts/profile_admin.py set-status <slug> reviewed` against the preview DB changes only the preview.
+  - Re-running with `reset_db: true` gives a fresh copy.
+  - Deleting the branch leaves no `alt-clouds-pv-<slug>` in `turso db list`.
+- [ ] **Step 4: Commit** `feat(deploy): SSR server on Datum Compute with Turso env and per-preview DBs`.
 
 ### Task 13: Production cutover + docs
 
@@ -272,7 +300,7 @@
 - Modify: `CLAUDE.md` (the "README is the source of truth" section → Turso; the commands section: `db_migrate.py`, `import_to_turso.py`, `profile_admin.py`, `npm test`; remove the "never hand-edit clouds.json" note), `.github/CONTRIBUTING`/README Contributing section (README is generated, so don't edit entries by hand)
 - Delete: `src/content/clouds/` (after the import is verified), `analysis/` references are left as historical
 
-- [ ] **Step 1: Provision:** `turso db create alt-clouds`. Create tokens: `turso db tokens create alt-clouds --read-only` (runtime) and a full-access token (Actions). Set the repo secrets and the Datum workload env.
+- [ ] **Step 1: Provision:** `turso db create alt-clouds`. Create tokens: `turso db tokens create alt-clouds --read-only` (runtime) and a full-access token (Actions). Create a platform API token (`turso auth api-tokens mint alt-clouds-ci`) for preview DBs. Set the repo secrets `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN_RW`, `TURSO_API_TOKEN`, the repo variable `TURSO_ORG`, and the Datum workload env.
 - [ ] **Step 2: Freeze writes:** temporarily disable the submission/graduation/watchlist workflows (`gh workflow disable …`).
 - [ ] **Step 3: Migrate + import into prod:** `python scripts/db_migrate.py && python scripts/import_to_turso.py` with the RW env. Then run `python scripts/render_readme.py && git diff --exit-code README.md WATCHLIST.md`. Expected: no diff.
 - [ ] **Step 4: Deploy** via `deploy-datum.yml`. Compare against the old site: the clouds count, `/clouds.json` (`jq -S` diff against the last Pages `clouds.json` is empty except key order), 5 random profile pages and `/llms.txt`.

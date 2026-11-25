@@ -131,9 +131,28 @@ CREATE TABLE rate_limits (
 - **Rate limits:** submissions 5 batches/IP/hour, max 10 URLs per batch; graduation requests 5/IP/hour; evidence 10/IP/hour; 3 open graduation requests per cloud. All are enforced via `rate_limits`, keyed on `ip_hash`.
 - **URL safety (SSRF, because the evaluator fetches the URL):** `https?` only, no userinfo, no IP literals, no `localhost`/`.local`/`.internal`, port 80/443 or none, max 2048 chars. The Python fetcher re-checks that the resolved IP isn't private.
 - **Admin:** GitHub OAuth (`GITHUB_OAUTH_CLIENT_ID/SECRET`, scope `read:user`). Login is allowed when the user's login is in `ADMIN_GITHUB_LOGINS` (comma list). The session is an HMAC-signed cookie (`SESSION_SECRET`), `HttpOnly; Secure; SameSite=Lax`, 7 days. Every `POST /api/admin/*` checks that `Origin` equals the site origin.
-- **Server privileges change:** the runtime now needs a **read-write** Turso token (Turso tokens are per-database). Production must use the RW token. Previews keep the read-only token, and their write endpoints return `503 read-only preview`.
+- **Server privileges change:** the runtime now needs a **read-write** Turso token (Turso tokens are per-database). Production uses an RW token for `alt-clouds`. Each preview already has its own RW DB `alt-clouds-pv-<slug>` (phase 1), so every form and admin action works on previews and writes only there.
 - **The server holds `GITHUB_DISPATCH_TOKEN`:** a fine-grained PAT or App token, limited to this repo, with `contents: write` (required by `repository_dispatch`).
 - **Privacy:** no submitter email is collected. Raw IPs are never stored, only `ip_hash`.
+
+## Previews (own database, fully writable)
+
+A preview behaves like production against its own DB. These are the only differences:
+
+| Concern | Production | Preview (`DATA_ENV=preview`) |
+| --- | --- | --- |
+| Database | `alt-clouds` | `alt-clouds-pv-<slug>` |
+| Dispatch payload | `{ target: "production", … }` | `{ target: "preview", db: "alt-clouds-pv-<slug>", … }` |
+| Actions job DB credentials | secret `TURSO_AUTH_TOKEN_RW` | minted in the job: `turso db tokens create <db> --expiration 1h` via `TURSO_API_TOKEN`, only if `db` matches `^alt-clouds-pv-[a-z0-9-]{1,40}$` and `turso db show` finds it |
+| `data-changed` → `sync-readme.yml` | yes | **never** (README/WATCHLIST mirror prod only) |
+| Sweep cron | yes | no; the admin console has a **Re-dispatch** button for stuck rows |
+| Admin auth | GitHub OAuth + `ADMIN_GITHUB_LOGINS` | `ADMIN_AUTH_MODE=preview`: trusts the load balancer's Basic Auth that already protects previews, and the actor is `preview:<basic-auth user>`. One OAuth app can't serve per-branch hostnames. |
+| Turnstile | real keys | Cloudflare test keys (always pass) |
+| Extension CORS | `EXTENSION_ORIGINS` | same (lets a dev build of the extension target a preview) |
+
+**Safety rule:** every Python job resolves its DB only through `resolve_target(payload)`. A `target: "preview"` payload can never yield the prod URL, and a `target: "production"` payload ignores any `db` field. Together with phase 1's env/DB guard, a preview can't write to prod through the server or through Actions.
+
+**Residual risk:** previews hold the same `GITHUB_DISPATCH_TOKEN` as prod, so a compromised preview could send a `target: "production"` dispatch. That dispatch can only re-run evaluation/approval for ids already in prod, which still need prod state (`queued`/`approving`) to do anything. Accepted, since previews sit behind Basic Auth.
 
 ## Browser extension
 
