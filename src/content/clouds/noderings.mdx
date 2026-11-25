@@ -1,0 +1,47 @@
+---
+status: draft
+tagline: "A marketplace that lets you compare and deploy compute, game server, and DNS plans from independent hosting providers in one console."
+pricingModel: mixed
+regions:
+  - "North America"
+  - "Europe"
+  - "Asia"
+services:
+  - "Compute Instance (VPS)"
+  - "Game servers"
+  - "DNS / GeoDNS"
+  - "Instant Apps (WordPress, Nextcloud, Ghost, GitLab, Portainer, Open WebUI, etc.)"
+socials:
+  website: "https://noderings.com/"
+---
+
+## What makes NodeRings different
+
+NodeRings isn't a cloud itself — it's a marketplace and unified console sitting on top of independent hosting providers like Enzonix, Virtualized, and WitherHosting. Instead of locking you into one vendor's infrastructure, it lets you search, filter, and compare compute and game server plans by size, city, or budget across multiple hosts, then deploy and manage them through a single dashboard.
+
+The differentiator is aggregation with provider transparency: every listing shows which host it runs on, the city, and the price, rather than abstracting infrastructure behind a generic brand. This gives buyers price and locality visibility that's unusual among hyperscalers, while still offering a consistent management layer (power controls, console access, graphs, and a bring-your-own or built-in Grafana) regardless of which underlying provider you pick.
+
+It also targets workflows hyperscalers underserve, like one-click Instant Apps (WordPress, Nextcloud, GitLab, Open WebUI, etc.) and pre-installed game servers (Minecraft, Rust, FiveM, Valheim), alongside free GeoDNS included with every account.
+
+## Pricing model
+
+NodeRings supports both fixed monthly/hourly compute plans and usage-based billing, with pricing set per-listing by the individual host rather than a single centralized rate card. A blog post describing an Ansible-automated deployment cites a real example: an hourly VPS costing $0.007/hour, provisioned and configured (SSH, firewall, DNS, nginx) in 56 seconds.
+
+Game server plans are priced per game/session size, and DNS with GeoDNS is included free with a NodeRings account. Because pricing is set by competing independent hosts within the marketplace, rates can be lower than hyperscaler equivalents, and the per-listing transparency (host, city, and price shown upfront) stands in contrast to the often opaque, tiered pricing pages of AWS/GCP/Azure.
+
+## When it fits
+
+- Teams wanting to shop and compare VPS or game server pricing across multiple independent hosts from one console
+- Projects needing quick one-click app deployment (WordPress, Nextcloud, GitLab, Open WebUI, etc.) without manual setup
+- Game communities needing pre-installed, managed game servers (Minecraft, Rust, FiveM, Valheim, Palworld, Terraria)
+- Users wanting free GeoDNS/anycast DNS without needing a separate DNS provider
+- Budget-conscious or locality-sensitive workloads where choosing a specific host/city/price matters
+
+## When it doesn't
+
+- Workloads requiring advanced managed services (Kubernetes, serverless, GPU/inference, object storage, CDN) — these are all listed as "coming soon" and not yet available.
+- Enterprises needing a single-vendor SLA across a unified global backbone, since infrastructure is run by multiple independent third-party hosts rather than one unified provider.
+
+## Inclusion criteria
+
+NodeRings meets all three inclusion criteria: transparent pricing (per-listing host, city, and price shown, plus concrete examples like $0.007/hour VPS), self-service signup (public "Get started" / sign-up flow at noderings.com/signup), and a public docs/status presence via its documentation site (docs.noderings.com) and provider/roadmap pages.

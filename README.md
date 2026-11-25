@@ -132,6 +132,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [Netmaker](https://netmaker.io/) - A WireGuard-based virtual networking platform that enables fast, secure, and scalable networking for devices and distributed systems.
 * 🟡 [Nevia](https://nevia.cloud/) - Provides cloud infrastructure purpose-built for AI agents, with microVMs, databases, and inference optimized for agentic workloads with millisecond startup and scale-to-zero capabilities. <!-- tags: agent-native, owns-hardware -->
 * 🟢 [NextGen Cloud](https://www.nextgencloud.com/) - Delivers sustainable, high-performance cloud infrastructure for AI workloads. <!-- tags: gpu -->
+* 🟢 [NodeRings](https://noderings.com/) - Provides a marketplace for comparing and deploying compute instances, game servers, and DNS services across independent hosting providers from a single console. <!-- tags: owns-hardware, agent-native, region:nl, region:us, region:sg -->
 * 🟢 [Offline Protocol](https://www.offlineprotocol.com/) - Provides edge-native coordination for physical systems with identity, encrypted messaging, and service discovery across local, mesh, gateway, and cloud networks.
 * 🟢 [Openmetal.io](https://openmetal.io/) - Delivers on-demand private cloud infrastructure based on OpenStack.
 * 🟡 [OpenRelay](https://openrelay.inc/) - Provides distributed AI inference and GPU compute through an inference delivery network with automatic request routing, supporting model hosting, GPU rental, and provider enrollment. <!-- tags: gpu -->
