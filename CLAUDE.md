@@ -13,15 +13,15 @@ For the full pipeline breakdown (submission → evaluation → PR → deploy), r
 ## Commands
 
 ```bash
-npm install
-npm run dev            # Astro dev server, http://localhost:4321
-npm run build          # astro build -> dist/ (postbuild rewrites relative paths for GitHub Pages)
-npm run preview
-npm run check           # astro check
-npm run lint            # eslint . && astro check
-npm run lint:fix
-npm run format           # prettier --write .
-npm run format:check
+pnpm install
+pnpm dev               # Astro dev server, http://localhost:4321
+pnpm build             # astro build -> dist/ (postbuild rewrites relative paths for GitHub Pages)
+pnpm preview
+pnpm check              # astro check
+pnpm lint               # eslint . && astro check
+pnpm lint:fix
+pnpm format              # prettier --write .
+pnpm format:check
 ```
 
 Python (submission pipeline scripts + tests — not run in any CI workflow, run manually):

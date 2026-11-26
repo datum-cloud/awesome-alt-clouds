@@ -1,0 +1,19 @@
+# pnpm settings for this repo. It is a single package, not a workspace: there
+# is no `packages:` list.
+
+# Wait a day before installing a newly published version. Most compromised
+# releases are pulled within hours. Our own packages are published and
+# consumed across repos on the same day, so the delay must not hold them back.
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@datum-cloud/*"
+
+# Reject a version published with weaker provenance than the versions before
+# it, such as a release pushed with a stolen token for a package that normally
+# publishes from CI.
+trustPolicy: no-downgrade
+
+# Packages allowed to run install scripts. None in this tree has one: sharp,
+# @tailwindcss/oxide and fsevents ship prebuilt binaries as optional
+# dependencies. A new package that wants a script must be added here.
+allowBuilds: {}

@@ -6,6 +6,7 @@
   "engines": {
     "node": ">=26.13.0"
   },
+  "packageManager": "pnpm@12.23.0",
   "description": "Astro site for alt-cloud.org — a curated directory of alternative cloud providers",
   "scripts": {
     "dev": "astro dev",
@@ -34,6 +35,7 @@
     "eslint": "^10.15.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^3.2.1",
+    "globals": "^17.14.0",
     "prettier": "^3.10.1",
     "typescript-eslint": "^8.73.0"
   }

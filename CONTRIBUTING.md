@@ -54,11 +54,11 @@ To request a re-check, open an issue titled `[Graduation] <Service Name>` (the A
 The site is an [Astro](https://astro.build) static site with Tailwind CSS v4, hosted on GitHub Pages.
 
 ```bash
-npm install
-npm run dev            # local server at http://localhost:4321
-npm run build          # outputs dist/
-npm run lint           # ESLint + astro check
-npm run format:check   # Prettier
+pnpm install
+pnpm dev               # local server at http://localhost:4321
+pnpm build             # outputs dist/
+pnpm lint              # ESLint + astro check
+pnpm format:check      # Prettier
 ```
 
 Open the repo in VS Code/Cursor and install the recommended extensions (`.vscode/extensions.json`) for Astro, ESLint, Tailwind, and Ruff.
