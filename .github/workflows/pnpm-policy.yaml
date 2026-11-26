@@ -1,0 +1,22 @@
+name: pnpm policy
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  pnpm-policy:
+    uses: datum-cloud/actions/.github/workflows/pnpm-policy.yaml@v1.31.0
+    with:
+      require-pnpm: true
+      require-lockfile: true
