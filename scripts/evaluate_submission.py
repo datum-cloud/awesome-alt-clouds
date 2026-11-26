@@ -275,7 +275,10 @@ def check_production_indicators(soup, base_url):
             continue  # SPA answers 200 to every path; not evidence
         try:
             response = requests.head(status_url, timeout=5, allow_redirects=True)
-            if response.status_code == 200:
+            landed = urlparse(getattr(response, 'url', status_url)).netloc.replace('www.', '')
+            if response.status_code == 200 and landed == urlparse(status_url).netloc:
+                # Must stay on the probed host: unknown <name>.statuspage.io
+                # subdomains redirect to a 200 marketing page.
                 result['passed'] = True
                 result['evidence'] = f'Status page found: {status_url}'
                 return result

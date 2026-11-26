@@ -637,3 +637,33 @@ class TestCatchAllProbes:
             with patch.object(ev.requests, 'head', side_effect=head):
                 result = ev.check_production_indicators(_EMPTY, 'https://x.com/')
         assert result['passed'] is False
+
+
+class TestEncodingAndStatusRedirects:
+    def test_fetch_page_does_not_advertise_brotli(self):
+        # requests cannot decode `br` without the brotli package; advertising it
+        # made br-serving sites (latentdefense.ai, #429) come back as binary noise.
+        resp = _make_response('<html><body>hello world ' + 'x' * 300 + '</body></html>')
+        with patch('lib.fetcher.requests.get', return_value=resp) as get:
+            ev.fetch_page('https://x.com')
+        sent = get.call_args.kwargs['headers']['Accept-Encoding']
+        assert 'br' not in [e.strip() for e in sent.split(',')]
+
+    def test_status_guess_redirected_off_host_is_not_evidence(self):
+        # <name>.statuspage.io 302s every unknown subdomain to atlassian.com (200)
+        def head(url, **kw):
+            return MagicMock(status_code=200, url='https://www.atlassian.com/software/statuspage')
+        with patch.object(ev, '_probe_url', return_value=(None, None)):
+            with patch.object(ev.requests, 'head', side_effect=head):
+                result = ev.check_production_indicators(_EMPTY, 'https://x.com/')
+        assert result['passed'] is False
+
+    def test_status_guess_on_same_host_counts(self):
+        def head(url, **kw):
+            ok = url == 'https://status.x.com'
+            return MagicMock(status_code=200 if ok else 404, url=url)
+        with patch.object(ev, '_probe_url', return_value=(None, None)):
+            with patch.object(ev.requests, 'head', side_effect=head):
+                result = ev.check_production_indicators(_EMPTY, 'https://x.com/')
+        assert result['passed'] is True
+        assert result['evidence'] == 'Status page found: https://status.x.com'
