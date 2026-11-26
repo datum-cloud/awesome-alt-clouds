@@ -446,6 +446,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Claude](https://claude.ai/) - An AI assistant from Anthropic focused on safe, helpful, and honest interactions, suitable for creative and technical workflows.
 * 🟢 [Clerk](https://clerk.com/) - Offers a complete suite of embeddable UIs and APIs for user authentication and management.
 * 🟡 [Cloudbrowser](https://cloudbrowser.tv/) - Provides persistent Chrome cloud browsers for AI agents with saved login state, isolation, and CDP automation support. <!-- tags: agent-native -->
+* 🟢 [Cloudflare OS](https://os.cloudflare.app/) - Provides an open-source AI operating system for companies to deploy AI agents and workspaces with isolated execution, secure data access, and integration with internal systems. <!-- tags: agent-native, open-source -->
 * 🟢 [Cloudsmith](https://cloudsmith.com/) - Cloud-native artifact management supporting 30+ formats with security scanning, policy engine, and global CDN delivery.
 * 🟢 [Coder](https://coder.com/) - Offers self-hosted cloud development environments that provision and manage workspaces, enabling developers to code from anywhere with enhanced security and scalability. <!-- tags: open-source -->
 * 🟢 [Cohere](https://cohere.com/) - Enterprise AI platform with language models for automation, data insights, and custom solutions.
