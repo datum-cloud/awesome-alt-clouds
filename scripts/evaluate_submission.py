@@ -20,6 +20,7 @@ from bs4 import BeautifulSoup
 
 sys.path.insert(0, os.path.dirname(__file__))
 
+from lib.llm_json import extract_json_object  # noqa: E402
 from lib.classification import (  # noqa: E402
     classification_prompt_block,
     normalize_classification,
@@ -344,13 +345,7 @@ Respond in this exact JSON format only, no other text:
 
         response_text = message.content[0].text.strip()
 
-        # Handle case where response might have markdown code blocks
-        if "```" in response_text:
-            json_match = re.search(r'\{[^}]+\}', response_text)
-            if json_match:
-                response_text = json_match.group(0)
-
-        metadata = json.loads(response_text)
+        metadata = extract_json_object(response_text)
 
         normalize_classification(metadata)
 
@@ -361,7 +356,7 @@ Respond in this exact JSON format only, no other text:
         return metadata
 
     except Exception as e:
-        print(f"Error calling Claude API: {e}")
+        print(f"Error calling Claude API for metadata: {e}")
         return None
 
 
@@ -517,14 +512,7 @@ Respond in this exact JSON format only, no other text:
         response_text = (message.choices[0].message.content or "").strip()
         response_text = re.sub(r'<think>[\s\S]*?</think>', '', response_text).strip()
 
-        # Parse JSON from response
-        # Handle case where response might have markdown code blocks
-        if "```" in response_text:
-            json_match = re.search(r'\{[^}]+\}', response_text)
-            if json_match:
-                response_text = json_match.group(0)
-
-        metadata = json.loads(response_text)
+        metadata = extract_json_object(response_text)
 
         # Validate category
         normalize_classification(metadata)
@@ -642,9 +630,13 @@ Respond in this exact JSON format only, no other text:
 
 def generate_metadata(url, page_content=None):
     """Dispatch metadata generation to the provider selected by LLM_PROVIDER."""
-    if LLM_PROVIDER == "qwen":
-        return generate_metadata_with_qwen(url, page_content)
-    return generate_metadata_with_claude(url, page_content)
+    generate = generate_metadata_with_qwen if LLM_PROVIDER == "qwen" else generate_metadata_with_claude
+    for attempt in (1, 2):
+        metadata = generate(url, page_content)
+        if metadata:
+            return metadata
+        print(f"Metadata attempt {attempt}/2 failed for {url}")
+    return None
 
 
 def evaluate_with_llm(url):
@@ -780,7 +772,10 @@ def generate_single_result_markdown(result, ai_metadata=None):
 - **Tags:** {', '.join(ai_metadata.get('tags') or []) or 'none'}
 
 """
-        if needs_manual:
+        if ai_metadata.get('fallback'):
+            md += (":warning: AI metadata generation failed — will be included in PR with a "
+                   "placeholder name/description/category that **must be corrected before merge**\n")
+        elif needs_manual:
             md += ":warning: Will be included in PR but **requires manual verification** of criteria\n"
         else:
             md += ":white_check_mark: Will be included in PR\n"
@@ -945,7 +940,7 @@ def main():
                         'needs_manual_review': False if admin_approved else result.get('needs_manual_review', False),
                         'admin_approved': admin_approved,
                     })
-                elif admin_approved:
+                else:
                     fallback_name = result['company_name']
                     print(f"Warning: LLM metadata call failed, using fallback for {fallback_name}")
                     passing_services.append({

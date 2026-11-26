@@ -529,3 +529,72 @@ class TestEvaluateServiceCascade:
             result = ev.evaluate_service('https://example.com')
         assert 'page_content' in result
         assert 'Hello world' in result['page_content']
+
+
+# ---------------------------------------------------------------------------
+# Metadata retry + fail-open fallback (#429)
+# ---------------------------------------------------------------------------
+
+class TestGenerateMetadataRetry:
+    GOOD = {'name': 'X', 'description': 'Provides x.', 'category': 'Infrastructure Clouds', 'tags': []}
+
+    def test_retries_once_when_first_call_returns_none(self):
+        with patch.object(ev, 'LLM_PROVIDER', 'claude'):
+            with patch.object(ev, 'generate_metadata_with_claude', side_effect=[None, self.GOOD]) as m:
+                assert ev.generate_metadata('https://x.com', 'c') == self.GOOD
+                assert m.call_count == 2
+
+    def test_returns_none_after_two_failures(self):
+        with patch.object(ev, 'LLM_PROVIDER', 'claude'):
+            with patch.object(ev, 'generate_metadata_with_claude', return_value=None) as m:
+                assert ev.generate_metadata('https://x.com', 'c') is None
+                assert m.call_count == 2
+
+
+class TestClaudeMetadataParsing:
+    def _run(self, reply):
+        client = MagicMock()
+        client.messages.create.return_value.content = [MagicMock(text=reply)]
+        fake = MagicMock()
+        fake.Anthropic.return_value = client
+        with patch.object(ev, 'ANTHROPIC_API_KEY', 'k'):
+            with patch.dict(sys.modules, {'anthropic': fake}):
+                return ev.generate_metadata_with_claude('https://x.com', 'page ' * 50)
+
+    def test_prose_wrapped_json_is_parsed(self):
+        reply = 'Sure! {"name": "X", "description": "Provides x.", "category": "Infrastructure Clouds", "tags": []}'
+        assert self._run(reply)['name'] == 'X'
+
+    def test_empty_reply_returns_none(self):
+        assert self._run('') is None
+
+
+class TestMainMetadataFallback:
+    """A passing score must not be reported as failed when metadata generation fails."""
+
+    def _run_main(self, tmp_path, monkeypatch):
+        monkeypatch.chdir(tmp_path)
+        monkeypatch.setenv('ISSUE_BODY', '### URLs\n1. https://latentdefense.ai/\n')
+        monkeypatch.setenv('ISSUE_NUMBER', '429')
+        result = {'url': 'https://latentdefense.ai/', 'company_name': 'Latentdefense', 'score': 3,
+                  'criteria': [{'name': n, 'passed': True, 'evidence': 'e'} for n in
+                               ('Transparent Public Pricing', 'Usage-based Self-Service', 'Production Indicators')],
+                  'fetch_failed': False, 'fetch_method': 'jina', 'page_content': 'x'}
+        with patch.object(ev, 'evaluate_service', return_value=result):
+            with patch.object(ev, 'generate_metadata', return_value=None):
+                ev.main()
+
+    def test_non_admin_pass_falls_back_and_creates_submission_data(self, tmp_path, monkeypatch):
+        import json
+        self._run_main(tmp_path, monkeypatch)
+        data = json.loads((tmp_path / 'submission_data.json').read_text())
+        svc = data['services'][0]
+        assert svc['name'] == 'Latentdefense'
+        assert svc['needs_manual_review'] is True
+        report = (tmp_path / 'evaluation_results.md').read_text()
+        assert 'Passed (2/3+):** 1' in report
+
+    def test_report_flags_placeholder_metadata(self, tmp_path, monkeypatch):
+        self._run_main(tmp_path, monkeypatch)
+        report = (tmp_path / 'evaluation_results.md').read_text()
+        assert 'must be corrected before merge' in report
