@@ -127,7 +127,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟡 [Namespace](https://namespace.so/) - Cloud service provider.
 * 🟢 [Nebius](https://nebius.com/) - Provides AI-centric cloud infrastructure with large-scale GPU clusters and managed services. <!-- tags: gpu -->
 * 🟢 [NeevCloud](https://www.neevcloud.com/) - India-based GPU cloud offering secure, scalable AI compute. <!-- tags: gpu, region:in -->
-* 🟡 [Negarnovin](https://negarnovin.com/) - Provides cloud infrastructure, VPS, dedicated servers, web hosting, and GPU services across 75+ global locations with KVM virtualization, NVMe storage, and 99.99% SLA uptime. <!-- tags: gpu, owns-hardware, region:ir, region:eu, region:us, region:asia -->
+* 🟡 [Negarnovin](https://negarnovin.com/) - Provides cloud infrastructure, VPS, web hosting and GPU services from Iran, and also resells dedicated servers abroad. Persian-language site only. <!-- tags: gpu, region:ir -->
 * 🟢 [NetActuate](https://netactuate.com/) - Provides hybrid cloud and edge computing solutions with a global network.
 * 🟢 [NetBox Cloud](https://netboxlabs.com/netbox-cloud/) - A managed solution for network infrastructure modeling and documentation, providing a scalable and secure platform for network automation.
 * 🟢 [Netmaker](https://netmaker.io/) - A WireGuard-based virtual networking platform that enables fast, secure, and scalable networking for devices and distributed systems.
