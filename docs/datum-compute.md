@@ -24,7 +24,7 @@ Per-branch previews behind Basic Authentication (`preview-datum.yml`,
 
 ```text
 Actions -> Deploy Datum Compute
-  regenerate clouds.json / llms*.txt / watchlist.json, npm run build   (-> dist/)
+  regenerate clouds.json / llms*.txt / watchlist.json, pnpm build   (-> dist/)
   datumctl compute build  Dockerfile.datum  (dist/ + compute/server.js on bun-slim)
   push ghcr.io/datum-cloud/awesome-alt-clouds-compute:sha-<sha>-<run>
   datumctl compute deploy --runtime-class unikernel
@@ -116,7 +116,7 @@ export an OCI image, so use a `docker-container` BuildKit:
 python3 scripts/parse_readme_to_json.py README.md public/clouds.json
 python3 scripts/generate_llms.py public/clouds.json public/
 python3 scripts/generate_watchlist_json.py
-npm ci && npm run build
+pnpm install --frozen-lockfile && pnpm build
 
 docker buildx create --name dc --driver docker-container --bootstrap
 datumctl compute build --analyze \

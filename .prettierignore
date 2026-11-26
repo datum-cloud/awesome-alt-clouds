@@ -1,7 +1,7 @@
 dist
 node_modules
 .astro
-package-lock.json
+pnpm-lock.yaml
 public/clouds.json
 public/llms-full.txt
 public/watchlist.json

@@ -47,7 +47,7 @@ Preview Datum Compute (branch, project, location)
   build job (contents: read, packages: write; no Datum credentials)
     1. Check the naming rules; derive <slug>, the workload and the image tag
     2. Check out the branch (full history), regenerate clouds.json / llms*.txt /
-       watchlist.json, npm ci, npm run build
+       watchlist.json, pnpm install, pnpm build
     3. datumctl compute build (Dockerfile.datum) and push
        ghcr.io/datum-cloud/awesome-alt-clouds-compute:preview-<slug>-<sha7>-<run>
   deploy job (environment datum-compute-preview)

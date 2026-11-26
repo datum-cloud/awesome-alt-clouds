@@ -13,9 +13,9 @@
 # its shared libraries and the site, and nothing that needs a shell.
 #
 # Build it locally with:
-#   npm ci && python3 scripts/parse_readme_to_json.py README.md public/clouds.json \
+#   pnpm install --frozen-lockfile && python3 scripts/parse_readme_to_json.py README.md public/clouds.json \
 #     && python3 scripts/generate_llms.py public/clouds.json public/ \
-#     && python3 scripts/generate_watchlist_json.py && npm run build
+#     && python3 scripts/generate_watchlist_json.py && pnpm build
 #   datumctl compute build --analyze .
 
 FROM oven/bun:1.4.5-slim
