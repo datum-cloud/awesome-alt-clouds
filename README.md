@@ -475,6 +475,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢🔵 [FeatBit](https://featbit.co/) - Open-source feature flags, cloud service verification needed. <!-- tags: open-source -->
 * 🟢 [Firefly](https://www.firefly.ai/) - A cloud asset management solution powered by Infrastructure-as-Code, assisting DevOps and SRE teams in managing their entire cloud infrastructure efficiently.
 * 🟢 [Flagsmith](https://www.flagsmith.com/) - Open-source feature flag and remote config platform with SaaS, self-hosted, or private cloud deployment options. <!-- tags: open-source -->
+* 🟢 [Flatkey](https://flatkey.ai/) - Provides unified API access to multiple AI models and GPU rental capacity through a single key, with OpenAI-compatible endpoints and shared billing. <!-- tags: gpu, agent-native -->
 * 🟡 [Floci](https://floci.io/) - Provides fast, credential-free local cloud emulators for AWS, Azure, GCP, and OCI with real engines and 24ms startup times for development and testing.
 * 🟢 [Formbricks](https://formbricks.com/) - Open-source experience management platform. In-app surveys and user feedback collection. <!-- tags: open-source -->
 * 🟢 [Fortinet](https://www.fortinet.com/) - Provides integrated cybersecurity solutions including next-gen firewalls, secure SD-WAN, and endpoint protection.
