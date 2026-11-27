@@ -602,6 +602,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [UsageRail](https://usagerail.com/) - Provides API monetization with usage-based billing, rate limiting, and customer portals integrated with Stripe, using an in-process SDK that keeps requests server-side.
 * 🟢 [Warp](https://www.warp.dev/) - Cloud service provider.
 * 🟢 [Warrant](https://warrant.dev/) - Authorization and access control as a service.
+* 🟡 [Wayfaster](https://wayfaster.org/#cost) - Optimizes AI inference performance and cost through serving tuning, model quantization, hardware porting, and benchmarking on GPUs and accelerators. <!-- tags: gpu -->
 * 🟡 [Wire](https://usewire.io/) - Provides composable context containers for AI agents, organizing documents and data into AI-optimized environments accessible via MCP protocol. <!-- tags: agent-native -->
 * 🟢 [Wise](https://wise.com/) - A platform for paying and getting paid globally.
 * 🟢 [Wiz](https://www.wiz.io/) - A cloud security platform that gives full-stack visibility into cloud infrastructure and prioritizes risk across workloads, containers, and identities.
