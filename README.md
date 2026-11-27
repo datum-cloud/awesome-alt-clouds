@@ -532,6 +532,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Novu](https://novu.co/) - Provides open-source notification infrastructure for multi-channel communication across email, SMS, push, chat, and more with workflow orchestration and agent integration. <!-- tags: open-source -->
 * 🟢 [Obvious](https://obvious.ai/) - Provides an AI agent platform that collaborates with users to build artifacts, automate workflows, and generate content across various professional use cases.
 * 🟢 [Onomondo](https://onomondo.com/) - A full-stack connectivity platform for IoT with a single global SIM, advanced network control, and transparent pricing.
+* 🟢 [OpenLux](https://openlux.lol/) - Provides unified API gateway access to multiple LLM providers (OpenAI, Claude, Gemini, DeepSeek) through a single OpenAI-compatible endpoint with transparent billing. <!-- tags: agent-native -->
 * 🟢 [OpenMeter](https://openmeter.io/) - Open-source usage metering for consumption-based billing. <!-- tags: open-source -->
 * 🟡 [OpenSEO](https://openseo.so/) - Provides an open source SEO platform with keyword research, competitor analysis, backlinks, and rank tracking, integrated with AI agents via Model Context Protocol. <!-- tags: open-source -->
 * 🟢 [OpenStatus](https://www.openstatus.dev/) - Open-source status page and monitoring platform for tracking API and website uptime worldwide. <!-- tags: open-source -->
