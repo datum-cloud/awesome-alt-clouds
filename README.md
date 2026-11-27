@@ -347,6 +347,7 @@ The provider owns a compute- or storage-heavy workload end to end. No provisioni
 * 🟢 [Rybbit](https://rybbit.com/) - Provides a cookieless, GDPR-compliant web analytics platform with session replay, conversion funnels, and real-time data as a Google Analytics alternative. <!-- tags: warehouse-lakehouse, realtime-rtc -->
 * 🟢 [Ryvn](https://ryvn.ai/) - BYOC deployment platform for SaaS startups in customer clouds and on-premises. <!-- tags: durable-workflow, open-source -->
 * 🟢 [Sail Research](https://www.sailresearch.com/) - Provides cost-efficient inference infrastructure for running leading open-source AI models on demand, optimized for long-horizon agents with flexible completion windows. <!-- tags: llm-inference, open-source -->
+* 🟡 [Sandscale](https://sandscale.dev/) - Gives each AI coding agent run its own Firecracker microVM sandbox, with workspaces, build hosts, a remote MCP server, per-tool policies and an audit log. <!-- tags: agent-sandbox -->
 * 🟢 [Sendbird](https://sendbird.com/) - Communications API providing chat, voice, video, and AI messaging infrastructure with mobile/web SDKs. <!-- tags: speech-voice -->
 * 🟢 [ServiceNow](https://www.servicenow.com/) - A cloud-based platform that streamlines digital workflows for enterprise IT, customer service, and HR operations. <!-- tags: durable-workflow -->
 * 🟢 [Shuttle](https://www.shuttle.dev/) - Rust-native cloud platform for building and deploying backend services. <!-- tags: app-hosting -->
