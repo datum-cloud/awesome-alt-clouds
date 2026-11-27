@@ -94,6 +94,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 * 🟢 [GMI Cloud](https://www.gmicloud.ai/) - Provides GPU cloud services optimized for AI and deep learning tasks. <!-- tags: gpu -->
 * 🟡 [GPU CLI](https://gpu-cli.sh) - Provides command-line access to remote cloud GPUs with auto-stop functionality, instant connection, and automatic result syncing for ML training and inference workloads. <!-- tags: gpu -->
 * 🟡 [gpu.nz](https://gpu.nz/en) - Provides GPU server rental by the minute with RTX and H100 cards across 70 countries, supporting AI, training, and rendering workloads. <!-- tags: gpu, region:nz -->
+* 🟢 [Hedra](https://www.hedra.com/company) - Provides research expertise and GPU infrastructure for post-training multimodal models with reinforcement learning, optimization, and inference serving. <!-- tags: gpu -->
 * 🟡 [Hetzner](https://www.hetzner.com/) - Provides dedicated servers and cloud services in Europe. <!-- tags: owns-hardware, region:eu -->
 * 🟡 [Highrise](https://www.highrise.ai/) - Provides a unified platform for developing, training, and deploying AI models with access to thousands of NVIDIA GPUs at competitive pricing, backed by Hut 8 infrastructure. <!-- tags: gpu -->
 * 🟢 [Hikube](https://hikube.cloud/) - Provides sovereign Swiss cloud infrastructure with VMs, Kubernetes, GPU, managed databases, S3 storage, and messaging services across 3 Swiss datacenters with zero US jurisdiction. <!-- tags: owns-hardware, gpu, region:ch -->
