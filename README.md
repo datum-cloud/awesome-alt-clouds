@@ -508,6 +508,7 @@ Building-block services builders embed in their own cloud or product: identity, 
 * 🟢 [Knock](https://knock.app/) - Notification infrastructure with workflows, preferences, and delivery channels.
 * 🟢🔵 [KrakenD](https://www.krakend.io/) - High-performance API gateway, needs cloud pricing model verification.
 * 🟡 [Lago](https://www.getlago.com/) - An open-source metering and usage-based billing platform designed for transparency and developer experience. <!-- tags: open-source -->
+* 🟢 [Latent Defense](https://latentdefense.ai/) - Unable to analyze - page content is corrupted or encrypted. Cannot determine service offering, category, or applicable tags.
 * 🟢🔵 [LaunchDarkly](https://launchdarkly.com/) - Industry-leading feature management with $20k-$120k/year pricing but no public transparency.
 * 🟢 [Layer 9](https://layer9.com/) - AI network engineer that configures, monitors, and repairs network devices with 24/7 automation.
 * 🟢 [Lemon Squeezy](https://www.lemonsqueezy.com/) - The all-in-one platform for SaaS that provides payments, tax & subscriptions.
