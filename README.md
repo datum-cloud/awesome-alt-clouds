@@ -36,6 +36,7 @@ Raw capacity (compute, GPU, bare metal, storage, network, edge) priced by resour
 
 * 🟢 [Accelerated Cloud Storage](https://www.acceleratedcloudstorage.com/) - Provides globally distributed, S3-compatible object storage optimized for AI workloads with high performance and 99.999999999% durability.
 * 🟢 [Aethir](https://aethir.com) - Provides secure, cost-effective access to enterprise-grade GPUs worldwide through a distributed cloud compute infrastructure. <!-- tags: gpu -->
+* 🟢 [Ai-Memory](https://ai-memory.lol/) - Cloud service provider.
 * 🟢 [Akamai](https://www.akamai.com/) - A global content delivery and cybersecurity platform that helps secure and accelerate digital experiences at the edge.
 * 🟢 [Akash Network](https://akash.network/) - Providing access to compute at prices up to 85% lower than hyperscale cloud providers.
 * 🟢 [Andromeda](https://andromeda.ai/) - Connects AI teams with high-performance GPU compute across 100+ global providers, offering real-time sourcing, benchmarking, and standardized deployment at scale. <!-- tags: gpu -->
