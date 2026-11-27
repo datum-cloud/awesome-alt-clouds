@@ -598,3 +598,72 @@ class TestMainMetadataFallback:
         self._run_main(tmp_path, monkeypatch)
         report = (tmp_path / 'evaluation_results.md').read_text()
         assert 'must be corrected before merge' in report
+
+# Catch-all (SPA) hosts must not satisfy guessed-path probes (#429)
+# ---------------------------------------------------------------------------
+
+_EMPTY = BeautifulSoup('<html><body>just a canvas</body></html>', 'html.parser')
+
+
+class TestCatchAllProbes:
+    def test_is_catch_all_true_when_bogus_path_returns_200(self):
+        with patch.object(ev, '_probe_url', return_value=(_EMPTY, 'https://x.com/zzz')):
+            assert ev._is_catch_all_host('https://x.com') is True
+
+    def test_is_catch_all_false_when_bogus_path_404s(self):
+        with patch.object(ev, '_probe_url', return_value=(None, None)):
+            assert ev._is_catch_all_host('https://x.com') is False
+
+    def test_self_service_probe_ignored_on_catch_all_host(self):
+        # Every probe returns 200 (SPA) -> must NOT count as signup evidence
+        with patch.object(ev, '_probe_url', return_value=(_EMPTY, 'https://x.com/signup')):
+            result = ev.check_self_service(_EMPTY, 'https://x.com/')
+        assert result['passed'] is False
+
+    def test_self_service_probe_still_counts_on_normal_host(self):
+        def probe(url, timeout=10):
+            if url.endswith('/signup'):
+                return _EMPTY, url
+            return None, None
+        with patch.object(ev, '_probe_url', side_effect=probe):
+            result = ev.check_self_service(_EMPTY, 'https://x.com/')
+        assert result['passed'] is True
+        assert result['evidence'] == 'Signup page found at https://x.com/signup'
+
+    def test_status_probe_ignored_on_catch_all_host(self):
+        def head(url, **kw):
+            return MagicMock(status_code=200 if url == 'https://x.com/status' else 404)
+        with patch.object(ev, '_probe_url', return_value=(_EMPTY, 'https://x.com/zzz')):
+            with patch.object(ev.requests, 'head', side_effect=head):
+                result = ev.check_production_indicators(_EMPTY, 'https://x.com/')
+        assert result['passed'] is False
+
+
+class TestEncodingAndStatusRedirects:
+    def test_fetch_page_does_not_advertise_brotli(self):
+        # requests cannot decode `br` without the brotli package; advertising it
+        # made br-serving sites (latentdefense.ai, #429) come back as binary noise.
+        resp = _make_response('<html><body>hello world ' + 'x' * 300 + '</body></html>')
+        with patch('lib.fetcher.requests.get', return_value=resp) as get:
+            ev.fetch_page('https://x.com')
+        sent = get.call_args.kwargs['headers']['Accept-Encoding']
+        assert 'br' not in [e.strip() for e in sent.split(',')]
+
+    def test_status_guess_redirected_off_host_is_not_evidence(self):
+        # <name>.statuspage.io 302s every unknown subdomain to atlassian.com (200)
+        def head(url, **kw):
+            return MagicMock(status_code=200, url='https://www.atlassian.com/software/statuspage')
+        with patch.object(ev, '_probe_url', return_value=(None, None)):
+            with patch.object(ev.requests, 'head', side_effect=head):
+                result = ev.check_production_indicators(_EMPTY, 'https://x.com/')
+        assert result['passed'] is False
+
+    def test_status_guess_on_same_host_counts(self):
+        def head(url, **kw):
+            ok = url == 'https://status.x.com'
+            return MagicMock(status_code=200 if ok else 404, url=url)
+        with patch.object(ev, '_probe_url', return_value=(None, None)):
+            with patch.object(ev.requests, 'head', side_effect=head):
+                result = ev.check_production_indicators(_EMPTY, 'https://x.com/')
+        assert result['passed'] is True
+        assert result['evidence'] == 'Status page found: https://status.x.com'

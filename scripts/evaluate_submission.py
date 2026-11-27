@@ -105,6 +105,19 @@ def find_link_matching(soup, base_url, patterns):
     return None
 
 
+_CATCH_ALL_PROBE_PATH = '/__alt-clouds-nonexistent-probe'
+
+
+def _is_catch_all_host(base):
+    """True if `base` serves 200 for a path that cannot exist (SPA catch-all).
+
+    On such hosts a 200 for /signup or /status proves nothing, so guessed-path
+    probes must not count as evidence. Fails open (False) if the probe errors.
+    """
+    probe_soup, _ = _probe_url(base + _CATCH_ALL_PROBE_PATH)
+    return probe_soup is not None
+
+
 def _check_pricing_indicators(soup):
     """Return True if the page contains pricing indicators."""
     text = soup.get_text().lower()
@@ -145,6 +158,8 @@ def check_pricing_page(soup, base_url):
     # Fallback: probe common pricing URL patterns directly
     parsed = urlparse(base_url)
     base = f"{parsed.scheme}://{parsed.netloc}"
+    if _is_catch_all_host(base):
+        return result
     for path in ['/pricing', '/plans', '/price', '/#pricing', '/#plans']:
         probe_url = base + path
         probe_soup, probe_final = _probe_url(probe_url)
@@ -204,6 +219,8 @@ def check_self_service(soup, base_url):
     # Fallback: probe common signup URL patterns
     parsed = urlparse(base_url)
     base = f"{parsed.scheme}://{parsed.netloc}"
+    if _is_catch_all_host(base):
+        return result
     for path in ['/signup', '/sign-up', '/register', '/login', '/signin']:
         probe_soup, probe_final = _probe_url(base + path)
         if probe_soup:
@@ -251,10 +268,17 @@ def check_production_indicators(soup, base_url):
         f'https://{domain.split(".")[0]}.statuspage.io',
     ]
 
+    same_host_status = f'https://{domain}/status'
+    catch_all = _is_catch_all_host(f"{urlparse(base_url).scheme}://{urlparse(base_url).netloc}")
     for status_url in common_status_urls:
+        if catch_all and status_url == same_host_status:
+            continue  # SPA answers 200 to every path; not evidence
         try:
             response = requests.head(status_url, timeout=5, allow_redirects=True)
-            if response.status_code == 200:
+            landed = urlparse(getattr(response, 'url', status_url)).netloc.replace('www.', '')
+            if response.status_code == 200 and landed == urlparse(status_url).netloc:
+                # Must stay on the probed host: unknown <name>.statuspage.io
+                # subdomains redirect to a 200 marketing page.
                 result['passed'] = True
                 result['evidence'] = f'Status page found: {status_url}'
                 return result
