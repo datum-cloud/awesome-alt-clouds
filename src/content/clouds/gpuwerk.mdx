@@ -1,0 +1,69 @@
+---
+status: draft
+tagline: "Rents dedicated GPUs — from DGX Spark to B300 — billed by the minute from prepaid credit, no subscription."
+pricingModel: usage-based
+regions:
+  - "Czechia"
+  - "Germany"
+  - "Netherlands"
+  - "Romania"
+  - "Slovakia"
+  - "Sweden"
+  - "United Kingdom"
+  - "United States"
+  - "Canada"
+  - "Hong Kong"
+  - "Singapore"
+services:
+  - "DGX Spark rental (single and 2-node cluster)"
+  - "RTX 5090 rental"
+  - "RTX PRO 6000 rental"
+  - "H100 SXM rental"
+  - "B300 rental"
+  - "Inference API (pay-per-token, OpenAI/Anthropic-compatible)"
+  - "One-click model deployment (Qwen, GPT-OSS, GLM, ComfyUI, etc.)"
+  - "GPU hosting / earnings program for GPU owners"
+  - "Consulting and integration services"
+socials:
+  website: "https://gpuwerk.com/"
+---
+
+## What makes GPUwerk different
+
+GPUwerk rents out whole, dedicated GPUs to a single customer at a time, billed per minute from prepaid credit rather than through hourly reservations, committed-use discounts, or subscriptions. Its flagship machine is the NVIDIA DGX Spark (GB10), an Arm-based 128 GB unified-memory system, starting at $0.79/hour — positioned as the cheapest self-serve DGX Spark rental available as of November 2026, according to the provider's own comparison of 11 providers.
+
+Rather than racks of commodity instances, GPUwerk leans into a hybrid supply model: it operates its own Sparks alongside machines supplied by third-party owners (individuals or partners who list their GB10 hardware and earn 70% of rental revenue). This marketplace-style sourcing, combined with strict per-minute billing and workspace deletion on termination, differentiates it from hyperscaler GPU offerings that typically require longer commitments or opaque capacity reservations.
+
+The company also publishes concrete throughput benchmarks (e.g., Qwen3-Coder 30B-A3B at 1,078 tokens/sec across 256 concurrent requests on a single Spark) rather than only listing specs, giving developers a data-driven way to size their workload before renting.
+
+## Pricing model
+
+Billing is strictly usage-based and per-minute:
+
+- DGX Spark: $0.79/hour (~$6.32 for an 8-hour workday)
+- 2× linked DGX Spark (256 GB unified): $1.79/hour
+- RTX 5090 (32 GB): $0.69/hour
+- RTX PRO 6000 (96 GB): $1.89/hour
+- H100 SXM (80 GB): $2.69/hour
+- B300 (288 GB): $6.49/hour
+- Inference API: $0.05 per million input tokens
+- Introductory offer: one DGX Spark for 7 days, €99 flat (excl. VAT), with a full refund if not started within 48 hours
+
+Minimum top-up is $5; billing ends the moment an instance is terminated, and unused workspaces persist for up to 48 hours before deletion. There's no subscription tier and no long-term contract — a notable contrast to hyperscaler GPU pricing, which often bundles in reserved-instance discounts or requires minimum commitments.
+
+## When it fits
+
+- Short, bursty AI/ML experimentation where you want to spin up a GPU for hours or days, not months
+- Running open-weight LLMs (Qwen, GPT-OSS, GLM) or mixture-of-experts models that fit in 128 GB unified memory
+- Developers who want root/SSH access to a dedicated machine without hyperscaler account overhead
+- Teams testing DGX Spark (Arm/GB10) workloads before buying hardware
+- Cost-sensitive prototyping of inference APIs or ComfyUI image/video pipelines
+
+## When it doesn't
+
+- Large-scale, long-running production training clusters requiring guaranteed multi-region capacity and enterprise SLAs beyond a status page
+- Workloads needing broad x86 GPU availability on demand — several GPU types (RTX 5090, H100 SXM, B300) were listed as "waitlist only" at time of writing
+
+## Inclusion criteria
+
+GPUwerk meets all three inclusion criteria: transparent, published per-GPU hourly pricing ([pricing page](https://gpuwerk.com/pricing/)), fully self-service signup and deployment via its console (no sales contact required), and a public status/security disclosure page covering data retention and security practices.
